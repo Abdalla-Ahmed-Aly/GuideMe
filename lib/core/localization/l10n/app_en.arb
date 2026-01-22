@@ -1,0 +1,5 @@
+{
+  "hello" : "hello",
+  "login": "Login",  
+  "logout": "Logout"
+}

@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/app.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
+  runApp(const GuideMe());
 }
