@@ -98,23 +98,29 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @hello.
+  /// No description provided for @onboardingOne.
   ///
   /// In en, this message translates to:
-  /// **'hello'**
-  String get hello;
+  /// **'Your trip to Egypt is easier than you imagine'**
+  String get onboardingOne;
 
-  /// No description provided for @login.
+  /// No description provided for @onboardingTwo.
   ///
   /// In en, this message translates to:
-  /// **'Login'**
-  String get login;
+  /// **'We are here to help you book tours with locals on-the-go and experience a wonderful, unforgettable trip in Egypt.'**
+  String get onboardingTwo;
 
-  /// No description provided for @logout.
+  /// No description provided for @onboardingThree.
   ///
   /// In en, this message translates to:
-  /// **'Logout'**
-  String get logout;
+  /// **'Easily organize your tours and reach thousands of tourists. Grow your business and increase your income with us.'**
+  String get onboardingThree;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
 }
 
 class _AppLocalizationsDelegate

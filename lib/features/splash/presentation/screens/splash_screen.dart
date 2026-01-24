@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _impelementNavigation() {
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(milliseconds: 3200),
       () {
         GoRouter.of(context).go(AppRoutes.onBoardingScreen);
       },
@@ -83,10 +83,7 @@ class _SplashScreenState extends State<SplashScreen>
         child: Stack(
           children: [
             // Logo
-            Positioned(
-              bottom: size.height * .43,
-              left: 0,
-              right: 0,
+            Center(
               child: FadeTransition(
                 opacity: logoAnim,
                 child: Image.asset(AppImages.logo),
@@ -94,10 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
             ),
 
             // Blue Nile
-            Positioned(
-              bottom: size.height * .34,
-              left: 0,
-              right: 0,
+            Center(
               child: FadeTransition(
                 opacity: blueNileAnim,
                 child: Image.asset(AppImages.blueNile),
@@ -105,10 +99,7 @@ class _SplashScreenState extends State<SplashScreen>
             ),
 
             // White Nile
-            Positioned(
-              bottom: size.height * .35,
-              left: 0,
-              right: 0,
+            Center(
               child: FadeTransition(
                 opacity: whiteNileAnim,
                 child: Image.asset(AppImages.whiteNile),

@@ -9,11 +9,16 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get hello => 'مرحبا';
+  String get onboardingOne => 'رحلتك إلى مصر أسهل مما تتخيل';
 
   @override
-  String get login => 'تسجيل الدخول';
+  String get onboardingTwo =>
+      'نحن هنا لمساعدتك على حجز الجولات مع السكان المحليين بسهولة وفي أي وقت، والاستمتاع برحلة رائعة ولا تُنسى في مصر.';
 
   @override
-  String get logout => 'تسجيل الخروج';
+  String get onboardingThree =>
+      'نساعدك على تنظيم جولاتك والوصول إلى آلاف السياح. نمّ أعمالك وزِد دخلك معنا.';
+
+  @override
+  String get skip => 'تخطي';
 }
