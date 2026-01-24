@@ -3,7 +3,7 @@ import 'package:guide_me/core/localization/generated/app_localizations.dart';
 import 'package:guide_me/core/responsive/responsive_config.dart';
 import 'package:guide_me/core/routes/router.dart';
 import 'package:guide_me/core/theme/app_theme.dart';
-
+  
 class GuideMe extends StatelessWidget {
   const GuideMe({super.key});
 
