@@ -17,6 +17,7 @@ class GuideMe extends StatelessWidget {
       routerConfig: AppRouter.appRouter,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      
     );
   }
 }

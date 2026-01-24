@@ -16,4 +16,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logout => 'تسجيل الخروج';
+
+  @override
+  String get exploreApp => 'استكشاف التطبيق';
+  
+  @override
+  String get SignIn => 'تسجيل الدخول';
+
+@override
+  String get Createaccount => 'انشاء حساب';
+
 }

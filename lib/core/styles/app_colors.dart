@@ -42,4 +42,5 @@ abstract class AppColors {
   static const yellow = Color(0xffFFB23F);
   static const white = Colors.white;
   static const black = Colors.black;
+  static const natural7 = Color(0xffFAF5F1);
 }

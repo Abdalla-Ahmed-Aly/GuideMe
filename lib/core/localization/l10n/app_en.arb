@@ -1,5 +1,8 @@
 {
   "hello" : "hello",
   "login": "Login",  
-  "logout": "Logout"
+  "logout": "Logout",
+  "exploreApp": "Explore the App",
+  "SignIn": "Sign In",
+  "Create account":"Create account"
 }

@@ -115,6 +115,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @exploreApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the App'**
+  String get exploreApp;
 }
 
 class _AppLocalizationsDelegate
