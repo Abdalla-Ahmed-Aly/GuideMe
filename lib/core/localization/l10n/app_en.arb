@@ -1,8 +1,16 @@
 {
   "hello" : "hello",
-  "login": "Login",  
+  "login": "Log in",  
   "logout": "Logout",
   "exploreApp": "Explore the App",
-  "SignIn": "Sign In",
-  "Create account":"Create account"
+  "signIn": "Sign In",
+  "createAccount":"Create account",
+  "askAccount" : "Already have an account?",
+    "name"  : "Name",
+    "email" : "Email",
+    "password" : "Password",
+   "confirmPassword": "Confirm Password",
+   "massage" : "By creating an account or signing you",
+   "massage1": "agree to our",
+   "massage2":  "Terms and Conditions"
 }

@@ -12,6 +12,7 @@ class AppButton extends StatelessWidget {
     this.height,
     this.radius,
     this.textStyle,
+  
   });
 
   final void Function()? onPressed;
@@ -20,6 +21,7 @@ class AppButton extends StatelessWidget {
   final double? height;
   final double? radius;
   final TextStyle? textStyle;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class AppButton extends StatelessWidget {
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(radius ?? 40.r),
+            Radius.circular(radius ?? 10.r),
           ),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/localization/generated/app_localizations.dart';
 import 'package:guide_me/core/responsive/responsive_config.dart';
@@ -17,6 +18,10 @@ class GuideMe extends StatelessWidget {
       routerConfig: AppRouter.appRouter,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       
     );
   }

@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @login.
   ///
   /// In en, this message translates to:
-  /// **'Login'**
+  /// **'Log in'**
   String get login;
 
   /// No description provided for @logout.
@@ -121,6 +121,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Explore the App'**
   String get exploreApp;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signIn;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get createAccount;
+
+  /// No description provided for @askAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get askAccount;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @massage.
+  ///
+  /// In en, this message translates to:
+  /// **'By creating an account or signing you'**
+  String get massage;
+
+  /// No description provided for @massage1.
+  ///
+  /// In en, this message translates to:
+  /// **'agree to our'**
+  String get massage1;
+
+  /// No description provided for @massage2.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and Conditions'**
+  String get massage2;
 }
 
 class _AppLocalizationsDelegate

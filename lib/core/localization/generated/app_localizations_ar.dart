@@ -19,11 +19,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get exploreApp => 'استكشاف التطبيق';
-  
+
   @override
-  String get SignIn => 'تسجيل الدخول';
+  String get signIn => 'تسجيل الدخول';
 
-@override
-  String get Createaccount => 'انشاء حساب';
+  @override
+  String get createAccount => 'انشاء حساب';
 
+  @override
+  String get askAccount => 'هل تمتلك حساب';
+
+  @override
+  String get name => 'اسم';
+
+  @override
+  String get email => 'البريد الاكتروني';
+
+  @override
+  String get password => 'باسورد';
+
+  @override
+  String get confirmPassword => 'تاكيد الباسورد';
+
+  @override
+  String get massage => 'بإنشائك حسابًا أو تسجيل دخولك';
+
+  @override
+  String get massage1 => 'فإنك توافق على';
+
+  @override
+  String get massage2 => 'الشروط والأحكام';
 }

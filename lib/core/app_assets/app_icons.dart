@@ -22,4 +22,5 @@ abstract class AppIcons {
   static const String settings = 'assets/icons/settings.svg';
   static const String star = 'assets/icons/star.svg';
   static const String whatsApp = 'assets/icons/whats_app.svg';
+  static const String correct = 'assets/icons/correct.svg';
 }
