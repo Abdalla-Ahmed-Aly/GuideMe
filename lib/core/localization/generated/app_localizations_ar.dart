@@ -135,4 +135,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tourGuide => 'مرشد سياحي';
+
+  @override
+  String get onboardingOne => 'رحلتك إلى مصر أسهل مما تتخيل';
+
+  @override
+  String get onboardingTwo =>
+      'نحن هنا لمساعدتك على حجز الجولات مع السكان المحليين بسهولة وفي أي وقت، والاستمتاع برحلة رائعة ولا تُنسى في مصر.';
+
+  @override
+  String get onboardingThree =>
+      'نساعدك على تنظيم جولاتك والوصول إلى آلاف السياح. نمّ أعمالك وزِد دخلك معنا.';
+
+  @override
+  String get skip => 'تخطي';
 }

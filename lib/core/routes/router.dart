@@ -10,6 +10,8 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
+import 'package:guide_me/features/splash/presentation/screens/onboarding_screen.dart';
+import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart';
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
@@ -53,6 +55,14 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.chooseRoleScreen,
         builder: (context, state) => const ChooseRoleScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.splashScreen,
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.onBoardingScreen,
+        builder: (context, state) => const OnboardingScreen(),
       ),
     ],
   );

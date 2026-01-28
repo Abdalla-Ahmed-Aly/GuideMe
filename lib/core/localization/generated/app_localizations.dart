@@ -349,6 +349,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tour Guide'**
   String get tourGuide;
+
+  /// No description provided for @onboardingOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Your trip to Egypt is easier than you imagine'**
+  String get onboardingOne;
+
+  /// No description provided for @onboardingTwo.
+  ///
+  /// In en, this message translates to:
+  /// **'We are here to help you book tours with locals on-the-go and experience a wonderful, unforgettable trip in Egypt.'**
+  String get onboardingTwo;
+
+  /// No description provided for @onboardingThree.
+  ///
+  /// In en, this message translates to:
+  /// **'Easily organize your tours and reach thousands of tourists. Grow your business and increase your income with us.'**
+  String get onboardingThree;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
 }
 
 class _AppLocalizationsDelegate
