@@ -49,4 +49,59 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get massage2 => 'Terms and Conditions';
+
+  @override
+  String get forgotPassword => 'forgot Password?';
+
+  @override
+  String get haveIt => 'Don’t have an account?';
+
+  @override
+  String get messege3 =>
+      'Don’t worry! It happens. Please enter the email associated with your account.';
+
+  @override
+  String get request => 'Enter your email address';
+
+  @override
+  String get send => 'Send code';
+
+  @override
+  String get remember => 'Remember password? ';
+
+  @override
+  String get check => 'Please check your email';
+
+  @override
+  String get sent => 'We’ve sent a code to';
+
+  @override
+  String get email1 => 'helloworld@gmail.com';
+
+  @override
+  String get verify => 'Verify';
+
+  @override
+  String get code => 'Send code again';
+
+  @override
+  String get request2 => 'Reset password';
+
+  @override
+  String get request3 => 'Please type something you’ll remember';
+
+  @override
+  String get confirm => 'Confirm password';
+
+  @override
+  String get request4 => 'repeat password';
+
+  @override
+  String get success => 'Password changed';
+
+  @override
+  String get success1 => 'Your password has been changed succesfully';
+
+  @override
+  String get back => 'Back to login';
 }

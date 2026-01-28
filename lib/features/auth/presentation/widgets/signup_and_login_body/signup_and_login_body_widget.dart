@@ -21,35 +21,43 @@ class SignupAndLoginBody extends StatelessWidget {
         bottom: 39.p,
       ),
       child: Container(
-        width: 373.w,
+        
         height: 825.h,
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           color: AppColors.natural7,
           borderRadius: BorderRadius.circular(40.r),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                top: 95.p,
-                right: 21.p,
-                left: 25.p,
-                bottom: 7.p,
-              ),
-              child: Image.asset(
-                AppImages.exploreApp,
-                width: 327.w,
-                height: 327.h,
-              ),
+            // Padding(
+            //   padding: EdgeInsets.only(
+            //     top: 95.p,
+            //     right: 21.p,
+            //     left: 25.p,
+            //     bottom: 7.p,
+            //   ),
+            //   child: Image.asset(
+            //     AppImages.exploreApp,
+            //     width: 327.w,
+            //     height: 327.h,
+            //   ),
+            // ),
+            Image.asset(
+              AppImages.exploreApp,
+              width: 327.w,
+              height: 327.h,
             ),
+            13.verticalSpace,
             Text(
               context.l10n.exploreApp,
               style: AppTextStyles.poppinsBold32.copyWith(
                 color: AppColors.primary500,
               ),
             ),
+            105.verticalSpace,
             Padding(
-              padding: EdgeInsets.only(top: 115.p, left: 10.p, right: 10.p),
+              padding: EdgeInsets.symmetric(horizontal: 10.p),
               child: SignupAndLoginCustombutton(
                 text: context.l10n.signIn,
                 backgroundColor: AppColors.primary500,
@@ -57,7 +65,7 @@ class SignupAndLoginBody extends StatelessWidget {
                   color: AppColors.white,
                 ),
                 ontap: () {
-                
+
                 },
               ),
             ),
@@ -70,7 +78,8 @@ class SignupAndLoginBody extends StatelessWidget {
               backgroundColor: Colors.transparent,
               bordercolor: AppColors.black,
               ontap: () {
-                context.go(AppRoutes.createAccountScreen);
+                context.push(AppRoutes.createAccountScreen);
+                
               },
             ),
           ],

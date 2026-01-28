@@ -24,21 +24,19 @@ class CreateAccountBody extends StatelessWidget {
         ),
         child: Container(
           width: 373.w,
-          height: 816.h,
           decoration: BoxDecoration(
             color: AppColors.natural7,
             borderRadius: BorderRadius.circular(40.r),
           ),
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: 55.p),
-                child: Image.asset(
-                  AppImages.guideMe,
-                  width: 254.w,
-                  height: 135.h,
-                ),
+              77.verticalSpace,
+              Image.asset(
+                AppImages.guideMe,
+                width: 254.w,
+                height: 135.h,
               ),
+              6.verticalSpace,
               Text(
                 context.l10n.createAccount,
                 style: AppTextStyles.poppinsBold32.copyWith(
@@ -46,7 +44,7 @@ class CreateAccountBody extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 59.p),
+                padding: EdgeInsets.only(top: 59.p, left: 10.p, right: 10.p),
                 child: const CreatAccountscrollview(),
               ),
               SizedBox(height: 30.h),
@@ -59,7 +57,6 @@ class CreateAccountBody extends StatelessWidget {
               ),
               SizedBox(height: 26.h),
               const CreateAccountAccountdetails(),
-              
             ],
           ),
         ),

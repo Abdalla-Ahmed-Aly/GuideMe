@@ -49,4 +49,59 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get massage2 => 'الشروط والأحكام';
+
+  @override
+  String get forgotPassword => 'هل نسيت كلمه مرور';
+
+  @override
+  String get haveIt => 'ليس لديك اي حاسابات؟';
+
+  @override
+  String get messege3 =>
+      'لا تقلق! هذا يحدث. من فضلك أدخل البريد الإلكتروني المرتبط بحسابك.';
+
+  @override
+  String get request => 'أدخل عنوان بريدك الإلكتروني';
+
+  @override
+  String get send => 'ارسل الكود';
+
+  @override
+  String get remember => 'تتذكر كلمه السر؟';
+
+  @override
+  String get check => 'من فضلك تحقّق من بريدك الإلكتروني';
+
+  @override
+  String get sent => 'لقد أرسلنا رمزًا إلى';
+
+  @override
+  String get email1 => 'رمزًا إلى';
+
+  @override
+  String get verify => 'تاكيد';
+
+  @override
+  String get code => 'ارسال الكود مره اخري';
+
+  @override
+  String get request2 => 'اعاده كلمه المرور';
+
+  @override
+  String get request3 => 'من فضلك اكتب شيئًا ستتذكره';
+
+  @override
+  String get confirm => 'تأكيد كلمة المرور الجديدة';
+
+  @override
+  String get request4 => 'اعاده كلمه مرور';
+
+  @override
+  String get success => ' تغيير كلمه مرور ';
+
+  @override
+  String get success1 => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get back => 'العودة إلى تسجيل الدخول';
 }

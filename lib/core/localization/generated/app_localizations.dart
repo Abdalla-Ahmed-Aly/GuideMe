@@ -181,6 +181,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms and Conditions'**
   String get massage2;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'forgot Password?'**
+  String get forgotPassword;
+
+  /// No description provided for @haveIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t have an account?'**
+  String get haveIt;
+
+  /// No description provided for @messege3.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t worry! It happens. Please enter the email associated with your account.'**
+  String get messege3;
+
+  /// No description provided for @request.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address'**
+  String get request;
+
+  /// No description provided for @send.
+  ///
+  /// In en, this message translates to:
+  /// **'Send code'**
+  String get send;
+
+  /// No description provided for @remember.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember password? '**
+  String get remember;
+
+  /// No description provided for @check.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your email'**
+  String get check;
+
+  /// No description provided for @sent.
+  ///
+  /// In en, this message translates to:
+  /// **'We’ve sent a code to'**
+  String get sent;
+
+  /// No description provided for @email1.
+  ///
+  /// In en, this message translates to:
+  /// **'helloworld@gmail.com'**
+  String get email1;
+
+  /// No description provided for @verify.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get verify;
+
+  /// No description provided for @code.
+  ///
+  /// In en, this message translates to:
+  /// **'Send code again'**
+  String get code;
+
+  /// No description provided for @request2.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get request2;
+
+  /// No description provided for @request3.
+  ///
+  /// In en, this message translates to:
+  /// **'Please type something you’ll remember'**
+  String get request3;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirm;
+
+  /// No description provided for @request4.
+  ///
+  /// In en, this message translates to:
+  /// **'repeat password'**
+  String get request4;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed'**
+  String get success;
+
+  /// No description provided for @success1.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password has been changed succesfully'**
+  String get success1;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to login'**
+  String get back;
 }
 
 class _AppLocalizationsDelegate

@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
+import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/core/widgets/arrow_back_button.dart';
+import 'package:guide_me/features/auth/presentation/widgets/check_email_body/time_send_code.dart';
+import 'package:guide_me/features/auth/presentation/widgets/check_email_body/verification_code%20_input.dart';
+import 'package:guide_me/features/auth/presentation/widgets/forget_password_body/custom_textspan.dart';
+
+class CheckEmailBody extends StatelessWidget {
+  const CheckEmailBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 40.p, right: 352.p, top: 90.p),
+            child: const ArrowBackButton(),
+          ),
+          SizedBox(
+            height: 56.p,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 40.p, right: 52.p, bottom: 19.p),
+            child: Text(
+              context.l10n.check,
+              style: AppTextStyles.poppinsBold30.copyWith(
+                color: AppColors.primary,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 45.p),
+            child: CustomTextspan(
+              context.l10n.sent,
+              AppColors.natural3,
+              AppTextStyles.interRegular16,
+              context.l10n.email1,
+              AppColors.black,
+              AppTextStyles.interMedium16,
+            ),
+          ),
+          SizedBox(
+            height: 38.p,
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40.p),
+            child: const VerificationCodeInput(),
+          ),
+          SizedBox(
+            height: 38.p,
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40.p),
+            child: AppButton(
+              onPressed: () {
+                context.push(AppRoutes.resetPasswordScreen);
+              },
+              text: context.l10n.verify,
+              radius: 40.r,
+            ),
+          ),
+          SizedBox(
+            height: 38.p,
+          ),
+
+          const TimeSendCode(),
+        ],
+      ),
+    );
+  }
+}

@@ -12,5 +12,28 @@
    "confirmPassword": "Confirm Password",
    "massage" : "By creating an account or signing you",
    "massage1": "agree to our",
-   "massage2":  "Terms and Conditions"
+   "massage2":  "Terms and Conditions",
+   "forgotPassword":"forgot Password?",
+   "haveIt" : "Don’t have an account?",
+   "messege3":"Don’t worry! It happens. Please enter the email associated with your account.",
+   "request" : "Enter your email address",
+   "send" : "Send code",
+   "remember" : "Remember password? ",
+   "check" : "Please check your email",
+   "sent" : "We’ve sent a code to",
+   "email1" : "helloworld@gmail.com",
+   "verify" : "Verify",
+   "code" : "Send code again",
+   "request2" : "Reset password",
+   "request3" : "Please type something you’ll remember",
+   "confirm" : "Confirm password",
+   "request4" : "repeat password",
+   "success" : "Password changed",
+   "success1" : "Your password has been changed succesfully",
+   "back" : "Back to login"
+
+
+
+
 }
+
