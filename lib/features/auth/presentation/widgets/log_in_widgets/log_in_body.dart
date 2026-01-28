@@ -8,25 +8,25 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/create_account_body/custom_text_field.dart';
-import 'package:guide_me/features/auth/presentation/widgets/log_in_body/divider_rule_body.dart';
-import 'package:guide_me/features/auth/presentation/widgets/log_in_body/login%20_with%20_social_media.dart';
-import 'package:guide_me/features/auth/presentation/widgets/log_in_body/signup_textspan.dart';
+import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/divider_rule_body.dart';
+import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/login%20_with%20_social_media.dart';
+import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/signup_textspan.dart';
 
-class LogInBodyWidget extends StatelessWidget {
-  const LogInBodyWidget({super.key});
+class LogInBody extends StatelessWidget {
+  const LogInBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(
-              left: 20.p,
-              right: 270.p,
-              top: 145.p,
+              left: 38.p,
+              top: 185.p,
               bottom: 41.p,
             ),
             child: Text(
@@ -38,8 +38,7 @@ class LogInBodyWidget extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              left: 20.p,
-              right: 270.p,
+              left: 38.p,
             ),
             child: Text(
               "Email address",
@@ -48,8 +47,11 @@ class LogInBodyWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          6.verticalSpace,
+
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.p),
+            padding: EdgeInsets.symmetric(horizontal: 38.p),
             child: CustomTextField(
               hintText: context.l10n.email,
               suffixIcon: Padding(
@@ -58,8 +60,13 @@ class LogInBodyWidget extends StatelessWidget {
               ),
             ),
           ),
+
           Padding(
-            padding: EdgeInsets.only(left: 10.p, right: 270.p, top: 22.p),
+            padding: EdgeInsets.only(
+              left: 38.p,
+              top: 22.p,
+              bottom: 6.p,
+            ),
             child: Text(
               "Password",
               style: AppTextStyles.interRegular14.copyWith(
@@ -68,32 +75,42 @@ class LogInBodyWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.p),
+            padding: EdgeInsets.symmetric(horizontal: 38.p),
             child: CustomTextField(
               obscureText: true,
               hintText: context.l10n.password,
-              suffixIcon: Padding(
-                padding: EdgeInsets.all(15.p),
-                child: SvgPicture.asset(AppIcons.hidePassword),
+              suffixIcon: const Icon(
+                Icons.visibility_off_outlined,
+                color: AppColors.natural1,
+                size: 22,
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 15.p, left: 254.p, bottom: 38.p),
-            child: GestureDetector(
-              onTap: () {
-                context.push(AppRoutes.forgetPasswordScreen);
-              },
-              child: Text(
-                context.l10n.forgotPassword,
-                style: AppTextStyles.interRegular14.copyWith(
-                  color: AppColors.black,
+            padding: EdgeInsets.only(
+              top: 15.p,
+              bottom: 38.p,
+              right: 38.p,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    context.push(AppRoutes.forgetPasswordScreen);
+                  },
+                  child: Text(
+                    context.l10n.forgotPassword,
+                    style: AppTextStyles.interRegular14.copyWith(
+                      color: AppColors.black,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.p),
+            padding: EdgeInsets.symmetric(horizontal: 38.p),
             child: AppButton(
               onPressed: () {},
               text: context.l10n.login,
@@ -103,25 +120,25 @@ class LogInBodyWidget extends StatelessWidget {
           SizedBox(height: 38.h),
           const DividerRuleBody(),
           SizedBox(
-            height: 31.h,
+            height: 22.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.all(11.p),
+                padding: EdgeInsets.symmetric(horizontal: 11.p),
                 child: const LoginWithSocialMedia(
                   AppIcons.facebook,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(11.p),
+                padding: EdgeInsets.symmetric(horizontal: 11.p),
                 child: const LoginWithSocialMedia(
                   AppIcons.google,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(11.p),
+                padding: EdgeInsets.symmetric(horizontal: 11.p),
                 child: const LoginWithSocialMedia(
                   AppIcons.phone,
                 ),
@@ -131,13 +148,14 @@ class LogInBodyWidget extends StatelessWidget {
           SizedBox(
             height: 100.h,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 109.p, right: 112.p),
-            child: const SignupTextspan(),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SignupTextspan(),
+            ],
           ),
-          SizedBox(
-            height: 54.h,
-          ),
+
+          88.verticalSpace,
         ],
       ),
     );

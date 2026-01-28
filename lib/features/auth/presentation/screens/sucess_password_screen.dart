@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/auth/presentation/widgets/success_password_body/sucess_password_body.dart';
+import 'package:guide_me/features/auth/presentation/widgets/success_password_widgets/sucess_password_body.dart';
 
 class SucessPasswordScreen extends StatelessWidget {
   const SucessPasswordScreen({super.key});

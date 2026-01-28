@@ -7,12 +7,12 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/check_email_body/time_send_code.dart';
-import 'package:guide_me/features/auth/presentation/widgets/check_email_body/verification_code%20_input.dart';
-import 'package:guide_me/features/auth/presentation/widgets/forget_password_body/custom_textspan.dart';
+import 'package:guide_me/features/auth/presentation/widgets/verification_code_widgets/time_send_code.dart';
+import 'package:guide_me/features/auth/presentation/widgets/verification_code_widgets/verification_code%20_input.dart';
+import 'package:guide_me/features/auth/presentation/widgets/custom_textspan.dart';
 
-class CheckEmailBody extends StatelessWidget {
-  const CheckEmailBody({super.key});
+class VerificationCodeScreenBody extends StatelessWidget {
+  const VerificationCodeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
-import 'package:guide_me/features/auth/presentation/screens/verify_email_screen.dart';
+import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
+import 'package:guide_me/features/auth/presentation/screens/choose_nationality_screen.dart';
+import 'package:guide_me/features/auth/presentation/screens/choose_role_screen.dart';
+import 'package:guide_me/features/auth/presentation/screens/verification_code_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/create_account_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
@@ -29,20 +32,28 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.checkemailscreen,
-        builder: (context, state) => const CheckEmailScreen(),
+        builder: (context, state) => const VerificationCodeScreen(),
       ),
-
       GoRoute(
         path: AppRoutes.resetPasswordScreen,
         builder: (context, state) => const ResetPasswordScreen(),
       ),
-
       GoRoute(
         path: AppRoutes.successPasswordScreen,
         builder: (context, state) => const SucessPasswordScreen(),
       ),
-      
-
+      GoRoute(
+        path: AppRoutes.chooseNationalityScreen,
+        builder: (context, state) => const ChooseNationalityScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.allowLocationAccessScreen,
+        builder: (context, state) => const AllowLocationAccessScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.chooseRoleScreen,
+        builder: (context, state) => const ChooseRoleScreen(),
+      ),
     ],
   );
 }

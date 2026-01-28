@@ -8,8 +8,8 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/create_account_body/custom_text_field.dart';
-import 'package:guide_me/features/auth/presentation/widgets/forget_password_body/custom_textspan.dart';
+import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/features/auth/presentation/widgets/custom_textspan.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
   const ForgetPasswordBody({super.key});

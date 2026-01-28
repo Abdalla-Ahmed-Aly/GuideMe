@@ -43,6 +43,5 @@ class CustomTextspan extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

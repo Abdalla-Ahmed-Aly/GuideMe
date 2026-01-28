@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class DividerRuleBody extends StatelessWidget {
   const DividerRuleBody({super.key});
@@ -7,7 +8,7 @@ class DividerRuleBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.p),
+      padding: EdgeInsets.symmetric(horizontal: 38.p),
       child: Row(
         children: [
           Expanded(
@@ -20,9 +21,8 @@ class DividerRuleBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               'Or Login with',
-              style: TextStyle(
+              style: AppTextStyles.interRegular14.copyWith(
                 color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
               ),
             ),
           ),

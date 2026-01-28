@@ -20,7 +20,11 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.p, vertical: 18.p),
         labelStyle: AppTextStyles.interRegular16.copyWith(
+          color: AppColors.natural1,
+        ),
+        hintStyle: AppTextStyles.interRegular16.copyWith(
           color: AppColors.natural1,
         ),
         fillColor: AppColors.white,

@@ -8,7 +8,7 @@ class LoginWithSocialMedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 76.p,
+      width: 76.w,
       height: 48.h,
       decoration: BoxDecoration(
         border: Border.all(

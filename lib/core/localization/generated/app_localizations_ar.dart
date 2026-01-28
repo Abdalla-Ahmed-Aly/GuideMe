@@ -42,13 +42,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPassword => 'تاكيد الباسورد';
 
   @override
-  String get massage => 'بإنشائك حسابًا أو تسجيل دخولك';
+  String get massage => 'بإنشائك حسابًا أو تسجيل دخولك فإنك توافق على';
 
   @override
-  String get massage1 => 'فإنك توافق على';
-
-  @override
-  String get massage2 => 'الشروط والأحكام';
+  String get massage1 => 'الشروط والأحكام';
 
   @override
   String get forgotPassword => 'هل نسيت كلمه مرور';
@@ -104,4 +101,38 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get back => 'العودة إلى تسجيل الدخول';
+
+  @override
+  String get chooseNationality => 'اختر الجنسية';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get signUp => 'انشاء حساب';
+
+  @override
+  String get continueText => 'التالي';
+
+  @override
+  String get enablePreciseLocation => 'تفعيل الموقع الدقيق';
+
+  @override
+  String get locationDescription =>
+      'سيتم استخدام موقعك لعرض الأشخاص القريبين منك.';
+
+  @override
+  String get enable => 'تفعيل';
+
+  @override
+  String get securityNote => '🔒نص آمن وسحري لجعل جميع مخاوف الأمان تختفي.';
+
+  @override
+  String get chooseYourRole => 'اختر دورك';
+
+  @override
+  String get tourist => 'سائح';
+
+  @override
+  String get tourGuide => 'مرشد سياحي';
 }

@@ -6,7 +6,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/auth/presentation/widgets/signup_and_login_body/signup_and_login_custombutton.dart';
+import 'package:guide_me/features/auth/presentation/widgets/signup_and_login_widgets/signup_and_login_custom_button.dart';
 
 class SignupAndLoginBody extends StatelessWidget {
   const SignupAndLoginBody({super.key});
@@ -15,14 +15,12 @@ class SignupAndLoginBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: 68.p,
-        right: 29.p,
+        top: 60.p,
         left: 28.p,
-        bottom: 39.p,
+        right: 28.p,
+        bottom: 40.p,
       ),
       child: Container(
-        
-        height: 825.h,
         decoration: BoxDecoration(
           color: AppColors.natural7,
           borderRadius: BorderRadius.circular(40.r),
@@ -30,19 +28,6 @@ class SignupAndLoginBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Padding(
-            //   padding: EdgeInsets.only(
-            //     top: 95.p,
-            //     right: 21.p,
-            //     left: 25.p,
-            //     bottom: 7.p,
-            //   ),
-            //   child: Image.asset(
-            //     AppImages.exploreApp,
-            //     width: 327.w,
-            //     height: 327.h,
-            //   ),
-            // ),
             Image.asset(
               AppImages.exploreApp,
               width: 327.w,
@@ -58,28 +43,27 @@ class SignupAndLoginBody extends StatelessWidget {
             105.verticalSpace,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.p),
-              child: SignupAndLoginCustombutton(
+              child: SignupAndLoginCustomButton(
                 text: context.l10n.signIn,
                 backgroundColor: AppColors.primary500,
                 textStyle: AppTextStyles.interSemiBold16.copyWith(
                   color: AppColors.white,
                 ),
                 ontap: () {
-
+                  context.push(AppRoutes.logInScreen);
                 },
               ),
             ),
             SizedBox(
               height: 20.h,
             ),
-            SignupAndLoginCustombutton(
+            SignupAndLoginCustomButton(
               text: context.l10n.createAccount,
               textStyle: AppTextStyles.interSemiBold16.copyWith(),
               backgroundColor: Colors.transparent,
               bordercolor: AppColors.black,
               ontap: () {
                 context.push(AppRoutes.createAccountScreen);
-                
               },
             ),
           ],

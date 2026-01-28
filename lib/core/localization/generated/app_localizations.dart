@@ -167,20 +167,14 @@ abstract class AppLocalizations {
   /// No description provided for @massage.
   ///
   /// In en, this message translates to:
-  /// **'By creating an account or signing you'**
+  /// **'By creating an account or signing you agree to our'**
   String get massage;
 
   /// No description provided for @massage1.
   ///
   /// In en, this message translates to:
-  /// **'agree to our'**
-  String get massage1;
-
-  /// No description provided for @massage2.
-  ///
-  /// In en, this message translates to:
   /// **'Terms and Conditions'**
-  String get massage2;
+  String get massage1;
 
   /// No description provided for @forgotPassword.
   ///
@@ -289,6 +283,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to login'**
   String get back;
+
+  /// No description provided for @chooseNationality.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Your Nationality'**
+  String get chooseNationality;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUp;
+
+  /// No description provided for @continueText.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueText;
+
+  /// No description provided for @enablePreciseLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable precise location'**
+  String get enablePreciseLocation;
+
+  /// No description provided for @locationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Your location will be used to show people near you.'**
+  String get locationDescription;
+
+  /// No description provided for @enable.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable'**
+  String get enable;
+
+  /// No description provided for @securityNote.
+  ///
+  /// In en, this message translates to:
+  /// **'🔒Magical secured text to make all security concerns go away.'**
+  String get securityNote;
+
+  /// No description provided for @chooseYourRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Your Role'**
+  String get chooseYourRole;
+
+  /// No description provided for @tourist.
+  ///
+  /// In en, this message translates to:
+  /// **'Tourist'**
+  String get tourist;
+
+  /// No description provided for @tourGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Tour Guide'**
+  String get tourGuide;
 }
 
 class _AppLocalizationsDelegate

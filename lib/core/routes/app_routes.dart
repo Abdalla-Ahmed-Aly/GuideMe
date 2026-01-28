@@ -6,4 +6,7 @@ abstract class AppRoutes {
   static const String checkemailscreen = '/check-email';
   static const String resetPasswordScreen = '/reset-password';
   static const String successPasswordScreen = '/success-password';
+  static const String chooseNationalityScreen = '/choose-nationality';
+  static const String allowLocationAccessScreen = '/allow-location-access';
+  static const String chooseRoleScreen = '/choose-role';
 }

@@ -9,8 +9,8 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/create_account_body/custom_text_field.dart';
-import 'package:guide_me/features/auth/presentation/widgets/reset_password_body/auth_navigation_text.dart';
+import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/features/auth/presentation/widgets/reset_password_widgets/auth_navigation_text.dart';
 
 class ResetPasswordBody extends StatelessWidget {
   const ResetPasswordBody({super.key});

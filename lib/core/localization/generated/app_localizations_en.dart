@@ -42,13 +42,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmPassword => 'Confirm Password';
 
   @override
-  String get massage => 'By creating an account or signing you';
+  String get massage => 'By creating an account or signing you agree to our';
 
   @override
-  String get massage1 => 'agree to our';
-
-  @override
-  String get massage2 => 'Terms and Conditions';
+  String get massage1 => 'Terms and Conditions';
 
   @override
   String get forgotPassword => 'forgot Password?';
@@ -104,4 +101,39 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get back => 'Back to login';
+
+  @override
+  String get chooseNationality => 'Select Your Nationality';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get signUp => 'Sign Up';
+
+  @override
+  String get continueText => 'Continue';
+
+  @override
+  String get enablePreciseLocation => 'Enable precise location';
+
+  @override
+  String get locationDescription =>
+      'Your location will be used to show people near you.';
+
+  @override
+  String get enable => 'Enable';
+
+  @override
+  String get securityNote =>
+      '🔒Magical secured text to make all security concerns go away.';
+
+  @override
+  String get chooseYourRole => 'Choose Your Role';
+
+  @override
+  String get tourist => 'Tourist';
+
+  @override
+  String get tourGuide => 'Tour Guide';
 }

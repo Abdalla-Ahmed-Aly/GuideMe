@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 
 
-class SignupAndLoginCustombutton extends StatelessWidget {
-  const SignupAndLoginCustombutton({
+class SignupAndLoginCustomButton extends StatelessWidget {
+  const SignupAndLoginCustomButton({
     super.key,
     this.text,
     this.backgroundColor,
