@@ -16,7 +16,7 @@ class AllowLocationAccessScreen extends StatelessWidget {
       body: Column(
         children: [
           211.verticalSpace,
-
+    
           // Location Icon
           Container(
             width: 96.w,

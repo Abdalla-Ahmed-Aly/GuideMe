@@ -5,8 +5,8 @@ import 'package:pinput/pinput.dart';
 import 'package:flutter/material.dart';
 
 class VerificationCodeInput extends StatelessWidget {
-  const VerificationCodeInput( {super.key});
-  
+  const VerificationCodeInput( {super.key , this.validator});
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class VerificationCodeInput extends StatelessWidget {
       ),
     );
     return Pinput(
+      validator: validator,
       length: 4,
       keyboardType: TextInputType.number,
       
