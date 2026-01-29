@@ -16,7 +16,7 @@ class ArrowBackButton extends StatelessWidget {
       },
       child: Container(
         width: 39.w,
-        height: 39.h,
+        height: 39.w,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(

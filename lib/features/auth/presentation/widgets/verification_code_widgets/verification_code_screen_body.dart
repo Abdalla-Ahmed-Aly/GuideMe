@@ -16,19 +16,21 @@ class VerificationCodeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Column(
         children: [
+          SizedBox(height: size.height * 0.09),
           Padding(
-            padding: EdgeInsets.only(left: 40.p, right: 352.p, top: 90.p),
+            padding: EdgeInsets.only(left: 40.p, right: 352.p),
             child: const ArrowBackButton(),
           ),
           SizedBox(
-            height: 56.p,
+            height: size.height * 0.05,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40.p, right: 52.p, bottom: 19.p),
+            padding: EdgeInsets.only(left: 40.p, right: 52.p, bottom: 19),
             child: Text(
               context.l10n.check,
               style: AppTextStyles.poppinsBold30.copyWith(
@@ -37,7 +39,7 @@ class VerificationCodeScreenBody extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 45.p),
+            padding: EdgeInsets.symmetric(horizontal: 40.p),
             child: CustomTextspan(
               context.l10n.sent,
               AppColors.natural3,

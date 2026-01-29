@@ -8,21 +8,55 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
 import 'package:guide_me/features/auth/presentation/widgets/choose_nationality_widgets/countries_list_view.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
 
-class ChooseNationalityScreen extends StatelessWidget {
+class ChooseNationalityScreen extends StatefulWidget {
   const ChooseNationalityScreen({super.key});
+
+  @override
+  State<ChooseNationalityScreen> createState() =>
+      _ChooseNationalityScreenState();
+}
+
+class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
+  List<String> countries = [
+    "Egypt",
+    "Italy",
+    "France",
+    "Germany",
+    "Spain",
+    "United States",
+    "United Kingdom",
+    "Canada",
+    "Brazil",
+    "Mexico",
+    "Japan",
+    "China",
+    "India",
+    "South Korea",
+    "Australia",
+    "Russia",
+    "Turkey",
+    "Saudi Arabia",
+    "South Africa",
+    "Argentina",
+  ];
+
+  List<String> filteredCountries = [];
+
+  String value = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           88.verticalSpace,
 
           Row(
             children: [
-              40.horizontalSpace,
+              30.horizontalSpace,
               const ArrowBackButton(),
             ],
           ),
@@ -46,6 +80,17 @@ class ChooseNationalityScreen extends StatelessWidget {
                 Icons.search,
                 color: AppColors.natural3,
               ),
+              onChanged: (value) {
+                setState(() {
+                  this.value = value;
+                  filteredCountries = countries
+                      .where(
+                        (country) =>
+                            country.toLowerCase().contains(value.toLowerCase()),
+                      )
+                      .toList();
+                });
+              },
             ),
           ),
 
@@ -55,7 +100,11 @@ class ChooseNationalityScreen extends StatelessWidget {
             height: 400.h,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 22.p),
-              child: const CountriesListView(),
+              child: CountriesListView(
+                countries: filteredCountries.isEmpty && value.isEmpty
+                    ? countries
+                    : filteredCountries,
+              ),
             ),
           ),
 

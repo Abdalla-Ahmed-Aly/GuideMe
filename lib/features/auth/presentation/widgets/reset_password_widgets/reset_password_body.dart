@@ -9,7 +9,7 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/auth/presentation/widgets/reset_password_widgets/auth_navigation_text.dart';
 
 class ResetPasswordBody extends StatelessWidget {
@@ -17,21 +17,24 @@ class ResetPasswordBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: size.height * 0.1),
           Padding(
-            padding: EdgeInsets.only(left: 40.p, right: 352.p, top: 90.p),
+            padding: EdgeInsets.only(left: 40.p),
             child: const ArrowBackButton(),
           ),
+
+          SizedBox(height: size.height * 0.09),
+
           Padding(
             padding: EdgeInsets.only(
               left: 39.p,
-              // right: 52.p,
-              bottom: 16.p,
-              top: 56.p,
+              bottom: 16,
             ),
             child: Text(
               context.l10n.request2,
@@ -50,10 +53,10 @@ class ResetPasswordBody extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 38.p,
+            height: size.height * 0.04,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40.p, right: 270.p, bottom: 6.p),
+            padding: EdgeInsets.only(left: 40.p, right: 270.p, bottom: 6),
             child: Text(
               "New Password",
               style: AppTextStyles.interRegular14.copyWith(
@@ -73,10 +76,10 @@ class ResetPasswordBody extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 22.p,
+            height: size.height * 0.03,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 44.p, right: 238.p, bottom: 6.p),
+            padding: EdgeInsets.only(left: 44.p, right: 238.p, bottom: 6),
             child: Text(
               context.l10n.confirm,
               style: AppTextStyles.interRegular14.copyWith(
@@ -96,7 +99,7 @@ class ResetPasswordBody extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 38.p,
+            height: size.height * 0.04,
           ),
 
           Padding(
@@ -110,11 +113,11 @@ class ResetPasswordBody extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 255.p,
+            height: size.height * 0.18,
           ),
           const AuthNavigationText(),
           SizedBox(
-            height: 54.p,
+            height: size.height * 0.04,
           ),
         ],
       ),

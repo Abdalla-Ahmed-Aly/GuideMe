@@ -11,58 +11,61 @@ class ChooseRoleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          108.verticalSpace,
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: size.height * 0.15),
 
-          Text(
-            context.l10n.chooseYourRole,
-            style: AppTextStyles.poppinsBold38.copyWith(
-              color: AppColors.primary,
+            Text(
+              context.l10n.chooseYourRole,
+              style: AppTextStyles.poppinsBold38.copyWith(
+                color: AppColors.primary,
+              ),
             ),
-          ),
 
-          52.verticalSpace,
+            SizedBox(height: size.height * 0.05),
 
-          Container(
-            width: 370.w,
-            height: 370.w,
-            clipBehavior: Clip.hardEdge,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
+            Container(
+              width: size.width * .8,
+              height: size.height * .4,
+              clipBehavior: Clip.hardEdge,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.asset(
+                AppImages.chooseRole,
+              ),
             ),
-            child: Image.asset(
-              AppImages.chooseRole,
-              width: 370.w,
-              height: 370.w,
+
+            SizedBox(height: size.height * 0.05),
+
+            AppButton(
+              onPressed: () {},
+              text: context.l10n.tourist,
+              width: 200.w,
+              radius: 40.r,
+              textStyle: AppTextStyles.interSemiBold28,
             ),
-          ),
 
-          52.verticalSpace,
+            // 25.verticalSpace,
+            const SizedBox(height: 25),
 
-          AppButton(
-            onPressed: () {},
-            text: context.l10n.tourist,
-            width: 200.w,
-            radius: 40.r,
-            textStyle: AppTextStyles.interSemiBold28,
-          ),
+            AppButton(
+              onPressed: () {},
+              text: context.l10n.tourGuide,
+              width: 200.w,
+              radius: 40.r,
+              textStyle: AppTextStyles.interSemiBold28,
+            ),
 
-          25.verticalSpace,
-
-          AppButton(
-            onPressed: () {},
-            text: context.l10n.tourGuide,
-            width: 200.w,
-            radius: 40.r,
-            textStyle: AppTextStyles.interSemiBold28,
-          ),
-
-          // To make the column take the full width and center the widgets
-          double.infinity.horizontalSpace,
-        ],
+            // To make the column take the full width and center the widgets
+            double.infinity.horizontalSpace,
+          ],
+        ),
       ),
     );
   }

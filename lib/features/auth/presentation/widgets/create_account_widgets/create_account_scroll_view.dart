@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
 
 class CreateAccountScrollView extends StatelessWidget {
   const CreateAccountScrollView({super.key});

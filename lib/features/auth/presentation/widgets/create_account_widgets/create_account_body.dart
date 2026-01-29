@@ -15,14 +15,15 @@ class CreateAccountBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Padding(
         padding: EdgeInsets.only(
-          top: 60.p,
+          top: size.height * 0.07,
           left: 28.p,
           right: 28.p,
-          bottom: 40.p,
+          bottom: size.height * 0.05,
         ),
         child: Container(
           decoration: BoxDecoration(
@@ -31,24 +32,30 @@ class CreateAccountBody extends StatelessWidget {
           ),
           child: Column(
             children: [
-              60.verticalSpace,
+              SizedBox(height: size.height * 0.05),
               Image.asset(
                 AppImages.guideMe,
                 width: 254.w,
                 height: 135.h,
               ),
-              6.verticalSpace,
+              // 6.verticalSpace,
+              const SizedBox(height: 6),
               Text(
                 context.l10n.createAccount,
                 style: AppTextStyles.poppinsBold32.copyWith(
                   color: AppColors.primary500,
                 ),
               ),
+
+              (size.height * 0.04).verticalSpace,
+
               Padding(
-                padding: EdgeInsets.only(top: 58.p, left: 10.p, right: 10.p),
+                padding: EdgeInsets.only(left: 10.p, right: 10.p),
                 child: const CreateAccountScrollView(),
               ),
-              SizedBox(height: 30.h),
+
+              SizedBox(height: size.height * 0.04),
+
               Padding(
                 padding: EdgeInsets.only(right: 10.p, left: 10.p),
                 child: AppButton(
@@ -58,8 +65,12 @@ class CreateAccountBody extends StatelessWidget {
                   text: context.l10n.createAccount,
                 ),
               ),
-              SizedBox(height: 26.h),
+
+              SizedBox(height: size.height * 0.03),
+
               const CreateAccountFooter(),
+
+              (size.height * 0.03).verticalSpace,
             ],
           ),
         ),

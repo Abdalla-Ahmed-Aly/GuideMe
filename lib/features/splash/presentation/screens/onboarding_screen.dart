@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/features/splash/presentation/widgets/onboarding_widgets/arrow_button.dart';
@@ -35,7 +34,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    context.l10n.onboardingOne;
     return Scaffold(
       body: Stack(
         children: [
@@ -85,7 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: ArrowButton(
               onTap: () {
                 currentPage++;
-                if (currentPage < 2) {
+                if (currentPage < 3) {
                   _pageController.animateToPage(
                     currentPage,
                     duration: const Duration(milliseconds: 500),

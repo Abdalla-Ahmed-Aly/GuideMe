@@ -8,7 +8,7 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/auth/presentation/widgets/custom_textspan.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
@@ -16,13 +16,15 @@ class ForgetPasswordBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: size.height * 0.09),
           Padding(
-            padding: EdgeInsets.only(top: 90.p, left: 40.p),
+            padding: EdgeInsets.only(left: 40.p),
             child: const ArrowBackButton(),
           ),
           Row(
@@ -35,10 +37,7 @@ class ForgetPasswordBody extends StatelessWidget {
               ),
             ],
           ),
-          // Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 26.p),
-          //   child:
-          // ),
+
           SizedBox(
             height: 6.h,
           ),
@@ -67,7 +66,7 @@ class ForgetPasswordBody extends StatelessWidget {
             height: 38.h,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40.p, bottom: 6.p),
+            padding: EdgeInsets.only(left: 40.p, bottom: 6),
             child: Text(
               "Email address",
               style: AppTextStyles.interRegular14.copyWith(
@@ -95,7 +94,7 @@ class ForgetPasswordBody extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 113.h,
+            height: size.height * 0.12,
           ),
           CustomTextspan(
             context.l10n.remember,
@@ -105,6 +104,8 @@ class ForgetPasswordBody extends StatelessWidget {
             AppColors.primary,
             AppTextStyles.interSemiBold14,
           ),
+
+          SizedBox(height: size.height * 0.04),
         ],
       ),
     );

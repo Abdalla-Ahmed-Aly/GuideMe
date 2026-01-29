@@ -5,8 +5,13 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class CountryItem extends StatelessWidget {
-  const CountryItem({super.key, this.isSelected = false});
+  const CountryItem({
+    super.key,
+    this.isSelected = false,
+    required this.country,
+  });
   final bool isSelected;
+  final String country;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,7 @@ class CountryItem extends StatelessWidget {
           ),
           8.horizontalSpace,
           Text(
-            "English",
+            country,
             style: AppTextStyles.interMedium16,
           ),
           const Spacer(),

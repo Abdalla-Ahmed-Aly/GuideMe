@@ -4,7 +4,8 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/features/auth/presentation/widgets/choose_nationality_widgets/country_item.dart';
 
 class CountriesListView extends StatefulWidget {
-  const CountriesListView({super.key});
+  const CountriesListView({super.key, required this.countries});
+  final List<String> countries;
 
   @override
   State<CountriesListView> createState() => _CountriesListViewState();
@@ -22,7 +23,7 @@ class _CountriesListViewState extends State<CountriesListView> {
       radius: Radius.circular(40.r),
       child: ListView.builder(
         padding: EdgeInsets.zero,
-        itemCount: 10,
+        itemCount: widget.countries.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
@@ -30,7 +31,10 @@ class _CountriesListViewState extends State<CountriesListView> {
                 selectedCountry = index;
               });
             },
-            child: CountryItem(isSelected: selectedCountry == index),
+            child: CountryItem(
+              country: widget.countries[index],
+              isSelected: selectedCountry == index,
+            ),
           );
         },
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -8,7 +7,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/divider_rule_body.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/login%20_with%20_social_media.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/signup_textspan.dart';
@@ -26,7 +25,7 @@ class LogInBody extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(
               left: 38.p,
-              top: 185.p,
+              top: 160,
               bottom: 41.p,
             ),
             child: Text(
@@ -48,24 +47,24 @@ class LogInBody extends StatelessWidget {
             ),
           ),
 
-          6.verticalSpace,
+          const SizedBox(height: 6),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 38.p),
             child: CustomTextField(
               hintText: context.l10n.email,
-              suffixIcon: Padding(
-                padding: EdgeInsets.all(15.p),
-                child: SvgPicture.asset(AppIcons.correct),
-              ),
+              // suffixIcon: Padding(
+              //   padding: EdgeInsets.all(15.p),
+              //   child: SvgPicture.asset(AppIcons.correct),
+              // ),
             ),
           ),
 
           Padding(
             padding: EdgeInsets.only(
               left: 38.p,
-              top: 22.p,
-              bottom: 6.p,
+              top: 20,
+              bottom: 6,
             ),
             child: Text(
               "Password",
@@ -88,7 +87,7 @@ class LogInBody extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: 15.p,
+              top: 15,
               bottom: 38.p,
               right: 38.p,
             ),
@@ -146,7 +145,7 @@ class LogInBody extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 100.h,
+            height: 70.h,
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -155,7 +154,7 @@ class LogInBody extends StatelessWidget {
             ],
           ),
 
-          88.verticalSpace,
+          50.verticalSpace,
         ],
       ),
     );

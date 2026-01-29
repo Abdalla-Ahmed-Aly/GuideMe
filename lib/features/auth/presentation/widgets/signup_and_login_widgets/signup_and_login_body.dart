@@ -15,10 +15,10 @@ class SignupAndLoginBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: 60.p,
+        top: 60,
         left: 28.p,
         right: 28.p,
-        bottom: 40.p,
+        bottom: 40,
       ),
       child: Container(
         decoration: BoxDecoration(
