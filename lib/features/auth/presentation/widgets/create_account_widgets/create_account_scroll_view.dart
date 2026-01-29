@@ -21,7 +21,12 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomTextField(hintText: context.l10n.name),
+        CustomTextField(
+          hintText: context.l10n.name,
+          validator: (value) {
+            return AppValidators.name(value);
+          },
+        ),
 
         SizedBox(height: 20.h),
 
