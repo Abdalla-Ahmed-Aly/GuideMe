@@ -12,7 +12,8 @@ class AppButton extends StatelessWidget {
     this.height,
     this.radius,
     this.textStyle,
-  
+    this.isLoading = false,
+    this.prefixIcon,
   });
 
   final void Function()? onPressed;
@@ -21,30 +22,54 @@ class AppButton extends StatelessWidget {
   final double? height;
   final double? radius;
   final TextStyle? textStyle;
-  
+  final bool isLoading;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
-        minimumSize: Size(
-          width ?? double.infinity,
-          height ?? 56.h,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(radius ?? 10.r),
+    final double normalWidth = width ?? double.infinity;
+    final double loadingWidth = 100;
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      width: isLoading ? loadingWidth : normalWidth,
+      height: height ?? 56.h,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: AppColors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius ?? 10.r),
           ),
         ),
-      ),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: textStyle ?? AppTextStyles.interSemiBold16,
+        onPressed: isLoading ? null : onPressed,
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 200),
+          child: isLoading
+              ? const SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
+                  ),
+                )
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (prefixIcon != null) ...[
+                      prefixIcon!,
+                      const SizedBox(width: 12),
+                    ],
+                    Text(
+                      text,
+                      style: textStyle ?? AppTextStyles.interSemiBold16,
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }
