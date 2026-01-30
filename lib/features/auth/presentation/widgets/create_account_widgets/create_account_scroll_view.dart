@@ -68,6 +68,12 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
         SizedBox(height: 20.h),
 
         CustomTextField(
+          validator: (value) {
+            return AppValidators.confirmPassword(
+              value,
+              passwordcontroller.text,
+            );
+          },
           hintText: context.l10n.confirmPassword,
           obscureText: isConfirmPasswordHidden,
           suffixIcon: IconButton(
