@@ -5,12 +5,10 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
 import 'package:guide_me/features/auth/presentation/widgets/verification_code_widgets/time_send_code.dart';
 import 'package:guide_me/features/auth/presentation/widgets/verification_code_widgets/verification_code%20_input.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_textspan.dart';
 
 class VerificationCodeScreenBody extends StatefulWidget {
   const VerificationCodeScreenBody({super.key});
@@ -31,8 +29,11 @@ class _VerificationCodeScreenBodyState
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: size.height * 0.09),
+
+            //arrow back button
             Padding(
               padding: EdgeInsets.only(left: 40.p, right: 352.p),
               child: const ArrowBackButton(),
@@ -40,6 +41,8 @@ class _VerificationCodeScreenBodyState
             SizedBox(
               height: size.height * 0.05,
             ),
+
+            //check text
             Padding(
               padding: EdgeInsets.only(left: 40.p, right: 52.p, bottom: 19),
               child: Text(
@@ -49,33 +52,49 @@ class _VerificationCodeScreenBodyState
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.p),
-              child: CustomTextspan(
-                context.l10n.sent,
-                AppColors.natural3,
-                AppTextStyles.interRegular16,
-                context.l10n.email1,
-                AppColors.black,
-                AppTextStyles.interMedium16,
-              ),
+
+            // sent text
+            Row(
+              children: [
+                SizedBox(width: 40.w),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "${context.l10n.sent} ",
+                        style: AppTextStyles.interRegular16.copyWith(
+                          color: AppColors.natural3,
+                        ),
+                      ),
+                      TextSpan(
+                        text: context.l10n.email1,
+                        style: AppTextStyles.interMedium16.copyWith(
+                          color: AppColors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 38.p,
+            ),
+
+            // verification code input
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                VerificationCodeInput(),
+              ],
             ),
             SizedBox(
               height: 38.p,
             ),
 
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.p),
-              child: VerificationCodeInput(
-                validator: (value) {
-                  return AppValidators.pin(value);
-                },
-              ),
-            ),
-            SizedBox(
-              height: 38.p,
-            ),
-
+            // verify button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: AppButton(

@@ -5,33 +5,35 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 
-class CreateAccountScrollView extends StatefulWidget {
-  const CreateAccountScrollView({super.key});
+class CreateAccountSection extends StatefulWidget {
+  const CreateAccountSection({super.key});
 
   @override
-  State<CreateAccountScrollView> createState() =>
-      _CreateAccountScrollViewState();
+  State<CreateAccountSection> createState() => _CreateAccountSectionState();
 }
 
-class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
+class _CreateAccountSectionState extends State<CreateAccountSection> {
   bool isPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
   final TextEditingController passwordcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Name TextField
         CustomTextField(
           hintText: context.l10n.name,
-          validator: (value) {
-            return AppValidators.name(value);
-          },
+          validator: AppValidators.name,
+          keyboardType: TextInputType.name,
         ),
 
         SizedBox(height: 20.h),
 
+        // Email TextField
         CustomTextField(
           hintText: context.l10n.email,
+          keyboardType: TextInputType.emailAddress,
           validator: (value) {
             return AppValidators.email(value);
           },
@@ -39,11 +41,11 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
 
         SizedBox(height: 20.h),
 
+        // Password TextField
         CustomTextField(
           controller: passwordcontroller,
-          validator: (value) {
-            return AppValidators.password(value);
-          },
+          validator: AppValidators.password,
+          keyboardType: TextInputType.visiblePassword,
           hintText: context.l10n.password,
           obscureText: isPasswordHidden,
           suffixIcon: IconButton(
@@ -53,20 +55,17 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
               });
             },
             icon: Icon(
-              isPasswordHidden
+              !isPasswordHidden
                   ? Icons.visibility_off_outlined
-                  : Icons.visibility,
+                  : Icons.visibility_outlined,
               color: AppColors.natural1,
-              size: 22,
             ),
-            // Icons.visibility_off_outlined,
-            // color: AppColors.natural1,
-            // size: 22,
           ),
         ),
 
         SizedBox(height: 20.h),
 
+        // Confirm Password TextField
         CustomTextField(
           validator: (value) {
             return AppValidators.confirmPassword(
@@ -74,6 +73,7 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
               passwordcontroller.text,
             );
           },
+          keyboardType: TextInputType.visiblePassword,
           hintText: context.l10n.confirmPassword,
           obscureText: isConfirmPasswordHidden,
           suffixIcon: IconButton(
@@ -83,11 +83,10 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
               });
             },
             icon: Icon(
-              isConfirmPasswordHidden
+              !isConfirmPasswordHidden
                   ? Icons.visibility_off_outlined
-                  : Icons.visibility,
+                  : Icons.visibility_outlined,
               color: AppColors.natural1,
-              size: 22,
             ),
           ),
         ),
@@ -95,6 +94,3 @@ class _CreateAccountScrollViewState extends State<CreateAccountScrollView> {
     );
   }
 }
-//Icons.visibility_off_outlined,
-            // color: AppColors.natural1,
-            // size: 22,

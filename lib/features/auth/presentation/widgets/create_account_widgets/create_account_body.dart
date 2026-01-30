@@ -7,7 +7,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/auth/presentation/widgets/create_account_widgets/create_account_scroll_view.dart';
+import 'package:guide_me/features/auth/presentation/widgets/create_account_widgets/create_account_section.dart';
 import 'package:guide_me/features/auth/presentation/widgets/create_account_widgets/create_account_footer.dart';
 
 class CreateAccountBody extends StatefulWidget {
@@ -18,13 +18,15 @@ class CreateAccountBody extends StatefulWidget {
 }
 
 class _CreateAccountBodyState extends State<CreateAccountBody> {
-    final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Form(
       key: formkey,
+      autovalidateMode: autovalidateMode,
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Padding(
@@ -42,12 +44,14 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
             child: Column(
               children: [
                 SizedBox(height: size.height * 0.05),
+
+                // Image
                 Image.asset(
                   AppImages.guideMe,
                   width: 254.w,
                   height: 135.h,
                 ),
-                // 6.verticalSpace,
+
                 const SizedBox(height: 6),
                 Text(
                   context.l10n.createAccount,
@@ -55,32 +59,36 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                     color: AppColors.primary500,
                   ),
                 ),
-      
+
                 (size.height * 0.04).verticalSpace,
-      
+
+                // Create Account Section
                 Padding(
                   padding: EdgeInsets.only(left: 10.p, right: 10.p),
-                  child: const CreateAccountScrollView(),
+                  child: const CreateAccountSection(),
                 ),
-      
+
                 SizedBox(height: size.height * 0.04),
-      
+
                 Padding(
                   padding: EdgeInsets.only(right: 10.p, left: 10.p),
                   child: AppButton(
                     onPressed: () {
-                    if (formkey.currentState!.validate()) {
-                      context.push(AppRoutes.chooseNationalityScreen);
-                    }
+                      if (formkey.currentState!.validate()) {
+                        context.push(AppRoutes.chooseNationalityScreen);
+                      }
+                      setState(() {
+                        autovalidateMode = AutovalidateMode.always;
+                      });
                     },
                     text: context.l10n.createAccount,
                   ),
                 ),
-      
+
                 SizedBox(height: size.height * 0.03),
-      
+
                 const CreateAccountFooter(),
-      
+
                 (size.height * 0.03).verticalSpace,
               ],
             ),

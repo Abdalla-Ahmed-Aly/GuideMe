@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
@@ -10,7 +11,6 @@ import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
-import 'package:guide_me/features/auth/presentation/widgets/custom_textspan.dart';
 
 class ForgetPasswordBody extends StatefulWidget {
   const ForgetPasswordBody({super.key});
@@ -21,11 +21,14 @@ class ForgetPasswordBody extends StatefulWidget {
 
 class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Form(
       key: formkey,
+      autovalidateMode: autovalidateMode,
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Column(
@@ -46,7 +49,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                 ),
               ],
             ),
-      
+
             SizedBox(
               height: 6.h,
             ),
@@ -83,18 +86,21 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                 ),
               ),
             ),
+
+            // email text field
             Padding(
               padding: EdgeInsets.only(left: 40.p, right: 40.p),
               child: CustomTextField(
                 hintText: context.l10n.request,
-                validator: (value) {
-                  return AppValidators.email(value);
-                },
+                validator: AppValidators.email,
+                keyboardType: TextInputType.emailAddress,
               ),
             ),
             SizedBox(
               height: 38.h,
             ),
+
+            // send button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: AppButton(
@@ -102,6 +108,9 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                   if (formkey.currentState!.validate()) {
                     context.push(AppRoutes.checkemailscreen);
                   }
+                  setState(() {
+                    autovalidateMode = AutovalidateMode.always;
+                  });
                 },
                 text: context.l10n.send,
                 radius: 40.r,
@@ -110,15 +119,37 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             SizedBox(
               height: size.height * 0.12,
             ),
-            CustomTextspan(
-              context.l10n.remember,
-              AppColors.natural3,
-              AppTextStyles.interRegular14,
-              context.l10n.login,
-              AppColors.primary,
-              AppTextStyles.interSemiBold14,
+
+            // remember me and login text
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "${context.l10n.remember} ",
+                        style: AppTextStyles.interRegular14.copyWith(
+                          color: AppColors.natural3,
+                        ),
+                      ),
+                      TextSpan(
+                        text: context.l10n.login,
+                        style: AppTextStyles.interSemiBold14.copyWith(
+                          color: AppColors.primary,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.pop();
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-      
+
             SizedBox(height: size.height * 0.04),
           ],
         ),

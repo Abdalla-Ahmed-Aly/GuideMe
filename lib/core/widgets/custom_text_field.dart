@@ -11,7 +11,8 @@ class CustomTextField extends StatelessWidget {
     this.labelText,
     this.onChanged,
     this.validator,
-    this.controller
+    this.controller,
+    this.keyboardType,
   });
   final String? hintText;
   final bool obscureText;
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class CustomTextField extends StatelessWidget {
       style: AppTextStyles.interRegular16,
       onChanged: onChanged,
       validator: validator,
+      keyboardType: keyboardType,
       onTapOutside: (_) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         labelStyle: AppTextStyles.interRegular16.copyWith(

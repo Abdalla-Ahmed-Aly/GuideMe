@@ -22,11 +22,14 @@ class LogInBody extends StatefulWidget {
 
 class _LogInBodyState extends State<LogInBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  bool ishiddenpassword = true;
+  bool isHiddenPassword = true;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formkey,
+      autovalidateMode: autovalidateMode,
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Column(
@@ -59,17 +62,13 @@ class _LogInBodyState extends State<LogInBody> {
 
             const SizedBox(height: 6),
 
+            // email text field
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: CustomTextField(
-                validator: (value) {
-              return    AppValidators.email(value);
-                },
+                validator: AppValidators.email,
                 hintText: context.l10n.email,
-                // suffixIcon: Padding(
-                //   padding: EdgeInsets.all(15.p),
-                //   child: SvgPicture.asset(AppIcons.correct),
-                // ),
+                keyboardType: TextInputType.emailAddress,
               ),
             ),
 
@@ -86,36 +85,36 @@ class _LogInBodyState extends State<LogInBody> {
                 ),
               ),
             ),
+
+            // password text field
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: CustomTextField(
-                validator: (value) {
-                  return AppValidators.password(value);
-                },
-                obscureText: ishiddenpassword,
+                validator: AppValidators.password,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: isHiddenPassword,
                 hintText: context.l10n.password,
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
-                      ishiddenpassword = !ishiddenpassword;
+                      isHiddenPassword = !isHiddenPassword;
                     });
                   },
                   icon: Icon(
-                    ishiddenpassword
+                    !isHiddenPassword
                         ? Icons.visibility_off_outlined
-                        : Icons.visibility,
+                        : Icons.visibility_outlined,
                     color: AppColors.natural1,
-                    size: 22,
+                    // size: 22,
                   ),
-                  // Icons.visibility_off_outlined,
-                  // color: AppColors.natural1,
-                  // size: 22,
                 ),
               ),
             ),
+
+            // forgot password
             Padding(
               padding: EdgeInsets.only(
-                top: 15,
+                top: 12,
                 bottom: 38.p,
                 right: 38.p,
               ),
@@ -129,6 +128,7 @@ class _LogInBodyState extends State<LogInBody> {
                     child: Text(
                       context.l10n.forgotPassword,
                       style: AppTextStyles.interRegular14.copyWith(
+                        decoration: TextDecoration.underline,
                         color: AppColors.black,
                       ),
                     ),
@@ -136,6 +136,8 @@ class _LogInBodyState extends State<LogInBody> {
                 ],
               ),
             ),
+
+            // login button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: AppButton(
@@ -143,16 +145,24 @@ class _LogInBodyState extends State<LogInBody> {
                   if (formkey.currentState!.validate()) {
                     context.push(AppRoutes.chooseNationalityScreen);
                   }
+                  setState(() {
+                    autovalidateMode = AutovalidateMode.always;
+                  });
                 },
                 text: context.l10n.login,
                 radius: 40.r,
               ),
             ),
+
             SizedBox(height: 38.h),
+
             const DividerRuleBody(),
+
             SizedBox(
               height: 22.h,
             ),
+
+            // social media login
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -179,6 +189,8 @@ class _LogInBodyState extends State<LogInBody> {
             SizedBox(
               height: 70.h,
             ),
+
+            // footer text
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

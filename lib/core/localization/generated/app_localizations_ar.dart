@@ -149,4 +149,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skip => 'تخطي';
+
+  @override
+  String get resend => 'ارسال الكود';
 }

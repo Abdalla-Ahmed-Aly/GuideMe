@@ -1,12 +1,12 @@
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:pinput/pinput.dart';
 import 'package:flutter/material.dart';
 
 class VerificationCodeInput extends StatelessWidget {
-  const VerificationCodeInput( {super.key , this.validator});
-  final String? Function(String?)? validator;
+  const VerificationCodeInput( {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class VerificationCodeInput extends StatelessWidget {
       ),
     );
     return Pinput(
-      validator: validator,
+      validator: AppValidators.pin,
       length: 4,
       keyboardType: TextInputType.number,
       

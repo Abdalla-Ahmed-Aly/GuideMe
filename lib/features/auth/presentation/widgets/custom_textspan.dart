@@ -7,8 +7,7 @@ class CustomTextspan extends StatelessWidget {
     this.style,
     this.text1,
     this.color1,
-    this.style1,
- {
+    this.style1, {
     super.key,
   });
   final String text;

@@ -21,14 +21,17 @@ class ResetPasswordBody extends StatefulWidget {
 
 class _ResetPasswordBodyState extends State<ResetPasswordBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  final TextEditingController passwordcontroller = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool isNewPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Form(
       key: formkey,
+      autovalidateMode: autovalidateMode,
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Column(
@@ -75,13 +78,14 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                 ),
               ),
             ),
+
+            // New Password TextField
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: CustomTextField(
-                validator: (value) {
-                  return AppValidators.password(value);
-                },
-                controller: passwordcontroller,
+                validator: AppValidators.password,
+                controller: passwordController,
+                keyboardType: TextInputType.visiblePassword,
                 obscureText: isNewPasswordHidden,
                 hintText: context.l10n.password,
                 suffixIcon: IconButton(
@@ -91,11 +95,10 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                     });
                   },
                   icon: Icon(
-                    isNewPasswordHidden
+                    !isNewPasswordHidden
                         ? Icons.visibility_off_outlined
-                        : Icons.visibility,
+                        : Icons.visibility_outlined,
                     color: AppColors.natural1,
-                    size: 22,
                   ),
                 ),
               ),
@@ -103,6 +106,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             SizedBox(
               height: size.height * 0.03,
             ),
+
             Padding(
               padding: EdgeInsets.only(left: 44.p, right: 238.p, bottom: 6),
               child: Text(
@@ -112,16 +116,19 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                 ),
               ),
             ),
+
+            // Confirm Password TextField
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: CustomTextField(
                 validator: (value) {
                   return AppValidators.confirmPassword(
                     value,
-                    passwordcontroller.text,
+                    passwordController.text,
                   );
                 },
-                obscureText: isNewPasswordHidden,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: isConfirmPasswordHidden,
                 hintText: context.l10n.request4,
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -130,11 +137,10 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                     });
                   },
                   icon: Icon(
-                    isNewPasswordHidden
+                    !isConfirmPasswordHidden
                         ? Icons.visibility_off_outlined
-                        : Icons.visibility,
+                        : Icons.visibility_outlined,
                     color: AppColors.natural1,
-                    size: 22,
                   ),
                 ),
               ),
@@ -143,6 +149,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
               height: size.height * 0.04,
             ),
 
+            // Submit Button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: AppButton(
@@ -150,6 +157,9 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                   if (formkey.currentState!.validate()) {
                     context.go(AppRoutes.successPasswordScreen);
                   }
+                  setState(() {
+                    autovalidateMode = AutovalidateMode.always;
+                  });
                 },
                 text: context.l10n.request2,
                 radius: 40.r,
