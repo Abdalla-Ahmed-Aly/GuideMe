@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 
 class ArrowBackButton extends StatelessWidget {
@@ -10,13 +9,14 @@ class ArrowBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () {
         context.pop();
       },
       child: Container(
-        width: 39.w,
-        height: 39.w,
+        height: size.height * 0.06,
+        width: size.height * 0.06,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
@@ -26,7 +26,7 @@ class ArrowBackButton extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             AppIcons.arrowBack,
-            width: 10.w,
+            width: size.height * 0.015,
           ),
         ),
       ),

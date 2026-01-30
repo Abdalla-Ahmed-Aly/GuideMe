@@ -8,12 +8,13 @@ class ArrowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(100.r),
       child: Container(
-        height: 50.w,
-        width: 50.w,
+        height: size.height * 0.06,
+        width: size.height * 0.06,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.r),
           color: Colors.white,
@@ -25,7 +26,7 @@ class ArrowButton extends StatelessWidget {
           child: Icon(
             Icons.arrow_forward_ios_rounded,
             color: AppColors.primary,
-            size: 22.ic,
+            size: size.height * 0.03,
           ),
         ),
       ),

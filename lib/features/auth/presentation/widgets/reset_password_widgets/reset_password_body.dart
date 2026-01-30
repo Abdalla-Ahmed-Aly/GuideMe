@@ -166,11 +166,11 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
               ),
             ),
             SizedBox(
-              height: size.height * 0.18,
+              height: size.height * 0.16,
             ),
             const AuthNavigationText(),
             SizedBox(
-              height: size.height * 0.04,
+              height: size.height * 0.06,
             ),
           ],
         ),

@@ -150,7 +150,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
               ],
             ),
 
-            SizedBox(height: size.height * 0.04),
+            SizedBox(height: size.height * 0.05),
           ],
         ),
       ),

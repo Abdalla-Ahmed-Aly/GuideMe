@@ -1,4 +1,3 @@
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/app_validators.dart';
@@ -6,13 +5,14 @@ import 'package:pinput/pinput.dart';
 import 'package:flutter/material.dart';
 
 class VerificationCodeInput extends StatelessWidget {
-  const VerificationCodeInput( {super.key});
+  const VerificationCodeInput({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     final defaultPinTheme = PinTheme(
-      width: 77.w,
-      height: 77.h,
+      width: size.width * 0.15,
+      height: size.height * 0.13,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(color: AppColors.natural2),
@@ -37,10 +37,10 @@ class VerificationCodeInput extends StatelessWidget {
       validator: AppValidators.pin,
       length: 4,
       keyboardType: TextInputType.number,
-      
+
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: focusedPinTheme,
-      submittedPinTheme:submittedPinTheme ,
+      submittedPinTheme: submittedPinTheme,
     );
   }
 }

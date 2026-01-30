@@ -35,7 +35,7 @@ class _VerificationCodeScreenBodyState
 
             //arrow back button
             Padding(
-              padding: EdgeInsets.only(left: 40.p, right: 352.p),
+              padding: EdgeInsets.only(left: 40.p),
               child: const ArrowBackButton(),
             ),
             SizedBox(
@@ -80,7 +80,7 @@ class _VerificationCodeScreenBodyState
             ),
 
             SizedBox(
-              height: 38.p,
+              height: size.height * 0.04,
             ),
 
             // verification code input
@@ -91,7 +91,7 @@ class _VerificationCodeScreenBodyState
               ],
             ),
             SizedBox(
-              height: 38.p,
+              height: size.height * 0.04,
             ),
 
             // verify button
