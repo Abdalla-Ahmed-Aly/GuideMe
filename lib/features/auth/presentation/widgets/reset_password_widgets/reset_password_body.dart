@@ -37,13 +37,14 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: size.height * 0.1),
+            SizedBox(height: size.height * 0.08),
+
             Padding(
               padding: EdgeInsets.only(left: 40.p),
               child: const ArrowBackButton(),
             ),
 
-            SizedBox(height: size.height * 0.09),
+            SizedBox(height: size.height * 0.07),
 
             Padding(
               padding: EdgeInsets.only(
@@ -162,16 +163,14 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                   });
                 },
                 text: context.l10n.request2,
-                radius: 40.r,
+                radius: 40,
               ),
             ),
-            SizedBox(
-              height: size.height * 0.16,
-            ),
+            SizedBox(height: size.height * 0.15),
+
             const AuthNavigationText(),
-            SizedBox(
-              height: size.height * 0.06,
-            ),
+
+            SizedBox(height: size.height * 0.06),
           ],
         ),
       ),

@@ -34,7 +34,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: size.height * 0.09),
+            SizedBox(height: size.height * 0.08),
             Padding(
               padding: EdgeInsets.only(left: 40.p),
               child: const ArrowBackButton(),
@@ -50,9 +50,8 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
               ],
             ),
 
-            SizedBox(
-              height: 6.h,
-            ),
+            const SizedBox(height: 6),
+
             Padding(
               padding: EdgeInsets.only(left: 40.p),
               child: Text(
@@ -62,9 +61,8 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 16.h,
-            ),
+            SizedBox(height: size.height * 0.01),
+
             Padding(
               padding: EdgeInsets.only(left: 40.p, right: 34.p),
               child: Text(
@@ -74,9 +72,9 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 38.h,
-            ),
+
+            SizedBox(height: size.height * 0.03),
+
             Padding(
               padding: EdgeInsets.only(left: 40.p, bottom: 6),
               child: Text(
@@ -96,9 +94,8 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                 keyboardType: TextInputType.emailAddress,
               ),
             ),
-            SizedBox(
-              height: 38.h,
-            ),
+
+            SizedBox(height: size.height * 0.03),
 
             // send button
             Padding(
@@ -113,12 +110,11 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                   });
                 },
                 text: context.l10n.send,
-                radius: 40.r,
+                radius: 40,
               ),
             ),
-            SizedBox(
-              height: size.height * 0.12,
-            ),
+
+            SizedBox(height: size.height * 0.12),
 
             // remember me and login text
             Row(

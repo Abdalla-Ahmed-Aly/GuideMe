@@ -13,6 +13,7 @@ class SignupAndLoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return Padding(
       padding: EdgeInsets.only(
         top: 60,
@@ -23,15 +24,14 @@ class SignupAndLoginBody extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.natural7,
-          borderRadius: BorderRadius.circular(40.r),
+          borderRadius: BorderRadius.circular(40),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // image
             Image.asset(
               AppImages.exploreApp,
-              width: 327.w,
-              height: 327.h,
             ),
             13.verticalSpace,
             Text(
@@ -40,7 +40,10 @@ class SignupAndLoginBody extends StatelessWidget {
                 color: AppColors.primary500,
               ),
             ),
-            105.verticalSpace,
+
+            SizedBox(height: size.height * 0.1),
+
+            // Sign In Button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.p),
               child: SignupAndLoginCustomButton(
@@ -57,14 +60,19 @@ class SignupAndLoginBody extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            SignupAndLoginCustomButton(
-              text: context.l10n.createAccount,
-              textStyle: AppTextStyles.interSemiBold16.copyWith(),
-              backgroundColor: Colors.transparent,
-              bordercolor: AppColors.black,
-              ontap: () {
-                context.push(AppRoutes.createAccountScreen);
-              },
+
+            // Create Account Button
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.p),
+              child: SignupAndLoginCustomButton(
+                text: context.l10n.createAccount,
+                textStyle: AppTextStyles.interSemiBold16.copyWith(),
+                backgroundColor: Colors.transparent,
+                bordercolor: AppColors.black,
+                ontap: () {
+                  context.push(AppRoutes.createAccountScreen);
+                },
+              ),
             ),
           ],
         ),

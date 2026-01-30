@@ -27,6 +27,7 @@ class _LogInBodyState extends State<LogInBody> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return Form(
       key: formkey,
       autovalidateMode: autovalidateMode,
@@ -115,7 +116,6 @@ class _LogInBodyState extends State<LogInBody> {
             Padding(
               padding: EdgeInsets.only(
                 top: 12,
-                bottom: 38.p,
                 right: 38.p,
               ),
               child: Row(
@@ -137,6 +137,8 @@ class _LogInBodyState extends State<LogInBody> {
               ),
             ),
 
+            SizedBox(height: size.height * 0.06),
+
             // login button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
@@ -150,7 +152,7 @@ class _LogInBodyState extends State<LogInBody> {
                   });
                 },
                 text: context.l10n.login,
-                radius: 40.r,
+                radius: 40,
               ),
             ),
 
@@ -163,24 +165,24 @@ class _LogInBodyState extends State<LogInBody> {
             ),
 
             // social media login
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 11.p),
-                  child: const LoginWithSocialMedia(
+                  padding: EdgeInsets.symmetric(horizontal: 11),
+                  child: LoginWithSocialMedia(
                     AppIcons.facebook,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 11.p),
-                  child: const LoginWithSocialMedia(
+                  padding: EdgeInsets.symmetric(horizontal: 11),
+                  child: LoginWithSocialMedia(
                     AppIcons.google,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 11.p),
-                  child: const LoginWithSocialMedia(
+                  padding: EdgeInsets.symmetric(horizontal: 11),
+                  child: LoginWithSocialMedia(
                     AppIcons.phone,
                   ),
                 ),

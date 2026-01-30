@@ -9,10 +9,9 @@ class VerificationCodeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     final defaultPinTheme = PinTheme(
-      width: size.width * 0.15,
-      height: size.height * 0.13,
+      width: 77,
+      height: 77,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(color: AppColors.natural2),

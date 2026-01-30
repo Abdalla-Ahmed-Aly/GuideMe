@@ -48,11 +48,12 @@ class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          88.verticalSpace,
+          SizedBox(height: size.height * 0.08),
 
           Row(
             children: [
@@ -61,7 +62,7 @@ class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
             ],
           ),
 
-          56.verticalSpace,
+          SizedBox(height: size.height * 0.05),
 
           Text(
             context.l10n.chooseNationality,
@@ -110,13 +111,14 @@ class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
 
           70.verticalSpace,
 
-          AppButton(
-            onPressed: () {
-              context.push(AppRoutes.allowLocationAccessScreen);
-            },
-            text: context.l10n.continueText,
-            height: 54.h,
-            width: 353.w,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40.p),
+            child: AppButton(
+              onPressed: () {
+                context.push(AppRoutes.allowLocationAccessScreen);
+              },
+              text: context.l10n.continueText,
+            ),
           ),
         ],
       ),

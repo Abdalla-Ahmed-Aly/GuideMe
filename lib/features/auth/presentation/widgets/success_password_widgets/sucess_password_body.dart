@@ -57,7 +57,7 @@ class SuccessPasswordbody extends StatelessWidget {
               context.go(AppRoutes.logInScreen);
             },
             text: context.l10n.back,
-            radius: 40.r,
+            radius: 40,
           ),
         ),
       ],

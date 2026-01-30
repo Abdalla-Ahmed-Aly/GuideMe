@@ -16,11 +16,10 @@ class AllowLocationAccessScreen extends StatelessWidget {
       body: Column(
         children: [
           211.verticalSpace,
-    
+
           // Location Icon
           Container(
-            width: 96.w,
-            height: 96.w,
+            padding: EdgeInsets.symmetric(vertical: 28.h, horizontal: 30.w),
             decoration: BoxDecoration(
               color: const Color(0xff747480).withValues(alpha: .18),
               shape: BoxShape.circle,
@@ -66,13 +65,14 @@ class AllowLocationAccessScreen extends StatelessWidget {
 
           37.verticalSpace,
 
-          AppButton(
-            onPressed: () {
-              context.go(AppRoutes.chooseRoleScreen);
-            },
-            text: context.l10n.enable,
-            width: 353.w,
-            height: 54.h,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.p),
+            child: AppButton(
+              onPressed: () {
+                context.go(AppRoutes.chooseRoleScreen);
+              },
+              text: context.l10n.enable,
+            ),
           ),
 
           34.verticalSpace,

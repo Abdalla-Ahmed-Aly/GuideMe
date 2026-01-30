@@ -40,7 +40,7 @@ class AppButton extends StatelessWidget {
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 10.r),
+            borderRadius: BorderRadius.circular(radius ?? 10),
           ),
         ),
         onPressed: isLoading ? null : onPressed,

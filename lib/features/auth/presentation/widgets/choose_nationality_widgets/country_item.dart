@@ -16,9 +16,7 @@ class CountryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 50.h,
-      margin: EdgeInsets.only(left: 10.m, right: 10.m, bottom: 6.m),
+      margin: EdgeInsets.only(left: 10.m, right: 10.m, bottom: 8),
       decoration: BoxDecoration(
         color: isSelected ? const Color(0xffF4F5F6) : Colors.transparent,
         borderRadius: BorderRadius.circular(40.r),
@@ -29,7 +27,7 @@ class CountryItem extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.all(10.p),
+            padding: const EdgeInsets.all(10),
             child: Image.asset(AppImages.country),
           ),
           8.horizontalSpace,
@@ -40,9 +38,8 @@ class CountryItem extends StatelessWidget {
           const Spacer(),
           isSelected
               ? Container(
-                  width: 20.w,
-                  height: 20.h,
-                  margin: EdgeInsets.all(10.m),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.black,
@@ -50,7 +47,7 @@ class CountryItem extends StatelessWidget {
                   child: const Center(
                     child: Icon(
                       Icons.check,
-                      size: 12,
+                      size: 14,
                       color: AppColors.white,
                     ),
                   ),

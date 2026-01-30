@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
-
 
 class SignupAndLoginCustomButton extends StatelessWidget {
   const SignupAndLoginCustomButton({
@@ -22,10 +20,11 @@ class SignupAndLoginCustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: ontap,
       child: Container(
-        width: 353.w,
-        height: 56.h,
+        // width: 353.w,
+        // height: 56.h,
+        padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: bordercolor ?? Colors.transparent,
           ),

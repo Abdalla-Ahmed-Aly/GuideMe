@@ -39,7 +39,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
           child: Container(
             decoration: BoxDecoration(
               color: AppColors.natural7,
-              borderRadius: BorderRadius.circular(40.r),
+              borderRadius: BorderRadius.circular(40),
             ),
             child: Column(
               children: [

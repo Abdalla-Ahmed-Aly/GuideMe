@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 
 class LoginWithSocialMedia extends StatelessWidget {
   const LoginWithSocialMedia(this.svgAsset, {super.key});
@@ -8,13 +7,12 @@ class LoginWithSocialMedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 76.w,
-      height: 48.h,
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey.shade300,
         ),
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
         child: Center(

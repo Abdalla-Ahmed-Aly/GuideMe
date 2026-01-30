@@ -16,11 +16,11 @@ class ChooseRoleScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: size.height * 0.15),
+              SizedBox(height: size.height * 0.13),
 
               Text(
                 context.l10n.chooseYourRole,
@@ -32,8 +32,6 @@ class ChooseRoleScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.05),
 
               Container(
-                // width: size.width * .8,
-                // height: size.height * .4,
                 clipBehavior: Clip.hardEdge,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
@@ -45,23 +43,27 @@ class ChooseRoleScreen extends StatelessWidget {
 
               SizedBox(height: size.height * 0.05),
 
-              AppButton(
-                onPressed: () {},
-                text: context.l10n.tourist,
-                // width: 200,
-                // radius: 40,
-                textStyle: AppTextStyles.interSemiBold28,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 60.p),
+                child: AppButton(
+                  onPressed: () {},
+                  text: context.l10n.tourist,
+                  radius: 40,
+                  textStyle: AppTextStyles.interSemiBold24,
+                ),
               ),
 
               // 25.verticalSpace,
               const SizedBox(height: 25),
 
-              AppButton(
-                onPressed: () {},
-                text: context.l10n.tourGuide,
-                // width: 200,
-                // radius: 40,
-                textStyle: AppTextStyles.interSemiBold28,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 60.p),
+                child: AppButton(
+                  onPressed: () {},
+                  text: context.l10n.tourGuide,
+                  radius: 40,
+                  textStyle: AppTextStyles.interSemiBold24,
+                ),
               ),
 
               // To make the column take the full width and center the widgets

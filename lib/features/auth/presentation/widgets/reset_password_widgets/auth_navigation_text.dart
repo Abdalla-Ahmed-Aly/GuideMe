@@ -14,7 +14,7 @@ class AuthNavigationText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          context.l10n.askAccount,
+          "${context.l10n.askAccount} ",
           style: AppTextStyles.interRegular14.copyWith(
             color: AppColors.natural1,
           ),

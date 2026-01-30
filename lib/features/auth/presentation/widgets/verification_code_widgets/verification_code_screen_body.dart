@@ -31,7 +31,7 @@ class _VerificationCodeScreenBodyState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: size.height * 0.09),
+            SizedBox(height: size.height * 0.08),
 
             //arrow back button
             Padding(
@@ -104,7 +104,7 @@ class _VerificationCodeScreenBodyState
                   }
                 },
                 text: context.l10n.verify,
-                radius: 40.r,
+                radius: 40,
               ),
             ),
             SizedBox(
