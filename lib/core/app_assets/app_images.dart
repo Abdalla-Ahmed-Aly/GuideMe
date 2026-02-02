@@ -28,6 +28,12 @@ abstract class AppImages {
       '$_basePath/onboarding_3_top_shape.png';
   static const String onboardingThreeBottomShape =
       '$_basePath/onboarding_3_bottom_shape.png';
+  static const String homeHeader = '$_basePath/home_header.png';
+  static const String welcomeAvatar = '$_basePath/welcome_avatar.png';
 
   // Test
+  static const String categoryTest = '$_basePath/category_test.png';
+  static const String famousTripTest = '$_basePath/famous_trip_test.png';
+  static const String placeTest = '$_basePath/place_test.png';
+  static const String cityTest = '$_basePath/city_test.png';
 }

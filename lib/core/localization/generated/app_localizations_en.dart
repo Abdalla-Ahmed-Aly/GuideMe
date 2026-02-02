@@ -153,4 +153,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend => 'Resend';
+
+  @override
+  String get exploreWorld => 'Explore the world today';
+
+  @override
+  String get discover => 'Discover';
+
+  @override
+  String get takeYourTravelToNextLevel => 'take your travel to next level';
+
+  @override
+  String get searchDestination => 'Search destination';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get mostFamousTrip => 'The most famous trip';
+
+  @override
+  String get travelBeyondBoundary => 'Travel beyond the boundary';
+
+  @override
+  String get popularCities => 'Popular Cities';
 }

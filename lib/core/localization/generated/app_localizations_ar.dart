@@ -152,4 +152,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend => 'ارسال الكود';
+
+  @override
+  String get exploreWorld => 'استكشف العالم اليوم';
+
+  @override
+  String get discover => 'اكتشف';
+
+  @override
+  String get takeYourTravelToNextLevel => 'وخلي رحلتك لمستوى أعلى';
+
+  @override
+  String get searchDestination => 'ابحث عن وجهتك';
+
+  @override
+  String get category => 'التصنيفات';
+
+  @override
+  String get mostFamousTrip => 'أشهر الرحلات';
+
+  @override
+  String get travelBeyondBoundary => 'رحلات خارج الحدود';
+
+  @override
+  String get popularCities => 'المدن الشهيرة';
 }

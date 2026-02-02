@@ -379,6 +379,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend'**
   String get resend;
+
+  /// No description provided for @exploreWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the world today'**
+  String get exploreWorld;
+
+  /// No description provided for @discover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover'**
+  String get discover;
+
+  /// No description provided for @takeYourTravelToNextLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'take your travel to next level'**
+  String get takeYourTravelToNextLevel;
+
+  /// No description provided for @searchDestination.
+  ///
+  /// In en, this message translates to:
+  /// **'Search destination'**
+  String get searchDestination;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @mostFamousTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'The most famous trip'**
+  String get mostFamousTrip;
+
+  /// No description provided for @travelBeyondBoundary.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel beyond the boundary'**
+  String get travelBeyondBoundary;
+
+  /// No description provided for @popularCities.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular Cities'**
+  String get popularCities;
 }
 
 class _AppLocalizationsDelegate
