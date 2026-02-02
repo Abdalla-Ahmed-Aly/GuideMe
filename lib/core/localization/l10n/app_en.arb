@@ -53,5 +53,10 @@
   "category": "Category",
   "mostFamousTrip": "The most famous trip",
   "travelBeyondBoundary": "Travel beyond the boundary",
-  "popularCities": "Popular Cities"
+  "popularCities": "Popular Cities",
+  "selectYourInterests": "Select your interests:",
+  "historical": "Historical",
+  "adventure": "Adventure",
+  "museums": "Museums",
+  "islamic": "Islamic"
 }

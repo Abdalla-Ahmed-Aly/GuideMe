@@ -53,5 +53,10 @@
   "category": "التصنيفات",
   "mostFamousTrip": "أشهر الرحلات",
   "travelBeyondBoundary": "رحلات خارج الحدود",
-  "popularCities": "المدن الشهيرة"
+  "popularCities": "المدن الشهيرة",
+  "selectYourInterests": "اختر اهتماماتك:",
+  "historical": "تاريخي",
+  "adventure": "مغامرات",
+  "museums": "المتاحف",
+  "islamic": "إسلامي"
 }

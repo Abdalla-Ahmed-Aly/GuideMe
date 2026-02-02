@@ -9,32 +9,39 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return Container(
-      margin: const EdgeInsets.only(right: 30),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              AppImages.categoryTest,
-              fit: BoxFit.cover,
-              width: context.isPortrait
-                  ? size.height * 0.075
-                  : size.width * 0.075,
-              height: context.isPortrait
-                  ? size.height * 0.075
-                  : size.width * 0.075,
+    return InkWell(
+      splashColor: Colors.transparent,
+      onTap: () {
+        
+      },
+      child: Container(
+        margin: const EdgeInsets.only(right: 30),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                AppImages.categoryTest,
+                fit: BoxFit.cover,
+                width: context.isPortrait
+                    ? size.height * 0.075
+                    : size.width * 0.075,
+                height: context.isPortrait
+                    ? size.height * 0.075
+                    : size.width * 0.075,
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          const Text(
-            'Pharaohs',
-            style: TextStyle(
-              fontSize: 12,
-              fontFamily: AppTextStyles.familyPoppins,
+            const SizedBox(height: 10),
+            const Text(
+              'Pharaohs',
+              style: TextStyle(
+                fontSize: 12,
+                fontFamily: AppTextStyles.familyPoppins,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

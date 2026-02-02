@@ -177,4 +177,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get popularCities => 'Popular Cities';
+
+  @override
+  String get selectYourInterests => 'Select your interests:';
+
+  @override
+  String get historical => 'Historical';
+
+  @override
+  String get adventure => 'Adventure';
+
+  @override
+  String get museums => 'Museums';
+
+  @override
+  String get islamic => 'Islamic';
 }

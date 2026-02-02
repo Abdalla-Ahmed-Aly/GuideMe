@@ -12,4 +12,5 @@ abstract class AppRoutes {
   static const String allowLocationAccessScreen = '/allow-location-access';
   static const String chooseRoleScreen = '/choose-role';
   static const String mainNavigationScreen = '/main-navigation';
+  static const String selectInterestsScreen = '/select-interests';
 }

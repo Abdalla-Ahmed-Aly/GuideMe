@@ -176,4 +176,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get popularCities => 'المدن الشهيرة';
+
+  @override
+  String get selectYourInterests => 'اختر اهتماماتك:';
+
+  @override
+  String get historical => 'تاريخي';
+
+  @override
+  String get adventure => 'مغامرات';
+
+  @override
+  String get museums => 'المتاحف';
+
+  @override
+  String get islamic => 'إسلامي';
 }

@@ -30,6 +30,10 @@ abstract class AppImages {
       '$_basePath/onboarding_3_bottom_shape.png';
   static const String homeHeader = '$_basePath/home_header.png';
   static const String welcomeAvatar = '$_basePath/welcome_avatar.png';
+  static const String historical = '$_basePath/historical.png';
+  static const String adventure = '$_basePath/adventure.png';
+  static const String islamic = '$_basePath/islamic.png';
+  static const String museums = '$_basePath/museums.png';
 
   // Test
   static const String categoryTest = '$_basePath/category_test.png';

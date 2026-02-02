@@ -427,6 +427,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Popular Cities'**
   String get popularCities;
+
+  /// No description provided for @selectYourInterests.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your interests:'**
+  String get selectYourInterests;
+
+  /// No description provided for @historical.
+  ///
+  /// In en, this message translates to:
+  /// **'Historical'**
+  String get historical;
+
+  /// No description provided for @adventure.
+  ///
+  /// In en, this message translates to:
+  /// **'Adventure'**
+  String get adventure;
+
+  /// No description provided for @museums.
+  ///
+  /// In en, this message translates to:
+  /// **'Museums'**
+  String get museums;
+
+  /// No description provided for @islamic.
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic'**
+  String get islamic;
 }
 
 class _AppLocalizationsDelegate
