@@ -192,4 +192,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get islamic => 'Islamic';
+
+  @override
+  String get popular => 'Popular';
+
+  @override
+  String get best => 'Best';
+
+  @override
+  String get cheap => 'Cheap';
 }

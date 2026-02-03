@@ -191,4 +191,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get islamic => 'إسلامي';
+
+  @override
+  String get popular => 'شائع';
+
+  @override
+  String get best => 'الأفضل';
+
+  @override
+  String get cheap => 'الأرخص';
 }

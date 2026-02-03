@@ -58,5 +58,8 @@
   "historical": "Historical",
   "adventure": "Adventure",
   "museums": "Museums",
-  "islamic": "Islamic"
+  "islamic": "Islamic",
+  "popular": "Popular",
+  "best": "Best",
+  "cheap": "Cheap"
 }

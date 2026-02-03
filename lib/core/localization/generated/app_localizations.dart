@@ -457,6 +457,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Islamic'**
   String get islamic;
+
+  /// No description provided for @popular.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular'**
+  String get popular;
+
+  /// No description provided for @best.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get best;
+
+  /// No description provided for @cheap.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheap'**
+  String get cheap;
 }
 
 class _AppLocalizationsDelegate

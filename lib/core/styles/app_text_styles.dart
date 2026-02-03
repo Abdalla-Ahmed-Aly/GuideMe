@@ -4,6 +4,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 abstract class AppTextStyles {
   static const String familyInter = 'Inter';
   static const String familyPoppins = 'Poppins';
+  static const String familyMontserrat = 'Montserrat';
 
   // ===========================================================================
   // INTER Styles (Height 1.20 based on English styles in snippet)

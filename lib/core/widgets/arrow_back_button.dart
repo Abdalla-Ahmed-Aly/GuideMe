@@ -15,8 +15,8 @@ class ArrowBackButton extends StatelessWidget {
         context.pop();
       },
       child: Container(
-        height: size.height * 0.06,
-        width: size.height * 0.06,
+        height: size.height * 0.05,
+        width: size.height * 0.05,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
@@ -26,7 +26,7 @@ class ArrowBackButton extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             AppIcons.arrowBack,
-            width: size.height * 0.015,
+            width: size.height * 0.013,
           ),
         ),
       ),
