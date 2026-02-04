@@ -7,8 +7,6 @@ abstract class AppIcons {
   static const String camera = 'assets/icons/camera.svg';
   static const String certification = 'assets/icons/certification.svg';
   static const String clock = 'assets/icons/clock.svg';
-  static const String driversLicense = 'assets/icons/drivers_license.svg';
-  static const String earth = 'assets/icons/earth.svg';
   static const String eye = 'assets/icons/eye.svg';
   static const String facebook = 'assets/icons/facebook.svg';
   static const String filter = 'assets/icons/filter.svg';
@@ -20,11 +18,18 @@ abstract class AppIcons {
   static const String phone = 'assets/icons/phone.svg';
   static const String search = 'assets/icons/search.svg';
   static const String settings = 'assets/icons/settings.svg';
-  static const String star = 'assets/icons/star.svg';
   static const String whatsApp = 'assets/icons/whats_app.svg';
   static const String correct = 'assets/icons/correct.svg';
   static const String tours = 'assets/icons/tours.svg';
   static const String booking = 'assets/icons/booking.svg';
   static const String chat = 'assets/icons/chat.svg';
   static const String profile = 'assets/icons/profile.svg';
+  static const String vector = 'assets/icons/Vector.svg';
+  static const String star = 'assets/icons/star.svg';
+  static const String rating = 'assets/icons/rating.svg';
+  static const String massageLight = 'assets/icons/Message_light.svg';
+  static const String driversLicense = 'assets/icons/drivers_license.svg';
+    static const String arcticonEearth = 'assets/icons/arcticons_earth.svg';
+
+
 }

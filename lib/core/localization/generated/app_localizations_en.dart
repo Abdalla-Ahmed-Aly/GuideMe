@@ -153,4 +153,119 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend => 'Resend';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get price => 'Price per Trips';
+
+  @override
+  String get catogry => 'Catogry';
+
+  @override
+  String get pickup => 'Pick up location';
+
+  @override
+  String get pharaohs => 'Pharaohs';
+
+  @override
+  String get fatimidera => 'Fatimid era';
+
+  @override
+  String get romanera => 'Roman era';
+
+  @override
+  String get mosques => 'mosques';
+
+  @override
+  String get numberofperson => 'Number of Person';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get booking => 'Booking';
+
+  @override
+  String get addtional => 'Additional Notes';
+
+  @override
+  String get address => 'Pyramids of ';
+
+  @override
+  String get address1 => 'Giza in Cairo';
+
+  @override
+  String get duration => 'DURATION';
+
+  @override
+  String get rate => 'RATING';
+
+  @override
+  String get discover =>
+      'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.';
+
+  @override
+  String get success2 => 'Success for booked ';
+
+  @override
+  String get confirm1 => 'Confirm';
+
+  @override
+  String get book => 'Book a Tour';
+
+  @override
+  String get mars => 'Mars, Solar System';
+
+  @override
+  String get experienced => 'Experienced guide with a deep knowledge';
+
+  @override
+  String get pharaonic => 'of pharaonic history and archaeology,passionate';
+
+  @override
+  String get guideProfile1 => 'Guide Profile';
+
+  @override
+  String get bookaTour => 'Book a Tour';
+
+  @override
+  String get guideProfile => 'Guide Profile';
+
+  @override
+  String get experienced1 => 'Experienced Egyptologist & Licensed Tour';
+
+  @override
+  String get guideCairo => 'Guide, Cairo';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get professionalDetails => 'Professional Details';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get french => 'French';
+
+  @override
+  String get certifications => 'Certifications';
+
+  @override
+  String get certifiedEgyptologist => 'Certified Egyptologist';
+
+  @override
+  String get egyptian => 'Egyptian Ministry of Tourism & Antiquities';
+
+  @override
+  String get valid => 'Valid until: December 2025';
+
+  @override
+  String get touristBookings => 'Tourist Bookings';
 }

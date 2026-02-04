@@ -5,7 +5,8 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 
 class ArrowBackButton extends StatelessWidget {
-  const ArrowBackButton({super.key});
+  const ArrowBackButton({super.key ,this.color});
+final  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ArrowBackButton extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: AppColors.natural2,
+            color:color?? AppColors.natural2 ,
           ),
         ),
         child: Center(

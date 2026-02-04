@@ -379,6 +379,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend'**
   String get resend;
+
+  /// No description provided for @filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filter;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per Trips'**
+  String get price;
+
+  /// No description provided for @catogry.
+  ///
+  /// In en, this message translates to:
+  /// **'Catogry'**
+  String get catogry;
+
+  /// No description provided for @pickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick up location'**
+  String get pickup;
+
+  /// No description provided for @pharaohs.
+  ///
+  /// In en, this message translates to:
+  /// **'Pharaohs'**
+  String get pharaohs;
+
+  /// No description provided for @fatimidera.
+  ///
+  /// In en, this message translates to:
+  /// **'Fatimid era'**
+  String get fatimidera;
+
+  /// No description provided for @romanera.
+  ///
+  /// In en, this message translates to:
+  /// **'Roman era'**
+  String get romanera;
+
+  /// No description provided for @mosques.
+  ///
+  /// In en, this message translates to:
+  /// **'mosques'**
+  String get mosques;
+
+  /// No description provided for @numberofperson.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Person'**
+  String get numberofperson;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @booking.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking'**
+  String get booking;
+
+  /// No description provided for @addtional.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional Notes'**
+  String get addtional;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Pyramids of '**
+  String get address;
+
+  /// No description provided for @address1.
+  ///
+  /// In en, this message translates to:
+  /// **'Giza in Cairo'**
+  String get address1;
+
+  /// No description provided for @duration.
+  ///
+  /// In en, this message translates to:
+  /// **'DURATION'**
+  String get duration;
+
+  /// No description provided for @rate.
+  ///
+  /// In en, this message translates to:
+  /// **'RATING'**
+  String get rate;
+
+  /// No description provided for @discover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.'**
+  String get discover;
+
+  /// No description provided for @success2.
+  ///
+  /// In en, this message translates to:
+  /// **'Success for booked '**
+  String get success2;
+
+  /// No description provided for @confirm1.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm1;
+
+  /// No description provided for @book.
+  ///
+  /// In en, this message translates to:
+  /// **'Book a Tour'**
+  String get book;
+
+  /// No description provided for @mars.
+  ///
+  /// In en, this message translates to:
+  /// **'Mars, Solar System'**
+  String get mars;
+
+  /// No description provided for @experienced.
+  ///
+  /// In en, this message translates to:
+  /// **'Experienced guide with a deep knowledge'**
+  String get experienced;
+
+  /// No description provided for @pharaonic.
+  ///
+  /// In en, this message translates to:
+  /// **'of pharaonic history and archaeology,passionate'**
+  String get pharaonic;
+
+  /// No description provided for @guideProfile1.
+  ///
+  /// In en, this message translates to:
+  /// **'Guide Profile'**
+  String get guideProfile1;
+
+  /// No description provided for @bookaTour.
+  ///
+  /// In en, this message translates to:
+  /// **'Book a Tour'**
+  String get bookaTour;
+
+  /// No description provided for @guideProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Guide Profile'**
+  String get guideProfile;
+
+  /// No description provided for @experienced1.
+  ///
+  /// In en, this message translates to:
+  /// **'Experienced Egyptologist & Licensed Tour'**
+  String get experienced1;
+
+  /// No description provided for @guideCairo.
+  ///
+  /// In en, this message translates to:
+  /// **'Guide, Cairo'**
+  String get guideCairo;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInformation;
+
+  /// No description provided for @professionalDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Details'**
+  String get professionalDetails;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @french.
+  ///
+  /// In en, this message translates to:
+  /// **'French'**
+  String get french;
+
+  /// No description provided for @certifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Certifications'**
+  String get certifications;
+
+  /// No description provided for @certifiedEgyptologist.
+  ///
+  /// In en, this message translates to:
+  /// **'Certified Egyptologist'**
+  String get certifiedEgyptologist;
+
+  /// No description provided for @egyptian.
+  ///
+  /// In en, this message translates to:
+  /// **'Egyptian Ministry of Tourism & Antiquities'**
+  String get egyptian;
+
+  /// No description provided for @valid.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid until: December 2025'**
+  String get valid;
+
+  /// No description provided for @touristBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Tourist Bookings'**
+  String get touristBookings;
 }
 
 class _AppLocalizationsDelegate

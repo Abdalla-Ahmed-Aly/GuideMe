@@ -10,6 +10,11 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_atour_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_information_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/view_datails_of_tourguide_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart';
@@ -69,6 +74,32 @@ abstract class AppRouter {
         path: AppRoutes.mainNavigationScreen,
         builder: (context, state) => const MainNavigationScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.filterscreen,
+        builder: (context, state) => const FilterScreen(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.bookscreen,
+        builder: (context, state) => const BookScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookInformationScreen,
+        builder: (context, state) => const BookInformationScreen(),
+      ),
+    
+      GoRoute(
+        path: AppRoutes.bookatourScreen,
+        builder: (context, state) => const BookAtourScreen(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.viewDatailsOfTourguideScreen,
+        builder: (context, state) => const ViewDatailsOfTourguideScreen(),
+      ),
+
+
+
     ],
   );
 }

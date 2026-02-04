@@ -152,4 +152,120 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend => 'ارسال الكود';
+
+  @override
+  String get filter => 'تصفيه';
+
+  @override
+  String get price => 'سعر كل رحلة';
+
+  @override
+  String get catogry => 'الصنف';
+
+  @override
+  String get pickup => 'التقط الموقع';
+
+  @override
+  String get pharaohs => 'فراعنه';
+
+  @override
+  String get fatimidera => 'العصر الفاطمي';
+
+  @override
+  String get romanera => 'العصر الروماني';
+
+  @override
+  String get mosques => 'مساجد';
+
+  @override
+  String get numberofperson => 'عدد الاشخاص';
+
+  @override
+  String get apply => 'موافق';
+
+  @override
+  String get booking => 'حجز';
+
+  @override
+  String get addtional => 'ملاحظات إضافية';
+
+  @override
+  String get address => 'اهرامات ';
+
+  @override
+  String get address1 => 'الجيزه';
+
+  @override
+  String get duration => 'فترة';
+
+  @override
+  String get rate => 'تقييم';
+
+  @override
+  String get discover =>
+      'اكتشفي أهرامات الجيزة مع جولة إرشادية تستعرض التاريخ القديم، والهرم الأكبر، وأبو الهول الشهير — كل ذلك في تجربة واحدة لا تُنسى.';
+
+  @override
+  String get success2 => 'تم الحجز بي نجاح';
+
+  @override
+  String get confirm1 => 'تاكيد';
+
+  @override
+  String get book => 'احجزي جولة';
+
+  @override
+  String get mars => 'المريخ، النظام الشمسي';
+
+  @override
+  String get experienced => 'مرشد ذو خبرة ومعرفة عميقة';
+
+  @override
+  String get pharaonic =>
+      'مرشد ذو خبرة ومعرفة عميقة في تاريخ الفراعنة وعلم الآثار';
+
+  @override
+  String get guideProfile1 => 'الملف الشخصي للمرشد';
+
+  @override
+  String get bookaTour => 'احجز رحلتك';
+
+  @override
+  String get guideProfile => 'بروفايل المرشد السياحي';
+
+  @override
+  String get experienced1 => 'مرشد سياحي مرخّص وخبير في علم المصريات';
+
+  @override
+  String get guideCairo => 'مرشد سياحي، القاهرة';
+
+  @override
+  String get contactInformation => 'معلومات التواصل';
+
+  @override
+  String get professionalDetails => 'التفاصيل المهنية';
+
+  @override
+  String get arabic => 'لغه العربيه';
+
+  @override
+  String get english => 'لغه الانجليزيه';
+
+  @override
+  String get french => 'لغه الفرنسيه';
+
+  @override
+  String get certifications => 'شهاده';
+
+  @override
+  String get certifiedEgyptologist => 'خبير آثار مصرية معتمد';
+
+  @override
+  String get egyptian => 'وزارة السياحة والآثار المصرية';
+
+  @override
+  String get valid => 'صالحة حتى: ديسمبر 2025';
+
+  @override
+  String get touristBookings => 'حجوزات السائحين';
 }

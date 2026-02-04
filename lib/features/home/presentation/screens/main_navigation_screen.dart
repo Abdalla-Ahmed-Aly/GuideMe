@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/screens/tourist_booking_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -15,11 +16,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final PageController _pageController = PageController();
 
-  final List<Widget> pages = const [
+  final List<Widget> pages =  const [
     HomeScreen(),
-    Scaffold(
-      body: Center(child: Text("Bookings Screen")),
-    ),
+    TouristBookingScreen(),
+  
     Scaffold(
       body: Center(child: Text("Chat Screen")),
     ),
