@@ -51,7 +51,7 @@ class PlaceDetailsSection extends StatelessWidget {
               Icon(
                 Icons.location_on,
                 color: AppColors.primary,
-                size: 10.ic,
+                size: 24.ic,
               ),
 
               const SizedBox(width: 7),
@@ -59,7 +59,7 @@ class PlaceDetailsSection extends StatelessWidget {
               Expanded(
                 child: Text(
                   "Location: Cairo - Alexandria Desert Rd, Kafr Nassar, Al Haram, Giza Governorate",
-                  style: AppTextStyles.interRegular8,
+                  style: AppTextStyles.interRegular14,
                 ),
               ),
             ],
@@ -95,7 +95,7 @@ class PlaceDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 32.p),
           child: Text(
             "The GEM is the largest archaeological museum in the world combining modern design with ancient treasures. Visitors explore halls dedicated to Tutankhamun and other pharaohs. The museum’s technology, lighting, and presentation bring history to life, making it a futuristic yet educational experience. Every artifact tells a story of Egypt’s grandeur and civilization. The museum offers a glimpse into both the past and the future of archaeological display.",
-            style: AppTextStyles.interRegular12,
+            style: AppTextStyles.interRegular14,
           ),
         ),
       ],
