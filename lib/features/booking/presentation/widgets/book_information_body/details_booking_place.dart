@@ -177,7 +177,7 @@ class _DetailsBookingPlaceState extends State<DetailsBookingPlace> {
                   top: 20.p,
                 ),
                 child: Text(
-                  context.l10n.discover,
+                  'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.',
                   style: AppTextStyles.interRegular12.copyWith(
                     color: AppColors.natural4,
                   ),
@@ -189,7 +189,7 @@ class _DetailsBookingPlaceState extends State<DetailsBookingPlace> {
               Padding(
                 padding: EdgeInsets.only(left: 18.p, right: 20.p, bottom: 13.p),
                 child: Text(
-                  context.l10n.discover,
+                  'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.',
                   style: AppTextStyles.interRegular12.copyWith(
                     color: AppColors.natural4,
                   ),

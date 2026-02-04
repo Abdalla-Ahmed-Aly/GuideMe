@@ -105,5 +105,9 @@
   "reviewSummary": "Review summary",
   "bookNow": "Book Now",
   "tripDetails": "Trip Details",
-  "forTrip" : "For Trip"
+  "forTrip" : "For Trip",
+  "upcomingBookings" : "Upcoming Bookings",
+  "pastBookings" : "Past Bookings",
+  "todayBookings" : "Today’s Bookings",
+  "santoriniIslnd" : "Santorini Islnd"
 }

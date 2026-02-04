@@ -105,5 +105,9 @@
   "reviewSummary": "ملخص التقييمات",
   "bookNow": "احجز الآن",
   "tripDetails": "تفاصيل الرحلة",
-  "forTrip" : "للرحلة"
+  "forTrip" : "للرحلة",
+  "upcomingBookings" :  "الحجوزات القادمة",
+  "pastBookings" : "الحجوزات الماضية",
+  "todayBookings" : "حجوزات اليوم",
+  "santoriniIslnd" : "جزيرة سانتوريني"
 }

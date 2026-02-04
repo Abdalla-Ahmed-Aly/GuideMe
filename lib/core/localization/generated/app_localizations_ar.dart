@@ -269,7 +269,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get touristBookings => 'حجوزات السائحين';
 
   @override
-  String get upcomingBookings => '';
+  String get upcomingBookings => 'الحجوزات القادمة';
 
   @override
   String get exploreWorld => 'استكشف العالم اليوم';
@@ -327,4 +327,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get forTrip => 'للرحلة';
+
+  @override
+  String get pastBookings => 'الحجوزات الماضية';
+
+  @override
+  String get todayBookings => 'حجوزات اليوم';
+
+  @override
+  String get santoriniIslnd => 'جزيرة سانتوريني';
 }

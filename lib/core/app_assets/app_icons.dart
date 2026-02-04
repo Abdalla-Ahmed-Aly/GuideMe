@@ -30,6 +30,7 @@ abstract class AppIcons {
   static const String massageLight = 'assets/icons/Message_light.svg';
   static const String driversLicense = 'assets/icons/drivers_license.svg';
     static const String arcticonEearth = 'assets/icons/arcticons_earth.svg';
+  static const String rate = 'assets/icons/rate.svg';
 
 
 }

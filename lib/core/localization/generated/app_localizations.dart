@@ -727,6 +727,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'For Trip'**
   String get forTrip;
+
+  /// No description provided for @pastBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Past Bookings'**
+  String get pastBookings;
+
+  /// No description provided for @todayBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s Bookings'**
+  String get todayBookings;
+
+  /// No description provided for @santoriniIslnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Santorini Islnd'**
+  String get santoriniIslnd;
 }
 
 class _AppLocalizationsDelegate

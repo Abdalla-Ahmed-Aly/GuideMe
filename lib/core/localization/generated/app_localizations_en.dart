@@ -327,4 +327,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forTrip => 'For Trip';
+
+  @override
+  String get pastBookings => 'Past Bookings';
+
+  @override
+  String get todayBookings => 'Today’s Bookings';
+
+  @override
+  String get santoriniIslnd => 'Santorini Islnd';
 }

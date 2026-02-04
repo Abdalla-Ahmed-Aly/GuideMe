@@ -26,9 +26,6 @@ class _FilterScreenBodyState extends State<FilterScreenBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAppbar(
-            text: context.l10n.filter,
-          ),
           SizedBox(height: size.height * 0.027),
           Padding(
             padding: EdgeInsets.only(left: 30.p),

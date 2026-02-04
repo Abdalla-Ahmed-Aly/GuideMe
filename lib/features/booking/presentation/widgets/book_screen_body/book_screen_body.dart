@@ -26,9 +26,7 @@ class _BookScreenBodyState extends State<BookScreenBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAppbar(
-            text: context.l10n.booking,
-          ),
+          
           SizedBox(
             height: size.height * 0.02375,
           ),
