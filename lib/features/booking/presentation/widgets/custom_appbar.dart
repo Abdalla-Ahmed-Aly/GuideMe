@@ -5,21 +5,16 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
 
-class CustomAppbar extends StatefulWidget {
+class CustomAppbar extends StatelessWidget {
   CustomAppbar({super.key, this.text});
 
   String? text;
 
   @override
-  State<CustomAppbar> createState() => _CustomAppbarState();
-}
-
-class _CustomAppbarState extends State<CustomAppbar> {
-  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Padding(
-      padding: EdgeInsets.only(top: 40.p),
+      padding: EdgeInsets.only(top: size.height * 0.05),
       child: Column(
         children: [
           Padding(
@@ -29,7 +24,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
               children: [
                 const ArrowBackButton(),
 
-                Text(widget.text!, style: AppTextStyles.poppinsBold26),
+                Text(text!, style: AppTextStyles.poppinsBold26),
                 SizedBox(
                   width: size.height * 0.06,
                 ),

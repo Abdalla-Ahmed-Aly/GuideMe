@@ -9,17 +9,14 @@ class TouristBookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        top: false,
-        child: Column(
-          children: [
-            CustomAppbar(
-              text: context.l10n.touristBookings,
-            ),
-
-            const Expanded(child: TouristBookingBody()),
-          ],
-        ),
+      body: Column(
+        children: [
+          CustomAppbar(
+            text: context.l10n.touristBookings,
+          ),
+      
+          const Expanded(child: TouristBookingBody()),
+        ],
       ),
     );
   }
