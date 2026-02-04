@@ -336,4 +336,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get santoriniIslnd => 'جزيرة سانتوريني';
+
+  @override
+  String get overview => 'نظرة عامة';
 }

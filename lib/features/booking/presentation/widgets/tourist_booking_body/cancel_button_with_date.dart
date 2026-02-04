@@ -30,7 +30,7 @@ class CancelButtonWithDate extends StatelessWidget {
 
           Container(
             width: 237.w,
-            height: 30.h,
+            height: 35.h,
             decoration: BoxDecoration(
               color: const Color(0xffFF0000),
               borderRadius: BorderRadius.circular(7),

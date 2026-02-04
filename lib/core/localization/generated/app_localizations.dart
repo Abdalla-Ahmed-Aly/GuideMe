@@ -745,6 +745,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Santorini Islnd'**
   String get santoriniIslnd;
+
+  /// No description provided for @overview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get overview;
 }
 
 class _AppLocalizationsDelegate

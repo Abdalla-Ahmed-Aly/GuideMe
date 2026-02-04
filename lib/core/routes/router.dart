@@ -11,6 +11,7 @@ import 'package:guide_me/features/auth/presentation/screens/reset_password_scree
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_atour_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_information_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
@@ -114,6 +115,11 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.placeDetailsScreen,
         builder: (context, state) => const PlaceDetailsScreen(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.bookDetailsScreen,
+        builder: (context, state) => const BookDetailsScreen(),
       ),
     ],
   );

@@ -109,5 +109,6 @@
   "upcomingBookings" : "Upcoming Bookings",
   "pastBookings" : "Past Bookings",
   "todayBookings" : "Today’s Bookings",
-  "santoriniIslnd" : "Santorini Islnd"
+  "santoriniIslnd" : "Santorini Islnd",
+  "overview"  : "Overview"
 }
