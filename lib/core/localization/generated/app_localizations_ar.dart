@@ -202,8 +202,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rate => 'تقييم';
 
   @override
-  String get discover =>
-      'اكتشفي أهرامات الجيزة مع جولة إرشادية تستعرض التاريخ القديم، والهرم الأكبر، وأبو الهول الشهير — كل ذلك في تجربة واحدة لا تُنسى.';
+  String get discover => 'اكتشف';
 
   @override
   String get success2 => 'تم الحجز بي نجاح';
@@ -268,4 +267,64 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get touristBookings => 'حجوزات السائحين';
+
+  @override
+  String get upcomingBookings => '';
+
+  @override
+  String get exploreWorld => 'استكشف العالم اليوم';
+
+  @override
+  String get takeYourTravelToNextLevel => 'وخلي رحلتك لمستوى أعلى';
+
+  @override
+  String get searchDestination => 'ابحث عن وجهتك';
+
+  @override
+  String get category => 'التصنيفات';
+
+  @override
+  String get mostFamousTrip => 'أشهر الرحلات';
+
+  @override
+  String get travelBeyondBoundary => 'رحلات خارج الحدود';
+
+  @override
+  String get popularCities => 'المدن الشهيرة';
+
+  @override
+  String get selectYourInterests => 'اختر اهتماماتك:';
+
+  @override
+  String get historical => 'تاريخي';
+
+  @override
+  String get adventure => 'مغامرات';
+
+  @override
+  String get museums => 'المتاحف';
+
+  @override
+  String get islamic => 'إسلامي';
+
+  @override
+  String get popular => 'شائع';
+
+  @override
+  String get best => 'الأفضل';
+
+  @override
+  String get cheap => 'الأرخص';
+
+  @override
+  String get reviewSummary => 'ملخص التقييمات';
+
+  @override
+  String get bookNow => 'احجز الآن';
+
+  @override
+  String get tripDetails => 'تفاصيل الرحلة';
+
+  @override
+  String get forTrip => 'للرحلة';
 }

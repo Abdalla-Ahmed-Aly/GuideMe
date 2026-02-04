@@ -479,7 +479,7 @@ abstract class AppLocalizations {
   /// No description provided for @discover.
   ///
   /// In en, this message translates to:
-  /// **'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.'**
+  /// **'Discover'**
   String get discover;
 
   /// No description provided for @success2.
@@ -607,6 +607,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tourist Bookings'**
   String get touristBookings;
+
+  /// No description provided for @upcomingBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming Bookings'**
+  String get upcomingBookings;
+
+  /// No description provided for @exploreWorld.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the world today'**
+  String get exploreWorld;
+
+  /// No description provided for @takeYourTravelToNextLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'take your travel to next level'**
+  String get takeYourTravelToNextLevel;
+
+  /// No description provided for @searchDestination.
+  ///
+  /// In en, this message translates to:
+  /// **'Search destination'**
+  String get searchDestination;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @mostFamousTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'The most famous trip'**
+  String get mostFamousTrip;
+
+  /// No description provided for @travelBeyondBoundary.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel beyond the boundary'**
+  String get travelBeyondBoundary;
+
+  /// No description provided for @popularCities.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular Cities'**
+  String get popularCities;
+
+  /// No description provided for @selectYourInterests.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your interests:'**
+  String get selectYourInterests;
+
+  /// No description provided for @historical.
+  ///
+  /// In en, this message translates to:
+  /// **'Historical'**
+  String get historical;
+
+  /// No description provided for @adventure.
+  ///
+  /// In en, this message translates to:
+  /// **'Adventure'**
+  String get adventure;
+
+  /// No description provided for @museums.
+  ///
+  /// In en, this message translates to:
+  /// **'Museums'**
+  String get museums;
+
+  /// No description provided for @islamic.
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic'**
+  String get islamic;
+
+  /// No description provided for @popular.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular'**
+  String get popular;
+
+  /// No description provided for @best.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get best;
+
+  /// No description provided for @cheap.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheap'**
+  String get cheap;
+
+  /// No description provided for @reviewSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Review summary'**
+  String get reviewSummary;
+
+  /// No description provided for @bookNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Book Now'**
+  String get bookNow;
+
+  /// No description provided for @tripDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip Details'**
+  String get tripDetails;
+
+  /// No description provided for @forTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'For Trip'**
+  String get forTrip;
 }
 
 class _AppLocalizationsDelegate

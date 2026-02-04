@@ -15,7 +15,9 @@ abstract class AppRoutes {
   static const String filterscreen = '/filter-screen';
   static const String bookscreen = '/book-screen';
   static const String bookInformationScreen = '/book-Information-screen';
-    static const String bookatourScreen = '/bool-atour-screen';
-    static const String viewDatailsOfTourguideScreen = '/view-details-screen';
-
+  static const String bookatourScreen = '/bool-atour-screen';
+  static const String viewDatailsOfTourguideScreen = '/view-details-screen';
+  static const String selectInterestsScreen = '/select-interests';
+  static const String explorePlacesScreen = '/explorePlaces';
+  static const String placeDetailsScreen = '/placeDetails';
 }

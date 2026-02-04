@@ -203,8 +203,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rate => 'RATING';
 
   @override
-  String get discover =>
-      'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.';
+  String get discover => 'Discover';
 
   @override
   String get success2 => 'Success for booked ';
@@ -268,4 +267,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get touristBookings => 'Tourist Bookings';
+
+  @override
+  String get upcomingBookings => 'Upcoming Bookings';
+
+  @override
+  String get exploreWorld => 'Explore the world today';
+
+  @override
+  String get takeYourTravelToNextLevel => 'take your travel to next level';
+
+  @override
+  String get searchDestination => 'Search destination';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get mostFamousTrip => 'The most famous trip';
+
+  @override
+  String get travelBeyondBoundary => 'Travel beyond the boundary';
+
+  @override
+  String get popularCities => 'Popular Cities';
+
+  @override
+  String get selectYourInterests => 'Select your interests:';
+
+  @override
+  String get historical => 'Historical';
+
+  @override
+  String get adventure => 'Adventure';
+
+  @override
+  String get museums => 'Museums';
+
+  @override
+  String get islamic => 'Islamic';
+
+  @override
+  String get popular => 'Popular';
+
+  @override
+  String get best => 'Best';
+
+  @override
+  String get cheap => 'Cheap';
+
+  @override
+  String get reviewSummary => 'Review summary';
+
+  @override
+  String get bookNow => 'Book Now';
+
+  @override
+  String get tripDetails => 'Trip Details';
+
+  @override
+  String get forTrip => 'For Trip';
 }

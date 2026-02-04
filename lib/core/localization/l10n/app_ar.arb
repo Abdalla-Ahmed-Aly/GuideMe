@@ -85,7 +85,25 @@
   "egyptian" : "وزارة السياحة والآثار المصرية",
   "valid" :"صالحة حتى: ديسمبر 2025",
   "touristBookings" : "حجوزات السائحين",
-  "upcomingBookings" : ""
-
-
+  "upcomingBookings" : "",
+  "exploreWorld": "استكشف العالم اليوم",
+  "discover": "اكتشف",
+  "takeYourTravelToNextLevel": "وخلي رحلتك لمستوى أعلى",
+  "searchDestination": "ابحث عن وجهتك",
+  "category": "التصنيفات",
+  "mostFamousTrip": "أشهر الرحلات",
+  "travelBeyondBoundary": "رحلات خارج الحدود",
+  "popularCities": "المدن الشهيرة",
+  "selectYourInterests": "اختر اهتماماتك:",
+  "historical": "تاريخي",
+  "adventure": "مغامرات",
+  "museums": "المتاحف",
+  "islamic": "إسلامي",
+  "popular": "شائع",
+  "best": "الأفضل",
+  "cheap": "الأرخص",
+  "reviewSummary": "ملخص التقييمات",
+  "bookNow": "احجز الآن",
+  "tripDetails": "تفاصيل الرحلة",
+  "forTrip" : "للرحلة"
 }

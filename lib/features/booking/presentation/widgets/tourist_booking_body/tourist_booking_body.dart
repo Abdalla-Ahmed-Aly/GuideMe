@@ -12,7 +12,7 @@ class TouristBookingBody extends StatelessWidget {
       physics:const ClampingScrollPhysics(),
       child: Column(
         children: [
-          AppButton(onPressed: (){}, text: text)
+          AppButton(onPressed: (){}, text: "")
           
         ],
       ),

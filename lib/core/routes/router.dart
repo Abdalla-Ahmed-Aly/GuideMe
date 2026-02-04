@@ -15,7 +15,10 @@ import 'package:guide_me/features/booking/presentation/screens/book_information_
 import 'package:guide_me/features/booking/presentation/screens/book_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/view_datails_of_tourguide_screen.dart';
+import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
+import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
+import 'package:guide_me/features/home/presentation/screens/select_Interests_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart';
 
@@ -97,9 +100,21 @@ abstract class AppRouter {
         path: AppRoutes.viewDatailsOfTourguideScreen,
         builder: (context, state) => const ViewDatailsOfTourguideScreen(),
       ),
-
-
-
+      GoRoute(
+        path: AppRoutes.selectInterestsScreen,
+        builder: (context, state) => const SelectInterestsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.explorePlacesScreen,
+        builder: (context, state) {
+          final String title = state.extra as String;
+          return ExplorePlacesScreen(title: title);
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.placeDetailsScreen,
+        builder: (context, state) => const PlaceDetailsScreen(),
+      ),
     ],
   );
 }

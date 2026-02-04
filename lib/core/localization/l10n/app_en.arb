@@ -85,7 +85,25 @@
   "egyptian" : "Egyptian Ministry of Tourism & Antiquities",
   "valid" :"Valid until: December 2025",
   "touristBookings" : "Tourist Bookings",
-  "upcomingBookings" : "Upcoming Bookings"
-  
-
+  "upcomingBookings" : "Upcoming Bookings",
+  "exploreWorld": "Explore the world today",
+  "discover": "Discover",
+  "takeYourTravelToNextLevel": "take your travel to next level",
+  "searchDestination": "Search destination",
+  "category": "Category",
+  "mostFamousTrip": "The most famous trip",
+  "travelBeyondBoundary": "Travel beyond the boundary",
+  "popularCities": "Popular Cities",
+  "selectYourInterests": "Select your interests:",
+  "historical": "Historical",
+  "adventure": "Adventure",
+  "museums": "Museums",
+  "islamic": "Islamic",
+  "popular": "Popular",
+  "best": "Best",
+  "cheap": "Cheap",
+  "reviewSummary": "Review summary",
+  "bookNow": "Book Now",
+  "tripDetails": "Trip Details",
+  "forTrip" : "For Trip"
 }
