@@ -216,6 +216,6 @@ class BookTuristsDetailsPlace extends StatelessWidget {
         ),
       ),
     );
-    ;
+    
   }
 }

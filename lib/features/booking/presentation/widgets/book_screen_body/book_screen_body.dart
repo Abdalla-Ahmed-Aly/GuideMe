@@ -8,7 +8,6 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/book_screen_body/date_time_pick_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/book_screen_body/pick_up_point_field.dart';
-import 'package:guide_me/features/booking/presentation/widgets/custom_appbar.dart';
 import 'package:guide_me/features/booking/presentation/widgets/filter_screen_body/custom_range_slider_people.dart';
 
 class BookScreenBody extends StatefulWidget {
