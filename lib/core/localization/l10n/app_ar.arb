@@ -65,5 +65,7 @@
   "reviewSummary": "ملخص التقييمات",
   "bookNow": "احجز الآن",
   "tripDetails": "تفاصيل الرحلة",
-  "forTrip" : "للرحلة"
+  "forTrip" : "للرحلة",
+  "profile" : "الملف الشخصي",
+  "phone" : "رقم الهاتف"
 }

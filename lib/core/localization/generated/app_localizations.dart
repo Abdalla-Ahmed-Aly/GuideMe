@@ -499,6 +499,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'For Trip'**
   String get forTrip;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
 }
 
 class _AppLocalizationsDelegate

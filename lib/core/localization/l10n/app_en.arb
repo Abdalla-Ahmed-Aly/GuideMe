@@ -65,5 +65,7 @@
   "reviewSummary": "Review summary",
   "bookNow": "Book Now",
   "tripDetails": "Trip Details",
-  "forTrip" : "For Trip"
+  "forTrip" : "For Trip",
+  "profile" : "Profile",
+  "phone" : "Phone"
 }

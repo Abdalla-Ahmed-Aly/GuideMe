@@ -212,4 +212,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get forTrip => 'للرحلة';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get phone => 'رقم الهاتف';
 }

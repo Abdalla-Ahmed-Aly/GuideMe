@@ -213,4 +213,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forTrip => 'For Trip';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get phone => 'Phone';
 }
