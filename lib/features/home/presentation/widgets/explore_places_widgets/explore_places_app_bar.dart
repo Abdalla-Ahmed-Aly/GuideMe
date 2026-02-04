@@ -3,7 +3,8 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
 
 class ExplorePlacesAppBar extends StatelessWidget {
-  const ExplorePlacesAppBar({super.key});
+  const ExplorePlacesAppBar({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class ExplorePlacesAppBar extends StatelessWidget {
 
         Expanded(
           child: Text(
-            'Pharaohs',
+            title,
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

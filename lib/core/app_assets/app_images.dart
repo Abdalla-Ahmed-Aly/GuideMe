@@ -40,4 +40,12 @@ abstract class AppImages {
   static const String famousTripTest = '$_basePath/famous_trip_test.png';
   static const String placeTest = '$_basePath/place_test.png';
   static const String cityTest = '$_basePath/city_test.png';
+  static const String test1 = '$_basePath/test_1.png';
+  static const String test2 = '$_basePath/test_2.png';
+  static const String test3 = '$_basePath/test_3.png';
+  static const String test4 = '$_basePath/test_4.png';
+  static const String test5 = '$_basePath/test_5.png';
+  static const String test6 = '$_basePath/test_6.png';
+  static const String test7 = '$_basePath/test_7.png';
+  static const String test8 = '$_basePath/test_8.png';
 }

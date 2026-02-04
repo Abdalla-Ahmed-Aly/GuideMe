@@ -61,5 +61,9 @@
   "islamic": "إسلامي",
   "popular": "شائع",
   "best": "الأفضل",
-  "cheap": "الأرخص"
+  "cheap": "الأرخص",
+  "reviewSummary": "ملخص التقييمات",
+  "bookNow": "احجز الآن",
+  "tripDetails": "تفاصيل الرحلة",
+  "forTrip" : "للرحلة"
 }

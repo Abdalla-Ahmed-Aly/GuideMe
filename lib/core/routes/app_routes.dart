@@ -14,4 +14,5 @@ abstract class AppRoutes {
   static const String mainNavigationScreen = '/main-navigation';
   static const String selectInterestsScreen = '/select-interests';
   static const String explorePlacesScreen = '/explorePlaces';
+  static const String placeDetailsScreen = '/placeDetails';
 }

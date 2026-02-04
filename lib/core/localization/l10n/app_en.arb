@@ -61,5 +61,9 @@
   "islamic": "Islamic",
   "popular": "Popular",
   "best": "Best",
-  "cheap": "Cheap"
+  "cheap": "Cheap",
+  "reviewSummary": "Review summary",
+  "bookNow": "Book Now",
+  "tripDetails": "Trip Details",
+  "forTrip" : "For Trip"
 }

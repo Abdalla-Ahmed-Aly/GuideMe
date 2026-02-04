@@ -201,4 +201,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cheap => 'Cheap';
+
+  @override
+  String get reviewSummary => 'Review summary';
+
+  @override
+  String get bookNow => 'Book Now';
+
+  @override
+  String get tripDetails => 'Trip Details';
+
+  @override
+  String get forTrip => 'For Trip';
 }

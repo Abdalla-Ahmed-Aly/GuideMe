@@ -14,7 +14,7 @@ class CategoryItem extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.explorePlacesScreen);
+        context.push(AppRoutes.explorePlacesScreen, extra: "Pharaohs");
       },
       child: Container(
         margin: const EdgeInsets.only(right: 30),

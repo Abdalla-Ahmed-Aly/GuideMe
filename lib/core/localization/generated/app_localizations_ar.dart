@@ -200,4 +200,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cheap => 'الأرخص';
+
+  @override
+  String get reviewSummary => 'ملخص التقييمات';
+
+  @override
+  String get bookNow => 'احجز الآن';
+
+  @override
+  String get tripDetails => 'تفاصيل الرحلة';
+
+  @override
+  String get forTrip => 'للرحلة';
 }

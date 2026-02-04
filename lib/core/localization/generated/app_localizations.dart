@@ -475,6 +475,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cheap'**
   String get cheap;
+
+  /// No description provided for @reviewSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Review summary'**
+  String get reviewSummary;
+
+  /// No description provided for @bookNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Book Now'**
+  String get bookNow;
+
+  /// No description provided for @tripDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip Details'**
+  String get tripDetails;
+
+  /// No description provided for @forTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'For Trip'**
+  String get forTrip;
 }
 
 class _AppLocalizationsDelegate
