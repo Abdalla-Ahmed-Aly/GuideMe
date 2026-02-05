@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
@@ -27,8 +29,14 @@ class ProfileAppBar extends StatelessWidget {
                 style: AppTextStyles.poppinsBold24,
               ),
 
-              SvgPicture.asset(
-                AppIcons.settings,
+              InkWell(
+                splashColor: Colors.transparent,
+                onTap: () {
+                  context.push(AppRoutes.settingsScreen);
+                },
+                child: SvgPicture.asset(
+                  AppIcons.settings,
+                ),
               ),
             ],
           ),

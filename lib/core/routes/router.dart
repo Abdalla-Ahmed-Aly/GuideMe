@@ -14,6 +14,8 @@ import 'package:guide_me/features/home/presentation/screens/explore_places_scree
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/select_Interests_screen.dart';
+import 'package:guide_me/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:guide_me/features/profile/presentation/screens/settings_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart';
 
@@ -86,6 +88,14 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.placeDetailsScreen,
         builder: (context, state) => const PlaceDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.settingsScreen,
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.editProfileScreen,
+        builder: (context, state) => const EditProfileScreen(),
       ),
     ],
   );

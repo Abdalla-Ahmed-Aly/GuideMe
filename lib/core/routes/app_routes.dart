@@ -15,4 +15,6 @@ abstract class AppRoutes {
   static const String selectInterestsScreen = '/select-interests';
   static const String explorePlacesScreen = '/explorePlaces';
   static const String placeDetailsScreen = '/placeDetails';
+  static const String settingsScreen = '/settings';
+  static const String editProfileScreen = '/editProfile';
 }

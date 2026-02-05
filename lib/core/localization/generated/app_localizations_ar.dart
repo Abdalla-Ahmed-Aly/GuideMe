@@ -218,4 +218,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phone => 'رقم الهاتف';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get accountSettings => 'إعدادات الحساب';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get addPaymentMethod => 'إضافة طريقة دفع';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الإنجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get pushNotifications => 'الإشعارات';
 }

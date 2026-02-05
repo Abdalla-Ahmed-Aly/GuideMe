@@ -62,6 +62,8 @@ class ProfileInfoSection extends StatelessWidget {
               value: "+1 (978) 804-4104",
             ),
           ),
+
+          const SizedBox(height: 12),
         ],
       ),
     );

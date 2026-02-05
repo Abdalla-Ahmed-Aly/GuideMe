@@ -67,5 +67,13 @@
   "tripDetails": "Trip Details",
   "forTrip" : "For Trip",
   "profile" : "Profile",
-  "phone" : "Phone"
+  "phone" : "Phone",
+  "settings": "Settings",
+  "accountSettings": "Account Settings",
+  "editProfile": "Edit profile",
+  "addPaymentMethod": "Add a payment method",
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "pushNotifications": "Push notifications"
 }

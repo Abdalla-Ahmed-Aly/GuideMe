@@ -14,6 +14,7 @@ class AppButton extends StatelessWidget {
     this.textStyle,
     this.isLoading = false,
     this.prefixIcon,
+    this.backgroundColor,
   });
 
   final void Function()? onPressed;
@@ -24,6 +25,7 @@ class AppButton extends StatelessWidget {
   final TextStyle? textStyle;
   final bool isLoading;
   final Widget? prefixIcon;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class AppButton extends StatelessWidget {
       height: height ?? 56.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: backgroundColor ?? AppColors.primary,
           foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius ?? 10),

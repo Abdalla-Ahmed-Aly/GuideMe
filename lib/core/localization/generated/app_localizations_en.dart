@@ -219,4 +219,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get phone => 'Phone';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get accountSettings => 'Account Settings';
+
+  @override
+  String get editProfile => 'Edit profile';
+
+  @override
+  String get addPaymentMethod => 'Add a payment method';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get pushNotifications => 'Push notifications';
 }

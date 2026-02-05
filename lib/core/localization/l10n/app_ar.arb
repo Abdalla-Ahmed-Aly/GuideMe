@@ -67,5 +67,13 @@
   "tripDetails": "تفاصيل الرحلة",
   "forTrip" : "للرحلة",
   "profile" : "الملف الشخصي",
-  "phone" : "رقم الهاتف"
+  "phone" : "رقم الهاتف",
+  "settings": "الإعدادات",
+  "accountSettings": "إعدادات الحساب",
+  "editProfile": "تعديل الملف الشخصي",
+  "addPaymentMethod": "إضافة طريقة دفع",
+  "language": "اللغة",
+  "english": "الإنجليزية",
+  "arabic": "العربية",
+  "pushNotifications": "الإشعارات"
 }

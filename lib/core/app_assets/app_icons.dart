@@ -27,4 +27,6 @@ abstract class AppIcons {
   static const String booking = 'assets/icons/booking.svg';
   static const String chat = 'assets/icons/chat.svg';
   static const String profile = 'assets/icons/profile.svg';
+  static const String settingsArrow = 'assets/icons/settings_arrow.svg';
+  static const String add = 'assets/icons/add.svg';
 }
