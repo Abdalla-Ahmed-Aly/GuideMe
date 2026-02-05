@@ -103,7 +103,10 @@ class _FilterScreenBodyState extends State<FilterScreenBody> {
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: AppButton(
               onPressed: () {
-                context.push(AppRoutes.bookscreen);
+                context.push(
+                  AppRoutes.explorePlacesScreen,
+                  extra: context.l10n.afterFilter,
+                );
               },
               text: context.l10n.apply,
               textStyle: AppTextStyles.interSemiBold18.copyWith(

@@ -14,9 +14,9 @@ class CardOfImage extends StatelessWidget {
         context.push(AppRoutes.bookDetailsScreen);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16.p, vertical: 8.p),
+        margin: EdgeInsets.symmetric(horizontal: 16.p),
         width: 384.w,
-        height: 280.h,
+        height: 175.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           image: const DecorationImage(

@@ -10,42 +10,38 @@ class CancelButtonWithDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 23.p),
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 20.p, right: 5.p),
-            child: SvgPicture.asset(AppIcons.calendar),
+    return Row(
+      children: [
+        SvgPicture.asset(AppIcons.calendar),
+    
+        const SizedBox(width: 6),
+    
+        Text(
+          '14 Nov-22Nov',
+          style: AppTextStyles.interRegular14.copyWith(
+            color: const Color(0xff7D848D),
           ),
-          Padding(
-            padding: EdgeInsets.only(right: 19.p),
+        ),
+    
+        const Spacer(),
+    
+        Container(
+          width: 237.w,
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          decoration: BoxDecoration(
+            color: const Color(0xffFF0000),
+            borderRadius: BorderRadius.circular(7),
+          ),
+          child: Center(
             child: Text(
-              '14 Nov-22Nov',
-              style: AppTextStyles.interRegular14.copyWith(
-                color: const Color(0xff7D848D),
+              'cancel',
+              style: AppTextStyles.interBold14.copyWith(
+                color: AppColors.white,
               ),
             ),
           ),
-
-          Container(
-            width: 237.w,
-            height: 35.h,
-            decoration: BoxDecoration(
-              color: const Color(0xffFF0000),
-              borderRadius: BorderRadius.circular(7),
-            ),
-            child: Center(
-              child: Text(
-                'cancel',
-                style: AppTextStyles.interBold14.copyWith(
-                  color: AppColors.white,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

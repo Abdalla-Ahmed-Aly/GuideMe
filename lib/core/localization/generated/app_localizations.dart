@@ -871,6 +871,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save'**
   String get save;
+
+  /// No description provided for @afterFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'After Filter'**
+  String get afterFilter;
 }
 
 class _AppLocalizationsDelegate

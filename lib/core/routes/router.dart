@@ -82,12 +82,12 @@ abstract class AppRouter {
         builder: (context, state) => const MainNavigationScreen(),
       ),
       GoRoute(
-        path: AppRoutes.filterscreen,
+        path: AppRoutes.filterScreen,
         builder: (context, state) => const FilterScreen(),
       ),
 
       GoRoute(
-        path: AppRoutes.bookscreen,
+        path: AppRoutes.bookScreen,
         builder: (context, state) => const BookScreen(),
       ),
       GoRoute(
@@ -95,12 +95,12 @@ abstract class AppRouter {
         builder: (context, state) => const BookInformationScreen(),
       ),
       GoRoute(
-        path: AppRoutes.bookatourScreen,
+        path: AppRoutes.bookTourScreen,
         builder: (context, state) => const BookAtourScreen(),
       ),
 
       GoRoute(
-        path: AppRoutes.viewDatailsOfTourguideScreen,
+        path: AppRoutes.viewDetailsOfTourGuideScreen,
         builder: (context, state) => const ViewDatailsOfTourguideScreen(),
       ),
       GoRoute(

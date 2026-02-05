@@ -12,11 +12,11 @@ abstract class AppRoutes {
   static const String allowLocationAccessScreen = '/allow-location-access';
   static const String chooseRoleScreen = '/choose-role';
   static const String mainNavigationScreen = '/main-navigation';
-  static const String filterscreen = '/filter-screen';
-  static const String bookscreen = '/book-screen';
+  static const String filterScreen = '/filter-screen';
+  static const String bookScreen = '/book-screen';
   static const String bookInformationScreen = '/book-Information-screen';
-  static const String bookatourScreen = '/bool-atour-screen';
-  static const String viewDatailsOfTourguideScreen = '/view-details-screen';
+  static const String bookTourScreen = '/bool-atour-screen';
+  static const String viewDetailsOfTourGuideScreen = '/view-details-screen';
   static const String selectInterestsScreen = '/select-interests';
   static const String explorePlacesScreen = '/explorePlaces';
   static const String placeDetailsScreen = '/placeDetails';

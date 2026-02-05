@@ -133,5 +133,6 @@
   "cardHolder": "اسم حامل البطاقة",
   "cardNumber": "رقم البطاقة",
   "expirationDate": "تاريخ الانتهاء",
-  "save": "حفظ"
+  "save": "حفظ",
+  "afterFilter": "بعد التصفية"
 }

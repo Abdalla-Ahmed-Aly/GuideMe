@@ -42,12 +42,12 @@ class _SuccessMassageState extends State<SuccessMassage> {
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: AppButton(
               onPressed: () {
-                context.push(AppRoutes.bookatourScreen);
+                context.push(AppRoutes.bookTourScreen);
               },
               text: context.l10n.confirm1,
             ),
           ),
-    
+
           SizedBox(
             height: 36.h,
           ),

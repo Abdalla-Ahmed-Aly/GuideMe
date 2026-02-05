@@ -2,33 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/arrow_back_button.dart';
 
-class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key, this.text});
-  final String? text;
+class TouristBookingAppBar extends StatelessWidget {
+  const TouristBookingAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Padding(
       padding: EdgeInsets.only(
-        top: context.isPortrait ? size.height * 0.05 : size.width * 0.05,
+        top: context.isPortrait ? size.height * 0.06 : size.width * 0.05,
       ),
       child: Column(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.p),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const ArrowBackButton(),
-
-                Text(text!, style: AppTextStyles.poppinsBold26),
-                SizedBox(
-                  width: context.isPortrait
-                      ? size.height * 0.05
-                      : size.width * 0.05,
+                Text(
+                  context.l10n.touristBookings,
+                  style: AppTextStyles.poppinsBold26,
                 ),
               ],
             ),
@@ -46,6 +40,3 @@ class CustomAppbar extends StatelessWidget {
     );
   }
 }
-
-//  horizontal: size.width * 0.05,
-//         vertical: size.width * 0.05,

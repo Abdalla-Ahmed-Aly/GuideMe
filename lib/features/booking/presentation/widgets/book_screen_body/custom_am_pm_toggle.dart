@@ -17,7 +17,6 @@ class _CustomAmPmToggleState extends State<CustomAmPmToggle> {
       height: 28,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.grey,
       ),
       child: Row(
         children: [
@@ -31,16 +30,23 @@ class _CustomAmPmToggleState extends State<CustomAmPmToggle> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isclickedAm ? AppColors.primary : Colors.grey,
+                  color: isclickedAm ? AppColors.primary : Colors.white,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(8),
                     bottomLeft: Radius.circular(8),
                   ),
+                  border: isclickedAm
+                      ? const Border()
+                      : const Border(
+                          top: BorderSide(color: Color(0xffBDBDBD)),
+                          bottom: BorderSide(color: Color(0xffBDBDBD)),
+                          left: BorderSide(color: Color(0xffBDBDBD)),
+                        ),
                 ),
                 child: Text(
                   'AM',
                   style: TextStyle(
-                    color: isclickedAm ? Colors.black : Colors.white,
+                    color: !isclickedAm ? Colors.black : Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -57,17 +63,24 @@ class _CustomAmPmToggleState extends State<CustomAmPmToggle> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isclickedAm ? Colors.grey : AppColors.primary,
+                  color: isclickedAm ? Colors.white : AppColors.primary,
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    bottomLeft: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                    topRight: Radius.circular(8),
                   ),
+                  border: !isclickedAm
+                      ? const Border()
+                      : const Border(
+                          top: BorderSide(color: Color(0xffBDBDBD)),
+                          bottom: BorderSide(color: Color(0xffBDBDBD)),
+                          right: BorderSide(color: Color(0xffBDBDBD)),
+                        ),
                 ),
                 child: Text(
                   'Pm',
                   style: TextStyle(
-                    color: isclickedAm ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold,
+                    color: isclickedAm ? Colors.black : Colors.white,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

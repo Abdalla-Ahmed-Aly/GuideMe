@@ -17,7 +17,7 @@ class PrimaryActionButton extends StatelessWidget {
             padding: EdgeInsets.all(12.p),
             child: AppButton(
               onPressed: () {
-                context.push(AppRoutes.viewDatailsOfTourguideScreen);
+                context.push(AppRoutes.viewDetailsOfTourGuideScreen);
               },
               text: context.l10n.guideProfile1,
             ),

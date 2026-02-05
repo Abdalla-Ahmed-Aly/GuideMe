@@ -133,5 +133,6 @@
   "cardHolder": "Card Holder",
   "cardNumber": "Card number",
   "expirationDate": "Expiration date",
-  "save": "Save"
+  "save": "Save",
+  "afterFilter" : "After Filter" 
 }

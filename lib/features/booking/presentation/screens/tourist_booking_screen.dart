@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/extentions/context_extentions.dart';
-import 'package:guide_me/features/booking/presentation/widgets/custom_appbar.dart';
+import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_body/tourist_booking_app_bar.dart';
 import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_body/tourist_booking_body.dart';
 
 class TouristBookingScreen extends StatelessWidget {
@@ -8,14 +7,14 @@ class TouristBookingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [
-          CustomAppbar(
-            text: context.l10n.touristBookings,
+          TouristBookingAppBar(),
+
+          Expanded(
+            child: TouristBookingBody(),
           ),
-      
-          const Expanded(child: TouristBookingBody()),
         ],
       ),
     );

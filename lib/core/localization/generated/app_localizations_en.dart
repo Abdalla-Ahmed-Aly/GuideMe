@@ -399,4 +399,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get save => 'Save';
+
+  @override
+  String get afterFilter => 'After Filter';
 }
