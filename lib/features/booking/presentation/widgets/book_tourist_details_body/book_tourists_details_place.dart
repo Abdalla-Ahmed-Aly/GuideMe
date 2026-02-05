@@ -55,7 +55,7 @@ class BookTuristsDetailsPlace extends StatelessWidget {
                   Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 100.p, bottom: 14.p),
+                        padding: EdgeInsets.only(left: 110.p, bottom: 14.p),
                         child: Text(
                           r"$85/Day",
                           style: AppTextStyles.interSemiBold20.copyWith(
@@ -216,6 +216,5 @@ class BookTuristsDetailsPlace extends StatelessWidget {
         ),
       ),
     );
-    
   }
 }
