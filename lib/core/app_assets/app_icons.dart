@@ -29,8 +29,9 @@ abstract class AppIcons {
   static const String rating = 'assets/icons/rating.svg';
   static const String massageLight = 'assets/icons/Message_light.svg';
   static const String driversLicense = 'assets/icons/drivers_license.svg';
-    static const String arcticonEearth = 'assets/icons/arcticons_earth.svg';
+  static const String arcticonEearth = 'assets/icons/arcticons_earth.svg';
   static const String rate = 'assets/icons/rate.svg';
-
-
+  static const String settingsArrow = 'assets/icons/settings_arrow.svg';
+  static const String add = 'assets/icons/add.svg';
+  static const String locationOutline = 'assets/icons/location_outline.svg';
 }

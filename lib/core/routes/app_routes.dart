@@ -21,4 +21,7 @@ abstract class AppRoutes {
   static const String explorePlacesScreen = '/explorePlaces';
   static const String placeDetailsScreen = '/placeDetails';
   static const String bookDetailsScreen = '/book_Details_Screen';
+  static const String settingsScreen = '/settings';
+  static const String editProfileScreen = '/editProfile';
+  static const String addPaymentMethodScreen = '/addPaymentMethod';
 }

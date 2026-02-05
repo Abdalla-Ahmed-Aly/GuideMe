@@ -25,6 +25,7 @@ dependencies:
   flutter_native_splash: ^2.4.7
   syncfusion_flutter_sliders: ^32.1.25
   syncfusion_flutter_datepicker: ^32.1.25
+  flutter_credit_card: ^4.1.0
 
 dev_dependencies:
   flutter_test:

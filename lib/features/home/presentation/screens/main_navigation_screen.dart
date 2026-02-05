@@ -4,6 +4,7 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/screens/tourist_booking_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 import 'package:guide_me/features/home/presentation/widgets/welcome_avatar.dart';
+import 'package:guide_me/features/profile/presentation/screens/profile_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -26,9 +27,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     Scaffold(
       body: Center(child: Text("Chat Screen")),
     ),
-    Scaffold(
-      body: Center(child: Text("Profile Screen")),
-    ),
+    ProfileScreen(),
   ];
 
   @override

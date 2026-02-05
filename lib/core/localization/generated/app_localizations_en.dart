@@ -339,4 +339,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get overview => 'Overview';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get accountSettings => 'Account Settings';
+
+  @override
+  String get editProfile => 'Edit profile';
+
+  @override
+  String get addPaymentMethod => 'Add a payment method';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get pushNotifications => 'Push notifications';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get saveChanges => 'Save changes';
+
+  @override
+  String get successMsg => 'Success';
+
+  @override
+  String get yourAccountSaved => 'Your account has been saved';
+
+  @override
+  String get confirmMsg => 'Confirm';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get cardHolderName => 'Card holder name';
+
+  @override
+  String get expiryDate => 'Expiry Date';
+
+  @override
+  String get cardHolder => 'Card Holder';
+
+  @override
+  String get cardNumber => 'Card number';
+
+  @override
+  String get expirationDate => 'Expiration date';
+
+  @override
+  String get save => 'Save';
 }

@@ -245,10 +245,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get professionalDetails => 'التفاصيل المهنية';
 
   @override
-  String get arabic => 'لغه العربيه';
+  String get arabic => 'العربية';
 
   @override
-  String get english => 'لغه الانجليزيه';
+  String get english => 'الإنجليزية';
 
   @override
   String get french => 'لغه الفرنسيه';
@@ -339,4 +339,64 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get overview => 'نظرة عامة';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get phone => 'رقم الهاتف';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get accountSettings => 'إعدادات الحساب';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get addPaymentMethod => 'إضافة طريقة دفع';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get pushNotifications => 'الإشعارات';
+
+  @override
+  String get location => 'الموقع';
+
+  @override
+  String get saveChanges => 'حفظ التغييرات';
+
+  @override
+  String get successMsg => 'نجاح';
+
+  @override
+  String get yourAccountSaved => 'تم حفظ حسابك';
+
+  @override
+  String get confirmMsg => 'تأكيد';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get cardHolderName => 'اسم حامل البطاقة';
+
+  @override
+  String get expiryDate => 'تاريخ الانتهاء';
+
+  @override
+  String get cardHolder => 'اسم حامل البطاقة';
+
+  @override
+  String get cardNumber => 'رقم البطاقة';
+
+  @override
+  String get expirationDate => 'تاريخ الانتهاء';
+
+  @override
+  String get save => 'حفظ';
 }

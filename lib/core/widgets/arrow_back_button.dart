@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 
 class ArrowBackButton extends StatelessWidget {
@@ -16,8 +17,8 @@ final  Color? color;
         context.pop();
       },
       child: Container(
-        height: size.height * 0.05,
-        width: size.height * 0.05,
+        height: context.isPortrait ? size.height * 0.05 : size.width * 0.05,
+        width: context.isPortrait ? size.height * 0.05 : size.width * 0.05,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
@@ -27,7 +28,9 @@ final  Color? color;
         child: Center(
           child: SvgPicture.asset(
             AppIcons.arrowBack,
-            width: size.height * 0.013,
+            width: context.isPortrait
+                ? size.height * 0.013
+                : size.width * 0.013,
           ),
         ),
       ),

@@ -20,6 +20,9 @@ import 'package:guide_me/features/home/presentation/screens/explore_places_scree
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/select_Interests_screen.dart';
+import 'package:guide_me/features/profile/presentation/screens/add_payment_method_screen.dart';
+import 'package:guide_me/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:guide_me/features/profile/presentation/screens/settings_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/onboarding_screen.dart';
 import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart';
 
@@ -91,7 +94,6 @@ abstract class AppRouter {
         path: AppRoutes.bookInformationScreen,
         builder: (context, state) => const BookInformationScreen(),
       ),
-    
       GoRoute(
         path: AppRoutes.bookatourScreen,
         builder: (context, state) => const BookAtourScreen(),
@@ -116,10 +118,21 @@ abstract class AppRouter {
         path: AppRoutes.placeDetailsScreen,
         builder: (context, state) => const PlaceDetailsScreen(),
       ),
-
       GoRoute(
         path: AppRoutes.bookDetailsScreen,
         builder: (context, state) => const BookDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.settingsScreen,
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.editProfileScreen,
+        builder: (context, state) => const EditProfileScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.addPaymentMethodScreen,
+        builder: (context, state) => const AddPaymentMethodScreen(),
       ),
     ],
   );
