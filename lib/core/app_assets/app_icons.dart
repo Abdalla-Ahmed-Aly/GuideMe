@@ -29,4 +29,5 @@ abstract class AppIcons {
   static const String profile = 'assets/icons/profile.svg';
   static const String settingsArrow = 'assets/icons/settings_arrow.svg';
   static const String add = 'assets/icons/add.svg';
+  static const String locationOutline = 'assets/icons/location_outline.svg';
 }

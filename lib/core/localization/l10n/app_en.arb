@@ -75,5 +75,11 @@
   "language": "Language",
   "english": "English",
   "arabic": "Arabic",
-  "pushNotifications": "Push notifications"
+  "pushNotifications": "Push notifications",
+  "editProfile": "Edit profile",
+  "location": "Location",
+  "saveChanges": "Save changes",
+  "successMsg" : "Success",
+  "yourAccountSaved" : "Your account has been saved",
+  "confirmMsg" : "Confirm"
 }

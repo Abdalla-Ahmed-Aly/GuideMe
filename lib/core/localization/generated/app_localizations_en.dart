@@ -243,4 +243,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pushNotifications => 'Push notifications';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get saveChanges => 'Save changes';
+
+  @override
+  String get successMsg => 'Success';
+
+  @override
+  String get yourAccountSaved => 'Your account has been saved';
+
+  @override
+  String get confirmMsg => 'Confirm';
 }

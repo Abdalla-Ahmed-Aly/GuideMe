@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
@@ -36,7 +35,7 @@ class AppButton extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       width: isLoading ? loadingWidth : normalWidth,
-      height: height ?? 56.h,
+      height: height ?? 56,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? AppColors.primary,

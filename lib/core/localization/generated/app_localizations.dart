@@ -559,6 +559,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Push notifications'**
   String get pushNotifications;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get saveChanges;
+
+  /// No description provided for @successMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get successMsg;
+
+  /// No description provided for @yourAccountSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account has been saved'**
+  String get yourAccountSaved;
+
+  /// No description provided for @confirmMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirmMsg;
 }
 
 class _AppLocalizationsDelegate

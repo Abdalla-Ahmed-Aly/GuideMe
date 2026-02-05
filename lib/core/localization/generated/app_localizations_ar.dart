@@ -242,4 +242,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pushNotifications => 'الإشعارات';
+
+  @override
+  String get location => 'الموقع';
+
+  @override
+  String get saveChanges => 'حفظ التغييرات';
+
+  @override
+  String get successMsg => 'نجاح';
+
+  @override
+  String get yourAccountSaved => 'تم حفظ حسابك';
+
+  @override
+  String get confirmMsg => 'تأكيد';
 }

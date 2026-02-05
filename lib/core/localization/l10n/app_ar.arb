@@ -75,5 +75,11 @@
   "language": "اللغة",
   "english": "الإنجليزية",
   "arabic": "العربية",
-  "pushNotifications": "الإشعارات"
+  "pushNotifications": "الإشعارات",
+  "editProfile": "تعديل الملف الشخصي",
+  "location": "الموقع",
+  "saveChanges": "حفظ التغييرات",
+  "successMsg" : "نجاح",
+  "yourAccountSaved" : "تم حفظ حسابك",
+  "confirmMsg" : "تأكيد"
 }

@@ -33,7 +33,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
 
           // English
           SizedBox(
-            width: context.isPortrait ? size.width * 0.3 : size.height * 0.3,
+            width: context.isPortrait ? size.width * 0.3 : size.height * 0.4,
             child: RadioListTile(
               contentPadding: EdgeInsets.zero,
               dense: true,
@@ -49,7 +49,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
 
           // Arabic
           SizedBox(
-            width: context.isPortrait ? size.width * 0.3 : size.height * 0.3,
+            width: context.isPortrait ? size.width * 0.3 : size.height * 0.4,
             child: RadioListTile(
               dense: true,
               visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
