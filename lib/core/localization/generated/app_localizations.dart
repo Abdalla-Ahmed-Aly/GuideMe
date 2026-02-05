@@ -589,6 +589,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm'**
   String get confirmMsg;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// No description provided for @cardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Card holder name'**
+  String get cardHolderName;
+
+  /// No description provided for @expiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry Date'**
+  String get expiryDate;
+
+  /// No description provided for @cardHolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Holder'**
+  String get cardHolder;
+
+  /// No description provided for @cardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get cardNumber;
+
+  /// No description provided for @expirationDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiration date'**
+  String get expirationDate;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
 }
 
 class _AppLocalizationsDelegate

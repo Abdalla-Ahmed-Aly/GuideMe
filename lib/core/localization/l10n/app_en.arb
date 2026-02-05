@@ -81,5 +81,12 @@
   "saveChanges": "Save changes",
   "successMsg" : "Success",
   "yourAccountSaved" : "Your account has been saved",
-  "confirmMsg" : "Confirm"
+  "confirmMsg" : "Confirm",
+  "paymentMethod": "Payment Method",
+  "cardHolderName": "Card holder name",
+  "expiryDate": "Expiry Date",
+  "cardHolder": "Card Holder",
+  "cardNumber": "Card number",
+  "expirationDate": "Expiration date",
+  "save": "Save"
 }

@@ -81,5 +81,12 @@
   "saveChanges": "حفظ التغييرات",
   "successMsg" : "نجاح",
   "yourAccountSaved" : "تم حفظ حسابك",
-  "confirmMsg" : "تأكيد"
+  "confirmMsg" : "تأكيد",
+  "paymentMethod": "طريقة الدفع",
+  "cardHolderName": "اسم حامل البطاقة",
+  "expiryDate": "تاريخ الانتهاء",
+  "cardHolder": "اسم حامل البطاقة",
+  "cardNumber": "رقم البطاقة",
+  "expirationDate": "تاريخ الانتهاء",
+  "save": "حفظ"
 }

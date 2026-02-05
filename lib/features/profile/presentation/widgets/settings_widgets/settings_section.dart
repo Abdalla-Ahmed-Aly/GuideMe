@@ -91,6 +91,9 @@ class SettingsSection extends StatelessWidget {
                       title: context.l10n.addPaymentMethod,
                       icon: Icons.add,
                       iconSize: 26,
+                      onTap: () {
+                        context.push(AppRoutes.addPaymentMethodScreen);
+                      },
                     ),
                   ),
 

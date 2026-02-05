@@ -258,4 +258,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmMsg => 'Confirm';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get cardHolderName => 'Card holder name';
+
+  @override
+  String get expiryDate => 'Expiry Date';
+
+  @override
+  String get cardHolder => 'Card Holder';
+
+  @override
+  String get cardNumber => 'Card number';
+
+  @override
+  String get expirationDate => 'Expiration date';
+
+  @override
+  String get save => 'Save';
 }

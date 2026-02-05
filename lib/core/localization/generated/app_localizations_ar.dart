@@ -257,4 +257,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get confirmMsg => 'تأكيد';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get cardHolderName => 'اسم حامل البطاقة';
+
+  @override
+  String get expiryDate => 'تاريخ الانتهاء';
+
+  @override
+  String get cardHolder => 'اسم حامل البطاقة';
+
+  @override
+  String get cardNumber => 'رقم البطاقة';
+
+  @override
+  String get expirationDate => 'تاريخ الانتهاء';
+
+  @override
+  String get save => 'حفظ';
 }
