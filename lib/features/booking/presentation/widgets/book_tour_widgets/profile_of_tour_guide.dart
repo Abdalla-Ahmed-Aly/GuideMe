@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/custom_rating_widget.dart';
 
 class ProfileOfTourGuide extends StatelessWidget {
   const ProfileOfTourGuide({super.key});
@@ -40,7 +41,7 @@ class ProfileOfTourGuide extends StatelessWidget {
                 color: AppColors.natural1,
               ),
             ),
-            SvgPicture.asset(AppIcons.rating),
+            const CustomRatingWidget(),
           ],
         ),
       ],
