@@ -62,7 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           // Page Indicators
           Positioned(
-            bottom: 138.h,
+            bottom: 125.h,
             left: 40.w,
             child: PageIndicators(currentPage: currentPage),
           ),

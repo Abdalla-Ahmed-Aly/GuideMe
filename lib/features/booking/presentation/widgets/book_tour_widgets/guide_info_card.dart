@@ -32,18 +32,18 @@ class GuideInfoCard extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 16.h),
+        const SizedBox(height: 14),
 
         const InformationTourGuide(),
 
-        SizedBox(height: 25.h),
+        const SizedBox(height: 20),
 
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.p),
           child: const PrimaryActionButton(),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 24),
       ],
     );
   }

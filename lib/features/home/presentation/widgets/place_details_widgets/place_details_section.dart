@@ -80,11 +80,8 @@ class PlaceDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 32.p),
           child: Text(
             context.l10n.tripDetails,
-            style: TextStyle(
-              fontFamily: AppTextStyles.familyMontserrat,
+            style: AppTextStyles.interSemiBold16.copyWith(
               color: AppColors.natural6,
-              fontSize: 16.fs,
-              fontWeight: FontWeight.w600,
             ),
           ),
         ),
