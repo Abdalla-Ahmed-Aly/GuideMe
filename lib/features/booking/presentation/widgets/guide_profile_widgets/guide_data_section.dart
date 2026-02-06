@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/custom_rating_widget.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_info.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/profile_avatar_with_status.dart';
 
@@ -36,9 +37,9 @@ class GuideDataSection extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: SvgPicture.asset(AppIcons.rating),
+          const Padding(
+            padding: EdgeInsets.only(top: 8),
+            child: CustomRatingWidget(),
           ),
 
           const SizedBox(height: 18),
