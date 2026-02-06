@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 
-import 'package:guide_me/features/booking/presentation/widgets/book_screen_body/book_screen_body.dart';
+import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/book_screen_body.dart';
 import 'package:guide_me/features/booking/presentation/widgets/custom_appbar.dart';
 
 class BookScreen extends StatelessWidget {
@@ -12,6 +12,8 @@ class BookScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         top: false,
+        left: false,
+        right: false,
         child: Column(
           children: [
             CustomAppbar(

@@ -124,6 +124,7 @@ class SettingsSection extends StatelessWidget {
                   left: 30.p,
                   right: 30.p,
                   bottom: 34,
+                  top: 16,
                 ),
                 child: AppButton(
                   onPressed: () {},

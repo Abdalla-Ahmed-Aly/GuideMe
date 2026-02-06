@@ -17,9 +17,9 @@ class ProfileInfoSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Image
-          CircleAvatar(
-            radius: 80.h,
-            backgroundImage: const AssetImage(AppImages.profileImageTest),
+          const CircleAvatar(
+            radius: 80,
+            backgroundImage: AssetImage(AppImages.profileImageTest),
           ),
 
           const SizedBox(height: 16),

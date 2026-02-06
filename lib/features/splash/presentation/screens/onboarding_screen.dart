@@ -57,16 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               : Positioned(
                   top: 100.h,
                   right: 54.w,
-                  child: SkipButton(
-                    onTap: () {
-                      currentPage = 2;
-                      _pageController.animateToPage(
-                        currentPage,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.ease,
-                      );
-                    },
-                  ),
+                  child: const SkipButton(),
                 ),
 
           // Page Indicators

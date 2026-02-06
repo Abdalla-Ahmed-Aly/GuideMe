@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/features/booking/presentation/widgets/custom_appbar.dart';
-import 'package:guide_me/features/booking/presentation/widgets/filter_screen_widgets/filter_screen_body.dart';
+import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_data_section.dart';
 
-class FilterScreen extends StatelessWidget {
-  const FilterScreen({super.key});
+class GuideProfileScreen extends StatelessWidget {
+  const GuideProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +12,10 @@ class FilterScreen extends StatelessWidget {
       body: Column(
         children: [
           CustomAppbar(
-            text: context.l10n.filter,
+            text: context.l10n.guideProfile,
           ),
 
-          const Expanded(
-            child: FilterScreenBody(),
-          ),
+          const Expanded(child: GuideDataSection()),
         ],
       ),
     );

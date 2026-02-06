@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 
 class ResponsiveConfig {
   static const double _designWidth = 430;
@@ -13,7 +14,7 @@ class ResponsiveConfig {
   static late double scaleIcon;
 
   static void init(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
 
     screenWidth = size.width;
     screenHeight = size.height;
@@ -22,8 +23,8 @@ class ResponsiveConfig {
     scaleHeight = screenHeight / _designHeight;
 
     // font scaling controlled
-    scaleText = scaleWidth.clamp(0.7, 1.5);
-    scaleIcon = scaleWidth.clamp(0.7, 1.5);
+    scaleText = (context.isPortrait ? scaleWidth : scaleHeight).clamp(0.7, 1.5);
+    scaleIcon = (context.isPortrait ? scaleWidth : scaleHeight).clamp(0.7, 1.5);
   }
 
   // Responsive Width
@@ -34,7 +35,7 @@ class ResponsiveConfig {
 
   // Responsive Font Size
   static double fontSize(double value) => value * scaleText;
-  
+
   // Responsive Icon
   static double icon(double value) => value * scaleIcon;
 
@@ -43,7 +44,7 @@ class ResponsiveConfig {
 
   // Responsive padding
   static double padding(double value) => value * scaleWidth;
-  
+
   // Responsive Margin
   static double margin(double value) => value * scaleWidth;
 }

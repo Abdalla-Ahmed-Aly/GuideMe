@@ -10,12 +10,12 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/book_atour_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_tour_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_information_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/view_datails_of_tourguide_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -96,12 +96,12 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookTourScreen,
-        builder: (context, state) => const BookAtourScreen(),
+        builder: (context, state) => const BookTourScreen(),
       ),
 
       GoRoute(
-        path: AppRoutes.viewDetailsOfTourGuideScreen,
-        builder: (context, state) => const ViewDatailsOfTourguideScreen(),
+        path: AppRoutes.guideProfileScreen,
+        builder: (context, state) => const GuideProfileScreen(),
       ),
       GoRoute(
         path: AppRoutes.selectInterestsScreen,
