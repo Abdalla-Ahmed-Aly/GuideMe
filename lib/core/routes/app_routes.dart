@@ -14,14 +14,14 @@ abstract class AppRoutes {
   static const String mainNavigationScreen = '/main-navigation';
   static const String filterScreen = '/filter-screen';
   static const String bookScreen = '/book-screen';
-  static const String bookInformationScreen = '/book-Information-screen';
   static const String bookTourScreen = '/bool-atour-screen';
   static const String guideProfileScreen = '/guide-profile-screen';
   static const String selectInterestsScreen = '/select-interests';
   static const String explorePlacesScreen = '/explorePlaces';
   static const String placeDetailsScreen = '/placeDetails';
-  static const String bookDetailsScreen = '/book_Details_Screen';
+  static const String bookingDetailsScreen = '/bookingDetails';
   static const String settingsScreen = '/settings';
   static const String editProfileScreen = '/editProfile';
   static const String addPaymentMethodScreen = '/addPaymentMethod';
+  static const String bookingConfirmationScreen = '/bookingConfirmation';
 }

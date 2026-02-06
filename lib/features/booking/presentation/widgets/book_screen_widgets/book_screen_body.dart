@@ -74,7 +74,7 @@ class BookScreenBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: AppButton(
               onPressed: () {
-                context.push(AppRoutes.bookInformationScreen);
+                context.push(AppRoutes.bookingConfirmationScreen);
               },
               text: context.l10n.apply,
               textStyle: AppTextStyles.interSemiBold18.copyWith(
