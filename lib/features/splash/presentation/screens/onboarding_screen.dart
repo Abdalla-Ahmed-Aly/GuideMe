@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           // Next Button
           Positioned(
-            bottom: 118.h,
+            bottom: 105.h,
             right: 40.w,
             child: ArrowButton(
               onTap: () {

@@ -16,7 +16,7 @@ class TodayBookingCard extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.bookDetailsScreen);
+        context.push(AppRoutes.bookingDetailsScreen);
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.p),

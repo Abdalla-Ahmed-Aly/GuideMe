@@ -11,9 +11,9 @@ import 'package:guide_me/features/auth/presentation/screens/reset_password_scree
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_tour_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/book_details_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/book_information_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
@@ -91,10 +91,6 @@ abstract class AppRouter {
         builder: (context, state) => const BookScreen(),
       ),
       GoRoute(
-        path: AppRoutes.bookInformationScreen,
-        builder: (context, state) => const BookInformationScreen(),
-      ),
-      GoRoute(
         path: AppRoutes.bookTourScreen,
         builder: (context, state) => const BookTourScreen(),
       ),
@@ -119,8 +115,8 @@ abstract class AppRouter {
         builder: (context, state) => const PlaceDetailsScreen(),
       ),
       GoRoute(
-        path: AppRoutes.bookDetailsScreen,
-        builder: (context, state) => const BookDetailsScreen(),
+        path: AppRoutes.bookingDetailsScreen,
+        builder: (context, state) => const BookingDetailsScreen(),
       ),
       GoRoute(
         path: AppRoutes.settingsScreen,
@@ -133,6 +129,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.addPaymentMethodScreen,
         builder: (context, state) => const AddPaymentMethodScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookingConfirmationScreen,
+        builder: (context, state) => const BookingConfirmationScreen(),
       ),
     ],
   );

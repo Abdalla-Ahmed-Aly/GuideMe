@@ -10,14 +10,6 @@ class ProfileOfTourGuide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Container(
-        //   width: 150.w,
-        //   height: 100.w,
-        //   decoration: const BoxDecoration(
-        //     shape: BoxShape.circle,
-        //     color: Color(0xFFE6ECEE),
-        //   ),
-        // ),
         const CircleAvatar(
           radius: 42,
           backgroundColor: Color(0xFFE6ECEE),
