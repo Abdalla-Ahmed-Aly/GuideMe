@@ -402,4 +402,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get afterFilter => 'بعد التصفية';
+
+  @override
+  String get cancelTrip => 'إلغاء الرحلة';
+
+  @override
+  String get areYouSureToCancel => 'هل أنت متأكد أنك تريد إلغاء الرحلة؟';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get backMsg => 'رجوع';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
 }

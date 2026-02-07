@@ -877,6 +877,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'After Filter'**
   String get afterFilter;
+
+  /// No description provided for @cancelTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Trip'**
+  String get cancelTrip;
+
+  /// No description provided for @areYouSureToCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to cancel the trip?'**
+  String get areYouSureToCancel;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @backMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get backMsg;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @areYouSureToLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure that you want to logout?'**
+  String get areYouSureToLogout;
 }
 
 class _AppLocalizationsDelegate

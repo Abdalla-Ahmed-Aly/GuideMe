@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
@@ -53,15 +54,18 @@ class CancelButtonWithDate extends StatelessWidget {
   }
 
   Future<void> showCancelDialog(BuildContext context) {
-  return  showDialog(
+    return showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text(
-            'Cancel Trip',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          title: Text(
+            context.l10n.cancelTrip,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          content: const Text('Are you sure to cancel the trip?'),
+          content: Text(context.l10n.areYouSureToCancel),
           actions: [
             TextButton(
               style: TextButton.styleFrom(
@@ -70,7 +74,7 @@ class CancelButtonWithDate extends StatelessWidget {
               onPressed: () {
                 context.pop();
               },
-              child: const Text("Back"),
+              child: Text(context.l10n.backMsg),
             ),
             AppButton(
               width: 100,
@@ -78,8 +82,11 @@ class CancelButtonWithDate extends StatelessWidget {
               onPressed: () {
                 context.pop();
               },
-              text: 'Yes',
+              text: context.l10n.yes,
               backgroundColor: Colors.red,
+              textStyle: AppTextStyles.interSemiBold16.copyWith(
+                fontSize: 16,
+              ),
             ),
           ],
         );

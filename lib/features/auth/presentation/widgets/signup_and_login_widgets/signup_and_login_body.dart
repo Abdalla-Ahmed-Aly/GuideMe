@@ -14,67 +14,90 @@ class SignupAndLoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 60,
-        left: 28.p,
-        right: 28.p,
-        bottom: 40,
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.natural7,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // image
-            Image.asset(
-              AppImages.exploreApp,
-            ),
-            13.verticalSpace,
-            Text(
-              context.l10n.exploreApp,
-              style: AppTextStyles.poppinsBold32.copyWith(
-                color: AppColors.primary500,
-              ),
-            ),
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        child: Container(
+          height: context.isPortrait
+              ? constraints.maxHeight - 100
+              : constraints.maxWidth * 0.7,
+          margin: EdgeInsets.only(
+            top: 60,
+            left: 28.p,
+            right: 28.p,
+            bottom: 40,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.natural7,
+            borderRadius: BorderRadius.circular(40),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  SizedBox(height: size.height * .1),
 
-            SizedBox(height: size.height * 0.1),
+                  // image
+                  Image.asset(
+                    AppImages.exploreApp,
+                    height: context.isPortrait
+                        ? size.height * .37
+                        : size.width * .37,
+                  ),
 
-            // Sign In Button
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.p),
-              child: SignupAndLoginCustomButton(
-                text: context.l10n.signIn,
-                backgroundColor: AppColors.primary500,
-                textStyle: AppTextStyles.interSemiBold16.copyWith(
-                  color: AppColors.white,
-                ),
-                ontap: () {
-                  context.push(AppRoutes.logInScreen);
-                },
-              ),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
+                  const SizedBox(height: 12),
 
-            // Create Account Button
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.p),
-              child: SignupAndLoginCustomButton(
-                text: context.l10n.createAccount,
-                textStyle: AppTextStyles.interSemiBold16.copyWith(),
-                backgroundColor: Colors.transparent,
-                bordercolor: AppColors.black,
-                ontap: () {
-                  context.push(AppRoutes.createAccountScreen);
-                },
+                  Text(
+                    context.l10n.exploreApp,
+                    style: AppTextStyles.poppinsBold32.copyWith(
+                      color: AppColors.primary500,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+
+              // SizedBox(height: size.height * 0.1),
+
+              // Sign In Button
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.p),
+                    child: SignupAndLoginCustomButton(
+                      text: context.l10n.signIn,
+                      backgroundColor: AppColors.primary500,
+                      textStyle: AppTextStyles.interSemiBold16.copyWith(
+                        color: AppColors.white,
+                      ),
+                      ontap: () {
+                        context.push(AppRoutes.logInScreen);
+                      },
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // Create Account Button
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.p),
+                    child: SignupAndLoginCustomButton(
+                      text: context.l10n.createAccount,
+                      textStyle: AppTextStyles.interSemiBold16.copyWith(),
+                      backgroundColor: Colors.transparent,
+                      bordercolor: AppColors.black,
+                      ontap: () {
+                        context.push(AppRoutes.createAccountScreen);
+                      },
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: size.height * .1,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

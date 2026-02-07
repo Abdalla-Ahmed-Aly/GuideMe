@@ -127,7 +127,9 @@ class SettingsSection extends StatelessWidget {
                   top: 16,
                 ),
                 child: AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    logoutDialog(context);
+                  },
                   text: context.l10n.logout,
                   backgroundColor: Colors.red,
                 ),
@@ -136,6 +138,48 @@ class SettingsSection extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> logoutDialog(BuildContext context) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            context.l10n.logout,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(context.l10n.areYouSureToLogout),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+              ),
+              onPressed: () {
+                context.pop();
+              },
+              child: Text(context.l10n.cancel),
+            ),
+
+            AppButton(
+              width: 110,
+              height: 38,
+              onPressed: () {
+                context.go(AppRoutes.signupAndLoginScreen);
+              },
+              text: context.l10n.logout,
+              backgroundColor: Colors.red,
+              textStyle: AppTextStyles.interSemiBold16.copyWith(
+                fontSize: 16,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

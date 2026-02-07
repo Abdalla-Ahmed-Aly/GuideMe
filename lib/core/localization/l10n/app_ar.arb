@@ -134,5 +134,11 @@
   "cardNumber": "رقم البطاقة",
   "expirationDate": "تاريخ الانتهاء",
   "save": "حفظ",
-  "afterFilter": "بعد التصفية"
+  "afterFilter": "بعد التصفية",
+  "cancelTrip": "إلغاء الرحلة",
+  "areYouSureToCancel": "هل أنت متأكد أنك تريد إلغاء الرحلة؟",
+  "yes": "نعم",
+  "backMsg": "رجوع",
+  "cancel": "إلغاء",
+  "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
 }

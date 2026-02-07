@@ -134,5 +134,11 @@
   "cardNumber": "Card number",
   "expirationDate": "Expiration date",
   "save": "Save",
-  "afterFilter" : "After Filter" 
+  "afterFilter" : "After Filter",
+  "cancelTrip": "Cancel Trip",
+  "areYouSureToCancel":"Are you sure you want to cancel the trip?",
+  "yes":"Yes",
+  "backMsg":"Back",
+  "cancel": "Cancel",
+  "areYouSureToLogout": "Are you sure that you want to logout?"
 }

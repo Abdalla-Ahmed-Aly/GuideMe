@@ -112,6 +112,8 @@ class _VerificationCodeScreenBodyState
             ),
 
             const TimeSendCode(),
+
+            const SizedBox(height: 24),
           ],
         ),
       ),

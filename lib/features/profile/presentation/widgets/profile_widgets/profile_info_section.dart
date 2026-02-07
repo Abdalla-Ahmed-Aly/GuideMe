@@ -32,23 +32,23 @@ class ProfileInfoSection extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          // Email
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32.p),
-            child: ProfileInfoItem(
-              label: context.l10n.email,
-              value: "John Doe@gmail.com",
-            ),
-          ),
-
-          const SizedBox(height: 14),
-
           // Name
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32.p),
             child: ProfileInfoItem(
               label: context.l10n.name,
               value: "John Doe",
+            ),
+          ),
+
+          const SizedBox(height: 14),
+
+          // Email
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32.p),
+            child: ProfileInfoItem(
+              label: context.l10n.email,
+              value: "John Doe@gmail.com",
             ),
           ),
 

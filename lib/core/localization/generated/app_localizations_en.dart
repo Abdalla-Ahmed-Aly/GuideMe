@@ -402,4 +402,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get afterFilter => 'After Filter';
+
+  @override
+  String get cancelTrip => 'Cancel Trip';
+
+  @override
+  String get areYouSureToCancel => 'Are you sure you want to cancel the trip?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get backMsg => 'Back';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get areYouSureToLogout => 'Are you sure that you want to logout?';
 }
