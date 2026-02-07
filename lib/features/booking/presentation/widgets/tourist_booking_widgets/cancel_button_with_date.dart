@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/app_button.dart';
 
 class CancelButtonWithDate extends StatelessWidget {
   const CancelButtonWithDate({super.key});
@@ -25,23 +27,63 @@ class CancelButtonWithDate extends StatelessWidget {
 
         const Spacer(),
 
-        Container(
-          width: 237.w,
-          padding: const EdgeInsets.symmetric(vertical: 4),
-          decoration: BoxDecoration(
-            color: const Color(0xffFF0000),
-            borderRadius: BorderRadius.circular(7),
-          ),
-          child: Center(
-            child: Text(
-              'Cancel',
-              style: AppTextStyles.interBold14.copyWith(
-                color: AppColors.white,
+        GestureDetector(
+          onTap: () {
+            showCancelDialog(context);
+          },
+          child: Container(
+            width: 237.w,
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            decoration: BoxDecoration(
+              color: const Color(0xffFF0000),
+              borderRadius: BorderRadius.circular(7),
+            ),
+            child: Center(
+              child: Text(
+                'Cancel',
+                style: AppTextStyles.interBold14.copyWith(
+                  color: AppColors.white,
+                ),
               ),
             ),
           ),
         ),
       ],
+    );
+  }
+
+  Future<void> showCancelDialog(BuildContext context) {
+  return  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            'Cancel Trip',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: const Text('Are you sure to cancel the trip?'),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+              ),
+              onPressed: () {
+                context.pop();
+              },
+              child: const Text("Back"),
+            ),
+            AppButton(
+              width: 100,
+              height: 38,
+              onPressed: () {
+                context.pop();
+              },
+              text: 'Yes',
+              backgroundColor: Colors.red,
+            ),
+          ],
+        );
+      },
     );
   }
 }

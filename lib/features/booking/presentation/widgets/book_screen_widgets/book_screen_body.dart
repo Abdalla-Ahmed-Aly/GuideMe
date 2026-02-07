@@ -7,6 +7,7 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/date_time_pick_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/notes_text_field.dart';
 import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/pick_up_point_field.dart';
 import 'package:guide_me/features/booking/presentation/widgets/filter_screen_widgets/people_slider.dart';
 
@@ -37,12 +38,7 @@ class BookScreenBody extends StatelessWidget {
           ),
 
           const SizedBox(height: 22),
-
-          Center(
-            child: PickUpPointField(
-              text: context.l10n.addtional,
-            ),
-          ),
+          const NotesTextField(),
 
           SizedBox(
             height: context.isPortrait
