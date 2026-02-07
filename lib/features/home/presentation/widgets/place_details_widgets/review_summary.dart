@@ -49,7 +49,7 @@ class ReviewSummary extends StatelessWidget {
           // Five Stars
           Row(
             children: [
-              SizedBox(width: 46.p),
+              const SizedBox(width: 46),
               for (int i = 0; i < 5; i++)
                 Icon(
                   Icons.star_rounded,
