@@ -157,7 +157,7 @@ class BookingDetailsSection extends StatelessWidget {
 
         Text(
           "Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.",
-          style: AppTextStyles.interRegular12.copyWith(
+          style: AppTextStyles.interRegular14.copyWith(
             color: AppColors.natural4,
           ),
           softWrap: true,
@@ -167,7 +167,7 @@ class BookingDetailsSection extends StatelessWidget {
 
         Text(
           'Discover the Pyramids of Giza with a guided tour showcasing ancient history, the Great Pyramid, and the iconic Sphinx — all in one unforgettable experience.',
-          style: AppTextStyles.interRegular12.copyWith(
+          style: AppTextStyles.interRegular14.copyWith(
             color: AppColors.natural4,
           ),
           softWrap: true,

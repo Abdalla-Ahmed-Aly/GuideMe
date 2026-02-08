@@ -68,7 +68,7 @@ class TodayBookingCard extends StatelessWidget {
               softWrap: true,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.interRegular10.copyWith(
+              style: AppTextStyles.interRegular12.copyWith(
                 color: AppColors.natural4,
               ),
             ),
@@ -77,7 +77,7 @@ class TodayBookingCard extends StatelessWidget {
               softWrap: true,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.interRegular10.copyWith(
+              style: AppTextStyles.interRegular12.copyWith(
                 color: AppColors.natural4,
               ),
             ),
@@ -86,7 +86,7 @@ class TodayBookingCard extends StatelessWidget {
               softWrap: true,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.interRegular10.copyWith(
+              style: AppTextStyles.interRegular12.copyWith(
                 color: AppColors.natural4,
               ),
             ),
