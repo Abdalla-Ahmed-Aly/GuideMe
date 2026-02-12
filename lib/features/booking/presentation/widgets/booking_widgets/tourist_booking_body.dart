@@ -4,10 +4,10 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/today_booking_list_view.dart';
+import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/today_booking_list_view.dart';
 
-class TouristBookingBody extends StatelessWidget {
-  const TouristBookingBody({super.key});
+class BookingBody extends StatelessWidget {
+  const BookingBody({super.key});
 
   @override
   Widget build(BuildContext context) {

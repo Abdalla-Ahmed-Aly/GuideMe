@@ -6,13 +6,13 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/date_time_pick_card.dart';
-import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/notes_text_field.dart';
-import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/pick_up_point_field.dart';
+import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/date_time_pick_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/notes_text_field.dart';
+import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/pick_up_point_field.dart';
 import 'package:guide_me/features/booking/presentation/widgets/filter_screen_widgets/people_slider.dart';
 
-class BookScreenBody extends StatelessWidget {
-  const BookScreenBody({super.key});
+class ReservationScreenBody extends StatelessWidget {
+  const ReservationScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

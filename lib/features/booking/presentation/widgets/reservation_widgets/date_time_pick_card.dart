@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
-import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/custom_am_pm_toggle.dart';
+import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/custom_am_pm_toggle.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateTimePickCard extends StatefulWidget {

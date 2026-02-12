@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/screens/tourist_booking_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 import 'package:guide_me/features/home/presentation/widgets/welcome_avatar.dart';
 import 'package:guide_me/features/profile/presentation/screens/profile_screen.dart';
@@ -20,10 +20,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final PageController _pageController = PageController();
 
-  final List<Widget> pages =  const [
+  final List<Widget> pages = const [
     HomeScreen(),
-    TouristBookingScreen(),
-  
+    BookingScreen(),
+
     Scaffold(
       body: Center(child: Text("Chat Screen")),
     ),

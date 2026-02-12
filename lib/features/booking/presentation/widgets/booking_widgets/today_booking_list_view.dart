@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/today_booking_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/today_booking_card.dart';
 
 class TodayBookingListView extends StatelessWidget {
   const TodayBookingListView({super.key});

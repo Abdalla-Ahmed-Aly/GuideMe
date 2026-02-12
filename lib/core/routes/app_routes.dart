@@ -14,7 +14,6 @@ abstract class AppRoutes {
   static const String mainNavigationScreen = '/main-navigation';
   static const String filterScreen = '/filter-screen';
   static const String bookScreen = '/book-screen';
-  static const String bookTourScreen = '/bool-atour-screen';
   static const String guideProfileScreen = '/guide-profile-screen';
   static const String selectInterestsScreen = '/select-interests';
   static const String explorePlacesScreen = '/explorePlaces';

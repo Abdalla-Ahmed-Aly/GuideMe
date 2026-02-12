@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 
-import 'package:guide_me/features/booking/presentation/widgets/book_screen_widgets/book_screen_body.dart';
+import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/reservation_screen_body.dart';
 import 'package:guide_me/features/booking/presentation/widgets/custom_appbar.dart';
 
-class BookScreen extends StatelessWidget {
-  const BookScreen({super.key});
+class ReservationScreen extends StatelessWidget {
+  const ReservationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class BookScreen extends StatelessWidget {
               text: context.l10n.booking,
             ),
 
-            const Expanded(child: BookScreenBody()),
+            const Expanded(child: ReservationScreenBody()),
           ],
         ),
       ),

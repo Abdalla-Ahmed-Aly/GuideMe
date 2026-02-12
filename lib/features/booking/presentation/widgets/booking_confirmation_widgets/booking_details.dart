@@ -6,7 +6,6 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/booking/presentation/widgets/success_book_widgets/success_massage.dart';
 
 class BookingDetails extends StatelessWidget {
   const BookingDetails({super.key});
@@ -162,20 +161,7 @@ class BookingDetails extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 28),
           child: AppButton(
             onPressed: () {
-              showModalBottomSheet(
-                barrierColor: Colors.black.withValues(alpha: 0.6),
-                backgroundColor: AppColors.white,
-                context: context,
-                isScrollControlled: true,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                builder: (context) {
-                  return const SuccessMassage();
-                },
-              );
+              
             },
             text: context.l10n.apply,
           ),
