@@ -141,5 +141,9 @@
   "backMsg":"Back",
   "cancel": "Cancel",
   "areYouSureToLogout": "Are you sure that you want to logout?",
-  "bookingRequest" : "Booking Request"
+  "bookingRequest" : "Booking Request",
+  "viewbooking" : "View booking",
+  "declineBooking" : "Decline Booking",
+  "yesCancelRequest" : "Yes, Cancel Request",
+  "goBack" : "Go Back"
 }

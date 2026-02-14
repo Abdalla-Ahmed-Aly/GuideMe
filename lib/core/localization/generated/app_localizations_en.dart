@@ -423,4 +423,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bookingRequest => 'Booking Request';
+
+  @override
+  String get viewbooking => 'View booking';
+
+  @override
+  String get declineBooking => 'Decline Booking';
+
+  @override
+  String get yesCancelRequest => 'Yes, Cancel Request';
+
+  @override
+  String get goBack => 'Go Back';
 }

@@ -423,4 +423,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get bookingRequest => 'طلب حجز';
+
+  @override
+  String get viewbooking => 'عرض الحجز';
+
+  @override
+  String get declineBooking => 'رفض الحجز';
+
+  @override
+  String get yesCancelRequest => 'نعم، إلغاء الطلب';
+
+  @override
+  String get goBack => 'رجوع';
 }

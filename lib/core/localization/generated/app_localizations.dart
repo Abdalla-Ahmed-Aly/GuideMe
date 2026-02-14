@@ -919,6 +919,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Booking Request'**
   String get bookingRequest;
+
+  /// No description provided for @viewbooking.
+  ///
+  /// In en, this message translates to:
+  /// **'View booking'**
+  String get viewbooking;
+
+  /// No description provided for @declineBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline Booking'**
+  String get declineBooking;
+
+  /// No description provided for @yesCancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, Cancel Request'**
+  String get yesCancelRequest;
+
+  /// No description provided for @goBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Back'**
+  String get goBack;
 }
 
 class _AppLocalizationsDelegate

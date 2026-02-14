@@ -141,5 +141,9 @@
   "backMsg": "رجوع",
   "cancel": "إلغاء",
   "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-  "bookingRequest" : "طلب حجز"
+  "bookingRequest" : "طلب حجز",
+  "viewbooking" : "عرض الحجز",
+  "declineBooking" : "رفض الحجز",
+  "yesCancelRequest" : "نعم، إلغاء الطلب",
+  "goBack" : "رجوع"
 }

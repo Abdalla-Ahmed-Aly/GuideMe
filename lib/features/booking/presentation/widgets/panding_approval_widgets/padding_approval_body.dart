@@ -5,8 +5,10 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/Pending_approval_badge.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/booking_request_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/decline_booking_button.dart';
 
 class PandingApprovalBody extends StatelessWidget {
   const PandingApprovalBody({super.key});
@@ -61,11 +63,29 @@ class PandingApprovalBody extends StatelessWidget {
               ),
             ],
           ),
-        const  SizedBox(height: 47,),
-      const  BookingRequestCard(),
+          const SizedBox(
+            height: 47,
+          ),
+          const BookingRequestCard(),
+
+          SizedBox(
+            height: 119.h,
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.p),
+            child: AppButton(
+              onPressed: () {},
+              text: context.l10n.viewbooking,
+              radius: 50,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+        const  DeclineBookingButton(),
         ],
       ),
     );
   }
 }
-

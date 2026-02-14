@@ -12,45 +12,51 @@ class TripDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            CustomTripdetails(
-              title: 'Date',
-              value: 'Oct 24 , 2026',
-              pathicon: SvgPicture.asset(AppIcons.clender),
-            ),
-            SizedBox(
-              width: 100.p,
-            ),
-            CustomTripdetails(
-              pathicon: SvgPicture.asset(AppIcons.time),
-              title: 'Time',
-              value: '09:00 AM',
-            ),
-          ],
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.p),
+          child: Row(
+            children: [
+              CustomTripdetails(
+                title: 'Date',
+                value: 'Oct 24 , 2026',
+                pathicon: SvgPicture.asset(AppIcons.clender),
+              ),
+              SizedBox(
+                width: 100.p,
+              ),
+              CustomTripdetails(
+                pathicon: SvgPicture.asset(AppIcons.time),
+                title: 'Time',
+                value: '09:00 AM',
+              ),
+            ],
+          ),
         ),
         const SizedBox(
           height: 20,
         ),
-        Row(
-          children: [
-            const CustomTripdetails(
-              title: 'Duration',
-              value: '4 Hours',
-              pathicon: Icon(
-                FontAwesomeIcons.hourglassEnd,
-                size: 20,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.p),
+          child: Row(
+            children: [
+              const CustomTripdetails(
+                title: 'Duration',
+                value: '4 Hours',
+                pathicon: Icon(
+                  FontAwesomeIcons.hourglassEnd,
+                  size: 20,
+                ),
               ),
-            ),
-            SizedBox(
-              width: 100.p,
-            ),
-            const CustomTripdetails(
-              pathicon: Icon(Icons.groups),
-              title: 'Group Size',
-              value: '3 People',
-            ),
-          ],
+              SizedBox(
+                width: 130.p,
+              ),
+              const CustomTripdetails(
+                pathicon: Icon(Icons.groups),
+                title: 'Group Size',
+                value: '3 People',
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -105,7 +111,7 @@ class CustomTripdetails extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
-
+            
             //
           ],
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/estimated_earnings_section.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/requester_profile_header.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/trip_details_section.dart';
 
@@ -61,56 +61,6 @@ class BookingRequestCard extends StatelessWidget {
             SizedBox(
               height: 29.h,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EstimatedEarningsSection extends StatelessWidget {
-  const EstimatedEarningsSection({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 346,
-      height: 83,
-      decoration: BoxDecoration(
-        color: const Color(0xffFFE5BA).withValues(alpha: .20),
-        border: Border.all(color: const Color(0xffFFE5BA)),
-
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 28, top: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Estimated Earnings ',
-              style: AppTextStyles.poppinsRegular14.copyWith(
-                color: const Color(0xff7C6965),
-              ),
-            ),
-            const SizedBox(
-              height: 6,
-            ),
-            Row(
-              children: [
-                Text(
-                  '1,200 EGP',
-                  style: AppTextStyles.poppinsSemiBold20,
-                ),
-                SizedBox(
-                  width: 150.w,
-                ),
-                Image.asset(AppImages.money),
-              ],
-            ),
-            // Image.asset(AppImages.money),
           ],
         ),
       ),
