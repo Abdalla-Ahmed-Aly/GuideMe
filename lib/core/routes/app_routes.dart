@@ -23,4 +23,5 @@ abstract class AppRoutes {
   static const String editProfileScreen = '/editProfile';
   static const String addPaymentMethodScreen = '/addPaymentMethod';
   static const String bookingConfirmationScreen = '/bookingConfirmation';
+  static const String pandingApprovalScreen = '/pandingApproval';
 }

@@ -420,4 +420,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get areYouSureToLogout => 'Are you sure that you want to logout?';
+
+  @override
+  String get bookingRequest => 'Booking Request';
 }

@@ -11,6 +11,7 @@ import 'package:guide_me/features/auth/presentation/screens/reset_password_scree
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/panding_approval_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/reservation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
@@ -126,6 +127,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.bookingConfirmationScreen,
         builder: (context, state) => const BookingConfirmationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.pandingApprovalScreen,
+        builder: (context, state) => const PandingApprovalScreen(),
       ),
     ],
   );

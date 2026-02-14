@@ -913,6 +913,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Are you sure that you want to logout?'**
   String get areYouSureToLogout;
+
+  /// No description provided for @bookingRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Request'**
+  String get bookingRequest;
 }
 
 class _AppLocalizationsDelegate

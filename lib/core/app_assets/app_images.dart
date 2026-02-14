@@ -52,4 +52,6 @@ abstract class AppImages {
   static const String test7 = '$_basePath/test_7.png';
   static const String test8 = '$_basePath/test_8.png';
   static const String profileImageTest = '$_basePath/profile_image_test.png';
+  static const String profile = '$_basePath/profile.png';
+  static const String money = '$_basePath/money.png';
 }

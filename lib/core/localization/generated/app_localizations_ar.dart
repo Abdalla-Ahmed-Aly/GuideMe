@@ -420,4 +420,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get bookingRequest => 'طلب حجز';
 }

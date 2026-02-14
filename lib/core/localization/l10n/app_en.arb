@@ -140,5 +140,6 @@
   "yes":"Yes",
   "backMsg":"Back",
   "cancel": "Cancel",
-  "areYouSureToLogout": "Are you sure that you want to logout?"
+  "areYouSureToLogout": "Are you sure that you want to logout?",
+  "bookingRequest" : "Booking Request"
 }

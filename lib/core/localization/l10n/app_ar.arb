@@ -140,5 +140,6 @@
   "yes": "نعم",
   "backMsg": "رجوع",
   "cancel": "إلغاء",
-  "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+  "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "bookingRequest" : "طلب حجز"
 }
