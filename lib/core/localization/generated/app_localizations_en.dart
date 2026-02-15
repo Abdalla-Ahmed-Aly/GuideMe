@@ -438,4 +438,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chatwithtoUurist => 'CHAT WITH TOURIST';
+
+  @override
+  String get travelerFeedback => 'Traveler Feedback';
+
+  @override
+  String get recent => 'Recent';
 }

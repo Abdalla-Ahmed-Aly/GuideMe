@@ -438,4 +438,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chatwithtoUurist => 'الدردشة مع السائح';
+
+  @override
+  String get travelerFeedback => 'آراء المسافرين';
+
+  @override
+  String get recent => 'مؤخر';
 }

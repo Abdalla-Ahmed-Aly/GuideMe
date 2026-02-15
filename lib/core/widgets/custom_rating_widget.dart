@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class CustomRatingWidget extends StatefulWidget {
-  const CustomRatingWidget({super.key});
-
+  const CustomRatingWidget( {super.key, required this.color});
+  final Color color;
   @override
   State<CustomRatingWidget> createState() => _CustomRatingWidgetState();
 }
 
 class _CustomRatingWidgetState extends State<CustomRatingWidget> {
   double rating = 4;
+  _CustomRatingWidgetState();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,9 +24,9 @@ class _CustomRatingWidgetState extends State<CustomRatingWidget> {
           itemCount: 5,
           itemSize: 20,
           itemBuilder: (context, index) {
-            return const Icon(
+            return  Icon(
               Icons.star,
-              color: Colors.amber,
+              color: widget.color   
             );
           },
           onRatingUpdate: (double newrating) {

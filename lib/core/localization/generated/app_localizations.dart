@@ -949,6 +949,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'CHAT WITH TOURIST'**
   String get chatwithtoUurist;
+
+  /// No description provided for @travelerFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Traveler Feedback'**
+  String get travelerFeedback;
+
+  /// No description provided for @recent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get recent;
 }
 
 class _AppLocalizationsDelegate

@@ -146,5 +146,7 @@
   "declineBooking" : "رفض الحجز",
   "yesCancelRequest" : "نعم، إلغاء الطلب",
   "goBack" : "رجوع",
-  "chatwithtoUurist" : "الدردشة مع السائح"
+  "chatwithtoUurist" : "الدردشة مع السائح",
+  "travelerFeedback" : "آراء المسافرين",
+  "recent" : "مؤخر"
 }

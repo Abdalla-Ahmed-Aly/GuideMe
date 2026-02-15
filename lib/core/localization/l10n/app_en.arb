@@ -146,5 +146,7 @@
   "declineBooking" : "Decline Booking",
   "yesCancelRequest" : "Yes, Cancel Request",
   "goBack" : "Go Back",
-  "chatwithtoUurist" : "CHAT WITH TOURIST"
+  "chatwithtoUurist" : "CHAT WITH TOURIST",
+  "travelerFeedback" : "Traveler Feedback",
+  "recent" : "Recent"
 }
