@@ -140,5 +140,14 @@
   "yes": "نعم",
   "backMsg": "رجوع",
   "cancel": "إلغاء",
-  "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+  "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "welcome": "مرحبًا!",
+  "mySchedule": "جدولي",
+  "pending": "قيد الانتظار",
+  "all": "الكل",
+  "live": "مباشر",
+  "completed": "مكتمل",
+  "liveNow": "مباشر الآن",
+  "trackLiveLocation": "تتبع الموقع مباشرة",
+  "endTour": "إنهاء الجولة"
 }

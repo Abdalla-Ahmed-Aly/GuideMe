@@ -420,4 +420,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get welcome => 'مرحبًا!';
+
+  @override
+  String get mySchedule => 'جدولي';
+
+  @override
+  String get pending => 'قيد الانتظار';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get live => 'مباشر';
+
+  @override
+  String get completed => 'مكتمل';
+
+  @override
+  String get liveNow => 'مباشر الآن';
+
+  @override
+  String get trackLiveLocation => 'تتبع الموقع مباشرة';
+
+  @override
+  String get endTour => 'إنهاء الجولة';
 }

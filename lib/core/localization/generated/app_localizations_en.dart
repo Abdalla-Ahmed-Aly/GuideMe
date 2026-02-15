@@ -420,4 +420,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get areYouSureToLogout => 'Are you sure that you want to logout?';
+
+  @override
+  String get welcome => 'Marhaban!';
+
+  @override
+  String get mySchedule => 'My Schedule';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get live => 'LIVE';
+
+  @override
+  String get completed => 'COMPLETED';
+
+  @override
+  String get liveNow => 'LIVE NOW';
+
+  @override
+  String get trackLiveLocation => 'Track Live Location';
+
+  @override
+  String get endTour => 'End Tour';
 }

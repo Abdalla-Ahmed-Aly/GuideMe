@@ -27,6 +27,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^32.1.25
   flutter_credit_card: ^4.1.0
   flutter_rating_bar: ^4.0.1
+  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/extentions/context_extentions.dart';
 
 class ResponsiveConfig {
   static const double _designWidth = 430;
@@ -23,8 +22,8 @@ class ResponsiveConfig {
     scaleHeight = screenHeight / _designHeight;
 
     // font scaling controlled
-    scaleText = (context.isPortrait ? scaleWidth : scaleHeight).clamp(0.7, 1.5);
-    scaleIcon = (context.isPortrait ? scaleWidth : scaleHeight).clamp(0.7, 1.5);
+    scaleText = scaleWidth.clamp(0.7, 1.5);
+    scaleIcon = scaleWidth.clamp(0.7, 1.5);
   }
 
   // Responsive Width
