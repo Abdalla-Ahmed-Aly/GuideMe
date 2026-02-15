@@ -435,4 +435,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get goBack => 'رجوع';
+
+  @override
+  String get chatwithtoUurist => 'الدردشة مع السائح';
 }

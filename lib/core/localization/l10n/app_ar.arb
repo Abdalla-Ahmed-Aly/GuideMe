@@ -145,5 +145,6 @@
   "viewbooking" : "عرض الحجز",
   "declineBooking" : "رفض الحجز",
   "yesCancelRequest" : "نعم، إلغاء الطلب",
-  "goBack" : "رجوع"
+  "goBack" : "رجوع",
+  "chatwithtoUurist" : "الدردشة مع السائح"
 }

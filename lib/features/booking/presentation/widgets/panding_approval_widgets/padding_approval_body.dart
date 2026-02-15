@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/Pending_approval_badge.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/booking_request_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/close_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/decline_booking_button.dart';
 
 class PandingApprovalBody extends StatelessWidget {
@@ -22,28 +20,7 @@ class PandingApprovalBody extends StatelessWidget {
           const SizedBox(
             height: 34,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 31.p, top: 28.p),
-            child: Container(
-              width: 35,
-              height: 35,
-              decoration: BoxDecoration(
-                color: const Color(0xffFFE5BA).withValues(alpha: .2),
-                border: Border.all(color: const Color(0XFFCF872F)),
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                onPressed: () {
-                  context.pop();
-                },
-                icon: const Icon(
-                  FontAwesomeIcons.xmark,
-                  color: AppColors.primary,
-                  size: 20,
-                ),
-              ),
-            ),
-          ),
+          const CloseButtonwidget(),
           const SizedBox(
             height: 20,
           ),
@@ -59,7 +36,9 @@ class PandingApprovalBody extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 100.p),
-                child: const PendingApprovalBadge(),
+                child: const PendingApprovalBadge(
+                  text: 'Pending Approval',
+                ),
               ),
             ],
           ),
@@ -78,12 +57,13 @@ class PandingApprovalBody extends StatelessWidget {
               onPressed: () {},
               text: context.l10n.viewbooking,
               radius: 50,
+              backgroundColor: const Color(0xffF2930D),
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-        const  DeclineBookingButton(),
+          const DeclineBookingButton(),
         ],
       ),
     );

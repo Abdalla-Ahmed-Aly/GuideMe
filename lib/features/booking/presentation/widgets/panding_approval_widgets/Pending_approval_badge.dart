@@ -3,9 +3,10 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class PendingApprovalBadge extends StatelessWidget {
   const PendingApprovalBadge({
-    super.key,
+    super.key, required this.text,
   });
 
+  final String text;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -35,7 +36,7 @@ class PendingApprovalBadge extends StatelessWidget {
             width: 13,
           ),
           Text(
-            'Pending Approval',
+            text,
             style: AppTextStyles.poppinsMedium16.copyWith(
               color: const Color(0xffF4A60E),
             ),

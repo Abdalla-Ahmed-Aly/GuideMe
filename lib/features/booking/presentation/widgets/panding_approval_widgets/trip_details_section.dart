@@ -13,7 +13,7 @@ class TripDetailsSection extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.p),
+          padding: EdgeInsets.symmetric(horizontal: 10.p),
           child: Row(
             children: [
               CustomTripdetails(
@@ -36,7 +36,7 @@ class TripDetailsSection extends StatelessWidget {
           height: 20,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.p),
+          padding: EdgeInsets.symmetric(horizontal: 10.p),
           child: Row(
             children: [
               const CustomTripdetails(
@@ -79,23 +79,27 @@ class CustomTripdetails extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 40.w,
+          height: 40.h,
           decoration: const BoxDecoration(
             color: AppColors.white,
             shape: BoxShape.circle,
           ),
           child: Padding(padding: const EdgeInsets.all(12), child: pathicon),
         ),
+        const SizedBox(
+          width: 5,
+        ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 0),
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Color(0xff7C6965),
+                style: TextStyle(
+                  fontSize: 15.fs,
+                  color: const Color(0xff7C6965),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -105,13 +109,13 @@ class CustomTripdetails extends StatelessWidget {
             ),
             Text(
               value,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: 16.fs,
                 color: AppColors.black,
                 fontWeight: FontWeight.w400,
               ),
             ),
-            
+
             //
           ],
         ),

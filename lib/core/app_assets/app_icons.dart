@@ -37,4 +37,5 @@ abstract class AppIcons {
   static const String certificate = 'assets/icons/certificate.svg';
   static const String clender = 'assets/icons/clender.svg';
   static const String time = 'assets/icons/time.svg';
+  static const String date = 'assets/icons/date.svg';
 }

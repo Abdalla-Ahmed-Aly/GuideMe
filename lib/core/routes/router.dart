@@ -10,6 +10,7 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/panding_approval_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/reservation_screen.dart';
@@ -131,6 +132,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.pandingApprovalScreen,
         builder: (context, state) => const PandingApprovalScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.acceptedScreen,
+        builder: (context, state) => const AcceptedScreen(),
       ),
     ],
   );

@@ -4,21 +4,22 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class EstimatedEarningsSection extends StatelessWidget {
-  const EstimatedEarningsSection({
-    super.key,
+  const EstimatedEarningsSection( {
+    super.key,  this.color,
   });
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 346.w,
-      height: 83.h,
+      height: 100.h,
       decoration: BoxDecoration(
-        color: const Color(0xffFFE5BA).withValues(alpha: .20),
+        color: color ?? const Color(0xffFFE5BA).withValues(alpha: .20) ,
         border: Border.all(color: const Color(0xffFFE5BA)),
-
         borderRadius: BorderRadius.circular(50),
       ),
+      //  Color(0xffFFE5BA).withValues(alpha: .20),
       child: Padding(
         padding: const EdgeInsets.only(left: 28, top: 12),
         child: Column(

@@ -943,6 +943,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go Back'**
   String get goBack;
+
+  /// No description provided for @chatwithtoUurist.
+  ///
+  /// In en, this message translates to:
+  /// **'CHAT WITH TOURIST'**
+  String get chatwithtoUurist;
 }
 
 class _AppLocalizationsDelegate
