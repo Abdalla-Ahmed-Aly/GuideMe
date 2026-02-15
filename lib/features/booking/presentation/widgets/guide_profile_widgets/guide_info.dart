@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
@@ -34,12 +33,18 @@ class GuideInfo extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.p),
           child: Row(
             children: [
-              SvgPicture.asset(AppIcons.phone),
+              SvgPicture.asset(
+                AppIcons.phone1,
+                width: 20,
+                height: 20,
+              ),
 
               const SizedBox(width: 6),
               Text(
                 '+201112469245',
-                style: AppTextStyles.interRegular18,
+                style: AppTextStyles.interRegular18.copyWith(
+                  color: const Color(0xffB59A64),
+                ),
               ),
             ],
           ),
@@ -51,12 +56,18 @@ class GuideInfo extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.p),
           child: Row(
             children: [
-              SvgPicture.asset(AppIcons.massageLight),
+              SvgPicture.asset(
+                AppIcons.email,
+                width: 20,
+                height: 20,
+              ),
               const SizedBox(width: 6),
 
               Text(
                 'abdelazezhtm@gmail.com',
-                style: AppTextStyles.interRegular18,
+                style: AppTextStyles.interRegular18.copyWith(
+                  color: const Color(0xffB59A64),
+                ),
               ),
             ],
           ),
@@ -78,10 +89,10 @@ class GuideInfo extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.p),
           child: Row(
             children: [
-              Image.asset(
-                AppImages.id,
-                height: 24,
-                width: 24,
+              SvgPicture.asset(
+                AppIcons.portal,
+                height: 20,
+                width: 20,
               ),
 
               const SizedBox(width: 16),
@@ -89,7 +100,7 @@ class GuideInfo extends StatelessWidget {
               Text(
                 'License ID: EG-TG-7890',
                 style: AppTextStyles.interRegular18.copyWith(
-                  color: AppColors.black,
+                  color: const Color(0xffB59A64),
                 ),
               ),
             ],
@@ -103,7 +114,11 @@ class GuideInfo extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.p),
           child: Row(
             children: [
-              SvgPicture.asset(AppIcons.arcticonEearth),
+              SvgPicture.asset(
+                AppIcons.earth,
+                width: 20,
+                height: 20,
+              ),
 
               const SizedBox(width: 16),
 
@@ -137,8 +152,11 @@ class GuideInfo extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(AppIcons.certificate),
-
+              SvgPicture.asset(
+                AppIcons.diploma,
+                width: 20,
+                height: 20,
+              ),
               const SizedBox(width: 14),
 
               Column(
@@ -157,7 +175,7 @@ class GuideInfo extends StatelessWidget {
                   Text(
                     context.l10n.egyptian,
                     style: AppTextStyles.interSemiBold12.copyWith(
-                      color: AppColors.natural3,
+                      color: const Color(0xffB59A64),
                     ),
                   ),
 
@@ -183,8 +201,11 @@ class GuideInfo extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(AppIcons.certificate),
-
+              SvgPicture.asset(
+                AppIcons.diploma,
+                width: 20,
+                height: 20,
+              ),
               const SizedBox(width: 14),
 
               Column(
@@ -203,7 +224,7 @@ class GuideInfo extends StatelessWidget {
                   Text(
                     context.l10n.egyptian,
                     style: AppTextStyles.interSemiBold12.copyWith(
-                      color: AppColors.natural3,
+                      color: const Color(0xffB59A64),
                     ),
                   ),
 

@@ -17,8 +17,8 @@ class PandingApprovalBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 34,
+          SizedBox(
+            height: 50.h,
           ),
           const CloseButtonwidget(),
           const SizedBox(

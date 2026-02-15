@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 
 class ProfileAvatarWithStatus extends StatelessWidget {
   const ProfileAvatarWithStatus({super.key});
@@ -34,15 +33,6 @@ class ProfileAvatarWithStatus extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        ),
-
-        Positioned(
-          top: 24,
-          right: -110.p,
-          child: const Icon(
-            Icons.chat_outlined,
-            size: 30,
           ),
         ),
       ],

@@ -5,7 +5,6 @@ abstract class AppIcons {
       'assets/icons/arrow_forward_android.svg';
   static const String calendar = 'assets/icons/calendar.svg';
   static const String camera = 'assets/icons/camera.svg';
-  static const String certification = 'assets/icons/certification.svg';
   static const String clock = 'assets/icons/clock.svg';
   static const String eye = 'assets/icons/eye.svg';
   static const String facebook = 'assets/icons/facebook.svg';
@@ -15,7 +14,7 @@ abstract class AppIcons {
   static const String hidePassword = 'assets/icons/hide_password.svg';
   static const String location = 'assets/icons/location.svg';
   static const String logout = 'assets/icons/logout.svg';
-  static const String phone = 'assets/icons/phone.svg';
+  static const String phone = 'assets/icons/Phone_light.svg';
   static const String search = 'assets/icons/search.svg';
   static const String settings = 'assets/icons/settings.svg';
   static const String whatsApp = 'assets/icons/whats_app.svg';
@@ -29,13 +28,17 @@ abstract class AppIcons {
   static const String rating = 'assets/icons/rating.svg';
   static const String massageLight = 'assets/icons/Message_light.svg';
   static const String driversLicense = 'assets/icons/drivers_license.svg';
-  static const String arcticonEearth = 'assets/icons/arcticons_earth.svg';
   static const String rate = 'assets/icons/rate.svg';
   static const String settingsArrow = 'assets/icons/settings_arrow.svg';
   static const String add = 'assets/icons/add.svg';
   static const String locationOutline = 'assets/icons/location_outline.svg';
-  static const String certificate = 'assets/icons/certificate.svg';
   static const String clender = 'assets/icons/clender.svg';
   static const String time = 'assets/icons/time.svg';
   static const String date = 'assets/icons/date.svg';
+  static const String diploma = 'assets/icons/diploma.svg';
+  static const String earth = 'assets/icons/earth.svg';
+  static const String people = 'assets/icons/people.svg';
+  static const String email = 'assets/icons/email.svg';
+  static const String phone1 = 'assets/icons/phone1.svg';
+  static const String portal = 'assets/icons/portal.svg';
 }

@@ -50,8 +50,8 @@ class TripDetailsSection extends StatelessWidget {
               SizedBox(
                 width: 130.p,
               ),
-              const CustomTripdetails(
-                pathicon: Icon(Icons.groups),
+              CustomTripdetails(
+                pathicon: SvgPicture.asset(AppIcons.people),
                 title: 'Group Size',
                 value: '3 People',
               ),
