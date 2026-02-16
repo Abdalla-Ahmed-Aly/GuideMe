@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class AllChip extends StatelessWidget {
@@ -14,7 +15,7 @@ class AllChip extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
-        width: 55,
+        width: 55.w,
         margin: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           border: Border.all(
@@ -28,12 +29,15 @@ class AllChip extends StatelessWidget {
           children: [
             Text(
               context.l10n.all,
-              style: TextStyle(
-                fontFamily: AppTextStyles.familyPoppins,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+              style: AppTextStyles.poppinsMedium18.copyWith(
                 color: isSelected ? Colors.white : const Color(0xffB59A64),
               ),
+              // style: TextStyle(
+              //   fontFamily: AppTextStyles.familyPoppins,
+              //   fontSize: 18,
+              //   fontWeight: FontWeight.w500,
+              //   color: isSelected ? Colors.white : const Color(0xffB59A64),
+              // ),
             ),
 
             AnimatedSwitcher(

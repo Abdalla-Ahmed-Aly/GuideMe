@@ -447,4 +447,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get endTour => 'إنهاء الجولة';
+
+  @override
+  String get confirmEndTour => 'هل أنت متأكد أنك تريد إنهاء الجولة؟';
 }

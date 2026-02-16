@@ -447,4 +447,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get endTour => 'End Tour';
+
+  @override
+  String get confirmEndTour => 'Are you sure you want to end this tour?';
 }

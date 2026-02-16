@@ -11,14 +11,15 @@ class BookingProfile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 50,
-          width: 50,
+          height: context.screenWidth * 0.12,
+          width: context.screenWidth * 0.12,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
               color: const Color(0xffFFA537),
             ),
             image: const DecorationImage(
+              fit: BoxFit.cover,
               image: AssetImage(AppImages.profileImageTest),
             ),
           ),

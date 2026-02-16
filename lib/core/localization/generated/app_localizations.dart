@@ -967,6 +967,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'End Tour'**
   String get endTour;
+
+  /// No description provided for @confirmEndTour.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to end this tour?'**
+  String get confirmEndTour;
 }
 
 class _AppLocalizationsDelegate

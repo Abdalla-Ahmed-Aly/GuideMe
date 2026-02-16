@@ -149,5 +149,6 @@
   "completed": "مكتمل",
   "liveNow": "مباشر الآن",
   "trackLiveLocation": "تتبع الموقع مباشرة",
-  "endTour": "إنهاء الجولة"
+  "endTour": "إنهاء الجولة",
+  "confirmEndTour": "هل أنت متأكد أنك تريد إنهاء الجولة؟"
 }

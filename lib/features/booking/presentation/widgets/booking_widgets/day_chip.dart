@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:intl/intl.dart';
 
@@ -18,7 +19,7 @@ class DayChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        width: 55,
+        width: 55.w,
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -34,22 +35,28 @@ class DayChip extends StatelessWidget {
           children: [
             Text(
               DateFormat('EEE').format(date),
-              style: TextStyle(
-                fontFamily: AppTextStyles.familyPoppins,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+              style: AppTextStyles.poppinsMedium18.copyWith(
                 color: isSelected ? Colors.white : const Color(0xffB59A64),
               ),
+              // style: TextStyle(
+              //   fontFamily: AppTextStyles.familyPoppins,
+              //   fontSize: 18,
+              //   fontWeight: FontWeight.w500,
+              //   color: isSelected ? Colors.white : const Color(0xffB59A64),
+              // ),
             ),
 
             Text(
               DateFormat('dd').format(date),
-              style: TextStyle(
-                fontFamily: AppTextStyles.familyPoppins,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+              style: AppTextStyles.poppinsMedium18.copyWith(
                 color: isSelected ? Colors.white : Colors.black,
               ),
+              // style: TextStyle(
+              //   fontFamily: AppTextStyles.familyPoppins,
+              //   fontSize: 18,
+              //   fontWeight: FontWeight.w500,
+              //   color: isSelected ? Colors.white : Colors.black,
+              // ),
             ),
 
             AnimatedSwitcher(

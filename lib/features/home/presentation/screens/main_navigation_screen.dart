@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 import 'package:guide_me/features/home/presentation/widgets/welcome_avatar.dart';
@@ -20,14 +22,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final PageController _pageController = PageController();
 
-  final List<Widget> pages = const [
-    HomeScreen(),
-    BookingScreen(),
+  final List<Widget> pages = [
+    const HomeScreen(),
+    BlocProvider(
+      create: (context) => BookingCubit(),
+      child: const BookingScreen(),
+    ),
 
-    Scaffold(
+    const Scaffold(
       body: Center(child: Text("Chat Screen")),
     ),
-    ProfileScreen(),
+    
+    const ProfileScreen(),
   ];
 
   @override

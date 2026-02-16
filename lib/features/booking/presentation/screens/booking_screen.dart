@@ -4,7 +4,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/booking_profile.dart';
 import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/booking_status_filter.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/schedule_list_view.dart';
+import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/schedule_list.dart';
 import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/trips_list_view.dart';
 
 class BookingScreen extends StatelessWidget {
@@ -36,9 +36,9 @@ class BookingScreen extends StatelessWidget {
           const SizedBox(height: 8),
 
           // schedule list view
-          const SizedBox(
-            height: 80,
-            child: ScheduleListView(),
+          SizedBox(
+            height: 80.h,
+            child: const ScheduleList(),
           ),
 
           const SizedBox(height: 20),

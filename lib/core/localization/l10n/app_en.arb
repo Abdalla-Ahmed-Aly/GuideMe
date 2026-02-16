@@ -149,5 +149,6 @@
   "completed": "COMPLETED",
   "liveNow": "LIVE NOW",
   "trackLiveLocation": "Track Live Location",
-  "endTour": "End Tour"
+  "endTour": "End Tour",
+  "confirmEndTour": "Are you sure you want to end this tour?"
 }

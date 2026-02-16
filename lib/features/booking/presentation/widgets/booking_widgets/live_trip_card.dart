@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -106,7 +107,9 @@ class LiveTripCard extends StatelessWidget {
       children: [
         Expanded(
           child: AppButton(
-            onPressed: () {},
+            onPressed: () {
+              showEndTourDialog(context);
+            },
             text: context.l10n.endTour,
             height: 44.h,
             radius: 220,
@@ -131,6 +134,52 @@ class LiveTripCard extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Future<void> showEndTourDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: const Color(0xffDD7B03).withValues(alpha: .32),
+            ),
+          ),
+          title: Text(
+            context.l10n.endTour,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: Text(context.l10n.confirmEndTour),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+              ),
+              onPressed: () {
+                context.pop();
+              },
+              child: Text(context.l10n.cancel),
+            ),
+            AppButton(
+              width: 120,
+              height: 38,
+              onPressed: () {
+                context.pop();
+              },
+              text: context.l10n.endTour,
+              backgroundColor: Colors.red,
+              textStyle: AppTextStyles.interSemiBold16.copyWith(
+                fontSize: 16,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -176,5 +225,4 @@ class LiveTripCard extends StatelessWidget {
       ),
     );
   }
-
 }

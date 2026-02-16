@@ -19,17 +19,17 @@ class _TripsListViewState extends State<TripsListView> {
   ];
 
   List<DateTime> startDates = [
-    DateTime(2026, 2, 15, 19, 50),
-    DateTime(2026, 2, 15, 20, 2),
-    DateTime(2026, 2, 15, 20, 4),
-    DateTime(2026, 2, 15, 20, 6),
+    DateTime(2026, 2, 15, 20, 11),
+    DateTime(2026, 2, 15, 20, 12),
+    DateTime(2026, 2, 15, 20, 14),
+    DateTime(2026, 2, 15, 20, 16),
   ];
 
   List<DateTime> endDates = [
-    DateTime(2026, 2, 15, 19, 51),
-    DateTime(2026, 2, 15, 20, 4),
-    DateTime(2026, 2, 15, 20, 6),
-    DateTime(2026, 2, 15, 20, 8),
+    DateTime(2026, 2, 15, 20, 13),
+    DateTime(2026, 2, 15, 20, 15),
+    DateTime(2026, 2, 15, 20, 17),
+    DateTime(2026, 2, 15, 20, 19),
   ];
 
   @override

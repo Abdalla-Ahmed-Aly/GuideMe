@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/features/booking/domain/services/time_line_progress_calculator.dart';
 import 'package:guide_me/features/booking/presentation/strategies/time_line_strategy/time_line_factory.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/indicators.dart';
+import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/time_line_indicator.dart';
 
 class TimeLine extends StatefulWidget {
   const TimeLine({
@@ -25,27 +28,23 @@ class _TimeLineState extends State<TimeLine> {
 
   Timer? timer;
 
-  double calculateProgress(DateTime start, DateTime end) {
-    final now = DateTime.now();
-
-    if (now.isBefore(start)) return 0.0;
-    if (now.isAfter(end)) return 1.0;
-
-    final totalDuration = end.difference(start).inSeconds;
-    final passedDuration = now.difference(start).inSeconds;
-
-    return passedDuration / totalDuration;
-  }
-
   @override
   void initState() {
     super.initState();
     final start = widget.startDate;
     final end = widget.endDate;
-    progress = calculateProgress(start, end);
+    progress = TimeLineProgressCalculator.calculateProgress(
+      start,
+      end,
+      DateTime.now(),
+    );
 
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      final newProgress = calculateProgress(start, end);
+      final newProgress = TimeLineProgressCalculator.calculateProgress(
+        start,
+        end,
+        DateTime.now(),
+      );
 
       if ((newProgress - progress).abs() > 0.0) {
         setState(() {
@@ -84,12 +83,16 @@ class _TimeLineState extends State<TimeLine> {
           _buildProgressValue(),
 
           // Live indicator in top after finished
-          if ((progress >= 1 || progress == 0) && widget.currentIndex == 0)
-            const Positioned(
+          if ((progress >= 1) && widget.currentIndex == 0)
+            Positioned(
               top: 0,
               left: 0,
               right: 0,
-              child: LiveIndicator(),
+              child: TimeLineIndicator(
+                backgroundColor: const Color(0xffF2930D),
+                borderColor: const Color(0xffF6D9AF),
+                child: SvgPicture.asset(AppIcons.signal),
+              ),
             ),
 
           // Bottom indicator
@@ -102,62 +105,6 @@ class _TimeLineState extends State<TimeLine> {
 
           // Live indicator
           strategy.buildLiveIndicator(progress),
-
-          // // Break point & completed point & finished point
-          // progress == 1
-          //     ? widget.currentIndex == widget.lenght - 1
-          //           ? const Positioned(
-          //               bottom: 0,
-          //               left: 0,
-          //               right: 0,
-          //               child: Center(
-          //                 child: FinishedPoint(),
-          //               ),
-          //             )
-          //           : const Positioned(
-          //               bottom: 0,
-          //               left: 0,
-          //               right: 0,
-          //               child: Center(
-          //                 child: CompletedIndicator(),
-          //               ),
-          //             )
-          //     : widget.currentIndex == widget.lenght - 1
-          //     ? const Positioned(
-          //         bottom: 0,
-          //         left: 0,
-          //         right: 0,
-          //         child: Center(
-          //           child: FinishedPoint(),
-          //         ),
-          //       )
-          //     : const Positioned(
-          //         bottom: 0,
-          //         left: 0,
-          //         right: 0,
-          //         child: Center(
-          //           child: PendingPoint(),
-          //         ),
-          //       ),
-
-          // // Live indicator
-          // progress > 0.01 && progress < 1
-          //     ? Align(
-          //         alignment: Alignment.topCenter,
-          //         child: FractionallySizedBox(
-          //           heightFactor: progress < 0.1 ? 0.1 : progress,
-          //           child: const Align(
-          //             alignment: Alignment.bottomCenter,
-          //             child: LiveIndicator(),
-          //           ),
-          //         ),
-          //       )
-          //     : widget.currentIndex == 0
-          //     ? const Positioned(
-          //         top: 0,
-          //         child: LiveIndicator(),
-          //       )
-          //     : const SizedBox(),
         ],
       ),
     );

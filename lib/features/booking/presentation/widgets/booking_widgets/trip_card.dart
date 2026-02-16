@@ -3,8 +3,6 @@ import 'package:guide_me/features/booking/domain/enums/trip_status.dart';
 import 'package:guide_me/features/booking/presentation/strategies/trip_card_stratrgy/trip_card_factory.dart';
 import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/time_line.dart';
 
-import 'package:guide_me/features/booking/presentation/strategies/trip_card_stratrgy/trip_card_strategy.dart';
-
 class TripCard extends StatelessWidget {
   const TripCard({
     super.key,

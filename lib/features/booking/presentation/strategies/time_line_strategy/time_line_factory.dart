@@ -28,4 +28,3 @@ class TimeLineFactory {
     return isLast ? _finished : _pending;
   }
 }
-
