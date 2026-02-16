@@ -81,6 +81,9 @@ class PandingApprovalBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: const DeclineBookingButton(),
           ),
+          const SizedBox(
+            height: 45,
+          ),
         ],
       ),
     );

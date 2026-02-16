@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/app_assets/app_lotties.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:lottie/lottie.dart';
 
 class RequestCancelTheTrip extends StatelessWidget {
   const RequestCancelTheTrip({
@@ -19,17 +20,7 @@ class RequestCancelTheTrip extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: CircleAvatar(
-                radius: 66,
-                backgroundColor: const Color(0xffFBEFDF),
-                child: Image.asset(AppImages.close),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
+            Lottie.asset(AppLotties.cancelBubbles),
             Text(
               context.l10n.cancel,
               style: AppTextStyles.poppinsSemiBold26,
