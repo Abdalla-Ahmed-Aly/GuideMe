@@ -47,9 +47,7 @@ class PandingApprovalBody extends StatelessWidget {
           ),
           const BookingRequestCard(),
 
-          SizedBox(
-            height: 119.h,
-          ),
+          const SizedBox(height: 52),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.p),

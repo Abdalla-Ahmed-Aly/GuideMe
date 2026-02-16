@@ -37,7 +37,6 @@ abstract class AppImages {
   static const String islamic = '$_basePath/islamic.png';
   static const String museums = '$_basePath/museums.png';
   static const String id = '$_basePath/id.png';
-
   // Test
   static const String categoryTest = '$_basePath/category_test.png';
   static const String famousTripTest = '$_basePath/famous_trip_test.png';
@@ -55,4 +54,5 @@ abstract class AppImages {
   static const String profile = '$_basePath/profile.png';
   static const String money = '$_basePath/money.png';
   static const String close = '$_basePath/false.png';
+  static const String earth = '$_basePath/earth.png';
 }

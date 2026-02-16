@@ -16,8 +16,8 @@ class CloseButtonwidget extends StatelessWidget {
         left: 31.p,
       ),
       child: Container(
-        width: 35,
-        height: 35,
+        width: 35.w,
+        height: 35.h,
         decoration: BoxDecoration(
           color: const Color(0xffFFE5BA).withValues(alpha: .2),
           border: Border.all(color: const Color(0XFFCF872F)),

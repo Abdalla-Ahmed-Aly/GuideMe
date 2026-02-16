@@ -42,10 +42,10 @@ class UpComingTourCard extends StatelessWidget {
             const SizedBox(
               height: 18,
             ),
-            const CustomTripdetails(
+            CustomTripdetails(
               title: ' MEETING POINT',
               value: 'Giza Pyramids Private Tour',
-              pathicon: Icon(FontAwesomeIcons.locationDot),
+              pathicon: SvgPicture.asset(AppIcons.location),
             ),
             const SizedBox(
               height: 12,

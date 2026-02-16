@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class CustomRatingWidget extends StatefulWidget {
-  const CustomRatingWidget( {super.key, required this.color});
+  const CustomRatingWidget({super.key, required this.color});
   final Color color;
   @override
   State<CustomRatingWidget> createState() => _CustomRatingWidgetState();
@@ -24,10 +24,7 @@ class _CustomRatingWidgetState extends State<CustomRatingWidget> {
           itemCount: 5,
           itemSize: 20,
           itemBuilder: (context, index) {
-            return  Icon(
-              Icons.star,
-              color: widget.color   
-            );
+            return Icon(Icons.star, color: widget.color);
           },
           onRatingUpdate: (double newrating) {
             setState(() {

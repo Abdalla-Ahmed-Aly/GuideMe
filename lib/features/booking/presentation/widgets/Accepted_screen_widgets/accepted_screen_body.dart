@@ -71,6 +71,7 @@ class AcceptedScreenBody extends StatelessWidget {
             height: 20,
           ),
           const CHATWITHTOURIST(),
+          const SizedBox(height: 74),
         ],
       ),
     );

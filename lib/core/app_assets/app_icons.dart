@@ -41,4 +41,7 @@ abstract class AppIcons {
   static const String email = 'assets/icons/email.svg';
   static const String phone1 = 'assets/icons/phone1.svg';
   static const String portal = 'assets/icons/portal.svg';
+  static const String star1 = 'assets/icons/star1.svg';
+  static const String like = 'assets/icons/like.svg';
+  static const String dislike = 'assets/icons/dislike.svg';
 }

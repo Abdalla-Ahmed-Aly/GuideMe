@@ -90,7 +90,7 @@ class RequestCancelTheTrip extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 49,
             ),
           ],
         ),
