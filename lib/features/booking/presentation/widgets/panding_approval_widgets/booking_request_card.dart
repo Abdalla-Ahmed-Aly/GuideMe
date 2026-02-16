@@ -21,19 +21,22 @@ class BookingRequestCard extends StatelessWidget {
         child: Column(
           children: [
             const RequesterProfileHeaderSection(),
-            const SizedBox(
-              height: 32,
+
+            const SizedBox(height: 30),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: TripDetailsSection(),
             ),
-            const TripDetailsSection(),
-            const SizedBox(
-              height: 17,
-            ),
+
+            const SizedBox(height: 16),
+
             Padding(
-              padding: const EdgeInsets.only(left: 31),
+              padding: EdgeInsets.symmetric(horizontal: 30.p),
               child: Row(
                 children: [
                   Text(
-                    'My Trip :',
+                    'My Trip: ',
                     style: AppTextStyles.poppinsSemiBold14,
                   ),
                   Text(
@@ -45,22 +48,21 @@ class BookingRequestCard extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 17,
-            ),
+
+            const SizedBox(height: 16),
+
             Divider(
               color: const Color(0xffFFA537).withValues(alpha: 0.3),
               thickness: 2.5, //
               indent: 35, //
               endIndent: 35, //
             ),
-            const SizedBox(
-              height: 15,
-            ),
+
+            const SizedBox(height: 15),
+
             const EstimatedEarningsSection(),
-            SizedBox(
-              height: 29.h,
-            ),
+
+            SizedBox(height: 28.h),
           ],
         ),
       ),

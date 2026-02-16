@@ -64,7 +64,7 @@ class ReservationScreenBody extends StatelessWidget {
             child: const PeopleSlider(),
           ),
 
-          SizedBox(height: size.height * 0.06),
+          SizedBox(height: size.height * 0.04),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.p),

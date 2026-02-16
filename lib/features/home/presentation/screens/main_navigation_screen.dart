@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
+import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/nav_bar_cubit.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 import 'package:guide_me/features/home/presentation/widgets/welcome_avatar.dart';
 import 'package:guide_me/features/profile/presentation/screens/profile_screen.dart';
@@ -16,18 +19,20 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   bool showWelcomeAvatar = true;
 
-  int currentIndex = 0;
-
   final PageController _pageController = PageController();
 
-  final List<Widget> pages = const [
-    HomeScreen(),
-    BookingScreen(),
+  final List<Widget> pages = [
+    const HomeScreen(),
+    BlocProvider(
+      create: (context) => BookingCubit(),
+      child: const BookingScreen(),
+    ),
 
-    Scaffold(
+    const Scaffold(
       body: Center(child: Text("Chat Screen")),
     ),
-    ProfileScreen(),
+
+    const ProfileScreen(),
   ];
 
   @override
@@ -36,80 +41,67 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     super.dispose();
   }
 
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-    _pageController.jumpToPage(index);
+  void onChangeScreen(int index) {
+    context.read<NavBarCubit>().changeIndex(index);
   }
 
   @override
   Widget build(BuildContext context) {
+    print(context.read<NavBarCubit>().state);
     final size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
         // home
         Scaffold(
-          body: PageView(
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                currentIndex = index;
-              });
+          body: BlocConsumer<NavBarCubit, int>(
+            listener: (context, index) {
+              _pageController.jumpToPage(index);
             },
-            children: pages,
+            builder: (context, state) {
+              return PageView(
+                controller: _pageController,
+                onPageChanged: onChangeScreen,
+                children: pages,
+              );
+            },
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
-            onTap: onTap,
-            backgroundColor: Colors.white,
-            selectedItemColor: AppColors.primary,
-            unselectedItemColor: Colors.black,
-            unselectedLabelStyle: AppTextStyles.interRegular14.copyWith(
-              color: Colors.black,
-            ),
-            selectedLabelStyle: AppTextStyles.interRegular14.copyWith(
-              color: AppColors.primary,
-            ),
-            iconSize: 28,
-            items: const [
-              // Icons
-              BottomNavigationBarItem(
-                icon: Icon(Icons.layers_outlined),
-                label: 'My Tours',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.event_available_outlined),
-                label: 'Bookings',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.chat_outlined),
-                label: 'Chat',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
-                label: 'Profile',
-              ),
-
-              // Svg Icons
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(AppIcons.tours),
-              //   label: 'My Tours',
-              // ),
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(AppIcons.booking),
-              //   label: 'Bookings',
-              // ),
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(AppIcons.chat),
-              //   label: 'Chat',
-              // ),
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(AppIcons.profile),
-              //   label: 'Profile',
-              // ),
-            ],
+          bottomNavigationBar: BlocBuilder<NavBarCubit, int>(
+            builder: (context, index) {
+              return BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                currentIndex: index,
+                onTap: onChangeScreen,
+                backgroundColor: Colors.white,
+                selectedItemColor: AppColors.primary,
+                unselectedItemColor: Colors.black,
+                unselectedLabelStyle: AppTextStyles.interRegular14.copyWith(
+                  color: Colors.black,
+                ),
+                selectedLabelStyle: AppTextStyles.interRegular14.copyWith(
+                  color: AppColors.primary,
+                ),
+                iconSize: 28,
+                items: const [
+                  // Icons
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.layers_outlined),
+                    label: 'My Tours',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.event_available_outlined),
+                    label: 'Bookings',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.chat_outlined),
+                    label: 'Chat',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person_outline),
+                    label: 'Profile',
+                  ),
+                ],
+              );
+            },
           ),
         ),
 

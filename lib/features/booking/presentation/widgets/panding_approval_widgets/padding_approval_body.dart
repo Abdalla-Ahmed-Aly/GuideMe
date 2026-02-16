@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/Pending_approval_badge.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/booking_request_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/close_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/decline_booking_button.dart';
+import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/nav_bar_cubit.dart';
 
 class PandingApprovalBody extends StatelessWidget {
   const PandingApprovalBody({super.key});
@@ -18,22 +22,30 @@ class PandingApprovalBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 50.h,
+            height: 60.h,
           ),
-          const CloseButtonwidget(),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.p),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(width: context.screenHeight * 0.045),
+                Text(
+                  context.l10n.bookingRequest,
+                  style: AppTextStyles.poppinsMedium18,
+                ),
+                const CloseButtonwidget(),
+              ],
+            ),
+          ),
+
           const SizedBox(
-            height: 20,
+            height: 24,
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                context.l10n.bookingRequest,
-                style: AppTextStyles.poppinsMedium18,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 100.p),
                 child: const PendingApprovalBadge(
@@ -52,7 +64,10 @@ class PandingApprovalBody extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: AppButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<NavBarCubit>().changeIndex(1);
+                context.go(AppRoutes.mainNavigationScreen);
+              },
               text: context.l10n.viewbooking,
               radius: 50,
               backgroundColor: const Color(0xffF2930D),

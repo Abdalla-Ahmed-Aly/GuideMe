@@ -23,6 +23,6 @@ abstract class AppRoutes {
   static const String editProfileScreen = '/editProfile';
   static const String addPaymentMethodScreen = '/addPaymentMethod';
   static const String bookingConfirmationScreen = '/bookingConfirmation';
-  static const String pandingApprovalScreen = '/pandingApproval';
+  static const String pendingApprovalScreen = '/pendingApproval';
   static const String acceptedScreen = '/acceptedScreen';
 }

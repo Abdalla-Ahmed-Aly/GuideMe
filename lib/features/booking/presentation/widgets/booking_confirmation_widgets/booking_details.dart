@@ -163,7 +163,7 @@ class BookingDetails extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 28),
           child: AppButton(
             onPressed: () {
-              context.push(AppRoutes.pandingApprovalScreen);
+              context.push(AppRoutes.pendingApprovalScreen);
             },
             text: context.l10n.apply,
           ),

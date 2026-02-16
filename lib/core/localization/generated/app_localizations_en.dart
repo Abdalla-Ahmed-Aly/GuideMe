@@ -444,4 +444,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recent => 'Recent';
+
+  @override
+  String get welcome => 'Marhaban!';
+
+  @override
+  String get mySchedule => 'My Schedule';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get live => 'LIVE';
+
+  @override
+  String get completed => 'COMPLETED';
+
+  @override
+  String get liveNow => 'LIVE NOW';
+
+  @override
+  String get trackLiveLocation => 'Track Live Location';
+
+  @override
+  String get endTour => 'End Tour';
+
+  @override
+  String get confirmEndTour => 'Are you sure you want to end this tour?';
+
+  @override
+  String get upcomingTour => 'UPCOMING TOUR';
+
+  @override
+  String get estimatedEarnings => 'Estimated Earnings';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get meetingPoint => 'Meeting Point';
 }

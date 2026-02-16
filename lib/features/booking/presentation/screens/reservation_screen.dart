@@ -10,19 +10,14 @@ class ReservationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        top: false,
-        left: false,
-        right: false,
-        child: Column(
-          children: [
-            CustomAppbar(
-              text: context.l10n.booking,
-            ),
+      body: Column(
+        children: [
+          CustomAppbar(
+            text: context.l10n.booking,
+          ),
 
-            const Expanded(child: ReservationScreenBody()),
-          ],
-        ),
+          const Expanded(child: ReservationScreenBody()),
+        ],
       ),
     );
   }

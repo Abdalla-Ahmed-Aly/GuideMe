@@ -444,4 +444,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get recent => 'مؤخر';
+
+  @override
+  String get welcome => 'مرحبًا!';
+
+  @override
+  String get mySchedule => 'جدولي';
+
+  @override
+  String get pending => 'قيد الانتظار';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get live => 'مباشر';
+
+  @override
+  String get completed => 'مكتمل';
+
+  @override
+  String get liveNow => 'مباشر الآن';
+
+  @override
+  String get trackLiveLocation => 'تتبع الموقع مباشرة';
+
+  @override
+  String get endTour => 'إنهاء الجولة';
+
+  @override
+  String get confirmEndTour => 'هل أنت متأكد أنك تريد إنهاء الجولة؟';
+
+  @override
+  String get upcomingTour => 'الرحلات القادمة';
+
+  @override
+  String get estimatedEarnings => 'الأرباح المتوقعة';
+
+  @override
+  String get date => 'التاريخ';
+
+  @override
+  String get meetingPoint => 'نقطة الالتقاء';
 }

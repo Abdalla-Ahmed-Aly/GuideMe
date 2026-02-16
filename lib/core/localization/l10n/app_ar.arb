@@ -148,5 +148,19 @@
   "goBack" : "رجوع",
   "chatwithtoUurist" : "الدردشة مع السائح",
   "travelerFeedback" : "آراء المسافرين",
-  "recent" : "مؤخر"
+  "recent" : "مؤخر",
+  "welcome": "مرحبًا!",
+  "mySchedule": "جدولي",
+  "pending": "قيد الانتظار",
+  "all": "الكل",
+  "live": "مباشر",
+  "completed": "مكتمل",
+  "liveNow": "مباشر الآن",
+  "trackLiveLocation": "تتبع الموقع مباشرة",
+  "endTour": "إنهاء الجولة",
+  "confirmEndTour": "هل أنت متأكد أنك تريد إنهاء الجولة؟",
+  "upcomingTour": "الرحلات القادمة",
+  "estimatedEarnings": "الأرباح المتوقعة",
+  "date": "التاريخ",
+  "meetingPoint": "نقطة الالتقاء"
 }

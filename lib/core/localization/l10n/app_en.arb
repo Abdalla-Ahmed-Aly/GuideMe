@@ -148,5 +148,19 @@
   "goBack" : "Go Back",
   "chatwithtoUurist" : "CHAT WITH TOURIST",
   "travelerFeedback" : "Traveler Feedback",
-  "recent" : "Recent"
+  "recent" : "Recent",
+  "welcome": "Marhaban!",
+  "mySchedule": "My Schedule",
+  "pending": "Pending",
+  "all": "All",
+  "live": "LIVE",
+  "completed": "COMPLETED",
+  "liveNow": "LIVE NOW",
+  "trackLiveLocation": "Track Live Location",
+  "endTour": "End Tour",
+  "confirmEndTour": "Are you sure you want to end this tour?",
+  "upcomingTour": "UPCOMING TOUR",
+  "estimatedEarnings": "Estimated Earnings",
+  "date": "Date",
+  "meetingPoint": "Meeting Point"
 }

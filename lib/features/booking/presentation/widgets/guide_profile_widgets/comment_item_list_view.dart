@@ -9,7 +9,7 @@ class CommentItemListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 5,
       shrinkWrap: true,
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10, bottom: 16),
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return const Padding(

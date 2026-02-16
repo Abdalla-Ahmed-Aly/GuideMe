@@ -130,7 +130,7 @@ abstract class AppRouter {
         builder: (context, state) => const BookingConfirmationScreen(),
       ),
       GoRoute(
-        path: AppRoutes.pandingApprovalScreen,
+        path: AppRoutes.pendingApprovalScreen,
         builder: (context, state) => const PandingApprovalScreen(),
       ),
       GoRoute(

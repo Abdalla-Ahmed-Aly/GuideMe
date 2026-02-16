@@ -7,7 +7,7 @@ class PandingApprovalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SafeArea(top: false, child: PandingApprovalBody()),
+      body: PandingApprovalBody(),
     );
   }
 }

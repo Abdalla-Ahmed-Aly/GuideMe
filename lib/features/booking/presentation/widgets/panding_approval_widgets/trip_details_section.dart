@@ -12,51 +12,44 @@ class TripDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.p),
-          child: Row(
-            children: [
-              CustomTripdetails(
-                title: 'Date',
-                value: 'Oct 24 , 2026',
-                pathicon: SvgPicture.asset(AppIcons.clender),
-              ),
-              SizedBox(
-                width: 100.p,
-              ),
-              CustomTripdetails(
-                pathicon: SvgPicture.asset(AppIcons.time),
-                title: 'Time',
-                value: '09:00 AM',
-              ),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomTripdetails(
+              title: 'Date',
+              value: 'Oct 24 , 2026',
+              pathicon: SvgPicture.asset(AppIcons.clender),
+            ),
+
+            CustomTripdetails(
+              pathicon: SvgPicture.asset(AppIcons.time),
+              title: 'Time',
+              value: '09:00 AM',
+            ),
+          ],
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.p),
-          child: Row(
-            children: [
-              const CustomTripdetails(
-                title: 'Duration',
-                value: '4 Hours',
-                pathicon: Icon(
-                  FontAwesomeIcons.hourglassEnd,
-                  size: 20,
-                ),
+
+        const SizedBox(height: 18),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const CustomTripdetails(
+              title: 'Duration',
+              value: '4 Hours',
+              pathicon: Icon(
+                FontAwesomeIcons.hourglassEnd,
+                size: 18,
+                color: AppColors.primary,
               ),
-              SizedBox(
-                width: 130.p,
-              ),
-              CustomTripdetails(
-                pathicon: SvgPicture.asset(AppIcons.people),
-                title: 'Group Size',
-                value: '3 People',
-              ),
-            ],
-          ),
+            ),
+
+            CustomTripdetails(
+              pathicon: SvgPicture.asset(AppIcons.people),
+              title: 'Group Size',
+              value: '3 People',
+            ),
+          ],
         ),
       ],
     );
@@ -85,28 +78,26 @@ class CustomTripdetails extends StatelessWidget {
             color: AppColors.white,
             shape: BoxShape.circle,
           ),
-          child: Padding(padding: const EdgeInsets.all(12), child: pathicon),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: pathicon,
+          ),
         ),
         const SizedBox(
-          width: 5,
+          width: 6,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 0),
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15.fs,
-                  color: const Color(0xff7C6965),
-                  fontWeight: FontWeight.w500,
-                ),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 15.fs,
+                color: const Color(0xff7C6965),
+                fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(
-              height: 4,
-            ),
+
             Text(
               value,
               style: TextStyle(

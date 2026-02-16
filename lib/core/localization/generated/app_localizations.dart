@@ -961,6 +961,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Recent'**
   String get recent;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Marhaban!'**
+  String get welcome;
+
+  /// No description provided for @mySchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'My Schedule'**
+  String get mySchedule;
+
+  /// No description provided for @pending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get pending;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @live.
+  ///
+  /// In en, this message translates to:
+  /// **'LIVE'**
+  String get live;
+
+  /// No description provided for @completed.
+  ///
+  /// In en, this message translates to:
+  /// **'COMPLETED'**
+  String get completed;
+
+  /// No description provided for @liveNow.
+  ///
+  /// In en, this message translates to:
+  /// **'LIVE NOW'**
+  String get liveNow;
+
+  /// No description provided for @trackLiveLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Live Location'**
+  String get trackLiveLocation;
+
+  /// No description provided for @endTour.
+  ///
+  /// In en, this message translates to:
+  /// **'End Tour'**
+  String get endTour;
+
+  /// No description provided for @confirmEndTour.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to end this tour?'**
+  String get confirmEndTour;
+
+  /// No description provided for @upcomingTour.
+  ///
+  /// In en, this message translates to:
+  /// **'UPCOMING TOUR'**
+  String get upcomingTour;
+
+  /// No description provided for @estimatedEarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated Earnings'**
+  String get estimatedEarnings;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @meetingPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Meeting Point'**
+  String get meetingPoint;
 }
 
 class _AppLocalizationsDelegate

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/app_assets/app_lotties.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/Accepted_screen_widgets/up_coming_tour_card.dart';
@@ -19,14 +18,17 @@ class AcceptedScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 50.h,
+            height: 60.h,
           ),
-          const CloseButtonwidget(),
+          Container(
+            alignment: Alignment.centerRight,
+            padding: EdgeInsets.only(right: 30.p),
+            child: const CloseButtonwidget(),
+          ),
           Center(
             child: Lottie.asset(
-              'assets/lotties/Checked.json',
-              width: 150.w,
-              height: 150.h,
+              AppLotties.checked,
+              height: 140.h,
             ),
           ),
 
@@ -70,7 +72,7 @@ class AcceptedScreenBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const CHATWITHTOURIST(),
+          const ChatWithTourist(),
           const SizedBox(height: 74),
         ],
       ),
@@ -78,8 +80,8 @@ class AcceptedScreenBody extends StatelessWidget {
   }
 }
 
-class CHATWITHTOURIST extends StatelessWidget {
-  const CHATWITHTOURIST({
+class ChatWithTourist extends StatelessWidget {
+  const ChatWithTourist({
     super.key,
   });
 
@@ -98,7 +100,7 @@ class CHATWITHTOURIST extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 13),
           ),
           onPressed: () {
-            context.push(AppRoutes.guideProfileScreen);
+            
           },
           child: Text(
             context.l10n.chatwithtoUurist,
