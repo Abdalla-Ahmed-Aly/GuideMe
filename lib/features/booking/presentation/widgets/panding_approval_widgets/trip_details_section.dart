@@ -18,11 +18,17 @@ class TripDetailsSection extends StatelessWidget {
             CustomTripdetails(
               title: 'Date',
               value: 'Oct 24 , 2026',
-              pathicon: SvgPicture.asset(AppIcons.clender),
+              pathicon: SvgPicture.asset(
+                AppIcons.clender,
+                width: 20,
+              ),
             ),
 
             CustomTripdetails(
-              pathicon: SvgPicture.asset(AppIcons.time),
+              pathicon: SvgPicture.asset(
+                AppIcons.time,
+                width: 20,
+              ),
               title: 'Time',
               value: '09:00 AM',
             ),
@@ -39,13 +45,16 @@ class TripDetailsSection extends StatelessWidget {
               value: '4 Hours',
               pathicon: Icon(
                 FontAwesomeIcons.hourglassEnd,
-                size: 18,
+                size: 20,
                 color: AppColors.primary,
               ),
             ),
 
             CustomTripdetails(
-              pathicon: SvgPicture.asset(AppIcons.people),
+              pathicon: SvgPicture.asset(
+                AppIcons.people,
+                width: 24,
+              ),
               title: 'Group Size',
               value: '3 People',
             ),
@@ -72,8 +81,6 @@ class CustomTripdetails extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 40.w,
-          height: 40.h,
           decoration: const BoxDecoration(
             color: AppColors.white,
             shape: BoxShape.circle,

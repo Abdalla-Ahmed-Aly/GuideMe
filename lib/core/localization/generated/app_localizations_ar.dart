@@ -416,7 +416,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get backMsg => 'رجوع';
 
   @override
-  String get cancel => 'إلغاء';
+  String get cancel => 'هل تريد إلغاء طلب الحجز؟';
 
   @override
   String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
@@ -486,4 +486,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get meetingPoint => 'نقطة الالتقاء';
+
+  @override
+  String get cancelMassage =>
+      'طلبك ما زال قيد المراجعة، هل أنت متأكد أنك تريد إلغاء طلب الحجز هذا؟';
+
+  @override
+  String get bookingAccepted => 'تم قبول الحجز';
+
+  @override
+  String get successMassage =>
+      'تم قبول حجزك بنجاح. يمكنك الآن التواصل مع السائح والاستعداد للجولة.';
 }

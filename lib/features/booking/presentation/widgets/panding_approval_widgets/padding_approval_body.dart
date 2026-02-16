@@ -70,13 +70,17 @@ class PandingApprovalBody extends StatelessWidget {
               },
               text: context.l10n.viewbooking,
               radius: 50,
+              height: 48,
               backgroundColor: const Color(0xffF2930D),
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          const DeclineBookingButton(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.p),
+            child: const DeclineBookingButton(),
+          ),
         ],
       ),
     );

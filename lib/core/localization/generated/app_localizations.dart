@@ -905,7 +905,7 @@ abstract class AppLocalizations {
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
-  /// **'Cancel'**
+  /// **'Cancel Booking Request?'**
   String get cancel;
 
   /// No description provided for @areYouSureToLogout.
@@ -1045,6 +1045,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Meeting Point'**
   String get meetingPoint;
+
+  /// No description provided for @cancelMassage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request is still pending approval.Are you sure you want to cancel this  booking request?'**
+  String get cancelMassage;
+
+  /// No description provided for @bookingAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Accepted'**
+  String get bookingAccepted;
+
+  /// No description provided for @successMassage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.'**
+  String get successMassage;
 }
 
 class _AppLocalizationsDelegate

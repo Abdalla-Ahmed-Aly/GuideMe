@@ -416,7 +416,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get backMsg => 'Back';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'Cancel Booking Request?';
 
   @override
   String get areYouSureToLogout => 'Are you sure that you want to logout?';
@@ -486,4 +486,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get meetingPoint => 'Meeting Point';
+
+  @override
+  String get cancelMassage =>
+      'Your request is still pending approval.Are you sure you want to cancel this  booking request?';
+
+  @override
+  String get bookingAccepted => 'Booking Accepted';
+
+  @override
+  String get successMassage =>
+      'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.';
 }

@@ -31,7 +31,7 @@ class UpComingTourCard extends StatelessWidget {
             height: 8,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 27, right: 60.p),
+            padding: EdgeInsets.only(left: 27, right: 90.p),
             child: PendingApprovalBadge(
               text: context.l10n.upcomingTour,
             ),
@@ -48,7 +48,10 @@ class UpComingTourCard extends StatelessWidget {
             child: CustomTripdetails(
               title: context.l10n.meetingPoint,
               value: 'Giza Pyramids Private Tour',
-              pathicon: SvgPicture.asset(AppIcons.location),
+              pathicon: SvgPicture.asset(
+                AppIcons.location,
+                width: 22,
+              ),
             ),
           ),
           const SizedBox(
@@ -59,7 +62,10 @@ class UpComingTourCard extends StatelessWidget {
             child: CustomTripdetails(
               title: context.l10n.date,
               value: 'Oct 24 , 2026 , 09:00 am',
-              pathicon: SvgPicture.asset(AppIcons.date),
+              pathicon: SvgPicture.asset(
+                AppIcons.date,
+                width: 20,
+              ),
             ),
           ),
           const SizedBox(

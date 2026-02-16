@@ -34,7 +34,7 @@ class AcceptedScreenBody extends StatelessWidget {
 
           Center(
             child: Text(
-              'Booking Accepted',
+              context.l10n.bookingAccepted,
               style: AppTextStyles.poppinsMedium28,
             ),
           ),
@@ -44,7 +44,7 @@ class AcceptedScreenBody extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 58.p),
             child: Text(
-              'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.',
+              context.l10n.successMassage,
               style: AppTextStyles.poppinsMedium14.copyWith(
                 color: const Color(0xff8190A5),
                 height: 1.5,
@@ -66,6 +66,7 @@ class AcceptedScreenBody extends StatelessWidget {
               onPressed: () {},
               text: 'View Schedule',
               radius: 50,
+              height: 48,
               backgroundColor: const Color(0xffF2930D),
             ),
           ),
@@ -91,6 +92,7 @@ class ChatWithTourist extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30.p),
       child: SizedBox(
         width: double.infinity,
+        height: 48,
         child: OutlinedButton(
           style: OutlinedButton.styleFrom(
             side: const BorderSide(color: Color(0xffEE3434)),
@@ -99,9 +101,7 @@ class ChatWithTourist extends StatelessWidget {
             ),
             padding: const EdgeInsets.symmetric(vertical: 13),
           ),
-          onPressed: () {
-            
-          },
+          onPressed: () {},
           child: Text(
             context.l10n.chatwithtoUurist,
             style: TextStyle(

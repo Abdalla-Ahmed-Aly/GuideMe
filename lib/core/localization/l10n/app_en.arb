@@ -162,5 +162,9 @@
   "upcomingTour": "UPCOMING TOUR",
   "estimatedEarnings": "Estimated Earnings",
   "date": "Date",
-  "meetingPoint": "Meeting Point"
+  "meetingPoint": "Meeting Point",
+  "cancelMassage" : "Your request is still pending approval.Are you sure you want to cancel this  booking request?",
+  "cancel" : "Cancel Booking Request?",
+  "bookingAccepted" : "Booking Accepted",
+  "successMassage" : "Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour."
 }

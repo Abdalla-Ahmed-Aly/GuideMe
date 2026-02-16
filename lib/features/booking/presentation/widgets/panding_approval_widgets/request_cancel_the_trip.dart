@@ -31,8 +31,9 @@ class RequestCancelTheTrip extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'Cancel Booking Request?',
+              context.l10n.cancel,
               style: AppTextStyles.poppinsSemiBold26,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 12,
@@ -40,7 +41,8 @@ class RequestCancelTheTrip extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 25.p),
               child: Text(
-                'Your request is still pending approval. Are you sure you want to cancel this booking request?',
+                context.l10n.cancelMassage,
+                textAlign: TextAlign.center,
                 style: AppTextStyles.poppinsLight20.copyWith(
                   color: const Color(0xff9C7A49),
                 ),
@@ -60,6 +62,7 @@ class RequestCancelTheTrip extends StatelessWidget {
                 text: context.l10n.yesCancelRequest,
                 radius: 17,
                 width: double.infinity,
+                height: 48,
                 backgroundColor: const Color(0xffF2930D),
               ),
             ),
@@ -71,6 +74,7 @@ class RequestCancelTheTrip extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10.p),
               child: SizedBox(
                 width: double.infinity,
+                height: 48,
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Color(0xffF2930D)),
