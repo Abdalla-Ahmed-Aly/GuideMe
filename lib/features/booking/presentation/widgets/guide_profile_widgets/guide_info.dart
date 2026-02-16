@@ -113,7 +113,8 @@ class GuideInfo extends StatelessWidget {
         ///earth icon
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 22.p),
-          child: Row(
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               SvgPicture.asset(
                 AppIcons.earth,
@@ -129,6 +130,7 @@ class GuideInfo extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 18, left: 18),
                 child: LanguageItem(text: context.l10n.english),
               ),
+
               LanguageItem(text: context.l10n.french),
             ],
           ),
@@ -147,9 +149,9 @@ class GuideInfo extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         const CertificateListView(),
+
         /// Certified Egyptologist part2
       ],
     );
   }
 }
-
