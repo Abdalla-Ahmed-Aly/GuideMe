@@ -12,8 +12,8 @@ class RecentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 374.w,
-      height: 33.h,
+      width: 374,
+      height: 33,
       decoration: BoxDecoration(
         color: const Color(0xffF2930D),
         borderRadius: BorderRadius.circular(30),

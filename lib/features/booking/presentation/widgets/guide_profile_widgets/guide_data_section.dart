@@ -73,10 +73,10 @@ class GuideDataSection extends StatelessWidget {
             height: 35,
           ),
           const RecentWidget(),
-          const SizedBox(
-            height: 16,
-          ),
-        const  CommentItemListView(),
+          // const SizedBox(
+          //   height: 16,
+          // ),
+          const CommentItemListView(),
         ],
       ),
     );
