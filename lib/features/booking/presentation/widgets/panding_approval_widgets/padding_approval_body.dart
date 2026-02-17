@@ -44,7 +44,7 @@ class PandingApprovalBody extends StatelessWidget {
             height: 24,
           ),
         const  Center(
-            child: const PendingApprovalBadge(
+            child:  PendingApprovalBadge(
               text: 'Pending Approval',
             ),
           ),
