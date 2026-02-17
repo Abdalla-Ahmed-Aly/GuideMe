@@ -20,11 +20,11 @@ class PandingApprovalBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           SizedBox(
             height: 60.h,
           ),
-
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: Row(
@@ -40,19 +40,13 @@ class PandingApprovalBody extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(
             height: 24,
           ),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 120.p),
-                child: const PendingApprovalBadge(
-                  text: 'Pending Approval',
-                ),
-              ),
-            ],
+        const  Center(
+            child: const PendingApprovalBadge(
+              text: 'Pending Approval',
+            ),
           ),
           const SizedBox(
             height: 47,

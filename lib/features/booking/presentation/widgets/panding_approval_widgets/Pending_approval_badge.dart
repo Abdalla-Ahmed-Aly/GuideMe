@@ -12,22 +12,18 @@ class PendingApprovalBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       decoration: BoxDecoration(
         color: const Color(0xffFFE5BA).withValues(alpha: .3),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: const Color(0xffFFE5BA)),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: CircleAvatar(
-              radius: 6,
-              backgroundColor: Color(0xFFF5C26C),
-            ),
+          const CircleAvatar(
+            radius: 6,
+            backgroundColor: Color(0xFFF5C26C),
           ),
           const SizedBox(width: 13),
           Text(
