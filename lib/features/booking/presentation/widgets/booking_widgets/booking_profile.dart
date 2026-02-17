@@ -18,8 +18,12 @@ class BookingProfile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: context.screenWidth * 0.12,
-            width: context.screenWidth * 0.12,
+            height: context.isPortrait
+                ? context.screenWidth * 0.12
+                : context.screenHeight * 0.12,
+            width: context.isPortrait
+                ? context.screenWidth * 0.12
+                : context.screenHeight * 0.12,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(

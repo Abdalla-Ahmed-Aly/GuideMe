@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:intl/intl.dart';
 
@@ -19,7 +19,9 @@ class DayChip extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        width: 55.w,
+        width: context.isPortrait
+            ? context.screenWidth * 0.13
+            : context.screenHeight * 0.13,
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         margin: const EdgeInsets.symmetric(horizontal: 5),
