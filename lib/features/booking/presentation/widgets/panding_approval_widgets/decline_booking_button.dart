@@ -12,7 +12,7 @@ class DeclineBookingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 48,
+      // height: 48,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           side: const BorderSide(color: Color(0xffEE3434)),

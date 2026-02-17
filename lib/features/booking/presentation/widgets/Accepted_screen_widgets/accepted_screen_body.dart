@@ -66,7 +66,7 @@ class AcceptedScreenBody extends StatelessWidget {
               onPressed: () {},
               text: 'View Schedule',
               radius: 50,
-              height: 48,
+
               backgroundColor: const Color(0xffF2930D),
             ),
           ),
@@ -92,7 +92,7 @@ class ChatWithTourist extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30.p),
       child: SizedBox(
         width: double.infinity,
-        height: 48,
+
         child: OutlinedButton(
           style: OutlinedButton.styleFrom(
             side: const BorderSide(color: Color(0xffEE3434)),

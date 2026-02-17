@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 
 class RatingRow extends StatelessWidget {
   const RatingRow({

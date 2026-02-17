@@ -47,7 +47,7 @@ class PandingApprovalBody extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 100.p),
+                padding: EdgeInsets.symmetric(horizontal: 120.p),
                 child: const PendingApprovalBadge(
                   text: 'Pending Approval',
                 ),
@@ -70,7 +70,7 @@ class PandingApprovalBody extends StatelessWidget {
               },
               text: context.l10n.viewbooking,
               radius: 50,
-              height: 48,
+
               backgroundColor: const Color(0xffF2930D),
             ),
           ),
