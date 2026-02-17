@@ -12,6 +12,7 @@ class CloseButtonwidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 35.w,
       decoration: BoxDecoration(
         color: const Color(0xffFFE5BA).withValues(alpha: .2),
         border: Border.all(color: const Color(0XFFCF872F)),

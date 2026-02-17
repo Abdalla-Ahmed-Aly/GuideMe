@@ -10,32 +10,29 @@ class DeclineBookingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      // height: 48,
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: Color(0xffEE3434)),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(50),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 13),
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size(double.infinity, 48),
+        side: const BorderSide(color: Color(0xffEE3434)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(50),
         ),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return const RequestCancelTheTrip();
-            },
-          );
-        },
-        child: Text(
-          context.l10n.declineBooking,
-          style: TextStyle(
-            fontSize: 16.fs,
-            color: const Color(0xffEE3434),
-            fontWeight: FontWeight.w600,
-          ),
+        padding: const EdgeInsets.symmetric(vertical: 13),
+      ),
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return const RequestCancelTheTrip();
+          },
+        );
+      },
+      child: Text(
+        context.l10n.declineBooking,
+        style: TextStyle(
+          fontSize: 16.fs,
+          color: const Color(0xffEE3434),
+          fontWeight: FontWeight.w600,
         ),
       ),
     );

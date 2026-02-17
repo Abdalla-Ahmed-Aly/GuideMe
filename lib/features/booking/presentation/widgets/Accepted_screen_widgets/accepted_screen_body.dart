@@ -20,15 +20,24 @@ class AcceptedScreenBody extends StatelessWidget {
           SizedBox(
             height: 60.h,
           ),
-          Container(
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(right: 30.p),
-            child: const CloseButtonwidget(),
-          ),
-          Center(
-            child: Lottie.asset(
-              AppLotties.checked,
-              height: 140.h,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.p),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(width: context.screenHeight * 0.045),
+                Center(
+                  child: Lottie.asset(
+                    AppLotties.checked,
+                    height: 140.h,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 100.p),
+                  child: const CloseButtonwidget(),
+                ),
+              ],
             ),
           ),
 
@@ -66,6 +75,7 @@ class AcceptedScreenBody extends StatelessWidget {
               onPressed: () {},
               text: 'View Schedule',
               radius: 50,
+              height: 48,
 
               backgroundColor: const Color(0xffF2930D),
             ),
@@ -90,25 +100,22 @@ class ChatWithTourist extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.p),
-      child: SizedBox(
-        width: double.infinity,
-
-        child: OutlinedButton(
-          style: OutlinedButton.styleFrom(
-            side: const BorderSide(color: Color(0xffEE3434)),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(50),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 13),
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          minimumSize: const Size(double.infinity, 48),
+          side: const BorderSide(color: Color(0xffEE3434)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(50),
           ),
-          onPressed: () {},
-          child: Text(
-            context.l10n.chatwithtoUurist,
-            style: TextStyle(
-              fontSize: 16.fs,
-              color: const Color(0xffF4A60E),
-              fontWeight: FontWeight.w600,
-            ),
+          padding: const EdgeInsets.symmetric(vertical: 13),
+        ),
+        onPressed: () {},
+        child: Text(
+          context.l10n.chatwithtoUurist,
+          style: TextStyle(
+            fontSize: 16.fs,
+            color: const Color(0xffF4A60E),
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

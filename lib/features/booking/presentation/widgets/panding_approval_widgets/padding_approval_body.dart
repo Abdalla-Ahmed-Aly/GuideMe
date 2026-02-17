@@ -43,8 +43,8 @@ class PandingApprovalBody extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-        const  Center(
-            child:  PendingApprovalBadge(
+          const Center(
+            child: PendingApprovalBadge(
               text: 'Pending Approval',
             ),
           ),
@@ -64,7 +64,7 @@ class PandingApprovalBody extends StatelessWidget {
               },
               text: context.l10n.viewbooking,
               radius: 50,
-
+              height: 48,
               backgroundColor: const Color(0xffF2930D),
             ),
           ),
