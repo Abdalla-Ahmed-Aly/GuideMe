@@ -12,8 +12,6 @@ class PendingApprovalBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 208,
-      height: 33,
       decoration: BoxDecoration(
         color: const Color(0xffFFE5BA).withValues(alpha: .3),
         borderRadius: BorderRadius.circular(20),

@@ -31,7 +31,7 @@ class UpComingTourCard extends StatelessWidget {
             height: 8,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 27, right: 90.p),
+            padding: EdgeInsets.only(left: 27, right: 100.p),
             child: PendingApprovalBadge(
               text: context.l10n.upcomingTour,
             ),
