@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class AllChip extends StatelessWidget {
@@ -15,7 +14,9 @@ class AllChip extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
-        width: 55.w,
+        width: context.isPortrait
+            ? context.screenWidth * 0.13
+            : context.screenHeight * 0.13,
         margin: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           border: Border.all(

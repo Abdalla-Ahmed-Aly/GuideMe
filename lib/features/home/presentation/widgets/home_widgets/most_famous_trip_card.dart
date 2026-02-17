@@ -21,7 +21,8 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: context.isPortrait ? size.width * 0.87 : size.height * 0.87,
+        // width: context.isPortrait ? size.width * 0.87 : size.height * 0.87,
+        width: size.width * 0.87,
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),

@@ -21,7 +21,7 @@ class LiveTripCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(20),
           border: const Border(
             left: BorderSide(
               color: Color(0xffF2930D),

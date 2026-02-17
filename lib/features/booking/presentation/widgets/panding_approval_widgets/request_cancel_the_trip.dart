@@ -22,7 +22,7 @@ class RequestCancelTheTrip extends StatelessWidget {
           children: [
             Lottie.asset(AppLotties.cancelBubbles),
             Text(
-              context.l10n.cancel,
+              context.l10n.cancelBookingRequest,
               style: AppTextStyles.poppinsSemiBold26,
               textAlign: TextAlign.center,
             ),

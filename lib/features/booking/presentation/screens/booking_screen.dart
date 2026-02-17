@@ -37,7 +37,10 @@ class BookingScreen extends StatelessWidget {
 
           // schedule list view
           SizedBox(
-            height: 80.h,
+            height: context.isPortrait
+                ? context.screenHeight * .087
+                : context.screenWidth * .087,
+            // height: 80.h,
             child: const ScheduleList(),
           ),
 
