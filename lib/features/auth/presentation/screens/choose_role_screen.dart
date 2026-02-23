@@ -63,7 +63,9 @@ class ChooseRoleScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 60.p),
                 child: AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push(AppRoutes.guideProfessionalInfoScreen);
+                  },
                   text: context.l10n.tourGuide,
                   radius: 40,
                   textStyle: AppTextStyles.interSemiBold24,

@@ -500,4 +500,50 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get successMassage =>
       'تم قبول حجزك بنجاح. يمكنك الآن التواصل مع السائح والاستعداد للجولة.';
+
+  @override
+  String get onboarding => 'استكمال البيانات';
+
+  @override
+  String guideSetupStep(Object current, Object percentage, Object total) {
+    return 'الخطوة $current من $total ($percentage٪)';
+  }
+
+  @override
+  String get profilePhoto => 'الصورة الشخصية';
+
+  @override
+  String get uploadProfessionalHeadshot => 'قم برفع صورة احترافية';
+
+  @override
+  String get identityVerification => 'التحقق من الهوية';
+
+  @override
+  String get nationalId => 'بطاقة الرقم القومي';
+
+  @override
+  String get nationalIdHint => 'مطلوب صورة الوجهين (JPEG, PNG, PDF)';
+
+  @override
+  String get tourGuideLicense => 'رخصة الإرشاد السياحي';
+
+  @override
+  String get tourGuideLicenseHint => 'رخصة صادرة من وزارة السياحة';
+
+  @override
+  String get professionalHistory => 'الخبرة المهنية';
+
+  @override
+  String get yearsOfExperience => 'سنوات الخبرة';
+
+  @override
+  String get yearsOfExperienceHint =>
+      'كم عدد السنوات التي عملت فيها كمرشد سياحي؟';
+
+  @override
+  String get verificationNote =>
+      'يتم استخدام مستنداتك المهنية لأغراض التحقق فقط ويتم حفظها بشكل آمن. المرشدون المعتمدون يحصلون على حجوزات أكثر بنسبة 40٪.';
+
+  @override
+  String get continueButton => 'متابعة';
 }

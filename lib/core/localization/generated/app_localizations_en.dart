@@ -500,4 +500,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get successMassage =>
       'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.';
+
+  @override
+  String get onboarding => 'Onboarding';
+
+  @override
+  String guideSetupStep(Object current, Object percentage, Object total) {
+    return 'Step $current of $total ($percentage%)';
+  }
+
+  @override
+  String get profilePhoto => 'Profile Photo';
+
+  @override
+  String get uploadProfessionalHeadshot => 'Upload professional headshot';
+
+  @override
+  String get identityVerification => 'Identity Verification';
+
+  @override
+  String get nationalId => 'National ID';
+
+  @override
+  String get nationalIdHint => 'Front and back required (JPEG, PNG, PDF)';
+
+  @override
+  String get tourGuideLicense => 'Tour Guide License';
+
+  @override
+  String get tourGuideLicenseHint => 'Ministry of Tourism issued License';
+
+  @override
+  String get professionalHistory => 'Professional History';
+
+  @override
+  String get yearsOfExperience => 'Years of Experience';
+
+  @override
+  String get yearsOfExperienceHint => 'How many years have you been a guide';
+
+  @override
+  String get verificationNote =>
+      'Your professional documents are used for verification purposes only and are stored securely. Verified guides get 40% more bookings.';
+
+  @override
+  String get continueButton => 'Continue';
 }

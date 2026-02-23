@@ -1069,6 +1069,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.'**
   String get successMassage;
+
+  /// No description provided for @onboarding.
+  ///
+  /// In en, this message translates to:
+  /// **'Onboarding'**
+  String get onboarding;
+
+  /// No description provided for @guideSetupStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total} ({percentage}%)'**
+  String guideSetupStep(Object current, Object percentage, Object total);
+
+  /// No description provided for @profilePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Photo'**
+  String get profilePhoto;
+
+  /// No description provided for @uploadProfessionalHeadshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload professional headshot'**
+  String get uploadProfessionalHeadshot;
+
+  /// No description provided for @identityVerification.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity Verification'**
+  String get identityVerification;
+
+  /// No description provided for @nationalId.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID'**
+  String get nationalId;
+
+  /// No description provided for @nationalIdHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Front and back required (JPEG, PNG, PDF)'**
+  String get nationalIdHint;
+
+  /// No description provided for @tourGuideLicense.
+  ///
+  /// In en, this message translates to:
+  /// **'Tour Guide License'**
+  String get tourGuideLicense;
+
+  /// No description provided for @tourGuideLicenseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ministry of Tourism issued License'**
+  String get tourGuideLicenseHint;
+
+  /// No description provided for @professionalHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional History'**
+  String get professionalHistory;
+
+  /// No description provided for @yearsOfExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Years of Experience'**
+  String get yearsOfExperience;
+
+  /// No description provided for @yearsOfExperienceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How many years have you been a guide'**
+  String get yearsOfExperienceHint;
+
+  /// No description provided for @verificationNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your professional documents are used for verification purposes only and are stored securely. Verified guides get 40% more bookings.'**
+  String get verificationNote;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
 }
 
 class _AppLocalizationsDelegate

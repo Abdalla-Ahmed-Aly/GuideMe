@@ -1,0 +1,150 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/profile_photo_section.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/verification_document_card.dart';
+
+import '../widgets/setup_progress_header.dart';
+
+class GuideProfessionalInfoScreen extends StatelessWidget {
+  const GuideProfessionalInfoScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xffF8F7F5),
+      appBar: AppBar(
+        backgroundColor: const Color(0xffF8F7F5),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            context.pop();
+          },
+        ),
+        title: Text(
+          context.l10n.onboarding,
+          style: AppTextStyles.poppinsSemiBold20,
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 18.p),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 12),
+            // header
+            SetupProgressHeader(
+              currentStep: 1,
+              percentage: 25,
+              title: context.l10n.onboarding,
+            ),
+
+            const SizedBox(height: 26),
+
+            // Profile photo section
+            const Align(
+              alignment: Alignment.center,
+              child: ProfilePhotoSection(),
+            ),
+
+            const SizedBox(height: 26),
+
+            // verfication document section
+            _buildIdentityVerification(context),
+
+            const SizedBox(height: 34),
+
+            _buildProfessionalHistory(context),
+
+            const SizedBox(height: 18),
+
+            Text(
+              context.l10n.verificationNote,
+              style: TextStyle(
+                fontSize: 14.fs,
+                color: const Color(0xffA38354),
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // continue button
+            AppButton(
+              text: context.l10n.continueText,
+              radius: 24.r,
+              height: 48.h,
+              onPressed: () {},
+            ),
+
+            const SizedBox(height: 32),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column _buildProfessionalHistory(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.l10n.professionalHistory,
+          style: AppTextStyles.poppinsSemiBold18,
+        ),
+
+        const SizedBox(height: 16),
+
+        Text(
+          context.l10n.yearsOfExperience,
+          style: AppTextStyles.poppinsRegular14,
+        ),
+
+        const SizedBox(height: 14),
+
+        CustomTextField(
+          hintText: context.l10n.yearsOfExperienceHint,
+          hintColor: const Color(0xffA38354),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(
+              color: Color(0xffA38354),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column _buildIdentityVerification(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.l10n.identityVerification,
+          style: AppTextStyles.poppinsSemiBold16,
+        ),
+
+        const SizedBox(height: 20),
+
+        VerificationDocumentCard(
+          title: context.l10n.nationalId,
+          hint: context.l10n.nationalIdHint,
+          svgIcon: AppIcons.idCard,
+        ),
+
+        const SizedBox(height: 20),
+
+        VerificationDocumentCard(
+          title: context.l10n.tourGuideLicense,
+          hint: context.l10n.tourGuideLicenseHint,
+          svgIcon: AppIcons.diploma, // TODO: change icon
+        ),
+      ],
+    );
+  }
+}

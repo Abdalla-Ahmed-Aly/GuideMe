@@ -17,6 +17,7 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -136,6 +137,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.acceptedScreen,
         builder: (context, state) => const AcceptedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.guideProfessionalInfoScreen,
+        builder: (context, state) => const GuideProfessionalInfoScreen(),
       ),
     ],
   );
