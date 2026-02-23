@@ -11,7 +11,7 @@ class EditProfileScreen extends StatelessWidget {
       body: Column(
         children: [
           EditProfileAppBar(),
-
+              
           Expanded(
             child: EditProfileSection(),
           ),

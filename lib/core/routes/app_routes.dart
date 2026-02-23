@@ -25,4 +25,8 @@ abstract class AppRoutes {
   static const String bookingConfirmationScreen = '/bookingConfirmation';
   static const String pendingApprovalScreen = '/pendingApproval';
   static const String acceptedScreen = '/acceptedScreen';
+  static const String dashboardScreen = '/dashboardScreen';
+  static const String bookingScreen = '/bookingScreen';
+  static const String analysisScreen = '/analysisScreen';
+  static const String mainNavigationBottombar = '/mainNavigationBottombar';
 }

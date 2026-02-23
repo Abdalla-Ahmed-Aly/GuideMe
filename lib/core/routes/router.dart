@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
@@ -17,6 +18,9 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom_bar_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/widgets/main_navigation_bottombar.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -136,6 +140,21 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.acceptedScreen,
         builder: (context, state) => const AcceptedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.mainNavigationBottombar,
+        builder: (context, state) => BlocProvider(
+          create: (context) => NavigationBottomBarCubitCubit(),
+          child: const MainNavigationBottombar(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.dashboardScreen,
+        builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.dashboardScreen,
+        builder: (context, state) => const DashboardScreen(),
       ),
     ],
   );
