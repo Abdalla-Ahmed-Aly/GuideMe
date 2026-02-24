@@ -1069,6 +1069,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.'**
   String get successMassage;
+
+  /// No description provided for @weeklySchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Schedule'**
+  String get weeklySchedule;
+
+  /// No description provided for @selectdays.
+  ///
+  /// In en, this message translates to:
+  /// **'Select days'**
+  String get selectdays;
 }
 
 class _AppLocalizationsDelegate

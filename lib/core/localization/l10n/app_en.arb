@@ -166,5 +166,7 @@
   "cancelMassage" : "Your request is still pending approval.Are you sure you want to cancel this  booking request?",
   "cancelBookingRequest" : "Cancel Booking Request?",
   "bookingAccepted" : "Booking Accepted",
-  "successMassage" : "Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour."
+  "successMassage" : "Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.",
+  "weeklySchedule" : "Weekly Schedule",
+  "selectdays" : "Select days"
 }

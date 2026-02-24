@@ -500,4 +500,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get successMassage =>
       'تم قبول حجزك بنجاح. يمكنك الآن التواصل مع السائح والاستعداد للجولة.';
+
+  @override
+  String get weeklySchedule => 'الجدول الأسبوعي';
+
+  @override
+  String get selectdays => 'اختر الأيام';
 }
