@@ -515,4 +515,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get to => 'الي';
+
+  @override
+  String get newRequests => 'طلب الجديد';
+
+  @override
+  String get decline => 'رفض';
+
+  @override
+  String get accept => 'قبول';
 }

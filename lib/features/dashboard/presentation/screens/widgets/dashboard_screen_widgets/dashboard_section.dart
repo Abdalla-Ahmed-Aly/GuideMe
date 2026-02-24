@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/requests_Item.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/user_profile_header.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/work_schedule_section.dart';
 
@@ -29,66 +32,73 @@ class DashboardSection extends StatelessWidget {
             height: 12,
           ),
           const WorkScheduleSection(),
+          const SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 21.p, right: 15.p),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                context.l10n.newRequests,
+                style: AppTextStyles.poppinsMedium16.copyWith(
+                  color: AppColors.black,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 7,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 21.p, right: 15.p),
+            child: ListviewRequiestItem(),
+          ),
         ],
       ),
     );
   }
 }
 
-class ShiftTimeField extends StatelessWidget {
-  const ShiftTimeField({
+class ListviewRequiestItem extends StatelessWidget {
+  const ListviewRequiestItem({
     super.key,
-    required this.time,
-    required this.colorbackground,
-    required this.width,
-    required this.colorborder,
-    required this.time1,
-    required this.textcolor,
   });
-  final String time;
-  final String time1;
-  final Color colorbackground;
-  final Color colorborder;
-  final double width;
-  final Color textcolor;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.only(top: 15),
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.only(bottom: 12),
+          child: RequestsItem(),
+        );
+      },
+      itemCount: 12,
+    );
+  }
+}
+
+class UserInfo extends StatelessWidget {
+  const UserInfo({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 170.w,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
+      width: 48,
+      height: 48,
       decoration: BoxDecoration(
-        color: colorbackground,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: colorborder, width: 2),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                time1,
-                style: AppTextStyles.poppinsMedium16.copyWith(
-                  color: textcolor,
-                ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                time,
-                style: AppTextStyles.poppinsMedium16.copyWith(
-                  color: textcolor,
-                ),
-              ),
-            ],
-          ),
-          Image.asset(
-            AppImages.clock,
-            width: 24,
-          ),
-        ],
+        shape: BoxShape.circle,
+        border: Border.all(color: const Color(0xffFFA537)),
+        image: const DecorationImage(
+          image: AssetImage(AppImages.profileImageTest),
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

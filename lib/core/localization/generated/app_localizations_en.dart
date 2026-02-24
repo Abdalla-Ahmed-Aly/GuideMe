@@ -515,4 +515,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get to => 'To';
+
+  @override
+  String get newRequests => 'New Requests (2)';
+
+  @override
+  String get decline => 'Decline';
+
+  @override
+  String get accept => 'Accept';
 }

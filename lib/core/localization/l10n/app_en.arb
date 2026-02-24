@@ -171,5 +171,8 @@
   "selectdays" : "Select days",
   "workhours" : "Work hours for selected days",
   "from" : "From",
-  "to"  : "To"
+  "to"  : "To",
+  "newRequests" : "New Requests (2)",
+  "decline" : "Decline",
+  "accept" : "Accept"
 }

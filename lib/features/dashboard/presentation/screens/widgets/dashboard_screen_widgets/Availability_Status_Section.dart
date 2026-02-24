@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
@@ -26,47 +25,43 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
       ),
       child: Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Availability',
-                style: AppTextStyles.poppinsMedium18,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Your are currently ',
-                    style: AppTextStyles.poppinsMedium18.copyWith(
-                      color: const Color(0xffB59A64),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Availability',
+                  style: AppTextStyles.poppinsMedium18,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Your are currently ',
+                      style: AppTextStyles.poppinsMedium18.copyWith(
+                        color: const Color(0xffB59A64),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  Text(
-                    'online',
-                    style: AppTextStyles.poppinsMedium18.copyWith(
-                      color: AppColors.primary,
+                    const SizedBox(width: 3),
+                    Text(
+                      'online',
+                      style: AppTextStyles.poppinsMedium18.copyWith(
+                        color: AppColors.primary,
+                      ),
                     ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.only(left: 60.p),
-                    child: Switch(
-                      activeThumbColor: AppColors.primary,
-                      inactiveThumbColor: Colors.white,
-                      value: isonline,
-                      onChanged: (value) {
-                        setState(() {
-                          isonline = value;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Switch(
+            activeThumbColor: AppColors.primary,
+            inactiveThumbColor: Colors.white,
+            value: isonline,
+            onChanged: (value) {
+              setState(() {
+                isonline = value;
+              });
+            },
           ),
         ],
       ),

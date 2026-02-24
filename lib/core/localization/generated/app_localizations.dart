@@ -1099,6 +1099,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'To'**
   String get to;
+
+  /// No description provided for @newRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'New Requests (2)'**
+  String get newRequests;
+
+  /// No description provided for @decline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get decline;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
 }
 
 class _AppLocalizationsDelegate
