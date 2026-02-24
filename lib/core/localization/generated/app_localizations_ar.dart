@@ -506,4 +506,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectdays => 'اختر الأيام';
+
+  @override
+  String get workhours => 'ساعات العمل في الأيام المختارة';
+
+  @override
+  String get from => ' من';
+
+  @override
+  String get to => 'الي';
 }

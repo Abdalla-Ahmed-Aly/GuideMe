@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/Schedule_working.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/user_profile_header.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/work_schedule_section.dart';
 
 class DashboardSection extends StatelessWidget {
   const DashboardSection({super.key});
@@ -38,49 +35,61 @@ class DashboardSection extends StatelessWidget {
   }
 }
 
-class WorkScheduleSection extends StatelessWidget {
-  const WorkScheduleSection({
+class ShiftTimeField extends StatelessWidget {
+  const ShiftTimeField({
     super.key,
+    required this.time,
+    required this.colorbackground,
+    required this.width,
+    required this.colorborder,
+    required this.time1,
+    required this.textcolor,
   });
-
+  final String time;
+  final String time1;
+  final Color colorbackground;
+  final Color colorborder;
+  final double width;
+  final Color textcolor;
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.zero,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: 21.p, right: 12.p),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      width: 170.w,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
+      decoration: BoxDecoration(
+        color: colorbackground,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: colorborder, width: 2),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                context.l10n.weeklySchedule,
-                style: AppTextStyles.poppinsMedium16,
+                time1,
+                style: AppTextStyles.poppinsMedium16.copyWith(
+                  color: textcolor,
+                ),
+              ),
+              const SizedBox(
+                height: 4,
               ),
               Text(
-                context.l10n.selectdays,
-                style: AppTextStyles.poppinsRegular14.copyWith(
-                  color: AppColors.primary,
+                time,
+                style: AppTextStyles.poppinsMedium16.copyWith(
+                  color: textcolor,
                 ),
               ),
             ],
           ),
-        ),
-        const SizedBox(
-          height: 21,
-        ),
-        BlocProvider(
-          create: (context) => BookingCubit(),
-          child: SizedBox(
-            height: context.isPortrait
-                ? context.screenHeight * .087
-                : context.screenWidth * .087,
-            child: const ScheduleWorking(),
+          Image.asset(
+            AppImages.clock,
+            width: 24,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

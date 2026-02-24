@@ -1081,6 +1081,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select days'**
   String get selectdays;
+
+  /// No description provided for @workhours.
+  ///
+  /// In en, this message translates to:
+  /// **'Work hours for selected days'**
+  String get workhours;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
 }
 
 class _AppLocalizationsDelegate

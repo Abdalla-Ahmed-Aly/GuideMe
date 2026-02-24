@@ -11,7 +11,6 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
-import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/panding_approval_screen.dart';

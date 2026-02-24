@@ -506,4 +506,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectdays => 'Select days';
+
+  @override
+  String get workhours => 'Work hours for selected days';
+
+  @override
+  String get from => 'From';
+
+  @override
+  String get to => 'To';
 }

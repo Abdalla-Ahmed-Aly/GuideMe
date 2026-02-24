@@ -168,5 +168,8 @@
   "bookingAccepted" : "Booking Accepted",
   "successMassage" : "Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.",
   "weeklySchedule" : "Weekly Schedule",
-  "selectdays" : "Select days"
+  "selectdays" : "Select days",
+  "workhours" : "Work hours for selected days",
+  "from" : "From",
+  "to"  : "To"
 }

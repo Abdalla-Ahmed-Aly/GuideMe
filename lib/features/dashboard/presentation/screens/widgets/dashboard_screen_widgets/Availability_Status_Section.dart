@@ -28,13 +28,11 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
               Text(
                 'Availability',
                 style: AppTextStyles.poppinsMedium18,
               ),
-
               Row(
                 children: [
                   Text(
@@ -52,18 +50,19 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
                       color: AppColors.primary,
                     ),
                   ),
-                  SizedBox(
-                    width: 50.w,
-                  ),
-                  Switch(
-                    activeThumbColor: AppColors.primary,
-                    inactiveThumbColor: Colors.white,
-                    value: isonline,
-                    onChanged: (value) {
-                      setState(() {
-                        isonline = value;
-                      });
-                    },
+
+                  Padding(
+                    padding: EdgeInsets.only(left: 60.p),
+                    child: Switch(
+                      activeThumbColor: AppColors.primary,
+                      inactiveThumbColor: Colors.white,
+                      value: isonline,
+                      onChanged: (value) {
+                        setState(() {
+                          isonline = value;
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),

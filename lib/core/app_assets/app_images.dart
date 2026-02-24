@@ -55,4 +55,5 @@ abstract class AppImages {
   static const String money = '$_basePath/money.png';
   static const String close = '$_basePath/false.png';
   static const String earth = '$_basePath/earth.png';
+  static const String clock = '$_basePath/clock1.png';
 }
