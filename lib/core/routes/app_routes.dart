@@ -29,4 +29,5 @@ abstract class AppRoutes {
   static const String bookingScreen = '/bookingScreen';
   static const String analysisScreen = '/analysisScreen';
   static const String mainNavigationBottombar = '/mainNavigationBottombar';
+  static const String bookingRequestScreen = '/bookingRequestScreen';
 }
