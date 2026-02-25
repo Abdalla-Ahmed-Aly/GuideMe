@@ -545,4 +545,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueButton => 'Continue';
+
+  @override
+  String get expertiseSetupTitle => 'Expertise Setup';
+
+  @override
+  String get expertiseLanguagesTitle => 'Expertise & Languages';
+
+  @override
+  String get expertiseDescription =>
+      'Tell us about your skills to help us match you with the right travelers exploring Egypt.';
+
+  @override
+  String get spokenLanguages => 'Spoken Languages';
+
+  @override
+  String get addLanguage => 'Add Language';
+
+  @override
+  String get areasOfExpertise => 'Areas of Expertise';
+
+  @override
+  String get selectLanguages => 'Select Languages';
+
+  @override
+  String get add => 'Add';
 }

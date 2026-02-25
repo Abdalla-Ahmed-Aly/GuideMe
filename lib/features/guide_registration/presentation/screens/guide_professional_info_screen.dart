@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
@@ -78,7 +79,9 @@ class GuideProfessionalInfoScreen extends StatelessWidget {
               text: context.l10n.continueText,
               radius: 24.r,
               height: 48.h,
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRoutes.guideExpertiseScreen);
+              },
             ),
 
             const SizedBox(height: 32),

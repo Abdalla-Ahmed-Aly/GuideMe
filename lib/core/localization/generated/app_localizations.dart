@@ -1153,6 +1153,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue'**
   String get continueButton;
+
+  /// No description provided for @expertiseSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expertise Setup'**
+  String get expertiseSetupTitle;
+
+  /// No description provided for @expertiseLanguagesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expertise & Languages'**
+  String get expertiseLanguagesTitle;
+
+  /// No description provided for @expertiseDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about your skills to help us match you with the right travelers exploring Egypt.'**
+  String get expertiseDescription;
+
+  /// No description provided for @spokenLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoken Languages'**
+  String get spokenLanguages;
+
+  /// No description provided for @addLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Language'**
+  String get addLanguage;
+
+  /// No description provided for @areasOfExpertise.
+  ///
+  /// In en, this message translates to:
+  /// **'Areas of Expertise'**
+  String get areasOfExpertise;
+
+  /// No description provided for @selectLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Languages'**
+  String get selectLanguages;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
 }
 
 class _AppLocalizationsDelegate

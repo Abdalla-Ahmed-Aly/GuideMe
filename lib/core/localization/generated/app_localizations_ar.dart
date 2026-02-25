@@ -546,4 +546,29 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueButton => 'متابعة';
+
+  @override
+  String get expertiseSetupTitle => 'إعداد الخبرات';
+
+  @override
+  String get expertiseLanguagesTitle => 'الخبرات واللغات';
+
+  @override
+  String get expertiseDescription =>
+      'أخبرنا عن مهاراتك لنتمكن من مطابقتك مع المسافرين المناسبين الذين يستكشفون مصر.';
+
+  @override
+  String get spokenLanguages => 'اللغات التي تتحدثها';
+
+  @override
+  String get addLanguage => 'إضافة لغة';
+
+  @override
+  String get areasOfExpertise => 'مجالات التخصص';
+
+  @override
+  String get selectLanguages => 'اختر اللغات';
+
+  @override
+  String get add => 'إضافة';
 }

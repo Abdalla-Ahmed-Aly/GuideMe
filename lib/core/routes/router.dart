@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
@@ -17,6 +18,8 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_expertise_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
@@ -30,6 +33,7 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
+    initialLocation: AppRoutes.guideProfessionalInfoScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -141,6 +145,13 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.guideProfessionalInfoScreen,
         builder: (context, state) => const GuideProfessionalInfoScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.guideExpertiseScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => SpokenLanguagesCubit(),
+          child: const GuideExpertiseScreen(),
+        ),
       ),
     ],
   );

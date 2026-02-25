@@ -180,5 +180,14 @@
   "yearsOfExperience": "سنوات الخبرة",
   "yearsOfExperienceHint": "كم عدد السنوات التي عملت فيها كمرشد سياحي؟",
   "verificationNote": "يتم استخدام مستنداتك المهنية لأغراض التحقق فقط ويتم حفظها بشكل آمن. المرشدون المعتمدون يحصلون على حجوزات أكثر بنسبة 40٪.",
-  "continueButton": "متابعة"
+  "continueButton": "متابعة",
+  "expertiseSetupTitle": "إعداد الخبرات",
+  "expertiseLanguagesTitle": "الخبرات واللغات",
+  "expertiseDescription": "أخبرنا عن مهاراتك لنتمكن من مطابقتك مع المسافرين المناسبين الذين يستكشفون مصر.",
+  "spokenLanguages": "اللغات التي تتحدثها",
+  "addLanguage": "إضافة لغة",
+  "areasOfExpertise": "مجالات التخصص",
+  "selectLanguages": "اختر اللغات",
+  "add": "إضافة",
+  "cancel": "إلغاء"
 }
