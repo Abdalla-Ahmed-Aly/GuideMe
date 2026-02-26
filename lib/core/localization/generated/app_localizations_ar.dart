@@ -571,4 +571,60 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get add => 'إضافة';
+
+  @override
+  String stepOf(Object current, Object total) {
+    return 'الخطوة $current من $total';
+  }
+
+  @override
+  String percentComplete(Object percent) {
+    return 'مكتمل $percent٪';
+  }
+
+  @override
+  String get availabilityPricingTitle => 'التوافر والتسعير';
+
+  @override
+  String get availabilityPricingDescription =>
+      'أخبرنا بمواعيد توافرك والسعر المفضل لك بالساعة لإرشاد الجولات في مصر.';
+
+  @override
+  String get hourlyRate => 'السعر بالساعة';
+
+  @override
+  String get usd => 'دولار';
+
+  @override
+  String get egp => 'جنيه';
+
+  @override
+  String get whereDoYouGuide => 'أين تقوم بالإرشاد؟';
+
+  @override
+  String get selectMoreCities => 'اختر مدن إضافية...';
+
+  @override
+  String get weeklySchedule => 'الجدول الأسبوعي';
+
+  @override
+  String get selectDays => 'اختر الأيام';
+
+  @override
+  String get workHoursForSelectedDays => 'ساعات العمل للأيام المحددة';
+
+  @override
+  String get from => 'من';
+
+  @override
+  String get to => 'إلى';
+
+  @override
+  String get saveAndContinue => 'حفظ والمتابعة';
+
+  @override
+  String get selectTime => 'اختر الوقت';
+
+  @override
+  String get pleaseSelectWorkHours => 'من فضلك اختر وقت البداية والنهاية';
 }

@@ -570,4 +570,60 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get add => 'Add';
+
+  @override
+  String stepOf(Object current, Object total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String percentComplete(Object percent) {
+    return '$percent% Complete';
+  }
+
+  @override
+  String get availabilityPricingTitle => 'Availability & Pricing';
+
+  @override
+  String get availabilityPricingDescription =>
+      'Tell us when you\'re free and your preferred hourly rates for guiding tours in Egypt.';
+
+  @override
+  String get hourlyRate => 'Hourly Rate';
+
+  @override
+  String get usd => 'USD';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get whereDoYouGuide => 'Where do you guide?';
+
+  @override
+  String get selectMoreCities => 'Select more cities...';
+
+  @override
+  String get weeklySchedule => 'Weekly Schedule';
+
+  @override
+  String get selectDays => 'Select days';
+
+  @override
+  String get workHoursForSelectedDays => 'Work hours for selected days';
+
+  @override
+  String get from => 'From';
+
+  @override
+  String get to => 'To';
+
+  @override
+  String get saveAndContinue => 'Save & Continue';
+
+  @override
+  String get selectTime => 'Select time';
+
+  @override
+  String get pleaseSelectWorkHours => 'Please select start and end time';
 }

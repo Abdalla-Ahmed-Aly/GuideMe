@@ -1201,6 +1201,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add'**
   String get add;
+
+  /// No description provided for @stepOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String stepOf(Object current, Object total);
+
+  /// No description provided for @percentComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% Complete'**
+  String percentComplete(Object percent);
+
+  /// No description provided for @availabilityPricingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Availability & Pricing'**
+  String get availabilityPricingTitle;
+
+  /// No description provided for @availabilityPricingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us when you\'re free and your preferred hourly rates for guiding tours in Egypt.'**
+  String get availabilityPricingDescription;
+
+  /// No description provided for @hourlyRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Hourly Rate'**
+  String get hourlyRate;
+
+  /// No description provided for @usd.
+  ///
+  /// In en, this message translates to:
+  /// **'USD'**
+  String get usd;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @whereDoYouGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Where do you guide?'**
+  String get whereDoYouGuide;
+
+  /// No description provided for @selectMoreCities.
+  ///
+  /// In en, this message translates to:
+  /// **'Select more cities...'**
+  String get selectMoreCities;
+
+  /// No description provided for @weeklySchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Schedule'**
+  String get weeklySchedule;
+
+  /// No description provided for @selectDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Select days'**
+  String get selectDays;
+
+  /// No description provided for @workHoursForSelectedDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Work hours for selected days'**
+  String get workHoursForSelectedDays;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
+
+  /// No description provided for @saveAndContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Save & Continue'**
+  String get saveAndContinue;
+
+  /// No description provided for @selectTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select time'**
+  String get selectTime;
+
+  /// No description provided for @pleaseSelectWorkHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select start and end time'**
+  String get pleaseSelectWorkHours;
 }
 
 class _AppLocalizationsDelegate

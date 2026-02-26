@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/expertise_area_grid_view.dart';
@@ -76,19 +77,24 @@ class GuideExpertiseScreen extends StatelessWidget {
                       const SizedBox(height: 16),
 
                       const ExpertiseAreaGridView(),
+                      const SizedBox(height: 16),
                     ],
                   ),
-                  const SizedBox(height: 16),
 
                   // continue button
-                  AppButton(
-                    text: context.l10n.continueText,
-                    radius: 24.r,
-                    height: 48.h,
-                    onPressed: () {},
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 32),
+                    child: AppButton(
+                      text: context.l10n.continueText,
+                      radius: 24.r,
+                      height: 48.h,
+                      onPressed: () {
+                        context.push(
+                          AppRoutes.guideAvailabilityAndPricingScreen,
+                        );
+                      },
+                    ),
                   ),
-
-                  const SizedBox(height: 32),
                 ],
               ),
             ),

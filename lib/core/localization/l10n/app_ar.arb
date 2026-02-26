@@ -189,5 +189,33 @@
   "areasOfExpertise": "مجالات التخصص",
   "selectLanguages": "اختر اللغات",
   "add": "إضافة",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "stepOf": "الخطوة {current} من {total}",
+  "@stepOf": {
+    "placeholders": {
+      "current": {},
+      "total": {}
+    }
+  },
+  "percentComplete": "مكتمل {percent}٪",
+  "@percentComplete": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "availabilityPricingTitle": "التوافر والتسعير",
+  "availabilityPricingDescription": "أخبرنا بمواعيد توافرك والسعر المفضل لك بالساعة لإرشاد الجولات في مصر.",
+  "hourlyRate": "السعر بالساعة",
+  "usd": "دولار",
+  "egp": "جنيه",
+  "whereDoYouGuide": "أين تقوم بالإرشاد؟",
+  "selectMoreCities": "اختر مدن إضافية...",
+  "weeklySchedule": "الجدول الأسبوعي",
+  "selectDays": "اختر الأيام",
+  "workHoursForSelectedDays": "ساعات العمل للأيام المحددة",
+  "from": "من",
+  "to": "إلى",
+  "saveAndContinue": "حفظ والمتابعة",
+  "selectTime": "اختر الوقت",
+"pleaseSelectWorkHours": "من فضلك اختر وقت البداية والنهاية"
 }

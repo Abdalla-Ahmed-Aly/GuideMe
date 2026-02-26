@@ -189,5 +189,33 @@
   "areasOfExpertise": "Areas of Expertise",
   "selectLanguages": "Select Languages",
   "add": "Add",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "stepOf": "Step {current} of {total}",
+  "@stepOf": {
+    "placeholders": {
+      "current": {},
+      "total": {}
+    }
+  },
+  "percentComplete": "{percent}% Complete",
+  "@percentComplete": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "availabilityPricingTitle": "Availability & Pricing",
+  "availabilityPricingDescription": "Tell us when you're free and your preferred hourly rates for guiding tours in Egypt.",
+  "hourlyRate": "Hourly Rate",
+  "usd": "USD",
+  "egp": "EGP",
+  "whereDoYouGuide": "Where do you guide?",
+  "selectMoreCities": "Select more cities...",
+  "weeklySchedule": "Weekly Schedule",
+  "selectDays": "Select days",
+  "workHoursForSelectedDays": "Work hours for selected days",
+  "from": "From",
+  "to": "To",
+  "saveAndContinue": "Save & Continue",
+  "selectTime": "Select time",
+"pleaseSelectWorkHours": "Please select start and end time"
 }

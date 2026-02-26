@@ -49,4 +49,7 @@ abstract class AppIcons {
   static const String signal = 'assets/icons/signal.svg';
   static const String cameraOutline = 'assets/icons/camera_outline.svg';
   static const String idCard = 'assets/icons/id_card.svg';
+  static const String coin = 'assets/icons/coin.svg';
+  static const String arrowDown = 'assets/icons/arrow_down.svg';
+  static const String arrowUp = 'assets/icons/arrow_up.svg';
 }

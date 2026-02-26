@@ -18,7 +18,10 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/select_guide_cities_cubit/select_guide_cities_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/work_hours_cubit/work_hours_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_availability_and_pricing_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_expertise_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
@@ -151,6 +154,20 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => SpokenLanguagesCubit(),
           child: const GuideExpertiseScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.guideAvailabilityAndPricingScreen,
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => SelectGuideCitiesCubit(),
+            ),
+            BlocProvider(
+              create: (context) => WorkHoursCubit(),
+            ),
+          ],
+          child: const GuideAvailabilityAndPricingScreen(),
         ),
       ),
     ],

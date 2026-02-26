@@ -27,4 +27,5 @@ abstract class AppRoutes {
   static const String acceptedScreen = '/acceptedScreen';
   static const String guideProfessionalInfoScreen = '/guideProfessionalInfoScreen';
   static const String guideExpertiseScreen = '/guideExpertiseScreen';
+  static const String guideAvailabilityAndPricingScreen = '/guideAvailabilityAndPricingScreen';
 }
