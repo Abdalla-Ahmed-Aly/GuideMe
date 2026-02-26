@@ -60,5 +60,8 @@ abstract class AppImages {
   static const String timer1 = '$_basePath/timer1.png';
   static const String correcting = '$_basePath/correcting.png';
   static const String girl = '$_basePath/girl.png';
+  static const String mettingpointlocation = '$_basePath/mettingpointlocation.png';
+  static const String arrowback = '$_basePath/arrowback.png';
+  static const String chat = '$_basePath/chat.png'; 
   //
 }

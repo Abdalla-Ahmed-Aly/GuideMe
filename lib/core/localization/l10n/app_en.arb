@@ -174,5 +174,14 @@
   "to"  : "To",
   "newRequests" : "New Requests (2)",
   "decline" : "Decline",
-  "accept" : "Accept"
+  "accept" : "Accept",
+  "professionalInformation" : "Professional Information",
+  "dateTIME" : "DATE & TIME",
+  "dURATION" :"DURATION",
+  "groupsize" : "GROUP SIZE",
+  "experience" : "EXPERIENCE",
+  "mettingpoint" : "MEETING POINT",
+  "directions" :"Directions",
+  "paymentSummary" : "Payment Summary",
+  "yourEarnings" : "Your Earnings"
 }

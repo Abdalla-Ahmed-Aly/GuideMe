@@ -524,4 +524,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accept => 'Accept';
+
+  @override
+  String get professionalInformation => 'Professional Information';
+
+  @override
+  String get dateTIME => 'DATE & TIME';
+
+  @override
+  String get dURATION => 'DURATION';
+
+  @override
+  String get groupsize => 'GROUP SIZE';
+
+  @override
+  String get experience => 'EXPERIENCE';
+
+  @override
+  String get mettingpoint => 'MEETING POINT';
+
+  @override
+  String get directions => 'Directions';
+
+  @override
+  String get paymentSummary => 'Payment Summary';
+
+  @override
+  String get yourEarnings => 'Your Earnings';
 }

@@ -1117,6 +1117,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Accept'**
   String get accept;
+
+  /// No description provided for @professionalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Information'**
+  String get professionalInformation;
+
+  /// No description provided for @dateTIME.
+  ///
+  /// In en, this message translates to:
+  /// **'DATE & TIME'**
+  String get dateTIME;
+
+  /// No description provided for @dURATION.
+  ///
+  /// In en, this message translates to:
+  /// **'DURATION'**
+  String get dURATION;
+
+  /// No description provided for @groupsize.
+  ///
+  /// In en, this message translates to:
+  /// **'GROUP SIZE'**
+  String get groupsize;
+
+  /// No description provided for @experience.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPERIENCE'**
+  String get experience;
+
+  /// No description provided for @mettingpoint.
+  ///
+  /// In en, this message translates to:
+  /// **'MEETING POINT'**
+  String get mettingpoint;
+
+  /// No description provided for @directions.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions'**
+  String get directions;
+
+  /// No description provided for @paymentSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Summary'**
+  String get paymentSummary;
+
+  /// No description provided for @yourEarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Earnings'**
+  String get yourEarnings;
 }
 
 class _AppLocalizationsDelegate

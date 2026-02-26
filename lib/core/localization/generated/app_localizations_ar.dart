@@ -524,4 +524,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accept => 'قبول';
+
+  @override
+  String get professionalInformation => 'المعلومات المهنية';
+
+  @override
+  String get dateTIME => 'التاريخ والوقت';
+
+  @override
+  String get dURATION => 'المدة';
+
+  @override
+  String get groupsize => 'حجم المجموعة';
+
+  @override
+  String get experience => 'الخبرة';
+
+  @override
+  String get mettingpoint => 'نقطة التقاء';
+
+  @override
+  String get directions => 'الاتجاهات';
+
+  @override
+  String get paymentSummary => 'ملخّص الدفع';
+
+  @override
+  String get yourEarnings => 'أرباحك';
 }
