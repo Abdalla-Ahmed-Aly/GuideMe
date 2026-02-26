@@ -12,23 +12,20 @@ class MEETINGPOINTSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
         color: AppColors.white,
         border: Border.all(color: const Color(0xffFFE5BA)),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Column(
+      child: const Column(
         children: [
-          const MeetingPointHeader(),
-          const SizedBox(
+          MeetingPointHeader(),
+          SizedBox(
             height: 12,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 7.p),
-            child: const MettingPointLocation(),
-          ),
-          const SizedBox(
+          MettingPointLocation(),
+          SizedBox(
             height: 10,
           ),
         ],
@@ -51,7 +48,7 @@ class MettingPointLocation extends StatelessWidget {
       ),
       child: Image.asset(
         AppImages.mettingpointlocation,
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     );
   }

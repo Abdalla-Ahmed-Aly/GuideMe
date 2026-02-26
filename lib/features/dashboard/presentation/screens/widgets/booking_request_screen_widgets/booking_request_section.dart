@@ -15,6 +15,7 @@ class BookingRequestSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,14 +23,17 @@ class BookingRequestSection extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Stack(
+            alignment: Alignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 34, right: 74),
-                child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Image.asset(AppImages.arrowback),
+                padding: const EdgeInsets.only(left: 23),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Image.asset(AppImages.arrowback),
+                  ),
                 ),
               ),
               Center(
