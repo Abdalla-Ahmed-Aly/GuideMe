@@ -183,5 +183,8 @@
   "mettingpoint" : "MEETING POINT",
   "directions" :"Directions",
   "paymentSummary" : "Payment Summary",
-  "yourEarnings" : "Your Earnings"
+  "yourEarnings" : "Your Earnings",
+  "analysis" : "Analysis",
+  "totalEarnings" : "Total Earnings",
+  "completed" : "Completed "
 }

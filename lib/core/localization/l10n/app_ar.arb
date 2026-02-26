@@ -183,7 +183,10 @@
   "mettingpoint" : "نقطة التقاء",
   "directions" : "الاتجاهات",
   "paymentSummary" : "ملخّص الدفع",
-  "yourEarnings" : "أرباحك"
+  "yourEarnings" : "أرباحك",
+  "analysis" : "تحليل",
+  "totalEarnings" : "إجمالي الأرباح",
+  "completed" : "مكتمل"
   
   
 }

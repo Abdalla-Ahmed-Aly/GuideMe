@@ -63,5 +63,7 @@ abstract class AppImages {
   static const String mettingpointlocation = '$_basePath/mettingpointlocation.png';
   static const String arrowback = '$_basePath/arrowback.png';
   static const String chat = '$_basePath/chat.png'; 
+  static const String money1 = '$_basePath/money1.png';
+  static const String item = '$_basePath/item.png';
   //
 }

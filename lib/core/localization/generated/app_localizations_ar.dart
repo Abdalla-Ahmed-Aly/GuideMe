@@ -551,4 +551,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get yourEarnings => 'أرباحك';
+
+  @override
+  String get analysis => 'تحليل';
+
+  @override
+  String get totalEarnings => 'إجمالي الأرباح';
 }

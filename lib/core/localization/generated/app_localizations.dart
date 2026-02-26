@@ -995,7 +995,7 @@ abstract class AppLocalizations {
   /// No description provided for @completed.
   ///
   /// In en, this message translates to:
-  /// **'COMPLETED'**
+  /// **'Completed '**
   String get completed;
 
   /// No description provided for @liveNow.
@@ -1171,6 +1171,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your Earnings'**
   String get yourEarnings;
+
+  /// No description provided for @analysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis'**
+  String get analysis;
+
+  /// No description provided for @totalEarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Earnings'**
+  String get totalEarnings;
 }
 
 class _AppLocalizationsDelegate

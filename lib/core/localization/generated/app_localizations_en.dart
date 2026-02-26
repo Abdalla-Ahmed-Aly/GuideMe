@@ -461,7 +461,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get live => 'LIVE';
 
   @override
-  String get completed => 'COMPLETED';
+  String get completed => 'Completed ';
 
   @override
   String get liveNow => 'LIVE NOW';
@@ -551,4 +551,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get yourEarnings => 'Your Earnings';
+
+  @override
+  String get analysis => 'Analysis';
+
+  @override
+  String get totalEarnings => 'Total Earnings';
 }
