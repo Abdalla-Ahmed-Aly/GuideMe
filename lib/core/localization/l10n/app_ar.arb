@@ -217,5 +217,22 @@
   "to": "إلى",
   "saveAndContinue": "حفظ والمتابعة",
   "selectTime": "اختر الوقت",
-"pleaseSelectWorkHours": "من فضلك اختر وقت البداية والنهاية"
+  "pleaseSelectWorkHours": "من فضلك اختر وقت البداية والنهاية",
+  "onboardingProgress": "تقدم التسجيل",
+  "verificationInProgress": "التحقق قيد المراجعة",
+  "verificationDescription": "نقوم بمراجعة مستنداتك للتحقق من حساب المرشد الخاص بك. تستغرق هذه العملية عادةً حتى 48 ساعة.",
+  "nationalId": "الرقم القومي",
+  "touristGuideLicence": "رخصة الإرشاد السياحي",
+  "profileInformation": "معلومات الملف الشخصي",
+  "submitted": "تم الإرسال",
+  "verificationTitle": "التحقق",
+  "actionRequired": "مطلوب إجراء",
+  "verificationFailedMessage": "لم نتمكن من التحقق من مستنداتك بعد. يرجى مراجعة الملاحظات أدناه وإعادة الإرسال.",
+  "issuesFound": "تم العثور على مشكلات",
+  "tourGuideLicense": "رخصة المرشد السياحي",
+  "imageTooBlurry": "الصورة غير واضحة",
+  "notesFromAdmin": "ملاحظات الإدارة",
+  "adminNoteMessage": "يرجى التأكد من أن جميع النصوص واضحة وأن الصورة ملتقطة بإضاءة جيدة. استخدم سطحًا مستويًا وتجنب انعكاس ضوء الفلاش.",
+  "viewDocumentGuidelines": "عرض إرشادات المستند",
+  "updateDocuments": "تحديث المستندات"
 }

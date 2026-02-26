@@ -217,5 +217,22 @@
   "to": "To",
   "saveAndContinue": "Save & Continue",
   "selectTime": "Select time",
-"pleaseSelectWorkHours": "Please select start and end time"
+  "pleaseSelectWorkHours": "Please select start and end time",
+  "onboardingProgress": "Onboarding Progress",
+  "verificationInProgress": "Verification in Progress",
+  "verificationDescription": "We're reviewing your documents to verify your guide account. This usually takes up to 48 hours.",
+  "nationalId": "National ID",
+  "touristGuideLicence": "Tourist Guide Licence",
+  "profileInformation": "Profile Information",
+  "submitted": "SUBMITTED",
+  "verificationTitle": "Verification",
+  "actionRequired": "Action Required",
+  "verificationFailedMessage": "We couldn't verify your documents yet. Please review the notes below and resubmit.",
+  "issuesFound": "ISSUES FOUND",
+  "tourGuideLicense": "Tour Guide License",
+  "imageTooBlurry": "Image is too blurry",
+  "notesFromAdmin": "Notes from Admin",
+  "adminNoteMessage": "Please ensure all text is legible and the photo is taken in good lighting. Use a flat surface and avoid camera flash reflection.",
+  "viewDocumentGuidelines": "View document guidelines",
+  "updateDocuments": "Update Documents"
 }

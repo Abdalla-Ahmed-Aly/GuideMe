@@ -626,4 +626,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseSelectWorkHours => 'Please select start and end time';
+
+  @override
+  String get onboardingProgress => 'Onboarding Progress';
+
+  @override
+  String get verificationInProgress => 'Verification in Progress';
+
+  @override
+  String get verificationDescription =>
+      'We\'re reviewing your documents to verify your guide account. This usually takes up to 48 hours.';
+
+  @override
+  String get touristGuideLicence => 'Tourist Guide Licence';
+
+  @override
+  String get profileInformation => 'Profile Information';
+
+  @override
+  String get submitted => 'SUBMITTED';
+
+  @override
+  String get verificationTitle => 'Verification';
+
+  @override
+  String get actionRequired => 'Action Required';
+
+  @override
+  String get verificationFailedMessage =>
+      'We couldn\'t verify your documents yet. Please review the notes below and resubmit.';
+
+  @override
+  String get issuesFound => 'ISSUES FOUND';
+
+  @override
+  String get imageTooBlurry => 'Image is too blurry';
+
+  @override
+  String get notesFromAdmin => 'Notes from Admin';
+
+  @override
+  String get adminNoteMessage =>
+      'Please ensure all text is legible and the photo is taken in good lighting. Use a flat surface and avoid camera flash reflection.';
+
+  @override
+  String get viewDocumentGuidelines => 'View document guidelines';
+
+  @override
+  String get updateDocuments => 'Update Documents';
 }

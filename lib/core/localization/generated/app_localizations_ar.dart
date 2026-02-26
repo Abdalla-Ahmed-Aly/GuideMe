@@ -519,13 +519,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get identityVerification => 'التحقق من الهوية';
 
   @override
-  String get nationalId => 'بطاقة الرقم القومي';
+  String get nationalId => 'الرقم القومي';
 
   @override
   String get nationalIdHint => 'مطلوب صورة الوجهين (JPEG, PNG, PDF)';
 
   @override
-  String get tourGuideLicense => 'رخصة الإرشاد السياحي';
+  String get tourGuideLicense => 'رخصة المرشد السياحي';
 
   @override
   String get tourGuideLicenseHint => 'رخصة صادرة من وزارة السياحة';
@@ -627,4 +627,52 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pleaseSelectWorkHours => 'من فضلك اختر وقت البداية والنهاية';
+
+  @override
+  String get onboardingProgress => 'تقدم التسجيل';
+
+  @override
+  String get verificationInProgress => 'التحقق قيد المراجعة';
+
+  @override
+  String get verificationDescription =>
+      'نقوم بمراجعة مستنداتك للتحقق من حساب المرشد الخاص بك. تستغرق هذه العملية عادةً حتى 48 ساعة.';
+
+  @override
+  String get touristGuideLicence => 'رخصة الإرشاد السياحي';
+
+  @override
+  String get profileInformation => 'معلومات الملف الشخصي';
+
+  @override
+  String get submitted => 'تم الإرسال';
+
+  @override
+  String get verificationTitle => 'التحقق';
+
+  @override
+  String get actionRequired => 'مطلوب إجراء';
+
+  @override
+  String get verificationFailedMessage =>
+      'لم نتمكن من التحقق من مستنداتك بعد. يرجى مراجعة الملاحظات أدناه وإعادة الإرسال.';
+
+  @override
+  String get issuesFound => 'تم العثور على مشكلات';
+
+  @override
+  String get imageTooBlurry => 'الصورة غير واضحة';
+
+  @override
+  String get notesFromAdmin => 'ملاحظات الإدارة';
+
+  @override
+  String get adminNoteMessage =>
+      'يرجى التأكد من أن جميع النصوص واضحة وأن الصورة ملتقطة بإضاءة جيدة. استخدم سطحًا مستويًا وتجنب انعكاس ضوء الفلاش.';
+
+  @override
+  String get viewDocumentGuidelines => 'عرض إرشادات المستند';
+
+  @override
+  String get updateDocuments => 'تحديث المستندات';
 }

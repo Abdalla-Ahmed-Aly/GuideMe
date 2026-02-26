@@ -52,4 +52,6 @@ abstract class AppIcons {
   static const String coin = 'assets/icons/coin.svg';
   static const String arrowDown = 'assets/icons/arrow_down.svg';
   static const String arrowUp = 'assets/icons/arrow_up.svg';
+  static const String userOutline = 'assets/icons/user_outline.svg';
+  static const String file = 'assets/icons/file.svg';
 }

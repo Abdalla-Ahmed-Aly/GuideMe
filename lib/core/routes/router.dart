@@ -24,6 +24,8 @@ import 'package:guide_me/features/guide_registration/presentation/cubits/work_ho
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_availability_and_pricing_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_expertise_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -169,6 +171,14 @@ abstract class AppRouter {
           ],
           child: const GuideAvailabilityAndPricingScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.guideVerificationScreen,
+        builder: (context, state) => const GuideVerificationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.verificationFailedScreen,
+        builder: (context, state) => const VerificationFailedScreen(),
       ),
     ],
   );

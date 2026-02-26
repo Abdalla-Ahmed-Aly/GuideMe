@@ -1303,6 +1303,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select start and end time'**
   String get pleaseSelectWorkHours;
+
+  /// No description provided for @onboardingProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Onboarding Progress'**
+  String get onboardingProgress;
+
+  /// No description provided for @verificationInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification in Progress'**
+  String get verificationInProgress;
+
+  /// No description provided for @verificationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re reviewing your documents to verify your guide account. This usually takes up to 48 hours.'**
+  String get verificationDescription;
+
+  /// No description provided for @touristGuideLicence.
+  ///
+  /// In en, this message translates to:
+  /// **'Tourist Guide Licence'**
+  String get touristGuideLicence;
+
+  /// No description provided for @profileInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Information'**
+  String get profileInformation;
+
+  /// No description provided for @submitted.
+  ///
+  /// In en, this message translates to:
+  /// **'SUBMITTED'**
+  String get submitted;
+
+  /// No description provided for @verificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification'**
+  String get verificationTitle;
+
+  /// No description provided for @actionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Action Required'**
+  String get actionRequired;
+
+  /// No description provided for @verificationFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t verify your documents yet. Please review the notes below and resubmit.'**
+  String get verificationFailedMessage;
+
+  /// No description provided for @issuesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'ISSUES FOUND'**
+  String get issuesFound;
+
+  /// No description provided for @imageTooBlurry.
+  ///
+  /// In en, this message translates to:
+  /// **'Image is too blurry'**
+  String get imageTooBlurry;
+
+  /// No description provided for @notesFromAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes from Admin'**
+  String get notesFromAdmin;
+
+  /// No description provided for @adminNoteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please ensure all text is legible and the photo is taken in good lighting. Use a flat surface and avoid camera flash reflection.'**
+  String get adminNoteMessage;
+
+  /// No description provided for @viewDocumentGuidelines.
+  ///
+  /// In en, this message translates to:
+  /// **'View document guidelines'**
+  String get viewDocumentGuidelines;
+
+  /// No description provided for @updateDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Documents'**
+  String get updateDocuments;
 }
 
 class _AppLocalizationsDelegate

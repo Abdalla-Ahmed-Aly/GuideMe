@@ -28,4 +28,6 @@ abstract class AppRoutes {
   static const String guideProfessionalInfoScreen = '/guideProfessionalInfoScreen';
   static const String guideExpertiseScreen = '/guideExpertiseScreen';
   static const String guideAvailabilityAndPricingScreen = '/guideAvailabilityAndPricingScreen';
+  static const String guideVerificationScreen = '/guideVerificationScreen';
+  static const String verificationFailedScreen = '/verificationFailedScreen';
 }
