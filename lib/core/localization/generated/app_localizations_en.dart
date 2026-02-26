@@ -557,4 +557,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get totalEarnings => 'Total Earnings';
+
+  @override
+  String get verified => 'verified';
 }

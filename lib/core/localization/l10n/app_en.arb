@@ -186,5 +186,6 @@
   "yourEarnings" : "Your Earnings",
   "analysis" : "Analysis",
   "totalEarnings" : "Total Earnings",
-  "completed" : "Completed "
+  "completed" : "Completed ",
+  "verified" : "verified"
 }

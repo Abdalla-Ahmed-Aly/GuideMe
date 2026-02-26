@@ -22,7 +22,12 @@ class DashboardSection extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          const UserProfileHeader(),
+          GestureDetector(
+            onTap: () {
+              context.push(AppRoutes.guideProfileScreen);
+            },
+            child: const UserProfileHeader(),
+          ),
           const SizedBox(
             height: 26,
           ),
@@ -74,13 +79,14 @@ class ListviewRequiestItem extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.only(top: 15),
       itemBuilder: (context, index) {
-        return  Padding(
-          padding:const EdgeInsets.only(bottom: 12),
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 12),
           child: GestureDetector(
             onTap: () {
               context.push(AppRoutes.bookingRequestScreen);
             },
-            child:const RequestsItem()),
+            child: const RequestsItem(),
+          ),
         );
       },
       itemCount: 12,

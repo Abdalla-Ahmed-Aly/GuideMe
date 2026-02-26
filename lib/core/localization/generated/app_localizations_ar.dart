@@ -557,4 +557,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get totalEarnings => 'إجمالي الأرباح';
+
+  @override
+  String get verified => 'موثَّق';
 }

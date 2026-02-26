@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/widgets/analysis_screen.dart';
@@ -17,15 +19,16 @@ class MainNavigationBottombar extends StatefulWidget {
 
 class _MainNavigationBottombarState extends State<MainNavigationBottombar> {
   final PageController pageController = PageController();
-  final List<Widget> pages = const [
-    DashboardScreen(),
-    Scaffold(
-      body: Center(child: Text("booking Screen")),
+  final List<Widget> pages =  [
+    const DashboardScreen(),
+    BlocProvider(
+      create: (context) => BookingCubit(),
+      child: const BookingScreen(),
     ),
-    Scaffold(
+    const Scaffold(
       body: Center(child: Text("Chat Screen")),
     ),
-    AnalysisScreen(),
+    const AnalysisScreen(),
   ];
   void changedscreen(int index) {
     context.read<NavigationBottomBarCubitCubit>().changeIndex(index);

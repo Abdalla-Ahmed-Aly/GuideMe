@@ -1183,6 +1183,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Total Earnings'**
   String get totalEarnings;
+
+  /// No description provided for @verified.
+  ///
+  /// In en, this message translates to:
+  /// **'verified'**
+  String get verified;
 }
 
 class _AppLocalizationsDelegate

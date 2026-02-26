@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-
 
 class CommentItem extends StatelessWidget {
   const CommentItem({
@@ -31,34 +30,54 @@ class CommentItem extends StatelessWidget {
                   radius: 30,
                   backgroundImage: AssetImage(AppImages.profileImageTest),
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 12, top: 9),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Sarah Jenkins',
-                        style: AppTextStyles.poppinsRegular18,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(AppImages.earth),
-                          const SizedBox(
-                            width: 3,
-                          ),
-                          Text(
-                            'English(Uk) . 2 days ago',
-                            style: AppTextStyles.poppinsRegular16.copyWith(
-                              color: const Color(0xffB59A64),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12, top: 9),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Sarah Jenkins',
+                          style: AppTextStyles.poppinsRegular18,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(AppImages.earth),
+                            const SizedBox(
+                              width: 3,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'English(Uk) . 2 days ago',
+                              style: AppTextStyles.poppinsRegular16.copyWith(
+                                color: const Color(0xffB59A64),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 10.p),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffFEF4E6),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text(
+                      context.l10n.verified,
+                      style: AppTextStyles.poppinsMedium14.copyWith(
+                        color: const Color(0xffF2930D),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ],
