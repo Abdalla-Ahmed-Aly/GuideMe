@@ -509,6 +509,112 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get workhours => 'Work hours for selected days';
+  String get onboarding => 'Onboarding';
+
+  @override
+  String guideSetupStep(Object current, Object percentage, Object total) {
+    return 'Step $current of $total ($percentage%)';
+  }
+
+  @override
+  String get profilePhoto => 'Profile Photo';
+
+  @override
+  String get uploadProfessionalHeadshot => 'Upload professional headshot';
+
+  @override
+  String get identityVerification => 'Identity Verification';
+
+  @override
+  String get nationalId => 'National ID';
+
+  @override
+  String get nationalIdHint => 'Front and back required (JPEG, PNG, PDF)';
+
+  @override
+  String get tourGuideLicense => 'Tour Guide License';
+
+  @override
+  String get tourGuideLicenseHint => 'Ministry of Tourism issued License';
+
+  @override
+  String get professionalHistory => 'Professional History';
+
+  @override
+  String get yearsOfExperience => 'Years of Experience';
+
+  @override
+  String get yearsOfExperienceHint => 'How many years have you been a guide';
+
+  @override
+  String get verificationNote =>
+      'Your professional documents are used for verification purposes only and are stored securely. Verified guides get 40% more bookings.';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get expertiseSetupTitle => 'Expertise Setup';
+
+  @override
+  String get expertiseLanguagesTitle => 'Expertise & Languages';
+
+  @override
+  String get expertiseDescription =>
+      'Tell us about your skills to help us match you with the right travelers exploring Egypt.';
+
+  @override
+  String get spokenLanguages => 'Spoken Languages';
+
+  @override
+  String get addLanguage => 'Add Language';
+
+  @override
+  String get areasOfExpertise => 'Areas of Expertise';
+
+  @override
+  String get selectLanguages => 'Select Languages';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String stepOf(Object current, Object total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String percentComplete(Object percent) {
+    return '$percent% Complete';
+  }
+
+  @override
+  String get availabilityPricingTitle => 'Availability & Pricing';
+
+  @override
+  String get availabilityPricingDescription =>
+      'Tell us when you\'re free and your preferred hourly rates for guiding tours in Egypt.';
+
+  @override
+  String get hourlyRate => 'Hourly Rate';
+
+  @override
+  String get usd => 'USD';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get whereDoYouGuide => 'Where do you guide?';
+
+  @override
+  String get selectMoreCities => 'Select more cities...';
+
+  @override
+  String get selectDays => 'Select days';
+
+  @override
+  String get workHoursForSelectedDays => 'Work hours for selected days';
 
   @override
   String get from => 'From';
@@ -560,4 +666,87 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verified => 'verified';
+  String get saveAndContinue => 'Save & Continue';
+
+  @override
+  String get selectTime => 'Select time';
+
+  @override
+  String get pleaseSelectWorkHours => 'Please select start and end time';
+
+  @override
+  String get onboardingProgress => 'Onboarding Progress';
+
+  @override
+  String get verificationInProgress => 'Verification in Progress';
+
+  @override
+  String get verificationDescription =>
+      'We\'re reviewing your documents to verify your guide account. This usually takes up to 48 hours.';
+
+  @override
+  String get touristGuideLicence => 'Tourist Guide Licence';
+
+  @override
+  String get profileInformation => 'Profile Information';
+
+  @override
+  String get submitted => 'SUBMITTED';
+
+  @override
+  String get verificationTitle => 'Verification';
+
+  @override
+  String get actionRequired => 'Action Required';
+
+  @override
+  String get verificationFailedMessage =>
+      'We couldn\'t verify your documents yet. Please review the notes below and resubmit.';
+
+  @override
+  String get issuesFound => 'ISSUES FOUND';
+
+  @override
+  String get imageTooBlurry => 'Image is too blurry';
+
+  @override
+  String get notesFromAdmin => 'Notes from Admin';
+
+  @override
+  String get adminNoteMessage =>
+      'Please ensure all text is legible and the photo is taken in good lighting. Use a flat surface and avoid camera flash reflection.';
+
+  @override
+  String get viewDocumentGuidelines => 'View document guidelines';
+
+  @override
+  String get updateDocuments => 'Update Documents';
+
+  @override
+  String get verifiedBadge => 'VERIFIED BADGE';
+
+  @override
+  String get congratulations => 'Congratulations!';
+
+  @override
+  String get verificationSuccessMessage =>
+      'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUID ME.';
+
+  @override
+  String get accountStatus => 'Account Status';
+
+  @override
+  String get statusLabel => 'Status:';
+
+  @override
+  String get statusActive => 'Active';
+
+  @override
+  String get memberSince => 'Member Since';
+
+  @override
+  String get identity => 'Identity';
+
+  @override
+  String get fullAccess => 'Full Access';
 }

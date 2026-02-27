@@ -30,4 +30,10 @@ abstract class AppRoutes {
   static const String analysisScreen = '/analysisScreen';
   static const String mainNavigationBottombar = '/mainNavigationBottombar';
   static const String bookingRequestScreen = '/bookingRequestScreen';
+  static const String guideProfessionalInfoScreen = '/guideProfessionalInfoScreen';
+  static const String guideExpertiseScreen = '/guideExpertiseScreen';
+  static const String guideAvailabilityAndPricingScreen = '/guideAvailabilityAndPricingScreen';
+  static const String guideVerificationScreen = '/guideVerificationScreen';
+  static const String verificationFailedScreen = '/verificationFailedScreen';
+  static const String guideVerificationSuccessScreen = '/guideVerificationSuccessScreen';
 }

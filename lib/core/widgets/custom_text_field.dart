@@ -12,7 +12,8 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.controller,
-    this.keyboardType, this.border,
+    this.keyboardType,
+    this.border, this.hintColor,
   });
   final String? hintText;
   final bool obscureText;
@@ -23,11 +24,12 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final InputBorder? border;
+  final Color? hintColor;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller:controller ,
+      controller: controller,
       obscureText: obscureText,
       style: AppTextStyles.interRegular16,
       onChanged: onChanged,
@@ -39,7 +41,7 @@ class CustomTextField extends StatelessWidget {
           color: AppColors.natural1,
         ),
         hintStyle: AppTextStyles.interRegular16.copyWith(
-          color: AppColors.natural1,
+          color:hintColor??  AppColors.natural1,
         ),
         labelText: labelText,
         hintText: hintText,

@@ -560,4 +560,196 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verified => 'موثَّق';
+  String get onboarding => 'استكمال البيانات';
+
+  @override
+  String guideSetupStep(Object current, Object percentage, Object total) {
+    return 'الخطوة $current من $total ($percentage٪)';
+  }
+
+  @override
+  String get profilePhoto => 'الصورة الشخصية';
+
+  @override
+  String get uploadProfessionalHeadshot => 'قم برفع صورة احترافية';
+
+  @override
+  String get identityVerification => 'التحقق من الهوية';
+
+  @override
+  String get nationalId => 'الرقم القومي';
+
+  @override
+  String get nationalIdHint => 'مطلوب صورة الوجهين (JPEG, PNG, PDF)';
+
+  @override
+  String get tourGuideLicense => 'رخصة المرشد السياحي';
+
+  @override
+  String get tourGuideLicenseHint => 'رخصة صادرة من وزارة السياحة';
+
+  @override
+  String get professionalHistory => 'الخبرة المهنية';
+
+  @override
+  String get yearsOfExperience => 'سنوات الخبرة';
+
+  @override
+  String get yearsOfExperienceHint =>
+      'كم عدد السنوات التي عملت فيها كمرشد سياحي؟';
+
+  @override
+  String get verificationNote =>
+      'يتم استخدام مستنداتك المهنية لأغراض التحقق فقط ويتم حفظها بشكل آمن. المرشدون المعتمدون يحصلون على حجوزات أكثر بنسبة 40٪.';
+
+  @override
+  String get continueButton => 'متابعة';
+
+  @override
+  String get expertiseSetupTitle => 'إعداد الخبرات';
+
+  @override
+  String get expertiseLanguagesTitle => 'الخبرات واللغات';
+
+  @override
+  String get expertiseDescription =>
+      'أخبرنا عن مهاراتك لنتمكن من مطابقتك مع المسافرين المناسبين الذين يستكشفون مصر.';
+
+  @override
+  String get spokenLanguages => 'اللغات التي تتحدثها';
+
+  @override
+  String get addLanguage => 'إضافة لغة';
+
+  @override
+  String get areasOfExpertise => 'مجالات التخصص';
+
+  @override
+  String get selectLanguages => 'اختر اللغات';
+
+  @override
+  String get add => 'إضافة';
+
+  @override
+  String stepOf(Object current, Object total) {
+    return 'الخطوة $current من $total';
+  }
+
+  @override
+  String percentComplete(Object percent) {
+    return 'مكتمل $percent٪';
+  }
+
+  @override
+  String get availabilityPricingTitle => 'التوافر والتسعير';
+
+  @override
+  String get availabilityPricingDescription =>
+      'أخبرنا بمواعيد توافرك والسعر المفضل لك بالساعة لإرشاد الجولات في مصر.';
+
+  @override
+  String get hourlyRate => 'السعر بالساعة';
+
+  @override
+  String get usd => 'دولار';
+
+  @override
+  String get egp => 'جنيه';
+
+  @override
+  String get whereDoYouGuide => 'أين تقوم بالإرشاد؟';
+
+  @override
+  String get selectMoreCities => 'اختر مدن إضافية...';
+
+  @override
+  String get selectDays => 'اختر الأيام';
+
+  @override
+  String get workHoursForSelectedDays => 'ساعات العمل للأيام المحددة';
+
+  @override
+  String get saveAndContinue => 'حفظ والمتابعة';
+
+  @override
+  String get selectTime => 'اختر الوقت';
+
+  @override
+  String get pleaseSelectWorkHours => 'من فضلك اختر وقت البداية والنهاية';
+
+  @override
+  String get onboardingProgress => 'تقدم التسجيل';
+
+  @override
+  String get verificationInProgress => 'التحقق قيد المراجعة';
+
+  @override
+  String get verificationDescription =>
+      'نقوم بمراجعة مستنداتك للتحقق من حساب المرشد الخاص بك. تستغرق هذه العملية عادةً حتى 48 ساعة.';
+
+  @override
+  String get touristGuideLicence => 'رخصة الإرشاد السياحي';
+
+  @override
+  String get profileInformation => 'معلومات الملف الشخصي';
+
+  @override
+  String get submitted => 'تم الإرسال';
+
+  @override
+  String get verificationTitle => 'التحقق';
+
+  @override
+  String get actionRequired => 'مطلوب إجراء';
+
+  @override
+  String get verificationFailedMessage =>
+      'لم نتمكن من التحقق من مستنداتك بعد. يرجى مراجعة الملاحظات أدناه وإعادة الإرسال.';
+
+  @override
+  String get issuesFound => 'تم العثور على مشكلات';
+
+  @override
+  String get imageTooBlurry => 'الصورة غير واضحة';
+
+  @override
+  String get notesFromAdmin => 'ملاحظات الإدارة';
+
+  @override
+  String get adminNoteMessage =>
+      'يرجى التأكد من أن جميع النصوص واضحة وأن الصورة ملتقطة بإضاءة جيدة. استخدم سطحًا مستويًا وتجنب انعكاس ضوء الفلاش.';
+
+  @override
+  String get viewDocumentGuidelines => 'عرض إرشادات المستند';
+
+  @override
+  String get updateDocuments => 'تحديث المستندات';
+
+  @override
+  String get verifiedBadge => 'شارة موثقة';
+
+  @override
+  String get congratulations => 'تهانينا!';
+
+  @override
+  String get verificationSuccessMessage =>
+      'تم التحقق من حسابك كمرشد سياحي بنجاح. يمكنك الآن استقبال الحجوزات وبدء رحلتك مع GUID ME.';
+
+  @override
+  String get accountStatus => 'حالة الحساب';
+
+  @override
+  String get statusLabel => 'الحالة:';
+
+  @override
+  String get statusActive => 'نشط';
+
+  @override
+  String get memberSince => 'عضو منذ';
+
+  @override
+  String get identity => 'الهوية';
+
+  @override
+  String get fullAccess => 'وصول كامل';
 }
