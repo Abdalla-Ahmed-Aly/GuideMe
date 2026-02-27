@@ -14,6 +14,7 @@ class AvailabilityStatusSection extends StatefulWidget {
 
 class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
   bool isonline = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,9 +44,11 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
                     ),
                     const SizedBox(width: 3),
                     Text(
-                      'online',
+                      isonline ? 'online' : 'offline',
                       style: AppTextStyles.poppinsMedium18.copyWith(
-                        color: AppColors.primary,
+                        color: isonline
+                            ? AppColors.primary
+                            : Colors.grey.shade700,
                       ),
                     ),
                   ],
@@ -54,8 +57,11 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
             ),
           ),
           Switch(
-            activeThumbColor: AppColors.primary,
-            inactiveThumbColor: Colors.white,
+            activeThumbColor: AppColors.white,
+            activeTrackColor: AppColors.primary,
+            inactiveThumbColor: AppColors.primary,
+            inactiveTrackColor: AppColors.white,
+            trackOutlineColor: WidgetStateProperty.all(AppColors.primary),
             value: isonline,
             onChanged: (value) {
               setState(() {

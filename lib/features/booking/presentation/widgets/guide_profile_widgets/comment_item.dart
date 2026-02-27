@@ -64,9 +64,9 @@ class CommentItem extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(right: 10.p),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 8,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 14.p,
+                      vertical: 8.p,
                     ),
                     decoration: BoxDecoration(
                       color: const Color(0xffFEF4E6),
