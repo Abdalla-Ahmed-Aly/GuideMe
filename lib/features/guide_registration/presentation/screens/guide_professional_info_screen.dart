@@ -8,7 +8,7 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_professional_info_widgets/profile_photo_section.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/verification_document_card.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/guide_professional_info_widgets/verification_document_card.dart';
 
 import '../widgets/setup_progress_header.dart';
 
