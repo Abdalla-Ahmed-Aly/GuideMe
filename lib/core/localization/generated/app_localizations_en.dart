@@ -674,4 +674,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updateDocuments => 'Update Documents';
+
+  @override
+  String get verifiedBadge => 'VERIFIED BADGE';
+
+  @override
+  String get congratulations => 'Congratulations!';
+
+  @override
+  String get verificationSuccessMessage =>
+      'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUID ME.';
+
+  @override
+  String get accountStatus => 'Account Status';
+
+  @override
+  String get statusLabel => 'Status:';
+
+  @override
+  String get statusActive => 'Active';
+
+  @override
+  String get memberSince => 'Member Since';
+
+  @override
+  String get identity => 'Identity';
+
+  @override
+  String get fullAccess => 'Full Access';
 }

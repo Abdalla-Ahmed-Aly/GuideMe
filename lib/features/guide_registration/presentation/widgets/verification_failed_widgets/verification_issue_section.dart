@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/admin_note_card.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/document_issues_list_view.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/admin_note_card.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/document_issues_list_view.dart';
 
 class VerificationIssueSection extends StatelessWidget {
   const VerificationIssueSection({super.key});
@@ -17,12 +17,11 @@ class VerificationIssueSection extends StatelessWidget {
       ),
       child: const Column(
         children: [
-           DocumentIssuesListView(),
-          
+          DocumentIssuesListView(),
+
           AdminNoteCard(),
         ],
       ),
     );
   }
 }
-

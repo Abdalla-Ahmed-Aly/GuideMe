@@ -6,7 +6,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/verification_issue_section.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/verification_issue_section.dart';
 import 'package:lottie/lottie.dart';
 
 class VerificationFailedScreen extends StatelessWidget {
@@ -96,7 +96,7 @@ class VerificationFailedScreen extends StatelessWidget {
                         },
                         text: context.l10n.updateDocuments,
                         radius: 15,
-                        height: context.isPortrait ? 48.h : 48.w,
+                        height: 48.h,
                       ),
 
                       const SizedBox(height: 30),

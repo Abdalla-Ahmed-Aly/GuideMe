@@ -675,4 +675,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get updateDocuments => 'تحديث المستندات';
+
+  @override
+  String get verifiedBadge => 'شارة موثقة';
+
+  @override
+  String get congratulations => 'تهانينا!';
+
+  @override
+  String get verificationSuccessMessage =>
+      'تم التحقق من حسابك كمرشد سياحي بنجاح. يمكنك الآن استقبال الحجوزات وبدء رحلتك مع GUID ME.';
+
+  @override
+  String get accountStatus => 'حالة الحساب';
+
+  @override
+  String get statusLabel => 'الحالة:';
+
+  @override
+  String get statusActive => 'نشط';
+
+  @override
+  String get memberSince => 'عضو منذ';
+
+  @override
+  String get identity => 'الهوية';
+
+  @override
+  String get fullAccess => 'وصول كامل';
 }

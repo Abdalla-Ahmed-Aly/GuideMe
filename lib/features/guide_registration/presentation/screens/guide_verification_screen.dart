@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/setup_progress_header.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/verification_document_tile.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/guide_verification_widgets/verification_document_tile.dart';
 
 class GuideVerificationScreen extends StatelessWidget {
   const GuideVerificationScreen({super.key});
@@ -17,12 +16,6 @@ class GuideVerificationScreen extends StatelessWidget {
       backgroundColor: const Color(0xffF7F0E7),
       appBar: AppBar(
         backgroundColor: const Color(0xffF7F0E7),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            context.pop();
-          },
-        ),
         title: Text(
           context.l10n.onboarding,
           style: AppTextStyles.poppinsSemiBold20,
@@ -45,7 +38,7 @@ class GuideVerificationScreen extends StatelessWidget {
             // image
             Image.asset(
               AppImages.guideVerification,
-              height: 300.h,
+              height: 280.h,
             ),
 
             const SizedBox(height: 24),

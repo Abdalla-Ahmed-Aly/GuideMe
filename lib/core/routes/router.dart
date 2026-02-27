@@ -25,6 +25,7 @@ import 'package:guide_me/features/guide_registration/presentation/screens/guide_
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_expertise_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
@@ -179,6 +180,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.verificationFailedScreen,
         builder: (context, state) => const VerificationFailedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.guideVerificationSuccessScreen,
+        builder: (context, state) => const GuideVerificationSuccessScreen(),
       ),
     ],
   );

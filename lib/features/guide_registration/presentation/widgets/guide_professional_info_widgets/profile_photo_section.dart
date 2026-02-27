@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class ProfilePhotoSection extends StatelessWidget {
@@ -42,8 +41,8 @@ class UploadPhoto extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: 150.h,
-          height: 150.w,
+          width: 150,
+          height: 150,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
@@ -58,10 +57,10 @@ class UploadPhoto extends StatelessWidget {
 
         Positioned(
           bottom: 0,
-          right: 4.w,
+          right: 4,
           child: Container(
-            width: 46.w,
-            height: 46.h,
+            width: 46,
+            height: 46,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: const Color(0xffF2930D),

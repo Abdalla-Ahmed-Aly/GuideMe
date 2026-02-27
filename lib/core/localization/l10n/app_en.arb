@@ -234,5 +234,14 @@
   "notesFromAdmin": "Notes from Admin",
   "adminNoteMessage": "Please ensure all text is legible and the photo is taken in good lighting. Use a flat surface and avoid camera flash reflection.",
   "viewDocumentGuidelines": "View document guidelines",
-  "updateDocuments": "Update Documents"
+  "updateDocuments": "Update Documents",
+  "verifiedBadge": "VERIFIED BADGE",
+  "congratulations": "Congratulations!",
+  "verificationSuccessMessage": "Your guide account has been successfully verified. You're now ready to accept bookings and start your journey with GUID ME.",
+  "accountStatus": "Account Status",
+  "statusLabel": "Status:",
+  "statusActive": "Active",
+  "memberSince": "Member Since",
+  "identity": "Identity",
+  "fullAccess": "Full Access"
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/document_issue_tile.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/document_issue_tile.dart';
 
 class DocumentIssuesListView extends StatelessWidget {
   const DocumentIssuesListView({super.key});

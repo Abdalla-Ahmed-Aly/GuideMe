@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/add_language.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/language_chip.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/guide_expertise_widgets/add_language.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/guide_expertise_widgets/language_chip.dart';
 
 class SelectSpokenLanguagesSection extends StatelessWidget {
   const SelectSpokenLanguagesSection({

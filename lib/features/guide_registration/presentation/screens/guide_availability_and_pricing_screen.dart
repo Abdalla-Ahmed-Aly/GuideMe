@@ -5,12 +5,12 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/cities_selector_section.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/guide_working_hours.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/pricing_section.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/weekly_schedule_list.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/availability_and_pricing_widgets/cities_selector_section.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/availability_and_pricing_widgets/guide_working_hours.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/availability_and_pricing_widgets/pricing_section.dart';
+import 'package:guide_me/features/guide_registration/presentation/widgets/availability_and_pricing_widgets/weekly_schedule_list.dart';
 
-import '../widgets/availability_and_pricing_header.dart';
+import '../widgets/availability_and_pricing_widgets/availability_and_pricing_header.dart';
 
 class GuideAvailabilityAndPricingScreen extends StatelessWidget {
   const GuideAvailabilityAndPricingScreen({super.key});
@@ -111,7 +111,7 @@ class GuideAvailabilityAndPricingScreen extends StatelessWidget {
                     radius: 24.r,
                     height: 48.h,
                     onPressed: () {
-                      context.push(AppRoutes.verificationFailedScreen);
+                      context.go(AppRoutes.guideVerificationSuccessScreen);
                     },
                   ),
                 ),
