@@ -7,7 +7,7 @@ import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/book
 import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/analysis_screen.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/analysis_screen.dart';
 
 class MainNavigationBottombar extends StatefulWidget {
   const MainNavigationBottombar({super.key});

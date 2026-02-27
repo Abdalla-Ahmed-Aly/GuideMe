@@ -21,7 +21,7 @@ import 'package:guide_me/features/booking/presentation/screens/guide_profile_scr
 import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/main_navigation_bottombar.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/main_navigation_bottombar.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
