@@ -5,6 +5,7 @@ import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/dynamic_stars%20.dart';
 
 class CommentItem extends StatelessWidget {
   const CommentItem({
@@ -61,50 +62,34 @@ class CommentItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 10.p),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 14.p,
-                      vertical: 8.p,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFEF4E6),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Text(
-                      context.l10n.verified,
-                      style: AppTextStyles.poppinsMedium14.copyWith(
-                        color: const Color(0xffF2930D),
-                      ),
+
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.p,
+                    vertical: 8.p,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffFEF4E6),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text(
+                    context.l10n.verified,
+                    style: AppTextStyles.poppinsMedium14.copyWith(
+                      color: const Color(0xffF2930D),
                     ),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 19, left: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SvgPicture.asset(AppIcons.star1),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  SvgPicture.asset(AppIcons.star1),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  SvgPicture.asset(AppIcons.star1),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  SvgPicture.asset(AppIcons.star1),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  SvgPicture.asset(AppIcons.star1),
-                ],
+            SizedBox(
+              height: 16.h,
+            ),
+            Align(
+              alignment: AlignmentGeometry.centerLeft,
+              child: DynamicStars(
+                rating: 4,
+                color: const Color(0xffDD7B03),
+                size: 18.w,
               ),
             ),
             const SizedBox(
@@ -121,38 +106,6 @@ class CommentItem extends StatelessWidget {
               height: 32,
               indent: 20, //  ب
               endIndent: 20, //
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 14),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    AppIcons.like,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    '15',
-                    style: AppTextStyles.poppinsRegular16.copyWith(
-                      color: const Color(0xffB59A64),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                  SvgPicture.asset(
-                    AppIcons.dislike,
-                    width: 24.w,
-                    height: 24.h,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 17,
             ),
           ],
         ),
