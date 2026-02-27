@@ -7,8 +7,8 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/Schedule_working.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/work_hours_display.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/Schedule_working.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/work_hours_display.dart';
 
 class WorkScheduleSection extends StatelessWidget {
   const WorkScheduleSection({

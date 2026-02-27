@@ -4,9 +4,9 @@ import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/booking_action_buttons.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/dashboard_section.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/tour_detail_card.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/booking_action_buttons.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/dashboard_section.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/tour_detail_card.dart';
 
 
 class RequestsItem extends StatelessWidget {

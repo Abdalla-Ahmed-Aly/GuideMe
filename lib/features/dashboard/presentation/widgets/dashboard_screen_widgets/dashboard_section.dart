@@ -6,10 +6,10 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/requests_Item.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/user_profile_header.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/dashboard_screen_widgets/work_schedule_section.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/requests_Item.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/user_profile_header.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/work_schedule_section.dart';
 
 class DashboardSection extends StatelessWidget {
   const DashboardSection({super.key});

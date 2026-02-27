@@ -7,9 +7,9 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/booking_request_screen_widgets/booking_details_%20request_section.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/booking_request_screen_widgets/earnings_summary_card.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/booking_request_screen_widgets/metting_point_section.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_details_%20request_section.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/earnings_summary_card.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/metting_point_section.dart';
 
 class BookingRequestSection extends StatelessWidget {
   const BookingRequestSection({super.key});

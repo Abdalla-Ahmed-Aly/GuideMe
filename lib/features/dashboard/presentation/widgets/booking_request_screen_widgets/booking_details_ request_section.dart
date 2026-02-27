@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/widgets/booking_request_screen_widgets/booking_details_request_item.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_details_request_item.dart';
 
 class BookingDetailsRequestSection extends StatelessWidget {
   const BookingDetailsRequestSection({
