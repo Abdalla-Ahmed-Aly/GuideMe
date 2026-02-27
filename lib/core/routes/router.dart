@@ -43,7 +43,6 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
-    initialLocation: AppRoutes.guideProfessionalInfoScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
