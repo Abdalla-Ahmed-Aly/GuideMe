@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:core';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -1071,6 +1070,126 @@ abstract class AppLocalizations {
   /// **'Your booking has been successfully accepted. You can now communicate with  the tourist and prepare for the tour.'**
   String get successMassage;
 
+  /// No description provided for @weeklySchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Schedule'**
+  String get weeklySchedule;
+
+  /// No description provided for @selectdays.
+  ///
+  /// In en, this message translates to:
+  /// **'Select days'**
+  String get selectdays;
+
+  /// No description provided for @workhours.
+  ///
+  /// In en, this message translates to:
+  /// **'Work hours for selected days'**
+  String get workhours;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
+
+  /// No description provided for @newRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'New Requests (2)'**
+  String get newRequests;
+
+  /// No description provided for @decline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get decline;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
+
+  /// No description provided for @professionalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Information'**
+  String get professionalInformation;
+
+  /// No description provided for @dateTIME.
+  ///
+  /// In en, this message translates to:
+  /// **'DATE & TIME'**
+  String get dateTIME;
+
+  /// No description provided for @dURATION.
+  ///
+  /// In en, this message translates to:
+  /// **'DURATION'**
+  String get dURATION;
+
+  /// No description provided for @groupsize.
+  ///
+  /// In en, this message translates to:
+  /// **'GROUP SIZE'**
+  String get groupsize;
+
+  /// No description provided for @experience.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPERIENCE'**
+  String get experience;
+
+  /// No description provided for @mettingpoint.
+  ///
+  /// In en, this message translates to:
+  /// **'MEETING POINT'**
+  String get mettingpoint;
+
+  /// No description provided for @directions.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions'**
+  String get directions;
+
+  /// No description provided for @paymentSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Summary'**
+  String get paymentSummary;
+
+  /// No description provided for @yourEarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Earnings'**
+  String get yourEarnings;
+
+  /// No description provided for @analysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis'**
+  String get analysis;
+
+  /// No description provided for @totalEarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Earnings'**
+  String get totalEarnings;
+
+  /// No description provided for @verified.
+  ///
+  /// In en, this message translates to:
+  /// **'verified'**
+  String get verified;
+
   /// No description provided for @onboarding.
   ///
   /// In en, this message translates to:
@@ -1257,23 +1376,6 @@ abstract class AppLocalizations {
   /// **'Select more cities...'**
   String get selectMoreCities;
 
-  /// No description provided for @weeklySchedule.
-  ///
-  /// In en, this message translates to:
-  /// **'Weekly Schedule'**
-  String get weeklySchedule;
-
-  /// No description provided for @selectdays.
-  ///
-  /// In en, this message translates to:
-  /// **'Select days'**
-  String get selectdays;
-
-  /// No description provided for @workhours.
-  ///
-  /// In en, this message translates to:
-  /// **'Work hours for selected days'**
-  String get workhours;
   /// No description provided for @selectDays.
   ///
   /// In en, this message translates to:
@@ -1286,107 +1388,6 @@ abstract class AppLocalizations {
   /// **'Work hours for selected days'**
   String get workHoursForSelectedDays;
 
-  /// No description provided for @from.
-  ///
-  /// In en, this message translates to:
-  /// **'From'**
-  String get from;
-
-  /// No description provided for @to.
-  ///
-  /// In en, this message translates to:
-  /// **'To'**
-  String get to;
-
-  /// No description provided for @newRequests.
-  ///
-  /// In en, this message translates to:
-  /// **'New Requests (2)'**
-  String get newRequests;
-
-  /// No description provided for @decline.
-  ///
-  /// In en, this message translates to:
-  /// **'Decline'**
-  String get decline;
-
-  /// No description provided for @accept.
-  ///
-  /// In en, this message translates to:
-  /// **'Accept'**
-  String get accept;
-
-  /// No description provided for @professionalInformation.
-  ///
-  /// In en, this message translates to:
-  /// **'Professional Information'**
-  String get professionalInformation;
-
-  /// No description provided for @dateTIME.
-  ///
-  /// In en, this message translates to:
-  /// **'DATE & TIME'**
-  String get dateTIME;
-
-  /// No description provided for @dURATION.
-  ///
-  /// In en, this message translates to:
-  /// **'DURATION'**
-  String get dURATION;
-
-  /// No description provided for @groupsize.
-  ///
-  /// In en, this message translates to:
-  /// **'GROUP SIZE'**
-  String get groupsize;
-
-  /// No description provided for @experience.
-  ///
-  /// In en, this message translates to:
-  /// **'EXPERIENCE'**
-  String get experience;
-
-  /// No description provided for @mettingpoint.
-  ///
-  /// In en, this message translates to:
-  /// **'MEETING POINT'**
-  String get mettingpoint;
-
-  /// No description provided for @directions.
-  ///
-  /// In en, this message translates to:
-  /// **'Directions'**
-  String get directions;
-
-  /// No description provided for @paymentSummary.
-  ///
-  /// In en, this message translates to:
-  /// **'Payment Summary'**
-  String get paymentSummary;
-
-  /// No description provided for @yourEarnings.
-  ///
-  /// In en, this message translates to:
-  /// **'Your Earnings'**
-  String get yourEarnings;
-
-  /// No description provided for @analysis.
-  ///
-  /// In en, this message translates to:
-  /// **'Analysis'**
-  String get analysis;
-
-  /// No description provided for @totalEarnings.
-  ///
-  /// In en, this message translates to:
-  /// **'Total Earnings'**
-  String get totalEarnings;
-
-  /// No description provided for @verified.
-  ///
-  /// In en, this message translates to:
-  /// **'verified'**
-  String get verified;
   /// No description provided for @saveAndContinue.
   ///
   /// In en, this message translates to:

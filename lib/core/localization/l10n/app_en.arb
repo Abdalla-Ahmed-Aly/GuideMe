@@ -187,7 +187,7 @@
   "analysis" : "Analysis",
   "totalEarnings" : "Total Earnings",
   "completed" : "Completed ",
-  "verified" : "verified"
+  "verified" : "verified",
   "onboarding" : "Onboarding",
   "guideSetupStep": "Step {current} of {total} ({percentage}%)",
   "profilePhoto": "Profile Photo",

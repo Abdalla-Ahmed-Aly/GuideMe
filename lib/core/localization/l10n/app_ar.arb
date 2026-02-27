@@ -187,7 +187,7 @@
   "analysis" : "تحليل",
   "totalEarnings" : "إجمالي الأرباح",
   "completed" : "مكتمل",
-  "verified" : "موثَّق"
+  "verified" : "موثَّق",
   "onboarding" : "استكمال البيانات",
   "guideSetupStep": "الخطوة {current} من {total} ({percentage}٪)",
   "profilePhoto": "الصورة الشخصية",

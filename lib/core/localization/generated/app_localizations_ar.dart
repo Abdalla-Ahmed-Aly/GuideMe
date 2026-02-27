@@ -560,6 +560,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verified => 'موثَّق';
+
+  @override
   String get onboarding => 'استكمال البيانات';
 
   @override
