@@ -7,6 +7,11 @@ abstract class AppTheme {
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.white,
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      scrolledUnderElevation: 0,
+      backgroundColor: AppColors.white,
+    ),
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,

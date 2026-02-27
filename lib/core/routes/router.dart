@@ -22,6 +22,15 @@ import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/main_navigation_bottombar.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/select_guide_cities_cubit/select_guide_cities_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/work_hours_cubit/work_hours_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_availability_and_pricing_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_expertise_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
+import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -156,6 +165,43 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.dashboardScreen,
         builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.guideProfessionalInfoScreen,
+        builder: (context, state) => const GuideProfessionalInfoScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.guideExpertiseScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => SpokenLanguagesCubit(),
+          child: const GuideExpertiseScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.guideAvailabilityAndPricingScreen,
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => SelectGuideCitiesCubit(),
+            ),
+            BlocProvider(
+              create: (context) => WorkHoursCubit(),
+            ),
+          ],
+          child: const GuideAvailabilityAndPricingScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.guideVerificationScreen,
+        builder: (context, state) => const GuideVerificationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.verificationFailedScreen,
+        builder: (context, state) => const VerificationFailedScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.guideVerificationSuccessScreen,
+        builder: (context, state) => const GuideVerificationSuccessScreen(),
       ),
     ],
   );

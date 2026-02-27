@@ -1189,6 +1189,366 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'verified'**
   String get verified;
+
+  /// No description provided for @onboarding.
+  ///
+  /// In en, this message translates to:
+  /// **'Onboarding'**
+  String get onboarding;
+
+  /// No description provided for @guideSetupStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total} ({percentage}%)'**
+  String guideSetupStep(Object current, Object percentage, Object total);
+
+  /// No description provided for @profilePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Photo'**
+  String get profilePhoto;
+
+  /// No description provided for @uploadProfessionalHeadshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload professional headshot'**
+  String get uploadProfessionalHeadshot;
+
+  /// No description provided for @identityVerification.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity Verification'**
+  String get identityVerification;
+
+  /// No description provided for @nationalId.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID'**
+  String get nationalId;
+
+  /// No description provided for @nationalIdHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Front and back required (JPEG, PNG, PDF)'**
+  String get nationalIdHint;
+
+  /// No description provided for @tourGuideLicense.
+  ///
+  /// In en, this message translates to:
+  /// **'Tour Guide License'**
+  String get tourGuideLicense;
+
+  /// No description provided for @tourGuideLicenseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ministry of Tourism issued License'**
+  String get tourGuideLicenseHint;
+
+  /// No description provided for @professionalHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional History'**
+  String get professionalHistory;
+
+  /// No description provided for @yearsOfExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Years of Experience'**
+  String get yearsOfExperience;
+
+  /// No description provided for @yearsOfExperienceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How many years have you been a guide'**
+  String get yearsOfExperienceHint;
+
+  /// No description provided for @verificationNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your professional documents are used for verification purposes only and are stored securely. Verified guides get 40% more bookings.'**
+  String get verificationNote;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @expertiseSetupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expertise Setup'**
+  String get expertiseSetupTitle;
+
+  /// No description provided for @expertiseLanguagesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expertise & Languages'**
+  String get expertiseLanguagesTitle;
+
+  /// No description provided for @expertiseDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about your skills to help us match you with the right travelers exploring Egypt.'**
+  String get expertiseDescription;
+
+  /// No description provided for @spokenLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoken Languages'**
+  String get spokenLanguages;
+
+  /// No description provided for @addLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Language'**
+  String get addLanguage;
+
+  /// No description provided for @areasOfExpertise.
+  ///
+  /// In en, this message translates to:
+  /// **'Areas of Expertise'**
+  String get areasOfExpertise;
+
+  /// No description provided for @selectLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Languages'**
+  String get selectLanguages;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @stepOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String stepOf(Object current, Object total);
+
+  /// No description provided for @percentComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% Complete'**
+  String percentComplete(Object percent);
+
+  /// No description provided for @availabilityPricingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Availability & Pricing'**
+  String get availabilityPricingTitle;
+
+  /// No description provided for @availabilityPricingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us when you\'re free and your preferred hourly rates for guiding tours in Egypt.'**
+  String get availabilityPricingDescription;
+
+  /// No description provided for @hourlyRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Hourly Rate'**
+  String get hourlyRate;
+
+  /// No description provided for @usd.
+  ///
+  /// In en, this message translates to:
+  /// **'USD'**
+  String get usd;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @whereDoYouGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Where do you guide?'**
+  String get whereDoYouGuide;
+
+  /// No description provided for @selectMoreCities.
+  ///
+  /// In en, this message translates to:
+  /// **'Select more cities...'**
+  String get selectMoreCities;
+
+  /// No description provided for @selectDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Select days'**
+  String get selectDays;
+
+  /// No description provided for @workHoursForSelectedDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Work hours for selected days'**
+  String get workHoursForSelectedDays;
+
+  /// No description provided for @saveAndContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Save & Continue'**
+  String get saveAndContinue;
+
+  /// No description provided for @selectTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select time'**
+  String get selectTime;
+
+  /// No description provided for @pleaseSelectWorkHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select start and end time'**
+  String get pleaseSelectWorkHours;
+
+  /// No description provided for @onboardingProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Onboarding Progress'**
+  String get onboardingProgress;
+
+  /// No description provided for @verificationInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification in Progress'**
+  String get verificationInProgress;
+
+  /// No description provided for @verificationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re reviewing your documents to verify your guide account. This usually takes up to 48 hours.'**
+  String get verificationDescription;
+
+  /// No description provided for @touristGuideLicence.
+  ///
+  /// In en, this message translates to:
+  /// **'Tourist Guide Licence'**
+  String get touristGuideLicence;
+
+  /// No description provided for @profileInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Information'**
+  String get profileInformation;
+
+  /// No description provided for @submitted.
+  ///
+  /// In en, this message translates to:
+  /// **'SUBMITTED'**
+  String get submitted;
+
+  /// No description provided for @verificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification'**
+  String get verificationTitle;
+
+  /// No description provided for @actionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Action Required'**
+  String get actionRequired;
+
+  /// No description provided for @verificationFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t verify your documents yet. Please review the notes below and resubmit.'**
+  String get verificationFailedMessage;
+
+  /// No description provided for @issuesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'ISSUES FOUND'**
+  String get issuesFound;
+
+  /// No description provided for @imageTooBlurry.
+  ///
+  /// In en, this message translates to:
+  /// **'Image is too blurry'**
+  String get imageTooBlurry;
+
+  /// No description provided for @notesFromAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes from Admin'**
+  String get notesFromAdmin;
+
+  /// No description provided for @adminNoteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please ensure all text is legible and the photo is taken in good lighting. Use a flat surface and avoid camera flash reflection.'**
+  String get adminNoteMessage;
+
+  /// No description provided for @viewDocumentGuidelines.
+  ///
+  /// In en, this message translates to:
+  /// **'View document guidelines'**
+  String get viewDocumentGuidelines;
+
+  /// No description provided for @updateDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Documents'**
+  String get updateDocuments;
+
+  /// No description provided for @verifiedBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'VERIFIED BADGE'**
+  String get verifiedBadge;
+
+  /// No description provided for @congratulations.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations!'**
+  String get congratulations;
+
+  /// No description provided for @verificationSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUID ME.'**
+  String get verificationSuccessMessage;
+
+  /// No description provided for @accountStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Status'**
+  String get accountStatus;
+
+  /// No description provided for @statusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Status:'**
+  String get statusLabel;
+
+  /// No description provided for @statusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get statusActive;
+
+  /// No description provided for @memberSince.
+  ///
+  /// In en, this message translates to:
+  /// **'Member Since'**
+  String get memberSince;
+
+  /// No description provided for @identity.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity'**
+  String get identity;
+
+  /// No description provided for @fullAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Access'**
+  String get fullAccess;
 }
 
 class _AppLocalizationsDelegate
