@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guide_me/core/app_assets/app_icons.dart';
-
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -160,6 +157,6 @@ class ProfileTouirsts extends StatelessWidget {
         ),
       ],
     );
-    ;
+    
   }
 }
