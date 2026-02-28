@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
@@ -8,8 +7,7 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_professional_info_widgets/profile_photo_section.dart';
-import 'package:guide_me/features/guide_registration/presentation/widgets/guide_professional_info_widgets/verification_document_card.dart';
-
+import '../widgets/guide_professional_info_widgets/indentity_verification_section.dart';
 import '../widgets/setup_progress_header.dart';
 
 class GuideProfessionalInfoScreen extends StatelessWidget {
@@ -56,7 +54,7 @@ class GuideProfessionalInfoScreen extends StatelessWidget {
             const SizedBox(height: 26),
 
             // verfication document section
-            _buildIdentityVerification(context),
+            const IndentityVerificationSection(),
 
             const SizedBox(height: 34),
 
@@ -111,6 +109,7 @@ class GuideProfessionalInfoScreen extends StatelessWidget {
 
         CustomTextField(
           hintText: context.l10n.yearsOfExperienceHint,
+          keyboardType: TextInputType.number,
           hintColor: const Color(0xffA38354),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -123,31 +122,5 @@ class GuideProfessionalInfoScreen extends StatelessWidget {
     );
   }
 
-  Column _buildIdentityVerification(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          context.l10n.identityVerification,
-          style: AppTextStyles.poppinsSemiBold16,
-        ),
-
-        const SizedBox(height: 20),
-
-        VerificationDocumentCard(
-          title: context.l10n.nationalId,
-          hint: context.l10n.nationalIdHint,
-          svgIcon: AppIcons.idCard,
-        ),
-
-        const SizedBox(height: 20),
-
-        VerificationDocumentCard(
-          title: context.l10n.tourGuideLicense,
-          hint: context.l10n.tourGuideLicenseHint,
-          svgIcon: AppIcons.diploma, // TODO: change icon
-        ),
-      ],
-    );
-  }
 }
+

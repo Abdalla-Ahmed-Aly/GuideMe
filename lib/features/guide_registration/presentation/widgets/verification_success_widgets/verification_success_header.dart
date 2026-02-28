@@ -11,8 +11,8 @@ class VerificationSuccessHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 330.h,
-      width: 330.h,
+      height: 315.h,
+      width: 315.h,
       decoration: BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
