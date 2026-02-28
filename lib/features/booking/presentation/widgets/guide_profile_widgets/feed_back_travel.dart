@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/custom_rating_widget.dart';
+import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/dynamic_stars%20.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/rating_row.dart';
 
 class FeedBackTravel extends StatelessWidget {
@@ -29,29 +30,33 @@ class FeedBackTravel extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                const CustomRatingWidget(color: Color(0xffDD7B03)),
+                DynamicStars(
+                  rating: 4,
+                  color: const Color(0xffDD7B03),
+                  size: 18.w,
+                ),
                 const SizedBox(
                   height: 3,
                 ),
-                Text(
-                  '123 reviews',
-                  style: AppTextStyles.poppinsRegular18,
-                ),
+                Text('123 reviews', style: AppTextStyles.poppinsSemiBold14),
                 const SizedBox(
                   height: 38,
                 ),
               ],
             ),
           ),
-          const Flexible(
-            child: Column(
-              children: [
-                RatingRow(rate: 5, percent: 0.80),
-                RatingRow(rate: 4, percent: 0.12),
-                RatingRow(rate: 3, percent: 0.05),
-                RatingRow(rate: 2, percent: 0.02),
-                RatingRow(rate: 1, percent: 0.01),
-              ],
+          Flexible(
+            child: Padding(
+              padding: EdgeInsets.only(right: 6.p),
+              child: const Column(
+                children: [
+                  RatingRow(rate: 5, percent: 0.80),
+                  RatingRow(rate: 4, percent: 0.12),
+                  RatingRow(rate: 3, percent: 0.05),
+                  RatingRow(rate: 2, percent: 0.02),
+                  RatingRow(rate: 1, percent: 0.01),
+                ],
+              ),
             ),
           ),
         ],
