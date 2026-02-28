@@ -19,7 +19,7 @@ class MainNavigationBottombar extends StatefulWidget {
 
 class _MainNavigationBottombarState extends State<MainNavigationBottombar> {
   final PageController pageController = PageController();
-  final List<Widget> pages =  [
+  final List<Widget> pages = [
     const DashboardScreen(),
     BlocProvider(
       create: (context) => BookingCubit(),
@@ -52,6 +52,7 @@ class _MainNavigationBottombarState extends State<MainNavigationBottombar> {
               return BottomNavigationBar(
                 onTap: changedscreen,
                 currentIndex: index,
+                backgroundColor: const Color(0xffF8F7F5),
                 type: BottomNavigationBarType.fixed,
                 selectedItemColor: AppColors.primary,
                 unselectedItemColor: AppColors.black,

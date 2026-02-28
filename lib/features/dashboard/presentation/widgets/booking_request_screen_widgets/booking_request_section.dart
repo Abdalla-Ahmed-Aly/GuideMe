@@ -30,7 +30,7 @@ class BookingRequestSection extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: Image.asset(AppImages.arrowback),
+                    child: const Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
@@ -157,6 +157,5 @@ class ProfileTouirsts extends StatelessWidget {
         ),
       ],
     );
-    
   }
 }
