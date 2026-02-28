@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/choose_nationality_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/choose_role_screen.dart';
@@ -22,6 +23,7 @@ import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/main_navigation_bottombar.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/professional_info_cubit/professional_info_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/select_guide_cities_cubit/select_guide_cities_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/work_hours_cubit/work_hours_cubit.dart';
@@ -168,7 +170,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.guideProfessionalInfoScreen,
-        builder: (context, state) => const GuideProfessionalInfoScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ProfessionalInfoCubit(MediaPickerServiceImpl()),
+          child: const GuideProfessionalInfoScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.guideExpertiseScreen,
