@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -28,7 +26,7 @@ class CommentItem extends StatelessWidget {
             Row(
               children: [
                 const CircleAvatar(
-                  radius: 30,
+                  radius: 24,
                   backgroundImage: AssetImage(AppImages.profileImageTest),
                 ),
                 Expanded(

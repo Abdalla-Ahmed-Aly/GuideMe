@@ -45,15 +45,18 @@ class FeedBackTravel extends StatelessWidget {
               ],
             ),
           ),
-          const Flexible(
-            child: Column(
-              children: [
-                RatingRow(rate: 5, percent: 0.80),
-                RatingRow(rate: 4, percent: 0.12),
-                RatingRow(rate: 3, percent: 0.05),
-                RatingRow(rate: 2, percent: 0.02),
-                RatingRow(rate: 1, percent: 0.01),
-              ],
+          Flexible(
+            child: Padding(
+              padding: EdgeInsets.only(right: 6.p),
+              child: const Column(
+                children: [
+                  RatingRow(rate: 5, percent: 0.80),
+                  RatingRow(rate: 4, percent: 0.12),
+                  RatingRow(rate: 3, percent: 0.05),
+                  RatingRow(rate: 2, percent: 0.02),
+                  RatingRow(rate: 1, percent: 0.01),
+                ],
+              ),
             ),
           ),
         ],
