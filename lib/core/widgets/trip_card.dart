@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/booking/domain/enums/trip_status.dart';
+import 'package:guide_me/features/booking/domain/enums/tourist_trip_status.dart';
 import 'package:guide_me/features/booking/presentation/strategies/trip_card_stratrgy/trip_card_factory.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/time_line.dart';
+import 'package:guide_me/core/widgets/time_line.dart';
 
 class TripCard extends StatelessWidget {
   const TripCard({
@@ -14,7 +14,7 @@ class TripCard extends StatelessWidget {
   });
   final int length;
   final int currentIndex;
-  final TripStatus tripStatus;
+  final TouristTripStatus tripStatus;
   final DateTime startDate;
   final DateTime endDate;
 

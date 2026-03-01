@@ -145,7 +145,7 @@ class _LogInBodyState extends State<LogInBody> {
               child: AppButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
-                    context.go(AppRoutes.mainNavigationScreen);
+                    context.go(AppRoutes.touristNavigationBarScreen);
                   }
                   setState(() {
                     autovalidateMode = AutovalidateMode.always;

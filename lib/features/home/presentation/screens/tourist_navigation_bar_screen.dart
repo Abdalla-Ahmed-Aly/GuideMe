@@ -3,20 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
-import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
-import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/nav_bar_cubit.dart';
+import 'package:guide_me/features/booking/presentation/screens/tourist_booking_screen.dart';
+import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 import 'package:guide_me/features/home/presentation/widgets/welcome_avatar.dart';
 import 'package:guide_me/features/profile/presentation/screens/profile_screen.dart';
 
-class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
+class TouristNavigationBarScreen extends StatefulWidget {
+  const TouristNavigationBarScreen({super.key});
 
   @override
-  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+  State<TouristNavigationBarScreen> createState() =>
+      _TouristNavigationBarScreenState();
 }
 
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
+class _TouristNavigationBarScreenState
+    extends State<TouristNavigationBarScreen> {
   bool showWelcomeAvatar = true;
 
   final PageController _pageController = PageController();
@@ -42,18 +44,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   }
 
   void onChangeScreen(int index) {
-    context.read<NavBarCubit>().changeIndex(index);
+    context.read<TouristNavBarCubit>().changeIndex(index);
   }
 
   @override
   Widget build(BuildContext context) {
-    print(context.read<NavBarCubit>().state);
+    print(context.read<TouristNavBarCubit>().state);
     final size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
         // home
         Scaffold(
-          body: BlocConsumer<NavBarCubit, int>(
+          body: BlocConsumer<TouristNavBarCubit, int>(
             listener: (context, index) {
               _pageController.jumpToPage(index);
             },
@@ -65,7 +67,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               );
             },
           ),
-          bottomNavigationBar: BlocBuilder<NavBarCubit, int>(
+          bottomNavigationBar: BlocBuilder<TouristNavBarCubit, int>(
             builder: (context, index) {
               return BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,

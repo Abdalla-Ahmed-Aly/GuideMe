@@ -262,5 +262,6 @@
   "statusActive": "Active",
   "memberSince": "Member Since",
   "identity": "Identity",
-  "fullAccess": "Full Access"
+  "fullAccess": "Full Access",
+  "next": "Next"
 }

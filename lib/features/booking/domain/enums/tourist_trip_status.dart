@@ -1,4 +1,4 @@
-enum TripStatus {
+enum TouristTripStatus {
   pending,
   live,
   completed,

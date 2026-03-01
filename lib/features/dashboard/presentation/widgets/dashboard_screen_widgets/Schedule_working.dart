@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/functions/is_same_date.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/all_chip.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/day_chip.dart';
+import 'package:guide_me/core/widgets/all_chip.dart';
+import 'package:guide_me/core/widgets/day_chip.dart';
 
 class ScheduleWorking extends StatefulWidget {
   const ScheduleWorking({super.key});
@@ -24,7 +24,7 @@ class _ScheduleWorkingState extends State<ScheduleWorking> {
   @override
   void initState() {
     super.initState();
-    selectedDay = context.read<BookingCubit>().selectedDate;
+    selectedDay = context.read<BookingCubit>().state.selectedDate;
     _generateDaysList();
   }
 

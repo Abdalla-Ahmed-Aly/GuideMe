@@ -10,7 +10,7 @@ import 'package:guide_me/features/booking/presentation/widgets/panding_approval_
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/booking_request_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/close_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/decline_booking_button.dart';
-import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/nav_bar_cubit.dart';
+import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 
 class PandingApprovalBody extends StatelessWidget {
   const PandingApprovalBody({super.key});
@@ -59,8 +59,8 @@ class PandingApprovalBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: AppButton(
               onPressed: () {
-                context.read<NavBarCubit>().changeIndex(1);
-                context.go(AppRoutes.mainNavigationScreen);
+                context.read<TouristNavBarCubit>().changeIndex(1);
+                context.go(AppRoutes.touristNavigationBarScreen);
               },
               text: context.l10n.viewbooking,
               radius: 50,

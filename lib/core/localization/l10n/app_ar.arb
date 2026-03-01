@@ -262,5 +262,6 @@
   "statusActive": "نشط",
   "memberSince": "عضو منذ",
   "identity": "الهوية",
-  "fullAccess": "وصول كامل"
+  "fullAccess": "وصول كامل",
+  "next": "التالي"
 }

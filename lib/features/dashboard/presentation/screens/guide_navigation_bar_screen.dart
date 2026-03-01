@@ -4,26 +4,26 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
-import 'package:guide_me/features/booking/presentation/screens/booking_screen.dart';
-import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom_bar_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/analysis_screen.dart';
+import 'package:guide_me/features/guide_booking/presentation/screens/guide_booking_screen.dart';
 
-class MainNavigationBottombar extends StatefulWidget {
-  const MainNavigationBottombar({super.key});
+class GuideNavigationBarScreen extends StatefulWidget {
+  const GuideNavigationBarScreen({super.key});
 
   @override
-  State<MainNavigationBottombar> createState() =>
-      _MainNavigationBottombarState();
+  State<GuideNavigationBarScreen> createState() =>
+      _GuideNavigationBarScreenState();
 }
 
-class _MainNavigationBottombarState extends State<MainNavigationBottombar> {
+class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   final PageController pageController = PageController();
   final List<Widget> pages = [
     const DashboardScreen(),
     BlocProvider(
       create: (context) => BookingCubit(),
-      child: const BookingScreen(),
+      child: const GuideBookingScreen(),
     ),
     const Scaffold(
       body: Center(child: Text("Chat Screen")),
@@ -31,12 +31,12 @@ class _MainNavigationBottombarState extends State<MainNavigationBottombar> {
     const AnalysisScreen(),
   ];
   void changedscreen(int index) {
-    context.read<NavigationBottomBarCubitCubit>().changeIndex(index);
+    context.read<GuideNavigationBarCubit>().changeIndex(index);
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NavigationBottomBarCubitCubit, int>(
+    return BlocConsumer<GuideNavigationBarCubit, int>(
       listener: (context, index) {
         pageController.jumpToPage(index);
       },
@@ -47,7 +47,7 @@ class _MainNavigationBottombarState extends State<MainNavigationBottombar> {
             onPageChanged: changedscreen,
             children: pages,
           ),
-          bottomNavigationBar: BlocBuilder<NavigationBottomBarCubitCubit, int>(
+          bottomNavigationBar: BlocBuilder<GuideNavigationBarCubit, int>(
             builder: (context, index) {
               return BottomNavigationBar(
                 onTap: changedscreen,

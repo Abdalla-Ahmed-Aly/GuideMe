@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/booking/domain/enums/trip_status.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/trip_card.dart';
+import 'package:guide_me/features/booking/domain/enums/tourist_trip_status.dart';
+import 'package:guide_me/core/widgets/trip_card.dart';
 
 class TripsListView extends StatefulWidget {
   const TripsListView({super.key});
@@ -11,11 +11,11 @@ class TripsListView extends StatefulWidget {
 }
 
 class _TripsListViewState extends State<TripsListView> {
-  List<TripStatus> tripStatus = [
-    TripStatus.pending,
-    TripStatus.live,
-    TripStatus.completed,
-    TripStatus.completed,
+  List<TouristTripStatus> tripStatus = [
+    TouristTripStatus.pending,
+    TouristTripStatus.live,
+    TouristTripStatus.completed,
+    TouristTripStatus.completed,
   ];
 
   List<DateTime> startDates = [

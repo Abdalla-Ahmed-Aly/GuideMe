@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/nav_bar_cubit.dart';
 
 class BookingProfile extends StatelessWidget {
-  const BookingProfile({super.key});
+  const BookingProfile({super.key, required this.onTap});
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        context.read<NavBarCubit>().changeIndex(3);
-      },
+      onTap: onTap,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

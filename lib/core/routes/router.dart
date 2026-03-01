@@ -19,10 +19,10 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
-import 'package:guide_me/features/dashboard/presentation/cubit/navigation_bottom_bar_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
-import 'package:guide_me/features/dashboard/presentation/screens/main_navigation_bottombar.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/guide_navigation_bar_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/professional_info_cubit/professional_info_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/select_guide_cities_cubit/select_guide_cities_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
@@ -34,7 +34,7 @@ import 'package:guide_me/features/guide_registration/presentation/screens/guide_
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
-import 'package:guide_me/features/home/presentation/screens/main_navigation_screen.dart';
+import 'package:guide_me/features/home/presentation/screens/tourist_navigation_bar_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/select_Interests_screen.dart';
 import 'package:guide_me/features/profile/presentation/screens/add_payment_method_screen.dart';
@@ -45,6 +45,7 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
+    initialLocation: AppRoutes.guideNavigationBarScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -95,8 +96,8 @@ abstract class AppRouter {
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-        path: AppRoutes.mainNavigationScreen,
-        builder: (context, state) => const MainNavigationScreen(),
+        path: AppRoutes.touristNavigationBarScreen,
+        builder: (context, state) => const TouristNavigationBarScreen(),
       ),
       GoRoute(
         path: AppRoutes.filterScreen,
@@ -154,10 +155,10 @@ abstract class AppRouter {
         builder: (context, state) => const AcceptedScreen(),
       ),
       GoRoute(
-        path: AppRoutes.mainNavigationBottombar,
+        path: AppRoutes.guideNavigationBarScreen,
         builder: (context, state) => BlocProvider(
-          create: (context) => NavigationBottomBarCubitCubit(),
-          child: const MainNavigationBottombar(),
+          create: (context) => GuideNavigationBarCubit(),
+          child: const GuideNavigationBarScreen(),
         ),
       ),
       GoRoute(
