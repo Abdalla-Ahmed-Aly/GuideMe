@@ -39,4 +39,5 @@ abstract class AppRoutes {
   static const String verificationFailedScreen = '/verificationFailedScreen';
   static const String guideVerificationSuccessScreen =
       '/guideVerificationSuccessScreen';
+  static const String chatScreen = '/chatScreen';
 }

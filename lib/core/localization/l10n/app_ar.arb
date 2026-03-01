@@ -263,5 +263,8 @@
   "memberSince": "عضو منذ",
   "identity": "الهوية",
   "fullAccess": "وصول كامل",
-  "next": "التالي"
+  "next": "التالي",
+  "messages": "الرسائل",
+  "chat_search_hint": "ابحث عن سياح أو جولات",
+  "upcoming": "القادمة"
 }

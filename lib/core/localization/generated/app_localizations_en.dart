@@ -756,4 +756,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get next => 'Next';
+
+  @override
+  String get messages => 'Messages';
+
+  @override
+  String get chat_search_hint => 'Search tourists or tours';
+
+  @override
+  String get upcoming => 'Upcoming';
 }

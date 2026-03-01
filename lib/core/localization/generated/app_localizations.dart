@@ -1555,6 +1555,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next'**
   String get next;
+
+  /// No description provided for @messages.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get messages;
+
+  /// No description provided for @chat_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search tourists or tours'**
+  String get chat_search_hint;
+
+  /// No description provided for @upcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get upcoming;
 }
 
 class _AppLocalizationsDelegate

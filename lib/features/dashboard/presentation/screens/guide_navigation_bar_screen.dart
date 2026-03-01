@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
+import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/analysis_screen.dart';
@@ -25,9 +26,7 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
       create: (context) => BookingCubit(),
       child: const GuideBookingScreen(),
     ),
-    const Scaffold(
-      body: Center(child: Text("Chat Screen")),
-    ),
+    const ConversationsScreen(),
     const AnalysisScreen(),
   ];
   void changedscreen(int index) {

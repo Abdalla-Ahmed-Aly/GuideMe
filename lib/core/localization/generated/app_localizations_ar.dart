@@ -757,4 +757,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get next => 'التالي';
+
+  @override
+  String get messages => 'الرسائل';
+
+  @override
+  String get chat_search_hint => 'ابحث عن سياح أو جولات';
+
+  @override
+  String get upcoming => 'القادمة';
 }

@@ -263,5 +263,8 @@
   "memberSince": "Member Since",
   "identity": "Identity",
   "fullAccess": "Full Access",
-  "next": "Next"
+  "next": "Next",
+  "messages": "Messages",
+  "chat_search_hint": "Search tourists or tours",
+  "upcoming": "Upcoming"
 }
