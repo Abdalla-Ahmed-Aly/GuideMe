@@ -766,4 +766,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get upcoming => 'القادمة';
+
+  @override
+  String get chat_type_message_hint => 'اكتب رسالتك';
+
+  @override
+  String get details => 'تفاصيل';
+
+  @override
+  String get online => 'متصل';
+
+  @override
+  String get offline => 'غير متصل';
 }

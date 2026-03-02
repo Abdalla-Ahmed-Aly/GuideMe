@@ -1573,6 +1573,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Upcoming'**
   String get upcoming;
+
+  /// No description provided for @chat_type_message_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your message'**
+  String get chat_type_message_hint;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @online.
+  ///
+  /// In en, this message translates to:
+  /// **'ONLINE'**
+  String get online;
+
+  /// No description provided for @offline.
+  ///
+  /// In en, this message translates to:
+  /// **'OFFLINE'**
+  String get offline;
 }
 
 class _AppLocalizationsDelegate

@@ -266,5 +266,9 @@
   "next": "التالي",
   "messages": "الرسائل",
   "chat_search_hint": "ابحث عن سياح أو جولات",
-  "upcoming": "القادمة"
+  "upcoming": "القادمة",
+  "chat_type_message_hint": "اكتب رسالتك",
+  "details": "تفاصيل",
+  "online": "متصل",
+  "offline": "غير متصل"
 }

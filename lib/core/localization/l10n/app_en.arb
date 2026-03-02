@@ -266,5 +266,9 @@
   "next": "Next",
   "messages": "Messages",
   "chat_search_hint": "Search tourists or tours",
-  "upcoming": "Upcoming"
+  "upcoming": "Upcoming",
+  "chat_type_message_hint": "Type your message",
+  "details": "Details",
+  "online": "ONLINE",
+  "offline": "OFFLINE"
 }
