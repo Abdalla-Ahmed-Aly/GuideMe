@@ -765,4 +765,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upcoming => 'Upcoming';
+
+  @override
+  String get chat_type_message_hint => 'Type your message';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get online => 'ONLINE';
+
+  @override
+  String get offline => 'OFFLINE';
 }
