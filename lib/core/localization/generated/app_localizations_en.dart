@@ -777,4 +777,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get offline => 'OFFLINE';
+
+  @override
+  String get tripAddress => 'Trip Address';
+
+  @override
+  String get arrivalTime => 'Arrival Time';
 }

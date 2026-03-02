@@ -27,6 +27,13 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
   }
 
   @override
+  void dispose() {
+    sheetController.dispose();
+    sheetSize.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Scaffold(

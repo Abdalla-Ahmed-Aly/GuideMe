@@ -778,4 +778,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get offline => 'غير متصل';
+
+  @override
+  String get tripAddress => 'عنوان الرحلة';
+
+  @override
+  String get arrivalTime => 'وقت الوصول';
 }

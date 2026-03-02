@@ -1597,6 +1597,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'OFFLINE'**
   String get offline;
+
+  /// No description provided for @tripAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip Address'**
+  String get tripAddress;
+
+  /// No description provided for @arrivalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival Time'**
+  String get arrivalTime;
 }
 
 class _AppLocalizationsDelegate

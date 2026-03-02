@@ -270,5 +270,7 @@
   "chat_type_message_hint": "اكتب رسالتك",
   "details": "تفاصيل",
   "online": "متصل",
-  "offline": "غير متصل"
+  "offline": "غير متصل",
+  "tripAddress": "عنوان الرحلة",
+  "arrivalTime": "وقت الوصول"
 }

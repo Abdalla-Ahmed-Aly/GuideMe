@@ -270,5 +270,7 @@
   "chat_type_message_hint": "Type your message",
   "details": "Details",
   "online": "ONLINE",
-  "offline": "OFFLINE"
+  "offline": "OFFLINE",
+  "tripAddress": "Trip Address",
+  "arrivalTime": "Arrival Time"
 }
