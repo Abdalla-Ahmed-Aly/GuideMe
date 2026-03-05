@@ -756,5 +756,35 @@ class AppLocalizationsAr extends AppLocalizations {
   String get fullAccess => 'وصول كامل';
 
   @override
+
   String get theTourwaswith => 'كانت الجولة مع أحمد';
+
+  String get next => 'التالي';
+
+  @override
+  String get messages => 'الرسائل';
+
+  @override
+  String get chat_search_hint => 'ابحث عن سياح أو جولات';
+
+  @override
+  String get upcoming => 'القادمة';
+
+  @override
+  String get chat_type_message_hint => 'اكتب رسالتك';
+
+  @override
+  String get details => 'تفاصيل';
+
+  @override
+  String get online => 'متصل';
+
+  @override
+  String get offline => 'غير متصل';
+
+  @override
+  String get tripAddress => 'عنوان الرحلة';
+
+  @override
+  String get arrivalTime => 'وقت الوصول';
 }

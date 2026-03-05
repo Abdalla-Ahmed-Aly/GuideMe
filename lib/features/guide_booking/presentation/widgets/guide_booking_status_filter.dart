@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/domain/enums/trip_status.dart';
+import 'package:guide_me/features/booking/domain/enums/guide_trip_status.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
 
-class BookingStatusFilter extends StatelessWidget {
-  const BookingStatusFilter({super.key});
+class GuideBookingStatusFilter extends StatelessWidget {
+  const GuideBookingStatusFilter({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +20,24 @@ class BookingStatusFilter extends StatelessWidget {
       ),
       child: BlocBuilder<BookingCubit, BookingState>(
         builder: (context, state) {
-          final selectedStatus = context.read<BookingCubit>().selectedStatus;
-          final selectedDate = context.read<BookingCubit>().selectedDate;
+          final selectedStatus = state.guideTripStatus;
+          final selectedDate = state.selectedDate;
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: !isPastSelectedDate(selectedDate)
-                ? TripStatus.values.map(
+                ? GuideTripStatus.values.map(
                     (status) {
                       return Expanded(
                         child: StatusChip(
                           isSelected: selectedStatus == status,
                           title: _getTitle(context, status),
                           onTap: () {
-                            context.read<BookingCubit>().changeStatus(
-                              status,
-                            );
+                            context
+                                .read<BookingCubit>()
+                                .changeGuideTripStatus(
+                                  status,
+                                );
                           },
                         ),
                       );
@@ -46,8 +48,8 @@ class BookingStatusFilter extends StatelessWidget {
                       isSelected: true,
                       title: context.l10n.completed,
                       onTap: () {
-                        context.read<BookingCubit>().changeStatus(
-                          TripStatus.completed,
+                        context.read<BookingCubit>().changeGuideTripStatus(
+                          GuideTripStatus.completed,
                         );
                       },
                     ),
@@ -67,13 +69,13 @@ class BookingStatusFilter extends StatelessWidget {
     return selectedDate.isBefore(pureToday);
   }
 
-  String _getTitle(BuildContext context, TripStatus status) {
+  String _getTitle(BuildContext context, GuideTripStatus status) {
     switch (status) {
-      case TripStatus.pending:
-        return context.l10n.pending;
-      case TripStatus.live:
+      case GuideTripStatus.next:
+        return context.l10n.next;
+      case GuideTripStatus.live:
         return context.l10n.live;
-      case TripStatus.completed:
+      case GuideTripStatus.completed:
         return context.l10n.completed;
     }
   }

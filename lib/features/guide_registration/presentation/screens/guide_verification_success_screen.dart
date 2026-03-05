@@ -104,7 +104,7 @@ class GuideVerificationSuccessScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 28.p),
                         child: AppButton(
                           onPressed: () {
-                            context.go(AppRoutes.mainNavigationBottombar);
+                            context.go(AppRoutes.guideNavigationBarScreen);
                           },
                           text: context.l10n.continueButton,
                           radius: 15,

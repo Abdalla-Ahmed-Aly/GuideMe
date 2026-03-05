@@ -14,7 +14,7 @@ class IntersestsCard extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.go(AppRoutes.mainNavigationScreen);
+        context.go(AppRoutes.touristNavigationBarScreen);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,

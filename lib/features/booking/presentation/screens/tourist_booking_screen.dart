@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/booking_profile.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/booking_status_filter.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/schedule_list.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/trips_list_view.dart';
+import 'package:guide_me/core/widgets/booking_profile.dart';
+import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/tourist_booking_status_filter.dart';
+import 'package:guide_me/core/widgets/schedule_list.dart';
+import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/trips_list_view.dart';
+import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 
 class BookingScreen extends StatelessWidget {
   const BookingScreen({super.key});
@@ -20,7 +22,11 @@ class BookingScreen extends StatelessWidget {
           SizedBox(height: context.screenHeight * 0.05),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.p),
-            child: const BookingProfile(),
+            child: BookingProfile(
+              onTap: () {
+                context.read<TouristNavBarCubit>().changeIndex(3);
+              },
+            ),
           ),
 
           const SizedBox(height: 16),
@@ -46,7 +52,7 @@ class BookingScreen extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          const BookingStatusFilter(),
+          const TouristBookingStatusFilter(),
 
           const SizedBox(height: 8),
 

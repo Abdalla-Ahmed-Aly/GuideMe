@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/features/booking/domain/services/time_line_progress_calculator.dart';
 import 'package:guide_me/features/booking/presentation/strategies/time_line_strategy/time_line_factory.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_widgets/time_line_indicator.dart';
+import 'package:guide_me/core/widgets/time_line_indicator.dart';
 
 class TimeLine extends StatefulWidget {
   const TimeLine({

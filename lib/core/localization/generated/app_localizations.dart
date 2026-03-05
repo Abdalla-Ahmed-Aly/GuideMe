@@ -1555,6 +1555,67 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The Tour was with  '**
   String get theTourwaswith;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @messages.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get messages;
+
+  /// No description provided for @chat_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search tourists or tours'**
+  String get chat_search_hint;
+
+  /// No description provided for @upcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get upcoming;
+
+  /// No description provided for @chat_type_message_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your message'**
+  String get chat_type_message_hint;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @online.
+  ///
+  /// In en, this message translates to:
+  /// **'ONLINE'**
+  String get online;
+
+  /// No description provided for @offline.
+  ///
+  /// In en, this message translates to:
+  /// **'OFFLINE'**
+  String get offline;
+
+  /// No description provided for @tripAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip Address'**
+  String get tripAddress;
+
+  /// No description provided for @arrivalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival Time'**
+  String get arrivalTime;
+
 }
 
 class _AppLocalizationsDelegate

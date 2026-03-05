@@ -755,5 +755,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fullAccess => 'Full Access';
 
   @override
+
   String get theTourwaswith => 'The Tour was with  ';
+
+  String get next => 'Next';
+
+  @override
+  String get messages => 'Messages';
+
+  @override
+  String get chat_search_hint => 'Search tourists or tours';
+
+  @override
+  String get upcoming => 'Upcoming';
+
+  @override
+  String get chat_type_message_hint => 'Type your message';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get online => 'ONLINE';
+
+  @override
+  String get offline => 'OFFLINE';
+
+  @override
+  String get tripAddress => 'Trip Address';
+
+  @override
+  String get arrivalTime => 'Arrival Time';
+
 }

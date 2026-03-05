@@ -30,7 +30,7 @@ class BookingDetailsRequestItem extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 13),
             decoration: BoxDecoration(
-              color: Color(0xffFEF4E6),
+              color: const Color(0xffFEF4E6),
               borderRadius: BorderRadius.circular(20),
             ),
             child: pathicon,

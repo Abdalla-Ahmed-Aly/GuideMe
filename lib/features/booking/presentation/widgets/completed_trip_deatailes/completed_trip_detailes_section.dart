@@ -80,7 +80,7 @@ class CompletedTripDetailesSection extends StatelessWidget {
                           image: AssetImage(
                             AppImages.profileImageTest,
                           ), // مسار صورتك
-                          fit: BoxFit.cover, // عشان الصورة تملأ الدائرة بالظبط
+                          fit: BoxFit.cover, 
                         ),
                       ),
                     ),

@@ -51,7 +51,9 @@ class BookingRequestScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 16),
+
+            const SizedBox(width: 16),
+            
             Expanded(
               child: TextButton(
                 style: TextButton.styleFrom(
