@@ -36,4 +36,5 @@ abstract class AppRoutes {
   static const String guideVerificationScreen = '/guideVerificationScreen';
   static const String verificationFailedScreen = '/verificationFailedScreen';
   static const String guideVerificationSuccessScreen = '/guideVerificationSuccessScreen';
+  static const String completedtripdetailes = '/completedtripdetailes';
 }

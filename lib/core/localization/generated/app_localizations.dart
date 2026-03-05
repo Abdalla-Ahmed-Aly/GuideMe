@@ -1549,6 +1549,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Full Access'**
   String get fullAccess;
+
+  /// No description provided for @theTourwaswith.
+  ///
+  /// In en, this message translates to:
+  /// **'The Tour was with  '**
+  String get theTourwaswith;
 }
 
 class _AppLocalizationsDelegate

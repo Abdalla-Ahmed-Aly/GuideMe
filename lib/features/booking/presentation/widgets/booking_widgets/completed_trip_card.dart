@@ -10,7 +10,7 @@ class CompletedTripCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.pendingApprovalScreen);
+        context.push(AppRoutes.completedtripdetailes);
       },
       child: Container(
         padding: const EdgeInsets.all(16),

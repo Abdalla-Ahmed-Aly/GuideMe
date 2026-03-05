@@ -754,4 +754,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fullAccess => 'وصول كامل';
+
+  @override
+  String get theTourwaswith => 'كانت الجولة مع أحمد';
 }
