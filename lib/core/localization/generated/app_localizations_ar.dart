@@ -784,4 +784,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get arrivalTime => 'وقت الوصول';
+
+  @override
+  String get reviews => 'المراجعات';
+
+  @override
+  String get about => 'عن';
+
+  @override
+  String get professional_details => 'تفاصيل المهنية';
+
+  @override
+  String get languages => 'اللغات';
+
+  @override
+  String get licenseId => 'رقم الرخصة';
 }

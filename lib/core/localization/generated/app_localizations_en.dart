@@ -783,4 +783,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arrivalTime => 'Arrival Time';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get professional_details => 'Professional Details';
+
+  @override
+  String get languages => 'Languages';
+
+  @override
+  String get licenseId => 'LICENSE ID';
 }

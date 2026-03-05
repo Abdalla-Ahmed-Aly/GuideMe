@@ -1609,6 +1609,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arrival Time'**
   String get arrivalTime;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @professional_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Details'**
+  String get professional_details;
+
+  /// No description provided for @languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages'**
+  String get languages;
+
+  /// No description provided for @licenseId.
+  ///
+  /// In en, this message translates to:
+  /// **'LICENSE ID'**
+  String get licenseId;
 }
 
 class _AppLocalizationsDelegate

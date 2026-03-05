@@ -272,5 +272,10 @@
   "online": "ONLINE",
   "offline": "OFFLINE",
   "tripAddress": "Trip Address",
-  "arrivalTime": "Arrival Time"
+  "arrivalTime": "Arrival Time",
+  "reviews": "Reviews",
+  "about": "About",
+  "professional_details": "Professional Details",
+  "languages": "Languages",
+  "licenseId" : "LICENSE ID"
 }
