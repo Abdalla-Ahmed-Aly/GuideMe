@@ -213,10 +213,10 @@ abstract class AppRouter {
         builder: (context, state) => const GuideVerificationSuccessScreen(),
       ),
 
-        GoRoute(
+      GoRoute(
         path: AppRoutes.completedtripdetailes,
         builder: (context, state) => const CompletedTripDetails(),
-        ),
+      ),
 
       GoRoute(
         path: AppRoutes.chatScreen,
@@ -225,7 +225,6 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.trackingScreen,
         builder: (context, state) => const TrackingScreen(),
-
       ),
     ],
   );

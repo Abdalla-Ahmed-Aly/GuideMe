@@ -264,7 +264,7 @@
   "identity": "الهوية",
   "fullAccess": "وصول كامل",
   "theTourwaswith" : "كانت الجولة مع أحمد",
-  "next": "التالي"
+  "next": "التالي",
   "messages": "الرسائل",
   "chat_search_hint": "ابحث عن سياح أو جولات",
   "upcoming": "القادمة",
@@ -274,5 +274,4 @@
   "offline": "غير متصل",
   "tripAddress": "عنوان الرحلة",
   "arrivalTime": "وقت الوصول"
-
 }

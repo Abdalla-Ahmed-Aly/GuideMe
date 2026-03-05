@@ -1615,7 +1615,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arrival Time'**
   String get arrivalTime;
-
 }
 
 class _AppLocalizationsDelegate

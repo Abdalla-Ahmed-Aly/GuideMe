@@ -11,7 +11,8 @@ abstract class AppRoutes {
   static const String chooseNationalityScreen = '/choose-nationality';
   static const String allowLocationAccessScreen = '/allow-location-access';
   static const String chooseRoleScreen = '/choose-role';
-  static const String touristNavigationBarScreen = '/touristNavigationBarScreen';
+  static const String touristNavigationBarScreen =
+      '/touristNavigationBarScreen';
   static const String filterScreen = '/filter-screen';
   static const String bookScreen = '/book-screen';
   static const String guideProfileScreen = '/guide-profile-screen';
@@ -37,12 +38,9 @@ abstract class AppRoutes {
       '/guideAvailabilityAndPricingScreen';
   static const String guideVerificationScreen = '/guideVerificationScreen';
   static const String verificationFailedScreen = '/verificationFailedScreen';
-
-  static const String guideVerificationSuccessScreen = '/guideVerificationSuccessScreen';
+  static const String guideVerificationSuccessScreen =
+      '/guideVerificationSuccessScreen';
   static const String completedtripdetailes = '/completedtripdetailes';
-
-
   static const String chatScreen = '/chatScreen';
   static const String trackingScreen = '/trackingScreen';
-
 }

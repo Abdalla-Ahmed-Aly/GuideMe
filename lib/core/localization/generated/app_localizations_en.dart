@@ -755,9 +755,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fullAccess => 'Full Access';
 
   @override
-
   String get theTourwaswith => 'The Tour was with  ';
 
+  @override
   String get next => 'Next';
 
   @override
@@ -786,5 +786,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arrivalTime => 'Arrival Time';
-
 }
