@@ -277,5 +277,16 @@
   "about": "عن",
   "professional_details": "تفاصيل المهنية",
   "languages": "اللغات",
-  "licenseId" : "رقم الرخصة"
+  "licenseId" : "رقم الرخصة",
+  "addCertification": "إضافة شهادة",
+  "certificationName": "اسم الشهادة*",
+  "certificationNameHint": "مثال: شهادة Google UX Design",
+  "issuingOrganization": "الجهة المانحة*",
+  "issuingOrganizationHint": "مثال: Coursera",
+  "issueDate": "تاريخ الإصدار*",
+  "expirationDateOptional": "تاريخ الانتهاء (اختياري)",
+  "dateFormatHint": "MM/YYYY",
+  "noExpirationCertification": "هذه الشهادة لا تنتهي",
+  "cancel": "إلغاء",
+  "saveCertification": "حفظ الشهادة"
 }

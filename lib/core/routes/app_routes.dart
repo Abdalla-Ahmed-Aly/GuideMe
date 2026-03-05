@@ -42,4 +42,5 @@ abstract class AppRoutes {
   static const String chatScreen = '/chatScreen';
   static const String trackingScreen = '/trackingScreen';
   static const String tourGuideProfileScreen = '/tourGuideProfileScreen';
+  static const String addCertificationScreen = '/addCertificationScreen';
 }

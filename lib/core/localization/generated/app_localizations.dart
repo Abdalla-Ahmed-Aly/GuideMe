@@ -1639,6 +1639,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'LICENSE ID'**
   String get licenseId;
+
+  /// No description provided for @addCertification.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Certification'**
+  String get addCertification;
+
+  /// No description provided for @certificationName.
+  ///
+  /// In en, this message translates to:
+  /// **'Certification Name*'**
+  String get certificationName;
+
+  /// No description provided for @certificationNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ex: Google UX Design Certificate'**
+  String get certificationNameHint;
+
+  /// No description provided for @issuingOrganization.
+  ///
+  /// In en, this message translates to:
+  /// **'Issuing Organization*'**
+  String get issuingOrganization;
+
+  /// No description provided for @issuingOrganizationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ex: Coursera'**
+  String get issuingOrganizationHint;
+
+  /// No description provided for @issueDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue Date*'**
+  String get issueDate;
+
+  /// No description provided for @expirationDateOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiration Date (Optional)'**
+  String get expirationDateOptional;
+
+  /// No description provided for @dateFormatHint.
+  ///
+  /// In en, this message translates to:
+  /// **'MM/YYYY'**
+  String get dateFormatHint;
+
+  /// No description provided for @noExpirationCertification.
+  ///
+  /// In en, this message translates to:
+  /// **'This certification does not expire'**
+  String get noExpirationCertification;
+
+  /// No description provided for @saveCertification.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Certification'**
+  String get saveCertification;
 }
 
 class _AppLocalizationsDelegate

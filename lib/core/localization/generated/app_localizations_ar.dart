@@ -799,4 +799,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get licenseId => 'رقم الرخصة';
+
+  @override
+  String get addCertification => 'إضافة شهادة';
+
+  @override
+  String get certificationName => 'اسم الشهادة*';
+
+  @override
+  String get certificationNameHint => 'مثال: شهادة Google UX Design';
+
+  @override
+  String get issuingOrganization => 'الجهة المانحة*';
+
+  @override
+  String get issuingOrganizationHint => 'مثال: Coursera';
+
+  @override
+  String get issueDate => 'تاريخ الإصدار*';
+
+  @override
+  String get expirationDateOptional => 'تاريخ الانتهاء (اختياري)';
+
+  @override
+  String get dateFormatHint => 'MM/YYYY';
+
+  @override
+  String get noExpirationCertification => 'هذه الشهادة لا تنتهي';
+
+  @override
+  String get saveCertification => 'حفظ الشهادة';
 }
