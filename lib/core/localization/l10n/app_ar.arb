@@ -280,16 +280,19 @@
   "languages": "اللغات",
   "licenseId" : "رقم الرخصة",
   "addCertification": "إضافة شهادة",
-  "certificationName": "اسم الشهادة*",
+  "certificationName": "اسم الشهادة",
   "certificationNameHint": "مثال: شهادة Google UX Design",
-  "issuingOrganization": "الجهة المانحة*",
+  "issuingOrganization": "الجهة المانحة",
   "issuingOrganizationHint": "مثال: Coursera",
-  "issueDate": "تاريخ الإصدار*",
+  "issueDate": "تاريخ الإصدار",
   "expirationDateOptional": "تاريخ الانتهاء (اختياري)",
   "dateFormatHint": "MM/YYYY",
   "noExpirationCertification": "هذه الشهادة لا تنتهي",
   "cancel": "إلغاء",
   "saveCertification": "حفظ الشهادة",
   "addLanguage": "إضافة لغة",
-  "selectLanguage": "اختر لغة"
+  "selectLanguage": "اختر لغة",
+  "uploadCertificate": "رفع الشهادة",
+  "uploadPdfOrImage": "رفع ملف PDF أو صورة",
+  "supportedFormats": "تنسيقات مدعومة: PDF, JPG, PNG"
 }

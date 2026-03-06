@@ -806,19 +806,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addCertification => 'Add Certification';
 
   @override
-  String get certificationName => 'Certification Name*';
+  String get certificationName => 'Certification Name';
 
   @override
   String get certificationNameHint => 'Ex: Google UX Design Certificate';
 
   @override
-  String get issuingOrganization => 'Issuing Organization*';
+  String get issuingOrganization => 'Issuing Organization';
 
   @override
   String get issuingOrganizationHint => 'Ex: Coursera';
 
   @override
-  String get issueDate => 'Issue Date*';
+  String get issueDate => 'Issue Date';
 
   @override
   String get expirationDateOptional => 'Expiration Date (Optional)';
@@ -834,4 +834,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectLanguage => 'Select a language';
+
+  @override
+  String get uploadCertificate => 'Upload Certificate';
+
+  @override
+  String get uploadPdfOrImage => 'Upload PDF or Image';
+
+  @override
+  String get supportedFormats => 'Supported formats: PDF, JPG, PNG';
 }

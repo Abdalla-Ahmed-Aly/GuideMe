@@ -27,6 +27,7 @@ class _AddCertificationScreenBodyState extends State<AddCertificationScreenBody>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  
                   const AddCertificationForm(),
               
                   Column(

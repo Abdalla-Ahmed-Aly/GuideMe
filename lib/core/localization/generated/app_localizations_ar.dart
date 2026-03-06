@@ -807,19 +807,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addCertification => 'إضافة شهادة';
 
   @override
-  String get certificationName => 'اسم الشهادة*';
+  String get certificationName => 'اسم الشهادة';
 
   @override
   String get certificationNameHint => 'مثال: شهادة Google UX Design';
 
   @override
-  String get issuingOrganization => 'الجهة المانحة*';
+  String get issuingOrganization => 'الجهة المانحة';
 
   @override
   String get issuingOrganizationHint => 'مثال: Coursera';
 
   @override
-  String get issueDate => 'تاريخ الإصدار*';
+  String get issueDate => 'تاريخ الإصدار';
 
   @override
   String get expirationDateOptional => 'تاريخ الانتهاء (اختياري)';
@@ -835,4 +835,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectLanguage => 'اختر لغة';
+
+  @override
+  String get uploadCertificate => 'رفع الشهادة';
+
+  @override
+  String get uploadPdfOrImage => 'رفع ملف PDF أو صورة';
+
+  @override
+  String get supportedFormats => 'تنسيقات مدعومة: PDF, JPG, PNG';
 }

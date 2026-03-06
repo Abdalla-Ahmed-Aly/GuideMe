@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -12,6 +13,19 @@ class BookingRequestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_rounded),
+          onPressed: () {
+            context.pop();
+          },
+        ),
+        title: Text(
+          context.l10n.bookingRequest,
+          style: AppTextStyles.poppinsSemiBold20,
+        ),
+      ),
+
       body: const BookingRequestSection(),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
@@ -53,7 +67,7 @@ class BookingRequestScreen extends StatelessWidget {
             ),
 
             const SizedBox(width: 16),
-            
+
             Expanded(
               child: TextButton(
                 style: TextButton.styleFrom(

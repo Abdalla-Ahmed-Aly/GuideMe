@@ -280,16 +280,19 @@
   "languages": "Languages",
   "licenseId" : "LICENSE ID",
   "addCertification": "Add Certification",
-  "certificationName": "Certification Name*",
+  "certificationName": "Certification Name",
   "certificationNameHint": "Ex: Google UX Design Certificate",
-  "issuingOrganization": "Issuing Organization*",
+  "issuingOrganization": "Issuing Organization",
   "issuingOrganizationHint": "Ex: Coursera",
-  "issueDate": "Issue Date*",
+  "issueDate": "Issue Date",
   "expirationDateOptional": "Expiration Date (Optional)",
   "dateFormatHint": "MM/YYYY",
   "noExpirationCertification": "This certification does not expire",
   "cancel": "Cancel",
   "saveCertification": "Save Certification",
   "addLanguage": "Add Language",
-  "selectLanguage": "Select a language"
+  "selectLanguage": "Select a language",
+  "uploadCertificate": "Upload Certificate",
+  "uploadPdfOrImage": "Upload PDF or Image",
+  "supportedFormats": "Supported formats: PDF, JPG, PNG"
 }

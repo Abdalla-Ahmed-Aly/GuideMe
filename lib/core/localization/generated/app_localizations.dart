@@ -1655,7 +1655,7 @@ abstract class AppLocalizations {
   /// No description provided for @certificationName.
   ///
   /// In en, this message translates to:
-  /// **'Certification Name*'**
+  /// **'Certification Name'**
   String get certificationName;
 
   /// No description provided for @certificationNameHint.
@@ -1667,7 +1667,7 @@ abstract class AppLocalizations {
   /// No description provided for @issuingOrganization.
   ///
   /// In en, this message translates to:
-  /// **'Issuing Organization*'**
+  /// **'Issuing Organization'**
   String get issuingOrganization;
 
   /// No description provided for @issuingOrganizationHint.
@@ -1679,7 +1679,7 @@ abstract class AppLocalizations {
   /// No description provided for @issueDate.
   ///
   /// In en, this message translates to:
-  /// **'Issue Date*'**
+  /// **'Issue Date'**
   String get issueDate;
 
   /// No description provided for @expirationDateOptional.
@@ -1711,6 +1711,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select a language'**
   String get selectLanguage;
+
+  /// No description provided for @uploadCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Certificate'**
+  String get uploadCertificate;
+
+  /// No description provided for @uploadPdfOrImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload PDF or Image'**
+  String get uploadPdfOrImage;
+
+  /// No description provided for @supportedFormats.
+  ///
+  /// In en, this message translates to:
+  /// **'Supported formats: PDF, JPG, PNG'**
+  String get supportedFormats;
 }
 
 class _AppLocalizationsDelegate

@@ -3,8 +3,8 @@ import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
-class BookingProfile extends StatelessWidget {
-  const BookingProfile({super.key, required this.onTap});
+class UserProfileTile extends StatelessWidget {
+  const UserProfileTile({super.key, required this.onTap});
   final void Function() onTap;
 
   @override

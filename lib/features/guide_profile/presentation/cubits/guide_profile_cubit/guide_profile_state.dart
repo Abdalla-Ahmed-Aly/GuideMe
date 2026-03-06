@@ -5,12 +5,14 @@ class GuideProfileState {
   final bool inEditCertificationsMode;
   final List<String> languages;
   final List<String> certifications;
+  PickedFileModel? certificationName;
 
   GuideProfileState({
     required this.inEditLangusgesMode,
     required this.inEditCertificationsMode,
     required this.languages,
     required this.certifications,
+    this.certificationName,
   });
 
   factory GuideProfileState.initial() {
@@ -19,6 +21,7 @@ class GuideProfileState {
       certifications: [],
       inEditLangusgesMode: false,
       inEditCertificationsMode: false,
+      certificationName: null,
     );
   }
 
@@ -27,6 +30,7 @@ class GuideProfileState {
     bool? inEditCertificationsMode,
     List<String>? languages,
     List<String>? certifications,
+    PickedFileModel? certificationName,
   }) {
     return GuideProfileState(
       languages: languages ?? this.languages,
@@ -34,6 +38,7 @@ class GuideProfileState {
       inEditLangusgesMode: inEditLangusgesMode ?? this.inEditLangusgesMode,
       inEditCertificationsMode:
           inEditCertificationsMode ?? this.inEditCertificationsMode,
+      certificationName: certificationName ?? this.certificationName,
     );
   }
 }

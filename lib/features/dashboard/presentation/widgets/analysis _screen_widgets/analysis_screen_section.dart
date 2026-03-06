@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/comment_item_list_view.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/feed_back_travel.dart';
@@ -16,37 +15,8 @@ class AnalysisScreenSection extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(
-            height: 50,
-          ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 23),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(
-                      Icons.arrow_back_ios
-                    )
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  context.l10n.analysis,
-                  style: AppTextStyles.poppinsSemiBold20.copyWith(
-                    color: AppColors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 8),
+
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 23.p),
             child: const AnalysisStatCardSection(),

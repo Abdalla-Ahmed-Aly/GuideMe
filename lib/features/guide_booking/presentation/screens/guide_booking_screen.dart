@@ -4,7 +4,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/booking_profile.dart';
+import 'package:guide_me/core/widgets/user_profile_tile.dart';
 import 'package:guide_me/core/widgets/schedule_list.dart';
 import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/trips_list_view.dart';
 
@@ -23,9 +23,9 @@ class GuideBookingScreen extends StatelessWidget {
           SizedBox(height: context.screenHeight * 0.05),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.p),
-            child: BookingProfile(
+            child: UserProfileTile(
               onTap: () {
-                context.push(AppRoutes.guideProfileScreen);
+                context.push(AppRoutes.tourGuideProfileScreen);
               },
             ),
           ),

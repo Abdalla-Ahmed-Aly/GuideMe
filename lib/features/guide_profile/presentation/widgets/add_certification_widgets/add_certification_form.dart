@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:intl/intl.dart';
 import 'month_year_picker.dart';
+import 'upload_certification_file.dart';
 
 class AddCertificationForm extends StatefulWidget {
   const AddCertificationForm({
@@ -44,9 +46,19 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Name
-          Text(
-            context.l10n.certificationName,
-            style: AppTextStyles.interSemiBold16,
+          Text.rich(
+            TextSpan(
+              text: context.l10n.certificationName,
+              style: AppTextStyles.interSemiBold16,
+              children: [
+                TextSpan(
+                  text: "*",
+                  style: AppTextStyles.interSemiBold16.copyWith(
+                    color: AppColors.primary2,
+                  ),
+                ),
+              ],
+            ),
           ),
 
           const SizedBox(height: 6),
@@ -56,12 +68,22 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
             controller: certificationNameCont,
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
 
           // Orgnization
-          Text(
-            context.l10n.issuingOrganization,
-            style: AppTextStyles.interSemiBold16,
+          Text.rich(
+            TextSpan(
+              text: context.l10n.issuingOrganization,
+              style: AppTextStyles.interSemiBold16,
+              children: [
+                TextSpan(
+                  text: "*",
+                  style: AppTextStyles.interSemiBold16.copyWith(
+                    color: AppColors.primary2,
+                  ),
+                ),
+              ],
+            ),
           ),
 
           const SizedBox(height: 6),
@@ -71,12 +93,22 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
             controller: organizationCont,
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
 
           // issue date
-          Text(
-            context.l10n.issueDate,
-            style: AppTextStyles.interSemiBold16,
+          Text.rich(
+            TextSpan(
+              text: context.l10n.issueDate,
+              style: AppTextStyles.interSemiBold16,
+              children: [
+                TextSpan(
+                  text: "*",
+                  style: AppTextStyles.interSemiBold16.copyWith(
+                    color: AppColors.primary2,
+                  ),
+                ),
+              ],
+            ),
           ),
 
           const SizedBox(height: 6),
@@ -106,7 +138,7 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
             },
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
 
           // expire date
           Text(
@@ -141,6 +173,27 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
               }
             },
           ),
+
+          const SizedBox(height: 24),
+
+          Text.rich(
+            TextSpan(
+              text: context.l10n.uploadCertificate,
+              style: AppTextStyles.interSemiBold16,
+              children: [
+                TextSpan(
+                  text: "*",
+                  style: AppTextStyles.interSemiBold16.copyWith(
+                    color: AppColors.primary2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 6),
+
+          const UploadCertificationFile(),
         ],
       ),
     );
