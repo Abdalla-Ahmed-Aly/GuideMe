@@ -1615,6 +1615,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arrival Time'**
   String get arrivalTime;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @professional_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Details'**
+  String get professional_details;
+
+  /// No description provided for @languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages'**
+  String get languages;
+
+  /// No description provided for @licenseId.
+  ///
+  /// In en, this message translates to:
+  /// **'LICENSE ID'**
+  String get licenseId;
+
+  /// No description provided for @addCertification.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Certification'**
+  String get addCertification;
+
+  /// No description provided for @certificationName.
+  ///
+  /// In en, this message translates to:
+  /// **'Certification Name*'**
+  String get certificationName;
+
+  /// No description provided for @certificationNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ex: Google UX Design Certificate'**
+  String get certificationNameHint;
+
+  /// No description provided for @issuingOrganization.
+  ///
+  /// In en, this message translates to:
+  /// **'Issuing Organization*'**
+  String get issuingOrganization;
+
+  /// No description provided for @issuingOrganizationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ex: Coursera'**
+  String get issuingOrganizationHint;
+
+  /// No description provided for @issueDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue Date*'**
+  String get issueDate;
+
+  /// No description provided for @expirationDateOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiration Date (Optional)'**
+  String get expirationDateOptional;
+
+  /// No description provided for @dateFormatHint.
+  ///
+  /// In en, this message translates to:
+  /// **'MM/YYYY'**
+  String get dateFormatHint;
+
+  /// No description provided for @noExpirationCertification.
+  ///
+  /// In en, this message translates to:
+  /// **'This certification does not expire'**
+  String get noExpirationCertification;
+
+  /// No description provided for @saveCertification.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Certification'**
+  String get saveCertification;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a language'**
+  String get selectLanguage;
 }
 
 class _AppLocalizationsDelegate

@@ -786,4 +786,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arrivalTime => 'Arrival Time';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get professional_details => 'Professional Details';
+
+  @override
+  String get languages => 'Languages';
+
+  @override
+  String get licenseId => 'LICENSE ID';
+
+  @override
+  String get addCertification => 'Add Certification';
+
+  @override
+  String get certificationName => 'Certification Name*';
+
+  @override
+  String get certificationNameHint => 'Ex: Google UX Design Certificate';
+
+  @override
+  String get issuingOrganization => 'Issuing Organization*';
+
+  @override
+  String get issuingOrganizationHint => 'Ex: Coursera';
+
+  @override
+  String get issueDate => 'Issue Date*';
+
+  @override
+  String get expirationDateOptional => 'Expiration Date (Optional)';
+
+  @override
+  String get dateFormatHint => 'MM/YYYY';
+
+  @override
+  String get noExpirationCertification => 'This certification does not expire';
+
+  @override
+  String get saveCertification => 'Save Certification';
+
+  @override
+  String get selectLanguage => 'Select a language';
 }

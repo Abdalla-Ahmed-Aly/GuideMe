@@ -24,7 +24,7 @@ class DashboardSection extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              context.push(AppRoutes.guideProfileScreen);
+              context.push(AppRoutes.tourGuideProfileScreen);
             },
             child: const UserProfileHeader(),
           ),
