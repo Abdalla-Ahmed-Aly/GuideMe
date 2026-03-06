@@ -16,6 +16,8 @@ class CustomTextField extends StatelessWidget {
     this.border,
     this.hintColor,
     this.fillColor,
+    this.onTap,
+    this.readOnly = false,
   });
   final String? hintText;
   final bool obscureText;
@@ -28,10 +30,14 @@ class CustomTextField extends StatelessWidget {
   final InputBorder? border;
   final Color? hintColor;
   final Color? fillColor;
+  final void Function()? onTap;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly,
+      onTap: onTap,
       controller: controller,
       obscureText: obscureText,
       style: AppTextStyles.interRegular16,

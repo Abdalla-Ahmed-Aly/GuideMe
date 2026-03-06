@@ -25,6 +25,7 @@ import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/guide_navigation_bar_screen.dart';
+import 'package:guide_me/features/guide_profile/presentation/cubits/guide_profile_cubit/guide_profile_cubit.dart';
 import 'package:guide_me/features/guide_profile/presentation/screens/add_certification_screen.dart';
 import 'package:guide_me/features/guide_profile/presentation/screens/tour_guide_profile_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/professional_info_cubit/professional_info_cubit.dart';
@@ -223,7 +224,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.tourGuideProfileScreen,
-        builder: (context, state) => const TourGuideProfileScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => GuideProfileCubit(),
+          child: const TourGuideProfileScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.addCertificationScreen,

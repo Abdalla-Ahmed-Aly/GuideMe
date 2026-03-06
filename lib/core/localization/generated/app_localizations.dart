@@ -1699,6 +1699,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save Certification'**
   String get saveCertification;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a language'**
+  String get selectLanguage;
 }
 
 class _AppLocalizationsDelegate

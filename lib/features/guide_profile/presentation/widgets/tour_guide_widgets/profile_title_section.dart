@@ -9,10 +9,12 @@ class ProfileTitleSection extends StatelessWidget {
     required this.title,
     required this.onAddPressed,
     required this.onEditPressed,
+    required this.inEditMode,
   });
   final String title;
   final void Function()? onAddPressed;
   final void Function()? onEditPressed;
+  final bool inEditMode;
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +55,21 @@ class ProfileTitleSection extends StatelessWidget {
 
         GestureDetector(
           onTap: onEditPressed,
-          child: const Icon(
-            Icons.edit_outlined,
-            color: AppColors.natural6,
-            size: 20,
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            child: inEditMode
+                ? const Icon(
+                    key: ValueKey("close icon"),
+                    Icons.close,
+                    color: AppColors.natural6,
+                    size: 20,
+                  )
+                : const Icon(
+                    Icons.edit_outlined,
+                    color: AppColors.natural6,
+                    size: 20,
+                    key: ValueKey("edit icon"),
+                  ),
           ),
         ),
       ],

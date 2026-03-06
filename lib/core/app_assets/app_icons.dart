@@ -56,4 +56,5 @@ abstract class AppIcons {
   static const String userOutline = 'assets/icons/user_outline.svg';
   static const String file = 'assets/icons/file.svg';
   static const String licenseId = 'assets/icons/license_id.svg';
+  static const String arrowFilter = 'assets/icons/arrow_filtter.svg';
 }

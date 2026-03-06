@@ -829,4 +829,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get saveCertification => 'حفظ الشهادة';
+
+  @override
+  String get selectLanguage => 'اختر لغة';
 }

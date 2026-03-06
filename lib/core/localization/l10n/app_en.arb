@@ -288,5 +288,7 @@
   "dateFormatHint": "MM/YYYY",
   "noExpirationCertification": "This certification does not expire",
   "cancel": "Cancel",
-  "saveCertification": "Save Certification"
+  "saveCertification": "Save Certification",
+  "addLanguage": "Add Language",
+  "selectLanguage": "Select a language"
 }

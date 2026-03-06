@@ -828,4 +828,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saveCertification => 'Save Certification';
+
+  @override
+  String get selectLanguage => 'Select a language';
 }

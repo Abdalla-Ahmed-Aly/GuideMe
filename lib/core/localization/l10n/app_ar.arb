@@ -288,5 +288,7 @@
   "dateFormatHint": "MM/YYYY",
   "noExpirationCertification": "هذه الشهادة لا تنتهي",
   "cancel": "إلغاء",
-  "saveCertification": "حفظ الشهادة"
+  "saveCertification": "حفظ الشهادة",
+  "addLanguage": "إضافة لغة",
+  "selectLanguage": "اختر لغة"
 }

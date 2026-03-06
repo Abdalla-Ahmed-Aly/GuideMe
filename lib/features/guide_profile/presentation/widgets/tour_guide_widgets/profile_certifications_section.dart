@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import '../../cubits/guide_profile_cubit/guide_profile_cubit.dart';
 import 'profile_certification_card.dart';
 import 'profile_title_section.dart';
 
@@ -20,7 +22,13 @@ class ProfileCertificationsSection extends StatelessWidget {
             onAddPressed: () {
               context.push(AppRoutes.addCertificationScreen);
             },
-            onEditPressed: () {},
+            onEditPressed: () {
+              context.read<GuideProfileCubit>().toggleCertificationEditMode();
+            },
+            inEditMode: context
+                .watch<GuideProfileCubit>()
+                .state
+                .inEditCertificationsMode,
           ),
 
           const SizedBox(height: 16),
@@ -37,4 +45,3 @@ class ProfileCertificationsSection extends StatelessWidget {
     );
   }
 }
-

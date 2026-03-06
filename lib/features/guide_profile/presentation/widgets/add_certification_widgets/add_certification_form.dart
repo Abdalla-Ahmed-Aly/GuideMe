@@ -1,0 +1,148 @@
+import 'package:flutter/material.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:intl/intl.dart';
+import 'month_year_picker.dart';
+
+class AddCertificationForm extends StatefulWidget {
+  const AddCertificationForm({
+    super.key,
+  });
+
+  @override
+  State<AddCertificationForm> createState() => _AddCertificationFormState();
+}
+
+class _AddCertificationFormState extends State<AddCertificationForm> {
+  TextEditingController certificationNameCont = TextEditingController();
+  TextEditingController organizationCont = TextEditingController();
+  TextEditingController issueDateCont = TextEditingController();
+  TextEditingController expireDateCont = TextEditingController();
+
+  DateTime? issueDate;
+  DateTime? expireDate;
+
+  @override
+  void dispose() {
+    super.dispose();
+    certificationNameCont.dispose();
+    organizationCont.dispose();
+    issueDateCont.dispose();
+    expireDateCont.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 16.p,
+        vertical: 24,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Name
+          Text(
+            context.l10n.certificationName,
+            style: AppTextStyles.interSemiBold16,
+          ),
+
+          const SizedBox(height: 6),
+
+          CustomTextField(
+            hintText: context.l10n.certificationNameHint,
+            controller: certificationNameCont,
+          ),
+
+          const SizedBox(height: 16),
+
+          // Orgnization
+          Text(
+            context.l10n.issuingOrganization,
+            style: AppTextStyles.interSemiBold16,
+          ),
+
+          const SizedBox(height: 6),
+
+          CustomTextField(
+            hintText: context.l10n.issuingOrganizationHint,
+            controller: organizationCont,
+          ),
+
+          const SizedBox(height: 16),
+
+          // issue date
+          Text(
+            context.l10n.issueDate,
+            style: AppTextStyles.interSemiBold16,
+          ),
+
+          const SizedBox(height: 6),
+
+          CustomTextField(
+            controller: issueDateCont,
+            hintText: context.l10n.dateFormatHint,
+            suffixIcon: const Icon(
+              Icons.calendar_today_outlined,
+              color: Colors.black,
+            ),
+            readOnly: true,
+            onTap: () async {
+              issueDate = await showDialog<DateTime>(
+                context: context,
+                builder: (context) {
+                  return const MonthYearPicker();
+                },
+              );
+              if (issueDate != null) {
+                setState(() {
+                  issueDateCont = TextEditingController(
+                    text: DateFormat("MM/yyyy").format(issueDate!),
+                  );
+                });
+              }
+            },
+          ),
+
+          const SizedBox(height: 16),
+
+          // expire date
+          Text(
+            context.l10n.expirationDateOptional,
+            style: AppTextStyles.interSemiBold16,
+          ),
+
+          const SizedBox(height: 6),
+
+          CustomTextField(
+            controller: expireDateCont,
+            keyboardType: TextInputType.datetime,
+            hintText: context.l10n.dateFormatHint,
+            suffixIcon: const Icon(
+              Icons.calendar_today_outlined,
+              color: Colors.black,
+            ),
+            readOnly: true,
+            onTap: () async {
+              expireDate = await showDialog<DateTime>(
+                context: context,
+                builder: (context) {
+                  return const MonthYearPicker();
+                },
+              );
+              if (expireDate != null) {
+                setState(() {
+                  expireDateCont = TextEditingController(
+                    text: DateFormat("MM/yyyy").format(issueDate!),
+                  );
+                });
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
