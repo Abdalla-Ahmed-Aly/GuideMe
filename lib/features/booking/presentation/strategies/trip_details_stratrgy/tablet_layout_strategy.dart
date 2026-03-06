@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/booking/presentation/strategies/trip_card_strategey/tour_info_layout_strategy.dart';
+import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tour_info_layout_strategy.dart';
 
 class TabletLayoutStrategy implements TourInfoLayoutStrategy {
   @override

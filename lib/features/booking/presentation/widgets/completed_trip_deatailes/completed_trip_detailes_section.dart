@@ -7,10 +7,10 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/booking/presentation/strategies/trip_card_strategey/mobile_layout_strategy.dart';
-import 'package:guide_me/features/booking/presentation/strategies/trip_card_strategey/tablet_layout_strategy.dart';
-import 'package:guide_me/features/booking/presentation/strategies/trip_card_strategey/tour_info_layout_strategy.dart';
-import 'package:guide_me/features/booking/presentation/strategies/trip_card_strategey/tour_info_section.dart';
+import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/mobile_layout_strategy.dart';
+import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tablet_layout_strategy.dart';
+import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tour_info_layout_strategy.dart';
+import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tour_info_section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/earnings_summary_card.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/metting_point_section.dart';
 
