@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_input_section.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_trip_details_card.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/messages_list_view.dart';
@@ -53,11 +55,42 @@ class ChatScreen extends StatelessWidget {
           ],
         ),
         actions: [
+          BlocBuilder<ChatCubit, ChatState>(
+            builder: (context, state) {
+              if (!state.showTrakingDetials) {
+                return InkWell(
+                  splashColor: Colors.transparent,
+                  onTap: () {
+                    context.read<ChatCubit>().showTrackingCard();
+                  },
+                  child: Hero(
+                    tag: "tracking_details",
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffFEF4E6),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.explore,
+                        color: const Color(0xffF2930D),
+                        size: 26.ic,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox();
+            },
+          ),
+
+          const SizedBox(width: 4),
+
           IconButton(
             icon: const Icon(Icons.call),
-            onPressed: () {
-              context.pop();
-            },
+            onPressed: () {},
           ),
           const SizedBox(width: 12),
         ],
@@ -69,11 +102,34 @@ class ChatScreen extends StatelessWidget {
               children: [
                 const MessagesListView(),
 
-                Positioned(
-                  top: 16,
-                  left: 24.p,
-                  right: 24.p,
-                  child: const ChatTripDetailsCard(),
+                BlocBuilder<ChatCubit, ChatState>(
+                  builder: (context, state) {
+                    return Positioned(
+                      top: 16,
+                      left: 24.p,
+                      right: 24.p,
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        switchInCurve: Curves.easeInOut,
+                        transitionBuilder: (child, animation) {
+                          final offsetAnimation = Tween<Offset>(
+                            begin: const Offset(0, -0.5),
+                            end: Offset.zero,
+                          ).animate(animation);
+
+                          return SlideTransition(
+                            position: offsetAnimation,
+                            child: child,
+                          );
+                        },
+                        child: state.showTrakingDetials
+                            ? const ChatTripDetailsCard(
+                                key: ValueKey("trackingCard"),
+                              )
+                            : const SizedBox(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

@@ -20,6 +20,7 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
@@ -222,7 +223,10 @@ abstract class AppRouter {
 
       GoRoute(
         path: AppRoutes.chatScreen,
-        builder: (context, state) => const ChatScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ChatCubit(),
+          child: const ChatScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.trackingScreen,
