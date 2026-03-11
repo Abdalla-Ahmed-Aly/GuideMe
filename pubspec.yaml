@@ -37,6 +37,10 @@ dependencies:
   get_it: ^9.2.1
   injectable: ^2.7.1+4
   linear_date_picker: ^0.0.2
+  logger: ^2.5.0
+  dio: 
+  flutter_secure_storage: ^10.0.0
+  connectivity_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +50,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_launcher_icons: ^0.14.4
   injectable_generator: ^2.12.0
+  build_runner: ^2.12.2
 
 flutter_launcher_icons:
   android: true
