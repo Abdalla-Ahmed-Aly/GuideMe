@@ -89,6 +89,29 @@ class ApiService {
     return response;
   }
 
+  Future<Response> patch({
+    required String endpoint,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    CancelToken? cancelToken,
+    Options? options,
+  }) async {
+    await _checkInternet();
+    final response = await _dio.patch(
+      endpoint,
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options:
+          options ??
+          Options(
+            headers: headers,
+          ),
+    );
+    return response;
+  }
+
   Future<Response> delete({
     required String endpoint,
     Map<String, dynamic>? data,
