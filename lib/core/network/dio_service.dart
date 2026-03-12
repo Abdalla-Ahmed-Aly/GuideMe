@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+import '../constants/api_constants.dart';
 import 'interceptor.dart';
 
 @lazySingleton
@@ -10,7 +11,7 @@ class DioService {
   DioService() {
     dio = Dio(
       BaseOptions(
-        // baseUrl: ApiConstants.baseUrl,
+        baseUrl: ApiConstants.baseUrl,
         connectTimeout: const Duration(seconds: 15),
         receiveTimeout: const Duration(seconds: 15),
         sendTimeout: const Duration(seconds: 15),
