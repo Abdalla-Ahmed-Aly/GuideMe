@@ -28,53 +28,61 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double normalWidth = width ?? double.infinity;
     final double loadingWidth = 100;
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-      width: isLoading ? loadingWidth : normalWidth,
-      height: height ?? 56,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? AppColors.primary,
-          foregroundColor: AppColors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius ?? 10),
-          ),
-        ),
-        onPressed: isLoading ? null : onPressed,
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 200),
-          child: isLoading
-              ? const SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2.5,
-                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
-                  ),
-                )
-              : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (prefixIcon != null) ...[
-                      prefixIcon!,
-                      const SizedBox(width: 12),
-                    ],
-                    Expanded(
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        text,
-                        style: textStyle ?? AppTextStyles.interSemiBold16,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final double normalWidth = width ?? constraints.maxWidth;
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          width: isLoading ? loadingWidth : normalWidth,
+          height: height ?? 56,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: backgroundColor ?? AppColors.primary,
+              foregroundColor: AppColors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(radius ?? 10),
+              ),
+            ),
+            onPressed: isLoading ? null : onPressed,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              child: isLoading
+                  ? const SizedBox(
+                      key: ValueKey('loading'),
+                      height: 24,
+                      width: 24,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          AppColors.white,
+                        ),
                       ),
+                    )
+                  : Row(
+                      key: const ValueKey('app_button'),
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (prefixIcon != null) ...[
+                          prefixIcon!,
+                          const SizedBox(width: 12),
+                        ],
+                        Expanded(
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            text,
+                            style: textStyle ?? AppTextStyles.interSemiBold16,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-        ),
-      ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

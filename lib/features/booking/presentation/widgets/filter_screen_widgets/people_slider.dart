@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
+import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class PeopleSlider extends StatefulWidget {
+class PeopleSlider extends StatelessWidget {
   const PeopleSlider({super.key});
-
-  @override
-  State<PeopleSlider> createState() => _PeopleSliderState();
-}
-
-class _PeopleSliderState extends State<PeopleSlider> {
-  double _value = 11.0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +25,25 @@ class _PeopleSliderState extends State<PeopleSlider> {
         ),
       ),
     );
-    return SfSlider(
-      value: _value,
-      min: 0,
-      max: 20,
-      activeColor: AppColors.yellow,
-      inactiveColor: AppColors.natural2,
-      thumbIcon: startThumbIcon,
-      enableTooltip: true,
-      tooltipTextFormatterCallback:
-          (dynamic actualValue, String formattedText) {
-            return 'person ${actualValue.round()}'; //
-          },
+    return BlocBuilder<ReservationCubit, ReservationState>(
+      builder: (context, state) {
+        return SfSlider(
+          value: state.persons.toDouble(),
+          min: 0,
+          max: 20,
+          activeColor: AppColors.yellow,
+          inactiveColor: AppColors.natural2,
+          thumbIcon: startThumbIcon,
+          enableTooltip: true,
+          tooltipTextFormatterCallback:
+              (dynamic actualValue, String formattedText) {
+                return ' Person ${actualValue.round()} ';
+              },
 
-      onChanged: (value) {
-        setState(() {
-          _value = value;
-        });
+          onChanged: (value) {
+            context.read<ReservationCubit>().setPersons(value.toInt());
+          },
+        );
       },
     );
   }

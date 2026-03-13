@@ -890,4 +890,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorUnknown => 'An unexpected error occurred. Please try again.';
+
+  @override
+  String get validationSelectDate => 'Please select a date';
+
+  @override
+  String get validationSelectTime => 'Please select a time';
+
+  @override
+  String get validationEnterPickupLocation => 'Please enter a location';
+
+  @override
+  String get validationEnterNotes => 'Please enter notes';
+
+  @override
+  String get validationSelectPersons => 'Please select number of persons';
 }

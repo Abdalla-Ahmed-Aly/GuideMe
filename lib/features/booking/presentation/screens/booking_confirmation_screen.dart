@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/booking/presentation/widgets/booking_confirmation_widgets/booking_details.dart';
+import 'package:guide_me/features/booking/presentation/widgets/booking_confirmation_widgets/booking_details_draggable.dart';
 import 'package:guide_me/features/booking/presentation/widgets/booking_confirmation_widgets/booking_images_section.dart';
 
 class BookingConfirmationScreen extends StatefulWidget {
@@ -45,7 +45,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                 children: [
                   // images
                   SizedBox(
-                    height: imagesHeight < sheetHeight
+                    height: imagesHeight < sheetHeight + 30
                         ? (screenHeight * .5) + 30
                         : imagesHeight,
                     width: double.infinity,
@@ -93,7 +93,9 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                       height: 5,
                                       decoration: BoxDecoration(
                                         color: Colors.grey,
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: BorderRadius.circular(
+                                          16,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -101,9 +103,9 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 ),
                               ),
                             ),
-
+                      
                             const Expanded(
-                              child: BookingDetails(),
+                              child: BookingDetailsDraggable(),
                             ),
                           ],
                         ),

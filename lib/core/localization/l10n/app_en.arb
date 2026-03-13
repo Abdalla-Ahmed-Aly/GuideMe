@@ -310,5 +310,11 @@
   "errorValidation": "Please check your input and try again.",
   "errorEmptyData": "No data available.",
   "errorCancelled": "Request was cancelled.",
-  "errorUnknown": "An unexpected error occurred. Please try again."
+  "errorUnknown": "An unexpected error occurred. Please try again.",
+
+  "validationSelectDate": "Please select a date",
+  "validationSelectTime": "Please select a time",
+  "validationEnterPickupLocation": "Please enter a location",
+  "validationEnterNotes": "Please enter notes",
+  "validationSelectPersons": "Please select number of persons"
 }

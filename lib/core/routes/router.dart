@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
@@ -12,6 +13,8 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
+import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/completed_trip_details.dart';
@@ -52,6 +55,7 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
+    initialLocation: AppRoutes.touristNavigationBarScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -111,7 +115,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookScreen,
-        builder: (context, state) => const ReservationScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<ReservationCubit>(),
+          child: const ReservationScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.guideProfileScreen,
@@ -150,7 +157,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookingConfirmationScreen,
-        builder: (context, state) => const BookingConfirmationScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AddBookingCubit>(),
+          child: const BookingConfirmationScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.pendingApprovalScreen,

@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/app_button.dart';
 
-class BookingDetails extends StatelessWidget {
-  const BookingDetails({super.key});
+class BookingPlaceDetailsSection extends StatelessWidget {
+  const BookingPlaceDetailsSection({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
-    return ListView(
-      physics: const ClampingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 22.p),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 12),
 
@@ -157,17 +154,7 @@ class BookingDetails extends StatelessWidget {
           softWrap: true,
         ),
 
-        SizedBox(height: size.height * 0.05),
-
-        Padding(
-          padding: const EdgeInsets.only(bottom: 28),
-          child: AppButton(
-            onPressed: () {
-              context.push(AppRoutes.pendingApprovalScreen);
-            },
-            text: context.l10n.apply,
-          ),
-        ),
+        const SizedBox(height: 32),
       ],
     );
   }

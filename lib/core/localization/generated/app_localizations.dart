@@ -1819,6 +1819,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An unexpected error occurred. Please try again.'**
   String get errorUnknown;
+
+  /// No description provided for @validationSelectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a date'**
+  String get validationSelectDate;
+
+  /// No description provided for @validationSelectTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a time'**
+  String get validationSelectTime;
+
+  /// No description provided for @validationEnterPickupLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a location'**
+  String get validationEnterPickupLocation;
+
+  /// No description provided for @validationEnterNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter notes'**
+  String get validationEnterNotes;
+
+  /// No description provided for @validationSelectPersons.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select number of persons'**
+  String get validationSelectPersons;
 }
 
 class _AppLocalizationsDelegate

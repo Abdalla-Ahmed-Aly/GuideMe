@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/date_time_pick_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/notes_text_field.dart';
 import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/pick_up_point_field.dart';
@@ -16,6 +20,7 @@ class ReservationScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ReservationCubit>();
     final size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
@@ -70,7 +75,26 @@ class ReservationScreenBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.p),
             child: AppButton(
               onPressed: () {
-                context.push(AppRoutes.bookingConfirmationScreen);
+                if (!cubit.isValidated(context)) {
+                  context.showErrorSnakbar(
+                    message: cubit.state.error!,
+                  );
+                  return;
+                }
+
+                final addBooking = AddBookingRequest(
+                  placeId: cubit.state.placeId,
+                  date: cubit.state.date,
+                  time: cubit.state.timeFormatted,
+                  pickupLocation: cubit.state.pickupLocation,
+                  notes: cubit.state.notes,
+                  persons: cubit.state.persons.toString(),
+                );
+
+                context.push(
+                  AppRoutes.bookingConfirmationScreen,
+                  extra: addBooking,
+                );
               },
               text: context.l10n.apply,
               textStyle: AppTextStyles.interSemiBold18.copyWith(

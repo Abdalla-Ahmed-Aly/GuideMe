@@ -889,4 +889,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorUnknown => 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get validationSelectDate => 'يرجى اختيار تاريخ';
+
+  @override
+  String get validationSelectTime => 'يرجى اختيار وقت';
+
+  @override
+  String get validationEnterPickupLocation => 'يرجى إدخال موقع';
+
+  @override
+  String get validationEnterNotes => 'يرجى إدخال ملاحظات';
+
+  @override
+  String get validationSelectPersons => 'يرجى اختيار عدد الأشخاص';
 }

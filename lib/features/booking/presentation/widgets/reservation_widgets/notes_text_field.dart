@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 
 class NotesTextField extends StatelessWidget {
   const NotesTextField({super.key});
@@ -23,6 +25,10 @@ class NotesTextField extends StatelessWidget {
         ),
         child: TextField(
           maxLines: 2,
+          onTapOutside: (_) => FocusScope.of(context).unfocus(),
+          onChanged: (value) {
+            context.read<ReservationCubit>().setNotes(value);
+          },
           decoration: InputDecoration(
             prefixIcon: const Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -54,6 +60,5 @@ class NotesTextField extends StatelessWidget {
         ),
       ),
     );
-    
   }
 }
