@@ -118,7 +118,6 @@ class CompletedTripDetailesSection extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(
             height: 23,
           ),

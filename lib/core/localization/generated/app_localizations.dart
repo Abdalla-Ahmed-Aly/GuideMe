@@ -1729,6 +1729,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Supported formats: PDF, JPG, PNG'**
   String get supportedFormats;
+
+  /// No description provided for @errorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please check your network.'**
+  String get errorNetwork;
+
+  /// No description provided for @errorTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timed out. Please try again.'**
+  String get errorTimeout;
+
+  /// No description provided for @errorUnauthorized.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not authorized. Please log in.'**
+  String get errorUnauthorized;
+
+  /// No description provided for @errorForbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have permission to access this.'**
+  String get errorForbidden;
+
+  /// No description provided for @errorSessionExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has expired. Please log in again.'**
+  String get errorSessionExpired;
+
+  /// No description provided for @errorBadRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid request. Please check your input.'**
+  String get errorBadRequest;
+
+  /// No description provided for @errorNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'The requested data was not found.'**
+  String get errorNotFound;
+
+  /// No description provided for @errorConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'A conflict occurred. Please try again.'**
+  String get errorConflict;
+
+  /// No description provided for @errorServer.
+  ///
+  /// In en, this message translates to:
+  /// **'Server error. Please try again later.'**
+  String get errorServer;
+
+  /// No description provided for @errorCache.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load cached data.'**
+  String get errorCache;
+
+  /// No description provided for @errorDatabase.
+  ///
+  /// In en, this message translates to:
+  /// **'A database error occurred.'**
+  String get errorDatabase;
+
+  /// No description provided for @errorValidation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your input and try again.'**
+  String get errorValidation;
+
+  /// No description provided for @errorEmptyData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available.'**
+  String get errorEmptyData;
+
+  /// No description provided for @errorCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request was cancelled.'**
+  String get errorCancelled;
+
+  /// No description provided for @errorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again.'**
+  String get errorUnknown;
 }
 
 class _AppLocalizationsDelegate

@@ -843,4 +843,51 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get supportedFormats => 'Supported formats: PDF, JPG, PNG';
+
+  @override
+  String get errorNetwork =>
+      'No internet connection. Please check your network.';
+
+  @override
+  String get errorTimeout => 'Request timed out. Please try again.';
+
+  @override
+  String get errorUnauthorized => 'You are not authorized. Please log in.';
+
+  @override
+  String get errorForbidden => 'You don\'t have permission to access this.';
+
+  @override
+  String get errorSessionExpired =>
+      'Your session has expired. Please log in again.';
+
+  @override
+  String get errorBadRequest => 'Invalid request. Please check your input.';
+
+  @override
+  String get errorNotFound => 'The requested data was not found.';
+
+  @override
+  String get errorConflict => 'A conflict occurred. Please try again.';
+
+  @override
+  String get errorServer => 'Server error. Please try again later.';
+
+  @override
+  String get errorCache => 'Failed to load cached data.';
+
+  @override
+  String get errorDatabase => 'A database error occurred.';
+
+  @override
+  String get errorValidation => 'Please check your input and try again.';
+
+  @override
+  String get errorEmptyData => 'No data available.';
+
+  @override
+  String get errorCancelled => 'Request was cancelled.';
+
+  @override
+  String get errorUnknown => 'An unexpected error occurred. Please try again.';
 }

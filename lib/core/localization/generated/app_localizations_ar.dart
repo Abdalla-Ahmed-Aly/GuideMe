@@ -844,4 +844,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get supportedFormats => 'تنسيقات مدعومة: PDF, JPG, PNG';
+
+  @override
+  String get errorNetwork => 'لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.';
+
+  @override
+  String get errorTimeout => 'انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get errorUnauthorized => 'غير مصرح لك بالدخول. يرجى تسجيل الدخول.';
+
+  @override
+  String get errorForbidden => 'ليس لديك صلاحية للوصول إلى هذا.';
+
+  @override
+  String get errorSessionExpired => 'انتهت جلستك. يرجى تسجيل الدخول مجدداً.';
+
+  @override
+  String get errorBadRequest => 'طلب غير صالح. يرجى التحقق من المدخلات.';
+
+  @override
+  String get errorNotFound => 'البيانات المطلوبة غير موجودة.';
+
+  @override
+  String get errorConflict => 'حدث تعارض. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get errorServer => 'خطأ في الخادم. يرجى المحاولة لاحقاً.';
+
+  @override
+  String get errorCache => 'فشل تحميل البيانات المحفوظة.';
+
+  @override
+  String get errorDatabase => 'حدث خطأ في قاعدة البيانات.';
+
+  @override
+  String get errorValidation => 'يرجى التحقق من المدخلات والمحاولة مجدداً.';
+
+  @override
+  String get errorEmptyData => 'لا توجد بيانات متاحة.';
+
+  @override
+  String get errorCancelled => 'تم إلغاء الطلب.';
+
+  @override
+  String get errorUnknown => 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.';
 }
