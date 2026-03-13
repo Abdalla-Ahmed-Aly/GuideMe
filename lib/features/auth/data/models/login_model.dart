@@ -1,18 +1,18 @@
-class LoginModel {
+class LoginresponseModel {
   final bool success;
   final String message;
   final String token;
   final LoginData data;
 
-  LoginModel({
+  LoginresponseModel({
     required this.success,
     required this.message,
     required this.token,
     required this.data,
   });
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
-    return LoginModel(
+  factory LoginresponseModel.fromJson(Map<String, dynamic> json) {
+    return LoginresponseModel(
       success: json['success'],
       message: json['message'],
       token: json['token'],

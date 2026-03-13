@@ -41,6 +41,7 @@ dependencies:
   dio: 
   flutter_secure_storage: ^10.0.0
   connectivity_plus: ^7.0.0
+  dart_either: ^2.1.0
   
 
 dev_dependencies:

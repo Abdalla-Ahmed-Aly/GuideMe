@@ -1,14 +1,14 @@
-class SendForgetPasswordResquestModel {
+class SendForgetPasswordResponsetModel {
   final bool success;
   final String message;
 
-  SendForgetPasswordResquestModel({
+  SendForgetPasswordResponsetModel({
     required this.success,
     required this.message,
   });
 
-  factory SendForgetPasswordResquestModel.fromJson(Map<String, dynamic> json) {
-    return SendForgetPasswordResquestModel(
+  factory SendForgetPasswordResponsetModel.fromJson(Map<String, dynamic> json) {
+    return SendForgetPasswordResponsetModel(
       success: json['success'],
       message: json['message'],
     );

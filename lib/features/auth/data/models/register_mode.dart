@@ -1,18 +1,18 @@
-class RegisterModel {
+class RegisterResponseModel {
   final bool success;
   final String message;
   final String token;
   final RegisterData data;
 
-  RegisterModel({
+  RegisterResponseModel({
     required this.success,
     required this.message,
     required this.token,
     required this.data,
   });
 
-  factory RegisterModel.fromJson(Map<String, dynamic> json) {
-    return RegisterModel(
+  factory RegisterResponseModel.fromJson(Map<String, dynamic> json) {
+    return RegisterResponseModel(
       success: json['success'],
       message: json['message'],
       token: json['token'],
