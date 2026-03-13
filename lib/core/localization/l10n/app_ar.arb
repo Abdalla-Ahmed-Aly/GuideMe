@@ -294,5 +294,21 @@
   "selectLanguage": "اختر لغة",
   "uploadCertificate": "رفع الشهادة",
   "uploadPdfOrImage": "رفع ملف PDF أو صورة",
-  "supportedFormats": "تنسيقات مدعومة: PDF, JPG, PNG"
+  "supportedFormats": "تنسيقات مدعومة: PDF, JPG, PNG",
+
+  "errorNetwork": "لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة.",
+  "errorTimeout": "انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.",
+  "errorUnauthorized": "غير مصرح لك بالدخول. يرجى تسجيل الدخول.",
+  "errorForbidden": "ليس لديك صلاحية للوصول إلى هذا.",
+  "errorSessionExpired": "انتهت جلستك. يرجى تسجيل الدخول مجدداً.",
+  "errorBadRequest": "طلب غير صالح. يرجى التحقق من المدخلات.",
+  "errorNotFound": "البيانات المطلوبة غير موجودة.",
+  "errorConflict": "حدث تعارض. يرجى المحاولة مرة أخرى.",
+  "errorServer": "خطأ في الخادم. يرجى المحاولة لاحقاً.",
+  "errorCache": "فشل تحميل البيانات المحفوظة.",
+  "errorDatabase": "حدث خطأ في قاعدة البيانات.",
+  "errorValidation": "يرجى التحقق من المدخلات والمحاولة مجدداً.",
+  "errorEmptyData": "لا توجد بيانات متاحة.",
+  "errorCancelled": "تم إلغاء الطلب.",
+  "errorUnknown": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."
 }

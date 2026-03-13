@@ -294,5 +294,21 @@
   "selectLanguage": "Select a language",
   "uploadCertificate": "Upload Certificate",
   "uploadPdfOrImage": "Upload PDF or Image",
-  "supportedFormats": "Supported formats: PDF, JPG, PNG"
+  "supportedFormats": "Supported formats: PDF, JPG, PNG",
+
+  "errorNetwork": "No internet connection. Please check your network.",
+  "errorTimeout": "Request timed out. Please try again.",
+  "errorUnauthorized": "You are not authorized. Please log in.",
+  "errorForbidden": "You don't have permission to access this.",
+  "errorSessionExpired": "Your session has expired. Please log in again.",
+  "errorBadRequest": "Invalid request. Please check your input.",
+  "errorNotFound": "The requested data was not found.",
+  "errorConflict": "A conflict occurred. Please try again.",
+  "errorServer": "Server error. Please try again later.",
+  "errorCache": "Failed to load cached data.",
+  "errorDatabase": "A database error occurred.",
+  "errorValidation": "Please check your input and try again.",
+  "errorEmptyData": "No data available.",
+  "errorCancelled": "Request was cancelled.",
+  "errorUnknown": "An unexpected error occurred. Please try again."
 }
