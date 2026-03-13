@@ -1,0 +1,17 @@
+enum FailureCode {
+  network,
+  timeout,
+  unauthorized,
+  forbidden,
+  sessionExpired,
+  badRequest,
+  notFound,
+  conflict,
+  server,
+  cache,
+  database,
+  validation,
+  emptyData,
+  cancelled,
+  unknown,
+}

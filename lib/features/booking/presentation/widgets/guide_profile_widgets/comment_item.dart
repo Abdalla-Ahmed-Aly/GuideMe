@@ -13,7 +13,7 @@ class CommentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         color: const Color(0xffFFE5BA).withValues(alpha: .10),
         border: Border.all(color: const Color(0xffFFE5BA)),
@@ -27,7 +27,7 @@ class CommentItem extends StatelessWidget {
             Row(
               children: [
                 const CircleAvatar(
-                  radius: 24,
+                  // radius: 24,
                   backgroundImage: AssetImage(AppImages.profileImageTest),
                 ),
                 Expanded(

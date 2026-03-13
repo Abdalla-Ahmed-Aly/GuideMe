@@ -786,4 +786,108 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arrivalTime => 'Arrival Time';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get professional_details => 'Professional Details';
+
+  @override
+  String get languages => 'Languages';
+
+  @override
+  String get licenseId => 'LICENSE ID';
+
+  @override
+  String get addCertification => 'Add Certification';
+
+  @override
+  String get certificationName => 'Certification Name';
+
+  @override
+  String get certificationNameHint => 'Ex: Google UX Design Certificate';
+
+  @override
+  String get issuingOrganization => 'Issuing Organization';
+
+  @override
+  String get issuingOrganizationHint => 'Ex: Coursera';
+
+  @override
+  String get issueDate => 'Issue Date';
+
+  @override
+  String get expirationDateOptional => 'Expiration Date (Optional)';
+
+  @override
+  String get dateFormatHint => 'MM/YYYY';
+
+  @override
+  String get noExpirationCertification => 'This certification does not expire';
+
+  @override
+  String get saveCertification => 'Save Certification';
+
+  @override
+  String get selectLanguage => 'Select a language';
+
+  @override
+  String get uploadCertificate => 'Upload Certificate';
+
+  @override
+  String get uploadPdfOrImage => 'Upload PDF or Image';
+
+  @override
+  String get supportedFormats => 'Supported formats: PDF, JPG, PNG';
+
+  @override
+  String get errorNetwork =>
+      'No internet connection. Please check your network.';
+
+  @override
+  String get errorTimeout => 'Request timed out. Please try again.';
+
+  @override
+  String get errorUnauthorized => 'You are not authorized. Please log in.';
+
+  @override
+  String get errorForbidden => 'You don\'t have permission to access this.';
+
+  @override
+  String get errorSessionExpired =>
+      'Your session has expired. Please log in again.';
+
+  @override
+  String get errorBadRequest => 'Invalid request. Please check your input.';
+
+  @override
+  String get errorNotFound => 'The requested data was not found.';
+
+  @override
+  String get errorConflict => 'A conflict occurred. Please try again.';
+
+  @override
+  String get errorServer => 'Server error. Please try again later.';
+
+  @override
+  String get errorCache => 'Failed to load cached data.';
+
+  @override
+  String get errorDatabase => 'A database error occurred.';
+
+  @override
+  String get errorValidation => 'Please check your input and try again.';
+
+  @override
+  String get errorEmptyData => 'No data available.';
+
+  @override
+  String get errorCancelled => 'Request was cancelled.';
+
+  @override
+  String get errorUnknown => 'An unexpected error occurred. Please try again.';
 }

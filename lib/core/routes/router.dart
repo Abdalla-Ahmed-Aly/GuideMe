@@ -20,12 +20,16 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/guide_navigation_bar_screen.dart';
+import 'package:guide_me/features/guide_profile/presentation/cubits/guide_profile_cubit/guide_profile_cubit.dart';
+import 'package:guide_me/features/guide_profile/presentation/screens/add_certification_screen.dart';
+import 'package:guide_me/features/guide_profile/presentation/screens/tour_guide_profile_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/professional_info_cubit/professional_info_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/select_guide_cities_cubit/select_guide_cities_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
@@ -48,7 +52,6 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
-    initialLocation: AppRoutes.guideNavigationBarScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -220,11 +223,28 @@ abstract class AppRouter {
 
       GoRoute(
         path: AppRoutes.chatScreen,
-        builder: (context, state) => const ChatScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ChatCubit(),
+          child: const ChatScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.trackingScreen,
         builder: (context, state) => const TrackingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.tourGuideProfileScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => GuideProfileCubit(MediaPickerServiceImpl()),
+          child: const TourGuideProfileScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.addCertificationScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => GuideProfileCubit(MediaPickerServiceImpl()),
+          child: const AddCertificationScreen(),
+        ),
       ),
     ],
   );

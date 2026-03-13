@@ -18,36 +18,12 @@ class BookingRequestSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 50,
-          ),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 23),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(Icons.arrow_back_ios),
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  context.l10n.bookingRequest,
-                  style: AppTextStyles.poppinsSemiBold20.copyWith(
-                    color: AppColors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 16),
+
           const Center(child: ProfileTouirsts()),
+
+          const SizedBox(height: 4),
+
           Center(
             child: Text(
               'Ahmed Ali',
@@ -56,9 +32,9 @@ class BookingRequestSection extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 51,
-          ),
+
+          const SizedBox(height: 24),
+
           Padding(
             padding: const EdgeInsets.only(left: 23),
             child: Align(
@@ -71,25 +47,25 @@ class BookingRequestSection extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+
+          const SizedBox(height: 20),
+
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23.p),
+            padding: EdgeInsets.symmetric(horizontal: 22.p),
             child: const BookingDetailsRequestSection(),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+
+          const SizedBox(height: 20),
+
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23.p),
+            padding: EdgeInsets.symmetric(horizontal: 22.p),
             child: const MEETINGPOINTSection(),
           ),
-          SizedBox(
-            height: 140.h,
-          ),
+
+          const SizedBox(height: 24),
+
           Padding(
-            padding: const EdgeInsets.only(left: 23),
+            padding: EdgeInsets.symmetric(horizontal: 22.p),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -100,13 +76,15 @@ class BookingRequestSection extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 24,
-          ),
+
+          const SizedBox(height: 16),
+
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23.p),
+            padding: EdgeInsets.symmetric(horizontal: 22.p),
             child: const EarningsSummaryCard(),
           ),
+
+          const SizedBox(height: 16),
         ],
       ),
     );

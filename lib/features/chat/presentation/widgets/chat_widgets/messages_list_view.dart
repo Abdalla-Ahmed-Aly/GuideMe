@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/receiver_message_bubble.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/sender_message_bubble.dart';
+
+import '../../../cubits/chat_cubit/chat_cubit.dart';
 
 class MessagesListView extends StatefulWidget {
   const MessagesListView({super.key});
@@ -12,6 +15,22 @@ class MessagesListView extends StatefulWidget {
 
 class _MessagesListViewState extends State<MessagesListView> {
   ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(_scrollListener);
+  }
+
+  void _scrollListener() {
+    final cubit = context.read<ChatCubit>();
+
+    if (scrollController.offset <= 0) {
+      cubit.showTrackingCard();
+    } else {
+      cubit.hideTrackingCard();
+    }
+  }
 
   @override
   void dispose() {
@@ -33,6 +52,8 @@ class _MessagesListViewState extends State<MessagesListView> {
       "Hi",
       "Hi",
       "Hi",
+      "Hi2",
+      "test",
     ].reversed.toList();
 
     return ListView.builder(

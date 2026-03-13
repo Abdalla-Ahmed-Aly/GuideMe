@@ -6,10 +6,9 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/user_profile_tile.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/requests_Item.dart';
-import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/user_profile_header.dart';
-import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/work_schedule_section.dart';
 
 class DashboardSection extends StatelessWidget {
   const DashboardSection({super.key});
@@ -18,30 +17,28 @@ class DashboardSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 50,
-          ),
-          GestureDetector(
-            onTap: () {
-              context.push(AppRoutes.guideProfileScreen);
-            },
-            child: const UserProfileHeader(),
-          ),
-          const SizedBox(
-            height: 26,
-          ),
+          SizedBox(height: context.screenHeight * 0.05),
+
           Padding(
-            padding: EdgeInsets.only(left: 21.p, right: 15.p),
+            padding: EdgeInsets.symmetric(horizontal: 22.p),
+            child: UserProfileTile(
+              onTap: () {
+                context.push(AppRoutes.tourGuideProfileScreen);
+              },
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.p),
             child: const AvailabilityStatusSection(),
           ),
-          const SizedBox(
-            height: 12,
-          ),
-          const WorkScheduleSection(),
-          const SizedBox(
-            height: 30,
-          ),
+
+          const SizedBox(height: 24),
+
           Padding(
             padding: EdgeInsets.only(left: 21.p, right: 15.p),
             child: Align(
