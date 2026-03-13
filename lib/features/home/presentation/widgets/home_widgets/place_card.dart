@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class PlaceCard extends StatefulWidget {
-  const PlaceCard({super.key});
+  final PlaceEntity place;
+  const PlaceCard({super.key, required this.place});
 
   @override
   State<PlaceCard> createState() => _PlaceCardState();
@@ -34,12 +35,16 @@ class _PlaceCardState extends State<PlaceCard> {
               height: context.isPortrait
                   ? size.height * 0.23
                   : size.width * 0.23,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                image: DecorationImage(
-                  image: AssetImage(AppImages.placeTest),
-                  fit: BoxFit.cover,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
                 ),
+                image: widget.place.images.isNotEmpty
+                    ? DecorationImage(
+                        image: NetworkImage(widget.place.images[0]),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
               ),
               child: Align(
                 alignment: Alignment.topRight,
@@ -81,7 +86,7 @@ class _PlaceCardState extends State<PlaceCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
-                'The Grand Egyptian Museum',
+                widget.place.title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: AppTextStyles.poppinsSemiBold16,
@@ -96,29 +101,31 @@ class _PlaceCardState extends State<PlaceCard> {
                 const SizedBox(width: 6),
                 // Rating
                 for (int i = 0; i < 5; i++)
-                  const Icon(
+                  Icon(
                     Icons.star_rounded,
-                    color: AppColors.yellow,
+                    color: i < widget.place.rating.floor()
+                        ? Colors.amber
+                        : Colors.grey,
                     size: 16,
                   ),
-
-                const SizedBox(width: 10),
-                // reviews
+                const SizedBox(width: 4),
                 Text(
-                  '(100 reviews)',
-                  style: AppTextStyles.poppinsRegular12,
+                  widget.place.rating.toString(),
+                  style: AppTextStyles.poppinsMedium12.copyWith(
+                    color: AppColors.blue,
+                  ),
                 ),
               ],
             ),
-
-            const SizedBox(height: 12),
-
+            const SizedBox(height: 3),
             // Price
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
-                '\$00.00',
-                style: AppTextStyles.poppinsSemiBold16,
+                '${widget.place.price}\$',
+                style: AppTextStyles.poppinsBold16.copyWith(
+                  color: AppColors.primary,
+                ),
               ),
             ),
           ],

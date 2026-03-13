@@ -27,6 +27,12 @@ class DioService {
       [
         AuthorizationInterceptor(),
         LoggerInterceptor(),
+        // InterceptorsWrapper(
+        //   onRequest: (options, handler) {
+        //     options.headers['Authorization'] =
+        //         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTJmZTBjZDg0NjI5MDhjYjlhYTVhYiIsInJvbGUiOiJ0b3VyaXN0IiwiaWF0IjoxNzcyMjg5NjE4fQ.SUrwoofufEYnl9fhhZZ6NvWjyF4gr5sWB4X92yDYkhk';
+        //   },
+        // ),
       ],
     );
   }

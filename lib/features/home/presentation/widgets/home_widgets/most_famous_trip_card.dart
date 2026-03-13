@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class MostFamousTripCard extends StatefulWidget {
-  const MostFamousTripCard({super.key});
+  final PlaceEntity place;
+  const MostFamousTripCard({super.key, required this.place});
 
   @override
   State<MostFamousTripCard> createState() => _MostFamousTripCardState();
@@ -21,15 +22,16 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        // width: context.isPortrait ? size.width * 0.87 : size.height * 0.87,
         width: size.width * 0.87,
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          image: const DecorationImage(
-            image: AssetImage(AppImages.famousTripTest),
-            fit: BoxFit.cover,
-          ),
+          image: widget.place.images.isNotEmpty
+              ? DecorationImage(
+                  image: NetworkImage(widget.place.images[0]),
+                  fit: BoxFit.cover,
+                )
+              : null,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +86,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
                     : size.height * 0.1,
               ),
               child: Text(
-                context.l10n.exploreWorld,
+                widget.place.title,
                 style: AppTextStyles.poppinsBold30.copyWith(
                   color: AppColors.white,
                 ),
@@ -96,26 +98,10 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
             // Sub Texts
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text.rich(
-                TextSpan(
-                  text: "${context.l10n.discover} - ",
-                  style: TextStyle(
-                    fontFamily: AppTextStyles.familyPoppins,
-                    fontSize: 12.fs,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: context.l10n.takeYourTravelToNextLevel,
-                      style: TextStyle(
-                        fontFamily: AppTextStyles.familyPoppins,
-                        fontSize: 12.fs,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+              child: Text(
+                widget.place.city.name,
+                style: AppTextStyles.poppinsMedium16.copyWith(
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -152,7 +138,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
 
                   // Price Text
                   Text(
-                    "400\$",
+                    "${widget.place.price}\$",
                     style: AppTextStyles.poppinsBold20.copyWith(
                       color: AppColors.white,
                     ),
