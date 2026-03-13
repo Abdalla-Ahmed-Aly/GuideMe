@@ -105,7 +105,21 @@ class ImagesIndicator extends StatelessWidget {
           ),
           child: CircleAvatar(
             radius: 20.h,
-            backgroundImage: AssetImage(images[imageIndex]),
+            backgroundImage: NetworkImage(images[imageIndex]),
+            onBackgroundImageError: (exception, stackTrace) {
+              // Handle image loading error, e.g., show a placeholder
+            },
+            child: ClipOval(
+              child: Image.network(
+                images[imageIndex],
+                fit: BoxFit.cover,
+                width: 40.h, // Corresponds to radius * 2
+                height: 40.h,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.error, color: Colors.white, size: 20);
+                },
+              ),
+            ),
           ),
         ),
       ),

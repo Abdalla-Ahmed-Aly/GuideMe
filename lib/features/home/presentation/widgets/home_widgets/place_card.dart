@@ -22,7 +22,7 @@ class _PlaceCardState extends State<PlaceCard> {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.placeDetailsScreen);
+        context.push(AppRoutes.placeDetailsScreen, extra: widget.place);
       },
       child: Container(
         width: context.isPortrait ? size.height * 0.25 : size.width * 0.25,
