@@ -7,8 +7,8 @@ final class AddBookingInitial extends AddBookingState {}
 final class AddBookingLoading extends AddBookingState {}
 
 final class AddBookingSuccess extends AddBookingState {
-  final BookingEntity bookingEntity;
-  AddBookingSuccess(this.bookingEntity);
+  final BookingEntity booking;
+  AddBookingSuccess(this.booking);
 }
 
 final class AddBookingError extends AddBookingState {

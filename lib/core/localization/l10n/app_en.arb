@@ -316,5 +316,8 @@
   "validationSelectTime": "Please select a time",
   "validationEnterPickupLocation": "Please enter a location",
   "validationEnterNotes": "Please enter notes",
-  "validationSelectPersons": "Please select number of persons"
+  "validationSelectPersons": "Please select number of persons",
+
+  "pendingApproval": "Pending Approval",
+  "myTrip": "My Trip: "
 }

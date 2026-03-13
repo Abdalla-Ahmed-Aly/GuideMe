@@ -4,9 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
+import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
+import 'package:intl/intl.dart';
 
 class TripDetailsSection extends StatelessWidget {
-  const TripDetailsSection({super.key});
+  const TripDetailsSection({super.key, required this.booking});
+  final BookingEntity booking;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class TripDetailsSection extends StatelessWidget {
           children: [
             CustomTripdetails(
               title: 'Date',
-              value: 'Oct 24 , 2026',
+              value: DateFormat('MMM d, yyyy').format(booking.startTime),
               pathicon: SvgPicture.asset(
                 AppIcons.clender,
                 width: 20,
@@ -30,7 +33,7 @@ class TripDetailsSection extends StatelessWidget {
                 width: 20,
               ),
               title: 'Time',
-              value: '09:00 AM',
+              value: TimeOfDay.fromDateTime(booking.startTime).format(context),
             ),
           ],
         ),

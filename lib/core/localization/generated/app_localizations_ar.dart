@@ -904,4 +904,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get validationSelectPersons => 'يرجى اختيار عدد الأشخاص';
+
+  @override
+  String get pendingApproval => 'قيد التحقق';
+
+  @override
+  String get myTrip => 'الرحلة: ';
 }

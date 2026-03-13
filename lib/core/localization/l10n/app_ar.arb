@@ -316,5 +316,8 @@
   "validationSelectTime": "يرجى اختيار وقت",
   "validationEnterPickupLocation": "يرجى إدخال موقع",
   "validationEnterNotes": "يرجى إدخال ملاحظات",
-  "validationSelectPersons": "يرجى اختيار عدد الأشخاص"
+  "validationSelectPersons": "يرجى اختيار عدد الأشخاص",
+
+  "pendingApproval": "قيد التحقق",
+  "myTrip": "الرحلة: "
 }

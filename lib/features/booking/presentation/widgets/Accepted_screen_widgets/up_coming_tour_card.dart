@@ -74,7 +74,10 @@ class UpComingTourCard extends StatelessWidget {
 
           const Padding(
             padding: EdgeInsets.only(left: 6),
-            child: EstimatedEarningsSection(color: AppColors.white),
+            child: EstimatedEarningsSection(
+              color: AppColors.white,
+              price: 200,
+            ),
           ),
           const SizedBox(
             height: 36,

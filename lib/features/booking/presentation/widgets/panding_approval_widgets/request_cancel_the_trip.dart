@@ -20,15 +20,19 @@ class RequestCancelTheTrip extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset(AppLotties.cancelBubbles),
+            Lottie.asset(
+              AppLotties.cancelBubbles,
+              height: 150.h,
+            ),
+
             Text(
               context.l10n.cancelBookingRequest,
               style: AppTextStyles.poppinsSemiBold26,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
-              height: 12,
-            ),
+
+            const SizedBox(height: 12),
+
             Padding(
               padding: EdgeInsets.only(left: 25.p),
               child: Text(
@@ -40,9 +44,9 @@ class RequestCancelTheTrip extends StatelessWidget {
                 softWrap: true,
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            
+            const SizedBox(height: 40),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.p),
               child: AppButton(

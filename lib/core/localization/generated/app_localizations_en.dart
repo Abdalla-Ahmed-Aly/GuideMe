@@ -905,4 +905,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validationSelectPersons => 'Please select number of persons';
+
+  @override
+  String get pendingApproval => 'Pending Approval';
+
+  @override
+  String get myTrip => 'My Trip: ';
 }

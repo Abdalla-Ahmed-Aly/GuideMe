@@ -25,7 +25,10 @@ class BookingDetailsDraggable extends StatelessWidget {
         BlocConsumer<AddBookingCubit, AddBookingState>(
           listener: (context, state) {
             if (state is AddBookingSuccess) {
-              context.push(AppRoutes.pendingApprovalScreen);
+              context.push(
+                AppRoutes.pendingApprovalScreen,
+                extra: state.booking,
+              );
             } else if (state is AddBookingError) {
               final error = FailureUiMapper.map(
                 context: context,
@@ -42,7 +45,7 @@ class BookingDetailsDraggable extends StatelessWidget {
                 onPressed: () async {
                   final addBookingReqeust =
                       GoRouterState.of(context).extra as AddBookingRequest;
-                      
+
                   await context.read<AddBookingCubit>().addBooking(
                     addBookingRequest: addBookingReqeust,
                   );

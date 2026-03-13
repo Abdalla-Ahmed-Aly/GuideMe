@@ -1849,6 +1849,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select number of persons'**
   String get validationSelectPersons;
+
+  /// No description provided for @pendingApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Approval'**
+  String get pendingApproval;
+
+  /// No description provided for @myTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'My Trip: '**
+  String get myTrip;
 }
 
 class _AppLocalizationsDelegate
