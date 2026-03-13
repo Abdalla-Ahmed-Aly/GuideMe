@@ -1,21 +1,20 @@
-class ResetPasswordResponse {
+class ResetPasswordResponseModel {
   final bool success;
   final String message;
 
-  ResetPasswordResponse({
+  ResetPasswordResponseModel({
     required this.success,
     required this.message,
   });
 
   // تحويل JSON من السيرفر → Dart object
-  factory ResetPasswordResponse.fromJson(Map<String, dynamic> json) {
-    return ResetPasswordResponse(
+  factory ResetPasswordResponseModel.fromJson(Map<String, dynamic> json) {
+    return ResetPasswordResponseModel(
       success: json['success'] as bool,
       message: json['message'] as String,
     );
   }
 
-  // تحويل Dart object → JSON (مش دايمًا محتاج)
   Map<String, dynamic> toJson() {
     return {
       'success': success,

@@ -1,8 +1,8 @@
-class VerifyForgetPasswordRequest {
+class VerifyForgetPasswordRequestModel {
   final String email;
   final String otp;
 
-  VerifyForgetPasswordRequest({
+  VerifyForgetPasswordRequestModel({
     required this.email,
     required this.otp,
   });
