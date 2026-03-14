@@ -25,7 +25,7 @@ import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart' as _i956;
 import 'package:guide_me/features/auth/domain/use_case/login_use_case.dart'
     as _i93;
-import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit_cubit.dart'
+import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart'
     as _i647;
 import 'package:injectable/injectable.dart' as _i526;
 

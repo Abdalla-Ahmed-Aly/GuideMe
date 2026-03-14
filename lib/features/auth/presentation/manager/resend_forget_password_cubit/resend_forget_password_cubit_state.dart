@@ -1,4 +1,4 @@
-part of 'resend_forget_password_cubit_cubit.dart';
+part of 'resend_forget_password_cubit.dart';
 
 @immutable
 sealed class ResendForgetPasswordCubitState {}

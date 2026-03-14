@@ -1,4 +1,4 @@
-part of 'verify_password_cubit_cubit.dart';
+part of 'verify_password_cubit.dart';
 
 @immutable
 sealed class VerifyPasswordCubitState {}
@@ -10,8 +10,8 @@ final class VerifyPasswordCubitLoadings extends VerifyPasswordCubitState {}
 final class VerifyPasswordCubitSuccessful extends VerifyPasswordCubitState {}
 
 final class VerifyPasswordCubitFailure extends VerifyPasswordCubitState {
-  final String errormassge;
+  final Failure failure;
 
-  VerifyPasswordCubitFailure(this.errormassge);
+  VerifyPasswordCubitFailure(this.failure);
   
 }

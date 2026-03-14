@@ -8,29 +8,29 @@ import 'package:meta/meta.dart';
 part 'resend_forget_password_cubit_state.dart';
 @injectable
 
-class ResendForgetPasswordCubitCubit
+class ResendForgetPasswordCubit
     extends Cubit<ResendForgetPasswordCubitState> {
-  ResendForgetPasswordCubitCubit(this.resendPasswordUseCase)
+  ResendForgetPasswordCubit(this.resendPasswordUseCase)
     : super(ResendForgetPasswordCubitInitial());
   final ResendPasswordUseCase resendPasswordUseCase;
-  void safestate(ResendForgetPasswordCubitState state) {
+  void safeEmit(ResendForgetPasswordCubitState state) {
     if (!isClosed) emit(state);
   }
   Future<void> resendForgetPassword({required String email}) async {
-    safestate(ResendForgetPasswordCubitLoading());
+    safeEmit(ResendForgetPasswordCubitLoading());
     final result = await resendPasswordUseCase.call(
       ResendPasswordRequestModel(email: email),
     );
     result.fold(
       ifLeft: (failure) {
-        safestate(
+        safeEmit(
           ResendForgetPasswordCubFailure(
             failure,
           ),
         );
       },
       ifRight: (success) {
-        safestate(ResendForgetPasswordCubitSuccess());
+        safeEmit(ResendForgetPasswordCubitSuccess());
       },
     );
   }

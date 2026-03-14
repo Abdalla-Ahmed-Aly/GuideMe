@@ -10,8 +10,8 @@ final class SendForgetPasswordLoading extends SendForgetPasswordState {}
 final class SendForgetPasswordSuccess extends SendForgetPasswordState {}
 
 final class SendForgetPasswordFailure extends SendForgetPasswordState {
-  final String errorMassage;
+  final Failure failure;
 
-  SendForgetPasswordFailure(this.errorMassage);
+  SendForgetPasswordFailure(this.failure);
 
 }
