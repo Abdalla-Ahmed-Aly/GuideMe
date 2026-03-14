@@ -1,7 +1,7 @@
 import 'package:dart_either/src/dart_either.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/features/auth/data/models/data_source/Auth_remote_data_source.dart';
+import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/reset_password_request_model.dart';
@@ -15,7 +15,8 @@ import 'package:guide_me/features/auth/data/models/login_request_model.dart';
 import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart';
-
+import 'package:injectable/injectable.dart';
+@LazySingleton(as: AuthRepo)
 class AuthRepoImple extends AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
 

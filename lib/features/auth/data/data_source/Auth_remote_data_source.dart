@@ -12,6 +12,7 @@ import 'package:guide_me/features/auth/data/models/login_model.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
 import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class AuthRemoteDataSource {
   Future<LoginresponseModel> login(LoginRequestModel request);
@@ -31,6 +32,7 @@ abstract class AuthRemoteDataSource {
   );
 }
 
+@LazySingleton(as:AuthRemoteDataSource )
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final ApiService apiService;
 
