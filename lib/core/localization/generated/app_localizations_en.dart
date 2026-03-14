@@ -532,7 +532,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dateTIME => 'DATE & TIME';
 
   @override
-  String get dURATION => 'DURATION';
+  String get durationText => 'Duration';
 
   @override
   String get groupsize => 'GROUP SIZE';
@@ -911,4 +911,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get myTrip => 'My Trip: ';
+
+  @override
+  String get bookingCancelledSuccessfully => 'Booking cancelled successfully';
+
+  @override
+  String get time => 'Time';
+
+  @override
+  String get groupSize => 'Group Size';
+
+  @override
+  String people(Object number) {
+    return '$number People';
+  }
+
+  @override
+  String get notes => 'Notes';
 }

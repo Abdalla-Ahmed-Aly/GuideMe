@@ -177,7 +177,7 @@
   "accept" : "Accept",
   "professionalInformation" : "Professional Information",
   "dateTIME" : "DATE & TIME",
-  "dURATION" :"DURATION",
+  "durationText" :"Duration",
   "groupsize" : "GROUP SIZE",
   "experience" : "EXPERIENCE",
   "mettingpoint" : "MEETING POINT",
@@ -319,5 +319,12 @@
   "validationSelectPersons": "Please select number of persons",
 
   "pendingApproval": "Pending Approval",
-  "myTrip": "My Trip: "
+  "myTrip": "My Trip: ",
+  "bookingCancelledSuccessfully": "Booking cancelled successfully",
+
+  "date": "Date",
+  "time": "Time",
+  "groupSize": "Group Size",
+  "people": "{number} People",
+  "notes": "Notes"
 }

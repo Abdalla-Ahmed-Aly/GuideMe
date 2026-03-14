@@ -319,5 +319,12 @@
   "validationSelectPersons": "يرجى اختيار عدد الأشخاص",
 
   "pendingApproval": "قيد التحقق",
-  "myTrip": "الرحلة: "
+  "myTrip": "الرحلة: ",
+  "bookingCancelledSuccessfully": "تم إلغاء الحجز بنجاح",
+
+  "date": "التاريخ",
+  "time": "الوقت",
+  "groupSize": "حجم المجموعة",
+  "people": "{number} أشخاص",
+  "notes": "ملاحظات"
 }

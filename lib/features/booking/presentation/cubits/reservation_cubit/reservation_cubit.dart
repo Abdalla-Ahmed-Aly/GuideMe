@@ -43,6 +43,10 @@ class ReservationCubit extends Cubit<ReservationState> {
       emit(state.copyWith(error: context.l10n.validationSelectPersons));
       return false;
     }
+    if (state.time.hour == 0 && state.time.minute == 0) {
+      emit(state.copyWith(error: context.l10n.validationSelectTime));
+      return false;
+    }
     return true;
   }
 }

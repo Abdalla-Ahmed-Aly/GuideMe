@@ -29,6 +29,8 @@ import 'package:guide_me/features/booking/domain/repos/booking_repo.dart'
     as _i672;
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart'
     as _i49;
+import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart'
+    as _i634;
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart'
     as _i459;
 import 'package:injectable/injectable.dart' as _i526;
@@ -61,6 +63,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i49.AddBookingCubit>(
       () => _i49.AddBookingCubit(gh<_i672.BookingRepo>()),
+    );
+    gh.factory<_i634.CancelBookingCubit>(
+      () => _i634.CancelBookingCubit(gh<_i672.BookingRepo>()),
     );
     return this;
   }

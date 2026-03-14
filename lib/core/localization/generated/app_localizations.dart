@@ -1130,11 +1130,11 @@ abstract class AppLocalizations {
   /// **'DATE & TIME'**
   String get dateTIME;
 
-  /// No description provided for @dURATION.
+  /// No description provided for @durationText.
   ///
   /// In en, this message translates to:
-  /// **'DURATION'**
-  String get dURATION;
+  /// **'Duration'**
+  String get durationText;
 
   /// No description provided for @groupsize.
   ///
@@ -1861,6 +1861,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'My Trip: '**
   String get myTrip;
+
+  /// No description provided for @bookingCancelledSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking cancelled successfully'**
+  String get bookingCancelledSuccessfully;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get time;
+
+  /// No description provided for @groupSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Group Size'**
+  String get groupSize;
+
+  /// No description provided for @people.
+  ///
+  /// In en, this message translates to:
+  /// **'{number} People'**
+  String people(Object number);
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
 }
 
 class _AppLocalizationsDelegate

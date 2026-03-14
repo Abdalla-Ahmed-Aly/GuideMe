@@ -14,21 +14,11 @@ extension SnakeBarExtention on BuildContext {
       ),
       content: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xffC3F2BA),
-                width: 6,
-              ),
-              color: const Color(0xff009F00),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.check,
-              color: Colors.white,
-            ),
+          const Icon(
+            Icons.check_circle_outline_rounded,
+            color: Colors.white,
           ),
+
           const SizedBox(width: 14),
 
           Expanded(
