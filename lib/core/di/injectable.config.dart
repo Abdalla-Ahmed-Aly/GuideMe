@@ -19,6 +19,14 @@ import 'package:guide_me/core/services/media_picker_service/media_picker_service
     as _i159;
 import 'package:guide_me/core/services/token/token_service.dart' as _i625;
 import 'package:guide_me/core/services/token/token_service_impl.dart' as _i574;
+import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart'
+    as _i1043;
+import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
+import 'package:guide_me/features/auth/domain/repo/auth_repo.dart' as _i956;
+import 'package:guide_me/features/auth/domain/use_case/login_use_case.dart'
+    as _i93;
+import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit_cubit.dart'
+    as _i647;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -39,6 +47,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
+    );
+    gh.factory<_i647.LoginCubit>(
+      () => _i647.LoginCubit(gh<_i93.LoginUseCase>()),
+    );
+    gh.lazySingleton<_i1043.AuthRemoteDataSource>(
+      () => _i1043.AuthRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
+    gh.lazySingleton<_i956.AuthRepo>(
+      () => _i80.AuthRepoImple(gh<_i1043.AuthRemoteDataSource>()),
     );
     return this;
   }

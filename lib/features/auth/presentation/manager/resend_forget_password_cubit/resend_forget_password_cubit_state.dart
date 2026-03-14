@@ -14,8 +14,7 @@ final class ResendForgetPasswordCubitSuccess
 
 final class ResendForgetPasswordCubFailure
     extends ResendForgetPasswordCubitState {
-  final String errormassge;
+  final Failure failure;
 
-  ResendForgetPasswordCubFailure(this.errormassge);
-
+  ResendForgetPasswordCubFailure(this.failure);
 }

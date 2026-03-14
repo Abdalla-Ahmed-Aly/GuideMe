@@ -10,8 +10,9 @@ final class LoginCubitLoading extends LoginCubitState {}
 final class LoginCubitSuccessful extends LoginCubitState {}
 
 final class LoginCubitFailure extends LoginCubitState {
-  final String errormassage;
+  final Failure failure;
 
-  LoginCubitFailure(this.errormassage);
+  LoginCubitFailure(this.failure);
 
 }
+
