@@ -927,4 +927,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notes => 'ملاحظات';
+
+  @override
+  String get accepted => 'مقبول';
+
+  @override
+  String get cancelled => 'ملغي';
 }

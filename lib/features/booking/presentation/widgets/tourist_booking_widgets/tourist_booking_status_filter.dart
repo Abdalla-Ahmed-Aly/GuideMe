@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/domain/enums/tourist_trip_status.dart';
 import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart';
 
 class TouristBookingStatusFilter extends StatelessWidget {
   const TouristBookingStatusFilter({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final status = [
+      BookingStatus.pending,
+      BookingStatus.live,
+      BookingStatus.completed,
+    ];
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 6),
       margin: EdgeInsets.symmetric(horizontal: 22.p),
@@ -26,7 +31,7 @@ class TouristBookingStatusFilter extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: !isPastSelectedDate(selectedDate)
-                ? TouristTripStatus.values.map(
+                ? status.map(
                     (status) {
                       return Expanded(
                         child: StatusChip(
@@ -49,7 +54,7 @@ class TouristBookingStatusFilter extends StatelessWidget {
                       title: context.l10n.completed,
                       onTap: () {
                         context.read<BookingCubit>().changeTouristTripStatus(
-                          TouristTripStatus.completed,
+                          BookingStatus.completed,
                         );
                       },
                     ),
@@ -69,55 +74,18 @@ class TouristBookingStatusFilter extends StatelessWidget {
     return selectedDate.isBefore(pureToday);
   }
 
-  String _getTitle(BuildContext context, TouristTripStatus status) {
+  String _getTitle(BuildContext context, BookingStatus status) {
     switch (status) {
-      case TouristTripStatus.pending:
+      case BookingStatus.pending:
         return context.l10n.pending;
-      case TouristTripStatus.live:
+      case BookingStatus.accepted:
+        return context.l10n.accepted;
+      case BookingStatus.live:
         return context.l10n.live;
-      case TouristTripStatus.completed:
+      case BookingStatus.completed:
         return context.l10n.completed;
+      case BookingStatus.cancelled:
+        return context.l10n.cancelled;
     }
-  }
-}
-
-class StatusChip extends StatelessWidget {
-  const StatusChip({
-    super.key,
-    required this.isSelected,
-    required this.title,
-    this.onTap,
-  });
-  final bool isSelected;
-  final String title;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedScale(
-        duration: const Duration(milliseconds: 300),
-        scale: isSelected ? 1.05 : 1,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
-          margin: const EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            color: isSelected ? Colors.white : Colors.transparent,
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Center(
-            child: Text(
-              title,
-              style: AppTextStyles.poppinsMedium16.copyWith(
-                color: isSelected
-                    ? const Color(0xffF2930D)
-                    : const Color(0xffB59A64),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

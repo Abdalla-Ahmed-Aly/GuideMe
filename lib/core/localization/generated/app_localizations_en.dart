@@ -928,4 +928,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notes => 'Notes';
+
+  @override
+  String get accepted => 'Accepted';
+
+  @override
+  String get cancelled => 'Cancelled';
 }

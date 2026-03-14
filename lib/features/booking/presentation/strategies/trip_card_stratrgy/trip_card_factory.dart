@@ -5,10 +5,10 @@ import 'package:guide_me/features/booking/presentation/strategies/trip_card_stra
 import 'package:guide_me/features/booking/presentation/strategies/trip_card_stratrgy/trip_card_strategy.dart';
 
 class TripCardFactory {
-  static TripCardStrategy buildTripCard(TouristTripStatus status) {
-    if (status == TouristTripStatus.completed) {
+  static TripCardStrategy buildTripCard(BookingStatus status) {
+    if (status == BookingStatus.completed) {
       return CompletedCardStrategy();
-    } else if (status == TouristTripStatus.live) {
+    } else if (status == BookingStatus.live) {
       return LiveCardStrategy();
     }
     return PendingCardStrategy();

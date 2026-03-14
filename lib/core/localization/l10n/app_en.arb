@@ -326,5 +326,8 @@
   "time": "Time",
   "groupSize": "Group Size",
   "people": "{number} People",
-  "notes": "Notes"
+  "notes": "Notes",
+
+  "accepted": "Accepted",
+  "cancelled": "Cancelled"
 }

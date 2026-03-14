@@ -14,7 +14,7 @@ class TripCard extends StatelessWidget {
   });
   final int length;
   final int currentIndex;
-  final TouristTripStatus tripStatus;
+  final BookingStatus tripStatus;
   final DateTime startDate;
   final DateTime endDate;
 

@@ -11,11 +11,11 @@ class TripsListView extends StatefulWidget {
 }
 
 class _TripsListViewState extends State<TripsListView> {
-  List<TouristTripStatus> tripStatus = [
-    TouristTripStatus.pending,
-    TouristTripStatus.live,
-    TouristTripStatus.completed,
-    TouristTripStatus.completed,
+  List<BookingStatus> tripStatus = [
+    BookingStatus.pending,
+    BookingStatus.live,
+    BookingStatus.completed,
+    BookingStatus.completed,
   ];
 
   List<DateTime> startDates = [

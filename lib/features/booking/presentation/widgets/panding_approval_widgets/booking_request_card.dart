@@ -40,7 +40,7 @@ class BookingRequestCard extends StatelessWidget {
                       style: AppTextStyles.poppinsSemiBold14,
                     ),
                     TextSpan(
-                      text: 'Giza Plateau Great Pyramids',
+                      text: bookingData.place.title,
                       style: AppTextStyles.poppinsMedium14.copyWith(
                         color: const Color(0xff7C6965),
                       ),

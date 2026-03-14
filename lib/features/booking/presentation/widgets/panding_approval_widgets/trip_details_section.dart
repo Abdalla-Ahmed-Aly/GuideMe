@@ -46,7 +46,7 @@ class TripDetailsSection extends StatelessWidget {
           children: [
             CustomTripdetails(
               title: context.l10n.durationText,
-              value: '4 Hours',
+              value: '${booking.place.durationMinutes} min',
               pathicon: const Icon(
                 FontAwesomeIcons.hourglassEnd,
                 size: 24,

@@ -2,7 +2,7 @@ part of 'booking_cubit.dart';
 
 class BookingState {
   DateTime? selectedDate;
-  late TouristTripStatus touristTirpStatus;
+  late BookingStatus touristTirpStatus;
   late GuideTripStatus guideTripStatus;
 
   BookingState({
@@ -13,13 +13,13 @@ class BookingState {
 
   BookingState.initial() {
     selectedDate = DateTime.now();
-    touristTirpStatus = TouristTripStatus.live;
+    touristTirpStatus = BookingStatus.live;
     guideTripStatus = GuideTripStatus.live;
   }
 
   BookingState copyWith({
     DateTime? selectedDate,
-    TouristTripStatus? touristTirpStatus,
+    BookingStatus? touristTirpStatus,
     GuideTripStatus? guideTripStatus,
   }) {
     return BookingState(

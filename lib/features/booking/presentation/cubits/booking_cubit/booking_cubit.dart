@@ -7,7 +7,7 @@ part 'booking_state.dart';
 class BookingCubit extends Cubit<BookingState> {
   BookingCubit() : super(BookingState.initial());
 
-  void changeTouristTripStatus(TouristTripStatus status) {
+  void changeTouristTripStatus(BookingStatus status) {
     emit(state.copyWith(touristTirpStatus: status));
   }
 
