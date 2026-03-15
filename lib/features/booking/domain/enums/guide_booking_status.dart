@@ -1,4 +1,4 @@
-enum GuideTripStatus {
+enum GuideBookingStatus {
   next,
   live,
   completed,

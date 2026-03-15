@@ -8,9 +8,11 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 
 class LiveTripCard extends StatelessWidget {
-  const LiveTripCard({super.key});
+  const LiveTripCard({super.key, required this.booking});
+  final BookingEntity booking;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class LiveTripCard extends StatelessWidget {
               const SizedBox(height: 6),
 
               Text(
-                "Giza Plateau Great Pyramids",
+                booking.place.title,
                 style: AppTextStyles.poppinsMedium18,
               ),
 

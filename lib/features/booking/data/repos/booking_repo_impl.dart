@@ -42,4 +42,20 @@ class BookingRepoImpl implements BookingRepo {
       return left(ErrorHandler.handle(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookingEntity>>> getBookings({
+    required String? status,
+    required String? date,
+  }) async {
+    try {
+      final response = await _remoteDataSource.getBookings(
+        status: status,
+        date: date,
+      );
+      return right(response.map((e) => BookingMapper.toEntity(e)).toList());
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
 }

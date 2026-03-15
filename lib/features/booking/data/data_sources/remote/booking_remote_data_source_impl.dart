@@ -24,11 +24,30 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
   }
 
   @override
-  Future<CancelBookingResponse> cancelBooking({required String bookingId}) async {
+  Future<CancelBookingResponse> cancelBooking({
+    required String bookingId,
+  }) async {
     final response = await _apiService.patch(
       endpoint:
           "${ApiConstants.addBookingEndpoint}/$bookingId${ApiConstants.cancelBookingEndpoint}",
     );
     return CancelBookingResponse.fromJson(response.data["data"]["booking"]);
+  }
+
+  @override
+  Future<List<BookingModel>> getBookings({
+    required String? status,
+    required String? date,
+  }) async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.myScheduleEndpoint,
+      queryParameters: {
+        if (date != null) "date": date,
+        if (status != null) "status": status,
+      },
+    );
+    return (response.data["data"]["bookings"] as List<dynamic>)
+        .map((e) => BookingModel.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }

@@ -11,4 +11,8 @@ abstract class BookingRepo {
   Future<Either<Failure, CancelBookingResponse>> cancelBooking({
     required String bookingId,
   });
+  Future<Either<Failure, List<BookingEntity>>> getBookings({
+    required String? status,
+    required String? date,
+  });
 }

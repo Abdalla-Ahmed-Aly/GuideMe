@@ -27,6 +27,14 @@ class DioService {
       [
         AuthorizationInterceptor(),
         LoggerInterceptor(),
+        LogInterceptor(
+          request: true,
+          error: true,
+          requestBody: true,
+          requestHeader: true,
+          responseBody: true,
+          responseHeader: true,
+        ),
       ],
     );
   }

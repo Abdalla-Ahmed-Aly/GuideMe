@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/functions/is_same_date.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
 import 'package:guide_me/core/widgets/all_chip.dart';
 import 'package:guide_me/core/widgets/day_chip.dart';
+import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart';
 
-class ScheduleList extends StatefulWidget {
-  const ScheduleList({super.key});
+class GuideScheduleList extends StatefulWidget {
+  const GuideScheduleList({super.key});
 
   @override
-  State<ScheduleList> createState() => _ScheduleListState();
+  State<GuideScheduleList> createState() => _GuideScheduleListState();
 }
 
-class _ScheduleListState extends State<ScheduleList> {
+class _GuideScheduleListState extends State<GuideScheduleList> {
   final today = DateTime.now();
   final startedDate = DateTime.now().subtract(const Duration(days: 2));
   final endDate = DateTime.now().add(const Duration(days: 7));
@@ -24,7 +24,7 @@ class _ScheduleListState extends State<ScheduleList> {
   @override
   void initState() {
     super.initState();
-    selectedDay = context.read<BookingCubit>().state.selectedDate;
+    selectedDay = context.read<GuideBookingCubit>().state.selectedDate;
     _generateDaysList();
   }
 
@@ -40,14 +40,14 @@ class _ScheduleListState extends State<ScheduleList> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.symmetric(horizontal: 17.p),
-      child: BlocBuilder<BookingCubit, BookingState>(
+      child: BlocBuilder<GuideBookingCubit, GuideBookingState>(
         builder: (context, state) {
           return Row(
             children: [
               AllChip(
                 isSelected: selectedDay == null,
                 onTap: () {
-                  context.read<BookingCubit>().changeDate(null);
+                  context.read<GuideBookingCubit>().changeDate(null);
                   selectedDay = null;
                 },
               ),
@@ -57,7 +57,7 @@ class _ScheduleListState extends State<ScheduleList> {
                   date: date,
                   isSelected: isSameDate(selectedDay, date),
                   onTap: () {
-                    context.read<BookingCubit>().changeDate(date);
+                    context.read<GuideBookingCubit>().changeDate(date);
                     selectedDay = date;
                   },
                 );

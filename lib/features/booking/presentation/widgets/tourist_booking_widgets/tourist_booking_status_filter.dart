@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/booking/domain/enums/tourist_trip_status.dart';
-import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
+import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
+import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart';
 import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart';
 
 class TouristBookingStatusFilter extends StatelessWidget {
@@ -12,9 +12,9 @@ class TouristBookingStatusFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = [
-      BookingStatus.pending,
-      BookingStatus.live,
-      BookingStatus.completed,
+      TouristBookingStatus.pending,
+      TouristBookingStatus.live,
+      TouristBookingStatus.completed,
     ];
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 6),
@@ -23,14 +23,14 @@ class TouristBookingStatusFilter extends StatelessWidget {
         color: const Color(0xffF7EDDD),
         borderRadius: BorderRadius.circular(50),
       ),
-      child: BlocBuilder<BookingCubit, BookingState>(
+      child: BlocBuilder<TouristBookingCubit, TouristBookingState>(
         builder: (context, state) {
-          final selectedStatus = state.touristTirpStatus;
-          final selectedDate = state.selectedDate;
+          final selectedStatus = state.filters.touristBookingStatus;
+          final selectedDate = state.filters.selectedDate;
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: !isPastSelectedDate(selectedDate)
+            children: !isPastSelectedDate(selectedDate) || selectedDate == null
                 ? status.map(
                     (status) {
                       return Expanded(
@@ -39,8 +39,8 @@ class TouristBookingStatusFilter extends StatelessWidget {
                           title: _getTitle(context, status),
                           onTap: () {
                             context
-                                .read<BookingCubit>()
-                                .changeTouristTripStatus(
+                                .read<TouristBookingCubit>()
+                                .changeTouristBookingStatus(
                                   status,
                                 );
                           },
@@ -53,9 +53,11 @@ class TouristBookingStatusFilter extends StatelessWidget {
                       isSelected: true,
                       title: context.l10n.completed,
                       onTap: () {
-                        context.read<BookingCubit>().changeTouristTripStatus(
-                          BookingStatus.completed,
-                        );
+                        context
+                            .read<TouristBookingCubit>()
+                            .changeTouristBookingStatus(
+                              TouristBookingStatus.completed,
+                            );
                       },
                     ),
                   ],
@@ -74,17 +76,17 @@ class TouristBookingStatusFilter extends StatelessWidget {
     return selectedDate.isBefore(pureToday);
   }
 
-  String _getTitle(BuildContext context, BookingStatus status) {
+  String _getTitle(BuildContext context, TouristBookingStatus status) {
     switch (status) {
-      case BookingStatus.pending:
+      case TouristBookingStatus.pending:
         return context.l10n.pending;
-      case BookingStatus.accepted:
+      case TouristBookingStatus.accepted:
         return context.l10n.accepted;
-      case BookingStatus.live:
+      case TouristBookingStatus.live:
         return context.l10n.live;
-      case BookingStatus.completed:
+      case TouristBookingStatus.completed:
         return context.l10n.completed;
-      case BookingStatus.cancelled:
+      case TouristBookingStatus.cancelled:
         return context.l10n.cancelled;
     }
   }

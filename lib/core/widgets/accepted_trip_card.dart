@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 
-class CompletedTripCard extends StatelessWidget {
-  const CompletedTripCard({super.key});
+class AcceptedTripCard extends StatelessWidget {
+  const AcceptedTripCard({super.key, required this.booking});
+  final BookingEntity booking;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.completedtripdetailes);
+        context.push(AppRoutes.acceptedScreen);
       },
       child: Container(
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
-          color: const Color(0xffF0F0F0),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: const Color(0xffBFBFBF).withValues(alpha: .7),
+            color: Colors.black.withValues(alpha: .15),
           ),
         ),
         child: Column(
@@ -28,19 +30,15 @@ class CompletedTripCard extends StatelessWidget {
             // Time
             Text(
               "02:30 PM",
-              style: AppTextStyles.poppinsMedium14.copyWith(
-                color: const Color(0xffC3C3C3),
-              ),
+              style: AppTextStyles.poppinsMedium14,
             ),
 
             const SizedBox(height: 2),
 
             // Place Title
             Text(
-              "Egyption Museum & Treasures",
-              style: AppTextStyles.poppinsMedium18.copyWith(
-                color: const Color(0xffC3C3C3),
-              ),
+              booking.place.title,
+              style: AppTextStyles.poppinsMedium18,
             ),
           ],
         ),

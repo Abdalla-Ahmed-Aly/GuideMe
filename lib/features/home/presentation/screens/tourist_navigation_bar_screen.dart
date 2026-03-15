@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/tourist_booking_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
@@ -27,7 +28,7 @@ class _TouristNavigationBarScreenState
   final List<Widget> pages = [
     const HomeScreen(),
     BlocProvider(
-      create: (context) => BookingCubit(),
+      create: (context) => getIt<TouristBookingCubit>()..getBookings(),
       child: const BookingScreen(),
     ),
 
