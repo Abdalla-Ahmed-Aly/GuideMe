@@ -11,10 +11,10 @@ void main() async {
 
   await setupGetIt();
 
-  // // Temporary token injection for home page development
-  // await getIt<TokenService>().saveToken(
-  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODM4MGZhOTM2ZDAyMmNiM2Y4NGUzNSIsInJvbGUiOiJndWlkZSIsImlhdCI6MTc3MjExNjk5OH0.MMeeKRF_40l9ZEAoGDMkTbS2axFt05sGTFw4X-43q9E',
-  // );
+  // Temporary token injection for home page development
+  await getIt<TokenService>().saveToken(
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODM4MGZhOTM2ZDAyMmNiM2Y4NGUzNSIsInJvbGUiOiJndWlkZSIsImlhdCI6MTc3MjExNjk5OH0.MMeeKRF_40l9ZEAoGDMkTbS2axFt05sGTFw4X-43q9E',
+  );
 
   Bloc.observer = const AppBlocObserver();
 

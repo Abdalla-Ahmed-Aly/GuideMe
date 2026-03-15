@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
+
+
 class PlaceListTile extends StatelessWidget {
-  const PlaceListTile({super.key});
+  const PlaceListTile({super.key, required this.place});
+  final PlaceEntity place;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class PlaceListTile extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.placeDetailsScreen);
+        context.push(AppRoutes.placeDetailsScreen, extra: place);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
@@ -36,97 +40,112 @@ class PlaceListTile extends StatelessWidget {
           child: Row(
             children: [
               // Image
-              Image.asset(
-                AppImages.placeTest,
-                width: context.isPortrait
-                    ? size.width * 0.31
-                    : size.height * 0.3,
-                height: context.isPortrait
-                    ? size.height * 0.173
-                    : size.width * 0.173,
-                fit: BoxFit.cover,
-              ),
+              if (place.images.isNotEmpty)
+                Image.network(
+                  place.images.first,
+                  width: context.isPortrait
+                      ? size.width * 0.31
+                      : size.height * 0.3,
+                  height: context.isPortrait
+                      ? size.height * 0.173
+                      : size.width * 0.173,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Image.asset(
+                    AppImages.placeTest,
+                    width: context.isPortrait
+                        ? size.width * 0.31
+                        : size.height * 0.3,
+                    height: context.isPortrait
+                        ? size.height * 0.173
+                        : size.width * 0.173,
+                    fit: BoxFit.cover,
+                  ),
+                )
+              else
+                Image.asset(
+                  AppImages.placeTest,
+                  width: context.isPortrait
+                      ? size.width * 0.31
+                      : size.height * 0.3,
+                  height: context.isPortrait
+                      ? size.height * 0.173
+                      : size.width * 0.173,
+                  fit: BoxFit.cover,
+                ),
 
               const SizedBox(width: 8),
 
               // Data
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 6),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 6),
 
-                    // Title
-                    Text(
-                      "The Grand Egyptian Museum The Grand Egyptian Museum The Grand Egyptian Museum",
-                      style: AppTextStyles.interSemiBold14,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-
-                    const SizedBox(height: 4),
-
-                    // Location
-                    Text(
-                      "Location: Cairo - Alexandria Desert Rd, Kafr Nassar, Al Haram, Giza Governorate Location: Cairo - Alexandria Desert Rd, Kafr Nassar, Al Haram, Giza Governorate",
-                      style: AppTextStyles.interRegular8,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-
-                    const SizedBox(height: 6),
-
-                    // Description
-                    Text(
-                      "The Grand Egyptian Museum is a modern museum that houses the largest collection of ancient Egyptian artifacts in the world. The museum opened in 2019 and is located in Giza, Egypt. The museum is home to over 10,000 artifacts, including the famous Rosetta Stone and the Great Pyramid of Giza.",
-                      style: AppTextStyles.interRegular8.copyWith(
-                        color: AppColors.natural4,
+                      // Title
+                      Text(
+                        place.title,
+                        style: AppTextStyles.interSemiBold14,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
 
-                    const Spacer(),
+                      const SizedBox(height: 4),
 
-                    // Rate & Price
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        // Rate
-                        for (int i = 0; i < 7; i++)
+                      // Location
+                      Text(
+                        "${context.l10n.location}: ${place.city.name}",
+                        style: AppTextStyles.interRegular8,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+
+                      const SizedBox(height: 6),
+
+                      // Description
+                      if (place.description != null)
+                        Text(
+                          place.description!,
+                          style: AppTextStyles.interRegular8.copyWith(
+                            color: AppColors.natural4,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+
+                      const Spacer(),
+
+                      // Rate & Price
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          // Rate
                           Icon(
                             Icons.star_rounded,
                             color: AppColors.primary,
                             size: 16.ic,
                           ),
-
-                        const Spacer(),
-
-                        // Price
-                        Column(
-                          children: [
-                            Text(
-                              "\$50",
-                              style: AppTextStyles.interSemiBold14,
+                          Text(
+                            place.rating.toString(),
+                            style: AppTextStyles.interSemiBold14,
+                          ),
+                          const Spacer(),
+                          // Price
+                          Text(
+                            "${place.price} ${context.l10n.egp}",
+                            style: AppTextStyles.interSemiBold14.copyWith(
+                              color: AppColors.primary,
                             ),
-                            Text(
-                              "package",
-                              style: TextStyle(
-                                fontSize: 10.fs,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 6),
-                  ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                    ],
+                  ),
                 ),
               ),
-
-              const SizedBox(width: 12),
             ],
           ),
         ),

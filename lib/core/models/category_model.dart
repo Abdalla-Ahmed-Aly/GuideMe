@@ -8,10 +8,20 @@ class CategoryModel extends CategoryEntity {
     required super.slug,
   });
 
-  factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-    id: json["_id"],
-    name: json["name"],
-    image: json["image"],
-    slug: json["slug"],
-  );
+  factory CategoryModel.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return CategoryModel.empty();
+    return CategoryModel(
+      id: json["_id"] ?? '',
+      name: json["name"] ?? '',
+      image: json["image"] ?? '',
+      slug: json["slug"] ?? '',
+    );
+  }
+
+  factory CategoryModel.empty() => CategoryModel(
+        id: '',
+        name: '',
+        image: '',
+        slug: '',
+      );
 }

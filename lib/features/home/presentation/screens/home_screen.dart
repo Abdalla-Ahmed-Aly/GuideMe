@@ -103,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                   // categories list
                   SizedBox(
                     height: context.isPortrait
-                        ? size.height * 0.12
+                        ? size.height * 0.13
                         : size.width * 0.12,
                     child: CategoryListView(categories: homeData.categories),
                   ),

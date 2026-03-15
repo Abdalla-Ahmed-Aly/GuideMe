@@ -6,16 +6,22 @@ import 'package:guide_me/core/models/city_model.dart';
 import 'package:guide_me/core/models/places_model.dart';
 import 'package:guide_me/features/home/data/model/home_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_category_model.dart';
+import 'package:guide_me/features/home/data/model/place_by_cities_model.dart';
 import 'package:guide_me/features/home/domain/entity/home_entity.dart';
 import 'package:guide_me/features/home/domain/entity/place_by_category_entity.dart';
+import 'package:guide_me/features/home/domain/entity/place_by_cities_entity.dart';
 
 class Mapper {
   static HomeEntity mapHomeModelToHomeEntity(HomeModel model) {
     return HomeEntity(
       categories: model.categories
-          .map((category) => mapCategoryModelToEntity(category as CategoryModel))
+          .map(
+            (category) => mapCategoryModelToEntity(category as CategoryModel),
+          )
           .toList(),
-      mostFamousTrip: mapPlaceModelToEntity(model.mostFamousTrip as PlacesModel),
+      mostFamousTrip: mapPlaceModelToEntity(
+        model.mostFamousTrip as PlacesModel,
+      ),
       travelBeyondBoundary: model.travelBeyondBoundary
           .map((place) => mapPlaceModelToEntity(place as PlacesModel))
           .toList(),
@@ -66,8 +72,21 @@ class Mapper {
   }
 
   static PlaceByCategoryEntity mapPlaceByCategoryModelToEntity(
-      PlaceByCategoryModel model) {
+    PlaceByCategoryModel model,
+  ) {
     return PlaceByCategoryEntity(
+      filterApplied: model.filterApplied,
+      count: model.count,
+      data: model.data
+          .map((place) => mapPlaceModelToEntity(place as PlacesModel))
+          .toList(),
+    );
+  }
+
+  static PlaceByCitiesEntity mapPlaceByCitiesModelToEntity(
+    PlaceByCitiesModel model,
+  ) {
+    return PlaceByCitiesEntity(
       filterApplied: model.filterApplied,
       count: model.count,
       data: model.data

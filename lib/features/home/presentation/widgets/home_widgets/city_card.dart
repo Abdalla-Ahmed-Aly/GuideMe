@@ -17,7 +17,10 @@ class CityCard extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.explorePlacesScreen, extra: city.name);
+        context.push(
+          "${AppRoutes.explorePlacesByCityScreen}/${city.id}",
+          extra: city.name,
+        );
       },
       child: Container(
         width: context.isPortrait ? size.height * 0.23 : size.width * 0.23,

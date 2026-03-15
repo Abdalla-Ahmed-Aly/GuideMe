@@ -15,12 +15,15 @@ class CategoryItem extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.explorePlacesScreen, extra: category.name);
+        context.push(
+          "${AppRoutes.explorePlacesScreen}/${category.id}",
+          extra: category.name,
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(right: 30),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -46,11 +49,17 @@ class CategoryItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            Text(
-              category.name,
-              style: const TextStyle(
-                fontSize: 12,
-                fontFamily: AppTextStyles.familyPoppins,
+            SizedBox(
+              width: context.isPortrait
+                  ? size.height * 0.08
+                  : size.width * 0.08,
+              child: Text(
+                category.name,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: AppTextStyles.familyPoppins,
+                ),
               ),
             ),
           ],

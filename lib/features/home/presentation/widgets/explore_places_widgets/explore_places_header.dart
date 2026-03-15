@@ -4,8 +4,16 @@ import 'package:guide_me/features/home/presentation/widgets/explore_places_widge
 import 'package:guide_me/features/home/presentation/widgets/explore_places_widgets/explore_places_filter.dart';
 
 class ExplorePlacesHeader extends StatelessWidget {
-  const ExplorePlacesHeader({super.key, required this.title});
+  const ExplorePlacesHeader({
+    super.key,
+    required this.title,
+    this.categoryId,
+    this.cityId,
+  });
+
   final String title;
+  final String? categoryId;
+  final String? cityId;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,10 @@ class ExplorePlacesHeader extends StatelessWidget {
         // Filter
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.p),
-          child: const ExplorePlacesFilter(),
+          child: ExplorePlacesFilter(
+            categoryId: categoryId,
+            cityId: cityId,
+          ),
         ),
       ],
     );

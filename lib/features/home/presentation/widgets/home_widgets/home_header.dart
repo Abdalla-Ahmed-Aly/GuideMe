@@ -67,16 +67,16 @@ class HomeHeader extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Search Widget
-          CustomTextField(
-            hintText: context.l10n.searchDestination,
-            suffixIcon: Icon(
-              Icons.search,
-              color: AppColors.natural3,
-              size: 22.ic,
-            ),
-          ),
+          // CustomTextField(
+          //   hintText: context.l10n.searchDestination,
+          //   suffixIcon: Icon(
+          //     Icons.search,
+          //     color: AppColors.natural3,
+          //     size: 22.ic,
+          //   ),
+          // ),
 
-          SizedBox(height: size.height * 0.04),
+          SizedBox(height: size.height * 0.10),
         ],
       ),
     );

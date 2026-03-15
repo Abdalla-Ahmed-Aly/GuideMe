@@ -131,9 +131,25 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
+        path: "${AppRoutes.explorePlacesScreen}/:categoryId",
+        builder: (context, state) {
+          final String title = state.extra as String;
+          final String categoryId = state.pathParameters['categoryId'] ?? '';
+          return ExplorePlacesScreen(title: title, categoryId: categoryId);
+        },
+      ),
+      GoRoute(
+        path: "${AppRoutes.explorePlacesByCityScreen}/:cityId",
+        builder: (context, state) {
+          final String title = state.extra as String;
+          final String cityId = state.pathParameters['cityId'] ?? '';
+          return ExplorePlacesScreen(title: title, cityId: cityId);
+        },
+      ),
+      GoRoute(
         path: AppRoutes.placeDetailsScreen,
-       
-         builder: (context, state) {
+
+        builder: (context, state) {
           final place = state.extra as PlaceEntity;
           return PlaceDetailsScreen(place: place);
         },

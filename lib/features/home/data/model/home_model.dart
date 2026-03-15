@@ -11,19 +11,30 @@ class HomeModel extends HomeEntity {
     required List<CityModel> super.popularCities,
   });
 
-  factory HomeModel.fromJson(Map<String, dynamic> json) {
+  factory HomeModel.fromJson(Map<String, dynamic>? json) {
+    if (json == null || json['data'] == null) {
+      throw Exception('Invalid data format: missing "data" field');
+    }
     final data = json['data'];
     return HomeModel(
-      categories: List<CategoryModel>.from(
-        data['categories'].map((x) => CategoryModel.fromJson(x)),
-      ),
-      mostFamousTrip: PlacesModel.fromJson(data['mostFamousTrip']),
-      travelBeyondBoundary: List<PlacesModel>.from(
-        data['travelBeyondBoundary'].map((x) => PlacesModel.fromJson(x)),
-      ),
-      popularCities: List<CityModel>.from(
-        data['popularCities'].map((x) => CityModel.fromJson(x)),
-      ),
+      categories: data['categories'] != null
+          ? List<CategoryModel>.from(
+              data['categories'].map((x) => CategoryModel.fromJson(x)),
+            )
+          : [],
+      mostFamousTrip: data['mostFamousTrip'] != null
+          ? PlacesModel.fromJson(data['mostFamousTrip'])
+          : PlacesModel.empty(),
+      travelBeyondBoundary: data['travelBeyondBoundary'] != null
+          ? List<PlacesModel>.from(
+              data['travelBeyondBoundary'].map((x) => PlacesModel.fromJson(x)),
+            )
+          : [],
+      popularCities: data['popularCities'] != null
+          ? List<CityModel>.from(
+              data['popularCities'].map((x) => CityModel.fromJson(x)),
+            )
+          : [],
     );
   }
 }
