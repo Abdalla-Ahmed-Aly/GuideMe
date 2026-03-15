@@ -49,33 +49,42 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   }
 
 @override
- Future<RegisterResponseModel> register(RegisterRequestModel request) async {
-    print("Sending request to API: ${request.toJson()}");
+Future<RegisterResponseModel> register(RegisterRequestModel request) async {
+  final fullUrl = 'https://guide-me-back-end.vercel.app/api/auth/register';
+  print("Sending request to API: $fullUrl");
+  print("Request body: ${request.toJson()}");
 
-    try {
-      final response = await apiService.post(
-        endpoint: ApiConstants.registerEndPoint,
-        data: request.toJson(),
-      ).timeout(
-        const Duration(seconds: 30),
-        onTimeout: () {
-          throw Exception('Request timed out');
-        },
-      );
+  try {
+    final response = await apiService.post(
+      endpoint: fullUrl, // استخدمي الـ URL كامل عشان تتأكدي
+      data: request.toJson(),
+      headers: {
+        'Content-Type': 'application/json', // مهم جداً للبعض APIs
+      },
+    ).timeout(
+      const Duration(seconds: 60),
+      onTimeout: () {
+        throw Exception('Request timed out after 60 seconds');
+      },
+    );
 
-      // Logging
-      print("API response: ${response.data}");
-      if (response.statusCode != null) {
-        print("Status code: ${response.statusCode}");
-      }
+    // Logging response
+    print("API response data: ${response.data}");
+    print("Status code: ${response.statusCode}");
 
-      return RegisterResponseModel.fromJson(response.data);
-    } catch (e, st) {
-      print("Exception in RemoteDataSource.register(): $e");
-      print("Stack trace: $st");
-      throw e; // سيتم التعامل معه في Repository
+    if (response.statusCode == 404) {
+      throw Exception('Endpoint not found! Check the URL.');
+    } else if (response.statusCode != 200) {
+      throw Exception('API returned status code ${response.statusCode}');
     }
+
+    return RegisterResponseModel.fromJson(response.data);
+  } catch (e, st) {
+    print("Exception in RemoteDataSource.register(): $e");
+    print("Stack trace: $st");
+    throw e; // سيتم التعامل معه في Repository
   }
+}
 
   @override
   Future<ResendPasswordResponseModel> resendPassword(
