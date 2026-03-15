@@ -6,8 +6,17 @@ import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 
 class CreateAccountSection extends StatefulWidget {
-  const CreateAccountSection({super.key});
-
+  const CreateAccountSection({
+    super.key,
+    required this.namecontroll,
+    required this.emailcontroll,
+    required this.passwordcontroll,
+    required this.phonecontroll,
+  });
+  final TextEditingController namecontroll;
+  final TextEditingController emailcontroll;
+  final TextEditingController passwordcontroll;
+  final TextEditingController phonecontroll;
   @override
   State<CreateAccountSection> createState() => _CreateAccountSectionState();
 }
@@ -15,7 +24,6 @@ class CreateAccountSection extends StatefulWidget {
 class _CreateAccountSectionState extends State<CreateAccountSection> {
   bool isPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
-  final TextEditingController passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +31,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
       children: [
         // Name TextField
         CustomTextField(
+          controller: widget.namecontroll,
           hintText: context.l10n.name,
           validator: AppValidators.name,
           keyboardType: TextInputType.name,
@@ -32,6 +41,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
 
         // Email TextField
         CustomTextField(
+          controller: widget.emailcontroll,
           hintText: context.l10n.email,
           keyboardType: TextInputType.emailAddress,
           validator: (value) {
@@ -43,7 +53,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
 
         // Password TextField
         CustomTextField(
-          controller: passwordcontroller,
+          controller: widget.passwordcontroll,
           validator: AppValidators.password,
           keyboardType: TextInputType.visiblePassword,
           hintText: context.l10n.password,
@@ -67,28 +77,14 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
 
         // Confirm Password TextField
         CustomTextField(
+          controller: widget.phonecontroll,
           validator: (value) {
-            return AppValidators.confirmPassword(
+            return AppValidators.phone(
               value,
-              passwordcontroller.text,
             );
           },
           keyboardType: TextInputType.visiblePassword,
-          hintText: context.l10n.confirmPassword,
-          obscureText: isConfirmPasswordHidden,
-          suffixIcon: IconButton(
-            onPressed: () {
-              setState(() {
-                isConfirmPasswordHidden = !isConfirmPasswordHidden;
-              });
-            },
-            icon: Icon(
-              !isConfirmPasswordHidden
-                  ? Icons.visibility_off_outlined
-                  : Icons.visibility_outlined,
-              color: AppColors.natural1,
-            ),
-          ),
+          hintText: context.l10n.phone,
         ),
       ],
     );

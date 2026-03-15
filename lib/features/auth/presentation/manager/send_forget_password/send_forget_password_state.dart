@@ -1,6 +1,5 @@
 part of 'send_forget_password_cubit.dart';
 
-@immutable
 sealed class SendForgetPasswordState {}
 
 final class SendForgetPasswordInitial extends SendForgetPasswordState {}

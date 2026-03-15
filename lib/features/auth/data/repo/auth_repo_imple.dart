@@ -1,4 +1,4 @@
-import 'package:dart_either/src/dart_either.dart';
+import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart';
@@ -16,6 +16,7 @@ import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart';
 import 'package:injectable/injectable.dart';
+
 @LazySingleton(as: AuthRepo)
 class AuthRepoImple extends AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
@@ -29,7 +30,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.login(request);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -41,7 +42,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.register(request);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -53,7 +54,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.resendPassword(request);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -84,11 +85,11 @@ class AuthRepoImple extends AuthRepo {
   @override
   Future<Either<Failure, VerifyForgetPasswordResponse>> verifyForgetPassword(
     VerifyForgetPasswordRequestModel request,
-  )async {
+  ) async {
     try {
       final result = await authRemoteDataSource.verifyForgetPassword(request);
       return Right(result);
-    }  catch (e) {
+    } catch (e) {
       return Left(ErrorHandler.handle(e.toString()));
     }
   }

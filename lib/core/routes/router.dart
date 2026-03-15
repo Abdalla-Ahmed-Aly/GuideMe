@@ -1,7 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
+import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/register_cubit/register_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/send_forget_password/send_forget_password_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/verify_password_cubit/verify_password_cubit.dart';
 import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/choose_nationality_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/choose_role_screen.dart';
@@ -59,23 +65,38 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.createAccountScreen,
-        builder: (context, state) => const CreateAccountScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<RegisterCubit>(),
+          child: const CreateAccountScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.logInScreen,
-        builder: (context, state) => const LogInScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<LoginCubit>(),
+          child: const LogInScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.forgetPasswordScreen,
-        builder: (context, state) => const ForgetPasswordScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<SendForgetPasswordCubit>(),
+          child: const ForgetPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.checkemailscreen,
-        builder: (context, state) => const VerificationCodeScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<VerifyPasswordCubit>(),
+          child: const VerificationCodeScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.resetPasswordScreen,
-        builder: (context, state) => const ResetPasswordScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<ResetPasswordCubit>(),
+          child: const ResetPasswordScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.successPasswordScreen,

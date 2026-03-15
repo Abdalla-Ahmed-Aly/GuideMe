@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -9,6 +10,8 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/show_elegant_snackbar.dart';
+import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/divider_rule_body.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/login%20_with%20_social_media.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/signup_textspan.dart';
@@ -24,6 +27,15 @@ class _LogInBodyState extends State<LogInBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool isHiddenPassword = true;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  final TextEditingController emailcontroll = TextEditingController();
+  final TextEditingController passwordcontroll = TextEditingController();
+
+  @override
+  void dispose() {
+    emailcontroll.dispose();
+    passwordcontroll.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +66,7 @@ class _LogInBodyState extends State<LogInBody> {
                 left: 38.p,
               ),
               child: Text(
-                "Email address",
+                context.l10n.email,
                 style: AppTextStyles.interRegular14.copyWith(
                   color: AppColors.black,
                 ),
@@ -67,6 +79,7 @@ class _LogInBodyState extends State<LogInBody> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: CustomTextField(
+                controller: emailcontroll,
                 validator: AppValidators.email,
                 hintText: context.l10n.email,
                 keyboardType: TextInputType.emailAddress,
@@ -80,7 +93,7 @@ class _LogInBodyState extends State<LogInBody> {
                 bottom: 6,
               ),
               child: Text(
-                "Password",
+                context.l10n.password,
                 style: AppTextStyles.interRegular14.copyWith(
                   color: AppColors.black,
                 ),
@@ -91,6 +104,7 @@ class _LogInBodyState extends State<LogInBody> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: CustomTextField(
+                controller: passwordcontroll,
                 validator: AppValidators.password,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: isHiddenPassword,
@@ -142,17 +156,36 @@ class _LogInBodyState extends State<LogInBody> {
             // login button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 38.p),
-              child: AppButton(
-                onPressed: () {
-                  if (formkey.currentState!.validate()) {
+              child: BlocConsumer<LoginCubit, LoginCubitState>(
+                listener: (context, state) {
+                  if (state is LoginCubitSuccessful) {
                     context.go(AppRoutes.touristNavigationBarScreen);
-                  }
-                  setState(() {
-                    autovalidateMode = AutovalidateMode.always;
-                  });
+                  } else if (state is LoginCubitFailure) {
+                    showElegantSnackbar(
+                      context,
+                      state.failure.message ?? 'something is wrong',
+                    );
+                  } 
                 },
-                text: context.l10n.login,
-                radius: 40,
+                builder: (context, state) {
+                  return AppButton(
+                    onPressed: () {
+                      if (formkey.currentState!.validate()) {
+                        context.read<LoginCubit>().login(
+                          email: emailcontroll.text,
+                          password: passwordcontroll.text,
+                        );
+                      }
+                      setState(() {
+                        autovalidateMode = AutovalidateMode.always;
+                      });
+                    },
+                    text: context.l10n.login,
+
+                    radius: 40,
+                    
+                  );
+                },
               ),
             ),
 

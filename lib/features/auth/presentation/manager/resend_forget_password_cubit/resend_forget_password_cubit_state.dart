@@ -1,6 +1,5 @@
 part of 'resend_forget_password_cubit.dart';
 
-@immutable
 sealed class ResendForgetPasswordCubitState {}
 
 final class ResendForgetPasswordCubitInitial

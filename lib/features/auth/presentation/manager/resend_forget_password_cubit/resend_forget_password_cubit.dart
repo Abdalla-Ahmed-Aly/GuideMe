@@ -1,35 +1,34 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_request_model.dart';
 import 'package:guide_me/features/auth/domain/use_case/resend_Password_use_case.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'resend_forget_password_cubit_state.dart';
-@injectable
 
-class ResendForgetPasswordCubit
-    extends Cubit<ResendForgetPasswordCubitState> {
+@injectable
+class ResendForgetPasswordCubit extends Cubit<ResendForgetPasswordCubitState> {
   ResendForgetPasswordCubit(this.resendPasswordUseCase)
     : super(ResendForgetPasswordCubitInitial());
   final ResendPasswordUseCase resendPasswordUseCase;
   void safeEmit(ResendForgetPasswordCubitState state) {
     if (!isClosed) emit(state);
   }
+
   Future<void> resendForgetPassword({required String email}) async {
     safeEmit(ResendForgetPasswordCubitLoading());
     final result = await resendPasswordUseCase.call(
       ResendPasswordRequestModel(email: email),
     );
     result.fold(
-      ifLeft: (failure) {
+      (failure) {
         safeEmit(
           ResendForgetPasswordCubFailure(
             failure,
           ),
         );
       },
-      ifRight: (success) {
+      (success) {
         safeEmit(ResendForgetPasswordCubitSuccess());
       },
     );

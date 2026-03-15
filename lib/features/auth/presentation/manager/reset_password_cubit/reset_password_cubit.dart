@@ -1,11 +1,12 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/reset_password_request_model.dart';
 import 'package:guide_me/features/auth/domain/use_case/reset_Password_use_case.dart';
-import 'package:meta/meta.dart';
+import 'package:injectable/injectable.dart';
 
 part 'reset_password_state.dart';
 
+@injectable
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   ResetPasswordCubit(this.resetPasswordUseCase) : super(ResetPasswordInitial());
   final ResetPasswordUseCase resetPasswordUseCase;
@@ -30,10 +31,10 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       ),
     );
     result.fold(
-      ifLeft: (failure) {
+      (failure) {
         safeEmit(ResetPasswordfailure(failure));
       },
-      ifRight: (success) {
+      (success) {
         safeEmit(ResetPasswordSuccess());
       },
     );

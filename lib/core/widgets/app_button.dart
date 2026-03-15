@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
@@ -28,7 +29,7 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double normalWidth = width ?? double.infinity;
+    final double normalWidth = width ?? context.screenWidth;
     final double loadingWidth = 100;
 
     return AnimatedContainer(

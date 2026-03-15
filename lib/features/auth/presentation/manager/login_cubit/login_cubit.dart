@@ -1,11 +1,11 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
 import 'package:guide_me/features/auth/domain/use_case/login_use_case.dart';
 import 'package:injectable/injectable.dart';
 
 part 'login_cubit_state.dart';
+
 @injectable
 class LoginCubit extends Cubit<LoginCubitState> {
   LoginCubit(this.loginUseCase) : super(LoginCubitInitial());
@@ -22,10 +22,10 @@ class LoginCubit extends Cubit<LoginCubitState> {
       LoginRequestModel(email: email, password: password),
     );
     result.fold(
-      ifLeft: (failure) {
+      (failure) {
         safeEmit(LoginCubitFailure(failure));
       },
-      ifRight: (success) {
+      (success) {
         safeEmit(LoginCubitSuccessful());
       },
     );

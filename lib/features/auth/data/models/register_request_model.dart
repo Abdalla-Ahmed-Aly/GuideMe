@@ -16,7 +16,7 @@ class RegisterRequestModel {
       "name": name,
       "email": email,
       "password": password,
-      "phone": phone,
+      "phone": phone
     };
   }
 }

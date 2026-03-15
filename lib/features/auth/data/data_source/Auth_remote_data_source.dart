@@ -32,7 +32,7 @@ abstract class AuthRemoteDataSource {
   );
 }
 
-@LazySingleton(as:AuthRemoteDataSource )
+@LazySingleton(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final ApiService apiService;
 
@@ -48,13 +48,33 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     return LoginresponseModel.fromJson(response.data);
   }
 
-  @override
-  Future<RegisterResponseModel> register(RegisterRequestModel request) async {
-    final response = await apiService.post(
-      endpoint: ApiConstants.registerEndPoint,
-      data: request.toJson(),
-    );
-    return RegisterResponseModel.fromJson(response.data);
+@override
+ Future<RegisterResponseModel> register(RegisterRequestModel request) async {
+    print("Sending request to API: ${request.toJson()}");
+
+    try {
+      final response = await apiService.post(
+        endpoint: ApiConstants.registerEndPoint,
+        data: request.toJson(),
+      ).timeout(
+        const Duration(seconds: 30),
+        onTimeout: () {
+          throw Exception('Request timed out');
+        },
+      );
+
+      // Logging
+      print("API response: ${response.data}");
+      if (response.statusCode != null) {
+        print("Status code: ${response.statusCode}");
+      }
+
+      return RegisterResponseModel.fromJson(response.data);
+    } catch (e, st) {
+      print("Exception in RemoteDataSource.register(): $e");
+      print("Stack trace: $st");
+      throw e; // سيتم التعامل معه في Repository
+    }
   }
 
   @override

@@ -1,6 +1,5 @@
 part of 'verify_password_cubit.dart';
 
-@immutable
 sealed class VerifyPasswordCubitState {}
 
 final class VerifyPasswordCubitInitial extends VerifyPasswordCubitState {}
