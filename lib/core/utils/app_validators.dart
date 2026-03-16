@@ -80,7 +80,7 @@ class AppValidators {
   }
 
   // Pin
-  static String? pin(String? value, {int length = 4}) {
+  static String? pin(String? value, {int length = 6}) {
     if (value == null || value.trim().isEmpty) {
       return 'PIN code is required';
     }

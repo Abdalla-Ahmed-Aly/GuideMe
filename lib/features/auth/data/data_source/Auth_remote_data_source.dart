@@ -44,7 +44,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       endpoint: ApiConstants.loginEndPoint,
       data: request.toJson(),
     );
-
     return LoginresponseModel.fromJson(response.data);
   }
 
@@ -72,10 +71,13 @@ Future<RegisterResponseModel> register(RegisterRequestModel request) async {
   Future<ResetPasswordResponseModel> resetPassword(
     ResetPasswordRequestModel request,
   ) async {
+        print("Sending verify-otp request with: email=${request.email}, otp=${request.forgotPasswordOTP}");
+
     final response = await apiService.post(
       endpoint: ApiConstants.resetPasswordEndPoint,
       data: request.toJson(),
     );
+     print("Received response: ${response.data}");
     return ResetPasswordResponseModel.fromJson(response.data);
   }
 
@@ -94,10 +96,14 @@ Future<RegisterResponseModel> register(RegisterRequestModel request) async {
   Future<VerifyForgetPasswordResponse> verifyForgetPassword(
     VerifyForgetPasswordRequestModel request,
   ) async {
+     print("Sending verify-otp request with: email=${request.email}, otp=${request.forgotPasswordOTP}");
     final response = await apiService.post(
       endpoint: ApiConstants.verifyForgetPasswordEndPoint,
       data: request.toJson(),
+  
     );
+    //  print("Received response: ${response.data}");
     return VerifyForgetPasswordResponse.fromJson(response.data);
+   
   }
 }

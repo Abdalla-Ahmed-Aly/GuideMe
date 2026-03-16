@@ -1,16 +1,16 @@
 class VerifyForgetPasswordRequestModel {
   final String email;
-  final String otp;
+  final String forgotPasswordOTP;
 
   VerifyForgetPasswordRequestModel({
     required this.email,
-    required this.otp,
+    required this.forgotPasswordOTP,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'email': email,
-      'otp': otp,
+      'forgotPasswordOTP': forgotPasswordOTP,
     };
   }
 }

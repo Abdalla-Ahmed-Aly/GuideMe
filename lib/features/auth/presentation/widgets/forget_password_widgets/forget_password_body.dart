@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -11,6 +12,8 @@ import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:guide_me/core/widgets/show_elegant_snackbar.dart';
+import 'package:guide_me/features/auth/presentation/manager/send_forget_password/send_forget_password_cubit.dart';
 
 class ForgetPasswordBody extends StatefulWidget {
   const ForgetPasswordBody({super.key});
@@ -22,6 +25,7 @@ class ForgetPasswordBody extends StatefulWidget {
 class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  final TextEditingController emailcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +80,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             SizedBox(height: size.height * 0.03),
 
             Padding(
-              padding: EdgeInsets.only(left: 40.p, bottom: 6),
+              padding: EdgeInsets.symmetric(horizontal: 45.p),
               child: Text(
                 "Email address",
                 style: AppTextStyles.interRegular14.copyWith(
@@ -89,6 +93,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             Padding(
               padding: EdgeInsets.only(left: 40.p, right: 40.p),
               child: CustomTextField(
+                controller: emailcontroller,
                 hintText: context.l10n.request,
                 validator: AppValidators.email,
                 keyboardType: TextInputType.emailAddress,
@@ -100,18 +105,43 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             // send button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
-              child: AppButton(
-                onPressed: () {
-                  if (formkey.currentState!.validate()) {
-                    context.push(AppRoutes.checkemailscreen);
-                  }
-                  setState(() {
-                    autovalidateMode = AutovalidateMode.always;
-                  });
-                },
-                text: context.l10n.send,
-                radius: 40,
-              ),
+              child:
+                  BlocConsumer<
+                    SendForgetPasswordCubit,
+                    SendForgetPasswordState
+                  >(
+                    listener: (context, state) {
+                      if (state is SendForgetPasswordSuccess) {
+                        context.push(AppRoutes.checkemailscreen , extra: emailcontroller.text);
+                      } else if (state is SendForgetPasswordFailure) {
+                        showElegantSnackbar(
+                          context,
+                          state.failure.message ?? 'something is wrong',
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return Center(
+                        child: AppButton(
+                          isLoading: state is SendForgetPasswordLoading,
+                          onPressed: () {
+                            if (formkey.currentState!.validate()) {
+                              context
+                                  .read<SendForgetPasswordCubit>()
+                                  .sendForgetPassword(
+                                    email: emailcontroller.text,
+                                  );
+                            }
+                            setState(() {
+                              autovalidateMode = AutovalidateMode.always;
+                            });
+                          },
+                          text: context.l10n.send,
+                          radius: 40,
+                        ),
+                      );
+                    },
+                  ),
             ),
 
             SizedBox(height: size.height * 0.12),

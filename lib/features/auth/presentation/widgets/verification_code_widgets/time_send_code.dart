@@ -7,17 +7,19 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class TimeSendCode extends StatefulWidget {
-  const TimeSendCode({super.key});
+  final VoidCallback onResend;
+  const TimeSendCode({super.key, required this.onResend});
 
   @override
   State<TimeSendCode> createState() => _TimeSendCodeState();
 }
 
 class _TimeSendCodeState extends State<TimeSendCode> {
-  int totalSeconds = 20;
+  int totalSeconds = 30;
   Timer? timer;
-
+ 
   void startTimer() {
+    timer?.cancel();
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       if (totalSeconds == 0) {
         t.cancel(); // call the function when finished
@@ -71,6 +73,7 @@ class _TimeSendCodeState extends State<TimeSendCode> {
                     totalSeconds = 20;
                     startTimer();
                   });
+                  widget.onResend();
                 },
                 child: Text(
                   context.l10n.resend,

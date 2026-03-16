@@ -155,7 +155,7 @@ class _LogInBodyState extends State<LogInBody> {
 
             // login button
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 38.p),
+              padding: EdgeInsets.only(right: 10.p, left: 10.p),
               child: BlocConsumer<LoginCubit, LoginCubitState>(
                 listener: (context, state) {
                   if (state is LoginCubitSuccessful) {
@@ -168,22 +168,25 @@ class _LogInBodyState extends State<LogInBody> {
                   } 
                 },
                 builder: (context, state) {
-                  return AppButton(
-                    onPressed: () {
-                      if (formkey.currentState!.validate()) {
-                        context.read<LoginCubit>().login(
-                          email: emailcontroll.text,
-                          password: passwordcontroll.text,
-                        );
-                      }
-                      setState(() {
-                        autovalidateMode = AutovalidateMode.always;
-                      });
-                    },
-                    text: context.l10n.login,
-
-                    radius: 40,
+                  return Center(
+                    child: AppButton(
+                      isLoading: state is LoginCubitLoading,
+                      onPressed: () {
+                        if (formkey.currentState!.validate()) {
+                          context.read<LoginCubit>().login(
+                            email: emailcontroll.text,
+                            password: passwordcontroll.text,
+                          );
+                        }
+                        setState(() {
+                          autovalidateMode = AutovalidateMode.always;
+                        });
+                      },
+                      text: context.l10n.login,
                     
+                      radius: 40,
+                      
+                    ),
                   );
                 },
               ),

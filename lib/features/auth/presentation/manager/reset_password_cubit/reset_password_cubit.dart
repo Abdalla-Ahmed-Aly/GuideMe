@@ -27,7 +27,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
         email: email,
         newPassword: newPassword,
         confirmPassword: confirmPassword,
-        otp: otp,
+        forgotPasswordOTP: otp,
       ),
     );
     result.fold(

@@ -19,7 +19,7 @@ class VerifyPasswordCubit extends Cubit<VerifyPasswordCubitState> {
   }) async {
     safesEmit(VerifyPasswordCubitLoadings());
     final result = await verifyForgetPasswordUseCase.call(
-      VerifyForgetPasswordRequestModel(email: email, otp: otp),
+      VerifyForgetPasswordRequestModel(email: email, forgotPasswordOTP: otp),
     );
     result.fold(
       (failure) {

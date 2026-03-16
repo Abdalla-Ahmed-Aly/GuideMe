@@ -1,3 +1,5 @@
+
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
@@ -5,6 +7,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/register_cubit/register_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/resend_forget_password_cubit/resend_forget_password_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/send_forget_password/send_forget_password_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/verify_password_cubit/verify_password_cubit.dart';
@@ -85,18 +88,33 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-        path: AppRoutes.checkemailscreen,
-        builder: (context, state) => BlocProvider(
+  path: AppRoutes.checkemailscreen,
+  builder: (context, state) {
+    final email = state.extra as String;
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
           create: (context) => getIt<VerifyPasswordCubit>(),
-          child: const VerificationCodeScreen(),
         ),
-      ),
+        BlocProvider(
+          create: (context) => getIt<ResendForgetPasswordCubit>(),
+        ),
+      ],
+      child: VerificationCodeScreen(email: email),
+    );
+  },
+),
       GoRoute(
         path: AppRoutes.resetPasswordScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<ResetPasswordCubit>(),
-          child: const ResetPasswordScreen(),
-        ),
+        builder: (context, state) {
+          final data = state.extra as Map<String, String>;
+          final email = data["email"]!;
+          final otp = data["forgotPasswordOTP"]!;
+        return  BlocProvider(
+            create: (context) => getIt<ResetPasswordCubit>(),
+            child:  ResetPasswordScreen(email: email , otp:  otp,),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.successPasswordScreen,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -7,11 +8,18 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
+import 'package:guide_me/core/widgets/show_elegant_snackbar.dart';
+import 'package:guide_me/features/auth/presentation/manager/resend_forget_password_cubit/resend_forget_password_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/verify_password_cubit/verify_password_cubit.dart';
 import 'package:guide_me/features/auth/presentation/widgets/verification_code_widgets/time_send_code.dart';
 import 'package:guide_me/features/auth/presentation/widgets/verification_code_widgets/verification_code%20_input.dart';
 
 class VerificationCodeScreenBody extends StatefulWidget {
-  const VerificationCodeScreenBody({super.key});
+  final String email;
+  const VerificationCodeScreenBody({
+    super.key,
+    required this.email,
+  });
 
   @override
   State<VerificationCodeScreenBody> createState() =>
@@ -21,6 +29,8 @@ class VerificationCodeScreenBody extends StatefulWidget {
 class _VerificationCodeScreenBodyState
     extends State<VerificationCodeScreenBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+   final TextEditingController otpController = TextEditingController();
+  String otp = "";
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -68,7 +78,7 @@ class _VerificationCodeScreenBodyState
                         ),
                       ),
                       TextSpan(
-                        text: context.l10n.email1,
+                        text: widget.email,
                         style: AppTextStyles.interMedium16.copyWith(
                           color: AppColors.black,
                         ),
@@ -84,10 +94,17 @@ class _VerificationCodeScreenBodyState
             ),
 
             // verification code input
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                VerificationCodeInput(),
+                VerificationCodeInput(
+                  controller: otpController,
+                  onCompleted: (value) {
+                    setState(() {
+                      otp = value;
+                    });
+                  },
+                ),
               ],
             ),
             SizedBox(
@@ -97,21 +114,78 @@ class _VerificationCodeScreenBodyState
             // verify button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.p),
-              child: AppButton(
-                onPressed: () {
-                  if (formkey.currentState!.validate()) {
-                    context.push(AppRoutes.resetPasswordScreen);
-                  }
-                },
-                text: context.l10n.verify,
-                radius: 40,
-              ),
+              child:
+                  BlocConsumer<VerifyPasswordCubit, VerifyPasswordCubitState>(
+                    listener: (context, state) {
+                      if (state is VerifyPasswordCubitSuccessful) {
+                        context.push(
+                          AppRoutes.resetPasswordScreen,
+                          extra: {
+                            "email": widget.email,
+                            "forgotPasswordOTP": otp,
+                          },
+                        );
+                      } else if (state is VerifyPasswordCubitFailure) {
+                        showElegantSnackbar(
+                          context,
+                          state.failure.message ?? 'something is wrong',
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return Center(
+                        child: AppButton(
+                          isLoading: state is VerifyPasswordCubitLoadings,
+                          onPressed: () {
+                            if (formkey.currentState!.validate()) {
+                              if (otp.isEmpty) {
+                                showElegantSnackbar(
+                                  context,
+                                  "Please enter the verification code",
+                                );
+                                return;
+                              }
+                              context
+                                  .read<VerifyPasswordCubit>()
+                                  .verifyForgetPassword(
+                                    email: widget.email,
+                                    otp: otp,
+                                  );
+                            }
+                          },
+                          text: context.l10n.verify,
+                          radius: 40,
+                        ),
+                      );
+                    },
+                  ),
             ),
             SizedBox(
               height: 38.p,
             ),
 
-            const TimeSendCode(),
+            BlocConsumer<ResendForgetPasswordCubit, ResendForgetPasswordCubitState>(
+              listener: (context, state) {
+                if (state is ResendForgetPasswordCubitSuccess) {
+              setState(() {
+                otpController.clear();
+                otp = "";
+                
+              });
+              showElegantSnackbar(context, "OTP sent again!");
+                }else if(state is ResendForgetPasswordCubFailure){
+                      showElegantSnackbar(context, state.failure.message ?? "Error resending OTP");
+                }
+              },
+              builder: (context, state) {
+                return TimeSendCode(
+                  onResend: () {
+                  context.read<ResendForgetPasswordCubit>().resendForgetPassword(email: widget.email);
+                    
+                  },
+                );
+              },
+            ),
 
             const SizedBox(height: 24),
           ],

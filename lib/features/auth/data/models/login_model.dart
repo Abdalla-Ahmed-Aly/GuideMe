@@ -1,108 +1,110 @@
 class LoginresponseModel {
   final bool success;
   final String message;
-  final String token;
-  final LoginData data;
+  final String? token;
+  final LoginData? data;
 
   LoginresponseModel({
     required this.success,
     required this.message,
-    required this.token,
-    required this.data,
+    this.token,
+    this.data,
   });
 
   factory LoginresponseModel.fromJson(Map<String, dynamic> json) {
     return LoginresponseModel(
-      success: json['success'],
-      message: json['message'],
+      success: json['success'] ?? false,
+      message: json['message'] ?? '',
       token: json['token'],
-      data: LoginData.fromJson(json['data']),
+      data: json['data'] != null ? LoginData.fromJson(json['data']) : null,
     );
   }
 }
 
 class LoginData {
-  final UserModel user;
+  final UserModel? user;
 
-  LoginData({required this.user});
+  LoginData({this.user});
 
   factory LoginData.fromJson(Map<String, dynamic> json) {
     return LoginData(
-      user: UserModel.fromJson(json['user']),
+      user: json['user'] != null ? UserModel.fromJson(json['user']) : null,
     );
   }
 }
 
 class UserModel {
-  final Availability availability;
-  final String id;
-  final String name;
-  final String email;
-  final String phone;
-  final String role;
+  final Availability? availability;
+  final String? id;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? role;
   final String? bio;
   final String? nationality;
-  final List<dynamic> interests;
+  final List<dynamic>? interests;
   final String? location;
   final dynamic lat;
   final dynamic long;
-  final bool isVerified;
-  final String verificationStatus;
+  final bool? isVerified;
+  final String? verificationStatus;
   final String? verificationNotes;
   final dynamic yearsOfExperience;
-  final List<dynamic> languages;
-  final List<dynamic> expertise;
+  final List<dynamic>? languages;
+  final List<dynamic>? expertise;
   final dynamic hourlyRate;
-  final String currency;
-  final List<dynamic> guideCities;
-  final int totalEarnings;
-  final int completedTours;
-  final bool isLoggedIn;
-  final bool isOnline;
-  final bool isForgotPasswordOtpVerified;
-  final List<dynamic> certificates;
-  final String createdAt;
-  final String updatedAt;
-  final String forgotPasswordExpires;
-  final String forgotPasswordOTP;
+  final String? currency;
+  final List<dynamic>? guideCities;
+  final int? totalEarnings;
+  final int? completedTours;
+  final bool? isLoggedIn;
+  final bool? isOnline;
+  final bool? isForgotPasswordOtpVerified;
+  final List<dynamic>? certificates;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? forgotPasswordExpires;
+  final String? forgotPasswordOTP;
 
   UserModel({
-    required this.availability,
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.role,
+    this.availability,
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.role,
     this.bio,
     this.nationality,
-    required this.interests,
+    this.interests,
     this.location,
     this.lat,
     this.long,
-    required this.isVerified,
-    required this.verificationStatus,
+    this.isVerified,
+    this.verificationStatus,
     this.verificationNotes,
     this.yearsOfExperience,
-    required this.languages,
-    required this.expertise,
+    this.languages,
+    this.expertise,
     this.hourlyRate,
-    required this.currency,
-    required this.guideCities,
-    required this.totalEarnings,
-    required this.completedTours,
-    required this.isLoggedIn,
-    required this.isOnline,
-    required this.isForgotPasswordOtpVerified,
-    required this.certificates,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.forgotPasswordExpires,
-    required this.forgotPasswordOTP,
+    this.currency,
+    this.guideCities,
+    this.totalEarnings,
+    this.completedTours,
+    this.isLoggedIn,
+    this.isOnline,
+    this.isForgotPasswordOtpVerified,
+    this.certificates,
+    this.createdAt,
+    this.updatedAt,
+    this.forgotPasswordExpires,
+    this.forgotPasswordOTP,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      availability: Availability.fromJson(json['availability']),
+      availability: json['availability'] != null
+          ? Availability.fromJson(json['availability'])
+          : null,
       id: json['_id'],
       name: json['name'],
       email: json['email'],
@@ -110,7 +112,9 @@ class UserModel {
       role: json['role'],
       bio: json['bio'],
       nationality: json['nationality'],
-      interests: List<dynamic>.from(json['interests'] ?? []),
+      interests: json['interests'] != null
+          ? List<dynamic>.from(json['interests'])
+          : [],
       location: json['location'],
       lat: json['lat'],
       long: json['long'],
@@ -118,17 +122,25 @@ class UserModel {
       verificationStatus: json['verificationStatus'],
       verificationNotes: json['verificationNotes'],
       yearsOfExperience: json['yearsOfExperience'],
-      languages: List<dynamic>.from(json['languages'] ?? []),
-      expertise: List<dynamic>.from(json['expertise'] ?? []),
+      languages: json['languages'] != null
+          ? List<dynamic>.from(json['languages'])
+          : [],
+      expertise: json['expertise'] != null
+          ? List<dynamic>.from(json['expertise'])
+          : [],
       hourlyRate: json['hourlyRate'],
       currency: json['currency'],
-      guideCities: List<dynamic>.from(json['guideCities'] ?? []),
+      guideCities: json['guideCities'] != null
+          ? List<dynamic>.from(json['guideCities'])
+          : [],
       totalEarnings: json['totalEarnings'],
       completedTours: json['completedTours'],
       isLoggedIn: json['isLoggedIn'],
       isOnline: json['isOnline'],
       isForgotPasswordOtpVerified: json['isForgotPasswordOtpVerified'],
-      certificates: List<dynamic>.from(json['certificates'] ?? []),
+      certificates: json['certificates'] != null
+          ? List<dynamic>.from(json['certificates'])
+          : [],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
       forgotPasswordExpires: json['forgotPasswordExpires'],
@@ -138,13 +150,13 @@ class UserModel {
 }
 
 class Availability {
-  final List<dynamic> days;
+  final List<dynamic>? days;
 
-  Availability({required this.days});
+  Availability({this.days});
 
   factory Availability.fromJson(Map<String, dynamic> json) {
     return Availability(
-      days: List<dynamic>.from(json['days'] ?? []),
+      days: json['days'] != null ? List<dynamic>.from(json['days']) : [],
     );
   }
 }
