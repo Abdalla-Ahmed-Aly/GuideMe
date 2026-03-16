@@ -3,15 +3,15 @@ import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/meeting_point_header.dart';
 
-class MEETINGPOINTSection extends StatelessWidget {
-  const MEETINGPOINTSection({
+class MeetingPointSection extends StatelessWidget {
+  const MeetingPointSection({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white,
         border: Border.all(color: const Color(0xffFFE5BA)),
@@ -20,13 +20,10 @@ class MEETINGPOINTSection extends StatelessWidget {
       child: const Column(
         children: [
           MeetingPointHeader(),
-          SizedBox(
-            height: 12,
-          ),
+
+          SizedBox(height: 12),
+
           MettingPointLocation(),
-          SizedBox(
-            height: 10,
-          ),
         ],
       ),
     );

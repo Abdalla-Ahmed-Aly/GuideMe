@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
@@ -9,8 +10,9 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: BookingRemoteDataSource)
 class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
   final ApiService _apiService;
+  CancelToken? _cancelToken;
 
-  const BookingRemoteDataSourceImpl(this._apiService);
+  BookingRemoteDataSourceImpl(this._apiService);
 
   @override
   Future<BookingModel> addBooking({
@@ -39,12 +41,16 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
     required String? status,
     required String? date,
   }) async {
+    _cancelToken?.cancel();
+    _cancelToken = CancelToken();
+
     final response = await _apiService.get(
       endpoint: ApiConstants.myScheduleEndpoint,
       queryParameters: {
         if (date != null) "date": date,
         if (status != null) "status": status,
       },
+      cancelToken: _cancelToken,
     );
     return (response.data["data"]["bookings"] as List<dynamic>)
         .map((e) => BookingModel.fromJson(e as Map<String, dynamic>))

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
+import 'package:intl/intl.dart';
 
 class AcceptedTripCard extends StatelessWidget {
   const AcceptedTripCard({super.key, required this.booking});
@@ -12,7 +13,7 @@ class AcceptedTripCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.acceptedScreen);
+        context.push(AppRoutes.acceptedScreen, extra: booking);
       },
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -29,7 +30,7 @@ class AcceptedTripCard extends StatelessWidget {
           children: [
             // Time
             Text(
-              "02:30 PM",
+              DateFormat("hh:mm a").format(booking.startTime),
               style: AppTextStyles.poppinsMedium14,
             ),
 

@@ -4,6 +4,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
+import 'package:intl/intl.dart';
 
 class PendingTripCard extends StatelessWidget {
   const PendingTripCard({super.key, required this.booking});
@@ -34,7 +35,7 @@ class PendingTripCard extends StatelessWidget {
           children: [
             // Time
             Text(
-              "02:30 PM",
+              DateFormat("hh:mm a").format(booking.startTime),
               style: AppTextStyles.poppinsMedium14.copyWith(
                 color: const Color(0xffC3C3C3),
               ),

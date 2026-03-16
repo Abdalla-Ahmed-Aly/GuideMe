@@ -1903,6 +1903,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancelled'**
   String get cancelled;
+
+  /// No description provided for @viewSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'View Schedule'**
+  String get viewSchedule;
+
+  /// No description provided for @totalPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Price'**
+  String get totalPrice;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get minutes;
+
+  /// No description provided for @flexibleEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Flexible End'**
+  String get flexibleEnd;
+
+  /// No description provided for @historyAndMyths.
+  ///
+  /// In en, this message translates to:
+  /// **'History & Myths'**
+  String get historyAndMyths;
+
+  /// No description provided for @privateGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Group'**
+  String get privateGroup;
 }
 
 class _AppLocalizationsDelegate

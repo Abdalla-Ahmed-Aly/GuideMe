@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
-class PendingApprovalBadge extends StatelessWidget {
-  const PendingApprovalBadge({
+class CustomTextBadge extends StatelessWidget {
+  const CustomTextBadge({
     super.key,
     required this.text,
   });

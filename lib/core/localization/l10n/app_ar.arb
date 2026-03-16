@@ -329,5 +329,12 @@
   "notes": "ملاحظات",
 
   "accepted": "مقبول",
-  "cancelled": "ملغي"
+  "cancelled": "ملغي",
+
+  "viewSchedule": "عرض الجدول الزمني",
+  "totalPrice": "السعر الكلي",
+  "minutes": "دقائق",
+  "flexibleEnd": "نهاية مرنة",
+  "historyAndMyths": "تاريخ وأساطير",
+  "privateGroup": "مجموعة خاصة"
 }

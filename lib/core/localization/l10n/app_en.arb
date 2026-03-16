@@ -329,5 +329,12 @@
   "notes": "Notes",
 
   "accepted": "Accepted",
-  "cancelled": "Cancelled"
+  "cancelled": "Cancelled",
+
+  "viewSchedule": "View Schedule",
+  "totalPrice": "Total Price",
+  "minutes": "Minutes",
+  "flexibleEnd": "Flexible End",
+  "historyAndMyths": "History & Myths",
+  "privateGroup": "Private Group"
 }

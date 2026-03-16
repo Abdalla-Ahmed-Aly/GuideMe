@@ -38,7 +38,7 @@ class PandingApprovalBody extends StatelessWidget {
           const SizedBox(height: 24),
 
           Center(
-            child: PendingApprovalBadge(
+            child: CustomTextBadge(
               text: context.l10n.pendingApproval,
             ),
           ),

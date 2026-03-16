@@ -16,6 +16,7 @@ class GetBookingsUseCase {
     required TouristBookingStatus status,
     required DateTime? date,
   }) async {
+    
     final formattedDate = date != null
         ? DateFormat("yyyy-MM-dd").format(date)
         : null;
@@ -27,21 +28,19 @@ class GetBookingsUseCase {
       date: formattedDate,
     );
 
-    if (status != TouristBookingStatus.live) {
-      return result;
-    }
-
-    return result.fold(
-      (failure) {
-        return left(failure);
-      },
-      (bookings) {
-        final filterdBookings = bookings.where((booking) {
+    return switch (status) {
+      TouristBookingStatus.pending => result.map(
+        (bookings) => bookings.where((booking) {
+          return booking.status == TouristBookingStatus.pending;
+        }).toList(),
+      ),
+      TouristBookingStatus.live => result.map(
+        (bookings) => bookings.where((booking) {
           return booking.status == TouristBookingStatus.live ||
               booking.status == TouristBookingStatus.accepted;
-        }).toList();
-        return right(filterdBookings);
-      },
-    );
+        }).toList(),
+      ),
+      _ => result,
+    };
   }
 }

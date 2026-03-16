@@ -934,4 +934,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancelled => 'Cancelled';
+
+  @override
+  String get viewSchedule => 'View Schedule';
+
+  @override
+  String get totalPrice => 'Total Price';
+
+  @override
+  String get minutes => 'Minutes';
+
+  @override
+  String get flexibleEnd => 'Flexible End';
+
+  @override
+  String get historyAndMyths => 'History & Myths';
+
+  @override
+  String get privateGroup => 'Private Group';
 }

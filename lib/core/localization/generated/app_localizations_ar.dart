@@ -933,4 +933,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cancelled => 'ملغي';
+
+  @override
+  String get viewSchedule => 'عرض الجدول الزمني';
+
+  @override
+  String get totalPrice => 'السعر الكلي';
+
+  @override
+  String get minutes => 'دقائق';
+
+  @override
+  String get flexibleEnd => 'نهاية مرنة';
+
+  @override
+  String get historyAndMyths => 'تاريخ وأساطير';
+
+  @override
+  String get privateGroup => 'مجموعة خاصة';
 }

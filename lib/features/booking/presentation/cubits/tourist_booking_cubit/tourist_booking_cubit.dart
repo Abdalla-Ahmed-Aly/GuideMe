@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/errors/failure_code.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
 import 'package:guide_me/features/booking/domain/use_cases/get_bookings_use_case.dart';
@@ -21,9 +22,12 @@ class TouristBookingCubit extends Cubit<TouristBookingState> {
     );
 
     result.fold(
-      (failure) => safeEmit(
-        TouristBookingFailure(failure: failure, filters: state.filters),
-      ),
+      (failure) {
+        if (failure.failureCode == FailureCode.cancelled) return;
+        safeEmit(
+          TouristBookingFailure(failure: failure, filters: state.filters),
+        );
+      },
       (bookings) => safeEmit(
         TouristBookingSuccess(
           touristBookings: bookings,

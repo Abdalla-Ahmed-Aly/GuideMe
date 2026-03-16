@@ -1,25 +1,24 @@
-
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
-class CustomTripdetails extends StatelessWidget {
-  const CustomTripdetails({
+class TourDetailsCard extends StatelessWidget {
+  const TourDetailsCard({
     super.key,
-   required this.title,
+    required this.title,
     required this.value,
-    required this.pathicon,
-    required this.value1,
+    required this.icon,
+    required this.subValue,
   });
-
- final String title;
+  final String title;
   final String value;
-  final String value1;
-  final Widget pathicon;
+  final String subValue;
+  final Widget icon;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white,
         border: Border.all(color: const Color(0xffFFE5BA)),
@@ -29,28 +28,36 @@ class CustomTripdetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 13),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: const Color(0xffFEF4E6),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(14),
             ),
-            child: pathicon,
+            child: icon,
           ),
-          const SizedBox(
-            height: 6,
-          ),
+
+          const SizedBox(height: 6),
+
           Text(
             title,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.poppinsSemiBold14.copyWith(
               color: const Color(0xff8B94A2),
             ),
           ),
+
+          const SizedBox(height: 2),
+
           Text(
             value,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.poppinsMedium16,
           ),
+
+          const SizedBox(height: 1),
+
           Text(
-            value1,
+            subValue,
             style: AppTextStyles.poppinsRegular14.copyWith(
               color: const Color(0xff956B00),
             ),
