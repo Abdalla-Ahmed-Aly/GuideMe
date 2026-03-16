@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:dio_cache_interceptor_file_store/dio_cache_interceptor_file_store.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../constants/api_constants.dart';
 import 'interceptor.dart';
@@ -19,21 +22,37 @@ class DioService {
       ),
     );
 
-    _dioInterceptors();
-  }
-
-  void _dioInterceptors() {
     dio.interceptors.addAll(
       [
         AuthorizationInterceptor(),
         LoggerInterceptor(),
-        // InterceptorsWrapper(
-        //   onRequest: (options, handler) {
-        //     options.headers['Authorization'] =
-        //         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTJmZTBjZDg0NjI5MDhjYjlhYTVhYiIsInJvbGUiOiJ0b3VyaXN0IiwiaWF0IjoxNzcyMjg5NjE4fQ.SUrwoofufEYnl9fhhZZ6NvWjyF4gr5sWB4X92yDYkhk';
-        //   },
-        // ),
       ],
+    );
+
+    _addCacheInterceptor();
+  }
+
+  Future<void> _addCacheInterceptor() async {
+    try {
+      final cacheOptions = await _getCacheOptions();
+      // Add cache interceptor at the beginning of the list
+      dio.interceptors.insert(0, DioCacheInterceptor(options: cacheOptions));
+    } catch (e) {
+      // Log error if cache fails to initialize
+      print('DioService: Failed to initialize cache interceptor: $e');
+    }
+  }
+
+  Future<CacheOptions> _getCacheOptions() async {
+    final dir = await getTemporaryDirectory();
+    return CacheOptions(
+      store: FileCacheStore(dir.path),
+      policy: CachePolicy.refreshForceCache,
+      hitCacheOnErrorExcept: [401, 403],
+      maxStale: const Duration(days: 7),
+      priority: CachePriority.normal,
+      keyBuilder: CacheOptions.defaultCacheKeyBuilder,
+      allowPostMethod: false,
     );
   }
 }

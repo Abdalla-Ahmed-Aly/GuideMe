@@ -14,8 +14,22 @@ import 'package:guide_me/features/home/presentation/widgets/home_widgets/home_he
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/most_famous_trip_list_view.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/places_list_view.dart';
 
+import 'package:guide_me/features/home/presentation/widgets/home_widgets/home_shimmers.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  Widget _buildSectionTitle(BuildContext context, String title) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.p),
+      child: Text(
+        title,
+        style: AppTextStyles.poppinsBold18.copyWith(
+          color: AppColors.blue,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +38,69 @@ class HomeScreen extends StatelessWidget {
       body: BlocBuilder<GetHomeCubit, GetHomeState>(
         builder: (context, state) {
           if (state is GetHomeLoading) {
-            return const Center(child: CircularProgressIndicator.adaptive());
+            return ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const HomeHeader(),
+                const SizedBox(height: 35),
+                _buildSectionTitle(context, context.l10n.category),
+                const SizedBox(height: 20),
+                SizedBox(
+                  height: context.isPortrait
+                      ? size.height * 0.13
+                      : size.width * 0.12,
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(left: 20.p),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context, index) => const CategoryShimmer(),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                _buildSectionTitle(context, context.l10n.mostFamousTrip),
+                const SizedBox(height: 16),
+                SizedBox(
+                  height: context.isPortrait
+                      ? size.height * 0.41
+                      : size.width * 0.41,
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(left: 20.p),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 3,
+                    itemBuilder: (context, index) => const PlaceShimmer(),
+                  ),
+                ),
+                const SizedBox(height: 32),
+                _buildSectionTitle(context, context.l10n.travelBeyondBoundary),
+                const SizedBox(height: 22),
+                SizedBox(
+                  height: context.isPortrait
+                      ? size.height * 0.37
+                      : size.width * 0.37,
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(left: 20.p),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 3,
+                    itemBuilder: (context, index) => const PlaceShimmer(),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                _buildSectionTitle(context, context.l10n.popularCities),
+                const SizedBox(height: 20),
+                SizedBox(
+                  height: context.isPortrait
+                      ? size.height * 0.24
+                      : size.width * 0.24,
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(left: 20.p),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 4,
+                    itemBuilder: (context, index) => const CityShimmer(),
+                  ),
+                ),
+                const SizedBox(height: 25),
+              ],
+            );
           } else if (state is GetHomeFailure) {
             return Center(
               child: Padding(
@@ -111,15 +187,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 40),
 
                   // The most famous trip Text
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.p),
-                    child: Text(
-                      context.l10n.mostFamousTrip,
-                      style: AppTextStyles.poppinsBold18.copyWith(
-                        color: AppColors.blue,
-                      ),
-                    ),
-                  ),
+                  _buildSectionTitle(context, context.l10n.mostFamousTrip),
 
                   const SizedBox(height: 16),
 
@@ -136,14 +204,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 32),
 
                   // Travel Beyond Boundary Text
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.p),
-                    child: Text(
-                      context.l10n.travelBeyondBoundary,
-                      style: AppTextStyles.poppinsBold18.copyWith(
-                        color: AppColors.blue,
-                      ),
-                    ),
+                  _buildSectionTitle(
+                    context,
+                    context.l10n.travelBeyondBoundary,
                   ),
 
                   const SizedBox(height: 22),
@@ -161,15 +224,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 10),
 
                   // Popular Cities Text
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.p),
-                    child: Text(
-                      context.l10n.popularCities,
-                      style: AppTextStyles.poppinsBold18.copyWith(
-                        color: AppColors.blue,
-                      ),
-                    ),
-                  ),
+                  _buildSectionTitle(context, context.l10n.popularCities),
 
                   const SizedBox(height: 20),
 

@@ -38,10 +38,14 @@ dependencies:
   injectable: ^2.7.1+4
   linear_date_picker: ^0.0.2
   logger: ^2.5.0
-  dio: 
+  dio: ^5.8.0+1
   flutter_secure_storage: ^10.0.0
   connectivity_plus: ^7.0.0
-  dartz: 
+  dartz: ^0.10.1
+  shimmer: ^3.0.0
+  dio_cache_interceptor: ^3.5.0
+  dio_cache_interceptor_file_store: ^1.2.3
+  path_provider: ^2.1.5
   
 
 dev_dependencies:

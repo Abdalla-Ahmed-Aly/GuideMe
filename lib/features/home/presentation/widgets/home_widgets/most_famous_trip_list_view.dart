@@ -13,7 +13,7 @@ class MostFamousTripListView extends StatelessWidget {
       padding: EdgeInsets.only(left: 20.p),
       scrollDirection: Axis.horizontal,
       children: [
-        MostFamousTripCard(place: mostFamousTrip),
+        MostFamousTripCard(mostFamousTrip: mostFamousTrip),
       ],
     );
   }

@@ -8,7 +8,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
-
+import 'package:guide_me/core/widgets/custom_shimmer.dart';
 
 class PlaceListTile extends StatelessWidget {
   const PlaceListTile({super.key, required this.place});
@@ -17,6 +17,13 @@ class PlaceListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
+    final imageWidth = context.isPortrait
+        ? size.width * 0.31
+        : size.height * 0.3;
+    final imageHeight = context.isPortrait
+        ? size.height * 0.173
+        : size.width * 0.173;
+
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
@@ -43,33 +50,29 @@ class PlaceListTile extends StatelessWidget {
               if (place.images.isNotEmpty)
                 Image.network(
                   place.images.first,
-                  width: context.isPortrait
-                      ? size.width * 0.31
-                      : size.height * 0.3,
-                  height: context.isPortrait
-                      ? size.height * 0.173
-                      : size.width * 0.173,
+                  width: imageWidth,
+                  height: imageHeight,
                   fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return CustomShimmer(
+                      width: imageWidth,
+                      height: imageHeight,
+                      borderRadius: 0, // ClipRRect handles it
+                    );
+                  },
                   errorBuilder: (context, error, stackTrace) => Image.asset(
                     AppImages.placeTest,
-                    width: context.isPortrait
-                        ? size.width * 0.31
-                        : size.height * 0.3,
-                    height: context.isPortrait
-                        ? size.height * 0.173
-                        : size.width * 0.173,
+                    width: imageWidth,
+                    height: imageHeight,
                     fit: BoxFit.cover,
                   ),
                 )
               else
                 Image.asset(
                   AppImages.placeTest,
-                  width: context.isPortrait
-                      ? size.width * 0.31
-                      : size.height * 0.3,
-                  height: context.isPortrait
-                      ? size.height * 0.173
-                      : size.width * 0.173,
+                  width: imageWidth,
+                  height: imageHeight,
                   fit: BoxFit.cover,
                 ),
 
