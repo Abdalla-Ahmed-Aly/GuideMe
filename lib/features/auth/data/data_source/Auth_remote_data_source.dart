@@ -71,13 +71,13 @@ Future<RegisterResponseModel> register(RegisterRequestModel request) async {
   Future<ResetPasswordResponseModel> resetPassword(
     ResetPasswordRequestModel request,
   ) async {
-        print("Sending verify-otp request with: email=${request.email}, otp=${request.forgotPasswordOTP}");
+  print("🔵 RESET REQUEST BODY: ${request.toJson()}");
 
     final response = await apiService.post(
       endpoint: ApiConstants.resetPasswordEndPoint,
       data: request.toJson(),
     );
-     print("Received response: ${response.data}");
+    print("Received response: ${response.data}");
     return ResetPasswordResponseModel.fromJson(response.data);
   }
 

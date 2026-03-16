@@ -25,9 +25,10 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     final result = await resetPasswordUseCase.call(
       ResetPasswordRequestModel(
         email: email,
+        forgotPasswordOTP: otp,
         newPassword: newPassword,
         confirmPassword: confirmPassword,
-        forgotPasswordOTP: otp,
+        
       ),
     );
     result.fold(
