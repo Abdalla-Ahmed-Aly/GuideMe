@@ -200,12 +200,15 @@ class _LogInBodyState extends State<LogInBody> {
             ),
 
             // social media login
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 11),
+                  padding:const EdgeInsets.symmetric(horizontal: 11),
                   child: LoginWithSocialMedia(
+                    onTap: (){
+
+                    },
                     AppIcons.google,
                   ),
                 ),
