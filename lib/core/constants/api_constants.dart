@@ -5,4 +5,7 @@ abstract class ApiConstants {
   static const String addBookingEndpoint = "$apiVersion/booking";
   static const String myScheduleEndpoint = "$addBookingEndpoint/my-schedule";
   static const String cancelBookingEndpoint = "/cancel";
+  static const String citiesEndpoint = "$addBookingEndpoint/get-cities";
+  static const String suggestionsEndpoint = "$addBookingEndpoint/suggestions";
+
 }

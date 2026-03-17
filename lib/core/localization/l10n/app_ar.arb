@@ -336,5 +336,11 @@
   "minutes": "دقائق",
   "flexibleEnd": "نهاية مرنة",
   "historyAndMyths": "تاريخ وأساطير",
-  "privateGroup": "مجموعة خاصة"
+  "privateGroup": "مجموعة خاصة",
+  "priceRange": "نطاق السعر",
+  "selectedRange": "النطاق المحدد",
+  "city": "المدينة",
+  "persons": "أشخاص",
+  "validationCity": "يرجى اختيار مدينة",
+  "suggestedPackages": "Suggested Packages"
 }

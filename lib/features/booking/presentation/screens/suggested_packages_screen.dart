@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/widgets/filter_screen_widgets/apply_filter_section.dart';
-import 'package:guide_me/features/booking/presentation/widgets/filter_screen_widgets/filter_section.dart';
 
-class FilterScreen extends StatelessWidget {
-  const FilterScreen({super.key});
+class SuggestedPackagesScreen extends StatelessWidget {
+  const SuggestedPackagesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class FilterScreen extends StatelessWidget {
           },
         ),
         title: Text(
-          context.l10n.filter,
+          context.l10n.suggestedPackages,
           style: AppTextStyles.poppinsBold22,
         ),
         leadingWidth: 65,
@@ -32,17 +30,6 @@ class FilterScreen extends StatelessWidget {
             color: const Color(0xffE2E8F0),
           ),
         ),
-      ),
-      body: const Column(
-        children: [
-          Expanded(
-            child: FilterSection(),
-          ),
-
-          SafeArea(
-            child: ApplyFilterSection(),
-          ),
-        ],
       ),
     );
   }

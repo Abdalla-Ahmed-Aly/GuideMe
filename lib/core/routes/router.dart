@@ -15,6 +15,7 @@ import 'package:guide_me/features/auth/presentation/screens/signup_and_login_scr
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
@@ -24,6 +25,7 @@ import 'package:guide_me/features/booking/presentation/screens/reservation_scree
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/suggested_packages_screen.dart';
 import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
@@ -112,7 +114,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.filterScreen,
-        builder: (context, state) => const FilterScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<FilterCubit>()..getCities(),
+          child: const FilterScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.bookScreen,
@@ -259,6 +264,10 @@ abstract class AppRouter {
           create: (context) => GuideProfileCubit(MediaPickerServiceImpl()),
           child: const AddCertificationScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.suggestedPackagesScreen,
+        builder: (context, state) => const SuggestedPackagesScreen(),
       ),
     ],
   );

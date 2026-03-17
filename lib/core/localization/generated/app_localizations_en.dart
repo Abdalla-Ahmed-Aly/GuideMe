@@ -179,7 +179,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mosques => 'mosques';
 
   @override
-  String get numberofperson => 'Number of Person';
+  String get numberofperson => 'Number of Persons';
 
   @override
   String get apply => 'Apply';
@@ -952,4 +952,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privateGroup => 'Private Group';
+
+  @override
+  String get priceRange => 'Price Range';
+
+  @override
+  String get selectedRange => 'Selected Range';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get persons => 'Persons';
+
+  @override
+  String get validationCity => 'Please select a city';
+
+  @override
+  String get suggestedPackages => 'Suggested Packages';
 }

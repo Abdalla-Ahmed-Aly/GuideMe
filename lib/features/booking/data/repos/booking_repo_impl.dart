@@ -1,11 +1,15 @@
 import 'package:dartz/dartz.dart';
+import 'package:guide_me/core/entities/city_entity.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/mapper/city_mapper.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_mapper.dart';
+import 'package:guide_me/features/booking/data/mappers/booking_package_mapper.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
+import 'package:guide_me/features/booking/domain/entities/booking_package_entity.dart';
 import 'package:guide_me/features/booking/domain/repos/booking_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -54,6 +58,34 @@ class BookingRepoImpl implements BookingRepo {
         date: date,
       );
       return right(response.map((e) => BookingMapper.toEntity(e)).toList());
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CityEntity>>> getCities() async {
+    try {
+      final response = await _remoteDataSource.getCities();
+      return right(response.map((e) => CityMapper.toEntity(e)).toList());
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookingPackageEntity>>> getSuggestionPackages({
+    required String city,
+    required double budget,
+  }) async {
+    try {
+      final response = await _remoteDataSource.getSuggestionPackages(
+        city: city,
+        budget: budget,
+      );
+      return right(
+        response.map((e) => BookingPackageMapper.toEntity(e)).toList(),
+      );
     } catch (e) {
       return left(ErrorHandler.handle(e));
     }

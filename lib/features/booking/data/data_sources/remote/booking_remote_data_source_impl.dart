@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
+import 'package:guide_me/core/models/city_model.dart';
 import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
 import 'package:guide_me/features/booking/data/models/booking_model.dart';
+import 'package:guide_me/features/booking/data/models/booking_packge_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 import 'package:injectable/injectable.dart';
 
@@ -54,6 +56,33 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
     );
     return (response.data["data"]["bookings"] as List<dynamic>)
         .map((e) => BookingModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  Future<List<CityModel>> getCities() async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.citiesEndpoint,
+    );
+    return (response.data["data"] as List<dynamic>)
+        .map((e) => CityModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  @override
+  Future<List<BookingPackgeModel>> getSuggestionPackages({
+    required String city,
+    required double budget,
+  }) async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.suggestionsEndpoint,
+      queryParameters: {
+        "city": city,
+        "budget": budget,
+      },
+    );
+    return (response.data["data"] as List<dynamic>)
+        .map((e) => BookingPackgeModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 }

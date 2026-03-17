@@ -951,4 +951,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get privateGroup => 'مجموعة خاصة';
+
+  @override
+  String get priceRange => 'نطاق السعر';
+
+  @override
+  String get selectedRange => 'النطاق المحدد';
+
+  @override
+  String get city => 'المدينة';
+
+  @override
+  String get persons => 'أشخاص';
+
+  @override
+  String get validationCity => 'يرجى اختيار مدينة';
+
+  @override
+  String get suggestedPackages => 'Suggested Packages';
 }

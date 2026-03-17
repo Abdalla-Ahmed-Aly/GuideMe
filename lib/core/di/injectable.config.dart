@@ -33,6 +33,8 @@ import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/
     as _i49;
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart'
     as _i634;
+import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart'
+    as _i655;
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart'
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
@@ -70,6 +72,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i634.CancelBookingCubit>(
       () => _i634.CancelBookingCubit(gh<_i672.BookingRepo>()),
+    );
+    gh.factory<_i655.FilterCubit>(
+      () => _i655.FilterCubit(gh<_i672.BookingRepo>()),
     );
     gh.lazySingleton<_i12.GetBookingsUseCase>(
       () => _i12.GetBookingsUseCase(gh<_i672.BookingRepo>()),

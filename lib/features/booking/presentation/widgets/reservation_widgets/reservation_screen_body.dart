@@ -13,7 +13,7 @@ import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/
 import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/date_time_pick_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/notes_text_field.dart';
 import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/pick_up_point_field.dart';
-import 'package:guide_me/features/booking/presentation/widgets/filter_screen_widgets/people_slider.dart';
+import 'package:guide_me/features/booking/presentation/widgets/reservation_widgets/people_slider.dart';
 
 class ReservationScreenBody extends StatelessWidget {
   const ReservationScreenBody({super.key});

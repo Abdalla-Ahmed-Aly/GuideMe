@@ -431,7 +431,7 @@ abstract class AppLocalizations {
   /// No description provided for @numberofperson.
   ///
   /// In en, this message translates to:
-  /// **'Number of Person'**
+  /// **'Number of Persons'**
   String get numberofperson;
 
   /// No description provided for @apply.
@@ -1939,6 +1939,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Private Group'**
   String get privateGroup;
+
+  /// No description provided for @priceRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get priceRange;
+
+  /// No description provided for @selectedRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Range'**
+  String get selectedRange;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @persons.
+  ///
+  /// In en, this message translates to:
+  /// **'Persons'**
+  String get persons;
+
+  /// No description provided for @validationCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a city'**
+  String get validationCity;
+
+  /// No description provided for @suggestedPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested Packages'**
+  String get suggestedPackages;
 }
 
 class _AppLocalizationsDelegate

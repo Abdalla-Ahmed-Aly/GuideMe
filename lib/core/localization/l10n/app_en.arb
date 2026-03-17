@@ -54,7 +54,7 @@
   "fatimidera" : "Fatimid era",
   "romanera" : "Roman era",
   "mosques" : "mosques",
-  "numberofperson" : "Number of Person" ,
+  "numberofperson" : "Number of Persons" ,
   "apply" : "Apply",
   "booking" : "Booking",
   "pickup" : "Pick up location",
@@ -336,5 +336,11 @@
   "minutes": "Minutes",
   "flexibleEnd": "Flexible End",
   "historyAndMyths": "History & Myths",
-  "privateGroup": "Private Group"
+  "privateGroup": "Private Group",
+  "priceRange": "Price Range",
+  "selectedRange": "Selected Range",
+  "city": "City",
+  "persons": "Persons",
+  "validationCity": "Please select a city",
+  "suggestedPackages": "Suggested Packages"
 }

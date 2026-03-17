@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/category_list_view.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/cities_list_view.dart';
+import 'package:guide_me/features/home/presentation/widgets/home_widgets/filter_button.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/home_header.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/most_famous_trip_list_view.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/places_list_view.dart';
@@ -24,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           // header
           const HomeHeader(),
 
-          const SizedBox(height: 35),
+          const SizedBox(height: 20),
 
           // category title and filter button
           Padding(
@@ -39,22 +38,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                InkWell(
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    context.push(AppRoutes.filterScreen);
-                  },
-                  child: Icon(
-                    Icons.filter_alt,
-                    color: AppColors.primary,
-                    size: 26.ic,
-                  ),
-                ),
+                const FilterButton(),
               ],
             ),
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
 
           // categories list
           SizedBox(

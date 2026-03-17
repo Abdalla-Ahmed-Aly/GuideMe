@@ -57,4 +57,5 @@ abstract class AppIcons {
   static const String file = 'assets/icons/file.svg';
   static const String licenseId = 'assets/icons/license_id.svg';
   static const String arrowFilter = 'assets/icons/arrow_filtter.svg';
+  static const String filterLayers = 'assets/icons/filter_layers.svg';
 }
