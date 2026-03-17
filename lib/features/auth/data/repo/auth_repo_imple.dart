@@ -93,4 +93,16 @@ class AuthRepoImple extends AuthRepo {
       return Left(ErrorHandler.handle(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, LoginresponseModel>> loginwithgoogle(
+    String token,
+  ) async {
+    try {
+      final result = await authRemoteDataSource.loginWithGoogle(token);
+      return Right(result);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
 }

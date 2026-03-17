@@ -30,6 +30,7 @@ abstract class AuthRemoteDataSource {
   Future<ResetPasswordResponseModel> resetPassword(
     ResetPasswordRequestModel request,
   );
+  Future<LoginresponseModel> loginWithGoogle(String token);
 }
 
 @LazySingleton(as: AuthRemoteDataSource)
@@ -47,14 +48,14 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     return LoginresponseModel.fromJson(response.data);
   }
 
-@override
-Future<RegisterResponseModel> register(RegisterRequestModel request) async {
-  final response = await apiService.post(
-    endpoint: ApiConstants.registerEndPoint,
-    data: request.toJson(),
-  );
-  return RegisterResponseModel.fromJson(response.data);
-}
+  @override
+  Future<RegisterResponseModel> register(RegisterRequestModel request) async {
+    final response = await apiService.post(
+      endpoint: ApiConstants.registerEndPoint,
+      data: request.toJson(),
+    );
+    return RegisterResponseModel.fromJson(response.data);
+  }
 
   @override
   Future<ResendPasswordResponseModel> resendPassword(
@@ -71,8 +72,6 @@ Future<RegisterResponseModel> register(RegisterRequestModel request) async {
   Future<ResetPasswordResponseModel> resetPassword(
     ResetPasswordRequestModel request,
   ) async {
-  print("🔵 RESET REQUEST BODY: ${request.toJson()}");
-
     final response = await apiService.post(
       endpoint: ApiConstants.resetPasswordEndPoint,
       data: request.toJson(),
@@ -96,14 +95,26 @@ Future<RegisterResponseModel> register(RegisterRequestModel request) async {
   Future<VerifyForgetPasswordResponse> verifyForgetPassword(
     VerifyForgetPasswordRequestModel request,
   ) async {
-     print("Sending verify-otp request with: email=${request.email}, otp=${request.forgotPasswordOTP}");
+    print(
+      "Sending verify-otp request with: email=${request.email}, otp=${request.forgotPasswordOTP}",
+    );
     final response = await apiService.post(
       endpoint: ApiConstants.verifyForgetPasswordEndPoint,
       data: request.toJson(),
-  
     );
     //  print("Received response: ${response.data}");
     return VerifyForgetPasswordResponse.fromJson(response.data);
-   
   }
+  
+  @override
+  Future<LoginresponseModel> loginWithGoogle(String token) async{
+  final response = await apiService.post(endpoint:ApiConstants.loginWithGoogleEndPoint  , data: {"token" : token});
+   if (response.data == null) {
+    throw Exception("Google login response is null");
+  }
+
+  return LoginresponseModel.fromJson(response.data);
+  }
+  
+
 }

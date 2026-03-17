@@ -10,4 +10,5 @@ abstract class ApiConstants {
       '/api/auth/forgot-password/send-otp';
   static const String verifyForgetPasswordEndPoint =
       '/api/auth/forgot-password/verify-otp';
+  static const String loginWithGoogleEndPoint = '/api/auth/google-login';
 }

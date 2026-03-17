@@ -5,6 +5,7 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/services/google_signIn_service.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/app_validators.dart';
@@ -206,9 +207,9 @@ class _LogInBodyState extends State<LogInBody> {
                 Padding(
                   padding:const EdgeInsets.symmetric(horizontal: 11),
                   child: LoginWithSocialMedia(
-                    onTap: (){
-
-                    },
+                      onTap: () async {
+    
+  },
                     AppIcons.google,
                   ),
                 ),

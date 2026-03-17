@@ -35,4 +35,6 @@ abstract class AuthRepo {
   Future<Either<Failure, ResetPasswordResponseModel>> resetPassword(
     ResetPasswordRequestModel request,
   );
+
+  Future<Either<Failure, LoginresponseModel>> loginwithgoogle( String token);
 }
