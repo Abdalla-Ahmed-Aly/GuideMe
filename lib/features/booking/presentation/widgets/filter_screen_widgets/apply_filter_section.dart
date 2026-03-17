@@ -19,6 +19,9 @@ class ApplyFilterSection extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.p, vertical: 8),
       child: BlocConsumer<FilterCubit, FilterState>(
+        listenWhen: (previous, current) =>
+            current is FilterApplied && previous is! FilterApplied,
+
         listener: (context, state) {
           if (state is FilterApplyFailure) {
             String? error = state.failure.message;
@@ -38,6 +41,8 @@ class ApplyFilterSection extends StatelessWidget {
               AppRoutes.suggestedPackagesScreen,
               extra: state.packages,
             );
+
+            context.read<FilterCubit>().resetApplied();
           }
         },
         builder: (context, state) {

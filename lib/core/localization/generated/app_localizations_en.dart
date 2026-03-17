@@ -970,4 +970,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get suggestedPackages => 'Suggested Packages';
+
+  @override
+  String get priceStartingAt => 'Price starting at';
+
+  @override
+  String placesCount(Object count) {
+    return '$count Places';
+  }
+
+  @override
+  String get viewDetails => 'View Details';
 }

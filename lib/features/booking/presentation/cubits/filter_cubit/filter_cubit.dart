@@ -83,4 +83,9 @@ class FilterCubit extends Cubit<FilterState> {
       safeEmit(FilterInitial());
     }
   }
+
+  void resetApplied() {
+    if (state is! FilterApplied) return;
+    safeEmit(FilterCitiesSuccess(state.filters));
+  }
 }

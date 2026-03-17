@@ -342,5 +342,8 @@
   "city": "المدينة",
   "persons": "أشخاص",
   "validationCity": "يرجى اختيار مدينة",
-  "suggestedPackages": "Suggested Packages"
+  "suggestedPackages": "الحزم المقترحة",
+  "priceStartingAt": "السعر يبدأ بـ",
+  "placesCount": "{count} أماكن",
+  "viewDetails": "عرض التفاصيل"
 }

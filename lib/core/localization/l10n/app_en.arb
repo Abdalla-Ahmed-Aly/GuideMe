@@ -342,5 +342,8 @@
   "city": "City",
   "persons": "Persons",
   "validationCity": "Please select a city",
-  "suggestedPackages": "Suggested Packages"
+  "suggestedPackages": "Suggested Packages",
+  "priceStartingAt": "Price starting at",
+  "placesCount": "{count} Places",
+  "viewDetails": "View Details"
 }

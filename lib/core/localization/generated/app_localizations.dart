@@ -1975,6 +1975,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Suggested Packages'**
   String get suggestedPackages;
+
+  /// No description provided for @priceStartingAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Price starting at'**
+  String get priceStartingAt;
+
+  /// No description provided for @placesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Places'**
+  String placesCount(Object count);
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get viewDetails;
 }
 
 class _AppLocalizationsDelegate

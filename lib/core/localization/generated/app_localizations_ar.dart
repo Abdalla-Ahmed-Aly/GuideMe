@@ -968,5 +968,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get validationCity => 'يرجى اختيار مدينة';
 
   @override
-  String get suggestedPackages => 'Suggested Packages';
+  String get suggestedPackages => 'الحزم المقترحة';
+
+  @override
+  String get priceStartingAt => 'السعر يبدأ بـ';
+
+  @override
+  String placesCount(Object count) {
+    return '$count أماكن';
+  }
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
 }

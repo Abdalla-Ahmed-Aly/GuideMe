@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/widgets/suggested_packages_widgets/packages_list_view.dart';
 
 class SuggestedPackagesScreen extends StatelessWidget {
   const SuggestedPackagesScreen({super.key});
@@ -31,6 +32,7 @@ class SuggestedPackagesScreen extends StatelessWidget {
           ),
         ),
       ),
+      body: const PackagesListView(),
     );
   }
 }
