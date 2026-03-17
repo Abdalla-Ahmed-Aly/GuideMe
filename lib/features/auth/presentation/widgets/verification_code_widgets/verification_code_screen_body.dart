@@ -29,7 +29,7 @@ class VerificationCodeScreenBody extends StatefulWidget {
 class _VerificationCodeScreenBodyState
     extends State<VerificationCodeScreenBody> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-   final TextEditingController otpController = TextEditingController();
+  final TextEditingController otpController = TextEditingController();
   String otp = "";
   @override
   Widget build(BuildContext context) {
@@ -164,24 +164,30 @@ class _VerificationCodeScreenBodyState
               height: 38.p,
             ),
 
-            BlocConsumer<ResendForgetPasswordCubit, ResendForgetPasswordCubitState>(
+            BlocConsumer<
+              ResendForgetPasswordCubit,
+              ResendForgetPasswordCubitState
+            >(
               listener: (context, state) {
                 if (state is ResendForgetPasswordCubitSuccess) {
-              setState(() {
-                otpController.clear();
-                otp = "";
-                
-              });
-              showElegantSnackbar(context, "OTP sent again!");
-                }else if(state is ResendForgetPasswordCubFailure){
-                      showElegantSnackbar(context, state.failure.message ?? "Error resending OTP");
+                  setState(() {
+                    otp = "";
+                    otpController.clear();
+                  });
+                  showElegantSnackbar(context, "OTP sent again!");
+                } else if (state is ResendForgetPasswordCubFailure) {
+                  showElegantSnackbar(
+                    context,
+                    state.failure.message ?? "Error resending OTP",
+                  );
                 }
               },
               builder: (context, state) {
                 return TimeSendCode(
                   onResend: () {
-                  context.read<ResendForgetPasswordCubit>().resendForgetPassword(email: widget.email);
-                    
+                    context
+                        .read<ResendForgetPasswordCubit>()
+                        .resendForgetPassword(email: widget.email);
                   },
                 );
               },

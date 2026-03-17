@@ -165,7 +165,7 @@ class _LogInBodyState extends State<LogInBody> {
                       context,
                       state.failure.message ?? 'something is wrong',
                     );
-                  } 
+                  }
                 },
                 builder: (context, state) {
                   return Center(
@@ -183,9 +183,8 @@ class _LogInBodyState extends State<LogInBody> {
                         });
                       },
                       text: context.l10n.login,
-                    
+
                       radius: 40,
-                      
                     ),
                   );
                 },
@@ -207,19 +206,7 @@ class _LogInBodyState extends State<LogInBody> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 11),
                   child: LoginWithSocialMedia(
-                    AppIcons.facebook,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 11),
-                  child: LoginWithSocialMedia(
                     AppIcons.google,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 11),
-                  child: LoginWithSocialMedia(
-                    AppIcons.phone,
                   ),
                 ),
               ],
