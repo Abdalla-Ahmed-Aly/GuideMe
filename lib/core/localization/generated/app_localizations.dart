@@ -1993,6 +1993,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View Details'**
   String get viewDetails;
+
+  /// No description provided for @packageDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Details'**
+  String get packageDetails;
+
+  /// No description provided for @selectedPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Places'**
+  String get selectedPlaces;
+
+  /// No description provided for @totalEstimatedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Estimated Price'**
+  String get totalEstimatedPrice;
+
+  /// No description provided for @confirmPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Package'**
+  String get confirmPackage;
+
+  /// No description provided for @personsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Persons'**
+  String personsCount(Object count);
+
+  /// No description provided for @numberOfPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Places'**
+  String get numberOfPlaces;
+
+  /// No description provided for @person.
+  ///
+  /// In en, this message translates to:
+  /// **'Person'**
+  String get person;
 }
 
 class _AppLocalizationsDelegate

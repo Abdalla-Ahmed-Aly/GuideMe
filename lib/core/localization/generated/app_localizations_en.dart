@@ -981,4 +981,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get viewDetails => 'View Details';
+
+  @override
+  String get packageDetails => 'Package Details';
+
+  @override
+  String get selectedPlaces => 'Selected Places';
+
+  @override
+  String get totalEstimatedPrice => 'Total Estimated Price';
+
+  @override
+  String get confirmPackage => 'Confirm Package';
+
+  @override
+  String personsCount(Object count) {
+    return '$count Persons';
+  }
+
+  @override
+  String get numberOfPlaces => 'Number of Places';
+
+  @override
+  String get person => 'Person';
 }

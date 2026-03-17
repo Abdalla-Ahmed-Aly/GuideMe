@@ -345,5 +345,12 @@
   "suggestedPackages": "Suggested Packages",
   "priceStartingAt": "Price starting at",
   "placesCount": "{count} Places",
-  "viewDetails": "View Details"
+  "viewDetails": "View Details",
+  "packageDetails": "Package Details",
+  "selectedPlaces": "Selected Places",
+  "totalEstimatedPrice": "Total Estimated Price",
+  "confirmPackage": "Confirm Package",
+  "personsCount": "{count} Persons",
+  "numberOfPlaces": "Number of Places",
+  "person": "Person"
 }

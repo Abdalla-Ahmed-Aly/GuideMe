@@ -9,6 +9,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/booking/presentation/args/filter_args.dart';
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 
 class ApplyFilterSection extends StatelessWidget {
@@ -37,9 +38,13 @@ class ApplyFilterSection extends StatelessWidget {
 
             context.read<FilterCubit>().resetFailure();
           } else if (state is FilterApplied) {
+            final filterArgs = FilterArgs(
+              packages: state.packages,
+              numberOfPersons: state.filters.persons,
+            );
             context.push(
               AppRoutes.suggestedPackagesScreen,
-              extra: state.packages,
+              extra: filterArgs,
             );
 
             context.read<FilterCubit>().resetApplied();

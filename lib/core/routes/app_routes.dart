@@ -46,4 +46,5 @@ abstract class AppRoutes {
   static const String tourGuideProfileScreen = '/tourGuideProfileScreen';
   static const String addCertificationScreen = '/addCertificationScreen';
   static const String suggestedPackagesScreen = '/suggestedPackagesScreen';
+  static const String packageDetailsScreen = '/packageDetailsScreen';
 }

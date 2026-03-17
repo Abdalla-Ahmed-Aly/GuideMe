@@ -345,5 +345,12 @@
   "suggestedPackages": "الحزم المقترحة",
   "priceStartingAt": "السعر يبدأ بـ",
   "placesCount": "{count} أماكن",
-  "viewDetails": "عرض التفاصيل"
+  "viewDetails": "عرض التفاصيل",
+  "packageDetails": "تفاصيل الباقة",
+  "selectedPlaces": "الأماكن المختارة",
+  "totalEstimatedPrice": "السعر التقديري الإجمالي",
+  "confirmPackage": "تأكيد الباقة",
+  "personsCount": "{count} أشخاص",
+  "numberOfPlaces": "عدد الأماكن",
+  "person": "شخص"
 }

@@ -980,4 +980,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get packageDetails => 'تفاصيل الباقة';
+
+  @override
+  String get selectedPlaces => 'الأماكن المختارة';
+
+  @override
+  String get totalEstimatedPrice => 'السعر التقديري الإجمالي';
+
+  @override
+  String get confirmPackage => 'تأكيد الباقة';
+
+  @override
+  String personsCount(Object count) {
+    return '$count أشخاص';
+  }
+
+  @override
+  String get numberOfPlaces => 'عدد الأماكن';
+
+  @override
+  String get person => 'شخص';
 }
