@@ -5,7 +5,7 @@ import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton()
+@injectable
 class RegisterUseCase {
   final AuthRepo _authRepo;
   RegisterUseCase(this._authRepo);

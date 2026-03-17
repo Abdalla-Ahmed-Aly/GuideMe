@@ -13,6 +13,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:guide_me/core/helpers/connectivity_helper.dart' as _i1;
 import 'package:guide_me/core/network/api_service.dart' as _i947;
 import 'package:guide_me/core/network/dio_service.dart' as _i516;
+import 'package:guide_me/core/services/google_signIn_service.dart' as _i664;
 import 'package:guide_me/core/services/media_picker_service/media_picker_service.dart'
     as _i226;
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart'
@@ -25,6 +26,8 @@ import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart' as _i956;
 import 'package:guide_me/features/auth/domain/use_case/login_use_case.dart'
     as _i93;
+import 'package:guide_me/features/auth/domain/use_case/login_with_google_use_case.dart'
+    as _i180;
 import 'package:guide_me/features/auth/domain/use_case/register_use_case.dart'
     as _i885;
 import 'package:guide_me/features/auth/domain/use_case/resend_Password_use_case.dart'
@@ -37,6 +40,8 @@ import 'package:guide_me/features/auth/domain/use_case/verify_Forget_Password_us
     as _i393;
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart'
     as _i940;
+import 'package:guide_me/features/auth/presentation/manager/login_with_google_cubit/login_with_google_cubit.dart'
+    as _i459;
 import 'package:guide_me/features/auth/presentation/manager/register_cubit/register_cubit.dart'
     as _i772;
 import 'package:guide_me/features/auth/presentation/manager/resend_forget_password_cubit/resend_forget_password_cubit.dart'
@@ -58,6 +63,7 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
+    gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
     gh.lazySingleton<_i947.ApiService>(
       () => _i947.ApiService(
         gh<_i516.DioService>(),
@@ -74,6 +80,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i956.AuthRepo>(
       () => _i80.AuthRepoImple(gh<_i1043.AuthRemoteDataSource>()),
     );
+    gh.factory<_i180.LoginWithGoogleUseCase>(
+      () => _i180.LoginWithGoogleUseCase(
+        gh<_i956.AuthRepo>(),
+        gh<_i664.GoogleAuthService>(),
+      ),
+    );
+    gh.factory<_i459.LoginwithGoogleCubit>(
+      () => _i459.LoginwithGoogleCubit(gh<_i180.LoginWithGoogleUseCase>()),
+    );
     gh.factory<_i426.ResendPasswordUseCase>(
       () => _i426.ResendPasswordUseCase(gh<_i956.AuthRepo>()),
     );
@@ -86,11 +101,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i593.ResetPasswordCubit>(
       () => _i593.ResetPasswordCubit(gh<_i865.ResetPasswordUseCase>()),
     );
-    gh.lazySingleton<_i885.RegisterUseCase>(
-      () => _i885.RegisterUseCase(gh<_i956.AuthRepo>()),
-    );
     gh.factory<_i93.LoginUseCase>(
       () => _i93.LoginUseCase(gh<_i956.AuthRepo>()),
+    );
+    gh.factory<_i885.RegisterUseCase>(
+      () => _i885.RegisterUseCase(gh<_i956.AuthRepo>()),
     );
     gh.factory<_i393.VerifyForgetPasswordUseCase>(
       () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),

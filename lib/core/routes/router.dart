@@ -6,6 +6,7 @@ import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:guide_me/features/auth/presentation/manager/login_with_google_cubit/login_with_google_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/register_cubit/register_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/resend_forget_password_cubit/resend_forget_password_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
@@ -74,12 +75,21 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-        path: AppRoutes.logInScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<LoginCubit>(),
-          child: const LogInScreen(),
+  path: AppRoutes.logInScreen,
+  builder: (context, state) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<LoginCubit>(),  
         ),
-      ),
+        BlocProvider(
+          create: (context) => getIt<LoginwithGoogleCubit>(), 
+        ),
+      ],
+      child: const LogInScreen(),
+    );
+  },
+),
       GoRoute(
         path: AppRoutes.forgetPasswordScreen,
         builder: (context, state) => BlocProvider(
