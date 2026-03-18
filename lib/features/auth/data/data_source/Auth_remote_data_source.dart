@@ -112,7 +112,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
    if (response.data == null) {
     throw Exception("Google login response is null");
   }
-
+    print("🔥 TOKEN SENT TO SERVER: $token");
   return LoginresponseModel.fromJson(response.data);
   }
   

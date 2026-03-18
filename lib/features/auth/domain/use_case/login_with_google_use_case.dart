@@ -14,6 +14,9 @@ class LoginWithGoogleUseCase {
   LoginWithGoogleUseCase(this._authRepo, this.googleAuthService);
   Future<Either<Failure, LoginresponseModel>> signWithGoogle() async {
     final token = await googleAuthService.getFirebaseIdToken();
+
+  print("🔥🔥🔥 FIREBASE TOKEN:");
+  print(token);
     if (token == null) {
       return const Left(
         AppFailure(
