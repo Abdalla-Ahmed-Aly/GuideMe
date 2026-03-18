@@ -13,6 +13,19 @@ class GoogleAuthService {
     ],
   );
 
+  // Future<String?> getGoogleIdToken() async {
+  //   try {
+  //     final googleUser = await _googleSignIn.signIn();
+  //     if (googleUser == null) return null;
+
+  //     final googleAuth = await googleUser.authentication;
+  //     return googleAuth.idToken;
+  //   } catch (e) {
+  //     print("Google Auth Error: $e");
+  //     return null;
+  //   }
+  // }
+
   Future<String?> getFirebaseIdToken() async {
     try {
       final googleUser = await _googleSignIn.signIn();
@@ -25,11 +38,9 @@ class GoogleAuthService {
         idToken: googleAuth.idToken,
       );
 
-      final userCredential =
-          await _auth.signInWithCredential(credential);
+      final userCredential = await _auth.signInWithCredential(credential);
 
-      final firebaseToken =
-          await userCredential.user?.getIdToken();
+      final firebaseToken = await userCredential.user?.getIdToken();
 
       return firebaseToken;
     } catch (e) {
