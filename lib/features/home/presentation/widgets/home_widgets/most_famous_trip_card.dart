@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_shimmer.dart';
+import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 
 class MostFamousTripCard extends StatefulWidget {
-  final PlaceEntity mostFamousTrip;
-  const MostFamousTripCard({super.key, required this.mostFamousTrip});
+  final PackageEntity package;
+  const MostFamousTripCard({super.key, required this.package});
 
   @override
   State<MostFamousTripCard> createState() => _MostFamousTripCardState();
@@ -27,10 +27,12 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
 
     return GestureDetector(
       onTap: () {
-        context.push(
-          AppRoutes.placeDetailsScreen,
-          extra: widget.mostFamousTrip,
-        );
+        if (widget.package.places.isNotEmpty) {
+          context.push(
+            AppRoutes.placeDetailsScreen,
+            extra: widget.package.places.first,
+          );
+        }
       },
       child: Container(
         width: width,
@@ -40,10 +42,10 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
           borderRadius: BorderRadius.circular(25),
           child: Stack(
             children: [
-              // Background Image with Shimmer
-              if (widget.mostFamousTrip.images.isNotEmpty)
+              // Background Image with Shimmer loading
+              if (widget.package.packagePhoto.isNotEmpty)
                 Image.network(
-                  widget.mostFamousTrip.images[0],
+                  widget.package.packagePhoto,
                   width: width,
                   height: height,
                   fit: BoxFit.cover,
@@ -70,7 +72,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
                   child: const Icon(Icons.image_not_supported),
                 ),
 
-              // Old UI Content
+              // UI Content Layer
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -124,7 +126,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
                           : size.height * 0.1,
                     ),
                     child: Text(
-                      widget.mostFamousTrip.title,
+                      widget.package.title,
                       style: AppTextStyles.poppinsBold30.copyWith(
                         color: AppColors.white,
                       ),
@@ -137,7 +139,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.mostFamousTrip.city.name,
+                      widget.package.city.name,
                       style: AppTextStyles.poppinsMedium16.copyWith(
                         color: AppColors.white,
                       ),
@@ -181,13 +183,13 @@ class _MostFamousTripCardState extends State<MostFamousTripCard> {
 
                         // Price Text
                         Text(
-                          "${widget.mostFamousTrip.price}${context.l10n.egp}",
+                          "${widget.package.totalPrice}${context.l10n.egp}",
                           style: AppTextStyles.poppinsBold20.copyWith(
                             color: AppColors.white,
                           ),
                         ),
 
-                        // Use it to centerized the price
+                        // Spacing for centering
                         const SizedBox(width: 45),
                       ],
                     ),

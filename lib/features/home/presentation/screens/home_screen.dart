@@ -6,6 +6,8 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_state.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/category_list_view.dart';
@@ -137,7 +139,12 @@ class HomeScreen extends StatelessWidget {
           } else if (state is GetHomeSuccess) {
             final homeData = state.homeData;
             return RefreshIndicator(
-              onRefresh: () => context.read<GetHomeCubit>().getHomeData(),
+              onRefresh: () async {
+                await Future.wait([
+                  context.read<GetHomeCubit>().getHomeData(),
+                  context.read<GetAiPackageCubit>().getAiPackages(),
+                ]);
+              },
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
@@ -196,9 +203,7 @@ class HomeScreen extends StatelessWidget {
                     height: context.isPortrait
                         ? size.height * 0.41
                         : size.width * 0.41,
-                    child: MostFamousTripListView(
-                      mostFamousTrip: homeData.mostFamousTrip,
-                    ),
+                    child: const MostFamousTripListView(),
                   ),
 
                   const SizedBox(height: 32),

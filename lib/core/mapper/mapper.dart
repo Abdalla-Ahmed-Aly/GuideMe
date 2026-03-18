@@ -7,7 +7,9 @@ import 'package:guide_me/core/models/places_model.dart';
 import 'package:guide_me/features/home/data/model/home_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_category_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_cities_model.dart';
+import 'package:guide_me/features/home/data/model/package_model.dart';
 import 'package:guide_me/features/home/domain/entity/home_entity.dart';
+import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 import 'package:guide_me/features/home/domain/entity/place_by_category_entity.dart';
 import 'package:guide_me/features/home/domain/entity/place_by_cities_entity.dart';
 
@@ -92,6 +94,24 @@ class Mapper {
       data: model.data
           .map((place) => mapPlaceModelToEntity(place as PlacesModel))
           .toList(),
+    );
+  }
+
+  static PackageEntity mapPackageModelToEntity(PackageModel model) {
+    return PackageEntity(
+      packageId: model.packageId,
+      title: model.title,
+      description: model.description,
+      places: model.places
+          .map((place) => mapPlaceModelToEntity(place as PlacesModel))
+          .toList(),
+      city: mapCityModelToEntity(model.city as CityModel),
+      totalPrice: model.totalPrice,
+      budget: model.budget,
+      packagePhoto: model.packagePhoto,
+      generatedDate: model.generatedDate,
+      createdAt: model.createdAt,
+      updatedAt: model.updatedAt,
     );
   }
 }

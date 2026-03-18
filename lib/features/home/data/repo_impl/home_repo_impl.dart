@@ -7,6 +7,7 @@ import 'package:guide_me/core/mapper/mapper.dart';
 import 'package:guide_me/features/home/data/model/place_by_cities_model.dart';
 import 'package:guide_me/features/home/data/sources/home_sources.dart';
 import 'package:guide_me/features/home/domain/entity/home_entity.dart';
+import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 import 'package:guide_me/features/home/domain/entity/place_by_category_entity.dart';
 import 'package:guide_me/features/home/domain/repo/home_repo.dart';
 import 'package:injectable/injectable.dart';
@@ -136,6 +137,49 @@ class HomeRepoImpl extends HomeRepo {
               'HomeRepoImpl: Successfully mapped PlaceByCitiesEntity',
             );
             return Right(placeByCitiesEntity);
+          } catch (e) {
+            _logger.e('HomeRepoImpl: Mapping error: $e');
+            return Left(
+              AppFailure(
+                failureCode: FailureCode.unknown,
+                message: e.toString(),
+              ),
+            );
+          }
+        },
+      );
+    } catch (e) {
+      _logger.e('HomeRepoImpl: Unexpected error: $e');
+      return Left(
+        AppFailure(failureCode: FailureCode.unknown, message: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, List<PackageEntity>>>
+  getAiPackagesSuggestions() async {
+    try {
+      _logger.i(
+        'HomeRepoImpl: Requesting ai packages suggestions data from service',
+      );
+      var returnedData = await getIt<HomeService>().getAiPackagesSuggestions();
+
+      return returnedData.fold(
+        (error) {
+          _logger.e('HomeRepoImpl: Service error: $error');
+          return Left(
+            AppFailure(failureCode: FailureCode.server, message: error),
+          );
+        },
+        (data) {
+          try {
+            _logger.d('HomeRepoImpl: Mapping PackageModels to PackageEntities');
+            final packageEntities = data
+                .map((e) => Mapper.mapPackageModelToEntity(e))
+                .toList();
+            _logger.i('HomeRepoImpl: Successfully mapped PackageEntities');
+            return Right(packageEntities);
           } catch (e) {
             _logger.e('HomeRepoImpl: Mapping error: $e');
             return Left(

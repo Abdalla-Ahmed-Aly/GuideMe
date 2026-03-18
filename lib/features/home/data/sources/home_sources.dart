@@ -4,6 +4,7 @@ import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/features/home/data/model/home_model.dart';
+import 'package:guide_me/features/home/data/model/package_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_category_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_cities_model.dart';
 import 'package:injectable/injectable.dart';
@@ -19,6 +20,8 @@ abstract class HomeService {
     required String cityId,
     required String filter,
   });
+
+  Future<Either<String, List<PackageModel>>> getAiPackagesSuggestions();
 }
 
 @LazySingleton(as: HomeService)
@@ -126,6 +129,35 @@ class HomeApiServiceImpl extends HomeService {
       );
     } catch (e) {
       _logger.e('HomeApiServiceImpl: Unknown Error on getPlacesByCity: $e');
+      return Left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, List<PackageModel>>> getAiPackagesSuggestions() async {
+    try {
+      _logger.i(
+        'HomeApiServiceImpl: Fetching AI packages from ${ApiConstants.ai_packages}',
+      );
+      var response = await getIt<ApiService>().get(
+        endpoint: ApiConstants.ai_packages,
+      );
+      _logger.d('HomeApiServiceImpl: Successfully fetched AI packages');
+
+      if (response.data == null || response.data['data'] == null) {
+        _logger.e('HomeApiServiceImpl: API response data is null');
+        return Left('Server error: received empty data');
+      }
+
+      final List<dynamic> data = response.data['data'];
+      return Right(data.map((e) => PackageModel.fromJson(e)).toList());
+    } on DioException catch (e) {
+      _logger.e('HomeApiServiceImpl: DioException: ${e.message}');
+      return Left(
+        e.response?.data?['message'] ?? e.message ?? 'Server error occurred',
+      );
+    } catch (e) {
+      _logger.e('HomeApiServiceImpl: Unknown Error: $e');
       return Left(e.toString());
     }
   }

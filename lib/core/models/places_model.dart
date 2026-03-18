@@ -29,8 +29,8 @@ class PlacesModel extends PlaceEntity {
       id: json["_id"] ?? '',
       title: json["title"] ?? '',
       description: json["description"],
-      category: json["category"] != null
-          ? CategoryModel.fromJson(json["category"])
+      category: json["category"] is Map<String, dynamic>
+          ? CategoryModel.fromJson(json["category"] as Map<String, dynamic>)
           : null,
       price: json["price"] ?? 0,
       images: json["images"] != null
@@ -46,7 +46,9 @@ class PlacesModel extends PlaceEntity {
               (k, v) => MapEntry<String, int>(k, v),
             )
           : null,
-      city: CityModel.fromJson(json["city"]),
+      city: json["city"] is Map<String, dynamic>
+          ? CityModel.fromJson(json["city"] as Map<String, dynamic>)
+          : CityModel.empty(),
       minPersons: json["minPersons"],
       maxPersons: json["maxPersons"],
       isPopular: json["isPopular"],

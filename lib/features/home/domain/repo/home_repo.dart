@@ -13,4 +13,6 @@ abstract class HomeRepo {
     required String cityId,
     required String filter,
   });
+
+  Future<Either> getAiPackagesSuggestions();
 }
