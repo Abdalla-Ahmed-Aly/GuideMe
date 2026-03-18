@@ -1003,4 +1003,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get person => 'شخص';
+
+  @override
+  String get priceText => 'السعر';
+
+  @override
+  String get aboutThisPlace => 'عن هذا المكان';
+
+  @override
+  String get noDescriptionAvailable => 'لا يوجد وصف متاح';
+
+  @override
+  String get viewOnMaps => 'عرض على الخرائط';
 }

@@ -2035,6 +2035,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Person'**
   String get person;
+
+  /// No description provided for @priceText.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get priceText;
+
+  /// No description provided for @aboutThisPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'About this place'**
+  String get aboutThisPlace;
+
+  /// No description provided for @noDescriptionAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No description available'**
+  String get noDescriptionAvailable;
+
+  /// No description provided for @viewOnMaps.
+  ///
+  /// In en, this message translates to:
+  /// **'View on Maps'**
+  String get viewOnMaps;
 }
 
 class _AppLocalizationsDelegate

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 
 class DynamicRatingStars extends StatelessWidget {
-  const DynamicRatingStars({super.key, required this.rating});
+  const DynamicRatingStars({super.key, required this.rating, this.size});
   final double rating;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -16,24 +18,28 @@ class DynamicRatingStars extends StatelessWidget {
         // Full stars
         ...List.generate(
           fullStars,
-          (index) => const Icon(
+          (index) => Icon(
             Icons.star_rounded,
-            color: Colors.amber,
-            size: 18,
+            color: AppColors.primary2,
+            size: size ?? 18,
           ),
         ),
 
         // Half star
         if (hasHalfStar)
-          const Icon(Icons.star_half_rounded, color: Colors.amber, size: 18),
+          Icon(
+            Icons.star_half_rounded,
+            color: AppColors.primary2,
+            size: size ?? 18,
+          ),
 
         // Empty stars
         ...List.generate(
           emptyStars,
-          (index) => const Icon(
+          (index) => Icon(
             Icons.star_border_rounded,
-            color: Colors.amber,
-            size: 18,
+            color: AppColors.primary2,
+            size: size ?? 18,
           ),
         ),
       ],

@@ -47,4 +47,5 @@ abstract class AppRoutes {
   static const String addCertificationScreen = '/addCertificationScreen';
   static const String suggestedPackagesScreen = '/suggestedPackagesScreen';
   static const String packageDetailsScreen = '/packageDetailsScreen';
+  static const String packagePlaceDetailsScreen = '/packagePlaceDetailsScreen';
 }

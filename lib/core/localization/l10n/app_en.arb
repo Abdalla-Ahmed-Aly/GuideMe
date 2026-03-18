@@ -352,5 +352,9 @@
   "confirmPackage": "Confirm Package",
   "personsCount": "{count} Persons",
   "numberOfPlaces": "Number of Places",
-  "person": "Person"
+  "person": "Person",
+  "priceText": "Price",
+  "aboutThisPlace": "About this place",
+  "noDescriptionAvailable": "No description available",
+  "viewOnMaps": "View on Maps"
 }

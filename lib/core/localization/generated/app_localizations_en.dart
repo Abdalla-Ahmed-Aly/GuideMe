@@ -1004,4 +1004,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get person => 'Person';
+
+  @override
+  String get priceText => 'Price';
+
+  @override
+  String get aboutThisPlace => 'About this place';
+
+  @override
+  String get noDescriptionAvailable => 'No description available';
+
+  @override
+  String get viewOnMaps => 'View on Maps';
 }

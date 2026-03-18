@@ -352,5 +352,9 @@
   "confirmPackage": "تأكيد الباقة",
   "personsCount": "{count} أشخاص",
   "numberOfPlaces": "عدد الأماكن",
-  "person": "شخص"
+  "person": "شخص",
+  "priceText": "السعر",
+  "aboutThisPlace": "عن هذا المكان",
+  "noDescriptionAvailable": "لا يوجد وصف متاح",
+  "viewOnMaps": "عرض على الخرائط"
 }
