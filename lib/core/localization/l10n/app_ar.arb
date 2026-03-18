@@ -356,5 +356,16 @@
   "priceText": "السعر",
   "aboutThisPlace": "عن هذا المكان",
   "noDescriptionAvailable": "لا يوجد وصف متاح",
-  "viewOnMaps": "عرض على الخرائط"
+  "viewOnMaps": "عرض على الخرائط",
+  "confirmAndBookNow": "تأكيد و حجز الآن",
+  "chooseYourMeetingPoint": "اختر نقطة الالتقاء",
+  "select": "اختر",
+  "selected": "تم الاختيار",
+  "schedule": "جدول",
+  "scheduled": "تم الجدولة",
+  "summary": "ملخص",
+  "summaryCapital": "ملخص",
+  "dateCapital": "التاريخ",
+  "timeCapital": "الوقت",
+  "locationCapital": "الموقع"
 }

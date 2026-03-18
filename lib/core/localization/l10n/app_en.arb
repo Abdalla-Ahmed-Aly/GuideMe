@@ -356,5 +356,16 @@
   "priceText": "Price",
   "aboutThisPlace": "About this place",
   "noDescriptionAvailable": "No description available",
-  "viewOnMaps": "View on Maps"
+  "viewOnMaps": "View on Maps",
+  "confirmAndBookNow": "Confirm & Book Now",
+  "chooseYourMeetingPoint": "Choose your meeting point",
+  "select": "Select",
+  "selected": "Selected",
+  "schedule": "Schedule",
+  "scheduled": "Scheduled",
+  "summary": "Summary",
+  "summaryCapital": "SUMMARY",
+  "dateCapital": "DATE",
+  "timeCapital": "TIME",
+  "locationCapital": "LOCATION"
 }

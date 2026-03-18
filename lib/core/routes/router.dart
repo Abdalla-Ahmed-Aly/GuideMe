@@ -18,6 +18,7 @@ import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cub
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/completed_trip_details.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_details_screen.dart';
@@ -278,6 +279,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.packagePlaceDetailsScreen,
         builder: (context, state) => const PackagePlaceDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookPackageScreen,
+        builder: (context, state) => const BookPackageScreen(),
       ),
     ],
   );

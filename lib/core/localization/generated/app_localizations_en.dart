@@ -1016,4 +1016,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get viewOnMaps => 'View on Maps';
+
+  @override
+  String get confirmAndBookNow => 'Confirm & Book Now';
+
+  @override
+  String get chooseYourMeetingPoint => 'Choose your meeting point';
+
+  @override
+  String get select => 'Select';
+
+  @override
+  String get selected => 'Selected';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get scheduled => 'Scheduled';
+
+  @override
+  String get summary => 'Summary';
+
+  @override
+  String get summaryCapital => 'SUMMARY';
+
+  @override
+  String get dateCapital => 'DATE';
+
+  @override
+  String get timeCapital => 'TIME';
+
+  @override
+  String get locationCapital => 'LOCATION';
 }

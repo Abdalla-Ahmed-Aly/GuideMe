@@ -1015,4 +1015,37 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get viewOnMaps => 'عرض على الخرائط';
+
+  @override
+  String get confirmAndBookNow => 'تأكيد و حجز الآن';
+
+  @override
+  String get chooseYourMeetingPoint => 'اختر نقطة الالتقاء';
+
+  @override
+  String get select => 'اختر';
+
+  @override
+  String get selected => 'تم الاختيار';
+
+  @override
+  String get schedule => 'جدول';
+
+  @override
+  String get scheduled => 'تم الجدولة';
+
+  @override
+  String get summary => 'ملخص';
+
+  @override
+  String get summaryCapital => 'ملخص';
+
+  @override
+  String get dateCapital => 'التاريخ';
+
+  @override
+  String get timeCapital => 'الوقت';
+
+  @override
+  String get locationCapital => 'الموقع';
 }

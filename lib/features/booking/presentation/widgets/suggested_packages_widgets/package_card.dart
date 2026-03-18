@@ -8,7 +8,7 @@ import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_package_entity.dart';
 import 'package:guide_me/features/booking/presentation/args/filter_args.dart';
 import 'package:guide_me/features/booking/presentation/args/package_args.dart';
-import 'package:guide_me/features/booking/presentation/widgets/suggested_packages_widgets/packages_images_preview.dart';
+import 'package:guide_me/features/booking/presentation/widgets/suggested_packages_widgets/package_images_preview.dart';
 
 class PackageCard extends StatelessWidget {
   const PackageCard({super.key, required this.package});

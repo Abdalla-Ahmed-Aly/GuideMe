@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
@@ -19,8 +20,8 @@ class ConfirmPackageSection extends StatelessWidget {
       padding: EdgeInsets.only(
         left: 24.p,
         right: 24.p,
-        top: 16.p,
-        bottom: MediaQuery.of(context).padding.bottom + 16.p,
+        top: 16,
+        bottom: MediaQuery.of(context).viewPadding.bottom + 8,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -102,7 +103,9 @@ class ConfirmPackageSection extends StatelessWidget {
           const SizedBox(height: 24),
 
           AppButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRoutes.bookPackageScreen, extra: packageArgs);
+            },
             text: context.l10n.confirmPackage,
             backgroundColor: AppColors.primary2,
             textStyle: AppTextStyles.poppinsBold18,

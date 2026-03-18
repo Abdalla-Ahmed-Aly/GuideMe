@@ -7,6 +7,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/presentation/args/filter_args.dart';
@@ -60,6 +61,7 @@ class ApplyFilterSection extends StatelessWidget {
             },
             text: context.l10n.apply,
             textStyle: AppTextStyles.poppinsSemiBold18,
+            backgroundColor: AppColors.primary2,
           );
         },
       ),

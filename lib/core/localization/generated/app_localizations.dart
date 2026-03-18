@@ -2059,6 +2059,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View on Maps'**
   String get viewOnMaps;
+
+  /// No description provided for @confirmAndBookNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm & Book Now'**
+  String get confirmAndBookNow;
+
+  /// No description provided for @chooseYourMeetingPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your meeting point'**
+  String get chooseYourMeetingPoint;
+
+  /// No description provided for @select.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get select;
+
+  /// No description provided for @selected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get selected;
+
+  /// No description provided for @schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get schedule;
+
+  /// No description provided for @scheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled'**
+  String get scheduled;
+
+  /// No description provided for @summary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get summary;
+
+  /// No description provided for @summaryCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'SUMMARY'**
+  String get summaryCapital;
+
+  /// No description provided for @dateCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'DATE'**
+  String get dateCapital;
+
+  /// No description provided for @timeCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME'**
+  String get timeCapital;
+
+  /// No description provided for @locationCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'LOCATION'**
+  String get locationCapital;
 }
 
 class _AppLocalizationsDelegate
