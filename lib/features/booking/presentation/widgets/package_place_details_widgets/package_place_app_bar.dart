@@ -42,7 +42,7 @@ class _PackagePlaceArrowBack extends StatelessWidget {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
             child: Container(
-              padding: const EdgeInsets.only(right: 4),
+              padding: const EdgeInsets.only(right: 2),
               decoration: BoxDecoration(
                 color: Colors.white.withValues(alpha: 0.2),
                 shape: BoxShape.circle,

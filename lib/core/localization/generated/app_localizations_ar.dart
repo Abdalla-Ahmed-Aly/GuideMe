@@ -674,7 +674,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get saveAndContinue => 'حفظ والمتابعة';
 
   @override
-  String get selectTime => 'اختر الوقت';
+  String get selectTime => 'اختر وقت';
 
   @override
   String get pleaseSelectWorkHours => 'من فضلك اختر وقت البداية والنهاية';
@@ -1048,4 +1048,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get locationCapital => 'الموقع';
+
+  @override
+  String get selectDate => 'اختر تاريخ';
 }

@@ -31,6 +31,8 @@ import 'package:guide_me/features/booking/domain/use_cases/get_bookings_use_case
     as _i12;
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart'
     as _i49;
+import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart'
+    as _i928;
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart'
     as _i634;
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart'
@@ -48,6 +50,7 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i928.BookPackageCubit>(() => _i928.BookPackageCubit());
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());

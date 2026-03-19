@@ -367,5 +367,7 @@
   "summaryCapital": "SUMMARY",
   "dateCapital": "DATE",
   "timeCapital": "TIME",
-  "locationCapital": "LOCATION"
+  "locationCapital": "LOCATION",
+  "selectDate": "Select a date",
+  "selectTime": "Select a time"
 }

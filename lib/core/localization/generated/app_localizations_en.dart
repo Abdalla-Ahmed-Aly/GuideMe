@@ -673,7 +673,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saveAndContinue => 'Save & Continue';
 
   @override
-  String get selectTime => 'Select time';
+  String get selectTime => 'Select a time';
 
   @override
   String get pleaseSelectWorkHours => 'Please select start and end time';
@@ -1049,4 +1049,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get locationCapital => 'LOCATION';
+
+  @override
+  String get selectDate => 'Select a date';
 }

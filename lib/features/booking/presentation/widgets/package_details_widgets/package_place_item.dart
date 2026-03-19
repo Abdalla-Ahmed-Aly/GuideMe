@@ -46,56 +46,59 @@ class PackagePlaceItem extends StatelessWidget {
             ),
 
             const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  place.title,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.interBold16,
-                ),
-                Text(
-                  place.location.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.interRegular14.copyWith(
-                    color: const Color(0xff6B7280),
+            
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    place.title,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.interBold16,
                   ),
-                ),
-
-                const SizedBox(height: 4),
-
-                Row(
-                  children: [
-                    DynamicRatingStars(rating: place.rating.toDouble()),
-                    const SizedBox(width: 4),
-                    Text(
-                      "(${place.rating})",
-                      style: AppTextStyles.interRegular14.copyWith(
-                        color: const Color(0xff6B7280),
-                      ),
+                  Text(
+                    place.location.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.interRegular14.copyWith(
+                      color: const Color(0xff6B7280),
                     ),
-                  ],
-                ),
+                  ),
 
-                const SizedBox(height: 14),
+                  const SizedBox(height: 4),
 
-                Text.rich(
-                  TextSpan(
-                    text: "\$${place.price.toDouble()}",
-                    style: AppTextStyles.interBold16.copyWith(
-                      color: AppColors.primary2,
-                    ),
+                  Row(
                     children: [
-                      TextSpan(
-                        text: " /${context.l10n.person}",
+                      DynamicRatingStars(rating: place.rating.toDouble()),
+                      const SizedBox(width: 4),
+                      Text(
+                        "(${place.rating})",
                         style: AppTextStyles.interRegular14.copyWith(
-                          color: const Color(0xff9CA3AF),
+                          color: const Color(0xff6B7280),
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
+
+                  const SizedBox(height: 14),
+
+                  Text.rich(
+                    TextSpan(
+                      text: "\$${place.price.toDouble()}",
+                      style: AppTextStyles.interBold16.copyWith(
+                        color: AppColors.primary2,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: " /${context.l10n.person}",
+                          style: AppTextStyles.interRegular14.copyWith(
+                            color: const Color(0xff9CA3AF),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

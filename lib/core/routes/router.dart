@@ -14,6 +14,7 @@ import 'package:guide_me/features/auth/presentation/screens/reset_password_scree
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
@@ -282,7 +283,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookPackageScreen,
-        builder: (context, state) => const BookPackageScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<BookPackageCubit>(),
+          child: const BookPackageScreen(),
+        ),
       ),
     ],
   );

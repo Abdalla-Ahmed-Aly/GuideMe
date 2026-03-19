@@ -1397,7 +1397,7 @@ abstract class AppLocalizations {
   /// No description provided for @selectTime.
   ///
   /// In en, this message translates to:
-  /// **'Select time'**
+  /// **'Select a time'**
   String get selectTime;
 
   /// No description provided for @pleaseSelectWorkHours.
@@ -2125,6 +2125,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'LOCATION'**
   String get locationCapital;
+
+  /// No description provided for @selectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a date'**
+  String get selectDate;
 }
 
 class _AppLocalizationsDelegate

@@ -367,5 +367,7 @@
   "summaryCapital": "ملخص",
   "dateCapital": "التاريخ",
   "timeCapital": "الوقت",
-  "locationCapital": "الموقع"
+  "locationCapital": "الموقع",
+  "selectDate": "اختر تاريخ",
+  "selectTime": "اختر وقت"
 }
