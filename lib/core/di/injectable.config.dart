@@ -23,10 +23,14 @@ import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
     as _i955;
 import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
 import 'package:guide_me/features/home/domain/repo/home_repo.dart' as _i1045;
+import 'package:guide_me/features/home/domain/usecases/get_ai_package_usecase.dart'
+    as _i806;
 import 'package:guide_me/features/home/domain/usecases/place_by_category_usecase.dart'
     as _i205;
 import 'package:guide_me/features/home/domain/usecases/place_by_city_usecase.dart'
     as _i985;
+import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart'
+    as _i842;
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart'
     as _i792;
 import 'package:guide_me/features/home/presentation/cubits/get_place_by_category/place_by_category_cubit.dart'
@@ -42,6 +46,7 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i806.GetAiPackageUsecase>(() => _i806.GetAiPackageUsecase());
     gh.factory<_i205.PlaceByCategoryUsecase>(
       () => _i205.PlaceByCategoryUsecase(),
     );
@@ -54,6 +59,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i516.DioService>(),
         gh<_i1.ConnectivityHelper>(),
       ),
+    );
+    gh.factory<_i842.GetAiPackageCubit>(
+      () => _i842.GetAiPackageCubit(gh<_i806.GetAiPackageUsecase>()),
     );
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
     gh.lazySingleton<_i692.HomeService>(() => _i692.HomeApiServiceImpl());
