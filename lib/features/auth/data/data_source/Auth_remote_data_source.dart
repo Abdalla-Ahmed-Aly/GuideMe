@@ -108,15 +108,21 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
 
   @override
   Future<LoginresponseModel> loginWithGoogle(String token) async {
+    print("🚀 AuthRemoteDataSource: Sending loginWithGoogle request...");
+    print("🚀 Endpoint: ${ApiConstants.loginWithGoogleEndPoint}");
+    print("🚀 Payload: {'token': '$token'}");
+    print("🚀 Headers: {'Authorization': 'Bearer \$token'}");
+    
     final response = await apiService.post(
       endpoint: ApiConstants.loginWithGoogleEndPoint,
       headers: {"Authorization": "Bearer $token"},
       data: {"token": token},
     );
+    
     if (response.data == null) {
       throw Exception("Google login response is null");
     }
-    print("🔥 TOKEN SENT TO SERVER: $token");
+    print("✅ Google login response received: ${response.data}");
     return LoginresponseModel.fromJson(response.data);
   }
 }
