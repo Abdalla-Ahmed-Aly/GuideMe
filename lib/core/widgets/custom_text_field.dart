@@ -18,10 +18,12 @@ class CustomTextField extends StatelessWidget {
     this.fillColor,
     this.onTap,
     this.readOnly = false,
+    this.prefixIcon,
   });
   final String? hintText;
   final bool obscureText;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final String? labelText;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
@@ -55,6 +57,7 @@ class CustomTextField extends StatelessWidget {
         labelText: labelText,
         hintText: hintText,
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
         border: border,
         enabledBorder: border,
         focusedBorder: border,

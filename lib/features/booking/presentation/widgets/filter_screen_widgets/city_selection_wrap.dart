@@ -27,6 +27,7 @@ class CitySelectionWrap extends StatelessWidget {
                     ? Colors.white
                     : Colors.black,
               ),
+              backgroundColor: Colors.white,
               onSelected: (value) {
                 context.read<FilterCubit>().setCity(city);
               },

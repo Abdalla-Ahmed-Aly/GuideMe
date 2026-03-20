@@ -532,7 +532,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dateTIME => 'التاريخ والوقت';
 
   @override
-  String get durationText => 'Duration';
+  String get durationText => 'المدة';
 
   @override
   String get groupsize => 'حجم المجموعة';
@@ -1051,4 +1051,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectDate => 'اختر تاريخ';
+
+  @override
+  String get errorLocationPermissionDenied => 'تم رفض إذن الموقع';
+
+  @override
+  String get errorLocationPermissionDeniedForever =>
+      'تم رفض إذن الموقع بشكل دائم';
+
+  @override
+  String get selectedLocation => 'الموقع المحدد';
+
+  @override
+  String get confirmLocation => 'تأكيد الموقع';
+
+  @override
+  String get errorLocationServiceDisabled => 'خدمة الموقع معطلة';
+
+  @override
+  String get noLocationSelected => 'لم يتم اختيار موقع';
+
+  @override
+  String get validation_date_past => 'يرجى اختيار تاريخ مستقبلي';
+
+  @override
+  String get validation_time_past => 'يرجى اختيار وقت مستقبلي';
+
+  @override
+  String get validation_location_required => 'يرجى اختيار موقع';
 }

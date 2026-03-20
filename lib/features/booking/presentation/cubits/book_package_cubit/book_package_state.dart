@@ -22,6 +22,26 @@ class BookPackageData {
       time: time ?? this.time,
     );
   }
+
+  bool get dateIsValid =>
+      date != null &&
+      date!.isAfter(DateTime.now().subtract(const Duration(days: 1)));
+
+  bool get timeIsValid {
+    if (time == null || date == null) return false;
+
+    final selectedDateTime = DateTime(
+      date!.year,
+      date!.month,
+      date!.day,
+      time!.hour,
+      time!.minute,
+    );
+
+    return DateTime.now().isBefore(selectedDateTime);
+  }
+
+  bool get isAllDataFilled => location != null && dateIsValid && timeIsValid;
 }
 
 sealed class BookPackageState {

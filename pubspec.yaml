@@ -44,6 +44,9 @@ dependencies:
   dartz: ^0.10.1
   cached_network_image: ^3.4.1
   shimmer: ^3.0.0
+  flutter_map: ^8.2.2
+  geolocator: ^14.0.2
+  latlong2: ^0.9.1
   
 
 dev_dependencies:

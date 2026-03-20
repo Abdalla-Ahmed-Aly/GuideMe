@@ -11,6 +11,24 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:guide_me/core/helpers/connectivity_helper.dart' as _i1;
+import 'package:guide_me/core/location_core/data/data_sources/local/gps_local_data_source.dart'
+    as _i250;
+import 'package:guide_me/core/location_core/data/data_sources/local/gps_local_data_source_impl.dart'
+    as _i923;
+import 'package:guide_me/core/location_core/data/data_sources/remote/location_remote_data_source.dart'
+    as _i602;
+import 'package:guide_me/core/location_core/data/data_sources/remote/location_remote_data_source_impl.dart'
+    as _i821;
+import 'package:guide_me/core/location_core/data/repos/location_repo_impl.dart'
+    as _i133;
+import 'package:guide_me/core/location_core/domain/repos/location_repo.dart'
+    as _i392;
+import 'package:guide_me/core/location_core/domain/use_cases/get_current_location_use_case.dart'
+    as _i448;
+import 'package:guide_me/core/location_core/domain/use_cases/get_location_name_use_case.dart'
+    as _i179;
+import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart'
+    as _i786;
 import 'package:guide_me/core/network/api_service.dart' as _i947;
 import 'package:guide_me/core/network/dio_service.dart' as _i516;
 import 'package:guide_me/core/services/media_picker_service/media_picker_service.dart'
@@ -60,15 +78,39 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1.ConnectivityHelper>(),
       ),
     );
+    gh.lazySingleton<_i250.GpsLocalDataSource>(
+      () => _i923.GpsLocalDataSourceImpl(),
+    );
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
     );
+    gh.lazySingleton<_i602.LocationRemoteDataSource>(
+      () => _i821.LocationRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
     gh.lazySingleton<_i322.BookingRemoteDataSource>(
       () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
+    gh.lazySingleton<_i392.LocationRepo>(
+      () => _i133.LocationRepoImpl(
+        gh<_i602.LocationRemoteDataSource>(),
+        gh<_i250.GpsLocalDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
+    );
+    gh.lazySingleton<_i448.GetCurrentLocationUseCase>(
+      () => _i448.GetCurrentLocationUseCase(gh<_i392.LocationRepo>()),
+    );
+    gh.lazySingleton<_i179.GetLocationNameUseCase>(
+      () => _i179.GetLocationNameUseCase(gh<_i392.LocationRepo>()),
+    );
+    gh.factory<_i786.PickLocationCubit>(
+      () => _i786.PickLocationCubit(
+        gh<_i448.GetCurrentLocationUseCase>(),
+        gh<_i179.GetLocationNameUseCase>(),
+      ),
     );
     gh.factory<_i49.AddBookingCubit>(
       () => _i49.AddBookingCubit(gh<_i672.BookingRepo>()),

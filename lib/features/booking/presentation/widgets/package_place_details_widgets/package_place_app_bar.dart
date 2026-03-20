@@ -36,7 +36,7 @@ class _PackagePlaceArrowBack extends StatelessWidget {
         context.pop();
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 6),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(999),
           child: BackdropFilter(

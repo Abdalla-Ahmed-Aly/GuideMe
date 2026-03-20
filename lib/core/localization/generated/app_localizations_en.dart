@@ -1052,4 +1052,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectDate => 'Select a date';
+
+  @override
+  String get errorLocationPermissionDenied => 'Location permission denied';
+
+  @override
+  String get errorLocationPermissionDeniedForever =>
+      'Location permission denied forever';
+
+  @override
+  String get selectedLocation => 'Selected Location';
+
+  @override
+  String get confirmLocation => 'Confirm Location';
+
+  @override
+  String get errorLocationServiceDisabled => 'Location service is disabled';
+
+  @override
+  String get noLocationSelected => 'No location selected';
+
+  @override
+  String get validation_date_past => 'Please select a future date';
+
+  @override
+  String get validation_time_past => 'Please select a future time';
+
+  @override
+  String get validation_location_required => 'Please select a meeting location';
 }

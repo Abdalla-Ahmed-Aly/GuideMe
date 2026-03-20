@@ -2131,6 +2131,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select a date'**
   String get selectDate;
+
+  /// No description provided for @errorLocationPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied'**
+  String get errorLocationPermissionDenied;
+
+  /// No description provided for @errorLocationPermissionDeniedForever.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied forever'**
+  String get errorLocationPermissionDeniedForever;
+
+  /// No description provided for @selectedLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Location'**
+  String get selectedLocation;
+
+  /// No description provided for @confirmLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Location'**
+  String get confirmLocation;
+
+  /// No description provided for @errorLocationServiceDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Location service is disabled'**
+  String get errorLocationServiceDisabled;
+
+  /// No description provided for @noLocationSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No location selected'**
+  String get noLocationSelected;
+
+  /// No description provided for @validation_date_past.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a future date'**
+  String get validation_date_past;
+
+  /// No description provided for @validation_time_past.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a future time'**
+  String get validation_time_past;
+
+  /// No description provided for @validation_location_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a meeting location'**
+  String get validation_location_required;
 }
 
 class _AppLocalizationsDelegate

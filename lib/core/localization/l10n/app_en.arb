@@ -369,5 +369,14 @@
   "timeCapital": "TIME",
   "locationCapital": "LOCATION",
   "selectDate": "Select a date",
-  "selectTime": "Select a time"
+  "selectTime": "Select a time",
+  "errorLocationPermissionDenied": "Location permission denied",
+  "errorLocationPermissionDeniedForever": "Location permission denied forever",
+  "selectedLocation": "Selected Location",
+  "confirmLocation": "Confirm Location",
+  "errorLocationServiceDisabled": "Location service is disabled",
+  "noLocationSelected": "No location selected",
+  "validation_date_past": "Please select a future date",
+"validation_time_past": "Please select a future time",
+"validation_location_required": "Please select a meeting location"
 }

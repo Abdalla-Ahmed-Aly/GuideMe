@@ -49,4 +49,6 @@ abstract class AppRoutes {
   static const String packageDetailsScreen = '/packageDetailsScreen';
   static const String packagePlaceDetailsScreen = '/packagePlaceDetailsScreen';
   static const String bookPackageScreen = '/bookPackageScreen';
+  static const String viewLocationScreen = '/viewLocationScreen';
+  static const String pickLocationScreen = '/pickLocationScreen';
 }

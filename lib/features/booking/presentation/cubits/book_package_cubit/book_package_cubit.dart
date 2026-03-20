@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/errors/failure_code.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:injectable/injectable.dart';
 
 part 'book_package_state.dart';
@@ -26,43 +27,47 @@ class BookPackageCubit extends Cubit<BookPackageState> {
     safeEmit(state.copyWith(data: state.data.copyWith(time: time)));
   }
 
-  bool validate() {
+  bool validate(BuildContext context) {
     if (state.data.location == null) {
       safeEmit(
         BookPackageFailure(
           state.data,
-          const AppFailure(
+          AppFailure(
             failureCode: FailureCode.validation,
-            message: "Location is required",
+            message: context.l10n.validation_location_required,
           ),
         ),
       );
       return false;
     }
-    if (state.data.date == null) {
+    if (!state.data.dateIsValid) {
       safeEmit(
         BookPackageFailure(
           state.data,
-          const AppFailure(
+          AppFailure(
             failureCode: FailureCode.validation,
-            message: "Date is required",
+            message: context.l10n.validation_date_past,
           ),
         ),
       );
       return false;
     }
-    if (state.data.time == null) {
+    if (!state.data.timeIsValid) {
       safeEmit(
         BookPackageFailure(
           state.data,
-          const AppFailure(
+          AppFailure(
             failureCode: FailureCode.validation,
-            message: "Time is required",
+            message: context.l10n.validation_time_past,
           ),
         ),
       );
       return false;
     }
     return true;
+  }
+
+  void resetValidation() {
+    safeEmit(BookPackageInitial(state.data));
   }
 }

@@ -13,5 +13,8 @@ enum FailureCode {
   validation,
   emptyData,
   cancelled,
+  locationPermissionDenied,
+  locationPermissionDeniedForever,
+  locationServiceDisabled,
   unknown,
 }

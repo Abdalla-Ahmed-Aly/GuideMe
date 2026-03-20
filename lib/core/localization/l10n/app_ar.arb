@@ -369,5 +369,15 @@
   "timeCapital": "الوقت",
   "locationCapital": "الموقع",
   "selectDate": "اختر تاريخ",
-  "selectTime": "اختر وقت"
+  "selectTime": "اختر وقت",
+  "errorLocationPermissionDenied": "تم رفض إذن الموقع",
+  "errorLocationPermissionDeniedForever": "تم رفض إذن الموقع بشكل دائم",
+  "durationText": "المدة",
+  "selectedLocation": "الموقع المحدد",
+  "confirmLocation": "تأكيد الموقع",
+  "errorLocationServiceDisabled": "خدمة الموقع معطلة",
+  "noLocationSelected": "لم يتم اختيار موقع",
+  "validation_date_past": "يرجى اختيار تاريخ مستقبلي",
+  "validation_time_past": "يرجى اختيار وقت مستقبلي",
+  "validation_location_required": "يرجى اختيار موقع"
 }

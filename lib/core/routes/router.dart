@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
+import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
+import 'package:guide_me/core/location_core/presentation/screens/view_location_screen.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/features/auth/presentation/screens/allow_location_access_screen.dart';
@@ -286,6 +289,17 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => getIt<BookPackageCubit>(),
           child: const BookPackageScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.viewLocationScreen,
+        builder: (context, state) => const ViewLocationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.pickLocationScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<PickLocationCubit>(),
+          child: const PickLocationScreen(),
         ),
       ),
     ],
