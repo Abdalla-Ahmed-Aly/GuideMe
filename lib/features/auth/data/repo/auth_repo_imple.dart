@@ -16,10 +16,12 @@ import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 
 @LazySingleton(as: AuthRepo)
 class AuthRepoImple extends AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
+  final Logger _logger = Logger();
 
   AuthRepoImple(this.authRemoteDataSource);
   @override
@@ -66,7 +68,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.resetPassword(request);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -99,10 +101,19 @@ class AuthRepoImple extends AuthRepo {
     String token,
   ) async {
     try {
+      _logger.i("Repository: Sending Google token to backend.");
       final result = await authRemoteDataSource.loginWithGoogle(token);
+      _logger.i("Repository: Successfully logged in with Google via backend.");
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
+    } catch (e, stackTrace) {
+      _logger.e(
+        "Repository: Error during backend Google login: $e",
+        error: e,
+        stackTrace: stackTrace,
+      );
+      return left(ErrorHandler.handle(e));
     }
   }
 }

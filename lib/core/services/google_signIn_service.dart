@@ -1,14 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 
 @LazySingleton()
 class GoogleAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final Logger _logger = Logger();
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(
-    serverClientId:
-        "339882358219-jesp74gb1djqeuge5lcpagje11gkuu3f.apps.googleusercontent.com",
     scopes: [
       'email',
     ],
@@ -16,17 +16,10 @@ class GoogleAuthService {
 
   Future<String?> getFirebaseIdToken() async {
     try {
-      // Start Google Sign-In
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return null;
 
-      if (googleUser == null) {
-        print("❌ User cancelled Google Sign-In");
-        return null;
-      }
-
-      // Get authentication tokens
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final googleAuth = await googleUser.authentication;
 
       print("Access Token موجود؟ ${googleAuth.accessToken != null}");
       print("ID Token موجود؟ ${googleAuth.idToken != null}");
@@ -44,34 +37,13 @@ class GoogleAuthService {
         idToken: googleAuth.idToken,
       );
 
-      // Sign in to Firebase
-      final UserCredential userCredential = await _auth.signInWithCredential(
-        credential,
-      );
+      final userCredential = await _auth.signInWithCredential(credential);
 
-      final User? user = userCredential.user;
-
-      if (user == null) {
-        print("❌ Firebase user is null");
-        return null;
-      }
-
-      // Get Firebase ID Token
-      final String? firebaseToken = await user.getIdToken();
-
-      print("✅ Firebase ID Token: $firebaseToken");
+      final firebaseToken = await userCredential.user?.getIdToken();
 
       return firebaseToken;
     } catch (e) {
-      print("🔥 Google Auth Error: $e");
-
-      if (e.toString().contains("ApiException: 10")) {
-        print("❌ DEVELOPER_ERROR → تأكد من:");
-        print("- SHA-1");
-        print("- Package Name");
-        print("- Web Client ID");
-      }
-
+      print("Google Auth Error: $e");
       return null;
     }
   }
