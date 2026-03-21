@@ -13,8 +13,11 @@ void main() async {
 
   // Temporary token injection for home page development
   await getIt<TokenService>().saveToken(
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODM4MGZhOTM2ZDAyMmNiM2Y4NGUzNSIsInJvbGUiOiJndWlkZSIsImlhdCI6MTc3MjExNjk5OH0.MMeeKRF_40l9ZEAoGDMkTbS2axFt05sGTFw4X-43q9E',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YmYxNjMwNGExOTNkNDM4NjQyZTk2NiIsInJvbGUiOiJ0b3VyaXN0IiwiaWF0IjoxNzc0MTM2MTQzfQ.0MQGitqCIVNJpXWREZnBJxS10Cj3Lgem3QMT5qHYMnE',
   );
+
+  // // Clear any expired or invalid tokens for a clean login
+  // await getIt<TokenService>().deleteToken();
 
   Bloc.observer = const AppBlocObserver();
 
