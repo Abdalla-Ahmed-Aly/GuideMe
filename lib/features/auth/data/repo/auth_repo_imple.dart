@@ -32,13 +32,8 @@ class AuthRepoImple extends AuthRepo {
   ) async {
     try {
       final result = await authRemoteDataSource.login(request);
-      
-            final token = result.token;
-      if (token != null && token.isNotEmpty) {
-        await tokenService.saveToken(token);
-      } else {
-        _logger.w("Token is null, cannot save!");
-      }
+      await tokenService.saveToken(result.token!);
+
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
@@ -51,6 +46,7 @@ class AuthRepoImple extends AuthRepo {
   ) async {
     try {
       final result = await authRemoteDataSource.register(request);
+      await tokenService.saveToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YmVmNTJiYTA5NjYwNjdlYjk2YWZmMCIsInJvbGUiOiJ0b3VyaXN0IiwiaWF0IjoxNzc0MTIyNTg1fQ.gtDXLgCpbLOrst4laDxLKMhFe7TluE6WPRQadUsyq1M');
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
