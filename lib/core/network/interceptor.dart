@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
+import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/services/token/token_service.dart';
+
 /// This interceptor is used to show request and response logs
 class LoggerInterceptor extends Interceptor {
   Logger logger = Logger(
@@ -16,7 +19,9 @@ class LoggerInterceptor extends Interceptor {
       'Error type: ${err.type} \n '
       'Error message: ${err.message} \n'
       'STATUS CODE: ${err.response?.statusCode} \n'
-      'RESPONSE DATA: ${err.response?.data}',
+      'RESPONSE DATA: ${err.response?.data}'
+      'Error type: ${err.error} \n '
+      'Error message: ${err.message}',
     ); //Debug log
     handler.next(err); //Continue with the Error
   }
@@ -47,5 +52,21 @@ class AuthorizationInterceptor extends Interceptor {
     // final token  = sharedPreferences.getString('token');
     // options.headers['Authorization'] = "Bearer $token";
     handler.next(options); // continue with the Request
+    void onRequest(
+      RequestOptions options,
+      RequestInterceptorHandler handler,
+    ) async {
+      try {
+        final token = await getIt<TokenService>().getToken();
+        if (token != null) {
+          options.headers['Authorization'] = "Bearer $token";
+        }
+      } catch (e) {
+        // Log the error but continue the request without token
+        Logger().e('AuthorizationInterceptor: Error fetching token: $e');
+      } finally {
+        handler.next(options); // Always call next() to prevent hanging
+      }
+    }
   }
 }

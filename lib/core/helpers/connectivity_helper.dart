@@ -13,8 +13,11 @@ class ConnectivityHelper {
   bool _wasDisconnected = false;
 
   Future<bool> isConnected() async {
-    final connectivityResult = await _connectivity.checkConnectivity();
-    return connectivityResult != ConnectivityResult.none;
+    final List<ConnectivityResult> connectivityResult = await _connectivity.checkConnectivity();
+    if (connectivityResult.contains(ConnectivityResult.none)) {
+      return false;
+    }
+    return connectivityResult.isNotEmpty;
   }
 
   void listeningToConnectivity({
@@ -22,8 +25,8 @@ class ConnectivityHelper {
     VoidCallback? onDisconnected,
   }) {
     _subscription = _connectivity.onConnectivityChanged.listen(
-      (result) {
-        if (result == ConnectivityResult.none) {
+      (List<ConnectivityResult> results) {
+        if (results.contains(ConnectivityResult.none)) {
           _wasDisconnected = true;
           onDisconnected?.call();
         } else {

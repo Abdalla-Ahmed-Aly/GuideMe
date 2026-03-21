@@ -3,6 +3,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
+
+import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
@@ -62,6 +64,7 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
+    initialLocation: AppRoutes.touristNavigationBarScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -178,8 +181,28 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
+        path: "${AppRoutes.explorePlacesScreen}/:categoryId",
+        builder: (context, state) {
+          final String title = state.extra as String;
+          final String categoryId = state.pathParameters['categoryId'] ?? '';
+          return ExplorePlacesScreen(title: title, categoryId: categoryId);
+        },
+      ),
+      GoRoute(
+        path: "${AppRoutes.explorePlacesByCityScreen}/:cityId",
+        builder: (context, state) {
+          final String title = state.extra as String;
+          final String cityId = state.pathParameters['cityId'] ?? '';
+          return ExplorePlacesScreen(title: title, cityId: cityId);
+        },
+      ),
+      GoRoute(
         path: AppRoutes.placeDetailsScreen,
-        builder: (context, state) => const PlaceDetailsScreen(),
+
+        builder: (context, state) {
+          final place = state.extra as PlaceEntity;
+          return PlaceDetailsScreen(place: place);
+        },
       ),
       GoRoute(
         path: AppRoutes.bookingDetailsScreen,

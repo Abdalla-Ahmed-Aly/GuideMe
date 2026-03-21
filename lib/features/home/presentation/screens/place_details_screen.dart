@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
@@ -11,7 +12,8 @@ import 'package:guide_me/features/home/presentation/widgets/place_details_widget
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/review_summary.dart';
 
 class PlaceDetailsScreen extends StatelessWidget {
-  const PlaceDetailsScreen({super.key});
+  final PlaceEntity place;
+  const PlaceDetailsScreen({super.key, required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +25,18 @@ class PlaceDetailsScreen extends StatelessWidget {
           // images and arrow back
           SizedBox(
             height: size.height * 0.38,
-            child: const DetailsHeader(),
+            child: DetailsHeader(place: place),
           ),
 
           const SizedBox(height: 30),
 
           // title and price and location and trip details
-          const PlaceDetailsSection(),
+          PlaceDetailsSection(place: place),
 
           const SizedBox(height: 22),
 
           // Rating
-          const ReviewSummary(),
+          ReviewSummary(place: place),
 
           const SizedBox(height: 14),
 

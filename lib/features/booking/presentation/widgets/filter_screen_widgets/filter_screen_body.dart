@@ -65,7 +65,7 @@ class FilterScreenBody extends StatelessWidget {
             child: Text(
               context.l10n.category,
               style: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: AppTextStyles.familyMontserrat,
                 fontWeight: FontWeight.w600,
                 color: AppColors.natural6,
                 fontSize: 16.fs,
@@ -103,7 +103,7 @@ class FilterScreenBody extends StatelessWidget {
             child: Text(
               context.l10n.numberofperson,
               style: TextStyle(
-                fontFamily: 'Montserrat',
+                fontFamily: AppTextStyles.familyMontserrat,
                 fontWeight: FontWeight.w600,
                 color: AppColors.natural6,
                 fontSize: 16.fs,

@@ -1,45 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/entites/category_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
+import 'package:guide_me/core/widgets/custom_shimmer.dart';
+
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({super.key});
+  final CategoryEntity category;
+  const CategoryItem({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
+    final width = context.isPortrait ? size.height * 0.075 : size.width * 0.075;
+
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.explorePlacesScreen, extra: "Pharaohs");
+        context.push(
+          "${AppRoutes.explorePlacesScreen}/${category.id}",
+          extra: category.name,
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(right: 30),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                AppImages.categoryTest,
+              child: Image.network(
+                category.image,
                 fit: BoxFit.cover,
-                width: context.isPortrait
-                    ? size.height * 0.075
-                    : size.width * 0.075,
-                height: context.isPortrait
-                    ? size.height * 0.075
-                    : size.width * 0.075,
+                width: width,
+                height: width,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return CustomShimmer(
+                    width: width,
+                    height: width,
+                    borderRadius: 20,
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: width,
+                  height: width,
+                  color: Colors.grey[300],
+                  child: const Icon(Icons.error),
+                ),
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Pharaohs',
-              style: TextStyle(
-                fontSize: 12,
-                fontFamily: AppTextStyles.familyPoppins,
+            SizedBox(
+              width: context.isPortrait
+                  ? size.height * 0.08
+                  : size.width * 0.08,
+              child: Text(
+                category.name,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: AppTextStyles.familyPoppins,
+                ),
               ),
             ),
           ],

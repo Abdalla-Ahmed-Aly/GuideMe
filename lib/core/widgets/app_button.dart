@@ -50,6 +50,7 @@ class AppButton extends StatelessWidget {
           duration: const Duration(milliseconds: 200),
           child: isLoading
               ? const SizedBox(
+                key: ValueKey("loading"),
                   height: 24,
                   width: 24,
                   child: CircularProgressIndicator(
