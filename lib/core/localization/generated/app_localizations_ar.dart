@@ -1112,4 +1112,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get validUntil => 'صالح حتى: ';
+
+  @override
+  String get noTripsYet => 'لا توجد رحلات حتى الآن';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
@@ -29,17 +30,43 @@ class AcceptedTripCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Time
-            Text(
-              DateFormat("hh:mm a").format(booking.startTime),
-              style: AppTextStyles.poppinsMedium14,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  DateFormat(
+                    "MMM dd, yyyy - hh:mm a",
+                  ).format(booking.startTime),
+                  style: AppTextStyles.poppinsMedium16.copyWith(
+                    color: Colors.black.withValues(alpha: .5),
+                  ),
+                ),
+
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.green.withValues(alpha: .8),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    context.l10n.accepted,
+                    style: AppTextStyles.poppinsMedium14.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
 
-            const SizedBox(height: 2),
+            const SizedBox(height: 6),
 
             // Place Title
             Text(
               booking.place.title,
-              style: AppTextStyles.poppinsMedium18,
+              style: AppTextStyles.poppinsSemiBold18,
             ),
           ],
         ),

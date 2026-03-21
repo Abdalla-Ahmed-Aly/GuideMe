@@ -2251,6 +2251,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Valid Until: '**
   String get validUntil;
+
+  /// No description provided for @noTripsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No Trips Yet'**
+  String get noTripsYet;
 }
 
 class _AppLocalizationsDelegate

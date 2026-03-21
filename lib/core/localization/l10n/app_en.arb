@@ -389,5 +389,6 @@
   "invalidDate": "Invalid Date",
   "invalidTime": "Invalid Time",
   "licenseIdText": "License ID",
-  "validUntil": "Valid Until: "
+  "validUntil": "Valid Until: ",
+  "noTripsYet": "No Trips Yet"
 }

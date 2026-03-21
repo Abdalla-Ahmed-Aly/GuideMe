@@ -390,5 +390,6 @@
   "invalidDate": "التاريخ غير مناسب",
   "invalidTime": "الوقت غير مناسب",
   "licenseIdText": "رقم الرخصة",
-  "validUntil": "صالح حتى: "
+  "validUntil": "صالح حتى: ",
+  "noTripsYet": "لا توجد رحلات حتى الآن"
 }

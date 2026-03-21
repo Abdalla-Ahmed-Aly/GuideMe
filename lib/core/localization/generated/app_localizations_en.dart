@@ -1113,4 +1113,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validUntil => 'Valid Until: ';
+
+  @override
+  String get noTripsYet => 'No Trips Yet';
 }
