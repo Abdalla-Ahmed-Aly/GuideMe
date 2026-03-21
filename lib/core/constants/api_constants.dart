@@ -9,4 +9,6 @@ abstract class ApiConstants {
   static const String suggestionsEndpoint = "$addBookingEndpoint/suggestions";
 
   static const String bookPackageEndpoint = "$addBookingEndpoint/book";
+
+  static const String userProfileEndpoint = "$apiVersion/home/profile";
 }

@@ -387,5 +387,7 @@
   "viewBookingsDetails": "View Bookings Details",
   "backToHome": "Back to Home",
   "invalidDate": "Invalid Date",
-  "invalidTime": "Invalid Time"
+  "invalidTime": "Invalid Time",
+  "licenseIdText": "License ID",
+  "validUntil": "Valid Until: "
 }

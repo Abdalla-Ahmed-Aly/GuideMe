@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/entities/guider_entity.dart';
 import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
 import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
 import 'package:guide_me/core/location_core/presentation/screens/view_location_screen.dart';
@@ -20,6 +21,7 @@ import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/
 import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/guide_data_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
@@ -136,7 +138,14 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.guideProfileScreen,
-        builder: (context, state) => const GuideProfileScreen(),
+        builder: (context, state) {
+          final GuiderEntity guider = state.extra as GuiderEntity;
+          return BlocProvider(
+            create: (context) =>
+                getIt<GuideDataCubit>()..getGuideData(guideId: guider.id),
+            child: const GuideProfileScreen(),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.selectInterestsScreen,

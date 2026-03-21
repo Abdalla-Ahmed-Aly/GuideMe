@@ -49,6 +49,8 @@ import 'package:guide_me/features/booking/domain/use_cases/book_package_use_case
     as _i280;
 import 'package:guide_me/features/booking/domain/use_cases/get_bookings_use_case.dart'
     as _i12;
+import 'package:guide_me/features/booking/domain/use_cases/get_guide_data_use_case.dart'
+    as _i292;
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart'
     as _i49;
 import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart'
@@ -57,6 +59,8 @@ import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cub
     as _i634;
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart'
     as _i655;
+import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/guide_data_cubit.dart'
+    as _i622;
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart'
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
@@ -125,8 +129,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i12.GetBookingsUseCase>(
       () => _i12.GetBookingsUseCase(gh<_i672.BookingRepo>()),
     );
+    gh.lazySingleton<_i292.GetGuideDataUseCase>(
+      () => _i292.GetGuideDataUseCase(gh<_i672.BookingRepo>()),
+    );
     gh.factory<_i24.TouristBookingCubit>(
       () => _i24.TouristBookingCubit(gh<_i12.GetBookingsUseCase>()),
+    );
+    gh.factory<_i622.GuideDataCubit>(
+      () => _i622.GuideDataCubit(gh<_i292.GetGuideDataUseCase>()),
     );
     gh.lazySingleton<_i280.BookPackageUseCase>(
       () => _i280.BookPackageUseCase(gh<_i672.BookingRepo>()),

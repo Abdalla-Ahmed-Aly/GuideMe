@@ -7,6 +7,7 @@ import 'package:guide_me/features/booking/data/models/booking_package_request_mo
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_package_entity.dart';
+import 'package:guide_me/features/booking/domain/entities/guider_entities/guide_details_entity.dart';
 
 abstract class BookingRepo {
   Future<Either<Failure, BookingEntity>> addBooking({
@@ -29,5 +30,9 @@ abstract class BookingRepo {
 
   Future<Either<Failure, BookPackageResponseModel>> bookPackage({
     required BookingPackageRequestModel bookingPackageRequestModel,
+  });
+
+  Future<Either<Failure, GuideDetailsEntity>> getGuideData({
+    required String guideId,
   });
 }

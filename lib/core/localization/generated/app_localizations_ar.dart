@@ -1106,4 +1106,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalidTime => 'الوقت غير مناسب';
+
+  @override
+  String get licenseIdText => 'رقم الرخصة';
+
+  @override
+  String get validUntil => 'صالح حتى: ';
 }

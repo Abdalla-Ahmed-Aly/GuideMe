@@ -121,4 +121,6 @@ class FailureUiMapper {
         );
     }
   }
+
+  static mapFailureToMessage(Failure failure, BuildContext context) {}
 }

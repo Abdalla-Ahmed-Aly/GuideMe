@@ -3,8 +3,8 @@ import 'package:guide_me/core/app_assets/app_lotties.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/widgets/Accepted_screen_widgets/accepted_screen_buttons.dart';
-import 'package:guide_me/features/booking/presentation/widgets/Accepted_screen_widgets/up_coming_tour_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/accepted_screen_widgets/accepted_screen_buttons.dart';
+import 'package:guide_me/features/booking/presentation/widgets/accepted_screen_widgets/up_coming_tour_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/close_button.dart';
 import 'package:lottie/lottie.dart';
 

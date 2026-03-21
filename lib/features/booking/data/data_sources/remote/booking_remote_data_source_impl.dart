@@ -9,6 +9,7 @@ import 'package:guide_me/features/booking/data/models/booking_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_packge_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
+import 'package:guide_me/features/booking/data/models/guider_models/guide_details_model.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: BookingRemoteDataSource)
@@ -97,5 +98,13 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
       data: bookingPackageRequestModel.toJson(),
     );
     return BookPackageResponseModel.fromJson(response.data["data"]);
+  }
+
+  @override
+  Future<GuideDetailsModel> getGuideData({required String guideId}) async {
+    final response = await _apiService.get(
+      endpoint: "${ApiConstants.userProfileEndpoint}/$guideId",
+    );
+    return GuideDetailsModel.fromJson(response.data["data"]);
   }
 }

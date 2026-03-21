@@ -1107,4 +1107,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidTime => 'Invalid Time';
+
+  @override
+  String get licenseIdText => 'License ID';
+
+  @override
+  String get validUntil => 'Valid Until: ';
 }

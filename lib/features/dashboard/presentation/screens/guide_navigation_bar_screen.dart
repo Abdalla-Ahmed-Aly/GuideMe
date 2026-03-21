@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
@@ -64,7 +63,7 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
                 iconSize: 28,
                 items: const [
                   BottomNavigationBarItem(
-                    icon: Icon(FontAwesomeIcons.chartBar),
+                    icon: Icon(Icons.home),
                     label: "Dashboard",
                   ),
                   BottomNavigationBarItem(

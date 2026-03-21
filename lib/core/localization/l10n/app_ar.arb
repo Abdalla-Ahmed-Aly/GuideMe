@@ -388,5 +388,7 @@
   "viewBookingsDetails": "عرض تفاصيل الحجوزات",
   "backToHome": "العودة إلى الرئيسية",
   "invalidDate": "التاريخ غير مناسب",
-  "invalidTime": "الوقت غير مناسب"
+  "invalidTime": "الوقت غير مناسب",
+  "licenseIdText": "رقم الرخصة",
+  "validUntil": "صالح حتى: "
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
@@ -55,7 +54,7 @@ class TripDetailsSection extends StatelessWidget {
                 title: context.l10n.durationText,
                 value: '${booking.place.durationMinutes} min',
                 icon: const Icon(
-                  FontAwesomeIcons.hourglassEnd,
+                  Icons.hourglass_empty,
                   size: 24,
                   color: AppColors.primary2,
                 ),

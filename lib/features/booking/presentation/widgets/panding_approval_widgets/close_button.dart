@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
@@ -24,7 +23,7 @@ class CloseButtonwidget extends StatelessWidget {
         },
         icon: Center(
           child: Icon(
-            FontAwesomeIcons.xmark,
+            Icons.close,
             color: AppColors.primary,
             size: 20.ic,
           ),

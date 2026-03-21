@@ -38,44 +38,21 @@ class GuiderProfileSection extends StatelessWidget {
 
           const SizedBox(width: 12),
 
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                guider.name,
-                style: AppTextStyles.poppinsMedium18,
-              ),
+          Expanded(
+            child: Text(
+              guider.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.poppinsMedium18,
+            ),
+          ),
 
-              const SizedBox(height: 2),
+          const SizedBox(width: 8),
 
-              Row(
-                children: [
-                  const Icon(
-                    Icons.star_rate_rounded,
-                    color: AppColors.yellow,
-                    size: 20,
-                  ),
-
-                  const SizedBox(width: 2),
-
-                  Text(
-                    "4.9",
-                    style: AppTextStyles.poppinsBold14.copyWith(
-                      color: AppColors.yellow,
-                    ),
-                  ),
-
-                  const SizedBox(width: 6),
-
-                  Text(
-                    '(12 tour)',
-                    style: AppTextStyles.poppinsRegular14.copyWith(
-                      color: const Color(0xff8794A4),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+          const Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: AppColors.primary2,
+            size: 20,
           ),
         ],
       ),

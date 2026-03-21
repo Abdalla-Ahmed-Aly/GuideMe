@@ -2239,6 +2239,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid Time'**
   String get invalidTime;
+
+  /// No description provided for @licenseIdText.
+  ///
+  /// In en, this message translates to:
+  /// **'License ID'**
+  String get licenseIdText;
+
+  /// No description provided for @validUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid Until: '**
+  String get validUntil;
 }
 
 class _AppLocalizationsDelegate
