@@ -116,13 +116,6 @@ class AuthRepoImple extends AuthRepo {
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
-    } catch (e, stackTrace) {
-      _logger.e(
-        "Repository: Error during backend Google login: $e",
-        error: e,
-        stackTrace: stackTrace,
-      );
-      return left(ErrorHandler.handle(e));
     }
   }
 }

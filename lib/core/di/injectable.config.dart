@@ -78,16 +78,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1043.AuthRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
     gh.lazySingleton<_i956.AuthRepo>(
-      () => _i80.AuthRepoImple(gh<_i1043.AuthRemoteDataSource>()),
-    );
-    gh.factory<_i180.LoginWithGoogleUseCase>(
-      () => _i180.LoginWithGoogleUseCase(
-        gh<_i956.AuthRepo>(),
-        gh<_i664.GoogleAuthService>(),
+      () => _i80.AuthRepoImple(
+        gh<_i1043.AuthRemoteDataSource>(),
+        gh<_i625.TokenService>(),
       ),
-    );
-    gh.factory<_i459.LoginwithGoogleCubit>(
-      () => _i459.LoginwithGoogleCubit(gh<_i180.LoginWithGoogleUseCase>()),
     );
     gh.factory<_i426.ResendPasswordUseCase>(
       () => _i426.ResendPasswordUseCase(gh<_i956.AuthRepo>()),
@@ -110,6 +104,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i393.VerifyForgetPasswordUseCase>(
       () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),
     );
+    gh.factory<_i180.LoginWithGoogleUseCase>(
+      () => _i180.LoginWithGoogleUseCase(
+        gh<_i956.AuthRepo>(),
+        gh<_i664.GoogleAuthService>(),
+      ),
+    );
     gh.factory<_i577.VerifyPasswordCubit>(
       () => _i577.VerifyPasswordCubit(gh<_i393.VerifyForgetPasswordUseCase>()),
     );
@@ -122,6 +122,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i968.ResendForgetPasswordCubit>(
       () => _i968.ResendForgetPasswordCubit(gh<_i426.ResendPasswordUseCase>()),
+    );
+    gh.factory<_i459.LoginwithGoogleCubit>(
+      () => _i459.LoginwithGoogleCubit(gh<_i180.LoginWithGoogleUseCase>()),
     );
     gh.factory<_i940.LoginCubit>(
       () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
