@@ -9,52 +9,48 @@ class GoogleAuthService {
   final Logger _logger = Logger();
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(
-    // serverClientId:
-    //     '104478032373-79ppbq9pr3cf0pgm87vi7njffqet613j.apps.googleusercontent.com',
-        
     scopes: [
       'email',
-      'https://www.googleapis.com/auth/userinfo.profile',
     ],
   );
 
   Future<String?> getFirebaseIdToken() async {
     try {
-      _logger.i("Starting Google Sign-In process...");
       final googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        _logger.w("Google Sign-In: User cancelled the flow.");
+      if (googleUser == null) return null;
+
+      final googleAuth = await googleUser.authentication;
+
+      print("Access Token موجود؟ ${googleAuth.accessToken != null}");
+      print("ID Token موجود؟ ${googleAuth.idToken != null}");
+      print("User Email: ${googleUser.email}");
+
+      // لازم يكون فيه ID Token
+      if (googleAuth.idToken == null) {
+        print("❌ ID Token is null → check Firebase/Web Client ID");
         return null;
       }
 
-      _logger.i("Google User signed in: ${googleUser.email}");
-      final googleAuth = await googleUser.authentication;
-      final googleIdToken = googleAuth.idToken;
-      _logger.d(
-        "Retrieved Google Auth credentials. Google ID Token: $googleIdToken",
-      );
-
-      final credential = GoogleAuthProvider.credential(
+      // Create Firebase credential
+      final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      _logger.i("Signing in to Firebase with Google credentials...");
       final userCredential = await _auth.signInWithCredential(credential);
-      _logger.i(
-        "Firebase sign-in successful for: ${userCredential.user?.email}",
-      );
 
-      // final firebaseToken = await userCredential.user?.getIdToken();
-      // _logger.d("Firebase ID Token: $firebaseToken");
+      final firebaseToken = await userCredential.user?.getIdToken();
 
-      // For debugging, we'll return the Google ID Token first if it's available
-      // because many backends expect the Google token directly.
-      // If the backend strictly needs Firebase, we'll revert.
-      return googleIdToken ;
-    } catch (e, stackTrace) {
-      _logger.e("Google Auth Error: $e", error: e, stackTrace: stackTrace);
+      return firebaseToken;
+    } catch (e) {
+      print("Google Auth Error: $e");
       return null;
     }
+  }
+
+  // Optional: Sign out
+  Future<void> signOut() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
   }
 }

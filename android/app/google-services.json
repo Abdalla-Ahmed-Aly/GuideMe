@@ -1,49 +1,41 @@
 {
   "project_info": {
-    "project_number": "104478032373",
-    "project_id": "guideme-3ae5c",
-    "storage_bucket": "guideme-3ae5c.firebasestorage.app"
+    "project_number": "339882358219",
+    "project_id": "guideme-437d1",
+    "storage_bucket": "guideme-437d1.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:104478032373:android:bd519304d4ba6323dd20bc",
+        "mobilesdk_app_id": "1:339882358219:android:80320cf0c55ab51f7f724e",
         "android_client_info": {
           "package_name": "com.example.guide_me"
         }
       },
       "oauth_client": [
         {
-          "client_id": "104478032373-08e1mabe2dacadhpk3nmihhavdf1m731.apps.googleusercontent.com",
+          "client_id": "339882358219-r2hp95m04gvja2ukrv0l7ui0mg37c6ok.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.guide_me",
-            "certificate_hash": "d1745ea17f30dbcf028fd6e25fcef0a01aa4f606"
+            "certificate_hash": "c12b8fc64d38453c1196d77fdebbae26428e4a96"
           }
         },
         {
-          "client_id": "104478032373-kug7urf8jmr2urr7svv26f8de5jo5oec.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.guide_me",
-            "certificate_hash": "b9dad827b2dddce278937b1fe9b030c7c1e03c6a"
-          }
-        },
-        {
-          "client_id": "104478032373-79ppbq9pr3cf0pgm87vi7njffqet613j.apps.googleusercontent.com",
+          "client_id": "339882358219-jesp74gb1djqeuge5lcpagje11gkuu3f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAdAaign21UL79EDwITwOgqSMaSjJEUDj8"
+          "current_key": "AIzaSyBfpDtBFCgdaTJF0rdWKaTDpJ_1fypjZ3g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "104478032373-79ppbq9pr3cf0pgm87vi7njffqet613j.apps.googleusercontent.com",
+              "client_id": "339882358219-jesp74gb1djqeuge5lcpagje11gkuu3f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -114,6 +114,8 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.loginWithGoogle(token);
       _logger.i("Repository: Successfully logged in with Google via backend.");
       return Right(result);
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
     } catch (e, stackTrace) {
       _logger.e(
         "Repository: Error during backend Google login: $e",
