@@ -23,6 +23,19 @@ class BookPackageData {
     );
   }
 
+  String get formatDateTime {
+    if (date == null || time == null) return "";
+    final dt = DateTime(
+      date!.year,
+      date!.month,
+      date!.day,
+      time!.hour,
+      time!.minute,
+    );
+
+    return dt.toIso8601String().split('.').first;
+  }
+
   bool get dateIsValid =>
       date != null &&
       date!.isAfter(DateTime.now().subtract(const Duration(days: 1)));
@@ -70,11 +83,14 @@ final class BookPackageLoading extends BookPackageState {
 }
 
 final class BookPackageSuccess extends BookPackageState {
-  BookPackageSuccess(super.data);
+  BookPackageSuccess(super.data, {required this.bookPackageResponseModel});
+  final BookPackageResponseModel bookPackageResponseModel;
 
   @override
-  BookPackageState copyWith({BookPackageData? data}) =>
-      BookPackageSuccess(data ?? this.data);
+  BookPackageState copyWith({BookPackageData? data}) => BookPackageSuccess(
+    data ?? this.data,
+    bookPackageResponseModel: bookPackageResponseModel,
+  );
 }
 
 final class BookPackageFailure extends BookPackageState {

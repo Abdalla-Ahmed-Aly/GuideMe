@@ -4,7 +4,9 @@ import 'package:guide_me/core/models/city_model.dart';
 import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_model.dart';
+import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_packge_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 import 'package:injectable/injectable.dart';
@@ -84,5 +86,16 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
     return (response.data["data"] as List<dynamic>)
         .map((e) => BookingPackgeModel.fromJson(e as Map<String, dynamic>))
         .toList();
+  }
+
+  @override
+  Future<BookPackageResponseModel> bookPackage({
+    required BookingPackageRequestModel bookingPackageRequestModel,
+  }) async {
+    final response = await _apiService.post(
+      endpoint: ApiConstants.bookPackageEndpoint,
+      data: bookingPackageRequestModel.toJson(),
+    );
+    return BookPackageResponseModel.fromJson(response.data["data"]);
   }
 }

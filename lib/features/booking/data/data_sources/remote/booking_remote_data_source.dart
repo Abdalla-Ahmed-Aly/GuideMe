@@ -1,6 +1,8 @@
 import 'package:guide_me/core/models/city_model.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_model.dart';
+import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_packge_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 
@@ -18,5 +20,9 @@ abstract class BookingRemoteDataSource {
   Future<List<BookingPackgeModel>> getSuggestionPackages({
     required String city,
     required double budget,
+  });
+
+  Future<BookPackageResponseModel> bookPackage({
+    required BookingPackageRequestModel bookingPackageRequestModel,
   });
 }

@@ -45,6 +45,8 @@ import 'package:guide_me/features/booking/data/repos/booking_repo_impl.dart'
     as _i850;
 import 'package:guide_me/features/booking/domain/repos/booking_repo.dart'
     as _i672;
+import 'package:guide_me/features/booking/domain/use_cases/book_package_use_case.dart'
+    as _i280;
 import 'package:guide_me/features/booking/domain/use_cases/get_bookings_use_case.dart'
     as _i12;
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart'
@@ -68,7 +70,6 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.factory<_i928.BookPackageCubit>(() => _i928.BookPackageCubit());
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
@@ -126,6 +127,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i24.TouristBookingCubit>(
       () => _i24.TouristBookingCubit(gh<_i12.GetBookingsUseCase>()),
+    );
+    gh.lazySingleton<_i280.BookPackageUseCase>(
+      () => _i280.BookPackageUseCase(gh<_i672.BookingRepo>()),
+    );
+    gh.factory<_i928.BookPackageCubit>(
+      () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),
     );
     return this;
   }

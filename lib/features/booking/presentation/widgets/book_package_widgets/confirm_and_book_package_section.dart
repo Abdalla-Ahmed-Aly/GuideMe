@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
+import 'package:guide_me/features/booking/presentation/args/package_args.dart';
 import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart';
 
 class ConfirmAndBookPackageSection extends StatelessWidget {
@@ -13,6 +16,8 @@ class ConfirmAndBookPackageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final package = GoRouterState.of(context).extra as PackageArgs;
+    final bookingPackageCubit = context.read<BookPackageCubit>();
     return Container(
       padding: EdgeInsets.only(
         left: 16.p,
@@ -33,14 +38,27 @@ class ConfirmAndBookPackageSection extends StatelessWidget {
             context.showErrorSnakbar(
               message: errorMessage ?? context.l10n.errorUnknown,
             );
-            context.read<BookPackageCubit>().resetValidation();
+            bookingPackageCubit.resetValidation();
+          } else if (state is BookPackageSuccess) {
+            context.showSuccessSnakbar(
+              message: "Package booked successfully",
+            );
+            bookingPackageCubit.resetValidation();
           }
         },
         builder: (context, state) {
           return AppButton(
+            isLoading: state is BookPackageLoading,
             onPressed: () {
-              if (context.read<BookPackageCubit>().validate(context)) {
-                // context.read<BookPackageCubit>().bookPackage();
+              if (bookingPackageCubit.validate(context)) {
+                bookingPackageCubit.bookPackage(
+                  bookingPackageRequestModel: BookingPackageRequestModel(
+                    places: package.package.places.map((p) => p.id).toList(),
+                    date: state.data.formatDateTime,
+                    persons: package.numberOfPersons,
+                    pickupLocation: state.data.location!,
+                  ),
+                );
               }
             },
             text: context.l10n.confirmAndBookNow,

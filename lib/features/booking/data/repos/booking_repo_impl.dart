@@ -7,6 +7,8 @@ import 'package:guide_me/features/booking/data/data_sources/remote/booking_remot
 import 'package:guide_me/features/booking/data/mappers/booking_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_package_mapper.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
+import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_package_entity.dart';
@@ -86,6 +88,20 @@ class BookingRepoImpl implements BookingRepo {
       return right(
         response.map((e) => BookingPackageMapper.toEntity(e)).toList(),
       );
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, BookPackageResponseModel>> bookPackage({
+    required BookingPackageRequestModel bookingPackageRequestModel,
+  }) async {
+    try {
+      final response = await _remoteDataSource.bookPackage(
+        bookingPackageRequestModel: bookingPackageRequestModel,
+      );
+      return right(response);
     } catch (e) {
       return left(ErrorHandler.handle(e));
     }
