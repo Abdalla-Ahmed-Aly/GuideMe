@@ -4,10 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
+import 'package:guide_me/features/booking/presentation/args/book_package_args.dart';
 import 'package:guide_me/features/booking/presentation/args/package_args.dart';
 import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart';
 
@@ -41,9 +43,19 @@ class ConfirmAndBookPackageSection extends StatelessWidget {
             bookingPackageCubit.resetValidation();
           } else if (state is BookPackageSuccess) {
             context.showSuccessSnakbar(
-              message: "Package booked successfully",
+              message: context.l10n.packageBookedSuccessfully,
             );
             bookingPackageCubit.resetValidation();
+
+            final args = BookPackageArgs(
+              bookPackageResponseModel: state.bookPackageResponseModel,
+              packageArgs: package,
+            );
+
+            context.go(
+              AppRoutes.packageBookingSuccessScreen,
+              extra: args,
+            );
           }
         },
         builder: (context, state) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class AppOutlinedButton extends StatelessWidget {
   const AppOutlinedButton({
@@ -12,13 +12,13 @@ class AppOutlinedButton extends StatelessWidget {
     this.textColor,
     this.textStyle,
     this.width,
-    this.raduis,
+    this.radius,
   });
   final void Function()? onPressed;
   final String text;
   final double? height;
   final double? width;
-  final double? raduis;
+  final double? radius;
   final Color? borderColor;
   final Color? textColor;
   final TextStyle? textStyle;
@@ -28,19 +28,21 @@ class AppOutlinedButton extends StatelessWidget {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         minimumSize: Size(width ?? context.screenWidth, height ?? 48),
-        side: BorderSide(color: const Color(0xffFF0000).withValues(alpha: .5)),
+        side: BorderSide(
+          color: borderColor ?? const Color(0xffFF0000).withValues(alpha: .5),
+        ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(raduis ?? 50),
+          borderRadius: BorderRadiusGeometry.circular(radius ?? 50),
         ),
       ),
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(
-          fontSize: 16.fs,
-          color: textColor ?? const Color(0xffF4A60E),
-          fontWeight: FontWeight.w600,
-        ),
+        style:
+            textStyle ??
+            AppTextStyles.poppinsSemiBold16.copyWith(
+              color: textColor ?? const Color(0xffF4A60E),
+            ),
       ),
     );
   }

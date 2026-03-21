@@ -4,7 +4,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/args/package_args.dart';
-import 'package:guide_me/features/booking/presentation/widgets/suggested_packages_widgets/package_images_preview.dart';
+import 'package:guide_me/core/widgets/package_images_preview.dart';
 
 class PackageImagesSection extends StatelessWidget {
   const PackageImagesSection({super.key});

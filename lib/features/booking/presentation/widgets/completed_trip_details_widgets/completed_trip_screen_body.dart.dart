@@ -8,9 +8,9 @@ import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/mobile_layout_strategy.dart';
 import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tablet_layout_strategy.dart';
 import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tour_info_layout_strategy.dart';
-import 'package:guide_me/features/booking/presentation/widgets/completed_trip_deatailes/total_price_section.dart';
-import 'package:guide_me/features/booking/presentation/widgets/completed_trip_deatailes/tour_details_card.dart';
-import 'package:guide_me/features/booking/presentation/widgets/completed_trip_deatailes/completed_trip_header.dart';
+import 'package:guide_me/features/booking/presentation/widgets/completed_trip_details_widgets/total_price_section.dart';
+import 'package:guide_me/features/booking/presentation/widgets/completed_trip_details_widgets/tour_details_card.dart';
+import 'package:guide_me/features/booking/presentation/widgets/completed_trip_details_widgets/completed_trip_header.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/meeting_point_section.dart';
 import 'package:intl/intl.dart';
 

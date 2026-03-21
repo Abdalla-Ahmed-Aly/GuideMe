@@ -1079,4 +1079,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get validation_location_required => 'يرجى اختيار موقع';
+
+  @override
+  String get packageBookedSuccessfully => 'تم حجز الباقة بنجاح';
+
+  @override
+  String get bookingSuccessfully => 'تم الحجز بنجاح🎉';
+
+  @override
+  String get status => 'الحالة';
+
+  @override
+  String get guests => 'الضيوف';
+
+  @override
+  String get forAllPersons => 'لجميع الأشخاص';
+
+  @override
+  String get viewBookingsDetails => 'عرض تفاصيل الحجوزات';
+
+  @override
+  String get backToHome => 'العودة إلى الرئيسية';
 }

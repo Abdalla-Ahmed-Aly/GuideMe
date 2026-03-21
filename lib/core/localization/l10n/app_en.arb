@@ -377,6 +377,13 @@
   "errorLocationServiceDisabled": "Location service is disabled",
   "noLocationSelected": "No location selected",
   "validation_date_past": "Please select a future date",
-"validation_time_past": "Please select a future time",
-"validation_location_required": "Please select a meeting location"
+  "validation_time_past": "Please select a future time",
+  "validation_location_required": "Please select a meeting location",
+  "packageBookedSuccessfully": "Package booked successfully",
+  "bookingSuccessfully": "Booking Successfully🎉",
+  "status": "Status",
+  "guests": "Guests",
+  "forAllPersons": "For All Persons",
+  "viewBookingsDetails": "View Bookings Details",
+  "backToHome": "Back to Home"
 }

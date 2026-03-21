@@ -1080,4 +1080,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validation_location_required => 'Please select a meeting location';
+
+  @override
+  String get packageBookedSuccessfully => 'Package booked successfully';
+
+  @override
+  String get bookingSuccessfully => 'Booking Successfully🎉';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get guests => 'Guests';
+
+  @override
+  String get forAllPersons => 'For All Persons';
+
+  @override
+  String get viewBookingsDetails => 'View Bookings Details';
+
+  @override
+  String get backToHome => 'Back to Home';
 }

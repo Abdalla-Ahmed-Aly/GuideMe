@@ -25,6 +25,7 @@ import 'package:guide_me/features/booking/presentation/screens/accepted_screen.d
 import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/completed_trip_details.dart';
+import 'package:guide_me/features/booking/presentation/screens/package_booking_success_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_place_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/panding_approval_screen.dart';
@@ -301,6 +302,10 @@ abstract class AppRouter {
           create: (context) => getIt<PickLocationCubit>(),
           child: const PickLocationScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.packageBookingSuccessScreen,
+        builder: (context, state) => const PackageBookingSuccessScreen(),
       ),
     ],
   );

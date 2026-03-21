@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/Pending_approval_badge.dart';
+import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/custom_text_badge.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/booking_request_card.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/close_button.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/pending_screen_buttons.dart';

@@ -92,7 +92,7 @@ class ConfirmPackageSection extends StatelessWidget {
               ),
 
               Text(
-                "\$${package.totalPrice}",
+                "\$${(package.totalPrice * numberOfPersons)}",
                 style: AppTextStyles.poppinsBold20.copyWith(
                   color: AppColors.primary2,
                 ),

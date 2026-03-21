@@ -3,44 +3,44 @@ import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 
 class WelcomeAvatar extends StatelessWidget {
-  const WelcomeAvatar({super.key, required this.iconButton});
-  final void Function() iconButton;
+  const WelcomeAvatar({super.key, required this.onTap});
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.5),
-      ),
-      child: Stack(
-        children: [
-          // Close Button
-          Positioned(
-            top: 50.h,
-            right: 20.w,
-            child: IconButton(
-              onPressed: iconButton,
-              icon: Icon(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.5),
+        ),
+        child: Stack(
+          children: [
+            // Close Button
+            Positioned(
+              top: 50.h,
+              right: 28.w,
+              child: Icon(
                 Icons.close,
                 size: 28.ic,
                 color: Colors.black,
               ),
             ),
-          ),
 
-          // Avatar
-          Positioned(
-            bottom: 50.h,
-            child: Image.asset(
-              AppImages.welcomeAvatar,
-              width: size.width,
-              height: size.height * 0.8,
+            // Avatar
+            Positioned(
+              bottom: 50.h,
+              child: Image.asset(
+                AppImages.welcomeAvatar,
+                width: size.width,
+                height: size.height * 0.8,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

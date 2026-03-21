@@ -379,5 +379,12 @@
   "noLocationSelected": "لم يتم اختيار موقع",
   "validation_date_past": "يرجى اختيار تاريخ مستقبلي",
   "validation_time_past": "يرجى اختيار وقت مستقبلي",
-  "validation_location_required": "يرجى اختيار موقع"
+  "validation_location_required": "يرجى اختيار موقع",
+  "packageBookedSuccessfully": "تم حجز الباقة بنجاح",
+  "bookingSuccessfully": "تم الحجز بنجاح🎉",
+  "status": "الحالة",
+  "guests": "الضيوف",
+  "forAllPersons": "لجميع الأشخاص",
+  "viewBookingsDetails": "عرض تفاصيل الحجوزات",
+  "backToHome": "العودة إلى الرئيسية"
 }

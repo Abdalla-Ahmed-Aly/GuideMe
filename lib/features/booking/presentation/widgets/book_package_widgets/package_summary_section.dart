@@ -66,7 +66,7 @@ class PackageSummarySection extends StatelessWidget {
               ),
 
               Text(
-                "\$${package.package.totalPrice}",
+                "\$${(package.package.totalPrice * package.numberOfPersons)}",
                 style: AppTextStyles.poppinsBold24.copyWith(
                   color: AppColors.primary2,
                 ),

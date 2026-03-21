@@ -2185,6 +2185,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select a meeting location'**
   String get validation_location_required;
+
+  /// No description provided for @packageBookedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Package booked successfully'**
+  String get packageBookedSuccessfully;
+
+  /// No description provided for @bookingSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Successfully🎉'**
+  String get bookingSuccessfully;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @guests.
+  ///
+  /// In en, this message translates to:
+  /// **'Guests'**
+  String get guests;
+
+  /// No description provided for @forAllPersons.
+  ///
+  /// In en, this message translates to:
+  /// **'For All Persons'**
+  String get forAllPersons;
+
+  /// No description provided for @viewBookingsDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Bookings Details'**
+  String get viewBookingsDetails;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
 }
 
 class _AppLocalizationsDelegate

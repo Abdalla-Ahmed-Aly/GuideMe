@@ -21,9 +21,7 @@ class TouristNavigationBarScreen extends StatefulWidget {
 
 class _TouristNavigationBarScreenState
     extends State<TouristNavigationBarScreen> {
-  bool showWelcomeAvatar = true;
-
-  final PageController _pageController = PageController();
+  late PageController _pageController;
 
   final List<Widget> pages = [
     const HomeScreen(),
@@ -38,6 +36,14 @@ class _TouristNavigationBarScreenState
   ];
 
   @override
+  void initState() {
+    _pageController = PageController(
+      initialPage: context.read<TouristNavBarCubit>().state,
+    );
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -49,7 +55,6 @@ class _TouristNavigationBarScreenState
 
   @override
   Widget build(BuildContext context) {
-    print(context.read<TouristNavBarCubit>().state);
     final size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
@@ -108,12 +113,10 @@ class _TouristNavigationBarScreenState
         ),
 
         // Welcome Avatar
-        if (showWelcomeAvatar)
+        if (context.watch<TouristNavBarCubit>().showWelcomeAvatar)
           WelcomeAvatar(
-            iconButton: () {
-              setState(() {
-                showWelcomeAvatar = false;
-              });
+            onTap: () {
+              context.read<TouristNavBarCubit>().hideWelcomeAvatar();
             },
           ),
       ],

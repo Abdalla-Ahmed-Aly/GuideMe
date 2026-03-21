@@ -5,7 +5,7 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/Accepted_screen_widgets/guider_profile_section.dart';
 import 'package:guide_me/features/booking/presentation/widgets/custom_trip_details_tile.dart';
-import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/Pending_approval_badge.dart';
+import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/custom_text_badge.dart';
 import 'package:guide_me/features/booking/presentation/widgets/panding_approval_widgets/estimated_earnings_section.dart';
 import 'package:intl/intl.dart';
 
