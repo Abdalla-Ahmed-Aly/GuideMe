@@ -102,7 +102,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.loginWithGoogle(token);
       return Right(result);
     } catch (e) {
-      return left(ErrorHandler.handle(e));
+      return Left(ErrorHandler.handle(e));
     }
   }
 }
