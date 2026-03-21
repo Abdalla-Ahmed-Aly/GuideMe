@@ -1100,4 +1100,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backToHome => 'العودة إلى الرئيسية';
+
+  @override
+  String get invalidDate => 'التاريخ غير مناسب';
+
+  @override
+  String get invalidTime => 'الوقت غير مناسب';
 }

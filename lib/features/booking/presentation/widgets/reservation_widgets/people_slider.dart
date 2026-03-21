@@ -10,18 +10,14 @@ class PeopleSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget startThumbIcon = Container(
-      height: 31,
-      width: 31,
+      height: 28,
+      width: 28,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: AppColors.natural2, width: 3),
-      ),
-      child: Container(
-        height: 28,
-        width: 28,
-        decoration: const BoxDecoration(
-          color: AppColors.yellow,
-          shape: BoxShape.circle,
+        color: AppColors.yellow,
+        border: Border.all(
+          color: AppColors.natural2,
+          width: 3,
         ),
       ),
     );
@@ -29,8 +25,10 @@ class PeopleSlider extends StatelessWidget {
       builder: (context, state) {
         return SfSlider(
           value: state.persons.toDouble(),
-          min: 0,
-          max: 20,
+          min: 1,
+          max: 10,
+          showTicks: true,
+          showLabels: true,
           activeColor: AppColors.yellow,
           inactiveColor: AppColors.natural2,
           thumbIcon: startThumbIcon,

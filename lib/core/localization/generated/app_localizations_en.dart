@@ -1101,4 +1101,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backToHome => 'Back to Home';
+
+  @override
+  String get invalidDate => 'Invalid Date';
+
+  @override
+  String get invalidTime => 'Invalid Time';
 }

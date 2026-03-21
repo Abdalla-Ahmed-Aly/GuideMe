@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DateTimePickCard extends StatelessWidget {
@@ -71,12 +70,10 @@ class DateTimePickCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                  minDate: DateTime.now(),
                   onSelectionChanged:
                       (DateRangePickerSelectionChangedArgs args) {
-                        final selectedDate = DateFormat(
-                          "yyyy-MM-dd",
-                        ).format(args.value);
-                        cubit.setDate(selectedDate);
+                        cubit.setDate(args.value);
                       },
                 ),
 
@@ -85,7 +82,7 @@ class DateTimePickCard extends StatelessWidget {
                   onTap: () async {
                     final time = await showTimePicker(
                       context: context,
-                      initialTime: cubit.state.time,
+                      initialTime: const TimeOfDay(hour: 0, minute: 0),
                     );
                     if (time != null) {
                       cubit.setTime(time);
@@ -114,7 +111,8 @@ class DateTimePickCard extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            cubit.state.time.hour.toString().padLeft(2, '0'),
+                            cubit.state.time?.hour.toString().padLeft(2, '0') ??
+                                '00',
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -150,7 +148,11 @@ class DateTimePickCard extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            cubit.state.time.minute.toString().padLeft(2, '0'),
+                            cubit.state.time?.minute.toString().padLeft(
+                                  2,
+                                  '0',
+                                ) ??
+                                '00',
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

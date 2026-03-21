@@ -14,24 +14,31 @@ class ReservationCubit extends Cubit<ReservationState> {
   }
 
   void setPlaceId(String placeId) => safeEmit(state.copyWith(placeId: placeId));
-
-  void setDate(String date) => safeEmit(state.copyWith(date: date));
-
+  void setDate(DateTime date) => safeEmit(state.copyWith(date: date));
   void setTime(TimeOfDay time) => safeEmit(state.copyWith(time: time));
-
   void setPickupLocation(String pickupLocation) =>
       safeEmit(state.copyWith(pickupLocation: pickupLocation));
-
   void setNotes(String notes) => safeEmit(state.copyWith(notes: notes));
-
   void setPersons(int persons) => safeEmit(state.copyWith(persons: persons));
 
   bool isValidated(BuildContext context) {
-    if (state.date.isEmpty) {
+    if (state.date == null) {
       emit(state.copyWith(error: context.l10n.validationSelectDate));
       return false;
     }
-    if (state.pickupLocation.isEmpty) {
+    if (!state.dateIsValid) {
+      emit(state.copyWith(error: context.l10n.invalidDate));
+      return false;
+    }
+    if (state.time == null) {
+      emit(state.copyWith(error: context.l10n.validationSelectTime));
+      return false;
+    }
+    if (!state.timeIsValid) {
+      emit(state.copyWith(error: context.l10n.invalidTime));
+      return false;
+    }
+    if (state.pickupLocation == null || state.pickupLocation!.isEmpty) {
       emit(state.copyWith(error: context.l10n.validationEnterPickupLocation));
       return false;
     }
@@ -41,10 +48,6 @@ class ReservationCubit extends Cubit<ReservationState> {
     }
     if (state.persons == 0) {
       emit(state.copyWith(error: context.l10n.validationSelectPersons));
-      return false;
-    }
-    if (state.time.hour == 0 && state.time.minute == 0) {
-      emit(state.copyWith(error: context.l10n.validationSelectTime));
       return false;
     }
     return true;

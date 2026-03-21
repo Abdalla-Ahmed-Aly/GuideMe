@@ -35,7 +35,7 @@ class NotesTextField extends StatelessWidget {
               children: [
                 Icon(
                   Icons.edit_note_outlined,
-                  color: AppColors.natural4,
+                  color: AppColors.primary2,
                 ),
               ],
             ),
@@ -43,21 +43,21 @@ class NotesTextField extends StatelessWidget {
             hintStyle: AppTextStyles.interBold14.copyWith(
               color: const Color(0xff6D6868),
             ),
-            fillColor: const Color(0xff898888).withValues(alpha: 0.5),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
+            // fillColor: const Color(0xff898888).withValues(alpha: 0.5),
+            enabledBorder: _buildOutlineInputBorder(),
+            focusedBorder: _buildOutlineInputBorder(),
+            border: _buildOutlineInputBorder(),
           ),
         ),
+      ),
+    );
+  }
+
+  OutlineInputBorder _buildOutlineInputBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(
+        color: AppColors.natural2.withValues(alpha: 0.6),
       ),
     );
   }

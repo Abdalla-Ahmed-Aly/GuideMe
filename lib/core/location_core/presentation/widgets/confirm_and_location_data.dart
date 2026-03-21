@@ -31,7 +31,7 @@ class ConfirmAndLocationData extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16),
                   child: AppButton(
                     onPressed: () {
-                      context.pop(state.location.name ??"");
+                      context.pop(state.location.name);
                     },
                     text: context.l10n.confirmLocation,
                     height: 46,

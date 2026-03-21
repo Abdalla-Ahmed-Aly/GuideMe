@@ -386,5 +386,7 @@
   "guests": "الضيوف",
   "forAllPersons": "لجميع الأشخاص",
   "viewBookingsDetails": "عرض تفاصيل الحجوزات",
-  "backToHome": "العودة إلى الرئيسية"
+  "backToHome": "العودة إلى الرئيسية",
+  "invalidDate": "التاريخ غير مناسب",
+  "invalidTime": "الوقت غير مناسب"
 }
