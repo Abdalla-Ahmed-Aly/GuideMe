@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_request_model.dart';
@@ -21,15 +22,23 @@ import 'package:logger/logger.dart';
 @LazySingleton(as: AuthRepo)
 class AuthRepoImple extends AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
+  final TokenService tokenService;
   final Logger _logger = Logger();
 
-  AuthRepoImple(this.authRemoteDataSource);
+  AuthRepoImple(this.authRemoteDataSource, this.tokenService);
   @override
   Future<Either<Failure, LoginresponseModel>> login(
     LoginRequestModel request,
   ) async {
     try {
       final result = await authRemoteDataSource.login(request);
+      
+            final token = result.token;
+      if (token != null && token.isNotEmpty) {
+        await tokenService.saveToken(token);
+      } else {
+        _logger.w("Token is null, cannot save!");
+      }
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
