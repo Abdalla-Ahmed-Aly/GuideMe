@@ -52,5 +52,7 @@
 		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+<string>This app needs location access to show your position on the map</string>
 	</dict>
 </plist>

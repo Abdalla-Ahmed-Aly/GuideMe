@@ -1,203 +1,84 @@
 import 'package:dartz/dartz.dart';
-import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/core/errors/failure_code.dart';
-import 'package:guide_me/core/mapper/mapper.dart';
+import 'package:guide_me/features/home/data/mappers/home_mapper.dart';
+import 'package:guide_me/features/home/data/mappers/package_mapper.dart';
+import 'package:guide_me/features/home/data/mappers/place_by_category_mapper.dart';
+import 'package:guide_me/features/home/data/mappers/place_by_city_mapper.dart';
 import 'package:guide_me/features/home/data/model/get_catogry_copy.dart';
 import 'package:guide_me/features/home/data/sources/home_sources.dart';
+import 'package:guide_me/features/home/domain/entity/home_entity.dart';
 import 'package:guide_me/features/home/domain/entity/package_entity.dart';
+import 'package:guide_me/features/home/domain/entity/place_by_category_entity.dart';
+import 'package:guide_me/features/home/domain/entity/place_by_cities_entity.dart';
 import 'package:guide_me/features/home/domain/repo/home_repo.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 @LazySingleton(as: HomeRepo)
 class HomeRepoImpl extends HomeRepo {
   final HomeService homeService;
 
-  final Logger _logger = Logger(
-    printer: PrettyPrinter(methodCount: 0, colors: true, printEmojis: true),
-  );
-
   HomeRepoImpl(this.homeService);
 
   @override
-  Future<Either> getHomeData() async {
+  Future<Either<Failure, HomeEntity>> getHomeData() async {
     try {
-      _logger.i('HomeRepoImpl: Requesting home data from service');
-      var returnedData = await getIt<HomeService>().getHomeData();
+      final returnedData = await homeService.getHomeData();
 
-      return returnedData.fold(
-        (error) {
-          _logger.e('HomeRepoImpl: Service error: $error');
-          return Left(
-            AppFailure(failureCode: FailureCode.server, message: error),
-          );
-        },
-        (data) {
-          try {
-            _logger.d('HomeRepoImpl: Mapping HomeModel to HomeEntity');
-            final homeEntity = Mapper.mapHomeModelToHomeEntity(data);
-            _logger.i('HomeRepoImpl: Successfully mapped HomeEntity');
-            return Right(homeEntity);
-          } catch (e) {
-            _logger.e('HomeRepoImpl: Mapping error: $e');
-            return Left(
-              AppFailure(
-                failureCode: FailureCode.unknown,
-                message: e.toString(),
-              ),
-            );
-          }
-        },
-      );
+      return Right(HomeMapper.toEntity(returnedData));
     } catch (e) {
-      _logger.e('HomeRepoImpl: Unexpected error: $e');
-      return Left(
-        AppFailure(failureCode: FailureCode.unknown, message: e.toString()),
-      );
+      return Left(ErrorHandler.handle(e));
     }
   }
 
   @override
-  Future<Either> getPlacesByCategory({
+  Future<Either<Failure, PlaceByCategoryEntity>> getPlacesByCategory({
     required String categoryId,
     required String filter,
   }) async {
     try {
-      _logger.i('HomeRepoImpl: Requesting places for category $categoryId');
-      var returnedData = await getIt<HomeService>().getPlacesByCategory(
+      final returnedData = await homeService.getPlacesByCategory(
         categoryId: categoryId,
         filter: filter,
       );
 
-      return returnedData.fold(
-        (error) {
-          _logger.e('HomeRepoImpl: Service error: $error');
-          return Left(
-            AppFailure(failureCode: FailureCode.server, message: error),
-          );
-        },
-        (data) {
-          try {
-            _logger.d(
-              'HomeRepoImpl: Mapping PlaceByCategoryModel to PlaceByCategoryEntity',
-            );
-            final placeByCategoryEntity =
-                Mapper.mapPlaceByCategoryModelToEntity(data);
-            _logger.i(
-              'HomeRepoImpl: Successfully mapped PlaceByCategoryEntity',
-            );
-            return Right(placeByCategoryEntity);
-          } catch (e) {
-            _logger.e('HomeRepoImpl: Mapping error: $e');
-            return Left(
-              AppFailure(
-                failureCode: FailureCode.unknown,
-                message: e.toString(),
-              ),
-            );
-          }
-        },
+      final placeByCategoryEntity = PlaceByCategoryMapper.toEntity(
+        returnedData,
       );
+      return Right(placeByCategoryEntity);
     } catch (e) {
-      _logger.e('HomeRepoImpl: Unexpected error: $e');
-      return Left(
-        AppFailure(failureCode: FailureCode.unknown, message: e.toString()),
-      );
+      return Left(ErrorHandler.handle(e));
     }
   }
 
   @override
-  Future<Either> getPlacesByCity({
+  Future<Either<Failure, PlaceByCitiesEntity>> getPlacesByCity({
     required String cityId,
     required String filter,
   }) async {
     try {
-      _logger.i('HomeRepoImpl: Requesting places for city $cityId');
-      var returnedData = await getIt<HomeService>().getPlacesByCity(
+      final returnedData = await homeService.getPlacesByCity(
         cityId: cityId,
         filter: filter,
       );
 
-      return returnedData.fold(
-        (error) {
-          _logger.e('HomeRepoImpl: Service error: $error');
-          return Left(
-            AppFailure(failureCode: FailureCode.server, message: error),
-          );
-        },
-        (data) {
-          try {
-            _logger.d(
-              'HomeRepoImpl: Mapping PlaceByCitiesModel to PlaceByCitiesEntity',
-            );
-            final placeByCitiesEntity = Mapper.mapPlaceByCitiesModelToEntity(
-              data,
-            );
-            _logger.i(
-              'HomeRepoImpl: Successfully mapped PlaceByCitiesEntity',
-            );
-            return Right(placeByCitiesEntity);
-          } catch (e) {
-            _logger.e('HomeRepoImpl: Mapping error: $e');
-            return Left(
-              AppFailure(
-                failureCode: FailureCode.unknown,
-                message: e.toString(),
-              ),
-            );
-          }
-        },
-      );
+      final placeByCitiesEntity = PlaceByCityMapper.toEntity(returnedData);
+
+      return Right(placeByCitiesEntity);
     } catch (e) {
-      _logger.e('HomeRepoImpl: Unexpected error: $e');
-      return Left(
-        AppFailure(failureCode: FailureCode.unknown, message: e.toString()),
-      );
+      return Left(ErrorHandler.handle(e));
     }
   }
 
   @override
-  Future<Either<AppFailure, List<PackageEntity>>>
+  Future<Either<Failure, List<PackageEntity>>>
   getAiPackagesSuggestions() async {
     try {
-      _logger.i(
-        'HomeRepoImpl: Requesting ai packages suggestions data from service',
-      );
-      var returnedData = await getIt<HomeService>().getAiPackagesSuggestions();
+      final returnedData = await homeService.getAiPackagesSuggestions();
 
-      return returnedData.fold(
-        (error) {
-          _logger.e('HomeRepoImpl: Service error: $error');
-          return Left(
-            AppFailure(failureCode: FailureCode.server, message: error),
-          );
-        },
-        (data) {
-          try {
-            _logger.d('HomeRepoImpl: Mapping PackageModels to PackageEntities');
-            final packageEntities = data
-                .map((e) => Mapper.mapPackageModelToEntity(e))
-                .toList();
-            _logger.i('HomeRepoImpl: Successfully mapped PackageEntities');
-            return Right(packageEntities);
-          } catch (e) {
-            _logger.e('HomeRepoImpl: Mapping error: $e');
-            return Left(
-              AppFailure(
-                failureCode: FailureCode.unknown,
-                message: e.toString(),
-              ),
-            );
-          }
-        },
-      );
+      return Right(returnedData.map((e) => PackageMapper.toEntity(e)).toList());
     } catch (e) {
-      _logger.e('HomeRepoImpl: Unexpected error: $e');
-      return Left(
-        AppFailure(failureCode: FailureCode.unknown, message: e.toString()),
-      );
+      return Left(ErrorHandler.handle(e));
     }
   }
 

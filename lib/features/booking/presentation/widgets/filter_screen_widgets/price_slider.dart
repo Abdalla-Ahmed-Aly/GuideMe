@@ -1,103 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
+import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class PriceSlider extends StatefulWidget {
+class PriceSlider extends StatelessWidget {
   const PriceSlider({super.key});
 
   @override
-  State<PriceSlider> createState() => _PriceSliderState();
-}
-
-class _PriceSliderState extends State<PriceSlider> {
-  SfRangeValues _values = const SfRangeValues(200, 800);
-  @override
   Widget build(BuildContext context) {
-    //startThumbIcon
-    final Widget startThumbIcon = Container(
-      width: 55.w,
-      height: 31.h,
-      alignment: Alignment.center,
+    final Widget thumb = Container(
+      width: 20.w,
+      height: 20.h,
       decoration: BoxDecoration(
         color: AppColors.white,
         shape: BoxShape.circle,
-        border: Border.all(color: AppColors.natural7, width: 3),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1), // ظل خفيف
-            blurRadius: 4,
-            spreadRadius: 1,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Container(
-        width: 25,
-        height: 25,
-
-        decoration: const BoxDecoration(
-          color: AppColors.yellow,
-          shape: BoxShape.circle,
-        ),
-        child: const Icon(
-          Icons.chevron_left,
-          size: 15,
-          color: AppColors.white,
-        ),
+        border: Border.all(color: AppColors.primary2, width: 2),
       ),
     );
 
-    //endThumbIcon
-    final Widget endThumbIcon = Container(
-      height: 31.w,
-      width: 55.h,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1), // ظل خفيف
-            blurRadius: 4,
-            spreadRadius: 1,
-            offset: const Offset(0, 2),
-          ),
-        ],
-        border: Border.all(color: AppColors.natural7, width: 3),
-      ),
-      child: Container(
-        width: 25,
-        height: 25,
-        decoration: const BoxDecoration(
-          color: AppColors.yellow,
-          shape: BoxShape.circle,
-        ),
-        child: const Icon(
-          Icons.chevron_right,
-          size: 15,
-          color: AppColors.white,
-        ),
-      ),
-    );
-
-    return SfRangeSlider(
-      values: _values,
-      interval: 200,
-      activeColor: AppColors.yellow,
-      inactiveColor: AppColors.natural2,
-      min: 0,
-      max: 1000,
-      startThumbIcon: startThumbIcon,
-      endThumbIcon: endThumbIcon,
-      enableTooltip: true,
-      tooltipTextFormatterCallback:
-          (dynamic actualValue, String formattedText) {
-            return '\$ ${actualValue.round()}'; //
+    return BlocBuilder<FilterCubit, FilterState>(
+      builder: (context, state) {
+        final priceRange = state.filters.priceRange;
+        return SfRangeSlider(
+          values: SfRangeValues(priceRange.start, priceRange.end),
+          interval: 200,
+          activeColor: AppColors.yellow,
+          inactiveColor: const Color(0xffE2E8F0),
+          min: 0,
+          max: 1000,
+          startThumbIcon: thumb,
+          endThumbIcon: thumb,
+          onChanged: (SfRangeValues value) {
+            context.read<FilterCubit>().setPriceRange(
+              RangeValues(value.start, value.end),
+            );
           },
-      onChanged: (SfRangeValues value) {
-        setState(() {
-          _values = value;
-        });
+        );
       },
     );
   }

@@ -5,8 +5,8 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/user_profile_tile.dart';
-import 'package:guide_me/core/widgets/schedule_list.dart';
 import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/trips_list_view.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/guide_schedule_list.dart';
 
 import '../widgets/guide_booking_status_filter.dart';
 
@@ -48,7 +48,7 @@ class GuideBookingScreen extends StatelessWidget {
                 ? context.screenHeight * .087
                 : context.screenWidth * .087,
             // height: 80.h,
-            child: const ScheduleList(),
+            child: const GuideScheduleList(),
           ),
 
           const SizedBox(height: 20),
@@ -58,7 +58,9 @@ class GuideBookingScreen extends StatelessWidget {
           const SizedBox(height: 8),
 
           const Expanded(
-            child: TripsListView(),
+            child: TripsListView(
+              bookings: [],
+            ),
           ),
         ],
       ),

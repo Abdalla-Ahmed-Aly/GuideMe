@@ -7,14 +7,15 @@ class EstimatedEarningsSection extends StatelessWidget {
   const EstimatedEarningsSection({
     super.key,
     this.color,
+    required this.price,
   });
   final Color? color;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
-      margin: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: color ?? const Color(0xffFFE5BA).withValues(alpha: .20),
         border: Border.all(color: const Color(0xffFFE5BA)),
@@ -36,7 +37,7 @@ class EstimatedEarningsSection extends StatelessWidget {
               const SizedBox(height: 6),
 
               Text(
-                '1,200 EGP',
+                '$price EGP',
                 style: AppTextStyles.poppinsSemiBold20,
               ),
             ],

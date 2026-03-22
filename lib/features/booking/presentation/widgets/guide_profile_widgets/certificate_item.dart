@@ -4,33 +4,40 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/domain/entities/guider_entities/certificate_entity.dart';
 
 class CertificateItem extends StatelessWidget {
   const CertificateItem({
     super.key,
+    required this.certificate,
   });
+
+  final CertificateEntity certificate;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 18),
+      margin: const EdgeInsets.only(bottom: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SvgPicture.asset(
             AppIcons.diploma,
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
+            colorFilter: const ColorFilter.mode(
+              AppColors.primary2,
+              BlendMode.srcIn,
+            ),
           ),
-          const SizedBox(width: 14),
+          const SizedBox(width: 12),
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                context.l10n.certifiedEgyptologist,
-                softWrap: true,
-                style: AppTextStyles.interSemiBold16.copyWith(
+                certificate.name,
+                style: AppTextStyles.interBold16.copyWith(
                   color: AppColors.black,
                 ),
               ),
@@ -38,8 +45,8 @@ class CertificateItem extends StatelessWidget {
               const SizedBox(height: 6),
 
               Text(
-                context.l10n.egyptian,
-                style: AppTextStyles.interSemiBold12.copyWith(
+                certificate.organization,
+                style: AppTextStyles.interMedium14.copyWith(
                   color: const Color(0xffB59A64),
                 ),
               ),
@@ -47,8 +54,8 @@ class CertificateItem extends StatelessWidget {
               const SizedBox(height: 6),
 
               Text(
-                context.l10n.valid,
-                style: AppTextStyles.interSemiBold12.copyWith(
+                "${context.l10n.validUntil}${certificate.expirationDate}",
+                style: AppTextStyles.interMedium14.copyWith(
                   color: AppColors.natural3,
                 ),
               ),

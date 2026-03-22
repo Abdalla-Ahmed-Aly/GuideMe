@@ -1,5 +1,9 @@
 abstract class ApiConstants {
+  // base
   static const String baseUrl = "https://guide-me-back-end.vercel.app";
+  static const api = '/api';
+
+
   static const String loginEndPoint = '/api/auth/login';
   static const String registerEndPoint = '/api/auth/register';
   static const String resendPasswordEndPoint =
@@ -12,11 +16,18 @@ abstract class ApiConstants {
       '/api/auth/forgot-password/verify-otp';
   static const String loginWithGoogleEndPoint = '/api/auth/google-login';
 
-  static const api = '/api';
 
   static const homeEndPoint = "$api/home/get-home-data";
-  static const place_by_category = "$api/home/by-category";
-  static const place_by_city = "$api/home/by-city";
-  static const ai_packages = "$api/home/ai-packages-suggestions";
-  static const getcatogey = '/api/category';
+  static const placeByCategory = "$api/home/by-category";
+  static const placeByCity = "$api/home/by-city";
+  static const aiPackages = "$api/home/ai-packages-suggestions";
+  static const getcatogey = '$api/category';
+
+  static const String addBookingEndpoint = "$api/booking";
+  static const String myScheduleEndpoint = "$addBookingEndpoint/my-schedule";
+  static const String cancelBookingEndpoint = "/cancel";
+  static const String citiesEndpoint = "$addBookingEndpoint/get-cities";
+  static const String suggestionsEndpoint = "$addBookingEndpoint/suggestions";
+  static const String bookPackageEndpoint = "$addBookingEndpoint/book";
+  static const String userProfileEndpoint = "$api/home/profile";
 }

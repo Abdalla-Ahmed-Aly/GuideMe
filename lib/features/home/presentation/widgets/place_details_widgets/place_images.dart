@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/entites/place_entity.dart';
+import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/widgets/images_indicator.dart';
 
 class PlaceImages extends StatefulWidget {

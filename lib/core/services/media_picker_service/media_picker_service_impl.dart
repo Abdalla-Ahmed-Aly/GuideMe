@@ -3,7 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../models/picked_file_model.dart';
+import '../../shared/models/picked_file_model.dart';
 import 'media_picker_service.dart';
 
 @LazySingleton(as: MediaPickerService)

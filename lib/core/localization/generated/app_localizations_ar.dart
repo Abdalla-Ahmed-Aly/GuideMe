@@ -532,7 +532,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dateTIME => 'التاريخ والوقت';
 
   @override
-  String get dURATION => 'المدة';
+  String get durationText => 'المدة';
 
   @override
   String get groupsize => 'حجم المجموعة';
@@ -674,7 +674,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get saveAndContinue => 'حفظ والمتابعة';
 
   @override
-  String get selectTime => 'اختر الوقت';
+  String get selectTime => 'اختر وقت';
 
   @override
   String get pleaseSelectWorkHours => 'من فضلك اختر وقت البداية والنهاية';
@@ -889,4 +889,236 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorUnknown => 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get validationSelectDate => 'يرجى اختيار تاريخ';
+
+  @override
+  String get validationSelectTime => 'يرجى اختيار وقت';
+
+  @override
+  String get validationEnterPickupLocation => 'يرجى إدخال موقع';
+
+  @override
+  String get validationEnterNotes => 'يرجى إدخال ملاحظات';
+
+  @override
+  String get validationSelectPersons => 'يرجى اختيار عدد الأشخاص';
+
+  @override
+  String get pendingApproval => 'قيد التحقق';
+
+  @override
+  String get myTrip => 'الرحلة: ';
+
+  @override
+  String get bookingCancelledSuccessfully => 'تم إلغاء الحجز بنجاح';
+
+  @override
+  String get time => 'الوقت';
+
+  @override
+  String get groupSize => 'حجم المجموعة';
+
+  @override
+  String people(Object number) {
+    return '$number أشخاص';
+  }
+
+  @override
+  String get notes => 'ملاحظات';
+
+  @override
+  String get accepted => 'مقبول';
+
+  @override
+  String get cancelled => 'ملغي';
+
+  @override
+  String get viewSchedule => 'عرض الجدول الزمني';
+
+  @override
+  String get totalPrice => 'السعر الكلي';
+
+  @override
+  String get minutes => 'دقائق';
+
+  @override
+  String get flexibleEnd => 'نهاية مرنة';
+
+  @override
+  String get historyAndMyths => 'تاريخ وأساطير';
+
+  @override
+  String get privateGroup => 'مجموعة خاصة';
+
+  @override
+  String get priceRange => 'نطاق السعر';
+
+  @override
+  String get selectedRange => 'النطاق المحدد';
+
+  @override
+  String get city => 'المدينة';
+
+  @override
+  String get persons => 'أشخاص';
+
+  @override
+  String get validationCity => 'يرجى اختيار مدينة';
+
+  @override
+  String get suggestedPackages => 'الحزم المقترحة';
+
+  @override
+  String get priceStartingAt => 'السعر يبدأ بـ';
+
+  @override
+  String placesCount(Object count) {
+    return '$count أماكن';
+  }
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get packageDetails => 'تفاصيل الباقة';
+
+  @override
+  String get selectedPlaces => 'الأماكن المختارة';
+
+  @override
+  String get totalEstimatedPrice => 'السعر التقديري الإجمالي';
+
+  @override
+  String get confirmPackage => 'تأكيد الباقة';
+
+  @override
+  String personsCount(Object count) {
+    return '$count أشخاص';
+  }
+
+  @override
+  String get numberOfPlaces => 'عدد الأماكن';
+
+  @override
+  String get person => 'شخص';
+
+  @override
+  String get priceText => 'السعر';
+
+  @override
+  String get aboutThisPlace => 'عن هذا المكان';
+
+  @override
+  String get noDescriptionAvailable => 'لا يوجد وصف متاح';
+
+  @override
+  String get viewOnMaps => 'عرض على الخرائط';
+
+  @override
+  String get confirmAndBookNow => 'تأكيد و حجز الآن';
+
+  @override
+  String get chooseYourMeetingPoint => 'اختر نقطة الالتقاء';
+
+  @override
+  String get select => 'اختر';
+
+  @override
+  String get selected => 'تم الاختيار';
+
+  @override
+  String get schedule => 'جدول';
+
+  @override
+  String get scheduled => 'تم الجدولة';
+
+  @override
+  String get summary => 'ملخص';
+
+  @override
+  String get summaryCapital => 'ملخص';
+
+  @override
+  String get dateCapital => 'التاريخ';
+
+  @override
+  String get timeCapital => 'الوقت';
+
+  @override
+  String get locationCapital => 'الموقع';
+
+  @override
+  String get selectDate => 'اختر تاريخ';
+
+  @override
+  String get errorLocationPermissionDenied => 'تم رفض إذن الموقع';
+
+  @override
+  String get errorLocationPermissionDeniedForever =>
+      'تم رفض إذن الموقع بشكل دائم';
+
+  @override
+  String get selectedLocation => 'الموقع المحدد';
+
+  @override
+  String get confirmLocation => 'تأكيد الموقع';
+
+  @override
+  String get errorLocationServiceDisabled => 'خدمة الموقع معطلة';
+
+  @override
+  String get noLocationSelected => 'لم يتم اختيار موقع';
+
+  @override
+  String get validation_date_past => 'يرجى اختيار تاريخ مستقبلي';
+
+  @override
+  String get validation_time_past => 'يرجى اختيار وقت مستقبلي';
+
+  @override
+  String get validation_location_required => 'يرجى اختيار موقع';
+
+  @override
+  String get packageBookedSuccessfully => 'تم حجز الباقة بنجاح';
+
+  @override
+  String get bookingSuccessfully => 'تم الحجز بنجاح🎉';
+
+  @override
+  String get status => 'الحالة';
+
+  @override
+  String get guests => 'الضيوف';
+
+  @override
+  String get forAllPersons => 'لجميع الأشخاص';
+
+  @override
+  String get viewBookingsDetails => 'عرض تفاصيل الحجوزات';
+
+  @override
+  String get backToHome => 'العودة إلى الرئيسية';
+
+  @override
+  String get invalidDate => 'التاريخ غير مناسب';
+
+  @override
+  String get invalidTime => 'الوقت غير مناسب';
+
+  @override
+  String get licenseIdText => 'رقم الرخصة';
+
+  @override
+  String get validUntil => 'صالح حتى: ';
+
+  @override
+  String get noTripsYet => 'لا توجد رحلات حتى الآن';
+
+  @override
+  String get day => 'يوم';
+
+  @override
+  String get validationSelectPlace => 'يرجى اختيار مكان';
 }

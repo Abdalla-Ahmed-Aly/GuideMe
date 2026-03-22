@@ -1,12 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 @LazySingleton()
 class GoogleAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final Logger _logger = Logger();
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: [

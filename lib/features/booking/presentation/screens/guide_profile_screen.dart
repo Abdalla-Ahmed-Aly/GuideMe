@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/booking/presentation/widgets/custom_appbar.dart';
+import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/arrow_back_button.dart';
+import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/guide_data_cubit.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_data_section.dart';
+import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_profile_shimmer_screen.dart';
 
 class GuideProfileScreen extends StatelessWidget {
   const GuideProfileScreen({super.key});
@@ -11,29 +14,39 @@ class GuideProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            alignment: AlignmentGeometry.center,
-            children: [
-              CustomAppbar(
-                text: context.l10n.guideProfile,
-              ),
-              Align(
-                alignment: AlignmentGeometry.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 35, right: 19),
-                  child: Image.asset(
-                    AppImages.setting,
-                    width: 27.w,
-                  ),
-                ),
-              ),
-            ],
+      appBar: AppBar(
+        toolbarHeight: 63,
+        leading: const Padding(
+          padding: EdgeInsets.all(8),
+          child: ArrowBackButton(),
+        ),
+        leadingWidth: 80,
+        title: Text(
+          context.l10n.guideProfile,
+          style: AppTextStyles.poppinsBold24,
+        ),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Divider(
+            height: 1,
+            thickness: 1,
+            color: Color(0xFFE0E0E0),
           ),
-
-          const Expanded(child: GuideDataSection()),
-        ],
+        ),
+      ),
+      body: BlocBuilder<GuideDataCubit, GuideDataState>(
+        builder: (context, state) {
+          if (state is GuideDataSuccess) {
+            return GuideDataSection(guide: state.guide);
+          } else if (state is GuideDataFailure) {
+            final error = FailureUiMapper.map(
+              context: context,
+              failure: state.failure,
+            );
+            return Center(child: Text(error.message));
+          }
+          return const GuideProfileShimmerScreen();
+        },
       ),
     );
   }

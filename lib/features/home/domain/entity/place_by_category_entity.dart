@@ -1,4 +1,4 @@
-import 'package:guide_me/core/entites/place_entity.dart';
+import 'package:guide_me/core/shared/entities/place_entity.dart';
 
 class PlaceByCategoryEntity {
   final String filterApplied;

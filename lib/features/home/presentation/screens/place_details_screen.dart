@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/entites/place_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
+import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/core/widgets/view_location_on_map.dart';
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/details_header.dart';
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/place_details_section.dart';
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/review_summary.dart';
 
 class PlaceDetailsScreen extends StatelessWidget {
-  final PlaceEntity place;
   const PlaceDetailsScreen({super.key, required this.place});
+  final PlaceEntity place;
 
   @override
   Widget build(BuildContext context) {
@@ -41,18 +41,11 @@ class PlaceDetailsScreen extends StatelessWidget {
           const SizedBox(height: 14),
 
           // Location
-          Container(
-            height: size.height * 0.28,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: AppColors.natural2,
-            ),
-            child: Center(
-              child: Icon(
-                Icons.location_on,
-                size: 70.ic,
-                color: AppColors.primary,
-              ),
+          SizedBox(
+            height: size.height * 0.22,
+            child: ViewLocationOnMap(
+              lat: place.location!.lat,
+              lng: place.location!.lng,
             ),
           ),
 
@@ -62,14 +55,14 @@ class PlaceDetailsScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 44.p),
             child: AppButton(
               onPressed: () {
-                context.push(AppRoutes.bookScreen);
+                context.push(AppRoutes.bookScreen, extra: place);
               },
               text: context.l10n.bookNow,
               textStyle: AppTextStyles.interSemiBold18,
             ),
           ),
 
-          const SizedBox(height: 44),
+          SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
         ],
       ),
     );

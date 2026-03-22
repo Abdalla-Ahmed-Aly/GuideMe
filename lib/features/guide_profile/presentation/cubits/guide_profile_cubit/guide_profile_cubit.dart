@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/constants/spoken_languages_constants.dart';
-import 'package:guide_me/core/models/picked_file_model.dart';
+import 'package:guide_me/core/shared/models/picked_file_model.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service.dart';
 
 part 'guide_profile_state.dart';

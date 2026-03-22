@@ -1,14 +1,16 @@
-import 'package:guide_me/core/models/category_model.dart';
-import 'package:guide_me/core/models/city_model.dart';
-import 'package:guide_me/core/models/places_model.dart';
-import 'package:guide_me/features/home/domain/entity/home_entity.dart';
+import 'package:guide_me/core/shared/models/category_model.dart';
+import 'package:guide_me/core/shared/models/city_model.dart';
+import 'package:guide_me/core/shared/models/place_model.dart';
 
-class HomeModel extends HomeEntity {
+class HomeModel {
+  final List<CategoryModel> categories;
+  final List<PlaceModel> travelBeyondBoundary;
+  final List<CityModel> popularCities;
+
   HomeModel({
-    required List<CatogryModel> super.categories,
-    required PlacesModel super.mostFamousTrip,
-    required List<PlacesModel> super.travelBeyondBoundary,
-    required List<CityModel> super.popularCities,
+    required this.categories,
+    required this.travelBeyondBoundary,
+    required this.popularCities,
   });
 
   factory HomeModel.fromJson(Map<String, dynamic>? json) {
@@ -18,16 +20,13 @@ class HomeModel extends HomeEntity {
     final data = json['data'];
     return HomeModel(
       categories: data['categories'] != null
-          ? List<CatogryModel>.from(
-              data['categories'].map((x) => CatogryModel.fromJson(x)),
+          ? List<CategoryModel>.from(
+              data['categories'].map((x) => CategoryModel.fromJson(x)),
             )
           : [],
-      mostFamousTrip: data['mostFamousTrip'] != null
-          ? PlacesModel.fromJson(data['mostFamousTrip'])
-          : PlacesModel.empty(),
       travelBeyondBoundary: data['travelBeyondBoundary'] != null
-          ? List<PlacesModel>.from(
-              data['travelBeyondBoundary'].map((x) => PlacesModel.fromJson(x)),
+          ? List<PlaceModel>.from(
+              data['travelBeyondBoundary'].map((x) => PlaceModel.fromJson(x)),
             )
           : [],
       popularCities: data['popularCities'] != null

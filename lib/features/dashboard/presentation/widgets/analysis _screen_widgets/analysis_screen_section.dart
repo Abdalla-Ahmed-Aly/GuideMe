@@ -46,7 +46,9 @@ class AnalysisScreenSection extends StatelessWidget {
           ),
           const RecentWidget(),
 
-          const CommentItemListView(),
+          const CommentItemListView(
+            reviews: [],
+          ),
         ],
       ),
     );

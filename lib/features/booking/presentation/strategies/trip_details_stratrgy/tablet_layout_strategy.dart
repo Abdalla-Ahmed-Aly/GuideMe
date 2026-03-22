@@ -10,8 +10,8 @@ class TabletLayoutStrategy implements TourInfoLayoutStrategy {
       itemCount: cards.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
         childAspectRatio: 1.2,
       ),
       itemBuilder: (context, index) {

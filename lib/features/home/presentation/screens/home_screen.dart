@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
@@ -11,6 +9,7 @@ import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_hom
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_state.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/category_list_view.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/cities_list_view.dart';
+import 'package:guide_me/features/home/presentation/widgets/home_widgets/filter_button.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/home_header.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/most_famous_trip_list_view.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/places_list_view.dart';
@@ -42,10 +41,15 @@ class HomeScreen extends StatelessWidget {
             return ListView(
               padding: EdgeInsets.zero,
               children: [
+                // ✅ header
                 const HomeHeader(),
-                const SizedBox(height: 35),
+                const SizedBox(height: 20),
+
+                // ✅ عنوان Category
                 _buildSectionTitle(context, context.l10n.category),
                 const SizedBox(height: 20),
+
+                // ✅ SizedBox بـ height محددة للـ horizontal ListView
                 SizedBox(
                   height: context.isPortrait
                       ? size.height * 0.13
@@ -58,8 +62,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40),
+
                 _buildSectionTitle(context, context.l10n.mostFamousTrip),
                 const SizedBox(height: 16),
+
                 SizedBox(
                   height: context.isPortrait
                       ? size.height * 0.41
@@ -72,8 +78,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
+
                 _buildSectionTitle(context, context.l10n.travelBeyondBoundary),
                 const SizedBox(height: 22),
+
                 SizedBox(
                   height: context.isPortrait
                       ? size.height * 0.37
@@ -86,8 +94,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
+
                 _buildSectionTitle(context, context.l10n.popularCities),
                 const SizedBox(height: 20),
+
                 SizedBox(
                   height: context.isPortrait
                       ? size.height * 0.24
@@ -135,6 +145,26 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             );
+
+            // const SizedBox(height: 16),
+
+            // // categories list
+            // SizedBox(
+            //   height: context.isPortrait ? size.height * 0.12 : size.width * 0.12,
+            //   child: const CategoryListView(),
+            // ),
+
+            // const SizedBox(height: 40),
+
+            // // The most famous trip Text
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20.p),
+            //   child: Text(
+            //     context.l10n.mostFamousTrip,
+            //     style: AppTextStyles.poppinsBold18.copyWith(
+            //       color: AppColors.blue,
+            //     ),
+            //   );
           } else if (state is GetHomeSuccess) {
             final homeData = state.homeData;
             return RefreshIndicator(
@@ -165,17 +195,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
 
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          onTap: () {
-                            context.push(AppRoutes.filterScreen);
-                          },
-                          child: Icon(
-                            Icons.filter_alt,
-                            color: AppColors.primary,
-                            size: 26.ic,
-                          ),
-                        ),
+                        const FilterButton(),
                       ],
                     ),
                   ),

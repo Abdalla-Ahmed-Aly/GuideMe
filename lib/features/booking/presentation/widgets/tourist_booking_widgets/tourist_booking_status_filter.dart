@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/domain/enums/tourist_trip_status.dart';
-import 'package:guide_me/features/booking/presentation/cubits/booking_cubit/booking_cubit.dart';
+import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
+import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart';
 
 class TouristBookingStatusFilter extends StatelessWidget {
   const TouristBookingStatusFilter({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final status = [
+      TouristBookingStatus.pending,
+      TouristBookingStatus.live,
+      TouristBookingStatus.completed,
+    ];
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 6),
       margin: EdgeInsets.symmetric(horizontal: 22.p),
@@ -18,15 +23,15 @@ class TouristBookingStatusFilter extends StatelessWidget {
         color: const Color(0xffF7EDDD),
         borderRadius: BorderRadius.circular(50),
       ),
-      child: BlocBuilder<BookingCubit, BookingState>(
+      child: BlocBuilder<TouristBookingCubit, TouristBookingState>(
         builder: (context, state) {
-          final selectedStatus = state.touristTirpStatus;
-          final selectedDate = state.selectedDate;
+          final selectedStatus = state.filters.touristBookingStatus;
+          final selectedDate = state.filters.selectedDate;
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: !isPastSelectedDate(selectedDate)
-                ? TouristTripStatus.values.map(
+            children: !isPastSelectedDate(selectedDate) || selectedDate == null
+                ? status.map(
                     (status) {
                       return Expanded(
                         child: StatusChip(
@@ -34,8 +39,8 @@ class TouristBookingStatusFilter extends StatelessWidget {
                           title: _getTitle(context, status),
                           onTap: () {
                             context
-                                .read<BookingCubit>()
-                                .changeTouristTripStatus(
+                                .read<TouristBookingCubit>()
+                                .changeTouristBookingStatus(
                                   status,
                                 );
                           },
@@ -48,9 +53,11 @@ class TouristBookingStatusFilter extends StatelessWidget {
                       isSelected: true,
                       title: context.l10n.completed,
                       onTap: () {
-                        context.read<BookingCubit>().changeTouristTripStatus(
-                          TouristTripStatus.completed,
-                        );
+                        context
+                            .read<TouristBookingCubit>()
+                            .changeTouristBookingStatus(
+                              TouristBookingStatus.completed,
+                            );
                       },
                     ),
                   ],
@@ -69,55 +76,18 @@ class TouristBookingStatusFilter extends StatelessWidget {
     return selectedDate.isBefore(pureToday);
   }
 
-  String _getTitle(BuildContext context, TouristTripStatus status) {
+  String _getTitle(BuildContext context, TouristBookingStatus status) {
     switch (status) {
-      case TouristTripStatus.pending:
+      case TouristBookingStatus.pending:
         return context.l10n.pending;
-      case TouristTripStatus.live:
+      case TouristBookingStatus.accepted:
+        return context.l10n.accepted;
+      case TouristBookingStatus.live:
         return context.l10n.live;
-      case TouristTripStatus.completed:
+      case TouristBookingStatus.completed:
         return context.l10n.completed;
+      case TouristBookingStatus.cancelled:
+        return context.l10n.cancelled;
     }
-  }
-}
-
-class StatusChip extends StatelessWidget {
-  const StatusChip({
-    super.key,
-    required this.isSelected,
-    required this.title,
-    this.onTap,
-  });
-  final bool isSelected;
-  final String title;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedScale(
-        duration: const Duration(milliseconds: 300),
-        scale: isSelected ? 1.05 : 1,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
-          margin: const EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            color: isSelected ? Colors.white : Colors.transparent,
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Center(
-            child: Text(
-              title,
-              style: AppTextStyles.poppinsMedium16.copyWith(
-                color: isSelected
-                    ? const Color(0xffF2930D)
-                    : const Color(0xffB59A64),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

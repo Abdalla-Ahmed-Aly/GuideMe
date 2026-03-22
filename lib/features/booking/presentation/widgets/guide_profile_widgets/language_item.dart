@@ -9,14 +9,16 @@ class LanguageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 2),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.primary,
-        borderRadius: BorderRadius.circular(10),
+        color: AppColors.primary2,
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
         text,
-        style: AppTextStyles.interSemiBold16.copyWith(color: AppColors.white),
+        style: AppTextStyles.interSemiBold16.copyWith(
+          color: AppColors.white,
+        ),
       ),
     );
   }

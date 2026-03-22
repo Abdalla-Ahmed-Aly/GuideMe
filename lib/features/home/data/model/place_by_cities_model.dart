@@ -1,11 +1,14 @@
-import 'package:guide_me/core/models/places_model.dart';
-import 'package:guide_me/features/home/domain/entity/place_by_cities_entity.dart';
+import 'package:guide_me/core/shared/models/place_model.dart';
 
-class PlaceByCitiesModel extends PlaceByCitiesEntity {
+class PlaceByCitiesModel {
+  final String filterApplied;
+  final int count;
+  final List<PlaceModel> data;
+
   PlaceByCitiesModel({
-    required super.filterApplied,
-    required super.count,
-    required super.data,
+    required this.filterApplied,
+    required this.count,
+    required this.data,
   });
 
   factory PlaceByCitiesModel.fromJson(Map<String, dynamic>? json) {
@@ -21,7 +24,7 @@ class PlaceByCitiesModel extends PlaceByCitiesEntity {
       count: (json['count'] as num?)?.toInt() ?? 0,
       data:
           (json['data'] as List<dynamic>?)
-              ?.map((e) => PlacesModel.fromJson(e as Map<String, dynamic>?))
+              ?.map((e) => PlaceModel.fromJson(e))
               .toList() ??
           [],
     );

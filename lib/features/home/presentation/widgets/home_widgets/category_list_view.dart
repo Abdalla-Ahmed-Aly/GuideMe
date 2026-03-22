@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/entites/category_entity.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/entities/category_entity.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/category_item.dart';
 
 class CategoryListView extends StatelessWidget {

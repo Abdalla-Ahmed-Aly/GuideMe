@@ -20,7 +20,6 @@ abstract class AppRoutes {
   static const String explorePlacesScreen = '/explorePlaces';
   static const String explorePlacesByCityScreen = '/explorePlacesByCity';
   static const String placeDetailsScreen = '/placeDetails';
-  static const String bookingDetailsScreen = '/bookingDetails';
   static const String settingsScreen = '/settings';
   static const String editProfileScreen = '/editProfile';
   static const String addPaymentMethodScreen = '/addPaymentMethod';
@@ -41,9 +40,17 @@ abstract class AppRoutes {
   static const String verificationFailedScreen = '/verificationFailedScreen';
   static const String guideVerificationSuccessScreen =
       '/guideVerificationSuccessScreen';
-  static const String completedtripdetailes = '/completedtripdetailes';
+  static const String tripDetailsScreen = '/tripDetailsScreen';
   static const String chatScreen = '/chatScreen';
   static const String trackingScreen = '/trackingScreen';
   static const String tourGuideProfileScreen = '/tourGuideProfileScreen';
   static const String addCertificationScreen = '/addCertificationScreen';
+  static const String suggestedPackagesScreen = '/suggestedPackagesScreen';
+  static const String packageDetailsScreen = '/packageDetailsScreen';
+  static const String packagePlaceDetailsScreen = '/packagePlaceDetailsScreen';
+  static const String bookPackageScreen = '/bookPackageScreen';
+  static const String viewLocationScreen = '/viewLocationScreen';
+  static const String pickLocationScreen = '/pickLocationScreen';
+  static const String packageBookingSuccessScreen =
+      '/packageBookingSuccessScreen';
 }

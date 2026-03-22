@@ -431,7 +431,7 @@ abstract class AppLocalizations {
   /// No description provided for @numberofperson.
   ///
   /// In en, this message translates to:
-  /// **'Number of Person'**
+  /// **'Number of Persons'**
   String get numberofperson;
 
   /// No description provided for @apply.
@@ -1130,11 +1130,11 @@ abstract class AppLocalizations {
   /// **'DATE & TIME'**
   String get dateTIME;
 
-  /// No description provided for @dURATION.
+  /// No description provided for @durationText.
   ///
   /// In en, this message translates to:
-  /// **'DURATION'**
-  String get dURATION;
+  /// **'Duration'**
+  String get durationText;
 
   /// No description provided for @groupsize.
   ///
@@ -1397,7 +1397,7 @@ abstract class AppLocalizations {
   /// No description provided for @selectTime.
   ///
   /// In en, this message translates to:
-  /// **'Select time'**
+  /// **'Select a time'**
   String get selectTime;
 
   /// No description provided for @pleaseSelectWorkHours.
@@ -1819,6 +1819,456 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An unexpected error occurred. Please try again.'**
   String get errorUnknown;
+
+  /// No description provided for @validationSelectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a date'**
+  String get validationSelectDate;
+
+  /// No description provided for @validationSelectTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a time'**
+  String get validationSelectTime;
+
+  /// No description provided for @validationEnterPickupLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a location'**
+  String get validationEnterPickupLocation;
+
+  /// No description provided for @validationEnterNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter notes'**
+  String get validationEnterNotes;
+
+  /// No description provided for @validationSelectPersons.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select number of persons'**
+  String get validationSelectPersons;
+
+  /// No description provided for @pendingApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Approval'**
+  String get pendingApproval;
+
+  /// No description provided for @myTrip.
+  ///
+  /// In en, this message translates to:
+  /// **'My Trip: '**
+  String get myTrip;
+
+  /// No description provided for @bookingCancelledSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking cancelled successfully'**
+  String get bookingCancelledSuccessfully;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get time;
+
+  /// No description provided for @groupSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Group Size'**
+  String get groupSize;
+
+  /// No description provided for @people.
+  ///
+  /// In en, this message translates to:
+  /// **'{number} People'**
+  String people(Object number);
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
+
+  /// No description provided for @accepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get accepted;
+
+  /// No description provided for @cancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get cancelled;
+
+  /// No description provided for @viewSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'View Schedule'**
+  String get viewSchedule;
+
+  /// No description provided for @totalPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Price'**
+  String get totalPrice;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get minutes;
+
+  /// No description provided for @flexibleEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Flexible End'**
+  String get flexibleEnd;
+
+  /// No description provided for @historyAndMyths.
+  ///
+  /// In en, this message translates to:
+  /// **'History & Myths'**
+  String get historyAndMyths;
+
+  /// No description provided for @privateGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Group'**
+  String get privateGroup;
+
+  /// No description provided for @priceRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get priceRange;
+
+  /// No description provided for @selectedRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Range'**
+  String get selectedRange;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @persons.
+  ///
+  /// In en, this message translates to:
+  /// **'Persons'**
+  String get persons;
+
+  /// No description provided for @validationCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a city'**
+  String get validationCity;
+
+  /// No description provided for @suggestedPackages.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested Packages'**
+  String get suggestedPackages;
+
+  /// No description provided for @priceStartingAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Price starting at'**
+  String get priceStartingAt;
+
+  /// No description provided for @placesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Places'**
+  String placesCount(Object count);
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get viewDetails;
+
+  /// No description provided for @packageDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Details'**
+  String get packageDetails;
+
+  /// No description provided for @selectedPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Places'**
+  String get selectedPlaces;
+
+  /// No description provided for @totalEstimatedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Estimated Price'**
+  String get totalEstimatedPrice;
+
+  /// No description provided for @confirmPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Package'**
+  String get confirmPackage;
+
+  /// No description provided for @personsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Persons'**
+  String personsCount(Object count);
+
+  /// No description provided for @numberOfPlaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Places'**
+  String get numberOfPlaces;
+
+  /// No description provided for @person.
+  ///
+  /// In en, this message translates to:
+  /// **'Person'**
+  String get person;
+
+  /// No description provided for @priceText.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get priceText;
+
+  /// No description provided for @aboutThisPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'About this place'**
+  String get aboutThisPlace;
+
+  /// No description provided for @noDescriptionAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No description available'**
+  String get noDescriptionAvailable;
+
+  /// No description provided for @viewOnMaps.
+  ///
+  /// In en, this message translates to:
+  /// **'View on Maps'**
+  String get viewOnMaps;
+
+  /// No description provided for @confirmAndBookNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm & Book Now'**
+  String get confirmAndBookNow;
+
+  /// No description provided for @chooseYourMeetingPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your meeting point'**
+  String get chooseYourMeetingPoint;
+
+  /// No description provided for @select.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get select;
+
+  /// No description provided for @selected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get selected;
+
+  /// No description provided for @schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get schedule;
+
+  /// No description provided for @scheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled'**
+  String get scheduled;
+
+  /// No description provided for @summary.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get summary;
+
+  /// No description provided for @summaryCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'SUMMARY'**
+  String get summaryCapital;
+
+  /// No description provided for @dateCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'DATE'**
+  String get dateCapital;
+
+  /// No description provided for @timeCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME'**
+  String get timeCapital;
+
+  /// No description provided for @locationCapital.
+  ///
+  /// In en, this message translates to:
+  /// **'LOCATION'**
+  String get locationCapital;
+
+  /// No description provided for @selectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a date'**
+  String get selectDate;
+
+  /// No description provided for @errorLocationPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied'**
+  String get errorLocationPermissionDenied;
+
+  /// No description provided for @errorLocationPermissionDeniedForever.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission denied forever'**
+  String get errorLocationPermissionDeniedForever;
+
+  /// No description provided for @selectedLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Location'**
+  String get selectedLocation;
+
+  /// No description provided for @confirmLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Location'**
+  String get confirmLocation;
+
+  /// No description provided for @errorLocationServiceDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Location service is disabled'**
+  String get errorLocationServiceDisabled;
+
+  /// No description provided for @noLocationSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No location selected'**
+  String get noLocationSelected;
+
+  /// No description provided for @validation_date_past.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a future date'**
+  String get validation_date_past;
+
+  /// No description provided for @validation_time_past.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a future time'**
+  String get validation_time_past;
+
+  /// No description provided for @validation_location_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a meeting location'**
+  String get validation_location_required;
+
+  /// No description provided for @packageBookedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Package booked successfully'**
+  String get packageBookedSuccessfully;
+
+  /// No description provided for @bookingSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Successfully🎉'**
+  String get bookingSuccessfully;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @guests.
+  ///
+  /// In en, this message translates to:
+  /// **'Guests'**
+  String get guests;
+
+  /// No description provided for @forAllPersons.
+  ///
+  /// In en, this message translates to:
+  /// **'For All Persons'**
+  String get forAllPersons;
+
+  /// No description provided for @viewBookingsDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Bookings Details'**
+  String get viewBookingsDetails;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
+
+  /// No description provided for @invalidDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Date'**
+  String get invalidDate;
+
+  /// No description provided for @invalidTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Time'**
+  String get invalidTime;
+
+  /// No description provided for @licenseIdText.
+  ///
+  /// In en, this message translates to:
+  /// **'License ID'**
+  String get licenseIdText;
+
+  /// No description provided for @validUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid Until: '**
+  String get validUntil;
+
+  /// No description provided for @noTripsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No Trips Yet'**
+  String get noTripsYet;
+
+  /// No description provided for @day.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get day;
+
+  /// No description provided for @validationSelectPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a place'**
+  String get validationSelectPlace;
 }
 
 class _AppLocalizationsDelegate

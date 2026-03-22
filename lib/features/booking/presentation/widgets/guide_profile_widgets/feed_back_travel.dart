@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/dynamic_stars%20.dart';
+import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/rating_row.dart';
 
 class FeedBackTravel extends StatelessWidget {
@@ -30,9 +30,9 @@ class FeedBackTravel extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                DynamicStars(
+                DynamicRatingStars(
                   rating: 4,
-                  color: const Color(0xffDD7B03),
+
                   size: 18.w,
                 ),
                 const SizedBox(

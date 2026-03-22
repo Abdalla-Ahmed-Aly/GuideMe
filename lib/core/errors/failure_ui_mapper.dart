@@ -96,6 +96,24 @@ class FailureUiMapper {
           image: AppImages.placeTest,
         );
 
+      case FailureCode.locationPermissionDenied:
+        return ErrorModel(
+          message: context.l10n.errorLocationPermissionDenied,
+          image: AppImages.placeTest,
+        );
+
+      case FailureCode.locationPermissionDeniedForever:
+        return ErrorModel(
+          message: context.l10n.errorLocationPermissionDeniedForever,
+          image: AppImages.placeTest,
+        );
+
+      case FailureCode.locationServiceDisabled:
+        return ErrorModel(
+          message: context.l10n.errorLocationServiceDisabled,
+          image: AppImages.placeTest,
+        );
+
       case FailureCode.unknown:
         return ErrorModel(
           message: context.l10n.errorUnknown,
@@ -103,4 +121,6 @@ class FailureUiMapper {
         );
     }
   }
+
+  static mapFailureToMessage(Failure failure, BuildContext context) {}
 }

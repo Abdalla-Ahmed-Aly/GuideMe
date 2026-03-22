@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'exceptions.dart';
 import 'failure.dart';
@@ -13,6 +14,12 @@ class ErrorHandler {
       return const AppFailure(failureCode: FailureCode.network);
     } else if (error is NoInternetException) {
       return const AppFailure(failureCode: FailureCode.network);
+    } else if (error is LocationPermissionDeniedException) {
+      return const AppFailure(failureCode: FailureCode.locationPermissionDenied);
+    } else if (error is LocationPermissionDeniedForeverException) {
+      return const AppFailure(failureCode: FailureCode.locationPermissionDeniedForever);
+    } else if (error is LocationServiceDisabledException) {
+      return const AppFailure(failureCode: FailureCode.locationServiceDisabled);
     }
 
     return const AppFailure(failureCode: FailureCode.unknown);

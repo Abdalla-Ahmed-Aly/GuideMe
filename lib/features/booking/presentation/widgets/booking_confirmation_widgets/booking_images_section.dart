@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/images_indicator.dart';
+import 'package:guide_me/features/booking/presentation/args/book_place_args.dart';
 
 class BookingImagesSection extends StatefulWidget {
   const BookingImagesSection({super.key});
@@ -12,17 +14,6 @@ class BookingImagesSection extends StatefulWidget {
 class _BookingImagesSectionState extends State<BookingImagesSection> {
   int _currentIndex = 0;
   late final PageController _pageController;
-  final List<String> _images = [
-    AppImages.placeTest,
-    AppImages.test1,
-    AppImages.test2,
-    AppImages.test3,
-    AppImages.test4,
-    AppImages.test5,
-    AppImages.test6,
-    AppImages.test7,
-    AppImages.test8,
-  ];
 
   @override
   void initState() {
@@ -38,6 +29,8 @@ class _BookingImagesSectionState extends State<BookingImagesSection> {
 
   @override
   Widget build(BuildContext context) {
+    final bookPlaceArgs = GoRouterState.of(context).extra as BookPlaceArgs;
+    final place = bookPlaceArgs.place;
     final size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
@@ -49,10 +42,10 @@ class _BookingImagesSectionState extends State<BookingImagesSection> {
               _currentIndex = index;
             });
           },
-          itemCount: _images.length,
+          itemCount: place.images.length,
           itemBuilder: (context, index) {
-            return Image.asset(
-              _images[index],
+            return CustomNetworkImage(
+              imageUrl: place.images[index],
               fit: BoxFit.cover,
             );
           },
@@ -62,7 +55,7 @@ class _BookingImagesSectionState extends State<BookingImagesSection> {
           bottom: 46,
           right: 20,
           child: ImagesIndicator(
-            images: _images,
+            images: place.images,
             currentIndex: _currentIndex,
             pageController: _pageController,
           ),

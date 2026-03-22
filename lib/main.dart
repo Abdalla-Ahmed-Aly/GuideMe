@@ -15,12 +15,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-
-  // Temporary token injection for home page development
   await getIt<TokenService>().saveToken(
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODM4MGZhOTM2ZDAyMmNiM2Y4NGUzNSIsInJvbGUiOiJndWlkZSIsImlhdCI6MTc3MjExNjk5OH0.MMeeKRF_40l9ZEAoGDMkTbS2axFt05sGTFw4X-43q9E',
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YTJmZTBjZDg0NjI5MDhjYjlhYTVhYiIsInJvbGUiOiJ0b3VyaXN0IiwiaWF0IjoxNzcyMjg5NjE4fQ.SUrwoofufEYnl9fhhZZ6NvWjyF4gr5sWB4X92yDYkhk",
   );
-
 
   Bloc.observer = const AppBlocObserver();
 

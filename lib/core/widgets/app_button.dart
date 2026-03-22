@@ -47,18 +47,30 @@ class AppButton extends StatelessWidget {
         ),
         onPressed: isLoading ? null : onPressed,
         child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 300),
+          transitionBuilder: (child, animation) {
+            return ScaleTransition(
+              scale: animation,
+              child: FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+            );
+          },
           child: isLoading
               ? const SizedBox(
-                key: ValueKey("loading"),
+                  key: ValueKey("loading"),
                   height: 24,
                   width: 24,
                   child: CircularProgressIndicator(
                     strokeWidth: 2.5,
-                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      AppColors.white,
+                    ),
                   ),
                 )
               : Row(
+                  key: const ValueKey('app_button'),
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

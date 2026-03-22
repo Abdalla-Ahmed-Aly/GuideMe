@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
+import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
+import 'package:intl/intl.dart';
 
 class LiveTripCard extends StatelessWidget {
-  const LiveTripCard({super.key});
+  const LiveTripCard({super.key, required this.booking});
+  final BookingEntity booking;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.bookingDetailsScreen);
+        context.push(AppRoutes.tripDetailsScreen, extra: booking);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
@@ -64,7 +67,7 @@ class LiveTripCard extends StatelessWidget {
                   ),
 
                   Text(
-                    '09:00 - 12:00',
+                    "${DateFormat("hh:mm a").format(booking.startTime)} - ${DateFormat("hh:mm a").format(booking.endTime)}",
                     style: AppTextStyles.poppinsMedium12.copyWith(
                       color: const Color(0xffF2930D),
                     ),
@@ -75,7 +78,7 @@ class LiveTripCard extends StatelessWidget {
               const SizedBox(height: 6),
 
               Text(
-                "Giza Plateau Great Pyramids",
+                booking.place.title,
                 style: AppTextStyles.poppinsMedium18,
               ),
 
@@ -86,7 +89,7 @@ class LiveTripCard extends StatelessWidget {
                   SvgPicture.asset(AppIcons.user),
                   const SizedBox(width: 5),
                   Text(
-                    "sarah Jenkins & Family (4)",
+                    "${booking.user.name} & (${booking.persons})",
                     style: AppTextStyles.poppinsRegular14.copyWith(
                       color: const Color(0xffB59A64),
                     ),
@@ -199,35 +202,38 @@ class LiveTripCard extends StatelessWidget {
         border: Border.all(
           color: const Color(0xffDD7B03).withValues(alpha: .32),
         ),
-        // Image
-        image: const DecorationImage(
-          image: AssetImage(AppImages.placeTest),
-          fit: BoxFit.cover,
-        ),
       ),
       // Button
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: const Color(0xffFDFDFD),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(
-                Icons.map_outlined,
-                color: Colors.grey,
+      child: Stack(
+        children: [
+          // image
+          CustomNetworkImage(imageUrl: booking.place.images.first),
+
+          // track button
+          Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: const Color(0xffFDFDFD),
               ),
-              const SizedBox(width: 5),
-              Text(
-                context.l10n.trackLiveLocation,
-                style: AppTextStyles.poppinsMedium16,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.map_outlined,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    context.l10n.trackLiveLocation,
+                    style: AppTextStyles.poppinsMedium16,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

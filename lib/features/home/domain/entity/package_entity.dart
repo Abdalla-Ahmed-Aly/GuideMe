@@ -1,11 +1,11 @@
-import 'package:guide_me/core/entites/city_entity.dart';
-import 'package:guide_me/core/entites/place_entity.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/place_info_entity.dart';
 
 class PackageEntity {
   final String packageId;
   final String title;
   final String description;
-  final List<PlaceEntity> places;
+  final List<PlaceInfoEntity> places;
   final CityEntity city;
   final num totalPrice;
   final num budget;

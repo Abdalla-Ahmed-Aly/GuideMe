@@ -1,10 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
-
-import 'package:guide_me/core/entites/place_entity.dart';
+import 'package:guide_me/core/shared/entities/guider_entity.dart';
+import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
+import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
+import 'package:guide_me/core/location_core/presentation/screens/view_location_screen.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
+import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_with_google_cubit/login_with_google_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/register_cubit/register_cubit.dart';
@@ -22,14 +25,24 @@ import 'package:guide_me/features/auth/presentation/screens/log_in_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
+import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/guide_data_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/completed_trip_details.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/trip_details_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/package_booking_success_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/package_details_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/package_place_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/panding_approval_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/reservation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/booking_confirmation_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/suggested_packages_screen.dart';
 import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
@@ -63,6 +76,7 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
+    initialLocation: AppRoutes.touristNavigationBarScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -160,15 +174,32 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.filterScreen,
-        builder: (context, state) => const FilterScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<FilterCubit>()..getCities(),
+          child: const FilterScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.bookScreen,
-        builder: (context, state) => const ReservationScreen(),
+        builder: (context, state) {
+          final place = state.extra as PlaceEntity;
+          return BlocProvider(
+            create: (context) =>
+                getIt<ReservationCubit>()..setPlaceId(place.id),
+            child: const ReservationScreen(),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.guideProfileScreen,
-        builder: (context, state) => const GuideProfileScreen(),
+        builder: (context, state) {
+          final GuiderEntity guider = state.extra as GuiderEntity;
+          return BlocProvider(
+            create: (context) =>
+                getIt<GuideDataCubit>()..getGuideData(guideId: guider.id),
+            child: const GuideProfileScreen(),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.selectInterestsScreen,
@@ -209,10 +240,6 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRoutes.bookingDetailsScreen,
-        builder: (context, state) => const BookingDetailsScreen(),
-      ),
-      GoRoute(
         path: AppRoutes.settingsScreen,
         builder: (context, state) => const SettingsScreen(),
       ),
@@ -226,11 +253,17 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookingConfirmationScreen,
-        builder: (context, state) => const BookingConfirmationScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AddBookingCubit>(),
+          child: const BookingConfirmationScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.pendingApprovalScreen,
-        builder: (context, state) => const PandingApprovalScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<CancelBookingCubit>(),
+          child: const PandingApprovalScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.acceptedScreen,
@@ -293,8 +326,8 @@ abstract class AppRouter {
       ),
 
       GoRoute(
-        path: AppRoutes.completedtripdetailes,
-        builder: (context, state) => const CompletedTripDetails(),
+        path: AppRoutes.tripDetailsScreen,
+        builder: (context, state) => const TripDetailsScreen(),
       ),
 
       GoRoute(
@@ -321,6 +354,40 @@ abstract class AppRouter {
           create: (context) => GuideProfileCubit(MediaPickerServiceImpl()),
           child: const AddCertificationScreen(),
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.suggestedPackagesScreen,
+        builder: (context, state) => const SuggestedPackagesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.packageDetailsScreen,
+        builder: (context, state) => const PackageDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.packagePlaceDetailsScreen,
+        builder: (context, state) => const PackagePlaceDetailsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookPackageScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<BookPackageCubit>(),
+          child: const BookPackageScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.viewLocationScreen,
+        builder: (context, state) => const ViewLocationScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.pickLocationScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<PickLocationCubit>(),
+          child: const PickLocationScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.packageBookingSuccessScreen,
+        builder: (context, state) => const PackageBookingSuccessScreen(),
       ),
     ],
   );

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
-import 'package:guide_me/core/entites/city_entity.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 import 'package:guide_me/core/widgets/custom_shimmer.dart';
 
 class CityCard extends StatelessWidget {
-  final CityEntity city;
   const CityCard({super.key, required this.city});
+  final CityEntity city;
 
   @override
   Widget build(BuildContext context) {
@@ -34,34 +34,26 @@ class CityCard extends StatelessWidget {
           child: Stack(
             children: [
               // Image
-              if (city.image != null)
-                Image.network(
-                  city.image!,
-                  width: width,
-                  height: double.infinity,
-                  fit: BoxFit.cover,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return CustomShimmer(
-                      width: width,
-                      height: double.infinity,
-                      borderRadius: 12,
-                    );
-                  },
-                  errorBuilder: (context, error, stackTrace) => Image.asset(
-                    AppImages.cityTest,
+              Image.network(
+                city.image,
+                width: width,
+                height: double.infinity,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return CustomShimmer(
                     width: width,
                     height: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                )
-              else
-                Image.asset(
+                    borderRadius: 12,
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) => Image.asset(
                   AppImages.cityTest,
                   width: width,
                   height: double.infinity,
                   fit: BoxFit.cover,
                 ),
+              ),
 
               // Gradient overlay for better text visibility
               Container(

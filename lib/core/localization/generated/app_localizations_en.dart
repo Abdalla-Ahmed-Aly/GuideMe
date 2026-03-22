@@ -179,7 +179,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mosques => 'mosques';
 
   @override
-  String get numberofperson => 'Number of Person';
+  String get numberofperson => 'Number of Persons';
 
   @override
   String get apply => 'Apply';
@@ -532,7 +532,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dateTIME => 'DATE & TIME';
 
   @override
-  String get dURATION => 'DURATION';
+  String get durationText => 'Duration';
 
   @override
   String get groupsize => 'GROUP SIZE';
@@ -673,7 +673,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saveAndContinue => 'Save & Continue';
 
   @override
-  String get selectTime => 'Select time';
+  String get selectTime => 'Select a time';
 
   @override
   String get pleaseSelectWorkHours => 'Please select start and end time';
@@ -890,4 +890,236 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorUnknown => 'An unexpected error occurred. Please try again.';
+
+  @override
+  String get validationSelectDate => 'Please select a date';
+
+  @override
+  String get validationSelectTime => 'Please select a time';
+
+  @override
+  String get validationEnterPickupLocation => 'Please enter a location';
+
+  @override
+  String get validationEnterNotes => 'Please enter notes';
+
+  @override
+  String get validationSelectPersons => 'Please select number of persons';
+
+  @override
+  String get pendingApproval => 'Pending Approval';
+
+  @override
+  String get myTrip => 'My Trip: ';
+
+  @override
+  String get bookingCancelledSuccessfully => 'Booking cancelled successfully';
+
+  @override
+  String get time => 'Time';
+
+  @override
+  String get groupSize => 'Group Size';
+
+  @override
+  String people(Object number) {
+    return '$number People';
+  }
+
+  @override
+  String get notes => 'Notes';
+
+  @override
+  String get accepted => 'Accepted';
+
+  @override
+  String get cancelled => 'Cancelled';
+
+  @override
+  String get viewSchedule => 'View Schedule';
+
+  @override
+  String get totalPrice => 'Total Price';
+
+  @override
+  String get minutes => 'Minutes';
+
+  @override
+  String get flexibleEnd => 'Flexible End';
+
+  @override
+  String get historyAndMyths => 'History & Myths';
+
+  @override
+  String get privateGroup => 'Private Group';
+
+  @override
+  String get priceRange => 'Price Range';
+
+  @override
+  String get selectedRange => 'Selected Range';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get persons => 'Persons';
+
+  @override
+  String get validationCity => 'Please select a city';
+
+  @override
+  String get suggestedPackages => 'Suggested Packages';
+
+  @override
+  String get priceStartingAt => 'Price starting at';
+
+  @override
+  String placesCount(Object count) {
+    return '$count Places';
+  }
+
+  @override
+  String get viewDetails => 'View Details';
+
+  @override
+  String get packageDetails => 'Package Details';
+
+  @override
+  String get selectedPlaces => 'Selected Places';
+
+  @override
+  String get totalEstimatedPrice => 'Total Estimated Price';
+
+  @override
+  String get confirmPackage => 'Confirm Package';
+
+  @override
+  String personsCount(Object count) {
+    return '$count Persons';
+  }
+
+  @override
+  String get numberOfPlaces => 'Number of Places';
+
+  @override
+  String get person => 'Person';
+
+  @override
+  String get priceText => 'Price';
+
+  @override
+  String get aboutThisPlace => 'About this place';
+
+  @override
+  String get noDescriptionAvailable => 'No description available';
+
+  @override
+  String get viewOnMaps => 'View on Maps';
+
+  @override
+  String get confirmAndBookNow => 'Confirm & Book Now';
+
+  @override
+  String get chooseYourMeetingPoint => 'Choose your meeting point';
+
+  @override
+  String get select => 'Select';
+
+  @override
+  String get selected => 'Selected';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get scheduled => 'Scheduled';
+
+  @override
+  String get summary => 'Summary';
+
+  @override
+  String get summaryCapital => 'SUMMARY';
+
+  @override
+  String get dateCapital => 'DATE';
+
+  @override
+  String get timeCapital => 'TIME';
+
+  @override
+  String get locationCapital => 'LOCATION';
+
+  @override
+  String get selectDate => 'Select a date';
+
+  @override
+  String get errorLocationPermissionDenied => 'Location permission denied';
+
+  @override
+  String get errorLocationPermissionDeniedForever =>
+      'Location permission denied forever';
+
+  @override
+  String get selectedLocation => 'Selected Location';
+
+  @override
+  String get confirmLocation => 'Confirm Location';
+
+  @override
+  String get errorLocationServiceDisabled => 'Location service is disabled';
+
+  @override
+  String get noLocationSelected => 'No location selected';
+
+  @override
+  String get validation_date_past => 'Please select a future date';
+
+  @override
+  String get validation_time_past => 'Please select a future time';
+
+  @override
+  String get validation_location_required => 'Please select a meeting location';
+
+  @override
+  String get packageBookedSuccessfully => 'Package booked successfully';
+
+  @override
+  String get bookingSuccessfully => 'Booking Successfully🎉';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get guests => 'Guests';
+
+  @override
+  String get forAllPersons => 'For All Persons';
+
+  @override
+  String get viewBookingsDetails => 'View Bookings Details';
+
+  @override
+  String get backToHome => 'Back to Home';
+
+  @override
+  String get invalidDate => 'Invalid Date';
+
+  @override
+  String get invalidTime => 'Invalid Time';
+
+  @override
+  String get licenseIdText => 'License ID';
+
+  @override
+  String get validUntil => 'Valid Until: ';
+
+  @override
+  String get noTripsYet => 'No Trips Yet';
+
+  @override
+  String get day => 'Day';
+
+  @override
+  String get validationSelectPlace => 'Please select a place';
 }

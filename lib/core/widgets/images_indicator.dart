@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
 
 class ImagesIndicator extends StatelessWidget {
   const ImagesIndicator({
@@ -110,14 +111,11 @@ class ImagesIndicator extends StatelessWidget {
               // Handle image loading error, e.g., show a placeholder
             },
             child: ClipOval(
-              child: Image.network(
-                images[imageIndex],
+              child: CustomNetworkImage(
+                imageUrl: images[imageIndex],
                 fit: BoxFit.cover,
                 width: 40.h, // Corresponds to radius * 2
                 height: 40.h,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Icon(Icons.error, color: Colors.white, size: 20);
-                },
               ),
             ),
           ),

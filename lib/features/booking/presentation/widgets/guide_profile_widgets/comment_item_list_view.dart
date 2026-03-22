@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/features/booking/domain/entities/guider_entities/review_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/comment_item.dart';
 
 class CommentItemListView extends StatelessWidget {
-  const CommentItemListView({super.key});
+  const CommentItemListView({super.key, required this.reviews});
+
+  final List<ReviewEntity> reviews;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
+      itemCount: reviews.length,
       shrinkWrap: true,
-      padding: const EdgeInsets.only(top: 10, bottom: 16),
+      padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-          child: CommentItem(),
-        );
+        return CommentItem(review: reviews[index]);
       },
     );
   }
