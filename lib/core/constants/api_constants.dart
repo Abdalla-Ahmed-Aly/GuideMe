@@ -1,5 +1,4 @@
 abstract class ApiConstants {
-
   static const String baseUrl = "https://guide-me-back-end.vercel.app";
   static const String loginEndPoint = '/api/auth/login';
   static const String registerEndPoint = '/api/auth/register';
@@ -19,6 +18,5 @@ abstract class ApiConstants {
   static const place_by_category = "$api/home/by-category";
   static const place_by_city = "$api/home/by-city";
   static const ai_packages = "$api/home/ai-packages-suggestions";
-  
-
+  static const getcatogey = '/api/category';
 }

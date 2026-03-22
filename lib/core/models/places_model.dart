@@ -30,7 +30,9 @@ class PlacesModel extends PlaceEntity {
       title: json["title"] ?? '',
       description: json["description"],
       category: json["category"] is Map<String, dynamic>
-          ? CategoryModel.fromJson(json["category"] as Map<String, dynamic>)
+          ? GetCategoriesResponse.fromJson(
+              json["category"] as Map<String, dynamic>,
+            )
           : null,
       price: json["price"] ?? 0,
       images: json["images"] != null

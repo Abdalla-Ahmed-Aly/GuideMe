@@ -1,16 +1,16 @@
 import 'package:guide_me/core/entites/category_entity.dart';
 
-class CategoryModel extends CategoryEntity {
-  CategoryModel({
+class GetCategoriesResponse extends CategoryEntity {
+  GetCategoriesResponse({
     required super.id,
     required super.name,
     required super.image,
     required super.slug,
   });
 
-  factory CategoryModel.fromJson(Map<String, dynamic>? json) {
-    if (json == null) return CategoryModel.empty();
-    return CategoryModel(
+  factory GetCategoriesResponse.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return GetCategoriesResponse.empty();
+    return GetCategoriesResponse(
       id: json["_id"] ?? '',
       name: json["name"] ?? '',
       image: json["image"] ?? '',
@@ -18,10 +18,10 @@ class CategoryModel extends CategoryEntity {
     );
   }
 
-  factory CategoryModel.empty() => CategoryModel(
-        id: '',
-        name: '',
-        image: '',
-        slug: '',
-      );
+  factory GetCategoriesResponse.empty() => GetCategoriesResponse(
+    id: '',
+    name: '',
+    image: '',
+    slug: '',
+  );
 }

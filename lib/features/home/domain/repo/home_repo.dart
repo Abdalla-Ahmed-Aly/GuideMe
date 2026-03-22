@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-
-
+import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/models/category_model.dart';
 
 abstract class HomeRepo {
   Future<Either> getHomeData();
@@ -15,4 +15,6 @@ abstract class HomeRepo {
   });
 
   Future<Either> getAiPackagesSuggestions();
+
+  Future<Either<Failure, List<GetCategoriesResponse>>> getCategories();
 }

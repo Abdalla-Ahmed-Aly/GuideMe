@@ -37,4 +37,5 @@ abstract class AuthRepo {
   );
 
   Future<Either<Failure, LoginresponseModel>> loginwithgoogle( String token);
+  
 }

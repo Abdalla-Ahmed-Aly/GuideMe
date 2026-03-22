@@ -18,7 +18,8 @@ class Mapper {
     return HomeEntity(
       categories: model.categories
           .map(
-            (category) => mapCategoryModelToEntity(category as CategoryModel),
+            (category) =>
+                mapCategoryModelToEntity(category as GetCategoriesResponse),
           )
           .toList(),
       mostFamousTrip: mapPlaceModelToEntity(
@@ -33,7 +34,7 @@ class Mapper {
     );
   }
 
-  static CategoryEntity mapCategoryModelToEntity(CategoryModel model) {
+  static CategoryEntity mapCategoryModelToEntity(GetCategoriesResponse model) {
     return CategoryEntity(
       id: model.id,
       name: model.name,

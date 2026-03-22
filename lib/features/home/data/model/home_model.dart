@@ -5,7 +5,7 @@ import 'package:guide_me/features/home/domain/entity/home_entity.dart';
 
 class HomeModel extends HomeEntity {
   HomeModel({
-    required List<CategoryModel> super.categories,
+    required List<GetCategoriesResponse> super.categories,
     required PlacesModel super.mostFamousTrip,
     required List<PlacesModel> super.travelBeyondBoundary,
     required List<CityModel> super.popularCities,
@@ -18,8 +18,8 @@ class HomeModel extends HomeEntity {
     final data = json['data'];
     return HomeModel(
       categories: data['categories'] != null
-          ? List<CategoryModel>.from(
-              data['categories'].map((x) => CategoryModel.fromJson(x)),
+          ? List<GetCategoriesResponse>.from(
+              data['categories'].map((x) => GetCategoriesResponse.fromJson(x)),
             )
           : [],
       mostFamousTrip: data['mostFamousTrip'] != null

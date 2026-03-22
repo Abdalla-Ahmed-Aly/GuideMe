@@ -1,23 +1,26 @@
+
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/errors/failure_code.dart';
 import 'package:guide_me/core/mapper/mapper.dart';
-
-import 'package:guide_me/features/home/data/model/place_by_cities_model.dart';
+import 'package:guide_me/core/models/category_model.dart';
 import 'package:guide_me/features/home/data/sources/home_sources.dart';
-import 'package:guide_me/features/home/domain/entity/home_entity.dart';
 import 'package:guide_me/features/home/domain/entity/package_entity.dart';
-import 'package:guide_me/features/home/domain/entity/place_by_category_entity.dart';
 import 'package:guide_me/features/home/domain/repo/home_repo.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
 @LazySingleton(as: HomeRepo)
 class HomeRepoImpl extends HomeRepo {
+  final HomeService homeService;
+
   final Logger _logger = Logger(
     printer: PrettyPrinter(methodCount: 0, colors: true, printEmojis: true),
   );
+
+  HomeRepoImpl(this.homeService);
 
   @override
   Future<Either> getHomeData() async {
@@ -197,5 +200,16 @@ class HomeRepoImpl extends HomeRepo {
         AppFailure(failureCode: FailureCode.unknown, message: e.toString()),
       );
     }
+  }
+
+  @override
+  Future<Either<Failure, List<GetCategoriesResponse>>> getCategories() async{
+    try {
+  final result = await homeService.getCatogry();
+  return Right(result);
+}  catch (e) {
+  return Left(ErrorHandler.handle(e));
+}
+
   }
 }

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/custom_text_field.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});

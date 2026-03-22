@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/models/category_model.dart';
 import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/features/home/data/model/home_model.dart';
 import 'package:guide_me/features/home/data/model/package_model.dart';
@@ -22,13 +23,18 @@ abstract class HomeService {
   });
 
   Future<Either<String, List<PackageModel>>> getAiPackagesSuggestions();
+
+  Future<List<GetCategoriesResponse>> getCatogry();
 }
 
 @LazySingleton(as: HomeService)
 class HomeApiServiceImpl extends HomeService {
+  final ApiService apiService;
   final Logger _logger = Logger(
     printer: PrettyPrinter(methodCount: 0, colors: true, printEmojis: true),
   );
+
+  HomeApiServiceImpl(this.apiService);
 
   @override
   Future<Either> getHomeData() async {
@@ -160,5 +166,15 @@ class HomeApiServiceImpl extends HomeService {
       _logger.e('HomeApiServiceImpl: Unknown Error: $e');
       return Left(e.toString());
     }
+  }
+
+  @override
+  Future< List<GetCategoriesResponse>> getCatogry() async {
+    final response = await apiService.get(endpoint: ApiConstants.getcatogey);
+    final List<dynamic> categoriesJson = response.data['data']['categories'];
+    final categories = categoriesJson
+        .map((e) => GetCategoriesResponse.fromJson(e))
+        .toList();
+    return categories;
   }
 }

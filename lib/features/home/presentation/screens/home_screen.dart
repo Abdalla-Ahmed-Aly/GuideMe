@@ -6,7 +6,6 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_state.dart';
