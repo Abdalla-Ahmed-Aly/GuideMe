@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/core/models/category_model.dart';
+import 'package:guide_me/features/home/data/model/get_catogry_copy.dart';
 
 abstract class HomeRepo {
   Future<Either> getHomeData();

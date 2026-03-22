@@ -20,7 +20,6 @@ import 'package:guide_me/core/services/media_picker_service/media_picker_service
     as _i159;
 import 'package:guide_me/core/services/token/token_service.dart' as _i625;
 import 'package:guide_me/core/services/token/token_service_impl.dart' as _i574;
-
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart'
     as _i1043;
 import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
@@ -53,7 +52,6 @@ import 'package:guide_me/features/auth/presentation/manager/send_forget_password
     as _i776;
 import 'package:guide_me/features/auth/presentation/manager/verify_password_cubit/verify_password_cubit.dart'
     as _i577;
-
 import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
     as _i955;
 import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
@@ -89,23 +87,36 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
     gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
-    gh.lazySingleton<_i1045.HomeRepo>(() => _i955.HomeRepoImpl());
     gh.lazySingleton<_i947.ApiService>(
       () => _i947.ApiService(
         gh<_i516.DioService>(),
         gh<_i1.ConnectivityHelper>(),
       ),
     );
+    gh.lazySingleton<_i692.HomeService>(
+      () => _i692.HomeApiServiceImpl(gh<_i947.ApiService>()),
+    );
     gh.factory<_i842.GetAiPackageCubit>(
       () => _i842.GetAiPackageCubit(gh<_i806.GetAiPackageUsecase>()),
     );
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
-    gh.lazySingleton<_i692.HomeService>(() => _i692.HomeApiServiceImpl());
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
     );
+    gh.lazySingleton<_i1045.HomeRepo>(
+      () => _i955.HomeRepoImpl(gh<_i692.HomeService>()),
+    );
     gh.lazySingleton<_i1043.AuthRemoteDataSource>(
       () => _i1043.AuthRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
+    gh.factory<_i137.PlaceByCityCubit>(
+      () => _i137.PlaceByCityCubit(gh<_i985.PlaceByCityUsecase>()),
+    );
+    gh.factory<_i554.PlaceByCategoryCubit>(
+      () => _i554.PlaceByCategoryCubit(gh<_i205.PlaceByCategoryUsecase>()),
+    );
+    gh.factory<_i792.GetHomeCubit>(
+      () => _i792.GetHomeCubit(gh<_i1045.HomeRepo>()),
     );
     gh.lazySingleton<_i956.AuthRepo>(
       () => _i80.AuthRepoImple(
@@ -157,16 +168,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i459.LoginwithGoogleCubit(gh<_i180.LoginWithGoogleUseCase>()),
     );
     gh.factory<_i940.LoginCubit>(
-      () => _i940.LoginCubit(gh<_i93.LoginUseCase>()));
-
-    gh.factory<_i137.PlaceByCityCubit>(
-      () => _i137.PlaceByCityCubit(gh<_i985.PlaceByCityUsecase>()),
-    );
-    gh.factory<_i554.PlaceByCategoryCubit>(
-      () => _i554.PlaceByCategoryCubit(gh<_i205.PlaceByCategoryUsecase>()),
-    );
-    gh.factory<_i792.GetHomeCubit>(
-      () => _i792.GetHomeCubit(gh<_i1045.HomeRepo>()),
+      () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
     );
     return this;
   }

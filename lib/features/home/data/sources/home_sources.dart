@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/di/injectable.dart';
-import 'package:guide_me/core/models/category_model.dart';
 import 'package:guide_me/core/network/api_service.dart';
+import 'package:guide_me/features/home/data/model/get_catogry_copy.dart';
 import 'package:guide_me/features/home/data/model/home_model.dart';
 import 'package:guide_me/features/home/data/model/package_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_category_model.dart';
@@ -169,7 +169,7 @@ class HomeApiServiceImpl extends HomeService {
   }
 
   @override
-  Future< List<GetCategoriesResponse>> getCatogry() async {
+  Future<List<GetCategoriesResponse>> getCatogry() async {
     final response = await apiService.get(endpoint: ApiConstants.getcatogey);
     final List<dynamic> categoriesJson = response.data['data']['categories'];
     final categories = categoriesJson

@@ -1,11 +1,10 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/errors/failure_code.dart';
 import 'package:guide_me/core/mapper/mapper.dart';
-import 'package:guide_me/core/models/category_model.dart';
+import 'package:guide_me/features/home/data/model/get_catogry_copy.dart';
 import 'package:guide_me/features/home/data/sources/home_sources.dart';
 import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 import 'package:guide_me/features/home/domain/repo/home_repo.dart';
@@ -203,13 +202,12 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<GetCategoriesResponse>>> getCategories() async{
+  Future<Either<Failure, List<GetCategoriesResponse>>> getCategories() async {
     try {
-  final result = await homeService.getCatogry();
-  return Right(result);
-}  catch (e) {
-  return Left(ErrorHandler.handle(e));
-}
-
+      final result = await homeService.getCatogry();
+      return Right(result);
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
   }
 }
