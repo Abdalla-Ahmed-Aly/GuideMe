@@ -1,4 +1,4 @@
-import 'package:guide_me/core/models/photo_model.dart';
+import 'package:guide_me/core/shared/models/photo_model.dart';
 
 class UserModel {
   final String id;

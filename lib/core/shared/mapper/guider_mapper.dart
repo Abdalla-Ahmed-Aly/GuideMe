@@ -1,6 +1,6 @@
-import 'package:guide_me/core/entities/guider_entity.dart';
-import 'package:guide_me/core/mapper/photo_mapper.dart';
-import 'package:guide_me/core/models/guider_model.dart';
+import 'package:guide_me/core/shared/entities/guider_entity.dart';
+import 'package:guide_me/core/shared/mapper/photo_mapper.dart';
+import 'package:guide_me/core/shared/models/guider_model.dart';
 
 class GuiderMapper {
   static GuiderEntity toEntity(GuiderModel guiderModel) {

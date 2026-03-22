@@ -1,4 +1,4 @@
-import 'package:guide_me/core/entities/location_entity.dart';
+import 'package:guide_me/core/shared/entities/location_entity.dart';
 
 class PlaceInfoEntity {
   final String id;

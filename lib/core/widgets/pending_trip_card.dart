@@ -16,7 +16,7 @@ class PendingTripCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (booking.status == TouristBookingStatus.completed) {
-          context.push(AppRoutes.completedtripdetailes, extra: booking);
+          context.push(AppRoutes.tripDetailsScreen, extra: booking);
         } else {
           context.push(AppRoutes.pendingApprovalScreen, extra: booking);
         }

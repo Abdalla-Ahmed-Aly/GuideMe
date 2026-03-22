@@ -1,6 +1,6 @@
-import 'package:guide_me/core/models/guider_model.dart';
-import 'package:guide_me/core/models/place_model.dart';
-import 'package:guide_me/core/models/user_model.dart';
+import 'package:guide_me/core/shared/models/guider_model.dart';
+import 'package:guide_me/core/shared/models/place_model.dart';
+import 'package:guide_me/core/shared/models/user_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_ui_state_model.dart';
 
 class BookingModel {

@@ -1,5 +1,5 @@
-import 'package:guide_me/core/entities/category_entity.dart';
-import 'package:guide_me/core/models/category_model.dart';
+import 'package:guide_me/core/shared/entities/category_entity.dart';
+import 'package:guide_me/core/shared/models/category_model.dart';
 
 class CategoryMapper {
   static CategoryEntity toEntity(CategoryModel categoryModel) {

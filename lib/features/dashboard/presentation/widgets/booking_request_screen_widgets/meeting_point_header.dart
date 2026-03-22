@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/shared/entities/location_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class MeetingPointHeader extends StatelessWidget {
-  const MeetingPointHeader({super.key});
+  const MeetingPointHeader({super.key, required this.location});
+  final LocationEntity location;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,8 @@ class MeetingPointHeader extends StatelessWidget {
                 height: 2,
               ),
               Text(
-                'Giza Plateau Main Entrance',
+                location.name,
+                overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.poppinsMedium16,
               ),
             ],

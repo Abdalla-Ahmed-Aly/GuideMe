@@ -1,6 +1,6 @@
-import 'package:guide_me/core/entities/guider_entity.dart';
-import 'package:guide_me/core/entities/place_entity.dart';
-import 'package:guide_me/core/entities/user_entity.dart';
+import 'package:guide_me/core/shared/entities/guider_entity.dart';
+import 'package:guide_me/core/shared/entities/place_entity.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_ui_state_entity.dart';
 import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
 

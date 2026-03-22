@@ -1,4 +1,4 @@
-import 'package:guide_me/core/models/location_model.dart';
+import 'package:guide_me/core/shared/models/location_model.dart';
 
 class PlaceInfoModel {
   final String id;

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
-import 'package:guide_me/core/models/city_model.dart';
+import 'package:guide_me/core/shared/models/city_model.dart';
 import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';

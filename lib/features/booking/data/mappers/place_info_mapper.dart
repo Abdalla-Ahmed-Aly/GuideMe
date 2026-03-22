@@ -1,4 +1,4 @@
-import 'package:guide_me/core/mapper/location_mapper.dart';
+import 'package:guide_me/core/shared/mapper/location_mapper.dart';
 import 'package:guide_me/features/booking/data/models/place_info_model.dart';
 import 'package:guide_me/features/booking/domain/entities/place_info_entity.dart';
 

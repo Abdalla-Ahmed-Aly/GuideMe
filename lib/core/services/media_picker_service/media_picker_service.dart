@@ -1,5 +1,5 @@
 import 'package:image_picker/image_picker.dart';
-import '../../models/picked_file_model.dart';
+import '../../shared/models/picked_file_model.dart';
 
 abstract class MediaPickerService {
   Future<PickedFileModel?> pickImage({

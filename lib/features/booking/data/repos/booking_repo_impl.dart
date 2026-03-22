@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:guide_me/core/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/core/mapper/city_mapper.dart';
+import 'package:guide_me/core/shared/mapper/city_mapper.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_package_mapper.dart';

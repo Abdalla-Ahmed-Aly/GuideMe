@@ -1,6 +1,6 @@
 // features/guide/data/models/guide_details_model.dart
-import 'package:guide_me/core/models/city_model.dart';
-import 'package:guide_me/core/models/photo_model.dart';
+import 'package:guide_me/core/shared/models/city_model.dart';
+import 'package:guide_me/core/shared/models/photo_model.dart';
 import 'package:guide_me/features/booking/data/models/guider_models/availability_model.dart';
 import 'package:guide_me/features/booking/data/models/guider_models/certificate_model.dart';
 import 'package:guide_me/features/booking/data/models/guider_models/review_model.dart';

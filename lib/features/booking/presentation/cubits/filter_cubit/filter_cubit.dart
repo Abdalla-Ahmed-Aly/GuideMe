@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:guide_me/core/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/errors/failure_code.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';

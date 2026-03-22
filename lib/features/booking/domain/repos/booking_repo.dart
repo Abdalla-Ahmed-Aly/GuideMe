@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:guide_me/core/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';

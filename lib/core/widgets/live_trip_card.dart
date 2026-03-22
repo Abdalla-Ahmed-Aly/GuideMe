@@ -19,7 +19,7 @@ class LiveTripCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.bookingDetailsScreen);
+        context.push(AppRoutes.tripDetailsScreen, extra: booking);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),

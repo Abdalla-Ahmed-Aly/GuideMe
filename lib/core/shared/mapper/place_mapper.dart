@@ -1,8 +1,8 @@
-import 'package:guide_me/core/entities/place_entity.dart';
-import 'package:guide_me/core/mapper/category_mapper.dart';
-import 'package:guide_me/core/mapper/city_mapper.dart';
-import 'package:guide_me/core/mapper/location_mapper.dart';
-import 'package:guide_me/core/models/place_model.dart';
+import 'package:guide_me/core/shared/entities/place_entity.dart';
+import 'package:guide_me/core/shared/mapper/category_mapper.dart';
+import 'package:guide_me/core/shared/mapper/city_mapper.dart';
+import 'package:guide_me/core/shared/mapper/location_mapper.dart';
+import 'package:guide_me/core/shared/models/place_model.dart';
 
 class PlaceMapper {
   static PlaceEntity toEntity(PlaceModel placeModel) {

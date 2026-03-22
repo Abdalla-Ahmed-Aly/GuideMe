@@ -1,6 +1,6 @@
-import 'package:guide_me/core/models/category_model.dart';
-import 'package:guide_me/core/models/city_model.dart';
-import 'package:guide_me/core/models/location_model.dart';
+import 'package:guide_me/core/shared/models/category_model.dart';
+import 'package:guide_me/core/shared/models/city_model.dart';
+import 'package:guide_me/core/shared/models/location_model.dart';
 
 class PlaceModel {
   final String id;

@@ -1,4 +1,4 @@
-import 'package:guide_me/core/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/guider_entities/availability_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/guider_entities/certificate_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/guider_entities/review_entity.dart';

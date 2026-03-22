@@ -1,4 +1,4 @@
-import 'package:guide_me/core/entities/photo_entity.dart';
+import 'package:guide_me/core/shared/entities/photo_entity.dart';
 
 class GuiderEntity {
   final String id;

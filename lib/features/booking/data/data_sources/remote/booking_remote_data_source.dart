@@ -1,4 +1,4 @@
-import 'package:guide_me/core/models/city_model.dart';
+import 'package:guide_me/core/shared/models/city_model.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_model.dart';

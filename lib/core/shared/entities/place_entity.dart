@@ -1,6 +1,6 @@
-import 'package:guide_me/core/entities/category_entity.dart';
-import 'package:guide_me/core/entities/city_entity.dart';
-import 'package:guide_me/core/entities/location_entity.dart';
+import 'package:guide_me/core/shared/entities/category_entity.dart';
+import 'package:guide_me/core/shared/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/location_entity.dart';
 
 class PlaceEntity {
   final String id;

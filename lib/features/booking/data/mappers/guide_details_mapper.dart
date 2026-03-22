@@ -1,4 +1,4 @@
-import 'package:guide_me/core/mapper/city_mapper.dart';
+import 'package:guide_me/core/shared/mapper/city_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/availability_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/certificate_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/review_mapper.dart';

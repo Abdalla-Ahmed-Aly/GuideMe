@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
-import 'package:guide_me/core/entities/guider_entity.dart';
+import 'package:guide_me/core/shared/entities/guider_entity.dart';
 import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
 import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
 import 'package:guide_me/core/location_core/presentation/screens/view_location_screen.dart';
@@ -25,8 +25,7 @@ import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/g
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/booking_details_screen.dart';
-import 'package:guide_me/features/booking/presentation/screens/completed_trip_details.dart';
+import 'package:guide_me/features/booking/presentation/screens/trip_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_booking_success_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_place_details_screen.dart';
@@ -163,10 +162,6 @@ abstract class AppRouter {
         builder: (context, state) => const PlaceDetailsScreen(),
       ),
       GoRoute(
-        path: AppRoutes.bookingDetailsScreen,
-        builder: (context, state) => const BookingDetailsScreen(),
-      ),
-      GoRoute(
         path: AppRoutes.settingsScreen,
         builder: (context, state) => const SettingsScreen(),
       ),
@@ -253,8 +248,8 @@ abstract class AppRouter {
       ),
 
       GoRoute(
-        path: AppRoutes.completedtripdetailes,
-        builder: (context, state) => const CompletedTripDetails(),
+        path: AppRoutes.tripDetailsScreen,
+        builder: (context, state) => const TripDetailsScreen(),
       ),
 
       GoRoute(

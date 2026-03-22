@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/constants/maps_constants.dart';
-import 'package:guide_me/core/entities/location_entity.dart';
+import 'package:guide_me/core/shared/entities/location_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:latlong2/latlong.dart';
