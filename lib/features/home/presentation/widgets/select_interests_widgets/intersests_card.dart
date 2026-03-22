@@ -10,7 +10,6 @@ class IntersestsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
@@ -19,19 +18,23 @@ class IntersestsCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                image,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-
-          const SizedBox(height: 10),
-
+          const SizedBox(height: 8),
           Text(
             title,
             style: AppTextStyles.poppinsRegular12,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

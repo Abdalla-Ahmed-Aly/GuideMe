@@ -47,26 +47,20 @@ class LoggerInterceptor extends Interceptor {
 
 class AuthorizationInterceptor extends Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    // final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    // final token  = sharedPreferences.getString('token');
-    // options.headers['Authorization'] = "Bearer $token";
-    handler.next(options); // continue with the Request
-    void onRequest(
-      RequestOptions options,
-      RequestInterceptorHandler handler,
-    ) async {
-      try {
-        final token = await getIt<TokenService>().getToken();
-        if (token != null) {
-          options.headers['Authorization'] = "Bearer $token";
-        }
-      } catch (e) {
-        // Log the error but continue the request without token
-        Logger().e('AuthorizationInterceptor: Error fetching token: $e');
-      } finally {
-        handler.next(options); // Always call next() to prevent hanging
+  void onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    try {
+      final token = await getIt<TokenService>().getToken();
+
+      if (token != null && token.isNotEmpty) {
+        options.headers['Authorization'] = "Bearer $token";
       }
+    } catch (e) {
+      Logger().e('AuthorizationInterceptor: Error fetching token: $e');
     }
+
+    handler.next(options); // لازم تتنادى مرة واحدة بس
   }
 }

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
@@ -52,6 +50,7 @@ import 'package:guide_me/features/guide_registration/presentation/screens/guide_
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
+import 'package:guide_me/features/home/presentation/cubits/get_catogry_copy/get_catogry_copy_cubit.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/tourist_navigation_bar_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -64,7 +63,6 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
-
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -78,21 +76,21 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-  path: AppRoutes.logInScreen,
-  builder: (context, state) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<LoginCubit>(),  
-        ),
-        BlocProvider(
-          create: (context) => getIt<LoginwithGoogleCubit>(), 
-        ),
-      ],
-      child: const LogInScreen(),
-    );
-  },
-),
+        path: AppRoutes.logInScreen,
+        builder: (context, state) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<LoginCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<LoginwithGoogleCubit>(),
+              ),
+            ],
+            child: const LogInScreen(),
+          );
+        },
+      ),
       GoRoute(
         path: AppRoutes.forgetPasswordScreen,
         builder: (context, state) => BlocProvider(
@@ -101,31 +99,34 @@ abstract class AppRouter {
         ),
       ),
       GoRoute(
-  path: AppRoutes.checkemailscreen,
-  builder: (context, state) {
-    final email = state.extra as String;
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<VerifyPasswordCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<ResendForgetPasswordCubit>(),
-        ),
-      ],
-      child: VerificationCodeScreen(email: email),
-    );
-  },
-),
+        path: AppRoutes.checkemailscreen,
+        builder: (context, state) {
+          final email = state.extra as String;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<VerifyPasswordCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<ResendForgetPasswordCubit>(),
+              ),
+            ],
+            child: VerificationCodeScreen(email: email),
+          );
+        },
+      ),
       GoRoute(
         path: AppRoutes.resetPasswordScreen,
         builder: (context, state) {
           final data = state.extra as Map<String, String>;
           final email = data["email"]!;
           final otp = data["forgotPasswordOTP"]!;
-        return  BlocProvider(
+          return BlocProvider(
             create: (context) => getIt<ResetPasswordCubit>(),
-            child:  ResetPasswordScreen(email: email , otp:  otp,),
+            child: ResetPasswordScreen(
+              email: email,
+              otp: otp,
+            ),
           );
         },
       ),
@@ -171,7 +172,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.selectInterestsScreen,
-        builder: (context, state) => const SelectInterestsScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<GetCatogryCopyCubit>()..fetchCategories(),
+          child: const SelectInterestsScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.explorePlacesScreen,
