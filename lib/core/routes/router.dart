@@ -64,7 +64,7 @@ import 'package:guide_me/features/guide_registration/presentation/screens/guide_
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
-import 'package:guide_me/features/home/presentation/cubits/get_catogry_copy/get_catogry_copy_cubit.dart';
+import 'package:guide_me/features/home/presentation/cubits/interests_cubit/interests_cubit.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/tourist_navigation_bar_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -207,7 +207,7 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.selectInterestsScreen,
         builder: (context, state) => BlocProvider(
-          create: (context) => getIt<GetCatogryCopyCubit>()..fetchCategories(),
+          create: (context) => getIt<InterestsCubit>()..fetchCategories(),
           child: const SelectInterestsScreen(),
         ),
       ),

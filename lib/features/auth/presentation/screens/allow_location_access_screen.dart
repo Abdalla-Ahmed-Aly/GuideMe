@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -67,12 +68,7 @@ class AllowLocationAccessScreen extends StatelessWidget {
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.p),
-            child: AppButton(
-              onPressed: () {
-                context.go(AppRoutes.chooseRoleScreen);
-              },
-              text: context.l10n.enable,
-            ),
+            child: const EnableLocationAccess(),
           ),
 
           34.verticalSpace,
@@ -89,6 +85,38 @@ class AllowLocationAccessScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class EnableLocationAccess extends StatelessWidget {
+  const EnableLocationAccess({super.key});
+
+  Future<void> _enableLocation(BuildContext context) async {
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      await Geolocator.openAppSettings();
+      return;
+    }
+
+    if (permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always) {
+      if (context.mounted) {
+        context.go(AppRoutes.chooseRoleScreen);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AppButton(
+      onPressed: () => _enableLocation(context),
+      text: context.l10n.enable,
     );
   }
 }

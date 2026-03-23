@@ -4,7 +4,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
-import 'package:guide_me/features/home/presentation/widgets/select_interests_widgets/interests_grid_view.dart';
+import 'package:guide_me/features/home/presentation/widgets/select_interests_widgets/interests_screen_body.dart.dart';
 
 class SelectInterestsScreen extends StatelessWidget {
   const SelectInterestsScreen({super.key});
@@ -16,14 +16,14 @@ class SelectInterestsScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: size.height * 0.08),
+          SizedBox(height: MediaQuery.of(context).padding.top + 24),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 28.p),
             child: const ArrowBackButton(),
           ),
 
-          SizedBox(height: size.height * 0.05),
+          const SizedBox(height: 32),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 38.p),
@@ -35,10 +35,10 @@ class SelectInterestsScreen extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: size.height * 0.06),
+          const SizedBox(height: 24),
 
           const Expanded(
-            child: InterestsGridView(),
+            child: InterestsScreenBody(),
           ),
         ],
       ),

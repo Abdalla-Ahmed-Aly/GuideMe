@@ -394,5 +394,6 @@
   "day": "Day",
   "validationSelectPlace": "Please select a place",
   "pleaseSelectNationality": "Please select your nationality",
-  "noCountriesFound": "No countries found"
+  "noCountriesFound": "No countries found",
+  "pleaseSelectAtLeastOneInterest": "Please select at least one interest"
 }

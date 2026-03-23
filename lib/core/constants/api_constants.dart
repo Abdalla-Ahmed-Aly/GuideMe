@@ -22,6 +22,7 @@ abstract class ApiConstants {
   static const placeByCity = "$api/home/by-city";
   static const aiPackages = "$api/home/ai-packages-suggestions";
   static const getcatogey = '$api/category';
+  static const addInterests = '$api/home/interests';
 
   static const String addBookingEndpoint = "$api/booking";
   static const String myScheduleEndpoint = "$addBookingEndpoint/my-schedule";

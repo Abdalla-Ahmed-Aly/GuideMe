@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 
@@ -25,7 +24,8 @@ class IntersestsCard extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          Expanded(
+          AspectRatio(
+            aspectRatio: 1,
             child: Stack(
               children: [
                 ClipRRect(
@@ -37,34 +37,35 @@ class IntersestsCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                if (isSelected)
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    child: isSelected
-                        ? Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.black.withValues(alpha: 0.5),
+
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: isSelected
+                      ? Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.black.withValues(alpha: 0.5),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.check_outlined,
+                              color: Colors.white,
+                              size: 40,
                             ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.check_outlined,
-                                color: Colors.white,
-                                size: 40,
-                              ),
-                            ),
-                          )
-                        : null,
-                  ),
+                          ),
+                        )
+                      : null,
+                ),
               ],
             ),
           ),
           const SizedBox(height: 8),
           Text(
             title,
-            style: AppTextStyles.poppinsRegular12.copyWith(
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            ),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.poppinsMedium16,
           ),
         ],
       ),

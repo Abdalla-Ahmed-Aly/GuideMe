@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +26,6 @@ class ApplyingNationalitySection extends StatelessWidget {
             context: context,
             failure: state.failure,
           );
-          log(state.failure.failureCode.name);
           context.showErrorSnakbar(message: error.message);
           context.read<SelectNationalityCubit>().resetState();
         }

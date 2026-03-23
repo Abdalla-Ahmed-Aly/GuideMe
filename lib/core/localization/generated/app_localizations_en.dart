@@ -1128,4 +1128,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noCountriesFound => 'No countries found';
+
+  @override
+  String get pleaseSelectAtLeastOneInterest =>
+      'Please select at least one interest';
 }

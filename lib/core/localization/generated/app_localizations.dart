@@ -2281,6 +2281,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No countries found'**
   String get noCountriesFound;
+
+  /// No description provided for @pleaseSelectAtLeastOneInterest.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select at least one interest'**
+  String get pleaseSelectAtLeastOneInterest;
 }
 
 class _AppLocalizationsDelegate

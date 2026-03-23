@@ -1,7 +1,8 @@
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/network/api_service.dart';
-import 'package:guide_me/features/home/data/model/get_catogry_copy.dart';
+import 'package:guide_me/core/shared/models/category_model.dart';
+import 'package:guide_me/features/home/data/model/add_interests_request_model.dart';
 import 'package:guide_me/features/home/data/model/home_model.dart';
 import 'package:guide_me/features/home/data/model/package_model.dart';
 import 'package:guide_me/features/home/data/model/place_by_category_model.dart';
@@ -21,7 +22,11 @@ abstract class HomeService {
 
   Future<List<PackageModel>> getAiPackagesSuggestions();
 
-  Future<List<GetCategoriesResponse>> getCatogry();
+  Future<List<CategoryModel>> getCatogries();
+
+  Future<List<CategoryModel>> addInterests({
+    required AddInterestsRequestModel interests,
+  });
 }
 
 @LazySingleton(as: HomeService)
@@ -56,11 +61,11 @@ class HomeApiServiceImpl extends HomeService {
     required String cityId,
     required String filter,
   }) async {
-      final response = await getIt<ApiService>().get(
-        endpoint: '${ApiConstants.placeByCity}/$cityId?filter=$filter',
-      );
+    final response = await getIt<ApiService>().get(
+      endpoint: '${ApiConstants.placeByCity}/$cityId?filter=$filter',
+    );
 
-      return PlaceByCitiesModel.fromJson(response.data);
+    return PlaceByCitiesModel.fromJson(response.data);
   }
 
   @override
@@ -74,11 +79,26 @@ class HomeApiServiceImpl extends HomeService {
   }
 
   @override
-  Future<List<GetCategoriesResponse>> getCatogry() async {
+  Future<List<CategoryModel>> getCatogries() async {
     final response = await _apiService.get(endpoint: ApiConstants.getcatogey);
     final List<dynamic> categoriesJson = response.data['data']['categories'];
     final categories = categoriesJson
-        .map((e) => GetCategoriesResponse.fromJson(e))
+        .map((e) => CategoryModel.fromJson(e))
+        .toList();
+    return categories;
+  }
+
+  @override
+  Future<List<CategoryModel>> addInterests({
+    required AddInterestsRequestModel interests,
+  }) async {
+    final response = await _apiService.post(
+      endpoint: ApiConstants.addInterests,
+      data: interests.toJson(),
+    );
+    final List<dynamic> categoriesJson = response.data['data'];
+    final categories = categoriesJson
+        .map((e) => CategoryModel.fromJson(e))
         .toList();
     return categories;
   }

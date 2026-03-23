@@ -395,5 +395,6 @@
   "day": "يوم",
   "validationSelectPlace": "يرجى اختيار مكان",
   "pleaseSelectNationality": "يرجى اختيار جنسيتك",
-  "noCountriesFound": "لا توجد دول"
+  "noCountriesFound": "لا توجد دول",
+  "pleaseSelectAtLeastOneInterest": "يرجى اختيار اهتمام واحد على الأقل"
 }

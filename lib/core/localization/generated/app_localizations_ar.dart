@@ -1127,4 +1127,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noCountriesFound => 'لا توجد دول';
+
+  @override
+  String get pleaseSelectAtLeastOneInterest =>
+      'يرجى اختيار اهتمام واحد على الأقل';
 }

@@ -104,24 +104,28 @@ import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
     as _i955;
 import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
 import 'package:guide_me/features/home/domain/repo/home_repo.dart' as _i1045;
+import 'package:guide_me/features/home/domain/usecases/add_interests_use_case.dart'
+    as _i726;
 import 'package:guide_me/features/home/domain/usecases/get_ai_package_usecase.dart'
     as _i806;
 import 'package:guide_me/features/home/domain/usecases/get_categories_usecase.dart'
     as _i187;
+import 'package:guide_me/features/home/domain/usecases/get_home_usecase.dart'
+    as _i367;
 import 'package:guide_me/features/home/domain/usecases/place_by_category_usecase.dart'
     as _i205;
 import 'package:guide_me/features/home/domain/usecases/place_by_city_usecase.dart'
     as _i985;
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart'
     as _i842;
-import 'package:guide_me/features/home/presentation/cubits/get_catogry_copy/get_catogry_copy_cubit.dart'
-    as _i168;
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart'
     as _i792;
 import 'package:guide_me/features/home/presentation/cubits/get_place_by_category/place_by_category_cubit.dart'
     as _i554;
 import 'package:guide_me/features/home/presentation/cubits/get_place_by_city/place_by_city_cubit.dart'
     as _i137;
+import 'package:guide_me/features/home/presentation/cubits/interests_cubit/interests_cubit.dart'
+    as _i50;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -132,22 +136,21 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
-    gh.factory<_i806.GetAiPackageUsecase>(() => _i806.GetAiPackageUsecase());
-    gh.factory<_i205.PlaceByCategoryUsecase>(
-      () => _i205.PlaceByCategoryUsecase(),
-    );
-    gh.factory<_i985.PlaceByCityUsecase>(() => _i985.PlaceByCityUsecase());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
     gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
+    gh.lazySingleton<_i367.GetHomeUsecase>(() => _i367.GetHomeUsecase());
+    gh.lazySingleton<_i205.PlaceByCategoryUsecase>(
+      () => _i205.PlaceByCategoryUsecase(),
+    );
+    gh.lazySingleton<_i985.PlaceByCityUsecase>(
+      () => _i985.PlaceByCityUsecase(),
+    );
     gh.lazySingleton<_i947.ApiService>(
       () => _i947.ApiService(
         gh<_i516.DioService>(),
         gh<_i1.ConnectivityHelper>(),
       ),
-    );
-    gh.factory<_i842.GetAiPackageCubit>(
-      () => _i842.GetAiPackageCubit(gh<_i806.GetAiPackageUsecase>()),
     );
     gh.lazySingleton<_i250.GpsLocalDataSource>(
       () => _i923.GpsLocalDataSourceImpl(),
@@ -258,14 +261,29 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i24.TouristBookingCubit>(
       () => _i24.TouristBookingCubit(gh<_i12.GetBookingsUseCase>()),
     );
-    gh.factory<_i187.GetCategoriesUsecase>(
+    gh.lazySingleton<_i726.AddInterestsUseCase>(
+      () => _i726.AddInterestsUseCase(gh<_i1045.HomeRepo>()),
+    );
+    gh.lazySingleton<_i806.GetAiPackageUsecase>(
+      () => _i806.GetAiPackageUsecase(gh<_i1045.HomeRepo>()),
+    );
+    gh.lazySingleton<_i187.GetCategoriesUsecase>(
       () => _i187.GetCategoriesUsecase(gh<_i1045.HomeRepo>()),
     );
     gh.factory<_i772.RegisterCubit>(
       () => _i772.RegisterCubit(gh<_i885.RegisterUseCase>()),
     );
+    gh.factory<_i50.InterestsCubit>(
+      () => _i50.InterestsCubit(
+        gh<_i187.GetCategoriesUsecase>(),
+        gh<_i726.AddInterestsUseCase>(),
+      ),
+    );
     gh.factory<_i622.GuideDataCubit>(
       () => _i622.GuideDataCubit(gh<_i292.GetGuideDataUseCase>()),
+    );
+    gh.factory<_i842.GetAiPackageCubit>(
+      () => _i842.GetAiPackageCubit(gh<_i806.GetAiPackageUsecase>()),
     );
     gh.factory<_i776.SendForgetPasswordCubit>(
       () =>
@@ -285,9 +303,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),
-    );
-    gh.factory<_i168.GetCatogryCopyCubit>(
-      () => _i168.GetCatogryCopyCubit(gh<_i187.GetCategoriesUsecase>()),
     );
     return this;
   }

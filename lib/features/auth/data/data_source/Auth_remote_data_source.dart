@@ -138,6 +138,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       endpoint: ApiConstants.addNationalityEndPoint,
       data: {"nationality": nationality},
     );
-    return NationalityResponseModel.fromJson(response.data);
+    return NationalityResponseModel.fromJson(response.data['data']);
   }
 }
