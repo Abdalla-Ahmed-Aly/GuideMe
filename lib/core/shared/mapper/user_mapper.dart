@@ -10,7 +10,9 @@ class UserMapper {
       location: userModel.location,
       lat: userModel.lat,
       long: userModel.long,
-      photo: PhotoMapper.toEntity(userModel.photo),
+      photo: userModel.photo != null
+          ? PhotoMapper.toEntity(userModel.photo!)
+          : null,
     );
   }
 }

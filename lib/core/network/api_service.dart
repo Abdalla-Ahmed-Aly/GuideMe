@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 import '../errors/exceptions.dart';
 import '../helpers/connectivity_helper.dart';
@@ -10,17 +9,12 @@ import 'dio_service.dart';
 class ApiService {
   late final Dio _dio;
   final ConnectivityHelper connectivityHelper;
-  final Logger _logger = Logger(
-    printer: PrettyPrinter(methodCount: 0, colors: true, printEmojis: true),
-  );
 
   ApiService(DioService dioService, this.connectivityHelper)
     : _dio = dioService.dio;
 
   Future<void> _checkInternet() async {
-    _logger.d('ApiService: Checking internet connection...');
     final isConnected = await connectivityHelper.isConnected();
-    _logger.d('ApiService: Internet connected: $isConnected');
     if (!isConnected) {
       throw NoInternetException();
     }
@@ -35,8 +29,6 @@ class ApiService {
     Options? options,
   }) async {
     await _checkInternet();
-    _logger.i('ApiService: GET Request -> $endpoint');
-    if (queryParameters != null) _logger.d('ApiService: Query Params: $queryParameters');
     final response = await _dio.get(
       endpoint,
       queryParameters: queryParameters,
@@ -48,7 +40,6 @@ class ApiService {
             headers: headers,
           ),
     );
-    _logger.d('ApiService: Response received [${response.statusCode}] from $endpoint');
     return response;
   }
 

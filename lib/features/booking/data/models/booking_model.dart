@@ -5,6 +5,7 @@ import 'package:guide_me/features/booking/data/models/booking_ui_state_model.dar
 
 class BookingModel {
   final String id;
+  final String? packageId;
   final UserModel user;
   final PlaceModel place;
   final GuiderModel? guider;
@@ -17,6 +18,7 @@ class BookingModel {
 
   const BookingModel({
     required this.id,
+    this.packageId,
     required this.user,
     required this.place,
     this.guider,
@@ -30,6 +32,7 @@ class BookingModel {
 
   factory BookingModel.fromJson(Map<String, dynamic> json) => BookingModel(
     id: json['_id'] as String,
+    packageId: json['packageId'] as String?,
     user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
     place: PlaceModel.fromJson(json['place'] as Map<String, dynamic>),
     guider: json['guider'] != null

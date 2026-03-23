@@ -25,7 +25,12 @@ class RequesterProfileHeaderSection extends StatelessWidget {
               strokeAlign: BorderSide.strokeAlignOutside,
             ),
           ),
-          child: CustomNetworkImage(imageUrl: userData.photo.url),
+          child: userData.photo != null
+              ? CustomNetworkImage(imageUrl: userData.photo!.url)
+              : const Icon(
+                  Icons.person_outline,
+                  color: Colors.grey,
+                ),
         ),
 
         const SizedBox(width: 16),

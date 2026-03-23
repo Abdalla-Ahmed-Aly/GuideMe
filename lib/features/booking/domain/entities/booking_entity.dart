@@ -6,6 +6,7 @@ import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.da
 
 class BookingEntity {
   final String id;
+  final String? packageId;
   final UserEntity user;
   final PlaceEntity place;
   final GuiderEntity? guider;
@@ -18,6 +19,7 @@ class BookingEntity {
 
   const BookingEntity({
     required this.id,
+    this.packageId,
     required this.user,
     required this.place,
     this.guider,

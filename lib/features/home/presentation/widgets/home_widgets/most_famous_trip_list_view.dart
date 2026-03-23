@@ -68,6 +68,7 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
           return SizedBox(
             height: height,
             child: ListView.builder(
+              clipBehavior: Clip.none,
               controller: _scrollController,
               padding: EdgeInsets.only(left: 20.p, right: 20.p),
               scrollDirection: Axis.horizontal,

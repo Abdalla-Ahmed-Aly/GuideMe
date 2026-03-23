@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
-import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 import 'package:guide_me/core/widgets/custom_shimmer.dart';
+import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
 
 class PlaceListTile extends StatelessWidget {
   const PlaceListTile({super.key, required this.place});
@@ -58,7 +58,7 @@ class PlaceListTile extends StatelessWidget {
                     return CustomShimmer(
                       width: imageWidth,
                       height: imageHeight,
-                      borderRadius: 0, // ClipRRect handles it
+                      borderRadius: 0,
                     );
                   },
                   errorBuilder: (context, error, stackTrace) => Image.asset(
@@ -108,15 +108,14 @@ class PlaceListTile extends StatelessWidget {
                       const SizedBox(height: 6),
 
                       // Description
-                      if (place.description != null)
-                        Text(
-                          place.description!,
-                          style: AppTextStyles.interRegular8.copyWith(
-                            color: AppColors.natural4,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                      Text(
+                        place.description!,
+                        style: AppTextStyles.interRegular8.copyWith(
+                          color: AppColors.natural4,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
 
                       const Spacer(),
 
@@ -125,11 +124,7 @@ class PlaceListTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           // Rate
-                          Icon(
-                            Icons.star_rounded,
-                            color: AppColors.primary,
-                            size: 16.ic,
-                          ),
+                          DynamicRatingStars(rating: place.rating),
                           Text(
                             place.rating.toString(),
                             style: AppTextStyles.interSemiBold14,

@@ -10,6 +10,7 @@ class BookingMapper {
   static BookingEntity toEntity(BookingModel bookingModel) {
     return BookingEntity(
       id: bookingModel.id,
+      packageId: bookingModel.packageId,
       user: UserMapper.toEntity(bookingModel.user),
       place: PlaceMapper.toEntity(bookingModel.place),
       guider: bookingModel.guider != null

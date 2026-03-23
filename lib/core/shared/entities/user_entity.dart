@@ -6,7 +6,7 @@ class UserEntity {
   final String location;
   final double lat;
   final double long;
-  final PhotoEntity photo;
+  final PhotoEntity? photo;
 
   const UserEntity({
     required this.id,

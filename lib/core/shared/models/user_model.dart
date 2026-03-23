@@ -6,7 +6,7 @@ class UserModel {
   final String location;
   final double lat;
   final double long;
-  final PhotoModel photo;
+  final PhotoModel? photo;
 
   const UserModel({
     required this.id,
@@ -23,6 +23,8 @@ class UserModel {
     location: json['location'] as String,
     lat: (json['lat'] as num).toDouble(),
     long: (json['long'] as num).toDouble(),
-    photo: PhotoModel.fromJson(json['photo'] as Map<String, dynamic>),
+    photo: json['photo'] != null
+        ? PhotoModel.fromJson(json['photo'] as Map<String, dynamic>)
+        : null,
   );
 }
