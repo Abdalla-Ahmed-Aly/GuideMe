@@ -2269,6 +2269,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select a place'**
   String get validationSelectPlace;
+
+  /// No description provided for @pleaseSelectNationality.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select your nationality'**
+  String get pleaseSelectNationality;
+
+  /// No description provided for @noCountriesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No countries found'**
+  String get noCountriesFound;
 }
 
 class _AppLocalizationsDelegate

@@ -393,5 +393,7 @@
   "validUntil": "صالح حتى: ",
   "noTripsYet": "لا توجد رحلات حتى الآن",
   "day": "يوم",
-  "validationSelectPlace": "يرجى اختيار مكان"
+  "validationSelectPlace": "يرجى اختيار مكان",
+  "pleaseSelectNationality": "يرجى اختيار جنسيتك",
+  "noCountriesFound": "لا توجد دول"
 }

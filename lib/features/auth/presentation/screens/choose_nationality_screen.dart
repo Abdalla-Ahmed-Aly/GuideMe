@@ -1,50 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/arrow_back_button.dart';
+import 'package:guide_me/features/auth/presentation/manager/select_nationality_cubit/select_nationality_cubit.dart';
+import 'package:guide_me/features/auth/presentation/widgets/choose_nationality_widgets/applying_nationality_section.dart';
 import 'package:guide_me/features/auth/presentation/widgets/choose_nationality_widgets/countries_list_view.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 
-class ChooseNationalityScreen extends StatefulWidget {
+class ChooseNationalityScreen extends StatelessWidget {
   const ChooseNationalityScreen({super.key});
-
-  @override
-  State<ChooseNationalityScreen> createState() =>
-      _ChooseNationalityScreenState();
-}
-
-class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
-  List<String> countries = [
-    "Egypt",
-    "Italy",
-    "France",
-    "Germany",
-    "Spain",
-    "United States",
-    "United Kingdom",
-    "Canada",
-    "Brazil",
-    "Mexico",
-    "Japan",
-    "China",
-    "India",
-    "South Korea",
-    "Australia",
-    "Russia",
-    "Turkey",
-    "Saudi Arabia",
-    "South Africa",
-    "Argentina",
-  ];
-
-  List<String> filteredCountries = [];
-
-  String value = "";
 
   @override
   Widget build(BuildContext context) {
@@ -82,30 +49,18 @@ class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
                 color: AppColors.natural3,
               ),
               onChanged: (value) {
-                setState(() {
-                  this.value = value;
-                  filteredCountries = countries
-                      .where(
-                        (country) =>
-                            country.toLowerCase().contains(value.toLowerCase()),
-                      )
-                      .toList();
-                });
+                context.read<SelectNationalityCubit>().search(value);
               },
             ),
           ),
 
-          17.verticalSpace,
+          16.verticalSpace,
 
           SizedBox(
             height: 400.h,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 22.p),
-              child: CountriesListView(
-                countries: filteredCountries.isEmpty && value.isEmpty
-                    ? countries
-                    : filteredCountries,
-              ),
+              child: const CountriesListView(),
             ),
           ),
 
@@ -113,15 +68,12 @@ class _ChooseNationalityScreenState extends State<ChooseNationalityScreen> {
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 40.p),
-            child: AppButton(
-              onPressed: () {
-                context.push(AppRoutes.allowLocationAccessScreen);
-              },
-              text: context.l10n.continueText,
-            ),
+            child: const ApplyingNationalitySection(),
           ),
         ],
       ),
     );
   }
 }
+
+

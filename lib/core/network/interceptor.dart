@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:logger/logger.dart';
-
 
 /// This interceptor is used to show request and response logs
 class LoggerInterceptor extends Interceptor {
@@ -53,6 +54,7 @@ class AuthorizationInterceptor extends Interceptor {
   ) async {
     try {
       final token = await getIt<TokenService>().getToken();
+      log(token.toString());
 
       if (token != null && token.isNotEmpty) {
         options.headers['Authorization'] = "Bearer $token";

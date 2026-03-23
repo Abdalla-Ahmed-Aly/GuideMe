@@ -1121,4 +1121,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get validationSelectPlace => 'يرجى اختيار مكان';
+
+  @override
+  String get pleaseSelectNationality => 'يرجى اختيار جنسيتك';
+
+  @override
+  String get noCountriesFound => 'لا توجد دول';
 }

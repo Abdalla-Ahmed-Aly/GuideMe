@@ -1122,4 +1122,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validationSelectPlace => 'Please select a place';
+
+  @override
+  String get pleaseSelectNationality => 'Please select your nationality';
+
+  @override
+  String get noCountriesFound => 'No countries found';
 }

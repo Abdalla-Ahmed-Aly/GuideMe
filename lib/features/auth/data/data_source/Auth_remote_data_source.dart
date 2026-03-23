@@ -10,6 +10,7 @@ import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget
 import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/login_model.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
+import 'package:guide_me/features/auth/data/models/nationality_response_model.dart';
 import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:injectable/injectable.dart';
@@ -31,6 +32,9 @@ abstract class AuthRemoteDataSource {
     ResetPasswordRequestModel request,
   );
   Future<LoginresponseModel> loginWithGoogle(String token);
+  Future<NationalityResponseModel> addNationality({
+    required String nationality,
+  });
 }
 
 @LazySingleton(as: AuthRemoteDataSource)
@@ -112,17 +116,28 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     print("🚀 Endpoint: ${ApiConstants.loginWithGoogleEndPoint}");
     print("🚀 Payload: {'token': '$token'}");
     print("🚀 Headers: {'Authorization': 'Bearer \$token'}");
-    
+
     final response = await apiService.post(
       endpoint: ApiConstants.loginWithGoogleEndPoint,
       headers: {"Authorization": "Bearer $token"},
       data: {"token": token},
     );
-    
+
     if (response.data == null) {
       throw Exception("Google login response is null");
     }
     print("✅ Google login response received: ${response.data}");
     return LoginresponseModel.fromJson(response.data);
+  }
+
+  @override
+  Future<NationalityResponseModel> addNationality({
+    required String nationality,
+  }) async {
+    final response = await apiService.patch(
+      endpoint: ApiConstants.addNationalityEndPoint,
+      data: {"nationality": nationality},
+    );
+    return NationalityResponseModel.fromJson(response.data);
   }
 }

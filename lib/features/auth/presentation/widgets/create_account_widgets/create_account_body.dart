@@ -27,6 +27,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
   final phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
             ),
             child: Column(
               children: [
-                SizedBox(height: size.height * 0.05),
+                const SizedBox(height: 16),
 
                 // Image
                 Image.asset(
@@ -67,7 +68,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                   ),
                 ),
 
-                (size.height * 0.04).verticalSpace,
+                const SizedBox(height: 16),
 
                 // Create Account Section
                 Padding(
@@ -76,6 +77,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                     namecontroll: nameController,
                     emailcontroll: emailController,
                     passwordcontroll: passwordController,
+                    confirmPasswordController: confirmPasswordController,
                     phonecontroll: phoneController,
                   ),
                 ),
@@ -121,7 +123,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
 
                 const CreateAccountFooter(),
 
-                (size.height * 0.03).verticalSpace,
+                const SizedBox(height: 16),
               ],
             ),
           ),

@@ -6,6 +6,7 @@ import 'package:guide_me/features/auth/data/models/forget_password/send_forget_p
 import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/login_model.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
+import 'package:guide_me/features/auth/data/models/nationality_response_model.dart';
 import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/reset_password_response_model.dart';
@@ -36,6 +37,8 @@ abstract class AuthRepo {
     ResetPasswordRequestModel request,
   );
 
-  Future<Either<Failure, LoginresponseModel>> loginwithgoogle( String token);
-  
+  Future<Either<Failure, LoginresponseModel>> loginwithgoogle(String token);
+  Future<Either<Failure, NationalityResponseModel>> addNationality({
+    required String nationality,
+  });
 }

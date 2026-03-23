@@ -13,6 +13,7 @@ import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget
 import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/login_model.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
+import 'package:guide_me/features/auth/data/models/nationality_response_model.dart';
 import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart';
@@ -113,5 +114,19 @@ class AuthRepoImple extends AuthRepo {
     } catch (e) {
       return Left(ErrorHandler.handle(e));
     }
+  }
+
+  @override
+  Future<Either<Failure, NationalityResponseModel>> addNationality({
+    required String nationality,
+  }) async {
+    // try {
+    final result = await authRemoteDataSource.addNationality(
+      nationality: nationality,
+    );
+    return Right(result);
+    // } catch (e) {
+    //   return Left(ErrorHandler.handle(e.toString()));
+    // }
   }
 }

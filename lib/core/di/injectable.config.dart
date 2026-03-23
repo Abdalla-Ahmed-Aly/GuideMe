@@ -66,32 +66,12 @@ import 'package:guide_me/features/auth/presentation/manager/resend_forget_passwo
     as _i968;
 import 'package:guide_me/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart'
     as _i593;
+import 'package:guide_me/features/auth/presentation/manager/select_nationality_cubit/select_nationality_cubit.dart'
+    as _i105;
 import 'package:guide_me/features/auth/presentation/manager/send_forget_password/send_forget_password_cubit.dart'
     as _i776;
 import 'package:guide_me/features/auth/presentation/manager/verify_password_cubit/verify_password_cubit.dart'
     as _i577;
-import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
-    as _i955;
-import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
-import 'package:guide_me/features/home/domain/repo/home_repo.dart' as _i1045;
-import 'package:guide_me/features/home/domain/usecases/get_ai_package_usecase.dart'
-    as _i806;
-import 'package:guide_me/features/home/domain/usecases/get_categories_usecase.dart'
-    as _i187;
-import 'package:guide_me/features/home/domain/usecases/place_by_category_usecase.dart'
-    as _i205;
-import 'package:guide_me/features/home/domain/usecases/place_by_city_usecase.dart'
-    as _i985;
-import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart'
-    as _i842;
-import 'package:guide_me/features/home/presentation/cubits/get_catogry_copy/get_catogry_copy_cubit.dart'
-    as _i168;
-import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart'
-    as _i792;
-import 'package:guide_me/features/home/presentation/cubits/get_place_by_category/place_by_category_cubit.dart'
-    as _i554;
-import 'package:guide_me/features/home/presentation/cubits/get_place_by_city/place_by_city_cubit.dart'
-    as _i137;
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart'
     as _i322;
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source_impl.dart'
@@ -120,6 +100,28 @@ import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
     as _i24;
+import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
+    as _i955;
+import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
+import 'package:guide_me/features/home/domain/repo/home_repo.dart' as _i1045;
+import 'package:guide_me/features/home/domain/usecases/get_ai_package_usecase.dart'
+    as _i806;
+import 'package:guide_me/features/home/domain/usecases/get_categories_usecase.dart'
+    as _i187;
+import 'package:guide_me/features/home/domain/usecases/place_by_category_usecase.dart'
+    as _i205;
+import 'package:guide_me/features/home/domain/usecases/place_by_city_usecase.dart'
+    as _i985;
+import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart'
+    as _i842;
+import 'package:guide_me/features/home/presentation/cubits/get_catogry_copy/get_catogry_copy_cubit.dart'
+    as _i168;
+import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart'
+    as _i792;
+import 'package:guide_me/features/home/presentation/cubits/get_place_by_category/place_by_category_cubit.dart'
+    as _i554;
+import 'package:guide_me/features/home/presentation/cubits/get_place_by_city/place_by_city_cubit.dart'
+    as _i137;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -129,12 +131,12 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
     gh.factory<_i806.GetAiPackageUsecase>(() => _i806.GetAiPackageUsecase());
     gh.factory<_i205.PlaceByCategoryUsecase>(
       () => _i205.PlaceByCategoryUsecase(),
     );
     gh.factory<_i985.PlaceByCityUsecase>(() => _i985.PlaceByCityUsecase());
-    gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
     gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
@@ -143,9 +145,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i516.DioService>(),
         gh<_i1.ConnectivityHelper>(),
       ),
-    );
-    gh.lazySingleton<_i692.HomeService>(
-      () => _i692.HomeApiServiceImpl(gh<_i947.ApiService>()),
     );
     gh.factory<_i842.GetAiPackageCubit>(
       () => _i842.GetAiPackageCubit(gh<_i806.GetAiPackageUsecase>()),
@@ -157,29 +156,38 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
     );
-    gh.lazySingleton<_i1045.HomeRepo>(
-      () => _i955.HomeRepoImpl(gh<_i692.HomeService>()),
-    );
     gh.lazySingleton<_i1043.AuthRemoteDataSource>(
       () => _i1043.AuthRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
+    gh.lazySingleton<_i602.LocationRemoteDataSource>(
+      () => _i821.LocationRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
     gh.factory<_i137.PlaceByCityCubit>(
       () => _i137.PlaceByCityCubit(gh<_i985.PlaceByCityUsecase>()),
     );
+    gh.lazySingleton<_i322.BookingRemoteDataSource>(
+      () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
     gh.factory<_i554.PlaceByCategoryCubit>(
       () => _i554.PlaceByCategoryCubit(gh<_i205.PlaceByCategoryUsecase>()),
     );
-    gh.factory<_i792.GetHomeCubit>(
-      () => _i792.GetHomeCubit(gh<_i1045.HomeRepo>()),
+    gh.lazySingleton<_i692.HomeService>(
+      () => _i692.HomeApiServiceImpl(gh<_i947.ApiService>()),
     );
-    gh.factory<_i187.GetCategoriesUsecase>(
-      () => _i187.GetCategoriesUsecase(gh<_i1045.HomeRepo>()),
+    gh.lazySingleton<_i392.LocationRepo>(
+      () => _i133.LocationRepoImpl(
+        gh<_i602.LocationRemoteDataSource>(),
+        gh<_i250.GpsLocalDataSource>(),
+      ),
     );
     gh.lazySingleton<_i956.AuthRepo>(
       () => _i80.AuthRepoImple(
         gh<_i1043.AuthRemoteDataSource>(),
         gh<_i625.TokenService>(),
       ),
+    );
+    gh.lazySingleton<_i1045.HomeRepo>(
+      () => _i955.HomeRepoImpl(gh<_i692.HomeService>()),
     );
     gh.factory<_i426.ResendPasswordUseCase>(
       () => _i426.ResendPasswordUseCase(gh<_i956.AuthRepo>()),
@@ -190,57 +198,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i814.SendForgetPasswordUseCase>(
       () => _i814.SendForgetPasswordUseCase(gh<_i956.AuthRepo>()),
     );
+    gh.factory<_i105.SelectNationalityCubit>(
+      () => _i105.SelectNationalityCubit(gh<_i956.AuthRepo>()),
+    );
     gh.factory<_i593.ResetPasswordCubit>(
       () => _i593.ResetPasswordCubit(gh<_i865.ResetPasswordUseCase>()),
-    );
-    gh.factory<_i93.LoginUseCase>(
-      () => _i93.LoginUseCase(gh<_i956.AuthRepo>()),
-    );
-    gh.factory<_i885.RegisterUseCase>(
-      () => _i885.RegisterUseCase(gh<_i956.AuthRepo>()),
-    );
-    gh.factory<_i393.VerifyForgetPasswordUseCase>(
-      () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),
-    );
-    gh.factory<_i180.LoginWithGoogleUseCase>(
-      () => _i180.LoginWithGoogleUseCase(
-        gh<_i956.AuthRepo>(),
-        gh<_i664.GoogleAuthService>(),
-      ),
-    );
-    gh.factory<_i577.VerifyPasswordCubit>(
-      () => _i577.VerifyPasswordCubit(gh<_i393.VerifyForgetPasswordUseCase>()),
-    );
-    gh.factory<_i168.GetCatogryCopyCubit>(
-      () => _i168.GetCatogryCopyCubit(gh<_i187.GetCategoriesUsecase>()),
-    );
-    gh.factory<_i772.RegisterCubit>(
-      () => _i772.RegisterCubit(gh<_i885.RegisterUseCase>()),
-    );
-    gh.factory<_i776.SendForgetPasswordCubit>(
-      () =>
-          _i776.SendForgetPasswordCubit(gh<_i814.SendForgetPasswordUseCase>()),
-    );
-    gh.factory<_i968.ResendForgetPasswordCubit>(
-      () => _i968.ResendForgetPasswordCubit(gh<_i426.ResendPasswordUseCase>()),
-    );
-    gh.factory<_i459.LoginwithGoogleCubit>(
-      () => _i459.LoginwithGoogleCubit(gh<_i180.LoginWithGoogleUseCase>()),
-    );
-    gh.factory<_i940.LoginCubit>(
-      () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
-    );
-    gh.lazySingleton<_i602.LocationRemoteDataSource>(
-      () => _i821.LocationRemoteDataSourceImpl(gh<_i947.ApiService>()),
-    );
-    gh.lazySingleton<_i322.BookingRemoteDataSource>(
-      () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
-    );
-    gh.lazySingleton<_i392.LocationRepo>(
-      () => _i133.LocationRepoImpl(
-        gh<_i602.LocationRemoteDataSource>(),
-        gh<_i250.GpsLocalDataSource>(),
-      ),
     );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
@@ -251,11 +213,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i179.GetLocationNameUseCase>(
       () => _i179.GetLocationNameUseCase(gh<_i392.LocationRepo>()),
     );
+    gh.factory<_i93.LoginUseCase>(
+      () => _i93.LoginUseCase(gh<_i956.AuthRepo>()),
+    );
+    gh.factory<_i885.RegisterUseCase>(
+      () => _i885.RegisterUseCase(gh<_i956.AuthRepo>()),
+    );
+    gh.factory<_i393.VerifyForgetPasswordUseCase>(
+      () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),
+    );
     gh.factory<_i786.PickLocationCubit>(
       () => _i786.PickLocationCubit(
         gh<_i448.GetCurrentLocationUseCase>(),
         gh<_i179.GetLocationNameUseCase>(),
       ),
+    );
+    gh.factory<_i792.GetHomeCubit>(
+      () => _i792.GetHomeCubit(gh<_i1045.HomeRepo>()),
     );
     gh.factory<_i49.AddBookingCubit>(
       () => _i49.AddBookingCubit(gh<_i672.BookingRepo>()),
@@ -272,17 +246,48 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i292.GetGuideDataUseCase>(
       () => _i292.GetGuideDataUseCase(gh<_i672.BookingRepo>()),
     );
+    gh.factory<_i180.LoginWithGoogleUseCase>(
+      () => _i180.LoginWithGoogleUseCase(
+        gh<_i956.AuthRepo>(),
+        gh<_i664.GoogleAuthService>(),
+      ),
+    );
+    gh.factory<_i577.VerifyPasswordCubit>(
+      () => _i577.VerifyPasswordCubit(gh<_i393.VerifyForgetPasswordUseCase>()),
+    );
     gh.factory<_i24.TouristBookingCubit>(
       () => _i24.TouristBookingCubit(gh<_i12.GetBookingsUseCase>()),
+    );
+    gh.factory<_i187.GetCategoriesUsecase>(
+      () => _i187.GetCategoriesUsecase(gh<_i1045.HomeRepo>()),
+    );
+    gh.factory<_i772.RegisterCubit>(
+      () => _i772.RegisterCubit(gh<_i885.RegisterUseCase>()),
     );
     gh.factory<_i622.GuideDataCubit>(
       () => _i622.GuideDataCubit(gh<_i292.GetGuideDataUseCase>()),
     );
+    gh.factory<_i776.SendForgetPasswordCubit>(
+      () =>
+          _i776.SendForgetPasswordCubit(gh<_i814.SendForgetPasswordUseCase>()),
+    );
+    gh.factory<_i968.ResendForgetPasswordCubit>(
+      () => _i968.ResendForgetPasswordCubit(gh<_i426.ResendPasswordUseCase>()),
+    );
     gh.lazySingleton<_i280.BookPackageUseCase>(
       () => _i280.BookPackageUseCase(gh<_i672.BookingRepo>()),
     );
+    gh.factory<_i459.LoginwithGoogleCubit>(
+      () => _i459.LoginwithGoogleCubit(gh<_i180.LoginWithGoogleUseCase>()),
+    );
+    gh.factory<_i940.LoginCubit>(
+      () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
+    );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),
+    );
+    gh.factory<_i168.GetCatogryCopyCubit>(
+      () => _i168.GetCatogryCopyCubit(gh<_i187.GetCategoriesUsecase>()),
     );
     return this;
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/auth/domain/entities/nationality_entity.dart';
 
 class CountryItem extends StatelessWidget {
   const CountryItem({
@@ -11,7 +11,7 @@ class CountryItem extends StatelessWidget {
     required this.country,
   });
   final bool isSelected;
-  final String country;
+  final NationalityEntity country;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CountryItem extends StatelessWidget {
       margin: EdgeInsets.only(left: 10.m, right: 10.m, bottom: 8),
       decoration: BoxDecoration(
         color: isSelected ? const Color(0xffF4F5F6) : Colors.transparent,
-        borderRadius: BorderRadius.circular(40.r),
+        borderRadius: BorderRadius.circular(40),
         border: Border.all(
           color: isSelected ? AppColors.natural2 : Colors.transparent,
         ),
@@ -28,17 +28,20 @@ class CountryItem extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Image.asset(AppImages.country),
+            child: Text(
+              country.emoji,
+              style: const TextStyle(fontSize: 20),
+            ),
           ),
           8.horizontalSpace,
           Text(
-            country,
+            country.name,
             style: AppTextStyles.interMedium16,
           ),
           const Spacer(),
           isSelected
               ? Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(7),
                   margin: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,

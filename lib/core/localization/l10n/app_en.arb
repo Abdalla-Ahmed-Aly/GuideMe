@@ -392,5 +392,7 @@
   "validUntil": "Valid Until: ",
   "noTripsYet": "No Trips Yet",
   "day": "Day",
-  "validationSelectPlace": "Please select a place"
+  "validationSelectPlace": "Please select a place",
+  "pleaseSelectNationality": "Please select your nationality",
+  "noCountriesFound": "No countries found"
 }
