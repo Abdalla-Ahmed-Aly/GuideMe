@@ -2287,6 +2287,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select at least one interest'**
   String get pleaseSelectAtLeastOneInterest;
+
+  /// No description provided for @aiTravelSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Travel Suggestions'**
+  String get aiTravelSuggestions;
+
+  /// No description provided for @aiTripLoadingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing your trip...'**
+  String get aiTripLoadingMessage;
 }
 
 class _AppLocalizationsDelegate

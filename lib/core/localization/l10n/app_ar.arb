@@ -396,5 +396,7 @@
   "validationSelectPlace": "يرجى اختيار مكان",
   "pleaseSelectNationality": "يرجى اختيار جنسيتك",
   "noCountriesFound": "لا توجد دول",
-  "pleaseSelectAtLeastOneInterest": "يرجى اختيار اهتمام واحد على الأقل"
+  "pleaseSelectAtLeastOneInterest": "يرجى اختيار اهتمام واحد على الأقل",
+  "aiTravelSuggestions": "اقتراحات السفر الذكية",
+  "aiTripLoadingMessage": "جاري تحضير رحلتك..."
 }

@@ -1131,4 +1131,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get pleaseSelectAtLeastOneInterest =>
       'يرجى اختيار اهتمام واحد على الأقل';
+
+  @override
+  String get aiTravelSuggestions => 'اقتراحات السفر الذكية';
+
+  @override
+  String get aiTripLoadingMessage => 'جاري تحضير رحلتك...';
 }

@@ -1132,4 +1132,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get pleaseSelectAtLeastOneInterest =>
       'Please select at least one interest';
+
+  @override
+  String get aiTravelSuggestions => 'AI Travel Suggestions';
+
+  @override
+  String get aiTripLoadingMessage => 'Preparing your trip...';
 }

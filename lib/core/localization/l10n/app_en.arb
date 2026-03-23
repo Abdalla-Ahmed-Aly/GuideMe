@@ -395,5 +395,7 @@
   "validationSelectPlace": "Please select a place",
   "pleaseSelectNationality": "Please select your nationality",
   "noCountriesFound": "No countries found",
-  "pleaseSelectAtLeastOneInterest": "Please select at least one interest"
+  "pleaseSelectAtLeastOneInterest": "Please select at least one interest",
+  "aiTravelSuggestions": "AI Travel Suggestions",
+  "aiTripLoadingMessage": "Preparing your trip..."
 }

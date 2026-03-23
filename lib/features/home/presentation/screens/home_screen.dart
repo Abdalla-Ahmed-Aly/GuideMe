@@ -213,7 +213,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 40),
 
                   // The most famous trip Text
-                  _buildSectionTitle(context, context.l10n.mostFamousTrip),
+                  _buildSectionTitle(context, context.l10n.aiTravelSuggestions),
 
                   const SizedBox(height: 16),
 

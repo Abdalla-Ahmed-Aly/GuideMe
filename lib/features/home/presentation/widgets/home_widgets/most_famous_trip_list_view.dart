@@ -4,7 +4,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_state.dart';
-import 'package:guide_me/features/home/presentation/widgets/home_widgets/home_shimmers.dart';
+import 'package:guide_me/features/home/presentation/widgets/home_widgets/ai_trip_loading.dart';
 import 'package:guide_me/features/home/presentation/widgets/home_widgets/most_famous_trip_card.dart';
 
 class MostFamousTripListView extends StatefulWidget {
@@ -28,35 +28,36 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
     return BlocBuilder<GetAiPackageCubit, GetAiPackageState>(
       builder: (context, state) {
         if (state is GetAiPackageLoading) {
-          final size = MediaQuery.sizeOf(context);
-          final height = context.isPortrait
-              ? size.height * 0.41
-              : size.width * 0.41;
-          return SizedBox(
-            height: height,
-            child: ListView.builder(
-              padding: EdgeInsets.only(left: 20.p),
-              scrollDirection: Axis.horizontal,
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return TweenAnimationBuilder<double>(
-                  duration: Duration(milliseconds: 400 + (index * 150)),
-                  tween: Tween(begin: 0.0, end: 1.0),
-                  curve: Curves.easeOut,
-                  builder: (context, value, child) {
-                    return Opacity(
-                      opacity: value,
-                      child: Transform.translate(
-                        offset: Offset(20 * (1 - value), 0),
-                        child: child,
-                      ),
-                    );
-                  },
-                  child: const AILoadingCard(),
-                );
-              },
-            ),
-          );
+          return const AiTripLoading();
+          // final size = MediaQuery.sizeOf(context);
+          // final height = context.isPortrait
+          //     ? size.height * 0.41
+          //     : size.width * 0.41;
+          // return SizedBox(
+          //   height: height,
+          //   child: ListView.builder(
+          //     padding: EdgeInsets.only(left: 20.p),
+          //     scrollDirection: Axis.horizontal,
+          //     itemCount: 3,
+          //     itemBuilder: (context, index) {
+          //       return TweenAnimationBuilder<double>(
+          //         duration: Duration(milliseconds: 400 + (index * 150)),
+          //         tween: Tween(begin: 0.0, end: 1.0),
+          //         curve: Curves.easeOut,
+          //         builder: (context, value, child) {
+          //           return Opacity(
+          //             opacity: value,
+          //             child: Transform.translate(
+          //               offset: Offset(20 * (1 - value), 0),
+          //               child: child,
+          //             ),
+          //           );
+          //         },
+          //         child: const AILoadingCard(),
+          //       );
+          //     },
+          //   ),
+          // );
         } else if (state is GetAiPackageFailure) {
           return Center(child: Text(state.message));
         } else if (state is GetAiPackageSuccess) {
