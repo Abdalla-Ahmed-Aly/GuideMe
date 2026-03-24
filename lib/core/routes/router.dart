@@ -8,6 +8,7 @@ import 'package:guide_me/core/location_core/presentation/screens/view_location_s
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
+import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/select_nationality_cubit/select_nationality_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_with_google_cubit/login_with_google_cubit.dart';
@@ -157,7 +158,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.allowLocationAccessScreen,
-        builder: (context, state) => const AllowLocationAccessScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<LocationAccessCubit>(),
+          child: const AllowLocationAccessScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.chooseRoleScreen,

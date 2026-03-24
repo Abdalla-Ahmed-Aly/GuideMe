@@ -38,9 +38,8 @@ class _TouristNavigationBarScreenState
   @override
   void initState() {
     super.initState();
-    context.read<TouristNavBarCubit>().init();
     _pageController = PageController(
-      initialPage: context.read<TouristNavBarCubit>().state,
+      initialPage: context.read<TouristNavBarCubit>().state.index,
     );
   }
 
@@ -61,9 +60,9 @@ class _TouristNavigationBarScreenState
       children: [
         // home
         Scaffold(
-          body: BlocConsumer<TouristNavBarCubit, int>(
-            listener: (context, index) {
-              _pageController.jumpToPage(index);
+          body: BlocConsumer<TouristNavBarCubit, TouristNavBarState>(
+            listener: (context, state) {
+              _pageController.jumpToPage(state.index);
             },
             builder: (context, state) {
               return PageView(
@@ -73,11 +72,11 @@ class _TouristNavigationBarScreenState
               );
             },
           ),
-          bottomNavigationBar: BlocBuilder<TouristNavBarCubit, int>(
-            builder: (context, index) {
+          bottomNavigationBar: BlocBuilder<TouristNavBarCubit, TouristNavBarState>(
+            builder: (context, state) {
               return BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
-                currentIndex: index,
+                currentIndex: state.index,
                 onTap: onChangeScreen,
                 backgroundColor: Colors.white,
                 selectedItemColor: AppColors.primary,
@@ -93,7 +92,7 @@ class _TouristNavigationBarScreenState
                   // Icons
                   BottomNavigationBarItem(
                     icon: Icon(Icons.layers_outlined),
-                    label: 'My Tours',
+                    label: 'My Tours', // TODO: change Labels
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.event_available_outlined),
@@ -114,7 +113,7 @@ class _TouristNavigationBarScreenState
         ),
 
         // Welcome Avatar
-        if (context.watch<TouristNavBarCubit>().showWelcomeAvatar)
+        if (context.watch<TouristNavBarCubit>().state.showWelcomeAvatar)
           WelcomeAvatar(
             onTap: () async {
               await context.read<TouristNavBarCubit>().hideWelcomeAvatar();

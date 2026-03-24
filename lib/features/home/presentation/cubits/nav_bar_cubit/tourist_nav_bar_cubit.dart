@@ -2,10 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
 
-class TouristNavBarCubit extends Cubit<int> {
-  TouristNavBarCubit() : super(0);
+part 'tourist_nav_bar_state.dart';
 
-  bool showWelcomeAvatar = true;
+class TouristNavBarCubit extends Cubit<TouristNavBarState> {
+  TouristNavBarCubit() : super(const TouristNavBarState());
 
   void init() {
     final hasSeen =
@@ -14,20 +14,17 @@ class TouristNavBarCubit extends Cubit<int> {
           key: HiveConstants.avatarKey,
         ) ??
         false;
-
-    showWelcomeAvatar = !hasSeen;
-    emit(state);
+    emit(state.copyWith(showWelcomeAvatar: !hasSeen));
   }
 
-  void changeIndex(int index) => emit(index);
+  void changeIndex(int index) => emit(state.copyWith(index: index));
 
   Future<void> hideWelcomeAvatar() async {
-    showWelcomeAvatar = false;
     await HiveHelper.put<bool>(
       boxName: HiveConstants.avatarBox,
       key: HiveConstants.avatarKey,
       data: true,
     );
-    emit(state);
+    emit(state.copyWith(showWelcomeAvatar: false));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/network/api_service.dart';
+import 'package:guide_me/core/shared/models/user_model.dart';
 import 'package:guide_me/features/auth/data/models/auth_response_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_request_model.dart';
@@ -33,6 +34,10 @@ abstract class AuthRemoteDataSource {
   Future<AuthResponseModel> loginWithGoogle(String token);
   Future<NationalityResponseModel> addNationality({
     required String nationality,
+  });
+  Future<UserModel> addLocation({
+    required double latitude,
+    required double longitude,
   });
 }
 
@@ -124,5 +129,17 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       data: {"nationality": nationality},
     );
     return NationalityResponseModel.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<UserModel> addLocation({
+    required double latitude,
+    required double longitude,
+  }) async {
+    final response = await apiService.post(
+      endpoint: ApiConstants.locationEndPoint,
+      data: {"lat": latitude, "long": longitude},
+    );
+    return UserModel.fromJson(response.data['data']['user']);
   }
 }

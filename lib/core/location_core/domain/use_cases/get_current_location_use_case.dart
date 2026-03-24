@@ -10,7 +10,7 @@ class GetCurrentLocationUseCase {
 
   GetCurrentLocationUseCase(this._locationRepo);
 
-  Future<Either<Failure, MapLocationEntity>> call() async {
-    return await _locationRepo.getCurrentLocation();
+  Future<Either<Failure, MapLocationEntity>> call({bool getName = true}) async {
+    return await _locationRepo.getCurrentLocation(getName: getName);
   }
 }

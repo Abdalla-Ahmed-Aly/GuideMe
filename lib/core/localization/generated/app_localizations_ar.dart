@@ -1137,4 +1137,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get aiTripLoadingMessage => 'جاري تحضير رحلتك...';
+
+  @override
+  String get package => 'باقة';
 }

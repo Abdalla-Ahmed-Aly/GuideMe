@@ -42,6 +42,8 @@ import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.
     as _i1043;
 import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
 import 'package:guide_me/features/auth/domain/repo/auth_repo.dart' as _i956;
+import 'package:guide_me/features/auth/domain/use_case/add_location_use_case.dart'
+    as _i308;
 import 'package:guide_me/features/auth/domain/use_case/login_use_case.dart'
     as _i93;
 import 'package:guide_me/features/auth/domain/use_case/login_with_google_use_case.dart'
@@ -56,6 +58,8 @@ import 'package:guide_me/features/auth/domain/use_case/send_Forget_Password_use_
     as _i814;
 import 'package:guide_me/features/auth/domain/use_case/verify_Forget_Password_use_case.dart'
     as _i393;
+import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart'
+    as _i545;
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart'
     as _i940;
 import 'package:guide_me/features/auth/presentation/manager/login_with_google_cubit/login_with_google_cubit.dart'
@@ -209,6 +213,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i105.SelectNationalityCubit>(
       () => _i105.SelectNationalityCubit(gh<_i956.AuthRepo>()),
     );
+    gh.lazySingleton<_i308.AddLocationUseCase>(
+      () => _i308.AddLocationUseCase(gh<_i956.AuthRepo>()),
+    );
     gh.factory<_i593.ResetPasswordCubit>(
       () => _i593.ResetPasswordCubit(gh<_i865.ResetPasswordUseCase>()),
     );
@@ -234,6 +241,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i786.PickLocationCubit(
         gh<_i448.GetCurrentLocationUseCase>(),
         gh<_i179.GetLocationNameUseCase>(),
+      ),
+    );
+    gh.factory<_i545.LocationAccessCubit>(
+      () => _i545.LocationAccessCubit(
+        gh<_i308.AddLocationUseCase>(),
+        gh<_i448.GetCurrentLocationUseCase>(),
       ),
     );
     gh.factory<_i792.GetHomeCubit>(

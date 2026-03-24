@@ -1138,4 +1138,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aiTripLoadingMessage => 'Preparing your trip...';
+
+  @override
+  String get package => 'Package';
 }

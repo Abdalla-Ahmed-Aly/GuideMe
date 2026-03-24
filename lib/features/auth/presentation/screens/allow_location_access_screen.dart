@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart';
 
 class AllowLocationAccessScreen extends StatelessWidget {
   const AllowLocationAccessScreen({super.key});
@@ -92,31 +95,29 @@ class AllowLocationAccessScreen extends StatelessWidget {
 class EnableLocationAccess extends StatelessWidget {
   const EnableLocationAccess({super.key});
 
-  Future<void> _enableLocation(BuildContext context) async {
-    LocationPermission permission = await Geolocator.checkPermission();
-
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      await Geolocator.openAppSettings();
-      return;
-    }
-
-    if (permission == LocationPermission.whileInUse ||
-        permission == LocationPermission.always) {
-      if (context.mounted) {
-        context.go(AppRoutes.chooseRoleScreen);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return AppButton(
-      onPressed: () => _enableLocation(context),
-      text: context.l10n.enable,
+    return BlocConsumer<LocationAccessCubit, LocationAccessState>(
+      listener: (context, state) {
+        if (state is LocationAccessSuccess) {
+          context.go(AppRoutes.chooseRoleScreen);
+        } else if (state is LocationAccessFailure) {
+          final error = FailureUiMapper.map(
+            context: context,
+            failure: state.failure,
+          );
+          context.showErrorSnakbar(message: error.message);
+        }
+      },
+      builder: (context, state) {
+        return AppButton(
+          isLoading: state is LocationAccessLoading,
+          onPressed: () {
+            context.read<LocationAccessCubit>().getCurrentLocation();
+          },
+          text: context.l10n.enable,
+        );
+      },
     );
   }
 }

@@ -397,5 +397,6 @@
   "noCountriesFound": "No countries found",
   "pleaseSelectAtLeastOneInterest": "Please select at least one interest",
   "aiTravelSuggestions": "AI Travel Suggestions",
-  "aiTripLoadingMessage": "Preparing your trip..."
+  "aiTripLoadingMessage": "Preparing your trip...",
+  "package": "Package"
 }

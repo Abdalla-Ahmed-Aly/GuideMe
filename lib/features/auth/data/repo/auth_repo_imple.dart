@@ -3,7 +3,9 @@ import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
+import 'package:guide_me/core/shared/mapper/user_mapper.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart';
 import 'package:guide_me/features/auth/data/mappers/auth_response_mapper.dart';
@@ -130,6 +132,22 @@ class AuthRepoImple extends AuthRepo {
         nationality: nationality,
       );
       return Right(result);
+    } catch (e) {
+      return Left(ErrorHandler.handle(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> addLocation({
+    required double latitude,
+    required double longitude,
+  }) async {
+    try {
+      final result = await authRemoteDataSource.addLocation(
+        latitude: latitude,
+        longitude: longitude,
+      );
+      return Right(UserMapper.toEntity(result));
     } catch (e) {
       return Left(ErrorHandler.handle(e.toString()));
     }

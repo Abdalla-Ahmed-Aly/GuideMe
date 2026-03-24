@@ -101,7 +101,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
             );
           },
           keyboardType: TextInputType.visiblePassword,
-          hintText: context.l10n.password,
+          hintText: context.l10n.confirmPassword,
           obscureText: isConfirmPasswordHidden,
           suffixIcon: IconButton(
             onPressed: () {

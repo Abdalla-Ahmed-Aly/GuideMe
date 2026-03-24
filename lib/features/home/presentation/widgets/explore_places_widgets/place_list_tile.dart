@@ -6,8 +6,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-
-import 'package:guide_me/core/widgets/custom_shimmer.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
 
 class PlaceListTile extends StatelessWidget {
@@ -48,25 +47,11 @@ class PlaceListTile extends StatelessWidget {
             children: [
               // Image
               if (place.images.isNotEmpty)
-                Image.network(
-                  place.images.first,
+                CustomNetworkImage(
+                  imageUrl: place.images.first,
                   width: imageWidth,
                   height: imageHeight,
                   fit: BoxFit.cover,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return CustomShimmer(
-                      width: imageWidth,
-                      height: imageHeight,
-                      borderRadius: 0,
-                    );
-                  },
-                  errorBuilder: (context, error, stackTrace) => Image.asset(
-                    AppImages.placeTest,
-                    width: imageWidth,
-                    height: imageHeight,
-                    fit: BoxFit.cover,
-                  ),
                 )
               else
                 Image.asset(
@@ -125,17 +110,23 @@ class PlaceListTile extends StatelessWidget {
                         children: [
                           // Rate
                           DynamicRatingStars(rating: place.rating),
-                          Text(
-                            place.rating.toString(),
-                            style: AppTextStyles.interSemiBold14,
-                          ),
+
                           const Spacer(),
+
                           // Price
-                          Text(
-                            "${place.price} ${context.l10n.egp}",
-                            style: AppTextStyles.interSemiBold14.copyWith(
-                              color: AppColors.primary,
-                            ),
+                          Column(
+                            children: [
+                              Text(
+                                "${place.price} ${context.l10n.egp}",
+                                style: AppTextStyles.interSemiBold14.copyWith(
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                              Text(
+                                context.l10n.package,
+                                style: AppTextStyles.interMedium12,
+                              ),
+                            ],
                           ),
                         ],
                       ),

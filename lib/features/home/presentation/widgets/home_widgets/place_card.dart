@@ -5,8 +5,7 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-
-import 'package:guide_me/core/widgets/custom_shimmer.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
 
 class PlaceCard extends StatefulWidget {
   const PlaceCard({super.key, required this.place});
@@ -45,25 +44,11 @@ class _PlaceCardState extends State<PlaceCard> {
               child: Stack(
                 children: [
                   if (widget.place.images.isNotEmpty)
-                    Image.network(
-                      widget.place.images[0],
+                    CustomNetworkImage(
+                      imageUrl: widget.place.images.first,
                       height: imageHeight,
                       width: width,
                       fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return CustomShimmer(
-                          width: width,
-                          height: imageHeight,
-                          borderRadius: 20,
-                        );
-                      },
-                      errorBuilder: (context, error, stackTrace) => Container(
-                        height: imageHeight,
-                        width: width,
-                        color: Colors.grey[300],
-                        child: const Icon(Icons.error),
-                      ),
                     )
                   else
                     Container(

@@ -25,7 +25,7 @@ class ExplorePlacesHeader extends StatelessWidget {
 
         // App bar
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32.p),
+          padding: EdgeInsets.symmetric(horizontal: 20.p),
           child: ExplorePlacesAppBar(title: title),
         ),
 

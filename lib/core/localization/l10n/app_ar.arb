@@ -398,5 +398,6 @@
   "noCountriesFound": "لا توجد دول",
   "pleaseSelectAtLeastOneInterest": "يرجى اختيار اهتمام واحد على الأقل",
   "aiTravelSuggestions": "اقتراحات السفر الذكية",
-  "aiTripLoadingMessage": "جاري تحضير رحلتك..."
+  "aiTripLoadingMessage": "جاري تحضير رحلتك...",
+  "package": "باقة"
 }

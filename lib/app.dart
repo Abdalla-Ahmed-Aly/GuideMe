@@ -18,7 +18,7 @@ class GuideMe extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => TouristNavBarCubit(),
+          create: (context) => TouristNavBarCubit()..init(),
         ),
         BlocProvider(
           create: (context) => getIt<GetHomeCubit>()..getHomeData(),

@@ -2299,6 +2299,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Preparing your trip...'**
   String get aiTripLoadingMessage;
+
+  /// No description provided for @package.
+  ///
+  /// In en, this message translates to:
+  /// **'Package'**
+  String get package;
 }
 
 class _AppLocalizationsDelegate

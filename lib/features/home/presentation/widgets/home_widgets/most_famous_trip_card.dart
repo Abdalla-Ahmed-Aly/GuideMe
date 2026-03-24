@@ -5,7 +5,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/custom_shimmer.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 
 class MostFamousTripCard extends StatefulWidget {
@@ -134,17 +134,9 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
                     right: -50 - parallaxOffset,
                     child: Hero(
                       tag: 'package_${widget.package.title}',
-                      child: Image.network(
-                        widget.package.packagePhoto,
+                      child: CustomNetworkImage(
+                        imageUrl: widget.package.packagePhoto,
                         fit: BoxFit.cover,
-                        loadingBuilder: (context, child, progress) {
-                          if (progress == null) return child;
-                          return CustomShimmer(
-                            width: width,
-                            height: height,
-                            borderRadius: 30,
-                          );
-                        },
                       ),
                     ),
                   ),

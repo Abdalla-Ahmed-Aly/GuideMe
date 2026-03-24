@@ -20,6 +20,7 @@ class CustomFilterTextButton extends StatelessWidget {
       onTap: onTap,
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontFamily: AppTextStyles.familyMontserrat,
           fontSize: 16.fs,

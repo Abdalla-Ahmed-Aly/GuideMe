@@ -14,6 +14,17 @@ void main() async {
   await HiveHelper.init();
   await setupGetIt();
 
+  // await HiveHelper.put<bool>(
+  //   boxName: HiveConstants.avatarBox,
+  //   key: HiveConstants.avatarKey,
+  //   data: false,
+  // );
+  // await HiveHelper.delete<UserRole>(
+  //   boxName: HiveConstants.userRoleBox,
+  //   key: HiveConstants.userRoleKey,
+  // );
+  // await getIt<TokenService>().deleteToken();
+
   Bloc.observer = const AppBlocObserver();
 
   await SystemChrome.setPreferredOrientations([

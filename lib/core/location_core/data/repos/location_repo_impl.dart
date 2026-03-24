@@ -15,17 +15,18 @@ class LocationRepoImpl implements LocationRepo {
   LocationRepoImpl(this._locationRemoteDataSource, this._gpsLocalDataSource);
 
   @override
-  Future<Either<Failure, MapLocationEntity>> getCurrentLocation() async {
+  Future<Either<Failure, MapLocationEntity>> getCurrentLocation({
+    bool getName = true,
+  }) async {
     try {
       final locationModel = await _gpsLocalDataSource.getCurrentLocation();
       String? name;
-      try {
+      if (getName) {
         name = await _locationRemoteDataSource.getPlaceName(
           locationModel.latitude,
           locationModel.longitude,
         );
-      } catch (_) {}
-
+      }
       final locationEntity = MapLocationEntity(
         lat: locationModel.latitude,
         lng: locationModel.longitude,

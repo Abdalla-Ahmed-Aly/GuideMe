@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/reset_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/send_forget_password_request_model.dart';
@@ -39,5 +40,9 @@ abstract class AuthRepo {
   Future<Either<Failure, AuthResponseEntity>> loginwithgoogle(String token);
   Future<Either<Failure, NationalityResponseModel>> addNationality({
     required String nationality,
+  });
+  Future<Either<Failure, UserEntity>> addLocation({
+    required double latitude,
+    required double longitude,
   });
 }

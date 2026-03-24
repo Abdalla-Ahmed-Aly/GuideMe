@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
+import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/images_indicator.dart';
 
 class PlaceImages extends StatefulWidget {
@@ -40,12 +41,9 @@ class _PlaceImagesState extends State<PlaceImages> {
           },
           itemCount: widget.place.images.length,
           itemBuilder: (context, index) {
-            return Image.network(
-              widget.place.images[index],
+            return CustomNetworkImage(
+              imageUrl: widget.place.images[index],
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const Center(
-                child: Icon(Icons.error, color: Colors.red, size: 48),
-              ),
             );
           },
         ),
