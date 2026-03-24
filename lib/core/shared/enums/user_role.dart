@@ -1,6 +1,11 @@
+import 'package:hive_ce/hive_ce.dart';
+
+part 'user_role.g.dart';
+
+@HiveType(typeId: 1)
 enum UserRole {
-  tourist,
-  guide;
+  @HiveField(0) tourist,
+  @HiveField(1) guide;
 
   factory UserRole.fromString(String role) {
     switch (role) {

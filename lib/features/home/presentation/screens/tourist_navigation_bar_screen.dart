@@ -37,10 +37,11 @@ class _TouristNavigationBarScreenState
 
   @override
   void initState() {
+    super.initState();
+    context.read<TouristNavBarCubit>().init();
     _pageController = PageController(
       initialPage: context.read<TouristNavBarCubit>().state,
     );
-    super.initState();
   }
 
   @override
@@ -115,8 +116,8 @@ class _TouristNavigationBarScreenState
         // Welcome Avatar
         if (context.watch<TouristNavBarCubit>().showWelcomeAvatar)
           WelcomeAvatar(
-            onTap: () {
-              context.read<TouristNavBarCubit>().hideWelcomeAvatar();
+            onTap: () async {
+              await context.read<TouristNavBarCubit>().hideWelcomeAvatar();
             },
           ),
       ],

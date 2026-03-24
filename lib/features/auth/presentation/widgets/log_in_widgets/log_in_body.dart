@@ -108,7 +108,7 @@ class _LogInBodyState extends State<LogInBody> {
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: CustomTextField(
                 controller: passwordcontroll,
-                validator: AppValidators.password,
+                // validator: AppValidators.password,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: isHiddenPassword,
                 hintText: context.l10n.password,

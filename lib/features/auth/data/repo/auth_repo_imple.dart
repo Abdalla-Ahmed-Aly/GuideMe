@@ -1,7 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
+import 'package:guide_me/core/shared/enums/user_role.dart';
+import 'package:guide_me/core/utils/hive_helper.dart';
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart';
 import 'package:guide_me/features/auth/data/mappers/auth_response_mapper.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_model.dart';
@@ -31,7 +34,13 @@ class AuthRepoImple extends AuthRepo {
   ) async {
     try {
       final result = await authRemoteDataSource.login(request);
+
       await tokenService.saveToken(result.token);
+      await HiveHelper.put<UserRole>(
+        boxName: HiveConstants.userRoleBox,
+        key: HiveConstants.userRoleKey,
+        data: UserRole.fromString(result.data.role),
+      );
 
       return Right(AuthResponseMapper.toEntity(result));
     } catch (e) {

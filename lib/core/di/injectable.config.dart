@@ -126,6 +126,8 @@ import 'package:guide_me/features/home/presentation/cubits/get_place_by_city/pla
     as _i137;
 import 'package:guide_me/features/home/presentation/cubits/interests_cubit/interests_cubit.dart'
     as _i50;
+import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
+    as _i306;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -182,6 +184,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i602.LocationRemoteDataSource>(),
         gh<_i250.GpsLocalDataSource>(),
       ),
+    );
+    gh.factory<_i306.SplashCubit>(
+      () => _i306.SplashCubit(gh<_i625.TokenService>()),
     );
     gh.lazySingleton<_i956.AuthRepo>(
       () => _i80.AuthRepoImple(

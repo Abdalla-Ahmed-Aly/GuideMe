@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/enums/user_role.dart';
+import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,16 +26,6 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _initAnimation();
-    _impelementNavigation();
-  }
-
-  void _impelementNavigation() {
-    Future.delayed(
-      const Duration(milliseconds: 3200),
-      () {
-        GoRouter.of(context).go(AppRoutes.onBoardingScreen);
-      },
-    );
   }
 
   void _initAnimation() {
@@ -72,40 +66,71 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AppImages.splashBackground),
-            fit: BoxFit.fill,
+    return BlocProvider(
+      create: (context) => getIt<SplashCubit>()..checkAuth(),
+      child: BlocListener<SplashCubit, SplashState>(
+        listener: (context, state) {
+          if (state is SplashAuthenticated) {
+            if (state.userRole == UserRole.tourist) {
+              Future.delayed(
+                const Duration(seconds: 1),
+                () {
+                  GoRouter.of(context).go(AppRoutes.touristNavigationBarScreen);
+                },
+              );
+            } else {
+              Future.delayed(
+                const Duration(seconds: 1),
+                () {
+                  GoRouter.of(context).go(AppRoutes.guideNavigationBarScreen);
+                },
+              );
+            }
+          } else if (state is SplashUnAuthenticated) {
+            Future.delayed(
+              const Duration(seconds: 1),
+              () {
+                GoRouter.of(context).go(AppRoutes.onBoardingScreen);
+              },
+            );
+          }
+        },
+        child: Scaffold(
+          body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(AppImages.splashBackground),
+                fit: BoxFit.fill,
+              ),
+            ),
+            child: Stack(
+              children: [
+                // Logo
+                Center(
+                  child: FadeTransition(
+                    opacity: logoAnim,
+                    child: Image.asset(AppImages.logo),
+                  ),
+                ),
+
+                // Blue Nile
+                Center(
+                  child: FadeTransition(
+                    opacity: blueNileAnim,
+                    child: Image.asset(AppImages.blueNile),
+                  ),
+                ),
+
+                // White Nile
+                Center(
+                  child: FadeTransition(
+                    opacity: whiteNileAnim,
+                    child: Image.asset(AppImages.whiteNile),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        child: Stack(
-          children: [
-            // Logo
-            Center(
-              child: FadeTransition(
-                opacity: logoAnim,
-                child: Image.asset(AppImages.logo),
-              ),
-            ),
-
-            // Blue Nile
-            Center(
-              child: FadeTransition(
-                opacity: blueNileAnim,
-                child: Image.asset(AppImages.blueNile),
-              ),
-            ),
-
-            // White Nile
-            Center(
-              child: FadeTransition(
-                opacity: whiteNileAnim,
-                child: Image.asset(AppImages.whiteNile),
-              ),
-            ),
-          ],
         ),
       ),
     );
