@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:guide_me/features/auth/domain/use_case/login_with_google_use_case.dart';
 import 'package:injectable/injectable.dart';
 
@@ -23,7 +24,9 @@ class LoginwithGoogleCubit extends Cubit<LoginwithGoogleState> {
         safeEmit(LoginwithGooglefailure(failure));
       },
       (success) {
-        safeEmit(LoginwithGoogleSuccess());
+        safeEmit(
+          LoginwithGoogleSuccess(success),
+        );
       },
     );
   }

@@ -7,7 +7,7 @@ final class GuideDataInitial extends GuideDataState {}
 final class GuideDataLoading extends GuideDataState {}
 
 final class GuideDataSuccess extends GuideDataState {
-  final GuideDetailsEntity guide;
+  final UserEntity guide;
 
   GuideDataSuccess(this.guide);
 }

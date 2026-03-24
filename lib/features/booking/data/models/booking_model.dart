@@ -1,12 +1,12 @@
 import 'package:guide_me/core/shared/models/guider_model.dart';
 import 'package:guide_me/core/shared/models/place_model.dart';
-import 'package:guide_me/core/shared/models/user_model.dart';
+import 'package:guide_me/core/shared/models/user_info_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_ui_state_model.dart';
 
 class BookingModel {
   final String id;
   final String? packageId;
-  final UserModel user;
+  final UserInfoModel user;
   final PlaceModel place;
   final GuiderModel? guider;
   final DateTime startTime;
@@ -33,7 +33,7 @@ class BookingModel {
   factory BookingModel.fromJson(Map<String, dynamic> json) => BookingModel(
     id: json['_id'] as String,
     packageId: json['packageId'] as String?,
-    user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+    user: UserInfoModel.fromJson(json['user'] as Map<String, dynamic>),
     place: PlaceModel.fromJson(json['place'] as Map<String, dynamic>),
     guider: json['guider'] != null
         ? GuiderModel.fromJson(json['guider'] as Map<String, dynamic>)

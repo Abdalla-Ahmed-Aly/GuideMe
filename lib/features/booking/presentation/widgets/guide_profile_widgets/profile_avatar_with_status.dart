@@ -7,7 +7,7 @@ class ProfileAvatarWithStatus extends StatelessWidget {
     required this.imageUrl,
     required this.isOnline,
   });
-  final String imageUrl;
+  final String? imageUrl;
   final bool isOnline;
 
   @override
@@ -22,10 +22,12 @@ class ProfileAvatarWithStatus extends StatelessWidget {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: CustomNetworkImage(
-            imageUrl: imageUrl,
-            fit: BoxFit.cover,
-          ),
+          child: imageUrl != null
+              ? CustomNetworkImage(
+                  imageUrl: imageUrl!,
+                  fit: BoxFit.cover,
+                )
+              : const Icon(Icons.person_outline, size: 100),
         ),
 
         if (isOnline)

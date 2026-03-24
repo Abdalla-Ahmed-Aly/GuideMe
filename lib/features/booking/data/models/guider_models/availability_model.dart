@@ -1,7 +1,7 @@
 class AvailabilityModel {
   final List<String> days;
-  final String from;
-  final String to;
+  final String? from;
+  final String? to;
 
   const AvailabilityModel({
     required this.days,

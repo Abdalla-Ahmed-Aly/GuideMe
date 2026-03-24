@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
-import 'package:guide_me/core/widgets/show_elegant_snackbar.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/login_with_google_cubit/login_with_google_cubit.dart';
 import 'package:guide_me/features/auth/presentation/widgets/log_in_widgets/divider_rule_body.dart';
@@ -156,16 +158,21 @@ class _LogInBodyState extends State<LogInBody> {
 
             // login button
             Padding(
-              padding: EdgeInsets.only(right: 10.p, left: 10.p),
+              padding: EdgeInsets.symmetric(horizontal: 20.p),
               child: BlocConsumer<LoginCubit, LoginCubitState>(
                 listener: (context, state) {
                   if (state is LoginCubitSuccessful) {
-                    context.go(AppRoutes.touristNavigationBarScreen);
+                    if (state.data.user.role == UserRole.tourist) {
+                      context.go(AppRoutes.touristNavigationBarScreen);
+                    } else {
+                      context.go(AppRoutes.guideNavigationBarScreen);
+                    }
                   } else if (state is LoginCubitFailure) {
-                    showElegantSnackbar(
-                      context,
-                      state.failure.message ?? 'something is wrong',
+                    final error = FailureUiMapper.map(
+                      context: context,
+                      failure: state.failure,
                     );
+                    context.showErrorSnakbar(message: error.message);
                   }
                 },
                 builder: (context, state) {
@@ -201,38 +208,45 @@ class _LogInBodyState extends State<LogInBody> {
             ),
 
             // social media login
-          Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 11),
-      child: BlocConsumer<LoginwithGoogleCubit, LoginwithGoogleState>(
-        listener: (context, state) {
-          if (state is LoginwithGoogleSuccess) {
-            context.go(AppRoutes.touristNavigationBarScreen);
-          } else if (state is LoginwithGooglefailure) {
-            showElegantSnackbar(
-              context,
-              state.failure.message ?? 'Something went wrong',
-            );
-          }
-        },
-        builder: (context, state) {
-          
-          return LoginWithSocialMedia(
-            isLoading: state is LoginwithGoogleLoading,
-            onTap: () {
-              context.read<LoginwithGoogleCubit>().loginWithGoogle();
-            },
-            AppIcons.google,
-          );
-        },
-      ),
-    ),
-  ],
-),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 11),
+                  child:
+                      BlocConsumer<LoginwithGoogleCubit, LoginwithGoogleState>(
+                        listener: (context, state) {
+                          if (state is LoginwithGoogleSuccess) {
+                            if (state.userModel.user.role == UserRole.tourist) {
+                              context.go(AppRoutes.touristNavigationBarScreen);
+                            } else {
+                              context.go(AppRoutes.guideNavigationBarScreen);
+                            }
+                          } else if (state is LoginwithGooglefailure) {
+                            final error = FailureUiMapper.map(
+                              context: context,
+                              failure: state.failure,
+                            );
+                            context.showErrorSnakbar(message: error.message);
+                          }
+                        },
+                        builder: (context, state) {
+                          return LoginWithSocialMedia(
+                            isLoading: state is LoginwithGoogleLoading,
+                            onTap: () {
+                              context
+                                  .read<LoginwithGoogleCubit>()
+                                  .loginWithGoogle();
+                            },
+                            AppIcons.google,
+                          );
+                        },
+                      ),
+                ),
+              ],
+            ),
 
-SizedBox(height: 70.h),
+            SizedBox(height: 70.h),
 
             // footer text
             const Row(

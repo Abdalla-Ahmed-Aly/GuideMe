@@ -1,5 +1,6 @@
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/network/api_service.dart';
+import 'package:guide_me/features/auth/data/models/auth_response_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/resend_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/reset_password_request_model.dart';
@@ -8,16 +9,14 @@ import 'package:guide_me/features/auth/data/models/forget_password/send_forget_p
 import 'package:guide_me/features/auth/data/models/forget_password/send_forget_password_request_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget_password_model.dart';
 import 'package:guide_me/features/auth/data/models/forget_password/verfiy_forget_password_request_model.dart';
-import 'package:guide_me/features/auth/data/models/login_model.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
 import 'package:guide_me/features/auth/data/models/nationality_response_model.dart';
-import 'package:guide_me/features/auth/data/models/register_mode.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<LoginresponseModel> login(LoginRequestModel request);
-  Future<RegisterResponseModel> register(RegisterRequestModel request);
+  Future<AuthResponseModel> login(LoginRequestModel request);
+  Future<AuthResponseModel> register(RegisterRequestModel request);
 
   Future<SendForgetPasswordResponsetModel> sendForgetPassword(
     SendForgetPasswordRequestModel request,
@@ -31,7 +30,7 @@ abstract class AuthRemoteDataSource {
   Future<ResetPasswordResponseModel> resetPassword(
     ResetPasswordRequestModel request,
   );
-  Future<LoginresponseModel> loginWithGoogle(String token);
+  Future<AuthResponseModel> loginWithGoogle(String token);
   Future<NationalityResponseModel> addNationality({
     required String nationality,
   });
@@ -44,21 +43,21 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   AuthRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<LoginresponseModel> login(LoginRequestModel request) async {
+  Future<AuthResponseModel> login(LoginRequestModel request) async {
     final response = await apiService.post(
       endpoint: ApiConstants.loginEndPoint,
       data: request.toJson(),
     );
-    return LoginresponseModel.fromJson(response.data);
+    return AuthResponseModel.fromJson(response.data);
   }
 
   @override
-  Future<RegisterResponseModel> register(RegisterRequestModel request) async {
+  Future<AuthResponseModel> register(RegisterRequestModel request) async {
     final response = await apiService.post(
       endpoint: ApiConstants.registerEndPoint,
       data: request.toJson(),
     );
-    return RegisterResponseModel.fromJson(response.data);
+    return AuthResponseModel.fromJson(response.data);
   }
 
   @override
@@ -99,35 +98,21 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   Future<VerifyForgetPasswordResponse> verifyForgetPassword(
     VerifyForgetPasswordRequestModel request,
   ) async {
-    print(
-      "Sending verify-otp request with: email=${request.email}, otp=${request.forgotPasswordOTP}",
-    );
     final response = await apiService.post(
       endpoint: ApiConstants.verifyForgetPasswordEndPoint,
       data: request.toJson(),
     );
-    //  print("Received response: ${response.data}");
     return VerifyForgetPasswordResponse.fromJson(response.data);
   }
 
   @override
-  Future<LoginresponseModel> loginWithGoogle(String token) async {
-    print("🚀 AuthRemoteDataSource: Sending loginWithGoogle request...");
-    print("🚀 Endpoint: ${ApiConstants.loginWithGoogleEndPoint}");
-    print("🚀 Payload: {'token': '$token'}");
-    print("🚀 Headers: {'Authorization': 'Bearer \$token'}");
-
+  Future<AuthResponseModel> loginWithGoogle(String token) async {
     final response = await apiService.post(
       endpoint: ApiConstants.loginWithGoogleEndPoint,
       headers: {"Authorization": "Bearer $token"},
       data: {"token": token},
     );
-
-    if (response.data == null) {
-      throw Exception("Google login response is null");
-    }
-    print("✅ Google login response received: ${response.data}");
-    return LoginresponseModel.fromJson(response.data);
+    return AuthResponseModel.fromJson(response.data);
   }
 
   @override

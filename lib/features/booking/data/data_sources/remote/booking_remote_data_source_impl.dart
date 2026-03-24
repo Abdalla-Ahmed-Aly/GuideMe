@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/shared/models/city_model.dart';
 import 'package:guide_me/core/network/api_service.dart';
+import 'package:guide_me/core/shared/models/user_model.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
@@ -9,7 +10,6 @@ import 'package:guide_me/features/booking/data/models/booking_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_packge_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
-import 'package:guide_me/features/booking/data/models/guider_models/guide_details_model.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: BookingRemoteDataSource)
@@ -101,10 +101,10 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
   }
 
   @override
-  Future<GuideDetailsModel> getGuideData({required String guideId}) async {
+  Future<UserModel> getGuideData({required String guideId}) async {
     final response = await _apiService.get(
       endpoint: "${ApiConstants.userProfileEndpoint}/$guideId",
     );
-    return GuideDetailsModel.fromJson(response.data["data"]);
+    return UserModel.fromJson(response.data["data"]);
   }
 }

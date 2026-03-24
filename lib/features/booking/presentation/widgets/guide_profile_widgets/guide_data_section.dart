@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/guide_details_entity.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_certifications_section.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_comments_section.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/guide_contact_info_section.dart';
@@ -10,7 +10,7 @@ import 'package:guide_me/features/booking/presentation/widgets/guide_profile_wid
 class GuideDataSection extends StatelessWidget {
   const GuideDataSection({super.key, required this.guide});
 
-  final GuideDetailsEntity guide;
+  final UserEntity guide;
 
   @override
   Widget build(BuildContext context) {

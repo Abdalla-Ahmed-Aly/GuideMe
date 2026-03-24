@@ -1,13 +1,13 @@
 import 'package:guide_me/core/shared/entities/guider_entity.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
-import 'package:guide_me/core/shared/entities/user_entity.dart';
+import 'package:guide_me/core/shared/entities/user_info_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_ui_state_entity.dart';
 import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
 
 class BookingEntity {
   final String id;
   final String? packageId;
-  final UserEntity user;
+  final UserInfoEntity user;
   final PlaceEntity place;
   final GuiderEntity? guider;
   final DateTime startTime;

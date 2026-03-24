@@ -35,7 +35,7 @@ class CompletedTripHeader extends StatelessWidget {
             ),
           ),
         ),
-        
+
         Container(
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
@@ -46,12 +46,17 @@ class CompletedTripHeader extends StatelessWidget {
               strokeAlign: BorderSide.strokeAlignOutside,
             ),
           ),
-          child: CustomNetworkImage(
-            imageUrl: guider.photo.url,
-            height: 90,
-            width: 90,
-            fit: BoxFit.cover,
-          ),
+          child: guider.photo != null
+              ? CustomNetworkImage(
+                  imageUrl: guider.photo!.url,
+                  height: 90,
+                  width: 90,
+                  fit: BoxFit.cover,
+                )
+              : const Icon(
+                  Icons.person_outline,
+                  size: 30,
+                ),
         ),
       ],
     );

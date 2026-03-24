@@ -7,7 +7,9 @@ class GuiderMapper {
     return GuiderEntity(
       id: guiderModel.id,
       name: guiderModel.name,
-      photo: PhotoMapper.toEntity(guiderModel.photo),
+      photo: guiderModel.photo != null
+          ? PhotoMapper.toEntity(guiderModel.photo!)
+          : null,
     );
   }
 }

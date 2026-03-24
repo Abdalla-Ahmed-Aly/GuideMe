@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/auth/data/models/login_request_model.dart';
+import 'package:guide_me/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:guide_me/features/auth/domain/use_case/login_use_case.dart';
 import 'package:injectable/injectable.dart';
 
@@ -26,7 +27,7 @@ class LoginCubit extends Cubit<LoginCubitState> {
         safeEmit(LoginCubitFailure(failure));
       },
       (success) {
-        safeEmit(LoginCubitSuccessful());
+        safeEmit(LoginCubitSuccessful(success));
       },
     );
   }

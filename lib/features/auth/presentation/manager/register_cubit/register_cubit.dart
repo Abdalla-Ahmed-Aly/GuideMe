@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/auth/data/models/register_request_model.dart';
+import 'package:guide_me/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:guide_me/features/auth/domain/use_case/register_use_case.dart';
 import 'package:injectable/injectable.dart';
 
@@ -20,7 +21,6 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
     required String password,
     required String phone,
   }) async {
-      print("Cubit registre() called");  
     safeEmit(RegisterCubitLoading());
 
     final result = await registerUseCase.call(
@@ -36,7 +36,7 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
         safeEmit(RegisterCubitFailure(failure));
       },
       (r) {
-        safeEmit(RegisterCubitSuccessful());
+        safeEmit(RegisterCubitSuccessful(r));
       },
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/guide_details_entity.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/features/booking/domain/use_cases/get_guide_data_use_case.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,6 +1,6 @@
 import 'package:guide_me/core/shared/mapper/guider_mapper.dart';
 import 'package:guide_me/core/shared/mapper/place_mapper.dart';
-import 'package:guide_me/core/shared/mapper/user_mapper.dart';
+import 'package:guide_me/core/shared/mapper/user_info_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_ui_state_mapper.dart';
 import 'package:guide_me/features/booking/data/models/booking_model.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
@@ -11,7 +11,7 @@ class BookingMapper {
     return BookingEntity(
       id: bookingModel.id,
       packageId: bookingModel.packageId,
-      user: UserMapper.toEntity(bookingModel.user),
+      user: UserInfoMapper.toEntity(bookingModel.user),
       place: PlaceMapper.toEntity(bookingModel.place),
       guider: bookingModel.guider != null
           ? GuiderMapper.toEntity(bookingModel.guider!)

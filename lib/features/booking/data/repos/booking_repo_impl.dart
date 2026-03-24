@@ -2,18 +2,18 @@ import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/shared/mapper/city_mapper.dart';
+import 'package:guide_me/core/shared/mapper/user_mapper.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_package_mapper.dart';
-import 'package:guide_me/features/booking/data/mappers/guide_details_mapper.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_package_entity.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/guide_details_entity.dart';
 import 'package:guide_me/features/booking/domain/repos/booking_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -110,14 +110,14 @@ class BookingRepoImpl implements BookingRepo {
   }
 
   @override
-  Future<Either<Failure, GuideDetailsEntity>> getGuideData({
+  Future<Either<Failure, UserEntity>> getGuideData({
     required String guideId,
   }) async {
-    try {
-      final response = await _remoteDataSource.getGuideData(guideId: guideId);
-      return right(GuideDetailsMapper.toEntity(response));
-    } catch (e) {
-      return left(ErrorHandler.handle(e));
-    }
+    // try {
+    final response = await _remoteDataSource.getGuideData(guideId: guideId);
+    return right(UserMapper.toEntity(response));
+    // } catch (e) {
+    //   return left(ErrorHandler.handle(e));
+    // }
   }
 }

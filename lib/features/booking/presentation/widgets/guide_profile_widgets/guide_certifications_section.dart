@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/guide_details_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/certificate_list_view.dart';
 
 class GuideCertificationsSection extends StatelessWidget {
@@ -11,7 +11,7 @@ class GuideCertificationsSection extends StatelessWidget {
     required this.guide,
   });
 
-  final GuideDetailsEntity guide;
+  final UserEntity guide;
 
   @override
   Widget build(BuildContext context) {

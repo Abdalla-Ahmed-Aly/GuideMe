@@ -7,7 +7,11 @@ final class LoginwithGoogleInitial extends LoginwithGoogleState {}
 
 final class LoginwithGoogleLoading extends LoginwithGoogleState {}
 
-final class LoginwithGoogleSuccess extends LoginwithGoogleState {}
+final class LoginwithGoogleSuccess extends LoginwithGoogleState {
+  final AuthResponseEntity  userModel;
+
+  LoginwithGoogleSuccess(this.userModel);
+}
 
 final class LoginwithGooglefailure extends LoginwithGoogleState {
   final Failure failure;

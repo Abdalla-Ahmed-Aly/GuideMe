@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:guide_me/features/booking/domain/enums/guide_booking_status.dart';
+import 'package:guide_me/features/guide_booking/domain/enums/guide_booking_status.dart';
 
 part 'guide_booking_state.dart';
 
