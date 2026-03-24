@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/certificate_entity.dart';
+import 'package:guide_me/core/shared/entities/certificate_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/certificate_item.dart';
 
 class CertificateListView extends StatelessWidget {

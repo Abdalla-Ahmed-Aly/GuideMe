@@ -2,9 +2,9 @@ import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/core/shared/mapper/city_mapper.dart';
 import 'package:guide_me/core/shared/models/user_model.dart';
-import 'package:guide_me/features/booking/data/mappers/availability_mapper.dart';
-import 'package:guide_me/features/booking/data/mappers/certificate_mapper.dart';
-import 'package:guide_me/features/booking/data/mappers/review_mapper.dart';
+import 'package:guide_me/core/shared/mapper/availability_mapper.dart';
+import 'package:guide_me/core/shared/mapper/certificate_mapper.dart';
+import 'package:guide_me/core/shared/mapper/review_mapper.dart';
 
 class UserMapper {
   static UserEntity toEntity(UserModel model) {

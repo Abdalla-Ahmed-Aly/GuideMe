@@ -1,5 +1,5 @@
-import 'package:guide_me/features/booking/data/models/guider_models/availability_model.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/availability_entity.dart';
+import 'package:guide_me/core/shared/models/availability_model.dart';
+import 'package:guide_me/core/shared/entities/availability_entity.dart';
 
 class AvailabilityMapper {
   static AvailabilityEntity toEntity(AvailabilityModel model) {

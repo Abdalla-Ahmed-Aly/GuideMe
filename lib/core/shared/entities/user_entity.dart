@@ -1,8 +1,8 @@
 import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/availability_entity.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/certificate_entity.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/review_entity.dart';
+import 'package:guide_me/core/shared/entities/availability_entity.dart';
+import 'package:guide_me/core/shared/entities/certificate_entity.dart';
+import 'package:guide_me/core/shared/entities/review_entity.dart';
 
 class UserEntity {
   final String id;

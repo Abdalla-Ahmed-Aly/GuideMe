@@ -3,7 +3,7 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/review_entity.dart';
+import 'package:guide_me/core/shared/entities/review_entity.dart';
 import 'package:intl/intl.dart';
 
 class CommentItem extends StatelessWidget {

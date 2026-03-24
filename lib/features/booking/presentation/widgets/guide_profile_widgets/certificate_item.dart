@@ -4,7 +4,7 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/certificate_entity.dart';
+import 'package:guide_me/core/shared/entities/certificate_entity.dart';
 
 class CertificateItem extends StatelessWidget {
   const CertificateItem({

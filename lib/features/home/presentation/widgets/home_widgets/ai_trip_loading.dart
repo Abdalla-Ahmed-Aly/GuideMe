@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/app_assets/app_lotties.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -60,6 +61,57 @@ class AiTripLoading extends StatelessWidget {
               widget: _buildFilledCircle(size: 10),
             ),
 
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              iconColor: Colors.amber.withValues(alpha: 0.7),
+              iconSize: 44,
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              iconSize: 30,
+              iconColor: AppColors.primary2.withValues(alpha: 0.7),
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              iconSize: 20,
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              iconSize: 54,
+              iconColor: AppColors.primary2.withValues(alpha: 0.7),
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              widget: _buildOutlineCircle(),
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              widget: _buildOutlineCircle(size: 10),
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              widget: _buildFilledCircle(size: 10),
+            ),
+
+            FloatingWidget(
+              maxWidth: constraints.maxWidth,
+              maxHeight: constraints.maxHeight,
+              widget: _buildFilledCircle(size: 10, color: AppColors.primary2),
+            ),
+
             Positioned(
               top: 0,
               right: 0,
@@ -71,7 +123,7 @@ class AiTripLoading extends StatelessWidget {
             ),
 
             const Center(
-              child: FloatingText(),
+              child: FloatingCard(),
             ),
           ],
         );
@@ -237,14 +289,14 @@ class _FloatingWidgetState extends State<FloatingWidget> {
   }
 }
 
-class FloatingText extends StatefulWidget {
-  const FloatingText({super.key});
+class FloatingCard extends StatefulWidget {
+  const FloatingCard({super.key});
 
   @override
-  State<FloatingText> createState() => _FloatingTextState();
+  State<FloatingCard> createState() => _FloatingCardState();
 }
 
-class _FloatingTextState extends State<FloatingText>
+class _FloatingCardState extends State<FloatingCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
@@ -260,8 +312,8 @@ class _FloatingTextState extends State<FloatingText>
 
     _animation =
         Tween<Offset>(
-          begin: const Offset(0, 0.3),
-          end: Offset.zero,
+          begin: const Offset(0, -0.03),
+          end: const Offset(0, 0.03),
         ).animate(
           CurvedAnimation(
             parent: _controller,
@@ -282,18 +334,40 @@ class _FloatingTextState extends State<FloatingText>
   Widget build(BuildContext context) {
     return SlideTransition(
       position: _animation,
-      child: Container(
-        width: context.screenWidth * 0.7,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(32),
-          border: Border.all(color: AppColors.primary2),
-        ),
-        child: TypewriterText(
-          text: context.l10n.aiTripLoadingMessage,
-          charDuration: const Duration(milliseconds: 100),
-          pauseDuration: const Duration(seconds: 3),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(32),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+          child: Container(
+            width: context.screenWidth * 0.65,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: AppColors.white.withValues(alpha: 0.6),
+              borderRadius: BorderRadius.circular(32),
+              border: Border.all(color: AppColors.primary2),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.primary2.withValues(alpha: 0.5),
+                  blurRadius: 10,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Lottie.asset(
+                  AppLotties.aiWaves,
+                  height: context.screenHeight * 0.23,
+                ),
+                TypewriterText(
+                  text: context.l10n.aiTripLoadingMessage,
+                  charDuration: const Duration(milliseconds: 100),
+                  pauseDuration: const Duration(seconds: 3),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

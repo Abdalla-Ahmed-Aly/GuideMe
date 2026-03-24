@@ -1,5 +1,5 @@
-import 'package:guide_me/features/booking/data/models/guider_models/review_model.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/review_entity.dart';
+import 'package:guide_me/core/shared/models/review_model.dart';
+import 'package:guide_me/core/shared/entities/review_entity.dart';
 
 class ReviewMapper {
   static ReviewEntity toEntity(ReviewModel model) {

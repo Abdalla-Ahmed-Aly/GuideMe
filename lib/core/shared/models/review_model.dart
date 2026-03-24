@@ -1,4 +1,4 @@
-import 'package:guide_me/features/booking/data/models/guider_models/review_tourist_model.dart';
+import 'package:guide_me/core/shared/models/review_tourist_model.dart';
 
 class ReviewModel {
   final String id;

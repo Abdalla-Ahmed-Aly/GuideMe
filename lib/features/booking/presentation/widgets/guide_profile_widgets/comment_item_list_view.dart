@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/review_entity.dart';
+import 'package:guide_me/core/shared/entities/review_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/comment_item.dart';
 
 class CommentItemListView extends StatelessWidget {

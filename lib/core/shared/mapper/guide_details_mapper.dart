@@ -1,9 +1,9 @@
 import 'package:guide_me/core/shared/mapper/city_mapper.dart';
-import 'package:guide_me/features/booking/data/mappers/availability_mapper.dart';
-import 'package:guide_me/features/booking/data/mappers/certificate_mapper.dart';
-import 'package:guide_me/features/booking/data/mappers/review_mapper.dart';
-import 'package:guide_me/features/booking/data/models/guider_models/guide_details_model.dart';
-import 'package:guide_me/features/booking/domain/entities/guider_entities/guide_details_entity.dart';
+import 'package:guide_me/core/shared/mapper/availability_mapper.dart';
+import 'package:guide_me/core/shared/mapper/certificate_mapper.dart';
+import 'package:guide_me/core/shared/mapper/review_mapper.dart';
+import 'package:guide_me/core/shared/models/guide_details_model.dart';
+import 'package:guide_me/core/shared/entities/guide_details_entity.dart';
 
 class GuideDetailsMapper {
   static GuideDetailsEntity toEntity(GuideDetailsModel model) {
