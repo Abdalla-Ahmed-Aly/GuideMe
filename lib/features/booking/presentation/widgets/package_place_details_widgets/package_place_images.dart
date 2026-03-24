@@ -25,6 +25,7 @@ class _PackagePlaceImagesState extends State<PackagePlaceImages> {
     _pageController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final place = GoRouterState.of(context).extra as PlaceInfoEntity;
@@ -33,6 +34,15 @@ class _PackagePlaceImagesState extends State<PackagePlaceImages> {
         PageView.builder(
           itemCount: place.images.length,
           itemBuilder: (context, index) {
+            if (index == 0) {
+              return Hero(
+                tag: place.id,
+                child: CustomNetworkImage(
+                  imageUrl: place.images[index],
+                  fit: BoxFit.cover,
+                ),
+              );
+            }
             return CustomNetworkImage(
               imageUrl: place.images[index],
               fit: BoxFit.cover,

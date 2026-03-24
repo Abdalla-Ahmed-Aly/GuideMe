@@ -41,6 +41,15 @@ class _PlaceImagesState extends State<PlaceImages> {
           },
           itemCount: widget.place.images.length,
           itemBuilder: (context, index) {
+            if (index == 0) {
+              return Hero(
+                tag: widget.place.id,
+                child: CustomNetworkImage(
+                  imageUrl: widget.place.images[index],
+                  fit: BoxFit.cover,
+                ),
+              );
+            }
             return CustomNetworkImage(
               imageUrl: widget.place.images[index],
               fit: BoxFit.cover,

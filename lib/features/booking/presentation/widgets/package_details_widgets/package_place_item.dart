@@ -37,11 +37,14 @@ class PackagePlaceItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: CustomNetworkImage(
-                imageUrl: place.images.first,
-                height: context.screenHeight * 0.12,
-                width: context.screenHeight * 0.12,
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: place.id,
+                child: CustomNetworkImage(
+                  imageUrl: place.images.first,
+                  height: context.screenHeight * 0.12,
+                  width: context.screenHeight * 0.12,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
 

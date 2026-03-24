@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
@@ -47,18 +46,14 @@ class PlaceListTile extends StatelessWidget {
             children: [
               // Image
               if (place.images.isNotEmpty)
-                CustomNetworkImage(
-                  imageUrl: place.images.first,
-                  width: imageWidth,
-                  height: imageHeight,
-                  fit: BoxFit.cover,
-                )
-              else
-                Image.asset(
-                  AppImages.placeTest,
-                  width: imageWidth,
-                  height: imageHeight,
-                  fit: BoxFit.cover,
+                Hero(
+                  tag: place.id,
+                  child: CustomNetworkImage(
+                    imageUrl: place.images.first,
+                    width: imageWidth,
+                    height: imageHeight,
+                    fit: BoxFit.cover,
+                  ),
                 ),
 
               const SizedBox(width: 8),

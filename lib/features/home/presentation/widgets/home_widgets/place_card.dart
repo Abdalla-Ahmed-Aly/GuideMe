@@ -44,18 +44,14 @@ class _PlaceCardState extends State<PlaceCard> {
               child: Stack(
                 children: [
                   if (widget.place.images.isNotEmpty)
-                    CustomNetworkImage(
-                      imageUrl: widget.place.images.first,
-                      height: imageHeight,
-                      width: width,
-                      fit: BoxFit.cover,
-                    )
-                  else
-                    Container(
-                      height: imageHeight,
-                      width: width,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.image_not_supported),
+                    Hero(
+                      tag: widget.place.id,
+                      child: CustomNetworkImage(
+                        imageUrl: widget.place.images.first,
+                        height: imageHeight,
+                        width: width,
+                        fit: BoxFit.cover,
+                      ),
                     ),
 
                   // favorite button

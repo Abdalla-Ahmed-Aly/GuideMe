@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -7,9 +6,8 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/change_language.dart';
+import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/logout_section.dart';
 import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/notification_switch.dart';
 import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/settings_tile.dart';
 
@@ -128,60 +126,12 @@ class SettingsSection extends StatelessWidget {
                   bottom: MediaQuery.of(context).viewPadding.bottom + 16,
                   top: 16,
                 ),
-                child: AppButton(
-                  onPressed: () {
-                    logoutDialog(context);
-                  },
-                  text: context.l10n.logout,
-                  backgroundColor: Colors.red,
-                ),
+                child: const LogoutSection(),
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Future<void> logoutDialog(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            context.l10n.logout,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Text(context.l10n.areYouSureToLogout),
-          actions: [
-            TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black,
-              ),
-              onPressed: () {
-                context.pop();
-              },
-              child: Text(context.l10n.cancel),
-            ),
-
-            AppButton(
-              width: 110,
-              height: 38,
-              onPressed: () {
-                context.read<TouristNavBarCubit>().changeIndex(0);
-                context.go(AppRoutes.signupAndLoginScreen);
-              },
-              text: context.l10n.logout,
-              backgroundColor: Colors.red,
-              textStyle: AppTextStyles.interSemiBold16.copyWith(
-                fontSize: 16,
-              ),
-            ),
-          ],
-        );
-      },
     );
   }
 }

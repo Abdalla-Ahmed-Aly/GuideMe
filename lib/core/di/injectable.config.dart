@@ -130,6 +130,8 @@ import 'package:guide_me/features/home/presentation/cubits/get_place_by_city/pla
     as _i137;
 import 'package:guide_me/features/home/presentation/cubits/interests_cubit/interests_cubit.dart'
     as _i50;
+import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart'
+    as _i140;
 import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
     as _i306;
 import 'package:injectable/injectable.dart' as _i526;
@@ -142,6 +144,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
+    gh.factory<_i140.TouristNavBarCubit>(() => _i140.TouristNavBarCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
     gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
