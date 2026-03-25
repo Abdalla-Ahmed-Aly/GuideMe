@@ -33,7 +33,7 @@ class CityCard extends StatelessWidget {
             children: [
               // Image
               CustomNetworkImage(
-                imageUrl: city.image,
+                imageUrl: city.image ?? "",
                 width: width,
                 height: double.infinity,
                 fit: BoxFit.cover,

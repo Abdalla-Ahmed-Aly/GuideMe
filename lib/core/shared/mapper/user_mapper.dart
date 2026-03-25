@@ -9,11 +9,11 @@ import 'package:guide_me/core/shared/mapper/review_mapper.dart';
 class UserMapper {
   static UserEntity toEntity(UserModel model) {
     return UserEntity(
-      id: model.id,
+      id: model.id ?? "unknown",
       name: model.name,
-      email: model.email,
+      email: model.email ?? "unknown",
       phone: model.phone,
-      role: UserRole.fromString(model.role),
+      role: UserRole.fromString(model.role ?? "tourist"),
       bio: model.bio ?? "",
       nationality: model.nationality,
       location: model.location ?? "",
@@ -23,15 +23,15 @@ class UserMapper {
       availability: model.availability != null
           ? AvailabilityMapper.toEntity(model.availability!)
           : null,
-      languages: model.languages,
-      interests: model.interests,
-      expertise: model.expertise,
-      guideCities: model.guideCities
+      languages: model.languages ?? [],
+      interests: model.interests ?? [],
+      expertise: model.expertise ?? [],
+      guideCities: model.guideCities != null ? model.guideCities!
           .map((e) => CityMapper.toEntity(e))
-          .toList(),
-      certificates: model.certificates
+          .toList() : [],
+      certificates: model.certificates != null ? model.certificates!
           .map((e) => CertificateMapper.toEntity(e))
-          .toList(),
+          .toList() : [],
       reviews:
           model.reviews?.map((e) => ReviewMapper.toEntity(e)).toList() ?? [],
       completedTours: model.completedTours,

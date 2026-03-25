@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/entities/location_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
@@ -38,32 +38,14 @@ class MeetingPointSection extends StatelessWidget {
                 strokeAlign: BorderSide.strokeAlignOutside,
               ),
             ),
-            child: ViewLocationOnMap(
-              lat: location.lat,
-              lng: location.lng,
-            ),
+            child: location.lat != null && location.lng != null
+                ? ViewLocationOnMap(
+                    lat: location.lat!,
+                    lng: location.lng!,
+                  )
+                : Center(child: Text(context.l10n.unknownLocation)),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MettingPointLocation extends StatelessWidget {
-  const MettingPointLocation({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xffCC914A)),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Image.asset(
-        AppImages.mettingpointlocation,
-        fit: BoxFit.cover,
       ),
     );
   }

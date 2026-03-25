@@ -1155,4 +1155,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get validationSelectPackage => 'يرجى اختيار باقة';
+
+  @override
+  String get thereNoPhone => 'لا يوجد رقم هاتف';
+
+  @override
+  String get unknownGuide => 'مرشد غير معروف';
+
+  @override
+  String get thereIsNoLocation => 'لا يوجد موقع متاح';
+
+  @override
+  String get unknownLocation => 'موقع غير معروف';
 }

@@ -24,7 +24,7 @@ class GuideContactInfoSection extends StatelessWidget {
 
         ContactInfoTile(
           icon: Icons.phone,
-          text: guide.phone,
+          text: guide.phone ?? context.l10n.thereNoPhone,
         ),
 
         const SizedBox(height: 10),

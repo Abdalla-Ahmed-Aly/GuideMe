@@ -41,7 +41,7 @@ class MeetingPointHeader extends StatelessWidget {
                 height: 2,
               ),
               Text(
-                location.name,
+                location.name ?? "",
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.poppinsMedium16,
               ),

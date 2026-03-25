@@ -1,7 +1,7 @@
 class LocationModel {
-  final String name;
-  final double lat;
-  final double lng;
+  final String? name;
+  final double? lat;
+  final double? lng;
 
   const LocationModel({
     required this.name,
@@ -10,8 +10,8 @@ class LocationModel {
   });
 
   factory LocationModel.fromJson(Map<String, dynamic> json) => LocationModel(
-    name: json['name'] as String,
-    lat: (json['lat'] as num).toDouble(),
-    lng: (json['lng'] as num).toDouble(),
+    name: json['name'] as String?,
+    lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
+    lng: json['lng'] != null ? (json['lng'] as num).toDouble() : null,
   );
 }

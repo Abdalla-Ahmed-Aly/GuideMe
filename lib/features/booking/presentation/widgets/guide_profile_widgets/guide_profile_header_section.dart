@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/shared/entities/user_entity.dart';
@@ -19,14 +20,14 @@ class GuideProfileHeaderSection extends StatelessWidget {
         // profile image and status
         ProfileAvatarWithStatus(
           imageUrl: guide.photoUrl,
-          isOnline: guide.isOnline,
+          isOnline: guide.isOnline ?? false,
         ),
 
         const SizedBox(height: 12),
 
         // guide name
         Text(
-          guide.name,
+          guide.name ?? context.l10n.unknownGuide,
           style: AppTextStyles.poppinsBold20,
         ),
 
@@ -57,7 +58,7 @@ class GuideProfileHeaderSection extends StatelessWidget {
               ),
               const TextSpan(text: ' '),
               TextSpan(
-                text: guide.location,
+                text: guide.location ?? context.l10n.thereIsNoLocation,
                 style: AppTextStyles.interMedium14.copyWith(
                   color: AppColors.natural3,
                 ),

@@ -60,7 +60,7 @@ class PackagePlaceItem extends StatelessWidget {
                     style: AppTextStyles.interBold16,
                   ),
                   Text(
-                    place.location.name,
+                    place.location?.name ?? "",
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.interRegular14.copyWith(
                       color: const Color(0xff6B7280),

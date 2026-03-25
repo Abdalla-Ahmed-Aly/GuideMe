@@ -1,7 +1,7 @@
 class CityModel {
-  final String id;
-  final String name;
-  final String image;
+  final String? id;
+  final String? name;
+  final String? image;
   final bool? isPopular;
   final String? updateAt;
 
@@ -14,9 +14,9 @@ class CityModel {
   });
 
   factory CityModel.fromJson(Map<String, dynamic> json) => CityModel(
-    id: json['_id'] as String,
-    name: json['name'] as String,
-    image: json['image'] as String,
+    id: json['_id'] as String?,
+    name: json['name'] as String?,
+    image: json['image'] as String?,
     isPopular: json['isPopular'] != null ? json['isPopular'] as bool : null,
     updateAt: json['updatedAt'] != null ? json['updatedAt'] as String : null,
   );

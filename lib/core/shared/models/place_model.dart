@@ -3,14 +3,14 @@ import 'package:guide_me/core/shared/models/city_model.dart';
 import 'package:guide_me/core/shared/models/location_model.dart';
 
 class PlaceModel {
-  final String id;
-  final String title;
+  final String? id;
+  final String? title;
   final String? description;
   final CategoryModel? category;
-  final num price;
-  final List<String> images;
+  final num? price;
+  final List<String>? images;
   final LocationModel? location;
-  final num rating;
+  final num? rating;
   final num? reviewsCount;
   final Map<String, num>? reviewsSummary;
   final CityModel? city;

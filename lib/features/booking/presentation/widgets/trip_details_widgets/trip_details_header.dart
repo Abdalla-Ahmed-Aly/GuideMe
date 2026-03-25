@@ -46,9 +46,9 @@ class CompletedTripHeader extends StatelessWidget {
               strokeAlign: BorderSide.strokeAlignOutside,
             ),
           ),
-          child: guider.photo != null
+          child: guider.photo != null && guider.photo!.url != null
               ? CustomNetworkImage(
-                  imageUrl: guider.photo!.url,
+                  imageUrl: guider.photo!.url!,
                   height: 90,
                   width: 90,
                   fit: BoxFit.cover,

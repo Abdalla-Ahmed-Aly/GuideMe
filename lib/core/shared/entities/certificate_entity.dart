@@ -4,7 +4,7 @@ class CertificateEntity {
   final String organization;
   final String issueDate;
   final String? expirationDate;
-  final String fileUrl;
+  final String? fileUrl;
 
   const CertificateEntity({
     required this.id,

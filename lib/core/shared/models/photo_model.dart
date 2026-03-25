@@ -1,6 +1,6 @@
 class PhotoModel {
-  final String url;
-  final String publicId;
+  final String? url;
+  final String? publicId;
 
   const PhotoModel({
     required this.url,

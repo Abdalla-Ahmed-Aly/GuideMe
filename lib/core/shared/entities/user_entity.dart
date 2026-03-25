@@ -6,9 +6,9 @@ import 'package:guide_me/core/shared/entities/review_entity.dart';
 
 class UserEntity {
   final String id;
-  final String name;
+  final String? name;
   final String email;
-  final String phone;
+  final String? phone;
   final UserRole role;
   final String? bio;
   final String? nationality;
@@ -23,13 +23,13 @@ class UserEntity {
   final List<CityEntity> guideCities;
   final List<CertificateEntity> certificates;
   final List<ReviewEntity> reviews;
-  final int completedTours;
+  final int? completedTours;
   final int? yearsOfExperience;
   final double? hourlyRate;
-  final String currency;
-  final bool isOnline;
-  final bool isVerified;
-  final double totalEarnings;
+  final String? currency;
+  final bool? isOnline;
+  final bool? isVerified;
+  final double? totalEarnings;
 
   const UserEntity({
     required this.id,

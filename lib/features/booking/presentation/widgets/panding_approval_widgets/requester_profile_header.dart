@@ -25,8 +25,8 @@ class RequesterProfileHeaderSection extends StatelessWidget {
               strokeAlign: BorderSide.strokeAlignOutside,
             ),
           ),
-          child: userData.photo != null
-              ? CustomNetworkImage(imageUrl: userData.photo!.url)
+          child: userData.photo != null && userData.photo!.url != null
+              ? CustomNetworkImage(imageUrl: userData.photo!.url!)
               : const Icon(
                   Icons.person_outline,
                   color: Colors.grey,
@@ -48,7 +48,7 @@ class RequesterProfileHeaderSection extends StatelessWidget {
                 height: 3,
               ),
               Text(
-                userData.location,
+                userData.location ?? "",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.poppinsRegular14.copyWith(

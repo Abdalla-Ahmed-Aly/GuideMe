@@ -1,9 +1,9 @@
 import 'package:guide_me/core/shared/models/photo_model.dart';
 
 class ReviewTouristModel {
-  final String id;
-  final String name;
-  final PhotoModel photo;
+  final String? id;
+  final String? name;
+  final PhotoModel? photo;
 
   const ReviewTouristModel({
     required this.id,

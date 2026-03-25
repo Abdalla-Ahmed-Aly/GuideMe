@@ -29,8 +29,8 @@ class PlaceLocationCard extends StatelessWidget {
               color: Colors.grey.shade200,
             ),
             child: ViewLocationOnMap(
-              lat: place.location.lat,
-              lng: place.location.lng,
+              lat: place.location!.lat!,
+              lng: place.location!.lng!,
             ),
           ),
 
@@ -43,7 +43,7 @@ class PlaceLocationCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    place.location.name,
+                    place.location!.name ?? context.l10n.unknownLocation,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.poppinsMedium14.copyWith(
                       color: const Color(0xff475569),

@@ -7,11 +7,11 @@ class PlaceInfoEntity {
   final String category;
   final num price;
   final List<String> images;
-  final LocationEntity location;
+  final LocationEntity? location;
   final num rating;
-  final num? reviewsCount;
+  final num reviewsCount;
   final Map<String, num>? reviewsSummary;
-  final String city;
+  final String? city;
   final num? minPersons;
   final num? maxPersons;
   final bool? isPopular;
@@ -28,7 +28,7 @@ class PlaceInfoEntity {
     required this.images,
     required this.location,
     required this.rating,
-    this.reviewsCount,
+    required this.reviewsCount,
     this.reviewsSummary,
     required this.city,
     this.minPersons,

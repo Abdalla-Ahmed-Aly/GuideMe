@@ -4,8 +4,8 @@ import 'package:guide_me/core/shared/models/city_model.dart';
 class CityMapper {
   static CityEntity toEntity(CityModel cityModel) {
     return CityEntity(
-      id: cityModel.id,
-      name: cityModel.name,
+      id: cityModel.id ?? "Unkown",
+      name: cityModel.name ?? "Unkown",
       image: cityModel.image,
       isPopular: cityModel.isPopular,
     );

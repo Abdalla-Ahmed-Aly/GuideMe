@@ -41,7 +41,7 @@ class InterestsGridView extends StatelessWidget {
           onTap: () {
             interestsCubit.toggleCategory(category.id);
           },
-          image: category.image,
+          image: category.image ?? "",
           title: category.name,
         );
       },

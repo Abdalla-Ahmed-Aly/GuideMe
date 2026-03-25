@@ -6,11 +6,11 @@ import 'package:guide_me/core/shared/models/certificate_model.dart';
 import 'package:guide_me/core/shared/models/review_model.dart';
 
 class UserModel {
-  final String id;
-  final String name;
-  final String email;
-  final String phone;
-  final String role;
+  final String? id;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? role;
   final String? bio;
   final String? nationality;
   final String? location;
@@ -18,21 +18,21 @@ class UserModel {
   final double? lng;
   final PhotoModel? photo;
   final AvailabilityModel? availability;
-  final List<String> languages;
-  final List<String> interests;
-  final List<String> expertise;
-  final List<CityModel> guideCities;
-  final List<CertificateModel> certificates;
+  final List<String>? languages;
+  final List<String>? interests;
+  final List<String>? expertise;
+  final List<CityModel>? guideCities;
+  final List<CertificateModel>? certificates;
   final List<ReviewModel>? reviews;
-  final int completedTours;
+  final int? completedTours;
   final int? yearsOfExperience;
   final double? hourlyRate;
-  final String currency;
-  final bool isOnline;
-  final bool isVerified;
-  final String verificationStatus;
-  final double totalEarnings;
-  final DateTime createdAt;
+  final String? currency;
+  final bool? isOnline;
+  final bool? isVerified;
+  final String? verificationStatus;
+  final double? totalEarnings;
+  final DateTime? createdAt;
 
   const UserModel({
     required this.id,

@@ -33,8 +33,8 @@ class GuiderProfileSection extends StatelessWidget {
                 strokeAlign: BorderSide.strokeAlignOutside,
               ),
             ),
-            child: guider.photo != null
-                ? CustomNetworkImage(imageUrl: guider.photo!.url)
+            child: guider.photo != null && guider.photo!.url != null
+                ? CustomNetworkImage(imageUrl: guider.photo!.url!)
                 : const Icon(
                     Icons.person_outline,
                     size: 30,

@@ -71,10 +71,14 @@ class _ReviewedProfile extends StatelessWidget {
               strokeAlign: BorderSide.strokeAlignOutside,
             ),
           ),
-          child: CustomNetworkImage(
-            imageUrl: review.touristPhoto,
-            fit: BoxFit.cover,
-          ),
+          child: review.touristPhoto != null
+              ? CustomNetworkImage(
+                  imageUrl: review.touristPhoto!,
+                  fit: BoxFit.cover,
+                )
+              : const Center(
+                  child: Icon(Icons.person_outline),
+                ),
         ),
 
         const SizedBox(width: 12),
@@ -100,14 +104,15 @@ class _ReviewedProfile extends StatelessWidget {
 
                   const SizedBox(width: 2),
 
-                  Text(
-                    DateFormat(
-                      "MMM dd, yyyy hh:mm a",
-                    ).format(review.createdAt),
-                    style: AppTextStyles.poppinsRegular16.copyWith(
-                      color: const Color(0xffB59A64),
+                  if (review.createdAt != null)
+                    Text(
+                      DateFormat(
+                        "MMM dd, yyyy hh:mm a",
+                      ).format(review.createdAt!),
+                      style: AppTextStyles.poppinsRegular16.copyWith(
+                        color: const Color(0xffB59A64),
+                      ),
                     ),
-                  ),
                 ],
               ),
             ],

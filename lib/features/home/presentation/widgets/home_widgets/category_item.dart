@@ -31,7 +31,7 @@ class CategoryItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: CustomNetworkImage(
-                imageUrl: category.image,
+                imageUrl: category.image ?? "",
                 fit: BoxFit.cover,
                 width: width,
                 height: width,

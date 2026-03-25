@@ -1,6 +1,6 @@
 class PhotoEntity {
-  final String url;
-  final String publicId;
+  final String? url;
+  final String? publicId;
 
   const PhotoEntity({
     required this.url,

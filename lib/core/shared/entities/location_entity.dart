@@ -1,7 +1,7 @@
 class LocationEntity {
-  final String name;
-  final double lat;
-  final double lng;
+  final String? name;
+  final double? lat;
+  final double? lng;
 
   const LocationEntity({
     required this.name,

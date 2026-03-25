@@ -1,17 +1,17 @@
 import 'package:guide_me/core/shared/models/location_model.dart';
 
 class PlaceInfoModel {
-  final String id;
-  final String title;
+  final String? id;
+  final String? title;
   final String? description;
-  final String category;
-  final num price;
-  final List<String> images;
-  final LocationModel location;
-  final num rating;
+  final String? category;
+  final num? price;
+  final List<String>? images;
+  final LocationModel? location;
+  final num? rating;
   final num? reviewsCount;
   final Map<String, num>? reviewsSummary;
-  final String city;
+  final String? city;
   final num? minPersons;
   final num? maxPersons;
   final bool? isPopular;

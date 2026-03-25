@@ -1,12 +1,12 @@
 import 'package:guide_me/core/shared/models/review_tourist_model.dart';
 
 class ReviewModel {
-  final String id;
-  final String bookingId;
-  final ReviewTouristModel tourist;
-  final int rating;
-  final String comment;
-  final DateTime createdAt;
+  final String? id;
+  final String? bookingId;
+  final ReviewTouristModel? tourist;
+  final int? rating;
+  final String? comment;
+  final DateTime? createdAt;
 
   const ReviewModel({
     required this.id,

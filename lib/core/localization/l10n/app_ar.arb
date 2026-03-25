@@ -404,5 +404,9 @@
   "reservationsDetails": "تفاصيل الحجز",
   "tripDate": "تاريخ الرحلة",
   "selectLocation": "اختر الموقع",
-  "validationSelectPackage": "يرجى اختيار باقة"
+  "validationSelectPackage": "يرجى اختيار باقة",
+  "thereNoPhone": "لا يوجد رقم هاتف",
+  "unknownGuide": "مرشد غير معروف",
+  "thereIsNoLocation": "لا يوجد موقع متاح",
+  "unknownLocation": "موقع غير معروف"
 }

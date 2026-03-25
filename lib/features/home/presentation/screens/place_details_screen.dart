@@ -41,13 +41,16 @@ class PlaceDetailsScreen extends StatelessWidget {
           const SizedBox(height: 14),
 
           // Location
-          SizedBox(
-            height: size.height * 0.22,
-            child: ViewLocationOnMap(
-              lat: place.location!.lat,
-              lng: place.location!.lng,
+          if (place.location != null &&
+              place.location!.lat != null &&
+              place.location!.lng != null)
+            SizedBox(
+              height: size.height * 0.22,
+              child: ViewLocationOnMap(
+                lat: place.location!.lat!,
+                lng: place.location!.lng!,
+              ),
             ),
-          ),
 
           const SizedBox(height: 22),
 

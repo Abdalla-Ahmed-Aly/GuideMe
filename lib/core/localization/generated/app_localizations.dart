@@ -2335,6 +2335,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please select a package'**
   String get validationSelectPackage;
+
+  /// No description provided for @thereNoPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'No phone number available'**
+  String get thereNoPhone;
+
+  /// No description provided for @unknownGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown guide'**
+  String get unknownGuide;
+
+  /// No description provided for @thereIsNoLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'No location available'**
+  String get thereIsNoLocation;
+
+  /// No description provided for @unknownLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown location'**
+  String get unknownLocation;
 }
 
 class _AppLocalizationsDelegate

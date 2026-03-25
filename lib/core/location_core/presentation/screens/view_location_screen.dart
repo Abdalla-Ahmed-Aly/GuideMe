@@ -19,7 +19,7 @@ class ViewLocationScreen extends StatelessWidget {
           // Map
           FlutterMap(
             options: MapOptions(
-              initialCenter: LatLng(location.lat, location.lng),
+              initialCenter: LatLng(location.lat!, location.lng!),
               initialZoom: 12,
             ),
             children: [
@@ -31,7 +31,7 @@ class ViewLocationScreen extends StatelessWidget {
               MarkerLayer(
                 markers: [
                   Marker(
-                    point: LatLng(location.lat, location.lng),
+                    point: LatLng(location.lat!, location.lng!),
                     child: const Icon(
                       Icons.location_pin,
                       color: AppColors.primary2,
@@ -81,7 +81,7 @@ class ViewLocationScreen extends StatelessWidget {
                   // text
                   Expanded(
                     child: Text(
-                      location.name,
+                      location.name ?? "Uknown",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.poppinsSemiBold16,

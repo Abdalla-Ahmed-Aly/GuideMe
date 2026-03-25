@@ -1,8 +1,8 @@
 class CategoryModel {
-  final String id;
-  final String name;
-  final String image;
-  final String slug;
+  final String? id;
+  final String? name;
+  final String? image;
+  final String? slug;
 
   CategoryModel({
     required this.id,

@@ -1,5 +1,5 @@
 class AvailabilityModel {
-  final List<String> days;
+  final List<String>? days;
   final String? from;
   final String? to;
 

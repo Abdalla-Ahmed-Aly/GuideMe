@@ -45,7 +45,7 @@ class PlaceInfoSection extends StatelessWidget {
               const SizedBox(width: 4),
 
               Text(
-                place.location.name,
+                place.location?.name ?? context.l10n.thereIsNoLocation,
                 style: AppTextStyles.poppinsMedium16.copyWith(
                   color: const Color(0xff64748B),
                 ),
@@ -109,7 +109,10 @@ class PlaceInfoSection extends StatelessWidget {
 
           const SizedBox(height: 8),
 
-          const PlaceLocationCard(),
+          if (place.location != null &&
+              place.location!.lat != null &&
+              place.location!.lng != null)
+            const PlaceLocationCard(),
 
           const SizedBox(height: 24),
 
@@ -121,7 +124,7 @@ class PlaceInfoSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           RatingAndReviewsCard(
-            numberOfReviews: place.reviewsCount?.toInt() ?? 0,
+            numberOfReviews: place.reviewsCount.toInt(),
             rating: place.rating.toDouble(),
             reviews: place.reviewsSummary ?? {},
           ),

@@ -4,12 +4,12 @@ import 'package:guide_me/core/shared/entities/certificate_entity.dart';
 class CertificateMapper {
   static CertificateEntity toEntity(CertificateModel model) {
     return CertificateEntity(
-      id: model.id,
-      name: model.name,
-      organization: model.organization,
-      issueDate: model.issueDate,
-      expirationDate: model.expirationDate,
-      fileUrl: model.file.url,
+      id: model.id ?? "Unkown",
+      name: model.name ?? "Unkown",
+      organization: model.organization ?? "Unkown",
+      issueDate: model.issueDate ?? "Unkown",
+      expirationDate: model.expirationDate, 
+      fileUrl: model.file?.url ,
     );
   }
 }

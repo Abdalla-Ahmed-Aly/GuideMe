@@ -1,10 +1,10 @@
 class ReviewEntity {
   final String id;
   final String touristName;
-  final String touristPhoto;
+  final String? touristPhoto;
   final int rating;
   final String comment;
-  final DateTime createdAt;
+  final DateTime? createdAt;
 
   const ReviewEntity({
     required this.id,

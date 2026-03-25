@@ -6,6 +6,7 @@ import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
+import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
 
 class PlaceCard extends StatefulWidget {
   const PlaceCard({super.key, required this.place});
@@ -109,23 +110,17 @@ class _PlaceCardState extends State<PlaceCard> {
             // Rating and reviews
             Row(
               children: [
-                const SizedBox(width: 6),
+                const SizedBox(width: 2),
                 // Rating
-                for (int i = 0; i < 5; i++)
-                  Icon(
-                    Icons.star_rounded,
-                    color: i < widget.place.rating.floor()
-                        ? Colors.amber
-                        : Colors.grey,
-                    size: 16,
-                  ),
+                DynamicRatingStars(rating: widget.place.rating),
                 const SizedBox(width: 4),
                 Text(
-                  widget.place.rating.toString(),
-                  style: AppTextStyles.poppinsMedium12.copyWith(
+                  '(${widget.place.reviewsCount} ${context.l10n.reviews})',
+                  style: AppTextStyles.poppinsMedium14.copyWith(
                     color: AppColors.blue,
                   ),
                 ),
+                const SizedBox(width: 2),
               ],
             ),
             const SizedBox(height: 3),
@@ -133,7 +128,7 @@ class _PlaceCardState extends State<PlaceCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
-                '${widget.place.price}\$',
+                '\$${widget.place.price}',
                 style: AppTextStyles.poppinsBold16.copyWith(
                   color: AppColors.primary,
                 ),

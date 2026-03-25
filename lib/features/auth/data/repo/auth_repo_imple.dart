@@ -37,14 +37,16 @@ class AuthRepoImple extends AuthRepo {
     try {
       final result = await authRemoteDataSource.login(request);
 
-      await tokenService.saveToken(result.token);
+      final data = AuthResponseMapper.toEntity(result);
+
+      await tokenService.saveToken(data.token);
       await HiveHelper.put<UserRole>(
         boxName: HiveConstants.userRoleBox,
         key: HiveConstants.userRoleKey,
-        data: UserRole.fromString(result.data.role),
+        data: UserRole.fromString(data.user.role.name),
       );
 
-      return Right(AuthResponseMapper.toEntity(result));
+      return Right(data);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
     }

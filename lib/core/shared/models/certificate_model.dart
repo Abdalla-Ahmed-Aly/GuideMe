@@ -1,12 +1,12 @@
 import 'package:guide_me/core/shared/models/photo_model.dart';
 
 class CertificateModel {
-  final String id;
-  final String name;
-  final String organization;
-  final String issueDate;
+  final String? id;
+  final String? name;
+  final String? organization;
+  final String? issueDate;
   final String? expirationDate;
-  final PhotoModel file;
+  final PhotoModel? file;
 
   const CertificateModel({
     required this.id,

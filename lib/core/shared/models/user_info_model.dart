@@ -1,11 +1,11 @@
 import 'package:guide_me/core/shared/models/photo_model.dart';
 
 class UserInfoModel {
-  final String id;
-  final String name;
-  final String location;
-  final double lat;
-  final double long;
+  final String? id;
+  final String? name;
+  final String? location;
+  final double? lat;
+  final double? long;
   final PhotoModel? photo;
 
   const UserInfoModel({
@@ -18,11 +18,11 @@ class UserInfoModel {
   });
 
   factory UserInfoModel.fromJson(Map<String, dynamic> json) => UserInfoModel(
-    id: json['_id'] as String,
-    name: json['name'] as String,
-    location: json['location'] as String,
-    lat: (json['lat'] as num).toDouble(),
-    long: (json['long'] as num).toDouble(),
+    id: json['_id'] != null ? json['_id'] as String : null,
+    name: json['name'] != null ? json['name'] as String : null,
+    location: json['location'] != null ? json['location'] as String : null,
+    lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
+    long: json['long'] != null ? (json['long'] as num).toDouble() : null,
     photo: json['photo'] != null
         ? PhotoModel.fromJson(json['photo'] as Map<String, dynamic>)
         : null,

@@ -403,5 +403,9 @@
   "reservationsDetails": "Reservations Details",
   "tripDate": "Trip Date",
   "selectLocation": "Select Location",
-  "validationSelectPackage": "Please select a package"
+  "validationSelectPackage": "Please select a package",
+  "thereNoPhone": "No phone number available",
+  "unknownGuide": "Unknown guide",
+  "thereIsNoLocation": "No location available",
+  "unknownLocation": "Unknown location"
 }

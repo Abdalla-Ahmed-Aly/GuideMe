@@ -1156,4 +1156,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validationSelectPackage => 'Please select a package';
+
+  @override
+  String get thereNoPhone => 'No phone number available';
+
+  @override
+  String get unknownGuide => 'Unknown guide';
+
+  @override
+  String get thereIsNoLocation => 'No location available';
+
+  @override
+  String get unknownLocation => 'Unknown location';
 }
