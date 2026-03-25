@@ -28,12 +28,14 @@ import 'package:guide_me/features/auth/presentation/screens/reset_password_scree
 import 'package:guide_me/features/auth/presentation/screens/signup_and_login_screen.dart';
 import 'package:guide_me/features/auth/presentation/screens/sucess_password_screen.dart';
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/book_ai_package_cubit/book_ai_package_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/guide_data_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
+import 'package:guide_me/features/booking/presentation/screens/book_ai_package_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/trip_details_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/package_booking_success_screen.dart';
@@ -65,7 +67,9 @@ import 'package:guide_me/features/guide_registration/presentation/screens/guide_
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
+import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 import 'package:guide_me/features/home/presentation/cubits/interests_cubit/interests_cubit.dart';
+import 'package:guide_me/features/home/presentation/screens/ai_package_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/tourist_navigation_bar_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
@@ -395,6 +399,21 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.packageBookingSuccessScreen,
         builder: (context, state) => const PackageBookingSuccessScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.aiPackagePlacesScreen,
+        builder: (context, state) => const AiPackagePlacesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.bookAiPackageScreen,
+        builder: (context, state) {
+          final pacakge = state.extra as PackageEntity;
+          return BlocProvider(
+            create: (context) =>
+                getIt<BookAiPackageCubit>()..setPacakgeId(pacakge.packageId),
+            child: const BookAiPackageScreen(),
+          );
+        },
       ),
     ],
   );

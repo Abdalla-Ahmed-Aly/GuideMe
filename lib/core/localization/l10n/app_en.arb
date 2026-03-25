@@ -398,5 +398,10 @@
   "pleaseSelectAtLeastOneInterest": "Please select at least one interest",
   "aiTravelSuggestions": "AI Travel Suggestions",
   "aiTripLoadingMessage": "Preparing your trip...",
-  "package": "Package"
+  "package": "Package",
+  "confirmAiPackage": "Confirm AI Package",
+  "reservationsDetails": "Reservations Details",
+  "tripDate": "Trip Date",
+  "selectLocation": "Select Location",
+  "validationSelectPackage": "Please select a package"
 }

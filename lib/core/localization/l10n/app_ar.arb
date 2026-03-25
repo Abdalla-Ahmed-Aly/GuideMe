@@ -399,5 +399,10 @@
   "pleaseSelectAtLeastOneInterest": "يرجى اختيار اهتمام واحد على الأقل",
   "aiTravelSuggestions": "اقتراحات السفر الذكية",
   "aiTripLoadingMessage": "جاري تحضير رحلتك...",
-  "package": "باقة"
+  "package": "باقة",
+  "confirmAiPackage": "تأكيد الباقة الذكية",
+  "reservationsDetails": "تفاصيل الحجز",
+  "tripDate": "تاريخ الرحلة",
+  "selectLocation": "اختر الموقع",
+  "validationSelectPackage": "يرجى اختيار باقة"
 }

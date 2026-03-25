@@ -1140,4 +1140,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get package => 'باقة';
+
+  @override
+  String get confirmAiPackage => 'تأكيد الباقة الذكية';
+
+  @override
+  String get reservationsDetails => 'تفاصيل الحجز';
+
+  @override
+  String get tripDate => 'تاريخ الرحلة';
+
+  @override
+  String get selectLocation => 'اختر الموقع';
+
+  @override
+  String get validationSelectPackage => 'يرجى اختيار باقة';
 }

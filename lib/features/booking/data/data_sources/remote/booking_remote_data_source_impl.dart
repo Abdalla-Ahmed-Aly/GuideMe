@@ -5,6 +5,7 @@ import 'package:guide_me/core/network/api_service.dart';
 import 'package:guide_me/core/shared/models/user_model.dart';
 import 'package:guide_me/features/booking/data/data_sources/remote/booking_remote_data_source.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/data/models/book_ai_package_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
@@ -106,5 +107,16 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
       endpoint: "${ApiConstants.userProfileEndpoint}/$guideId",
     );
     return UserModel.fromJson(response.data["data"]);
+  }
+
+  @override
+  Future<BookPackageResponseModel> bookAiPackage({
+    required BookAiPackageRequest bookAi,
+  }) async {
+    final response = await _apiService.post(
+      endpoint: ApiConstants.bookAiPackageEndpoint,
+      data: bookAi.toJson(),
+    );
+    return BookPackageResponseModel.fromJson(response.data['data']);
   }
 }

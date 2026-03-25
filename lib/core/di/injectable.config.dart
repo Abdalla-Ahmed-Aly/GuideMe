@@ -84,6 +84,8 @@ import 'package:guide_me/features/booking/data/repos/booking_repo_impl.dart'
     as _i850;
 import 'package:guide_me/features/booking/domain/repos/booking_repo.dart'
     as _i672;
+import 'package:guide_me/features/booking/domain/use_cases/book_ai_package_use_case.dart'
+    as _i664;
 import 'package:guide_me/features/booking/domain/use_cases/book_package_use_case.dart'
     as _i280;
 import 'package:guide_me/features/booking/domain/use_cases/get_bookings_use_case.dart'
@@ -92,6 +94,8 @@ import 'package:guide_me/features/booking/domain/use_cases/get_guide_data_use_ca
     as _i292;
 import 'package:guide_me/features/booking/presentation/cubits/add_booking_cubit/add_booking_cubit.dart'
     as _i49;
+import 'package:guide_me/features/booking/presentation/cubits/book_ai_package_cubit/book_ai_package_cubit.dart'
+    as _i865;
 import 'package:guide_me/features/booking/presentation/cubits/book_package_cubit/book_package_cubit.dart'
     as _i928;
 import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cubit/cancel_booking_cubit.dart'
@@ -310,6 +314,9 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i776.SendForgetPasswordCubit(gh<_i814.SendForgetPasswordUseCase>()),
     );
+    gh.lazySingleton<_i664.BookAiPackageUseCase>(
+      () => _i664.BookAiPackageUseCase(gh<_i672.BookingRepo>()),
+    );
     gh.factory<_i968.ResendForgetPasswordCubit>(
       () => _i968.ResendForgetPasswordCubit(gh<_i426.ResendPasswordUseCase>()),
     );
@@ -324,6 +331,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),
+    );
+    gh.factory<_i865.BookAiPackageCubit>(
+      () => _i865.BookAiPackageCubit(gh<_i664.BookAiPackageUseCase>()),
     );
     return this;
   }

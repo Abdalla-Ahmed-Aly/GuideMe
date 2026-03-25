@@ -2305,6 +2305,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Package'**
   String get package;
+
+  /// No description provided for @confirmAiPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm AI Package'**
+  String get confirmAiPackage;
+
+  /// No description provided for @reservationsDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Reservations Details'**
+  String get reservationsDetails;
+
+  /// No description provided for @tripDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip Date'**
+  String get tripDate;
+
+  /// No description provided for @selectLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Location'**
+  String get selectLocation;
+
+  /// No description provided for @validationSelectPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a package'**
+  String get validationSelectPackage;
 }
 
 class _AppLocalizationsDelegate

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/features/booking/presentation/args/package_args.dart';
-import 'package:guide_me/features/booking/presentation/widgets/package_details_widgets/package_place_item.dart';
+import 'package:guide_me/core/widgets/package_place_item.dart';
 
 class PackagePlacesListView extends StatelessWidget {
   const PackagePlacesListView({super.key});

@@ -1141,4 +1141,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get package => 'Package';
+
+  @override
+  String get confirmAiPackage => 'Confirm AI Package';
+
+  @override
+  String get reservationsDetails => 'Reservations Details';
+
+  @override
+  String get tripDate => 'Trip Date';
+
+  @override
+  String get selectLocation => 'Select Location';
+
+  @override
+  String get validationSelectPackage => 'Please select a package';
 }

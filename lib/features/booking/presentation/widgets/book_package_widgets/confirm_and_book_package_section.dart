@@ -21,6 +21,7 @@ class ConfirmAndBookPackageSection extends StatelessWidget {
     final package = GoRouterState.of(context).extra as PackageArgs;
     final bookingPackageCubit = context.read<BookPackageCubit>();
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.only(
         left: 16.p,
         right: 16.p,

@@ -9,6 +9,7 @@ import 'package:guide_me/features/booking/data/data_sources/remote/booking_remot
 import 'package:guide_me/features/booking/data/mappers/booking_mapper.dart';
 import 'package:guide_me/features/booking/data/mappers/booking_package_mapper.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/data/models/book_ai_package_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
@@ -113,11 +114,23 @@ class BookingRepoImpl implements BookingRepo {
   Future<Either<Failure, UserEntity>> getGuideData({
     required String guideId,
   }) async {
-    // try {
-    final response = await _remoteDataSource.getGuideData(guideId: guideId);
-    return right(UserMapper.toEntity(response));
-    // } catch (e) {
-    //   return left(ErrorHandler.handle(e));
-    // }
+    try {
+      final response = await _remoteDataSource.getGuideData(guideId: guideId);
+      return right(UserMapper.toEntity(response));
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, BookPackageResponseModel>> bookAiPackage({
+    required BookAiPackageRequest bookAi,
+  }) async {
+    try {
+      final response = await _remoteDataSource.bookAiPackage(bookAi: bookAi);
+      return right(response);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:guide_me/core/shared/entities/city_entity.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/features/booking/data/models/add_booking_request.dart';
+import 'package:guide_me/features/booking/data/models/book_ai_package_request.dart';
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
@@ -34,5 +35,9 @@ abstract class BookingRepo {
 
   Future<Either<Failure, UserEntity>> getGuideData({
     required String guideId,
+  });
+
+  Future<Either<Failure, BookPackageResponseModel>> bookAiPackage({
+    required BookAiPackageRequest bookAi,
   });
 }

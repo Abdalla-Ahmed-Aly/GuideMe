@@ -56,13 +56,8 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
 
     glowColor = colors[widget.index % colors.length];
 
-    tags = [
-      "AI Pick",
-      "Trending",
-      "Smart Choice",
-      "Top Rated",
-      "Recommended"
-    ]..shuffle();
+    tags = ["AI Pick", "Trending", "Smart Choice", "Top Rated", "Recommended"]
+      ..shuffle();
   }
 
   @override
@@ -75,8 +70,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     final width = size.width * 0.87;
-    final height =
-        context.isPortrait ? size.height * 0.41 : size.width * 0.41;
+    final height = context.isPortrait ? size.height * 0.41 : size.width * 0.41;
 
     double itemWidth = width + 16;
     double relativePos = (widget.index * itemWidth) - widget.scrollOffset;
@@ -88,10 +82,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
       onTapCancel: () => _controller.reverse(),
       onTap: () {
         if (widget.package.places.isNotEmpty) {
-          context.push(
-            AppRoutes.placeDetailsScreen,
-            extra: widget.package.places.first,
-          );
+          context.push(AppRoutes.aiPackagePlacesScreen, extra: widget.package);
         }
       },
       child: ScaleTransition(
@@ -133,7 +124,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
                     left: -50 + parallaxOffset,
                     right: -50 - parallaxOffset,
                     child: Hero(
-                      tag: 'package_${widget.package.title}',
+                      tag: widget.package.packageId,
                       child: CustomNetworkImage(
                         imageUrl: widget.package.packagePhoto,
                         fit: BoxFit.cover,
@@ -170,8 +161,7 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
                     top: 20,
                     right: 20,
                     child: GestureDetector(
-                      onTap: () =>
-                          setState(() => isFavorite = !isFavorite),
+                      onTap: () => setState(() => isFavorite = !isFavorite),
                       child: _glassCircle(
                         icon: isFavorite
                             ? Icons.favorite
@@ -211,21 +201,21 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
                               itemCount: 2,
                               itemBuilder: (_, i) {
                                 return Container(
-                                  margin:
-                                      const EdgeInsets.only(right: 8),
+                                  margin: const EdgeInsets.only(right: 8),
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 4),
+                                    horizontal: 10,
+                                    vertical: 4,
+                                  ),
                                   decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(20),
-                                    color: glowColor
-                                        .withValues(alpha: 0.25),
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: glowColor.withValues(alpha: 0.25),
                                   ),
                                   child: Text(
                                     tags[i],
                                     style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10),
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                    ),
                                   ),
                                 );
                               },
@@ -236,24 +226,33 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
 
                           Row(
                             children: [
-                              const Icon(Icons.location_on,
-                                  color: AppColors.primary, size: 16),
-                              Text(widget.package.city.name,
-                                  style: const TextStyle(
-                                      color: Colors.white70)),
+                              const Icon(
+                                Icons.location_on,
+                                color: AppColors.primary,
+                                size: 16,
+                              ),
+                              Text(
+                                widget.package.city.name,
+                                style: const TextStyle(color: Colors.white70),
+                              ),
                               const Spacer(),
-                              const Icon(Icons.star,
-                                  color: Colors.amber, size: 16),
-                              const Text("4.9",
-                                  style:
-                                      TextStyle(color: Colors.white)),
+                              const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 16,
+                              ),
+                              const Text(
+                                "4.9",
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ],
                           ),
 
                           const SizedBox(height: 16),
 
                           _glassPrice(
-                              "${widget.package.totalPrice} ${context.l10n.egp}"),
+                            "${widget.package.totalPrice} ${context.l10n.egp}",
+                          ),
                         ],
                       ),
                     ),
@@ -273,12 +272,12 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           color: Colors.white.withValues(alpha: 0.2),
-          child: Text(text,
-              style:
-                  const TextStyle(color: Colors.white, fontSize: 12)),
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.white, fontSize: 12),
+          ),
         ),
       ),
     );
@@ -305,9 +304,10 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
         child: Container(
           padding: const EdgeInsets.all(12),
           color: Colors.white.withValues(alpha: 0.15),
-          child: Text(price,
-              style:
-                  const TextStyle(color: Colors.white, fontSize: 16)),
+          child: Text(
+            price,
+            style: const TextStyle(color: Colors.white, fontSize: 16),
+          ),
         ),
       ),
     );
