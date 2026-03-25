@@ -31,7 +31,7 @@ class ExplorePlacesListView extends StatelessWidget {
             if (places.isEmpty) {
               return const Center(child: Text('No places found'));
             }
-            return _buildListView(places);
+            return _buildListView(context, places);
           }
           return const SizedBox();
         },
@@ -48,7 +48,7 @@ class ExplorePlacesListView extends StatelessWidget {
             if (places.isEmpty) {
               return const Center(child: Text('No places found'));
             }
-            return _buildListView(places);
+            return _buildListView(context, places);
           }
           return const SizedBox();
         },
@@ -66,9 +66,14 @@ class ExplorePlacesListView extends StatelessWidget {
     );
   }
 
-  Widget _buildListView(List<dynamic> places) {
+  Widget _buildListView(BuildContext context, List<dynamic> places) {
     return ListView.builder(
-      padding: EdgeInsets.only(top: 18, left: 32.p, right: 32.p),
+      padding: EdgeInsets.only(
+        top: 18,
+        left: 32.p,
+        right: 32.p,
+        bottom: MediaQuery.of(context).padding.bottom,
+      ),
       itemCount: places.length,
       itemBuilder: (context, index) {
         return PlaceListTile(place: places[index]);

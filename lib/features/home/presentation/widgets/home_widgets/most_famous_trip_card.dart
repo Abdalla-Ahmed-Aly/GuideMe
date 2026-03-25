@@ -5,7 +5,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/custom_network_image.dart';
+import 'package:guide_me/core/widgets/package_images_preview.dart';
 import 'package:guide_me/features/home/domain/entity/package_entity.dart';
 
 class MostFamousTripCard extends StatefulWidget {
@@ -76,6 +76,8 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
     double relativePos = (widget.index * itemWidth) - widget.scrollOffset;
     double parallaxOffset = (relativePos / size.width) * 80;
 
+    final images = widget.package.places.map((e) => e.images.first).toList();
+
     return GestureDetector(
       onTapDown: (_) => _controller.forward(),
       onTapUp: (_) => _controller.reverse(),
@@ -120,15 +122,23 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
               child: Stack(
                 children: [
                   // IMAGE + PARALLAX
+                  // Positioned.fill(
+                  //   left: -50 + parallaxOffset,
+                  //   right: -50 - parallaxOffset,
+                  //   child: Hero(
+                  //     tag: widget.package.packageId,
+                  //     child: CustomNetworkImage(
+                  //       imageUrl: widget.package.packagePhoto,
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //   ),
+                  // ),
                   Positioned.fill(
                     left: -50 + parallaxOffset,
                     right: -50 - parallaxOffset,
                     child: Hero(
                       tag: widget.package.packageId,
-                      child: CustomNetworkImage(
-                        imageUrl: widget.package.packagePhoto,
-                        fit: BoxFit.cover,
-                      ),
+                      child: PackageImagesPreview(images: images),
                     ),
                   ),
 
