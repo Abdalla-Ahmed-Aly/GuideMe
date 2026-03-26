@@ -1177,4 +1177,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addYourPhone => 'Add your phone number';
+
+  @override
+  String get pickCurrentLocation => 'Pick current location';
 }

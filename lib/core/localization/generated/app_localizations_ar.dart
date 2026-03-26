@@ -1176,4 +1176,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get addYourPhone => 'أضف رقم هاتفك';
+
+  @override
+  String get pickCurrentLocation => 'استخدم موقعك الحالي';
 }

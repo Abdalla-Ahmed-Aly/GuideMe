@@ -411,5 +411,6 @@
   "unknownLocation": "موقع غير معروف",
   "unknownUser": "مستخدم غير معروف",
   "addYourName": "أضف اسمك",
-  "addYourPhone": "أضف رقم هاتفك"
+  "addYourPhone": "أضف رقم هاتفك",
+  "pickCurrentLocation": "استخدم موقعك الحالي"
 }

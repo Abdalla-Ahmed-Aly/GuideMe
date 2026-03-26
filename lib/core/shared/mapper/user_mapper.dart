@@ -15,11 +15,11 @@ class UserMapper {
       email: model.email ?? "unknown",
       phone: model.phone,
       role: UserRole.fromString(model.role ?? "tourist"),
-      bio: model.bio ?? "",
+      bio: model.bio,
       nationality: model.nationality,
-      location: model.location ?? "",
-      lat: model.lat ?? 0,
-      lng: model.lng ?? 0,
+      location: model.location,
+      lat: model.lat,
+      lng: model.lng,
       photoUrl: model.photo?.url,
       availability: model.availability != null
           ? AvailabilityMapper.toEntity(model.availability!)

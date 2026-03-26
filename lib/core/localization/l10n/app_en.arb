@@ -410,5 +410,6 @@
   "unknownLocation": "Unknown location",
   "unknownUser": "Unknown User",
   "addYourName": "Add your name",
-  "addYourPhone": "Add your phone number"
+  "addYourPhone": "Add your phone number",
+  "pickCurrentLocation": "Pick current location"
 }

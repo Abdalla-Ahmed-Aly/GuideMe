@@ -104,7 +104,9 @@ class UserModel {
     isVerified: json['isVerified'],
     verificationStatus: json['verificationStatus'],
     totalEarnings: (json['totalEarnings'] as num).toDouble(),
-    createdAt: DateTime.parse(json['createdAt']),
+    createdAt: json['createdAt'] != null
+        ? DateTime.parse(json['createdAt'])
+        : null,
   );
 
   Map<String, dynamic> toJson() => {

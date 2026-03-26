@@ -25,7 +25,8 @@ class LogoutSection extends StatelessWidget {
       backgroundColor: Colors.red,
     );
   }
-Future<void> logoutDialog(BuildContext context) {
+
+  Future<void> logoutDialog(BuildContext context) {
     final cubit = context.read<TouristNavBarCubit>();
     return showDialog(
       context: context,
@@ -64,6 +65,10 @@ Future<void> logoutDialog(BuildContext context) {
                     boxName: HiveConstants.userRoleBox,
                     key: HiveConstants.userRoleKey,
                   );
+                  await HiveHelper.delete<String>(
+                    boxName: HiveConstants.userBox,
+                    key: HiveConstants.userKey,
+                  );
                   await getIt<TokenService>().deleteToken();
 
                   if (dialogContext.mounted) {
@@ -83,6 +88,4 @@ Future<void> logoutDialog(BuildContext context) {
       },
     );
   }
-
-
 }

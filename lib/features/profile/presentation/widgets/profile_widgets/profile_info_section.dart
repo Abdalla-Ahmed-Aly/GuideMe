@@ -27,10 +27,12 @@ class ProfileInfoSection extends StatelessWidget {
                 Container(
                   height: 144,
                   width: 144,
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
                       color: const Color(0xffFFA537),
+                      strokeAlign: BorderSide.strokeAlignOutside,
                     ),
                   ),
                   child: user.photoUrl == null
@@ -39,7 +41,10 @@ class ProfileInfoSection extends StatelessWidget {
                           color: AppColors.primary2,
                           size: 60,
                         )
-                      : CustomNetworkImage(imageUrl: user.photoUrl!),
+                      : CustomNetworkImage(
+                          imageUrl: user.photoUrl!,
+                          fit: BoxFit.cover,
+                        ),
                 ),
 
                 const SizedBox(height: 16),

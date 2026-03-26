@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/user_profile_tile.dart';
 import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/change_language.dart';
 import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/logout_section.dart';
 import 'package:guide_me/features/profile/presentation/widgets/settings_widgets/notification_switch.dart';
@@ -31,28 +31,9 @@ class SettingsSection extends StatelessWidget {
                 children: [
                   const SizedBox(height: 14),
 
-                  // Image & Name
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 32.p),
-                    child: Row(
-                      children: [
-                        const CircleAvatar(
-                          radius: 27,
-                          backgroundImage: ExactAssetImage(
-                            AppImages.profileImageTest,
-                          ),
-                        ),
-
-                        const SizedBox(width: 22),
-
-                        Expanded(
-                          child: Text(
-                            'John Doe',
-                            style: AppTextStyles.poppinsSemiBold18,
-                          ),
-                        ),
-                      ],
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 30.p),
+                    child: UserProfileTile(onTap: () {}),
                   ),
 
                   const SizedBox(height: 18),

@@ -205,12 +205,12 @@ class HomeScreen extends StatelessWidget {
                   // categories list
                   SizedBox(
                     height: context.isPortrait
-                        ? size.height * 0.13
-                        : size.width * 0.12,
+                        ? size.height * 0.14
+                        : size.width * 0.14,
                     child: CategoryListView(categories: homeData.categories),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
 
                   // The most famous trip Text
                   _buildSectionTitle(context, context.l10n.aiTravelSuggestions),

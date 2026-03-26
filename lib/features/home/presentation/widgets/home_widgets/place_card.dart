@@ -114,10 +114,14 @@ class _PlaceCardState extends State<PlaceCard> {
                 // Rating
                 DynamicRatingStars(rating: widget.place.rating),
                 const SizedBox(width: 4),
-                Text(
-                  '(${widget.place.reviewsCount} ${context.l10n.reviews})',
-                  style: AppTextStyles.poppinsMedium14.copyWith(
-                    color: AppColors.blue,
+                Expanded(
+                  child: Text(
+                    '(${widget.place.reviewsCount} ${context.l10n.reviews})',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.poppinsMedium14.copyWith(
+                      color: AppColors.blue,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 2),

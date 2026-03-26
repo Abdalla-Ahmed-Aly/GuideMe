@@ -2377,6 +2377,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add your phone number'**
   String get addYourPhone;
+
+  /// No description provided for @pickCurrentLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick current location'**
+  String get pickCurrentLocation;
 }
 
 class _AppLocalizationsDelegate

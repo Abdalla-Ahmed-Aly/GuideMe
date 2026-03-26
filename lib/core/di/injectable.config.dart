@@ -146,6 +146,16 @@ import 'package:guide_me/features/home/presentation/cubits/interests_cubit/inter
     as _i50;
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart'
     as _i140;
+import 'package:guide_me/features/profile/data/data_sources/profile_remote_data_source.dart'
+    as _i243;
+import 'package:guide_me/features/profile/data/repos/profile_repo_impl.dart'
+    as _i165;
+import 'package:guide_me/features/profile/domain/repos/profile_repo.dart'
+    as _i948;
+import 'package:guide_me/features/profile/domain/use_cases/update_profile_use_case.dart'
+    as _i838;
+import 'package:guide_me/features/profile/presentation/cubits/cubit/update_profile_cubit.dart'
+    as _i682;
 import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
     as _i306;
 import 'package:injectable/injectable.dart' as _i526;
@@ -197,6 +207,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i322.BookingRemoteDataSource>(
       () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
+    gh.lazySingleton<_i243.ProfileRemoteDataSource>(
+      () => _i243.ProfileRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
     gh.factory<_i554.PlaceByCategoryCubit>(
       () => _i554.PlaceByCategoryCubit(gh<_i205.PlaceByCategoryUsecase>()),
     );
@@ -208,6 +221,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i602.LocationRemoteDataSource>(),
         gh<_i250.GpsLocalDataSource>(),
       ),
+    );
+    gh.lazySingleton<_i948.ProfileRepo>(
+      () => _i165.ProfileRepoImpl(gh<_i243.ProfileRemoteDataSource>()),
     );
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
@@ -226,6 +242,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1043.AuthRemoteDataSource>(),
         gh<_i625.TokenService>(),
       ),
+    );
+    gh.lazySingleton<_i838.UpdateProfileUseCase>(
+      () => _i838.UpdateProfileUseCase(gh<_i948.ProfileRepo>()),
     );
     gh.lazySingleton<_i1045.HomeRepo>(
       () => _i955.HomeRepoImpl(gh<_i692.HomeService>()),
@@ -283,6 +302,13 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i545.LocationAccessCubit(
         gh<_i308.AddLocationUseCase>(),
         gh<_i448.GetCurrentLocationUseCase>(),
+      ),
+    );
+    gh.factory<_i682.UpdateProfileCubit>(
+      () => _i682.UpdateProfileCubit(
+        gh<_i838.UpdateProfileUseCase>(),
+        gh<_i448.GetCurrentLocationUseCase>(),
+        gh<_i226.MediaPickerService>(),
       ),
     );
     gh.factory<_i792.GetHomeCubit>(

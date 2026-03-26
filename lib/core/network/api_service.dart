@@ -91,7 +91,7 @@ class ApiService {
 
   Future<Response> patch({
     required String endpoint,
-    Map<String, dynamic>? data,
+    dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     CancelToken? cancelToken,

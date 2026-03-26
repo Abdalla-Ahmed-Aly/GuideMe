@@ -8,8 +8,8 @@ class PhotoModel {
   });
 
   factory PhotoModel.fromJson(Map<String, dynamic> json) => PhotoModel(
-    url: json['secure_url'] as String,
-    publicId: json['public_id'] as String,
+    url: json['secure_url'] as String?,
+    publicId: json['public_id'] as String?,
   );
 
   Map<String, dynamic> toJson() => {

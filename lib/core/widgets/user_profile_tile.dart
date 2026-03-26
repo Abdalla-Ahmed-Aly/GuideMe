@@ -28,6 +28,7 @@ class UserProfileTile extends StatelessWidget {
                   width: context.isPortrait
                       ? context.screenWidth * 0.12
                       : context.screenHeight * 0.12,
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
@@ -36,17 +37,19 @@ class UserProfileTile extends StatelessWidget {
                     ),
                   ),
                   child: user.photoUrl != null
-                      ? CustomNetworkImage(imageUrl: user.photoUrl!)
+                      ? CustomNetworkImage(
+                          imageUrl: user.photoUrl!,
+                          fit: BoxFit.cover,
+                        )
                       : const Icon(
                           Icons.person_outline,
                           color: AppColors.primary2,
                         ),
                 ),
 
-                const SizedBox(width: 18),
+                const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       context.l10n.welcome,
