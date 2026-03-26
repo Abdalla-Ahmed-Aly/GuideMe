@@ -75,5 +75,3 @@ class ChooseNationalityScreen extends StatelessWidget {
     );
   }
 }
-
-

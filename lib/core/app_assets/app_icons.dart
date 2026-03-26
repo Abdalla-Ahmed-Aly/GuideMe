@@ -61,4 +61,5 @@ abstract class AppIcons {
   static const String dollar = 'assets/icons/dollar.svg';
   static const String clockOutline = 'assets/icons/clock_outline.svg';
   static const String persons = 'assets/icons/persons.svg';
+  static const String arArrowBack = 'assets/icons/ar_arrow_back.svg';
 }

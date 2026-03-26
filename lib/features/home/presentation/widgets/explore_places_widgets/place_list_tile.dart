@@ -61,7 +61,10 @@ class PlaceListTile extends StatelessWidget {
               // Data
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
+                  padding: EdgeInsets.only(
+                    right: context.isArabic ? 0 : 8,
+                    left: context.isEnglish ? 0 : 8,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

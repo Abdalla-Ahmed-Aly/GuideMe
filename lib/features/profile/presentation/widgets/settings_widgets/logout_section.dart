@@ -53,7 +53,7 @@ class LogoutSection extends StatelessWidget {
               ),
 
               AppButton(
-                width: 110,
+                width: context.isArabic ? 130 : 110,
                 height: 38,
                 onPressed: () async {
                   await HiveHelper.put<bool>(

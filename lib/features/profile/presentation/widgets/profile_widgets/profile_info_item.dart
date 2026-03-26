@@ -13,12 +13,15 @@ class ProfileInfoItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          label,
-          style: AppTextStyles.poppinsMedium16,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: Text(
+            label,
+            style: AppTextStyles.poppinsMedium16,
+          ),
         ),
 
-        const SizedBox(height: 3),
+        const SizedBox(height: 4),
 
         Container(
           width: double.infinity,

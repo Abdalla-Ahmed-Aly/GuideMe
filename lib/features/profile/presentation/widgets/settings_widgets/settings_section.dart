@@ -84,7 +84,7 @@ class SettingsSection extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(
                       left: 32.p,
-                      right: context.isLandscape ? 30.p : 0,
+                      right: 30.p,
                     ),
                     child: const ChangeLanguage(),
                   ),

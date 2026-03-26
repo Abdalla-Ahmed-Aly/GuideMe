@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
@@ -91,23 +92,23 @@ class _TouristNavigationBarScreenState
                       color: AppColors.primary,
                     ),
                     iconSize: 28,
-                    items: const [
+                    items: [
                       // Icons
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.layers_outlined),
-                        label: 'My Tours', // TODO: change Labels
+                        icon: const Icon(Icons.layers_outlined),
+                        label: context.l10n.myTours,
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.event_available_outlined),
-                        label: 'Bookings',
+                        icon: const Icon(Icons.event_available_outlined),
+                        label: context.l10n.bookings,
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.chat_outlined),
-                        label: 'Chat',
+                        icon: const Icon(Icons.chat_outlined),
+                        label: context.l10n.chat,
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.person_outline),
-                        label: 'Profile',
+                        icon: const Icon(Icons.person_outline),
+                        label: context.l10n.profile,
                       ),
                     ],
                   );

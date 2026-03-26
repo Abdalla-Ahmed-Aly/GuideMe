@@ -2383,6 +2383,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pick current location'**
   String get pickCurrentLocation;
+
+  /// No description provided for @myTours.
+  ///
+  /// In en, this message translates to:
+  /// **'My Tours'**
+  String get myTours;
+
+  /// No description provided for @bookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get bookings;
+
+  /// No description provided for @chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chat;
+
+  /// No description provided for @orLoginWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Or Login With'**
+  String get orLoginWith;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
 }
 
 class _AppLocalizationsDelegate

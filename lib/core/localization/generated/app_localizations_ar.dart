@@ -36,10 +36,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get email => 'البريد الاكتروني';
 
   @override
-  String get password => 'باسورد';
+  String get password => 'كلمه المرور';
 
   @override
-  String get confirmPassword => 'تاكيد الباسورد';
+  String get confirmPassword => 'تاكيد كلمه المرور';
 
   @override
   String get massage => 'بإنشائك حسابًا أو تسجيل دخولك فإنك توافق على';
@@ -48,7 +48,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get massage1 => 'الشروط والأحكام';
 
   @override
-  String get forgotPassword => 'هل نسيت كلمه مرور';
+  String get forgotPassword => 'هل نسيت كلمه المرور';
 
   @override
   String get haveIt => 'ليس لديك اي حاسابات؟';
@@ -94,7 +94,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get request4 => 'اعاده كلمه مرور';
 
   @override
-  String get success => ' تغيير كلمه مرور ';
+  String get success => 'تم تغير كلمه المرور ';
 
   @override
   String get success1 => 'تم تغيير كلمة المرور بنجاح';
@@ -1179,4 +1179,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pickCurrentLocation => 'استخدم موقعك الحالي';
+
+  @override
+  String get myTours => 'رحلاتي';
+
+  @override
+  String get bookings => 'الحجوزات';
+
+  @override
+  String get chat => 'المحادثات';
+
+  @override
+  String get orLoginWith => 'أو تسجيل الدخول باستخدام';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
 }

@@ -45,17 +45,14 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             SizedBox(height: size.height * 0.08),
 
             Padding(
-              padding: EdgeInsets.only(left: 40.p),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: const ArrowBackButton(),
             ),
 
             SizedBox(height: size.height * 0.07),
 
             Padding(
-              padding: EdgeInsets.only(
-                left: 39.p,
-                bottom: 16,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: Text(
                 context.l10n.request2,
                 style: AppTextStyles.poppinsBold30.copyWith(
@@ -63,8 +60,9 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                 ),
               ),
             ),
+            const SizedBox(height: 16),
             Padding(
-              padding: EdgeInsets.only(left: 39.p, right: 45.p),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: Text(
                 context.l10n.request3,
                 style: AppTextStyles.interRegular16.copyWith(
@@ -76,14 +74,16 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
               height: size.height * 0.04,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 40.p, right: 270.p, bottom: 6),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: Text(
-                "New Password",
+                context.l10n.newPassword,
                 style: AppTextStyles.interRegular14.copyWith(
                   color: AppColors.black,
                 ),
               ),
             ),
+
+            const SizedBox(height: 6),
 
             // New Password TextField
             Padding(
@@ -114,7 +114,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             ),
 
             Padding(
-              padding: EdgeInsets.only(left: 44.p, right: 238.p, bottom: 6),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: Text(
                 context.l10n.confirm,
                 style: AppTextStyles.interRegular14.copyWith(
@@ -122,6 +122,8 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                 ),
               ),
             ),
+
+            const SizedBox(height: 6),
 
             // Confirm Password TextField
             Padding(

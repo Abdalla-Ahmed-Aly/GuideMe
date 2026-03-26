@@ -45,7 +45,7 @@ class _VerificationCodeScreenBodyState
 
             //arrow back button
             Padding(
-              padding: EdgeInsets.only(left: 40.p),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: const ArrowBackButton(),
             ),
             SizedBox(
@@ -54,7 +54,7 @@ class _VerificationCodeScreenBodyState
 
             //check text
             Padding(
-              padding: EdgeInsets.only(left: 40.p, right: 52.p, bottom: 19),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: Text(
                 context.l10n.check,
                 style: AppTextStyles.poppinsBold30.copyWith(
@@ -62,6 +62,8 @@ class _VerificationCodeScreenBodyState
                 ),
               ),
             ),
+
+            const SizedBox(height: 18),
 
             // sent text
             Row(

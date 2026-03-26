@@ -81,12 +81,15 @@ class _EditProfileSectionState extends State<EditProfileSection> {
                     const SizedBox(height: 22),
 
                     // Name
-                    Text(
-                      context.l10n.name,
-                      style: AppTextStyles.poppinsMedium16,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Text(
+                        context.l10n.name,
+                        style: AppTextStyles.poppinsMedium16,
+                      ),
                     ),
 
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 4),
 
                     CustomTextField(
                       controller: nameController,
@@ -100,15 +103,18 @@ class _EditProfileSectionState extends State<EditProfileSection> {
                       hintText: context.l10n.name,
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
 
                     // Phone
-                    Text(
-                      context.l10n.phone,
-                      style: AppTextStyles.poppinsMedium16,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Text(
+                        context.l10n.phone,
+                        style: AppTextStyles.poppinsMedium16,
+                      ),
                     ),
 
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 4),
 
                     CustomTextField(
                       controller: phoneController,
@@ -122,15 +128,18 @@ class _EditProfileSectionState extends State<EditProfileSection> {
                       hintText: context.l10n.phone,
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
 
                     // Location
-                    Text(
-                      context.l10n.location,
-                      style: AppTextStyles.poppinsMedium16,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Text(
+                        context.l10n.location,
+                        style: AppTextStyles.poppinsMedium16,
+                      ),
                     ),
 
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 4),
 
                     const UpdateUserLocationSection(),
                   ],

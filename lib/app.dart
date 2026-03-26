@@ -4,6 +4,7 @@ import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/localization/generated/app_localizations.dart';
 import 'package:guide_me/core/responsive/responsive_config.dart';
 import 'package:guide_me/core/routes/router.dart';
+import 'package:guide_me/core/shared/cubits/locale_cubit/locale_cubit.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/theme/app_theme.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
@@ -22,6 +23,9 @@ class GuideMe extends StatelessWidget {
           create: (context) => getIt<TouristNavBarCubit>()..init(),
         ),
         BlocProvider(
+          create: (context) => getIt<LocaleCubit>(),
+        ),
+        BlocProvider(
           create: (context) => getIt<UserCubit>(),
         ),
         BlocProvider(
@@ -31,13 +35,18 @@ class GuideMe extends StatelessWidget {
           create: (context) => getIt<GetAiPackageCubit>()..getAiPackages(),
         ),
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'GuideMe',
-        theme: AppTheme.lightTheme,
-        routerConfig: AppRouter.appRouter,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
+      child: BlocBuilder<LocaleCubit, Locale>(
+        builder: (context, locale) {
+          return MaterialApp.router(
+            locale: locale,
+            debugShowCheckedModeBanner: false,
+            title: 'GuideMe',
+            theme: AppTheme.lightTheme,
+            routerConfig: AppRouter.appRouter,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+          );
+        },
       ),
     );
   }

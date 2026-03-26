@@ -12,6 +12,7 @@ class HiveHelper {
     await openBox<UserRole>(name: HiveConstants.userRoleBox);
     await openBox<bool>(name: HiveConstants.avatarBox);
     await openBox<String>(name: HiveConstants.userBox);
+    await openBox<String>(name: HiveConstants.localeBox);
   }
 
   static Future<Box<T>> openBox<T>({required String name}) async {

@@ -54,7 +54,8 @@ class _LogInBodyState extends State<LogInBody> {
             Padding(
               padding: EdgeInsets.only(
                 left: 38.p,
-                top: 160,
+                right: 38.p,
+                top: 160.h,
                 bottom: 41.p,
               ),
               child: Text(
@@ -65,9 +66,7 @@ class _LogInBodyState extends State<LogInBody> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                left: 38.p,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: Text(
                 context.l10n.email,
                 style: AppTextStyles.interRegular14.copyWith(
@@ -92,6 +91,7 @@ class _LogInBodyState extends State<LogInBody> {
             Padding(
               padding: EdgeInsets.only(
                 left: 38.p,
+                right: 38.p,
                 top: 20,
                 bottom: 6,
               ),
@@ -134,6 +134,7 @@ class _LogInBodyState extends State<LogInBody> {
               padding: EdgeInsets.only(
                 top: 12,
                 right: 38.p,
+                left: 38.p,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,

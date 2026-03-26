@@ -26,7 +26,10 @@ class RequesterProfileHeaderSection extends StatelessWidget {
             ),
           ),
           child: userData.photo != null && userData.photo!.url != null
-              ? CustomNetworkImage(imageUrl: userData.photo!.url!)
+              ? CustomNetworkImage(
+                  imageUrl: userData.photo!.url!,
+                  fit: BoxFit.cover,
+                )
               : const Icon(
                   Icons.person_outline,
                   color: Colors.grey,

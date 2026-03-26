@@ -6,8 +6,8 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 
 class ArrowBackButton extends StatelessWidget {
-  const ArrowBackButton({super.key ,this.color});
-final  Color? color;
+  const ArrowBackButton({super.key, this.color});
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +22,12 @@ final  Color? color;
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color:color?? AppColors.natural2 ,
+            color: color ?? AppColors.natural2,
           ),
         ),
         child: Center(
           child: SvgPicture.asset(
-            AppIcons.arrowBack,
+            context.isArabic ? AppIcons.arArrowBack : AppIcons.arrowBack,
             width: context.isPortrait
                 ? size.height * 0.013
                 : size.width * 0.013,

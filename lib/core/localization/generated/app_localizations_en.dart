@@ -1180,4 +1180,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pickCurrentLocation => 'Pick current location';
+
+  @override
+  String get myTours => 'My Tours';
+
+  @override
+  String get bookings => 'Bookings';
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get orLoginWith => 'Or Login With';
+
+  @override
+  String get newPassword => 'New Password';
 }

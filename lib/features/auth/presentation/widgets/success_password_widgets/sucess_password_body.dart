@@ -15,41 +15,44 @@ class SuccessPasswordbody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Padding(
-          padding: EdgeInsets.only(left: 74.p, right: 63.p, top: 87.p),
+        const SizedBox(height: 80),
+
+        Center(
           child: Image.asset(
             AppImages.success,
             width: 293.w,
             height: 293.h,
           ),
         ),
-        SizedBox(
-          height: 29.h,
-        ),
+
+        const SizedBox(height: 28),
+
         Padding(
-          padding: EdgeInsets.only(left: 40.p),
+          padding: EdgeInsets.symmetric(horizontal: 40.p),
           child: Text(
             context.l10n.success,
+            textAlign: TextAlign.center,
             style: AppTextStyles.poppinsBold30.copyWith(
               color: AppColors.primary,
             ),
           ),
         ),
-        SizedBox(
-          height: 16.h,
-        ),
+
+        const SizedBox(height: 16),
+
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 40.p),
           child: Text(
             context.l10n.success1,
+            textAlign: TextAlign.center,
             style: AppTextStyles.interRegular16.copyWith(
               color: AppColors.natural3,
             ),
           ),
         ),
-        SizedBox(
-          height: 38.h,
-        ),
+
+        const SizedBox(height: 38),
+
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 40.p),
           child: AppButton(

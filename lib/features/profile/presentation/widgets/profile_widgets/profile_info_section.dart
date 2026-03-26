@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/custom_network_image.dart';
+import 'package:guide_me/features/profile/presentation/widgets/profile_widgets/profile_image_section.dart';
 import 'package:guide_me/features/profile/presentation/widgets/profile_widgets/profile_info_item.dart';
 
 class ProfileInfoSection extends StatelessWidget {
@@ -24,28 +23,7 @@ class ProfileInfoSection extends StatelessWidget {
                 const SizedBox(height: 16),
 
                 // Image
-                Container(
-                  height: 144,
-                  width: 144,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: const Color(0xffFFA537),
-                      strokeAlign: BorderSide.strokeAlignOutside,
-                    ),
-                  ),
-                  child: user.photoUrl == null
-                      ? const Icon(
-                          Icons.person_outline,
-                          color: AppColors.primary2,
-                          size: 60,
-                        )
-                      : CustomNetworkImage(
-                          imageUrl: user.photoUrl!,
-                          fit: BoxFit.cover,
-                        ),
-                ),
+                ProfileImageSection(user: user),
 
                 const SizedBox(height: 16),
 
@@ -98,3 +76,4 @@ class ProfileInfoSection extends StatelessWidget {
     );
   }
 }
+

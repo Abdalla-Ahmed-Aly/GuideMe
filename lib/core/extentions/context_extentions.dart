@@ -11,4 +11,6 @@ extension ContextExtention on BuildContext {
   Size get size => MediaQuery.sizeOf(this);
   double get screenHeight => MediaQuery.sizeOf(this).height;
   double get screenWidth => MediaQuery.sizeOf(this).width;
+  bool get isArabic => Localizations.localeOf(this).languageCode == 'ar';
+  bool get isEnglish => Localizations.localeOf(this).languageCode == 'en';
 }

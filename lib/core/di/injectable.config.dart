@@ -38,6 +38,8 @@ import 'package:guide_me/core/services/media_picker_service/media_picker_service
     as _i159;
 import 'package:guide_me/core/services/token/token_service.dart' as _i625;
 import 'package:guide_me/core/services/token/token_service_impl.dart' as _i574;
+import 'package:guide_me/core/shared/cubits/locale_cubit/locale_cubit.dart'
+    as _i547;
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart'
     as _i456;
 import 'package:guide_me/core/shared/data_sources/profile_local_data_source.dart'
@@ -172,6 +174,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
     gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
+    gh.lazySingleton<_i547.LocaleCubit>(() => _i547.LocaleCubit());
     gh.lazySingleton<_i367.GetHomeUsecase>(() => _i367.GetHomeUsecase());
     gh.lazySingleton<_i205.PlaceByCategoryUsecase>(
       () => _i205.PlaceByCategoryUsecase(),

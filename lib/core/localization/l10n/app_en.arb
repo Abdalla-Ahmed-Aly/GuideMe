@@ -411,5 +411,10 @@
   "unknownUser": "Unknown User",
   "addYourName": "Add your name",
   "addYourPhone": "Add your phone number",
-  "pickCurrentLocation": "Pick current location"
+  "pickCurrentLocation": "Pick current location",
+  "myTours": "My Tours",
+  "bookings": "Bookings",
+  "chat": "Chat",
+  "orLoginWith": "Or Login With",
+  "newPassword": "New Password"
 }

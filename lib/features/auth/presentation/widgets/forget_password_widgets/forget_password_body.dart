@@ -40,7 +40,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
           children: [
             SizedBox(height: size.height * 0.08),
             Padding(
-              padding: EdgeInsets.only(left: 40.p),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: const ArrowBackButton(),
             ),
             Row(
@@ -57,7 +57,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             const SizedBox(height: 6),
 
             Padding(
-              padding: EdgeInsets.only(left: 40.p),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: Text(
                 context.l10n.forgotPassword,
                 style: AppTextStyles.poppinsBold30.copyWith(
@@ -82,16 +82,18 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 45.p),
               child: Text(
-                "Email address",
+                context.l10n.email,
                 style: AppTextStyles.interRegular14.copyWith(
                   color: AppColors.black,
                 ),
               ),
             ),
 
+            const SizedBox(height: 6),
+
             // email text field
             Padding(
-              padding: EdgeInsets.only(left: 40.p, right: 40.p),
+              padding: EdgeInsets.symmetric(horizontal: 40.p),
               child: CustomTextField(
                 controller: emailcontroller,
                 hintText: context.l10n.request,
@@ -112,7 +114,10 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                   >(
                     listener: (context, state) {
                       if (state is SendForgetPasswordSuccess) {
-                        context.push(AppRoutes.checkemailscreen , extra: emailcontroller.text);
+                        context.push(
+                          AppRoutes.checkemailscreen,
+                          extra: emailcontroller.text,
+                        );
                       } else if (state is SendForgetPasswordFailure) {
                         showElegantSnackbar(
                           context,

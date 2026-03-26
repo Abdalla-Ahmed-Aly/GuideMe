@@ -27,7 +27,10 @@ class HomeHeader extends StatelessWidget {
 
           // Explore World Text
           Padding(
-            padding: EdgeInsets.only(right: 100.p),
+            padding: EdgeInsets.only(
+              right: context.isArabic ? 0 : 100.p,
+              left: context.isEnglish ? 0 : 100.p,
+            ),
             child: Text(
               context.l10n.exploreWorld,
               style: AppTextStyles.poppinsBold36.copyWith(
@@ -73,7 +76,6 @@ class HomeHeader extends StatelessWidget {
           //     size: 22.ic,
           //   ),
           // ),
-
           SizedBox(height: size.height * 0.10),
         ],
       ),
