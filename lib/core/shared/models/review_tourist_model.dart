@@ -17,4 +17,10 @@ class ReviewTouristModel {
         name: json['name'],
         photo: PhotoModel.fromJson(json['photo']),
       );
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'name': name,
+    'photo': photo?.toJson(),
+  };
 }

@@ -2359,6 +2359,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unknown location'**
   String get unknownLocation;
+
+  /// No description provided for @unknownUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown User'**
+  String get unknownUser;
+
+  /// No description provided for @addYourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your name'**
+  String get addYourName;
+
+  /// No description provided for @addYourPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your phone number'**
+  String get addYourPhone;
 }
 
 class _AppLocalizationsDelegate

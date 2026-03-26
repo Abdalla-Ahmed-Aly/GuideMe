@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart';
@@ -38,6 +39,7 @@ class _TouristNavigationBarScreenState
   @override
   void initState() {
     super.initState();
+    context.read<UserCubit>().loadUser();
     _pageController = PageController(
       initialPage: context.read<TouristNavBarCubit>().state.index,
     );
@@ -72,44 +74,45 @@ class _TouristNavigationBarScreenState
               );
             },
           ),
-          bottomNavigationBar: BlocBuilder<TouristNavBarCubit, TouristNavBarState>(
-            builder: (context, state) {
-              return BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                currentIndex: state.index,
-                onTap: onChangeScreen,
-                backgroundColor: Colors.white,
-                selectedItemColor: AppColors.primary,
-                unselectedItemColor: Colors.black,
-                unselectedLabelStyle: AppTextStyles.interRegular14.copyWith(
-                  color: Colors.black,
-                ),
-                selectedLabelStyle: AppTextStyles.interRegular14.copyWith(
-                  color: AppColors.primary,
-                ),
-                iconSize: 28,
-                items: const [
-                  // Icons
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.layers_outlined),
-                    label: 'My Tours', // TODO: change Labels
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.event_available_outlined),
-                    label: 'Bookings',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.chat_outlined),
-                    label: 'Chat',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.person_outline),
-                    label: 'Profile',
-                  ),
-                ],
-              );
-            },
-          ),
+          bottomNavigationBar:
+              BlocBuilder<TouristNavBarCubit, TouristNavBarState>(
+                builder: (context, state) {
+                  return BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
+                    currentIndex: state.index,
+                    onTap: onChangeScreen,
+                    backgroundColor: Colors.white,
+                    selectedItemColor: AppColors.primary,
+                    unselectedItemColor: Colors.black,
+                    unselectedLabelStyle: AppTextStyles.interRegular14.copyWith(
+                      color: Colors.black,
+                    ),
+                    selectedLabelStyle: AppTextStyles.interRegular14.copyWith(
+                      color: AppColors.primary,
+                    ),
+                    iconSize: 28,
+                    items: const [
+                      // Icons
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.layers_outlined),
+                        label: 'My Tours', // TODO: change Labels
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.event_available_outlined),
+                        label: 'Bookings',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.chat_outlined),
+                        label: 'Chat',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.person_outline),
+                        label: 'Profile',
+                      ),
+                    ],
+                  );
+                },
+              ),
         ),
 
         // Welcome Avatar

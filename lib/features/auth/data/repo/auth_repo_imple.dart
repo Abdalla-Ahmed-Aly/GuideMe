@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
@@ -40,6 +42,13 @@ class AuthRepoImple extends AuthRepo {
       final data = AuthResponseMapper.toEntity(result);
 
       await tokenService.saveToken(data.token);
+
+      await HiveHelper.put<String>(
+        boxName: HiveConstants.userBox,
+        key: HiveConstants.userKey,
+        data: jsonEncode(result.data.toJson()),
+      );
+
       await HiveHelper.put<UserRole>(
         boxName: HiveConstants.userRoleBox,
         key: HiveConstants.userRoleKey,
@@ -59,7 +68,22 @@ class AuthRepoImple extends AuthRepo {
     try {
       final result = await authRemoteDataSource.register(request);
       await tokenService.saveToken(result.token);
-      return Right(AuthResponseMapper.toEntity(result));
+
+      final data = AuthResponseMapper.toEntity(result);
+
+      await HiveHelper.put<String>(
+        boxName: HiveConstants.userBox,
+        key: HiveConstants.userKey,
+        data: jsonEncode(result.data.toJson()),
+      );
+
+      await HiveHelper.put<UserRole>(
+        boxName: HiveConstants.userRoleBox,
+        key: HiveConstants.userRoleKey,
+        data: UserRole.fromString(data.user.role.name),
+      );
+
+      return Right(data);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
     }
@@ -119,7 +143,24 @@ class AuthRepoImple extends AuthRepo {
   ) async {
     try {
       final result = await authRemoteDataSource.loginWithGoogle(token);
-      return Right(AuthResponseMapper.toEntity(result));
+
+      final data = AuthResponseMapper.toEntity(result);
+
+      await tokenService.saveToken(data.token);
+
+      await HiveHelper.put<String>(
+        boxName: HiveConstants.userBox,
+        key: HiveConstants.userKey,
+        data: jsonEncode(result.data.toJson()),
+      );
+
+      await HiveHelper.put<UserRole>(
+        boxName: HiveConstants.userRoleBox,
+        key: HiveConstants.userRoleKey,
+        data: UserRole.fromString(data.user.role.name),
+      );
+
+      return Right(data);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
     }
@@ -149,6 +190,13 @@ class AuthRepoImple extends AuthRepo {
         latitude: latitude,
         longitude: longitude,
       );
+
+      await HiveHelper.put<String>(
+        boxName: HiveConstants.userBox,
+        key: HiveConstants.userKey,
+        data: jsonEncode(result.toJson()),
+      );
+
       return Right(UserMapper.toEntity(result));
     } catch (e) {
       return Left(ErrorHandler.handle(e.toString()));

@@ -15,4 +15,10 @@ class AvailabilityModel {
         from: json['from'],
         to: json['to'],
       );
+
+  Map<String, dynamic> toJson() => {
+    'days': days,
+    'from': from,
+    'to': to,
+  };
 }

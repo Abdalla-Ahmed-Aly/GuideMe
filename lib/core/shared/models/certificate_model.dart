@@ -26,4 +26,13 @@ class CertificateModel {
         expirationDate: json['expirationDate'],
         file: PhotoModel.fromJson(json['file']),
       );
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'name': name,
+    'organization': organization,
+    'issueDate': issueDate,
+    'expirationDate': expirationDate,
+    'file': file?.toJson(),
+  };
 }

@@ -38,6 +38,16 @@ import 'package:guide_me/core/services/media_picker_service/media_picker_service
     as _i159;
 import 'package:guide_me/core/services/token/token_service.dart' as _i625;
 import 'package:guide_me/core/services/token/token_service_impl.dart' as _i574;
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart'
+    as _i456;
+import 'package:guide_me/core/shared/data_sources/profile_local_data_source.dart'
+    as _i912;
+import 'package:guide_me/core/shared/use_cases/clear_cached_user_usecase.dart'
+    as _i407;
+import 'package:guide_me/core/shared/use_cases/get_cached_user_usecase.dart'
+    as _i388;
+import 'package:guide_me/core/shared/use_cases/update_cached_user_usecase.dart'
+    as _i157;
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart'
     as _i1043;
 import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
@@ -172,6 +182,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
     );
+    gh.lazySingleton<_i912.ProfileLocalDataSource>(
+      () => _i912.ProfileLocalDataSourceImpl(),
+    );
     gh.lazySingleton<_i1043.AuthRemoteDataSource>(
       () => _i1043.AuthRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
@@ -198,6 +211,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
+    );
+    gh.lazySingleton<_i407.ClearCachedUserUsecase>(
+      () => _i407.ClearCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
+    );
+    gh.lazySingleton<_i388.GetCachedUserUsecase>(
+      () => _i388.GetCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
+    );
+    gh.lazySingleton<_i157.UpdateCachedUserUsecase>(
+      () => _i157.UpdateCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
     );
     gh.lazySingleton<_i956.AuthRepo>(
       () => _i80.AuthRepoImple(
@@ -234,6 +256,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i179.GetLocationNameUseCase>(
       () => _i179.GetLocationNameUseCase(gh<_i392.LocationRepo>()),
+    );
+    gh.factory<_i456.UserCubit>(
+      () => _i456.UserCubit(
+        gh<_i388.GetCachedUserUsecase>(),
+        gh<_i407.ClearCachedUserUsecase>(),
+        gh<_i157.UpdateCachedUserUsecase>(),
+      ),
     );
     gh.factory<_i93.LoginUseCase>(
       () => _i93.LoginUseCase(gh<_i956.AuthRepo>()),

@@ -407,5 +407,8 @@
   "thereNoPhone": "No phone number available",
   "unknownGuide": "Unknown guide",
   "thereIsNoLocation": "No location available",
-  "unknownLocation": "Unknown location"
+  "unknownLocation": "Unknown location",
+  "unknownUser": "Unknown User",
+  "addYourName": "Add your name",
+  "addYourPhone": "Add your phone number"
 }

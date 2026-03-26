@@ -1167,4 +1167,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unknownLocation => 'موقع غير معروف';
+
+  @override
+  String get unknownUser => 'مستخدم غير معروف';
+
+  @override
+  String get addYourName => 'أضف اسمك';
+
+  @override
+  String get addYourPhone => 'أضف رقم هاتفك';
 }

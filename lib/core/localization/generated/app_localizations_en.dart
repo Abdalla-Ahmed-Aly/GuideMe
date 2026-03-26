@@ -1168,4 +1168,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unknownLocation => 'Unknown location';
+
+  @override
+  String get unknownUser => 'Unknown User';
+
+  @override
+  String get addYourName => 'Add your name';
+
+  @override
+  String get addYourPhone => 'Add your phone number';
 }

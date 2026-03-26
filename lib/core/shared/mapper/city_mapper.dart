@@ -10,4 +10,14 @@ class CityMapper {
       isPopular: cityModel.isPopular,
     );
   }
+
+  static CityModel toModel(CityEntity entity) {
+    return CityModel(
+      id: entity.id,
+      name: entity.name,
+      image: entity.image,
+      isPopular: entity.isPopular,
+      updateAt: null,
+    );
+  }
 }

@@ -408,5 +408,8 @@
   "thereNoPhone": "لا يوجد رقم هاتف",
   "unknownGuide": "مرشد غير معروف",
   "thereIsNoLocation": "لا يوجد موقع متاح",
-  "unknownLocation": "موقع غير معروف"
+  "unknownLocation": "موقع غير معروف",
+  "unknownUser": "مستخدم غير معروف",
+  "addYourName": "أضف اسمك",
+  "addYourPhone": "أضف رقم هاتفك"
 }

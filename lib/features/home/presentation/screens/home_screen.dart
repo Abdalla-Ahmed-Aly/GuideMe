@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
 
-                _buildSectionTitle(context, context.l10n.mostFamousTrip),
+                _buildSectionTitle(context, context.l10n.aiTravelSuggestions),
                 const SizedBox(height: 16),
 
                 SizedBox(

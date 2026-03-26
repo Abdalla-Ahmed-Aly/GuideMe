@@ -9,4 +9,12 @@ class AvailabilityMapper {
       to: model.to,
     );
   }
+
+  static AvailabilityModel toModel(AvailabilityEntity entity) {
+    return AvailabilityModel(
+      days: entity.days,
+      from: entity.from,
+      to: entity.to,
+    );
+  }
 }

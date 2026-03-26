@@ -4,6 +4,7 @@ import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/localization/generated/app_localizations.dart';
 import 'package:guide_me/core/responsive/responsive_config.dart';
 import 'package:guide_me/core/routes/router.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/theme/app_theme.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart';
@@ -18,7 +19,10 @@ class GuideMe extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => TouristNavBarCubit()..init(),
+          create: (context) => getIt<TouristNavBarCubit>()..init(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<UserCubit>(),
         ),
         BlocProvider(
           create: (context) => getIt<GetHomeCubit>()..getHomeData(),

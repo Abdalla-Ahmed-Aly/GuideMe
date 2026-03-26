@@ -20,4 +20,12 @@ class CityModel {
     isPopular: json['isPopular'] != null ? json['isPopular'] as bool : null,
     updateAt: json['updatedAt'] != null ? json['updatedAt'] as String : null,
   );
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'name': name,
+    'image': image,
+    'isPopular': isPopular,
+    'updatedAt': updateAt,
+  };
 }

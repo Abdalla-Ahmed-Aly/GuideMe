@@ -1,4 +1,3 @@
-// features/guide/data/models/guide_details_model.dart
 import 'package:guide_me/core/shared/models/city_model.dart';
 import 'package:guide_me/core/shared/models/photo_model.dart';
 import 'package:guide_me/core/shared/models/availability_model.dart';
@@ -107,4 +106,34 @@ class UserModel {
     totalEarnings: (json['totalEarnings'] as num).toDouble(),
     createdAt: DateTime.parse(json['createdAt']),
   );
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'name': name,
+    'email': email,
+    'phone': phone,
+    'role': role,
+    'bio': bio,
+    'nationality': nationality,
+    'location': location,
+    'lat': lat,
+    'long': lng,
+    'photo': photo?.toJson(),
+    'availability': availability?.toJson(),
+    'languages': languages,
+    'interests': interests,
+    'expertise': expertise,
+    'guideCities': guideCities?.map((e) => e.toJson()).toList(),
+    'certificates': certificates?.map((e) => e.toJson()).toList(),
+    'reviews': reviews?.map((e) => e.toJson()).toList(),
+    'completedTours': completedTours,
+    'yearsOfExperience': yearsOfExperience,
+    'hourlyRate': hourlyRate,
+    'currency': currency,
+    'isOnline': isOnline,
+    'isVerified': isVerified,
+    'verificationStatus': verificationStatus,
+    'totalEarnings': totalEarnings,
+    'createdAt': createdAt?.toIso8601String(),
+  };
 }

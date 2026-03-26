@@ -25,4 +25,13 @@ class ReviewModel {
     comment: json['comment'],
     createdAt: DateTime.parse(json['createdAt']),
   );
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'booking': bookingId,
+    'tourist': tourist?.toJson(),
+    'rating': rating,
+    'comment': comment,
+    'createdAt': createdAt?.toIso8601String(),
+  };
 }
