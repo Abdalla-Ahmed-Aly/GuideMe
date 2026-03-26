@@ -101,7 +101,10 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
           child: Container(
             width: width,
             height: height,
-            margin: const EdgeInsets.only(right: 16),
+            margin: EdgeInsets.only(
+              left: context.isArabic ? 16 : 0,
+              right: context.isArabic ? 0 : 16,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               boxShadow: [

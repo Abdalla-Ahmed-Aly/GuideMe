@@ -25,7 +25,10 @@ class CategoryItem extends StatelessWidget {
         );
       },
       child: Container(
-        margin: const EdgeInsets.only(right: 30),
+        margin: EdgeInsets.only(
+          left: context.isArabic ? 16 : 0,
+          right: context.isArabic ? 0 : 16,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [

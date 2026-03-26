@@ -71,7 +71,10 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
             child: ListView.builder(
               clipBehavior: Clip.none,
               controller: _scrollController,
-              padding: EdgeInsets.only(left: 20.p, right: 20.p),
+              padding: EdgeInsets.only(
+                left: context.isArabic ? 0 : 20.p,
+                right: context.isArabic ? 20.p : 0,
+              ),
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemCount: state.packages.length,
