@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
@@ -19,8 +21,10 @@ class LoginwithGoogleCubit extends Cubit<LoginwithGoogleState> {
   Future<void> loginWithGoogle() async {
     safeEmit(LoginwithGoogleLoading());
     final result = await loginWithGoogleUseCase.signWithGoogle();
+    
     result.fold(
       (failure) {
+        log(failure.message.toString());
         safeEmit(LoginwithGooglefailure(failure));
       },
       (success) {

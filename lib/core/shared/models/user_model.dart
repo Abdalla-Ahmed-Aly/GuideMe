@@ -63,52 +63,79 @@ class UserModel {
     required this.createdAt,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    id: json['_id'],
-    name: json['name'],
-    email: json['email'],
-    phone: json['phone'],
-    role: json['role'],
-    bio: json['bio'],
-    nationality: json['nationality'],
-    location: json['location'],
-    lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
-    lng: json['long'] != null ? (json['long'] as num).toDouble() : null,
-    photo: json['photo'] != null ? PhotoModel.fromJson(json['photo']) : null,
-    availability: json['availability'] != null
-        ? AvailabilityModel.fromJson(json['availability'])
-        : null,
-    languages: List<String>.from(json['languages']),
-    interests: List<String>.from(json['interests']),
-    expertise: List<String>.from(json['expertise']),
-    guideCities: json['guideCities'] == null
-        ? []
-        : (json['guideCities'] as List)
-              .map((e) => CityModel.fromJson(e))
-              .toList(),
-    certificates: (json['certificates'] as List)
-        .map((e) => CertificateModel.fromJson(e))
-        .toList(),
-    reviews: json['reviews'] == null
-        ? null
-        : (json['reviews'] as List)
-              .map((e) => ReviewModel.fromJson(e))
-              .toList(),
-    completedTours: json['completedTours'],
-    yearsOfExperience: json['yearsOfExperience'],
-    hourlyRate: json['hourlyRate'] == null
-        ? null
-        : (json['hourlyRate'] as num).toDouble(),
-    currency: json['currency'],
-    isOnline: json['isOnline'],
-    isVerified: json['isVerified'],
-    verificationStatus: json['verificationStatus'],
-    totalEarnings: (json['totalEarnings'] as num).toDouble(),
-    createdAt: json['createdAt'] != null
-        ? DateTime.parse(json['createdAt'])
-        : null,
-  );
+factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+  id: json['_id'] ?? json['id'], // ✅ مهم
 
+  name: json['name'],
+  email: json['email'],
+  phone: json['phone'],
+  role: json['role'],
+  bio: json['bio'],
+  nationality: json['nationality'],
+  location: json['location'],
+
+  lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
+  lng: json['long'] != null ? (json['long'] as num).toDouble() : null,
+
+  photo: json['photo'] != null
+      ? PhotoModel.fromJson(json['photo'])
+      : null,
+
+  availability: json['availability'] != null
+      ? AvailabilityModel.fromJson(json['availability'])
+      : null,
+
+  // ✅ SAFE LISTS
+  languages: json['languages'] != null
+      ? List<String>.from(json['languages'])
+      : [],
+
+  interests: json['interests'] != null
+      ? List<String>.from(json['interests'])
+      : [],
+
+  expertise: json['expertise'] != null
+      ? List<String>.from(json['expertise'])
+      : [],
+
+  guideCities: json['guideCities'] != null
+      ? (json['guideCities'] as List)
+          .map((e) => CityModel.fromJson(e))
+          .toList()
+      : [],
+
+  certificates: json['certificates'] != null
+      ? (json['certificates'] as List)
+          .map((e) => CertificateModel.fromJson(e))
+          .toList()
+      : [],
+
+  reviews: json['reviews'] != null
+      ? (json['reviews'] as List)
+          .map((e) => ReviewModel.fromJson(e))
+          .toList()
+      : [],
+
+  completedTours: json['completedTours'],
+  yearsOfExperience: json['yearsOfExperience'],
+
+  hourlyRate: json['hourlyRate'] != null
+      ? (json['hourlyRate'] as num).toDouble()
+      : null,
+
+  currency: json['currency'],
+  isOnline: json['isOnline'],
+  isVerified: json['isVerified'],
+  verificationStatus: json['verificationStatus'],
+
+  totalEarnings: json['totalEarnings'] != null
+      ? (json['totalEarnings'] as num).toDouble()
+      : 0,
+
+  createdAt: json['createdAt'] != null
+      ? DateTime.parse(json['createdAt'])
+      : null,
+);
   Map<String, dynamic> toJson() => {
     '_id': id,
     'name': name,

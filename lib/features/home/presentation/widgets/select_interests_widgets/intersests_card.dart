@@ -60,12 +60,14 @@ class IntersestsCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.poppinsMedium16,
+          Expanded(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.poppinsMedium16,
+            ),
           ),
         ],
       ),

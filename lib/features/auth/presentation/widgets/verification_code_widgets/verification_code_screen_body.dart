@@ -68,29 +68,30 @@ class _VerificationCodeScreenBodyState
             // sent text
             Row(
               children: [
-                SizedBox(width: 40.w),
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "${context.l10n.sent} ",
-                        style: AppTextStyles.interRegular16.copyWith(
-                          color: AppColors.natural3,
+                // SizedBox(width: 40.w),
+                Expanded(
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "${context.l10n.sent} ",
+                          style: AppTextStyles.interRegular16.copyWith(
+                            color: AppColors.natural3,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: widget.email,
-                        style: AppTextStyles.interMedium16.copyWith(
-                          color: AppColors.black,
+                        TextSpan(
+                          text: widget.email,
+                          style: AppTextStyles.interMedium16.copyWith(
+                            color: AppColors.black,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
-
             SizedBox(
               height: size.height * 0.04,
             ),
