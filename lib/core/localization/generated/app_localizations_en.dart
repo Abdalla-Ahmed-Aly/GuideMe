@@ -1195,4 +1195,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newPassword => 'New Password';
+
+  @override
+  String get chatWithGuide => 'Chat With Guide';
 }

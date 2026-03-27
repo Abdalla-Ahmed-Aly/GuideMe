@@ -6,7 +6,6 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:intl/intl.dart';
@@ -99,11 +98,11 @@ class LiveTripCard extends StatelessWidget {
 
               const SizedBox(height: 6),
 
-              _buildLiveTripImage(context),
+              BuildLiveTripImage(booking: booking),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
 
-              _buildCardButtons(context),
+              _buildChatWithGuideButton(context),
             ],
           ),
         ),
@@ -111,89 +110,126 @@ class LiveTripCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCardButtons(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: AppButton(
-            onPressed: () {
-              showEndTourDialog(context);
-            },
-            text: context.l10n.endTour,
-            height: 44.h,
-            radius: 220,
-            backgroundColor: const Color(0xffF2930D),
-          ),
-        ),
-
-        const SizedBox(width: 18),
-
-        Container(
-          width: 40.w,
-          height: 40.h,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Color(0xffFEF4E6),
-          ),
-          child: const Center(
-            child: Icon(
-              Icons.chat_outlined,
-              color: Color(0xffF2930D),
-            ),
-          ),
-        ),
-      ],
-    );
+  Container _buildChatWithGuideButton(BuildContext context) {
+    return Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xffFEF4E6),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.chat_outlined,
+                    color: Color(0xffF2930D),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    context.l10n.chatWithGuide,
+                    style: AppTextStyles.poppinsMedium16.copyWith(
+                      color: const Color(0xffF2930D),
+                    ),
+                  ),
+                ],
+              ),
+            );
   }
 
-  Future<void> showEndTourDialog(BuildContext context) async {
-    await showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: const Color(0xffDD7B03).withValues(alpha: .32),
-            ),
-          ),
-          title: Text(
-            context.l10n.endTour,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Text(context.l10n.confirmEndTour),
-          actions: [
-            TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black,
-              ),
-              onPressed: () {
-                context.pop();
-              },
-              child: Text(context.l10n.cancel),
-            ),
-            AppButton(
-              width: 120,
-              height: 38,
-              onPressed: () {
-                context.pop();
-              },
-              text: context.l10n.endTour,
-              backgroundColor: Colors.red,
-              textStyle: AppTextStyles.interSemiBold16.copyWith(
-                fontSize: 16,
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // Widget _buildCardButtons(BuildContext context) {
+  //   return Row(
+  //     children: [
+  //       // Expanded(
+  //       //   child: AppButton(
+  //       //     onPressed: () {
+  //       //       showEndTourDialog(context);
+  //       //     },
+  //       //     text: context.l10n.endTour,
+  //       //     height: 44.h,
+  //       //     radius: 220,
+  //       //     backgroundColor: const Color(0xffF2930D),
+  //       //   ),
+  //       // ),
 
-  // Image & Track Button
-  Widget _buildLiveTripImage(BuildContext context) {
+  //       // const SizedBox(width: 18),
+  //       Container(
+  //         width: double.infinity,
+  //         padding: const EdgeInsets.all(16),
+  //         decoration: const BoxDecoration(
+  //           shape: BoxShape.circle,
+  //           color: Color(0xffFEF4E6),
+  //         ),
+  //         child: const Center(
+  //           child: Icon(
+  //             Icons.chat_outlined,
+  //             color: Color(0xffF2930D),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  // Future<void> showEndTourDialog(BuildContext context) async {
+  //   await showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(20),
+  //           side: BorderSide(
+  //             color: const Color(0xffDD7B03).withValues(alpha: .32),
+  //           ),
+  //         ),
+  //         title: Text(
+  //           context.l10n.endTour,
+  //           style: const TextStyle(
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         ),
+  //         content: Text(context.l10n.confirmEndTour),
+  //         actions: [
+  //           TextButton(
+  //             style: TextButton.styleFrom(
+  //               foregroundColor: Colors.black,
+  //             ),
+  //             onPressed: () {
+  //               context.pop();
+  //             },
+  //             child: Text(context.l10n.cancel),
+  //           ),
+  //           AppButton(
+  //             width: 120,
+  //             height: 38,
+  //             onPressed: () {
+  //               context.pop();
+  //             },
+  //             text: context.l10n.endTour,
+  //             backgroundColor: Colors.red,
+  //             textStyle: AppTextStyles.interSemiBold16.copyWith(
+  //               fontSize: 16,
+  //             ),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+}
+
+class BuildLiveTripImage extends StatelessWidget {
+  const BuildLiveTripImage({
+    super.key,
+    required this.booking,
+  });
+
+  final BookingEntity booking;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: 120.h,
       width: double.infinity,

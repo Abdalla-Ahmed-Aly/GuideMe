@@ -1194,4 +1194,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get chatWithGuide => 'محادثة مع المرشد';
 }

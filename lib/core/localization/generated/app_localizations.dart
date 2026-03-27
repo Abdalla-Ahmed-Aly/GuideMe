@@ -2413,6 +2413,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New Password'**
   String get newPassword;
+
+  /// No description provided for @chatWithGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat With Guide'**
+  String get chatWithGuide;
 }
 
 class _AppLocalizationsDelegate

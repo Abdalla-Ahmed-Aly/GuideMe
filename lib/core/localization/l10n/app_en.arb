@@ -416,5 +416,6 @@
   "bookings": "Bookings",
   "chat": "Chat",
   "orLoginWith": "Or Login With",
-  "newPassword": "New Password"
+  "newPassword": "New Password",
+  "chatWithGuide": "Chat With Guide"
 }
