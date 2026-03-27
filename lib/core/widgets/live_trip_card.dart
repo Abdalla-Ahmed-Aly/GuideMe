@@ -112,112 +112,32 @@ class LiveTripCard extends StatelessWidget {
 
   Container _buildChatWithGuideButton(BuildContext context) {
     return Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
-              decoration: BoxDecoration(
-                color: const Color(0xffFEF4E6),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.chat_outlined,
-                    color: Color(0xffF2930D),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    context.l10n.chatWithGuide,
-                    style: AppTextStyles.poppinsMedium16.copyWith(
-                      color: const Color(0xffF2930D),
-                    ),
-                  ),
-                ],
-              ),
-            );
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xffFEF4E6),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.chat_outlined,
+            color: Color(0xffF2930D),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            context.l10n.chatWithGuide,
+            style: AppTextStyles.poppinsMedium16.copyWith(
+              color: const Color(0xffF2930D),
+            ),
+          ),
+        ],
+      ),
+    );
   }
-
-  // Widget _buildCardButtons(BuildContext context) {
-  //   return Row(
-  //     children: [
-  //       // Expanded(
-  //       //   child: AppButton(
-  //       //     onPressed: () {
-  //       //       showEndTourDialog(context);
-  //       //     },
-  //       //     text: context.l10n.endTour,
-  //       //     height: 44.h,
-  //       //     radius: 220,
-  //       //     backgroundColor: const Color(0xffF2930D),
-  //       //   ),
-  //       // ),
-
-  //       // const SizedBox(width: 18),
-  //       Container(
-  //         width: double.infinity,
-  //         padding: const EdgeInsets.all(16),
-  //         decoration: const BoxDecoration(
-  //           shape: BoxShape.circle,
-  //           color: Color(0xffFEF4E6),
-  //         ),
-  //         child: const Center(
-  //           child: Icon(
-  //             Icons.chat_outlined,
-  //             color: Color(0xffF2930D),
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // Future<void> showEndTourDialog(BuildContext context) async {
-  //   await showDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return AlertDialog(
-  //         shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(20),
-  //           side: BorderSide(
-  //             color: const Color(0xffDD7B03).withValues(alpha: .32),
-  //           ),
-  //         ),
-  //         title: Text(
-  //           context.l10n.endTour,
-  //           style: const TextStyle(
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //         ),
-  //         content: Text(context.l10n.confirmEndTour),
-  //         actions: [
-  //           TextButton(
-  //             style: TextButton.styleFrom(
-  //               foregroundColor: Colors.black,
-  //             ),
-  //             onPressed: () {
-  //               context.pop();
-  //             },
-  //             child: Text(context.l10n.cancel),
-  //           ),
-  //           AppButton(
-  //             width: 120,
-  //             height: 38,
-  //             onPressed: () {
-  //               context.pop();
-  //             },
-  //             text: context.l10n.endTour,
-  //             backgroundColor: Colors.red,
-  //             textStyle: AppTextStyles.interSemiBold16.copyWith(
-  //               fontSize: 16,
-  //             ),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 }
 
 class BuildLiveTripImage extends StatelessWidget {
@@ -254,7 +174,7 @@ class BuildLiveTripImage extends StatelessWidget {
           // track button
           Center(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: const Color(0xffFDFDFD),
@@ -266,9 +186,9 @@ class BuildLiveTripImage extends StatelessWidget {
                     Icons.map_outlined,
                     color: Colors.grey,
                   ),
-                  const SizedBox(width: 5),
+                  const SizedBox(width: 8),
                   Text(
-                    context.l10n.trackLiveLocation,
+                    context.l10n.tripDetails,
                     style: AppTextStyles.poppinsMedium16,
                   ),
                 ],
