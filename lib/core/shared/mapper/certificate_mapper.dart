@@ -9,8 +9,8 @@ class CertificateMapper {
       name: model.name ?? "Unkown",
       organization: model.organization ?? "Unkown",
       issueDate: model.issueDate ?? "Unkown",
-      expirationDate: model.expirationDate, 
-      fileUrl: model.file?.url ,
+      expirationDate: model.expirationDate,
+      fileUrl: model.file?.url,
     );
   }
 
@@ -21,7 +21,9 @@ class CertificateMapper {
       organization: entity.organization,
       issueDate: entity.issueDate,
       expirationDate: entity.expirationDate,
-      file: entity.fileUrl != null ? PhotoModel(url: entity.fileUrl!, publicId: null) : null,
+      file: entity.fileUrl != null
+          ? PhotoModel(url: entity.fileUrl, publicId: null)
+          : null,
     );
   }
 }

@@ -755,7 +755,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fullAccess => 'Full Access';
 
   @override
-  String get theTourwaswith => 'The Tour was with  ';
+  String get theTourwaswith => 'The Tour was with ';
 
   @override
   String get next => 'Next';

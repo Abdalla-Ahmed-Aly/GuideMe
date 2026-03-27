@@ -197,17 +197,23 @@ class LiveTripCard extends StatelessWidget {
     return Container(
       height: 120.h,
       width: double.infinity,
+      clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: const Color(0xffDD7B03).withValues(alpha: .32),
+          strokeAlign: BorderSide.strokeAlignOutside,
         ),
       ),
       // Button
       child: Stack(
         children: [
           // image
-          CustomNetworkImage(imageUrl: booking.place.images.first),
+          CustomNetworkImage(
+            imageUrl: booking.place.images.first,
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
 
           // track button
           Center(

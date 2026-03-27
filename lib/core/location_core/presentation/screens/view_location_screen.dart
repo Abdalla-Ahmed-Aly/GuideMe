@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/constants/maps_constants.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/shared/entities/location_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
@@ -46,7 +47,8 @@ class ViewLocationScreen extends StatelessWidget {
           // Custom App Bar
           Positioned(
             top: 50,
-            left: 20,
+            left: context.isEnglish ? 20 : null,
+            right: context.isArabic ? 20 : null,
             child: _buildArrowBackButton(context),
           ),
 
@@ -98,7 +100,10 @@ class ViewLocationScreen extends StatelessWidget {
 
   Container _buildArrowBackButton(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(right: 4),
+      padding: EdgeInsets.only(
+        right: context.isEnglish ? 4 : 0,
+        left: context.isEnglish ? 0 : 4,
+      ),
       decoration: const BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,

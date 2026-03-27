@@ -1553,7 +1553,7 @@ abstract class AppLocalizations {
   /// No description provided for @theTourwaswith.
   ///
   /// In en, this message translates to:
-  /// **'The Tour was with  '**
+  /// **'The Tour was with '**
   String get theTourwaswith;
 
   /// No description provided for @next.

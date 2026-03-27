@@ -19,8 +19,10 @@ class CompletedTripHeader extends StatelessWidget {
       children: [
         Expanded(
           child: Text.rich(
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             TextSpan(
-              text: context.l10n.theTourwaswith,
+              text: "${context.l10n.theTourwaswith}\n",
               style: AppTextStyles.poppinsSemiBold28.copyWith(
                 color: AppColors.primary2,
               ),

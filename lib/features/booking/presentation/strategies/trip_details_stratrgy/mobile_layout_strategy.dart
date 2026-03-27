@@ -1,22 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:guide_me/features/booking/presentation/strategies/trip_details_stratrgy/tour_info_layout_strategy.dart';
 
 class MobileLayoutStrategy implements TourInfoLayoutStrategy {
   @override
-  Widget buildLayout(List<Widget> cards) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: cards.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
-        childAspectRatio: 1.2,
-      ),
-      itemBuilder: (context, index) {
-        return cards[index];
-      },
-    );
-  }
+  double get childAspectRatio => 1.1;
+
+  @override
+  int get crossAxisCount => 2;
 }
