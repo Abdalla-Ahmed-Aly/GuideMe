@@ -10,6 +10,10 @@ class PlaceByCityCubit extends Cubit<PlaceByCityState> {
 
   PlaceByCityCubit(this._placeByCityUsecase) : super(PlaceByCityInitial());
 
+  void safeEmit(PlaceByCityState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getPlacesByCity({
     required String cityId,
     String? filter,
@@ -18,7 +22,7 @@ class PlaceByCityCubit extends Cubit<PlaceByCityState> {
       currentFilter = filter;
     }
 
-    emit(PlaceByCityLoading());
+    safeEmit(PlaceByCityLoading());
 
     final result = await _placeByCityUsecase.call(
       params: PlaceByCityParams(
@@ -28,10 +32,10 @@ class PlaceByCityCubit extends Cubit<PlaceByCityState> {
     );
 
     result.fold(
-      (failure) => emit(
+      (failure) => safeEmit(
         PlaceByCityFailure(failure.message ?? 'Unknown error occurred'),
       ),
-      (success) => emit(PlaceByCitySuccess(success)),
+      (success) => safeEmit(PlaceByCitySuccess(success)),
     );
   }
 }

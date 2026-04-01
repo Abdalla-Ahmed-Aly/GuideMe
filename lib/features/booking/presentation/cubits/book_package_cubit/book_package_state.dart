@@ -3,58 +3,31 @@ part of 'book_package_cubit.dart';
 class BookPackageData {
   final String? location;
   final DateTime? date;
-  final TimeOfDay? time;
-
   BookPackageData({
     this.location,
     this.date,
-    this.time,
   });
 
   BookPackageData copyWith({
     String? location,
     DateTime? date,
-    TimeOfDay? time,
   }) {
     return BookPackageData(
       location: location ?? this.location,
       date: date ?? this.date,
-      time: time ?? this.time,
     );
   }
 
   String get formatDateTime {
-    if (date == null || time == null) return "";
-    final dt = DateTime(
-      date!.year,
-      date!.month,
-      date!.day,
-      time!.hour,
-      time!.minute,
-    );
-
-    return dt.toIso8601String().split('.').first;
+    if (date == null) return "";
+    return date!.toIso8601String().split('.').first;
   }
 
   bool get dateIsValid =>
       date != null &&
       date!.isAfter(DateTime.now().subtract(const Duration(days: 1)));
 
-  bool get timeIsValid {
-    if (time == null || date == null) return false;
-
-    final selectedDateTime = DateTime(
-      date!.year,
-      date!.month,
-      date!.day,
-      time!.hour,
-      time!.minute,
-    );
-
-    return DateTime.now().isBefore(selectedDateTime);
-  }
-
-  bool get isAllDataFilled => location != null && dateIsValid && timeIsValid;
+  bool get isAllDataFilled => location != null && dateIsValid;
 }
 
 sealed class BookPackageState {

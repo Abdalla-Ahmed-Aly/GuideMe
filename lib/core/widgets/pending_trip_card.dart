@@ -40,8 +40,8 @@ class PendingTripCard extends StatelessWidget {
               children: [
                 Text(
                   DateFormat(
-                    "MMM dd, yyyy - hh:mm a",
-                  ).format(booking.startTime),
+                    "MMM dd, yyyy",
+                  ).format(booking.bookingDate),
                   style: AppTextStyles.poppinsMedium16.copyWith(
                     color: const Color(0xffC3C3C3),
                   ),

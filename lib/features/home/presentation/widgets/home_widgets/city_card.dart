@@ -26,7 +26,7 @@ class CityCard extends StatelessWidget {
       },
       child: Container(
         width: width,
-        margin: const EdgeInsets.only(right: 16),
+        margin: const EdgeInsetsDirectional.only(end: 16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Stack(

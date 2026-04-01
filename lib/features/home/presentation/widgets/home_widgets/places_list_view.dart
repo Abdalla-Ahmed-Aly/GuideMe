@@ -10,7 +10,7 @@ class PlacesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.only(left: 20.p),
+      padding: EdgeInsetsDirectional.only(start: 20.p),
       scrollDirection: Axis.horizontal,
       itemCount: travelBeyondBoundary.length,
       itemBuilder: (context, index) {

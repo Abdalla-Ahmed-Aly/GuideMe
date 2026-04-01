@@ -1,3 +1,4 @@
+import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/home/domain/entity/home_entity.dart';
 
 abstract class GetHomeState {}
@@ -12,6 +13,6 @@ class GetHomeSuccess extends GetHomeState {
 }
 
 class GetHomeFailure extends GetHomeState {
-  final String errorMessage;
-  GetHomeFailure(this.errorMessage);
+  final Failure failure;
+  GetHomeFailure(this.failure);
 }

@@ -33,7 +33,7 @@ class _PlaceCardState extends State<PlaceCard> {
       },
       child: Container(
         width: width,
-        margin: const EdgeInsets.only(right: 16),
+        margin: const EdgeInsetsDirectional.only(end: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

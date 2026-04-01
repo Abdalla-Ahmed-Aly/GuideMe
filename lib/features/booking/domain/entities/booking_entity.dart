@@ -10,8 +10,7 @@ class BookingEntity {
   final UserInfoEntity user;
   final PlaceEntity place;
   final GuiderEntity? guider;
-  final DateTime startTime;
-  final DateTime endTime;
+  final DateTime bookingDate;
   final int persons;
   final double totalPrice;
   final TouristBookingStatus status;
@@ -23,8 +22,7 @@ class BookingEntity {
     required this.user,
     required this.place,
     this.guider,
-    required this.startTime,
-    required this.endTime,
+    required this.bookingDate,
     required this.persons,
     required this.totalPrice,
     required this.status,

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/shared/models/user_model.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
@@ -19,7 +18,6 @@ class ProfileLocalDataSourceImpl implements ProfileLocalDataSource {
       boxName: HiveConstants.userBox,
       key: HiveConstants.userKey,
     );
-    log(json.toString());
     if (json == null) return null;
     return UserModel.fromJson(jsonDecode(json));
   }

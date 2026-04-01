@@ -1197,4 +1197,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chatWithGuide => 'محادثة مع المرشد';
+
+  @override
+  String get oopsSomethingWentWrong => 'عفواً! حدث خطأ ما';
+
+  @override
+  String get tryAgain => 'حاول مرة أخرى';
 }

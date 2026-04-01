@@ -418,5 +418,7 @@
   "chat": "المحادثات",
   "orLoginWith": "أو تسجيل الدخول باستخدام",
   "newPassword": "كلمة المرور الجديدة",
-  "chatWithGuide": "محادثة مع المرشد"
+  "chatWithGuide": "محادثة مع المرشد",
+  "oopsSomethingWentWrong": "عفواً! حدث خطأ ما",
+  "tryAgain": "حاول مرة أخرى"
 }

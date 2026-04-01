@@ -9,8 +9,7 @@ class BookingModel {
   final UserInfoModel user;
   final PlaceModel place;
   final GuiderModel? guider;
-  final DateTime startTime;
-  final DateTime endTime;
+  final DateTime bookingDate;
   final int persons;
   final double totalPrice;
   final String status;
@@ -22,8 +21,7 @@ class BookingModel {
     required this.user,
     required this.place,
     this.guider,
-    required this.startTime,
-    required this.endTime,
+    required this.bookingDate,
     required this.persons,
     required this.totalPrice,
     required this.status,
@@ -38,8 +36,7 @@ class BookingModel {
     guider: json['guider'] != null
         ? GuiderModel.fromJson(json['guider'] as Map<String, dynamic>)
         : null,
-    startTime: DateTime.parse(json['startTime'] as String),
-    endTime: DateTime.parse(json['endTime'] as String),
+    bookingDate: DateTime.parse(json['bookingDate'] as String),
     persons: json['persons'] as int,
     totalPrice: (json['totalPrice'] as num).toDouble(),
     status: json['status'] as String,

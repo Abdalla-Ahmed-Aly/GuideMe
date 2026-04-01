@@ -37,7 +37,7 @@ class BookPackageScreenBody extends StatelessWidget {
 
           const SizedBox(height: 24),
 
-          const SelectDateAndTimeSection(),
+          const SelectTripDateSection(),
 
           const SizedBox(height: 24),
 

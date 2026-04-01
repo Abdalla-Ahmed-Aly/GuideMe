@@ -417,5 +417,7 @@
   "chat": "Chat",
   "orLoginWith": "Or Login With",
   "newPassword": "New Password",
-  "chatWithGuide": "Chat With Guide"
+  "chatWithGuide": "Chat With Guide",
+  "oopsSomethingWentWrong": "Oops! Something went wrong",
+  "tryAgain": "Try Again"
 }

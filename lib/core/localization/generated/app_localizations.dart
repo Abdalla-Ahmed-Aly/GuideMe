@@ -2419,6 +2419,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Chat With Guide'**
   String get chatWithGuide;
+
+  /// No description provided for @oopsSomethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Oops! Something went wrong'**
+  String get oopsSomethingWentWrong;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get tryAgain;
 }
 
 class _AppLocalizationsDelegate

@@ -29,35 +29,6 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
       builder: (context, state) {
         if (state is GetAiPackageLoading) {
           return const AiTripLoading();
-          // final size = MediaQuery.sizeOf(context);
-          // final height = context.isPortrait
-          //     ? size.height * 0.41
-          //     : size.width * 0.41;
-          // return SizedBox(
-          //   height: height,
-          //   child: ListView.builder(
-          //     padding: EdgeInsets.only(left: 20.p),
-          //     scrollDirection: Axis.horizontal,
-          //     itemCount: 3,
-          //     itemBuilder: (context, index) {
-          //       return TweenAnimationBuilder<double>(
-          //         duration: Duration(milliseconds: 400 + (index * 150)),
-          //         tween: Tween(begin: 0.0, end: 1.0),
-          //         curve: Curves.easeOut,
-          //         builder: (context, value, child) {
-          //           return Opacity(
-          //             opacity: value,
-          //             child: Transform.translate(
-          //               offset: Offset(20 * (1 - value), 0),
-          //               child: child,
-          //             ),
-          //           );
-          //         },
-          //         child: const AILoadingCard(),
-          //       );
-          //     },
-          //   ),
-          // );
         } else if (state is GetAiPackageFailure) {
           return Center(child: Text(state.message));
         } else if (state is GetAiPackageSuccess) {
@@ -66,18 +37,18 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
               ? size.height * 0.41
               : size.width * 0.41;
 
+          final packages = state.packages;
+          packages.shuffle();
+
           return SizedBox(
             height: height,
             child: ListView.builder(
               clipBehavior: Clip.none,
               controller: _scrollController,
-              padding: EdgeInsets.only(
-                left: context.isArabic ? 0 : 20.p,
-                right: context.isArabic ? 20.p : 0,
-              ),
+              padding: EdgeInsetsDirectional.only(start: 20.p),
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: state.packages.length,
+              itemCount: packages.length,
               itemBuilder: (context, index) {
                 return AnimatedBuilder(
                   animation: _scrollController,
@@ -86,14 +57,15 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
                     if (_scrollController.hasClients) {
                       // Calculate item position relative to viewport
                       // Approximate item width (width from MostFamousTripCard + margin)
-                      double itemWidth = size.width * 0.87 + 16;
-                      double offset = _scrollController.offset;
-                      double viewportWidth = size.width;
+                      final double itemWidth = size.width * 0.87 + 16;
+                      final double offset = _scrollController.offset;
+                      final double viewportWidth = size.width;
 
                       // Position of the item's center
-                      double itemCenter = (index * itemWidth) + (itemWidth / 2);
+                      final double itemCenter =
+                          (index * itemWidth) + (itemWidth / 2);
                       // Distance from center of viewport
-                      double distance =
+                      final double distance =
                           (itemCenter - offset - (viewportWidth / 2)).abs();
                       // Normalize distance (0.0 at center, 1.0 at edge)
                       itemPosition = (distance / (viewportWidth / 1.5)).clamp(
@@ -109,11 +81,15 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
                       builder: (context, value, child) {
                         // Combined staggered entry + scroll-based 3D rotation/scale
 
-                        double rotation = itemPosition * 0.1; // Slight 3D tilt
+                        final double rotation =
+                            itemPosition * 0.1; // Slight 3D tilt
 
-                        double magnetic = (1 - itemPosition).clamp(0.0, 1.0);
-                        double scale = (0.9 + (magnetic * 0.1)) * value;
-                        double translateY = (1 - magnetic) * 20;
+                        final double magnetic = (1 - itemPosition).clamp(
+                          0.0,
+                          1.0,
+                        );
+                        final double scale = (0.9 + (magnetic * 0.1)) * value;
+                        final double translateY = (1 - magnetic) * 20;
 
                         return Transform(
                           transform: Matrix4.identity()
@@ -131,7 +107,7 @@ class _MostFamousTripListViewState extends State<MostFamousTripListView> {
                         );
                       },
                       child: MostFamousTripCard(
-                        package: state.packages[index],
+                        package: packages[index],
                         scrollOffset: _scrollController.hasClients
                             ? _scrollController.offset
                             : 0.0,

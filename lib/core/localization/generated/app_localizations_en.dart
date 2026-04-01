@@ -1198,4 +1198,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chatWithGuide => 'Chat With Guide';
+
+  @override
+  String get oopsSomethingWentWrong => 'Oops! Something went wrong';
+
+  @override
+  String get tryAgain => 'Try Again';
 }

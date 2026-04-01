@@ -48,7 +48,7 @@ class UpcomingTourCard extends StatelessWidget {
 
           CustomTripDetailsTile(
             title: context.l10n.date,
-            value: DateFormat("MMM d, yyyy, h:mm a").format(booking.startTime),
+            value: DateFormat("MMM d, yyyy").format(booking.bookingDate),
             icon: const Icon(
               Icons.calendar_today_outlined,
               color: AppColors.primary2,

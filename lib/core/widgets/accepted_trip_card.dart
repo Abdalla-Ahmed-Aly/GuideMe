@@ -35,8 +35,8 @@ class AcceptedTripCard extends StatelessWidget {
               children: [
                 Text(
                   DateFormat(
-                    "MMM dd, yyyy - hh:mm a",
-                  ).format(booking.startTime),
+                    "MMM dd, yyyy",
+                  ).format(booking.bookingDate),
                   style: AppTextStyles.poppinsMedium16.copyWith(
                     color: Colors.black.withValues(alpha: .5),
                   ),

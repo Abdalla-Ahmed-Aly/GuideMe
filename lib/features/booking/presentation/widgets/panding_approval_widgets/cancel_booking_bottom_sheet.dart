@@ -27,6 +27,16 @@ class CancelBookingBottomSheet extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 16),
+            Container(
+              height: 6,
+              width: 80,
+              decoration: BoxDecoration(
+                color: const Color(0xffFFAA00),
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+
             Lottie.asset(
               AppLotties.cancelBubbles,
               height: 150.h,

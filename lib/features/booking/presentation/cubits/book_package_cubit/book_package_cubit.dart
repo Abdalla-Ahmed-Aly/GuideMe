@@ -32,14 +32,12 @@ class BookPackageCubit extends Cubit<BookPackageState> {
   void pickLocation(String location) {
     safeEmit(state.copyWith(data: state.data.copyWith(location: location)));
   }
-
   void pickDate(DateTime date) {
     safeEmit(state.copyWith(data: state.data.copyWith(date: date)));
   }
-
-  void pickTime(TimeOfDay time) {
-    safeEmit(state.copyWith(data: state.data.copyWith(time: time)));
-  }
+  // void pickTime(TimeOfDay time) {
+  //   safeEmit(state.copyWith(data: state.data.copyWith(time: time)));
+  // }
 
   bool validate(BuildContext context) {
     if (state.data.location == null) {
@@ -66,18 +64,18 @@ class BookPackageCubit extends Cubit<BookPackageState> {
       );
       return false;
     }
-    if (!state.data.timeIsValid) {
-      safeEmit(
-        BookPackageFailure(
-          state.data,
-          AppFailure(
-            failureCode: FailureCode.validation,
-            message: context.l10n.validation_time_past,
-          ),
-        ),
-      );
-      return false;
-    }
+    // if (!state.data.timeIsValid) {
+    //   safeEmit(
+    //     BookPackageFailure(
+    //       state.data,
+    //       AppFailure(
+    //         failureCode: FailureCode.validation,
+    //         message: context.l10n.validation_time_past,
+    //       ),
+    //     ),
+    //   );
+    //   return false;
+    // }
     return true;
   }
 

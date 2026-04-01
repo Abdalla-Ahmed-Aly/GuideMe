@@ -48,14 +48,14 @@ class BookingRequestCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           Divider(
             color: const Color(0xffFFA537).withValues(alpha: 0.3),
             thickness: 2.5,
           ),
 
-          const SizedBox(height: 15),
+          const SizedBox(height: 14),
 
           EstimatedEarningsSection(
             price: bookingData.totalPrice,

@@ -5,8 +5,7 @@ class BookPackageResponseModel {
   final DateTime tripDate;
   final String status;
   final double totalPrice;
-  final String packagePhoto;
-  final DateTime createdAt;
+  final String? packagePhoto;
 
   const BookPackageResponseModel({
     required this.id,
@@ -16,7 +15,6 @@ class BookPackageResponseModel {
     required this.status,
     required this.totalPrice,
     required this.packagePhoto,
-    required this.createdAt,
   });
 
   factory BookPackageResponseModel.fromJson(Map<String, dynamic> json) {
@@ -27,8 +25,7 @@ class BookPackageResponseModel {
       tripDate: DateTime.parse(json['tripDate']),
       status: json['status'],
       totalPrice: (json['totalPrice'] as num).toDouble(),
-      packagePhoto: json['packagePhoto'],
-      createdAt: DateTime.parse(json['createdAt']),
+      packagePhoto: json['packagePhoto'] as String?,
     );
   }
 }

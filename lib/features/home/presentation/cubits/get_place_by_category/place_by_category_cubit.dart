@@ -11,6 +11,10 @@ class PlaceByCategoryCubit extends Cubit<PlaceByCategoryState> {
   PlaceByCategoryCubit(this._placeByCategoryUsecase)
     : super(PlaceByCategoryInitial());
 
+  void safeEmit(PlaceByCategoryState state) {
+    if (!isClosed) emit(state);
+  }
+
   Future<void> getPlacesByCategory({
     required String categoryId,
     String? filter,
@@ -19,7 +23,7 @@ class PlaceByCategoryCubit extends Cubit<PlaceByCategoryState> {
       currentFilter = filter;
     }
 
-    emit(PlaceByCategoryLoading());
+    safeEmit(PlaceByCategoryLoading());
 
     final result = await _placeByCategoryUsecase.call(
       params: PlaceByCategoryParams(
@@ -29,10 +33,10 @@ class PlaceByCategoryCubit extends Cubit<PlaceByCategoryState> {
     );
 
     result.fold(
-      (failure) => emit(
+      (failure) => safeEmit(
         PlaceByCategoryFailure(failure.message ?? 'Unknown error occurred'),
       ),
-      (success) => emit(PlaceByCategorySuccess(success)),
+      (success) => safeEmit(PlaceByCategorySuccess(success)),
     );
   }
 }

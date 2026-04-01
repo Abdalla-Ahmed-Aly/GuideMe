@@ -16,12 +16,11 @@ class TripDetailsSection extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: CustomTripDetailsTile(
                 title: context.l10n.date,
-                value: DateFormat('MMM d, yyyy').format(booking.startTime),
+                value: DateFormat('MMM d, yyyy').format(booking.bookingDate),
                 icon: SvgPicture.asset(
                   AppIcons.clender, // TODO:: change all icons
                   width: 20,
@@ -29,26 +28,8 @@ class TripDetailsSection extends StatelessWidget {
               ),
             ),
 
-            Expanded(
-              child: CustomTripDetailsTile(
-                icon: SvgPicture.asset(
-                  AppIcons.time,
-                  width: 20,
-                ),
-                title: context.l10n.time,
-                value: TimeOfDay.fromDateTime(
-                  booking.startTime,
-                ).format(context),
-              ),
-            ),
-          ],
-        ),
+            const SizedBox(width: 16),
 
-        const SizedBox(height: 18),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
             Expanded(
               child: CustomTripDetailsTile(
                 title: context.l10n.durationText,
@@ -60,18 +41,18 @@ class TripDetailsSection extends StatelessWidget {
                 ),
               ),
             ),
-
-            Expanded(
-              child: CustomTripDetailsTile(
-                icon: SvgPicture.asset(
-                  AppIcons.people,
-                  width: 24,
-                ),
-                title: context.l10n.groupSize,
-                value: context.l10n.people(booking.persons),
-              ),
-            ),
           ],
+        ),
+
+        const SizedBox(height: 16),
+
+        CustomTripDetailsTile(
+          icon: SvgPicture.asset(
+            AppIcons.people,
+            width: 24,
+          ),
+          title: context.l10n.groupSize,
+          value: context.l10n.people(booking.persons),
         ),
       ],
     );

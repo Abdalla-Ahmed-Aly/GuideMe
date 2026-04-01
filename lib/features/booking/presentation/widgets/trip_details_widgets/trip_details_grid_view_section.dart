@@ -17,8 +17,8 @@ class TripDetailsGridViewSection extends StatelessWidget {
     final cards = [
       TourDetailsCard(
         title: context.l10n.dateTIME,
-        value: DateFormat("MMM dd, yyyy").format(booking.startTime),
-        subValue: DateFormat("HH:mm a").format(booking.startTime),
+        value: DateFormat("MMM dd, yyyy").format(booking.bookingDate),
+        subValue: DateFormat("HH:mm a").format(booking.bookingDate),
         icon: const Icon(
           Icons.calendar_today_outlined,
           size: 20,

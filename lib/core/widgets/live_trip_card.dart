@@ -66,7 +66,7 @@ class LiveTripCard extends StatelessWidget {
                   ),
 
                   Text(
-                    "${DateFormat("hh:mm a").format(booking.startTime)} - ${DateFormat("hh:mm a").format(booking.endTime)}",
+                    DateFormat("MMM dd, yyyy").format(booking.bookingDate),
                     style: AppTextStyles.poppinsMedium12.copyWith(
                       color: const Color(0xffF2930D),
                     ),

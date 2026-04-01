@@ -72,16 +72,13 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
     final width = size.width * 0.87;
     final height = context.isPortrait ? size.height * 0.41 : size.width * 0.41;
 
-    double itemWidth = width + 16;
-    double relativePos = (widget.index * itemWidth) - widget.scrollOffset;
-    double parallaxOffset = (relativePos / size.width) * 80;
+    final double itemWidth = width + 16;
+    final double relativePos = (widget.index * itemWidth) - widget.scrollOffset;
+    final double parallaxOffset = (relativePos / size.width) * 80;
 
     final images = widget.package.places.map((e) => e.images.first).toList();
 
     return GestureDetector(
-      onTapDown: (_) => _controller.forward(),
-      onTapUp: (_) => _controller.reverse(),
-      onTapCancel: () => _controller.reverse(),
       onTap: () {
         if (widget.package.places.isNotEmpty) {
           context.push(AppRoutes.aiPackagePlacesScreen, extra: widget.package);
@@ -101,16 +98,13 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
           child: Container(
             width: width,
             height: height,
-            margin: EdgeInsets.only(
-              left: context.isArabic ? 16 : 0,
-              right: context.isArabic ? 0 : 16,
-            ),
+            margin: const EdgeInsetsDirectional.only(end: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
                   color: glowColor.withValues(alpha: 0.4),
-                  blurRadius: 30,
+                  blurRadius: 10,
                   spreadRadius: 2,
                 ),
                 BoxShadow(
@@ -124,18 +118,6 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
               borderRadius: BorderRadius.circular(30),
               child: Stack(
                 children: [
-                  // IMAGE + PARALLAX
-                  // Positioned.fill(
-                  //   left: -50 + parallaxOffset,
-                  //   right: -50 - parallaxOffset,
-                  //   child: Hero(
-                  //     tag: widget.package.packageId,
-                  //     child: CustomNetworkImage(
-                  //       imageUrl: widget.package.packagePhoto,
-                  //       fit: BoxFit.cover,
-                  //     ),
-                  //   ),
-                  // ),
                   Positioned.fill(
                     left: -50 + parallaxOffset,
                     right: -50 - parallaxOffset,

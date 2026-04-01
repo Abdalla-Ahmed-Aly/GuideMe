@@ -15,7 +15,7 @@ class ReservationCubit extends Cubit<ReservationState> {
 
   void setPlaceId(String placeId) => safeEmit(state.copyWith(placeId: placeId));
   void setDate(DateTime date) => safeEmit(state.copyWith(date: date));
-  void setTime(TimeOfDay time) => safeEmit(state.copyWith(time: time));
+  // void setTime(TimeOfDay time) => safeEmit(state.copyWith(time: time));
   void setPickupLocation(String pickupLocation) =>
       safeEmit(state.copyWith(pickupLocation: pickupLocation));
   void setNotes(String notes) => safeEmit(state.copyWith(notes: notes));
@@ -32,14 +32,6 @@ class ReservationCubit extends Cubit<ReservationState> {
     }
     if (!state.dateIsValid) {
       emit(state.copyWith(error: context.l10n.invalidDate));
-      return false;
-    }
-    if (state.time == null) {
-      emit(state.copyWith(error: context.l10n.validationSelectTime));
-      return false;
-    }
-    if (!state.timeIsValid) {
-      emit(state.copyWith(error: context.l10n.invalidTime));
       return false;
     }
     if (state.pickupLocation == null || state.pickupLocation!.isEmpty) {

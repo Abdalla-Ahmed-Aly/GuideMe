@@ -13,8 +13,7 @@ class GetHomeCubit extends Cubit<GetHomeState> {
     emit(GetHomeLoading());
     final result = await _homeRepo.getHomeData();
     result.fold(
-      (failure) =>
-          emit(GetHomeFailure(failure.message ?? 'Unknown error occurred')),
+      (failure) => emit(GetHomeFailure(failure)),
       (homeData) => emit(GetHomeSuccess(homeData)),
     );
   }

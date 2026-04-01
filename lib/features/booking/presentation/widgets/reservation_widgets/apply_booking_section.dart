@@ -33,7 +33,7 @@ class ApplyBookingSection extends StatelessWidget {
         final addBooking = AddBookingRequest(
           placeId: reservationCubit.state.placeId!,
           date: DateFormat('yyyy-MM-dd').format(reservationCubit.state.date!),
-          time: reservationCubit.state.timeFormatted,
+          // time: reservationCubit.state.timeFormatted,
           pickupLocation: reservationCubit.state.pickupLocation!,
           notes: reservationCubit.state.notes,
           persons: reservationCubit.state.persons.toString(),

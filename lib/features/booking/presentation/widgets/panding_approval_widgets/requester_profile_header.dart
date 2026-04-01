@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
@@ -32,7 +34,7 @@ class RequesterProfileHeaderSection extends StatelessWidget {
                 )
               : const Icon(
                   Icons.person_outline,
-                  color: Colors.grey,
+                  color: AppColors.primary2,
                 ),
         ),
 
@@ -51,7 +53,7 @@ class RequesterProfileHeaderSection extends StatelessWidget {
                 height: 3,
               ),
               Text(
-                userData.location ?? "",
+                userData.location ?? context.l10n.unknownLocation,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.poppinsRegular14.copyWith(

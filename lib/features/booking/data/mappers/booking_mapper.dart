@@ -16,8 +16,7 @@ class BookingMapper {
       guider: bookingModel.guider != null
           ? GuiderMapper.toEntity(bookingModel.guider!)
           : null,
-      startTime: bookingModel.startTime,
-      endTime: bookingModel.endTime,
+      bookingDate: bookingModel.bookingDate,
       persons: bookingModel.persons,
       totalPrice: bookingModel.totalPrice,
       status: TouristBookingStatus.fromString(bookingModel.status),

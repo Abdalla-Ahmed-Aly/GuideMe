@@ -39,7 +39,7 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
       endpoint:
           "${ApiConstants.addBookingEndpoint}/$bookingId${ApiConstants.cancelBookingEndpoint}",
     );
-    return CancelBookingResponse.fromJson(response.data["data"]["booking"]);
+    return CancelBookingResponse.fromJson(response.data["data"]);
   }
 
   @override
