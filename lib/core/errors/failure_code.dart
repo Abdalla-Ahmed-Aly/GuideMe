@@ -16,5 +16,11 @@ enum FailureCode {
   locationPermissionDenied,
   locationPermissionDeniedForever,
   locationServiceDisabled,
+  emailNotRegistered,
+  emailAlreadyRegistered,
+  invalidEmailOrPassword,
+  userNotFound,
+  otpExpired,
+  invalidOtp,
   unknown,
 }

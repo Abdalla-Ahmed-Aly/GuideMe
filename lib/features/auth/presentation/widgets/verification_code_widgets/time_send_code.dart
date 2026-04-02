@@ -15,14 +15,14 @@ class TimeSendCode extends StatefulWidget {
 }
 
 class _TimeSendCodeState extends State<TimeSendCode> {
-  int totalSeconds = 30;
+  int totalSeconds = 60 * 5;
   Timer? timer;
- 
+
   void startTimer() {
     timer?.cancel();
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       if (totalSeconds == 0) {
-        t.cancel(); // call the function when finished
+        t.cancel();
       } else {
         setState(() {
           totalSeconds--;

@@ -1203,4 +1203,29 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tryAgain => 'حاول مرة أخرى';
+
+  @override
+  String get emailNotRegistered => 'البريد الإلكتروني غير مسجل';
+
+  @override
+  String get emailAlreadyRegistered => 'البريد الإلكتروني مسجل بالفعل';
+
+  @override
+  String get invalidEmailOrPassword =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة';
+
+  @override
+  String get otpSentAgain => 'تم إرسال رمز التحقق مرة أخرى!';
+
+  @override
+  String get pleaseEnterTheVerificationCode => 'يرجى إدخال رمز التحقق';
+
+  @override
+  String get userNotFound => 'المستخدم غير موجود';
+
+  @override
+  String get otpExpired => 'انتهت صلاحية رمز التحقق';
+
+  @override
+  String get invalidOtp => 'رمز التحقق غير صحيح';
 }

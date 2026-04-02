@@ -70,7 +70,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     ResendPasswordRequestModel request,
   ) async {
     final response = await apiService.post(
-      endpoint: ApiConstants.resendPasswordEndPoint,
+      endpoint:
+          "${ApiConstants.otpBaseUrl}${ApiConstants.resendPasswordEndPoint}",
       data: request.toJson(),
     );
     return ResendPasswordResponseModel.fromJson(response.data);
@@ -93,7 +94,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     SendForgetPasswordRequestModel request,
   ) async {
     final response = await apiService.post(
-      endpoint: ApiConstants.sendForgetPasswordEndPoint,
+      endpoint:
+          "${ApiConstants.otpBaseUrl}${ApiConstants.sendForgetPasswordEndPoint}",
       data: request.toJson(),
     );
     return SendForgetPasswordResponsetModel.fromJson(response.data);

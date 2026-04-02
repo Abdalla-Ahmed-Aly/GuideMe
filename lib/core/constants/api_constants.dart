@@ -1,6 +1,7 @@
 abstract class ApiConstants {
   // base
-  static const String baseUrl = "https://guide-me-back-end.vercel.app";
+  static const String baseUrl = "https://guideme-pjss.onrender.com";
+  static const String otpBaseUrl = "https://guide-me-back-end.vercel.app";
   static const api = '/api';
 
   static const String loginEndPoint = '/api/auth/login';

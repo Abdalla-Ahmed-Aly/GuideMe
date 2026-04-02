@@ -1204,4 +1204,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tryAgain => 'Try Again';
+
+  @override
+  String get emailNotRegistered => 'Email not registered';
+
+  @override
+  String get emailAlreadyRegistered => 'Email already registered';
+
+  @override
+  String get invalidEmailOrPassword => 'Invalid email or password';
+
+  @override
+  String get otpSentAgain => 'OTP sent again!';
+
+  @override
+  String get pleaseEnterTheVerificationCode =>
+      'Please enter the verification code';
+
+  @override
+  String get userNotFound => 'User not found';
+
+  @override
+  String get otpExpired => 'OTP expired';
+
+  @override
+  String get invalidOtp => 'Invalid OTP';
 }

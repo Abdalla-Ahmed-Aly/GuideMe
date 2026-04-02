@@ -34,6 +34,10 @@ class LogoutSection extends StatelessWidget {
         return BlocProvider.value(
           value: cubit,
           child: AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            backgroundColor: Colors.white,
             title: Text(
               context.l10n.logout,
               style: const TextStyle(
@@ -52,34 +56,37 @@ class LogoutSection extends StatelessWidget {
                 child: Text(context.l10n.cancel),
               ),
 
-              AppButton(
-                width: context.isArabic ? 130 : 110,
-                height: 38,
-                onPressed: () async {
-                  await HiveHelper.put<bool>(
-                    boxName: HiveConstants.avatarBox,
-                    key: HiveConstants.avatarKey,
-                    data: false,
-                  );
-                  await HiveHelper.delete<UserRole>(
-                    boxName: HiveConstants.userRoleBox,
-                    key: HiveConstants.userRoleKey,
-                  );
-                  await HiveHelper.delete<String>(
-                    boxName: HiveConstants.userBox,
-                    key: HiveConstants.userKey,
-                  );
-                  await getIt<TokenService>().deleteToken();
-
-                  if (dialogContext.mounted) {
-                    cubit.reset();
-                    dialogContext.go(AppRoutes.signupAndLoginScreen);
-                  }
-                },
-                text: context.l10n.logout,
-                backgroundColor: Colors.red,
-                textStyle: AppTextStyles.interSemiBold16.copyWith(
-                  fontSize: 16,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: AppButton(
+                  width: context.isArabic ? 140 : 110,
+                  height: 38,
+                  onPressed: () async {
+                    await HiveHelper.put<bool>(
+                      boxName: HiveConstants.avatarBox,
+                      key: HiveConstants.avatarKey,
+                      data: false,
+                    );
+                    await HiveHelper.delete<UserRole>(
+                      boxName: HiveConstants.userRoleBox,
+                      key: HiveConstants.userRoleKey,
+                    );
+                    await HiveHelper.delete<String>(
+                      boxName: HiveConstants.userBox,
+                      key: HiveConstants.userKey,
+                    );
+                    await getIt<TokenService>().deleteToken();
+                
+                    if (dialogContext.mounted) {
+                      cubit.reset();
+                      dialogContext.go(AppRoutes.signupAndLoginScreen);
+                    }
+                  },
+                  text: context.l10n.logout,
+                  backgroundColor: Colors.red,
+                  textStyle: AppTextStyles.interSemiBold16.copyWith(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ],

@@ -419,5 +419,13 @@
   "newPassword": "New Password",
   "chatWithGuide": "Chat With Guide",
   "oopsSomethingWentWrong": "Oops! Something went wrong",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "emailNotRegistered": "Email not registered",
+  "emailAlreadyRegistered": "Email already registered",
+  "invalidEmailOrPassword": "Invalid email or password",
+  "otpSentAgain": "OTP sent again!",
+  "pleaseEnterTheVerificationCode": "Please enter the verification code",
+  "userNotFound": "User not found",
+  "otpExpired": "OTP expired",
+  "invalidOtp": "Invalid OTP"
 }

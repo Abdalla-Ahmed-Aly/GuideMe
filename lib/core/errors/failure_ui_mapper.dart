@@ -114,6 +114,36 @@ class FailureUiMapper {
           image: AppImages.placeTest,
         );
 
+      case FailureCode.emailNotRegistered:
+        return ErrorModel(
+          message: context.l10n.emailNotRegistered,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.emailAlreadyRegistered:
+        return ErrorModel(
+          message: context.l10n.emailAlreadyRegistered,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.invalidEmailOrPassword:
+        return ErrorModel(
+          message: context.l10n.invalidEmailOrPassword,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.userNotFound:
+        return ErrorModel(
+          message: context.l10n.userNotFound,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.otpExpired:
+        return ErrorModel(
+          message: context.l10n.otpExpired,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.invalidOtp:
+        return ErrorModel(
+          message: context.l10n.invalidOtp,
+          image: AppImages.placeTest,
+        );
       case FailureCode.unknown:
         return ErrorModel(
           message: context.l10n.errorUnknown,
@@ -121,6 +151,4 @@ class FailureUiMapper {
         );
     }
   }
-
-  static mapFailureToMessage(Failure failure, BuildContext context) {}
 }

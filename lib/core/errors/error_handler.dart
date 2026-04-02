@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:guide_me/core/constants/api_error_messages.dart';
 import 'exceptions.dart';
 import 'failure.dart';
 import 'failure_code.dart';
@@ -15,9 +15,13 @@ class ErrorHandler {
     } else if (error is NoInternetException) {
       return const AppFailure(failureCode: FailureCode.network);
     } else if (error is LocationPermissionDeniedException) {
-      return const AppFailure(failureCode: FailureCode.locationPermissionDenied);
+      return const AppFailure(
+        failureCode: FailureCode.locationPermissionDenied,
+      );
     } else if (error is LocationPermissionDeniedForeverException) {
-      return const AppFailure(failureCode: FailureCode.locationPermissionDeniedForever);
+      return const AppFailure(
+        failureCode: FailureCode.locationPermissionDeniedForever,
+      );
     } else if (error is LocationServiceDisabledException) {
       return const AppFailure(failureCode: FailureCode.locationServiceDisabled);
     }
@@ -64,43 +68,55 @@ class ErrorHandler {
     switch (statusCode) {
       case 400:
         return AppFailure(
-          failureCode: FailureCode.badRequest,
+          failureCode: _handleServerMessage(
+            serverMessage,
+            FailureCode.badRequest,
+          ),
           message: serverMessage,
         );
 
       case 401:
-        if (serverMessage.toLowerCase().contains("token")) {
-          return AppFailure(
-            failureCode: FailureCode.sessionExpired,
-            message: serverMessage,
-          );
-        }
         return AppFailure(
-          failureCode: FailureCode.unauthorized,
+          failureCode: _handleServerMessage(
+            serverMessage,
+            FailureCode.unauthorized,
+          ),
           message: serverMessage,
         );
 
       case 403:
         return AppFailure(
-          failureCode: FailureCode.forbidden,
+          failureCode: _handleServerMessage(
+            serverMessage,
+            FailureCode.forbidden,
+          ),
           message: serverMessage,
         );
 
       case 404:
         return AppFailure(
-          failureCode: FailureCode.notFound,
+          failureCode: _handleServerMessage(
+            serverMessage,
+            FailureCode.notFound,
+          ),
           message: serverMessage,
         );
 
       case 409:
         return AppFailure(
-          failureCode: FailureCode.conflict,
+          failureCode: _handleServerMessage(
+            serverMessage,
+            FailureCode.conflict,
+          ),
           message: serverMessage,
         );
 
       case 422:
         return AppFailure(
-          failureCode: FailureCode.validation,
+          failureCode: _handleServerMessage(
+            serverMessage,
+            FailureCode.validation,
+          ),
           message: serverMessage,
         );
 
@@ -108,15 +124,45 @@ class ErrorHandler {
       case 502:
       case 503:
         return AppFailure(
-          failureCode: FailureCode.server,
+          failureCode: _handleServerMessage(serverMessage, FailureCode.server),
           message: serverMessage,
         );
 
       default:
         return AppFailure(
-          failureCode: FailureCode.unknown,
+          failureCode: _handleServerMessage(serverMessage, FailureCode.unknown),
           message: serverMessage,
         );
     }
+  }
+
+  static FailureCode _handleServerMessage(
+    String? message,
+    FailureCode fallback,
+  ) {
+    if (message == null) return fallback;
+    final msg = message.toLowerCase();
+    if (msg.contains(ApiErrorMessages.emailNotRegistered)) {
+      return FailureCode.emailNotRegistered;
+    }
+    if (msg.contains(ApiErrorMessages.emailAlreadyRegistered)) {
+      return FailureCode.emailAlreadyRegistered;
+    }
+    if (msg.contains(ApiErrorMessages.invalidEmailOrPassword)) {
+      return FailureCode.invalidEmailOrPassword;
+    }
+    if (msg.contains(ApiErrorMessages.tokenExpired)) {
+      return FailureCode.sessionExpired;
+    }
+    if (msg.contains(ApiErrorMessages.userNotFound)) {
+      return FailureCode.userNotFound;
+    }
+    if (msg.contains(ApiErrorMessages.otpExpired)) {
+      return FailureCode.otpExpired;
+    }
+    if (msg.contains(ApiErrorMessages.invalidOtp)) {
+      return FailureCode.invalidOtp;
+    }
+    return fallback;
   }
 }

@@ -2431,6 +2431,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try Again'**
   String get tryAgain;
+
+  /// No description provided for @emailNotRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'Email not registered'**
+  String get emailNotRegistered;
+
+  /// No description provided for @emailAlreadyRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'Email already registered'**
+  String get emailAlreadyRegistered;
+
+  /// No description provided for @invalidEmailOrPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password'**
+  String get invalidEmailOrPassword;
+
+  /// No description provided for @otpSentAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP sent again!'**
+  String get otpSentAgain;
+
+  /// No description provided for @pleaseEnterTheVerificationCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the verification code'**
+  String get pleaseEnterTheVerificationCode;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User not found'**
+  String get userNotFound;
+
+  /// No description provided for @otpExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP expired'**
+  String get otpExpired;
+
+  /// No description provided for @invalidOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid OTP'**
+  String get invalidOtp;
 }
 
 class _AppLocalizationsDelegate

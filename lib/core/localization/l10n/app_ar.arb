@@ -420,5 +420,13 @@
   "newPassword": "كلمة المرور الجديدة",
   "chatWithGuide": "محادثة مع المرشد",
   "oopsSomethingWentWrong": "عفواً! حدث خطأ ما",
-  "tryAgain": "حاول مرة أخرى"
+  "tryAgain": "حاول مرة أخرى",
+  "emailNotRegistered": "البريد الإلكتروني غير مسجل",
+  "emailAlreadyRegistered": "البريد الإلكتروني مسجل بالفعل",
+  "invalidEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "otpSentAgain": "تم إرسال رمز التحقق مرة أخرى!",
+  "pleaseEnterTheVerificationCode": "يرجى إدخال رمز التحقق",
+  "userNotFound": "المستخدم غير موجود",
+  "otpExpired": "انتهت صلاحية رمز التحقق",
+  "invalidOtp": "رمز التحقق غير صحيح"
 }
