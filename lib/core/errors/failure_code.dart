@@ -22,5 +22,7 @@ enum FailureCode {
   userNotFound,
   otpExpired,
   invalidOtp,
+  placeAlreadyBooked,
+  youAlreadyHaveATripOnThisDay,
   unknown,
 }

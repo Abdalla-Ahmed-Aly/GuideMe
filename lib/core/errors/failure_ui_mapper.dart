@@ -144,6 +144,16 @@ class FailureUiMapper {
           message: context.l10n.invalidOtp,
           image: AppImages.placeTest,
         );
+      case FailureCode.placeAlreadyBooked:
+        return ErrorModel(
+          message: context.l10n.placeAlreadyBooked,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.youAlreadyHaveATripOnThisDay:
+        return ErrorModel(
+          message: context.l10n.youAlreadyHaveATripOnThisDay,
+          image: AppImages.placeTest,
+        );
       case FailureCode.unknown:
         return ErrorModel(
           message: context.l10n.errorUnknown,

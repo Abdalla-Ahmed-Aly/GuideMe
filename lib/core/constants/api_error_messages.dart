@@ -6,4 +6,6 @@ abstract class ApiErrorMessages {
   static const String userNotFound = 'user not found';
   static const String otpExpired = 'otp expired';
   static const String invalidOtp = 'invalid otp';
+  static const String placeAlreadyBooked = 'this place is already booked on this day';
+  static const String youAlreadyHaveATripOnThisDay = 'you already have a trip on this day';
 }

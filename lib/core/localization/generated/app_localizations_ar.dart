@@ -1228,4 +1228,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalidOtp => 'رمز التحقق غير صحيح';
+
+  @override
+  String get placeAlreadyBooked => 'هذا المكان محجوز بالفعل في هذا اليوم';
+
+  @override
+  String get noPackagesFound => 'لا توجد باقات';
+
+  @override
+  String get youAlreadyHaveATripOnThisDay => 'لديك رحلة بالفعل في هذا اليوم';
 }

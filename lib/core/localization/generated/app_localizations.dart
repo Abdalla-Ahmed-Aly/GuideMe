@@ -2479,6 +2479,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid OTP'**
   String get invalidOtp;
+
+  /// No description provided for @placeAlreadyBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'This place is already booked on this day'**
+  String get placeAlreadyBooked;
+
+  /// No description provided for @noPackagesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No packages found'**
+  String get noPackagesFound;
+
+  /// No description provided for @youAlreadyHaveATripOnThisDay.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have a trip on this day'**
+  String get youAlreadyHaveATripOnThisDay;
 }
 
 class _AppLocalizationsDelegate

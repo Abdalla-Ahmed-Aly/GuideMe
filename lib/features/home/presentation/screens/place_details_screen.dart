@@ -6,9 +6,9 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/core/widgets/view_location_on_map.dart';
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/details_header.dart';
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/place_details_section.dart';
+import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/place_location_on_map_section.dart';
 import 'package:guide_me/features/home/presentation/widgets/place_details_widgets/review_summary.dart';
 
 class PlaceDetailsScreen extends StatelessWidget {
@@ -38,34 +38,29 @@ class PlaceDetailsScreen extends StatelessWidget {
           // Rating
           ReviewSummary(place: place),
 
-          const SizedBox(height: 14),
+          const SizedBox(height: 16),
 
           // Location
           if (place.location != null &&
               place.location!.lat != null &&
               place.location!.lng != null)
-            SizedBox(
-              height: size.height * 0.22,
-              child: ViewLocationOnMap(
-                lat: place.location!.lat!,
-                lng: place.location!.lng!,
-              ),
-            ),
+            PlaceLocationOnMapSection(place: place),
 
           const SizedBox(height: 22),
 
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 44.p),
+            padding: EdgeInsets.symmetric(horizontal: 24.p),
             child: AppButton(
               onPressed: () {
                 context.push(AppRoutes.bookScreen, extra: place);
               },
               text: context.l10n.bookNow,
               textStyle: AppTextStyles.interSemiBold18,
+              radius: 16,
             ),
           ),
 
-          SizedBox(height: MediaQuery.of(context).padding.bottom + 8),
+          SizedBox(height: MediaQuery.of(context).padding.bottom + 12),
         ],
       ),
     );

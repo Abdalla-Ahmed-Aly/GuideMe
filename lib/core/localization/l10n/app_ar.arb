@@ -428,5 +428,8 @@
   "pleaseEnterTheVerificationCode": "يرجى إدخال رمز التحقق",
   "userNotFound": "المستخدم غير موجود",
   "otpExpired": "انتهت صلاحية رمز التحقق",
-  "invalidOtp": "رمز التحقق غير صحيح"
+  "invalidOtp": "رمز التحقق غير صحيح",
+  "placeAlreadyBooked": "هذا المكان محجوز بالفعل في هذا اليوم",
+  "noPackagesFound": "لا توجد باقات",
+  "youAlreadyHaveATripOnThisDay": "لديك رحلة بالفعل في هذا اليوم"
 }

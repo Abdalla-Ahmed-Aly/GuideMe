@@ -163,6 +163,12 @@ class ErrorHandler {
     if (msg.contains(ApiErrorMessages.invalidOtp)) {
       return FailureCode.invalidOtp;
     }
+    if (msg.contains(ApiErrorMessages.placeAlreadyBooked)) {
+      return FailureCode.placeAlreadyBooked;
+    }
+    if (msg.contains(ApiErrorMessages.youAlreadyHaveATripOnThisDay)) {
+      return FailureCode.youAlreadyHaveATripOnThisDay;
+    }
     return fallback;
   }
 }

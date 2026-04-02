@@ -1229,4 +1229,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidOtp => 'Invalid OTP';
+
+  @override
+  String get placeAlreadyBooked => 'This place is already booked on this day';
+
+  @override
+  String get noPackagesFound => 'No packages found';
+
+  @override
+  String get youAlreadyHaveATripOnThisDay =>
+      'You already have a trip on this day';
 }

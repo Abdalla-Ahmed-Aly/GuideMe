@@ -427,5 +427,8 @@
   "pleaseEnterTheVerificationCode": "Please enter the verification code",
   "userNotFound": "User not found",
   "otpExpired": "OTP expired",
-  "invalidOtp": "Invalid OTP"
+  "invalidOtp": "Invalid OTP",
+  "placeAlreadyBooked": "This place is already booked on this day",
+  "noPackagesFound": "No packages found",
+  "youAlreadyHaveATripOnThisDay": "You already have a trip on this day"
 }

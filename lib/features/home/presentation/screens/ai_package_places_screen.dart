@@ -34,6 +34,7 @@ class AiPackagePlacesScreen extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.poppinsBold20,
             ),
+            const SizedBox(height: 2),
             Row(
               children: [
                 const Icon(
