@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
@@ -30,6 +31,18 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   ];
   void changedscreen(int index) {
     context.read<GuideNavigationBarCubit>().changeIndex(index);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<UserCubit>().loadUser();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 
   @override
