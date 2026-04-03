@@ -1,6 +1,8 @@
 import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/core/shared/mapper/city_mapper.dart';
+import 'package:guide_me/core/shared/mapper/national_id_images_mapper.dart';
+import 'package:guide_me/core/shared/mapper/tour_guide_license_mapper.dart';
 import 'package:guide_me/core/shared/models/photo_model.dart';
 import 'package:guide_me/core/shared/models/user_model.dart';
 import 'package:guide_me/core/shared/mapper/availability_mapper.dart';
@@ -15,12 +17,19 @@ class UserMapper {
       email: model.email ?? "unknown",
       phone: model.phone,
       role: UserRole.fromString(model.role ?? "tourist"),
+      status: model.status ?? "active",
       bio: model.bio,
       nationality: model.nationality,
       location: model.location,
       lat: model.lat,
       lng: model.lng,
       photoUrl: model.photo?.url,
+      nationalIdImages: model.nationalIdImages != null
+          ? NationalIdImagesMapper.toEntity(model.nationalIdImages!)
+          : null,
+      tourGuideLicense: model.tourGuideLicense != null
+          ? TourGuideLicenseMapper.toEntity(model.tourGuideLicense!)
+          : null,
       availability: model.availability != null
           ? AvailabilityMapper.toEntity(model.availability!)
           : null,
@@ -54,6 +63,7 @@ class UserMapper {
       email: entity.email,
       phone: entity.phone,
       role: entity.role.name,
+      status: entity.status,
       bio: entity.bio,
       nationality: entity.nationality,
       location: entity.location,
@@ -61,6 +71,12 @@ class UserMapper {
       lng: entity.lng,
       photo: entity.photoUrl != null
           ? PhotoModel(url: entity.photoUrl, publicId: null)
+          : null,
+      nationalIdImages: entity.nationalIdImages != null
+          ? NationalIdImagesMapper.toModel(entity.nationalIdImages!)
+          : null,
+      tourGuideLicense: entity.tourGuideLicense != null
+          ? TourGuideLicenseMapper.toModel(entity.tourGuideLicense!)
           : null,
       availability: entity.availability != null
           ? AvailabilityMapper.toModel(entity.availability!)

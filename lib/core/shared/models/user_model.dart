@@ -1,8 +1,10 @@
 import 'package:guide_me/core/shared/models/city_model.dart';
+import 'package:guide_me/core/shared/models/national_id_images_model.dart';
 import 'package:guide_me/core/shared/models/photo_model.dart';
 import 'package:guide_me/core/shared/models/availability_model.dart';
 import 'package:guide_me/core/shared/models/certificate_model.dart';
 import 'package:guide_me/core/shared/models/review_model.dart';
+import 'package:guide_me/core/shared/models/tour_guide_license_model.dart';
 
 class UserModel {
   final String? id;
@@ -10,6 +12,7 @@ class UserModel {
   final String? email;
   final String? phone;
   final String? role;
+  final String? status;
   final String? bio;
   final String? nationality;
   final String? location;
@@ -17,6 +20,8 @@ class UserModel {
   final double? lng;
   final PhotoModel? photo;
   final AvailabilityModel? availability;
+  final NationalIdImagesModel? nationalIdImages;
+  final TourGuideLicenseModel? tourGuideLicense;
   final List<String>? languages;
   final List<String>? interests;
   final List<String>? expertise;
@@ -39,6 +44,7 @@ class UserModel {
     required this.email,
     required this.phone,
     required this.role,
+    required this.status,
     required this.bio,
     this.nationality,
     required this.location,
@@ -46,6 +52,8 @@ class UserModel {
     required this.lng,
     required this.photo,
     required this.availability,
+    required this.nationalIdImages,
+    required this.tourGuideLicense,
     required this.languages,
     required this.interests,
     required this.expertise,
@@ -63,79 +71,83 @@ class UserModel {
     required this.createdAt,
   });
 
-factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-  id: json['_id'] ?? json['id'], // ✅ مهم
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+    id: json['_id'] ?? json['id'],
+    name: json['name'],
+    email: json['email'],
+    phone: json['phone'],
+    role: json['role'],
+    bio: json['bio'],
+    status: json['status'],
+    nationality: json['nationality'],
+    location: json['location'],
 
-  name: json['name'],
-  email: json['email'],
-  phone: json['phone'],
-  role: json['role'],
-  bio: json['bio'],
-  nationality: json['nationality'],
-  location: json['location'],
+    lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
+    lng: json['long'] != null ? (json['long'] as num).toDouble() : null,
 
-  lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
-  lng: json['long'] != null ? (json['long'] as num).toDouble() : null,
+    photo: json['photo'] != null ? PhotoModel.fromJson(json['photo']) : null,
 
-  photo: json['photo'] != null
-      ? PhotoModel.fromJson(json['photo'])
-      : null,
+    nationalIdImages: json['nationalIdImages'] != null
+        ? NationalIdImagesModel.fromJson(json['nationalIdImages'])
+        : null,
 
-  availability: json['availability'] != null
-      ? AvailabilityModel.fromJson(json['availability'])
-      : null,
+    tourGuideLicense: json['tourGuideLicense'] != null
+        ? TourGuideLicenseModel.fromJson(json['tourGuideLicense'])
+        : null,
 
-  // ✅ SAFE LISTS
-  languages: json['languages'] != null
-      ? List<String>.from(json['languages'])
-      : [],
+    availability: json['availability'] != null
+        ? AvailabilityModel.fromJson(json['availability'])
+        : null,
 
-  interests: json['interests'] != null
-      ? List<String>.from(json['interests'])
-      : [],
+    // ✅ SAFE LISTS
+    languages: json['languages'] != null
+        ? List<String>.from(json['languages'])
+        : [],
 
-  expertise: json['expertise'] != null
-      ? List<String>.from(json['expertise'])
-      : [],
+    interests: json['interests'] != null
+        ? List<String>.from(json['interests'])
+        : [],
 
-  guideCities: json['guideCities'] != null
-      ? (json['guideCities'] as List)
-          .map((e) => CityModel.fromJson(e))
-          .toList()
-      : [],
+    expertise: json['expertise'] != null
+        ? List<String>.from(json['expertise'])
+        : [],
 
-  certificates: json['certificates'] != null
-      ? (json['certificates'] as List)
-          .map((e) => CertificateModel.fromJson(e))
-          .toList()
-      : [],
+    guideCities: json['guideCities'] != null
+        ? (json['guideCities'] as List)
+              .map((e) => CityModel.fromJson(e))
+              .toList()
+        : [],
 
-  reviews: json['reviews'] != null
-      ? (json['reviews'] as List)
-          .map((e) => ReviewModel.fromJson(e))
-          .toList()
-      : [],
+    certificates: json['certificates'] != null
+        ? (json['certificates'] as List)
+              .map((e) => CertificateModel.fromJson(e))
+              .toList()
+        : [],
 
-  completedTours: json['completedTours'],
-  yearsOfExperience: json['yearsOfExperience'],
+    reviews: json['reviews'] != null
+        ? (json['reviews'] as List).map((e) => ReviewModel.fromJson(e)).toList()
+        : [],
 
-  hourlyRate: json['hourlyRate'] != null
-      ? (json['hourlyRate'] as num).toDouble()
-      : null,
+    completedTours: json['completedTours'],
+    yearsOfExperience: json['yearsOfExperience'],
 
-  currency: json['currency'],
-  isOnline: json['isOnline'],
-  isVerified: json['isVerified'],
-  verificationStatus: json['verificationStatus'],
+    hourlyRate: json['hourlyRate'] != null
+        ? (json['hourlyRate'] as num).toDouble()
+        : null,
 
-  totalEarnings: json['totalEarnings'] != null
-      ? (json['totalEarnings'] as num).toDouble()
-      : 0,
+    currency: json['currency'],
+    isOnline: json['isOnline'],
+    isVerified: json['isVerified'],
+    verificationStatus: json['verificationStatus'],
 
-  createdAt: json['createdAt'] != null
-      ? DateTime.parse(json['createdAt'])
-      : null,
-);
+    totalEarnings: json['totalEarnings'] != null
+        ? (json['totalEarnings'] as num).toDouble()
+        : 0,
+
+    createdAt: json['createdAt'] != null
+        ? DateTime.parse(json['createdAt'])
+        : null,
+  );
   Map<String, dynamic> toJson() => {
     '_id': id,
     'name': name,
