@@ -1,4 +1,6 @@
 import 'package:guide_me/core/shared/entities/city_entity.dart';
+import 'package:guide_me/core/shared/entities/national_id_images_entity.dart';
+import 'package:guide_me/core/shared/entities/tour_guide_license_entity.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/core/shared/entities/availability_entity.dart';
 import 'package:guide_me/core/shared/entities/certificate_entity.dart';
@@ -10,12 +12,15 @@ class UserEntity {
   final String email;
   final String? phone;
   final UserRole role;
+  final String status;
   final String? bio;
   final String? nationality;
   final String? location;
   final double? lat;
   final double? lng;
   final String? photoUrl;
+  final NationalIdImagesEntity? nationalIdImages;
+  final TourGuideLicenseEntity? tourGuideLicense;
   final AvailabilityEntity? availability;
   final List<String> languages;
   final List<String> interests;
@@ -37,12 +42,15 @@ class UserEntity {
     required this.email,
     required this.phone,
     required this.role,
+    required this.status,
     required this.bio,
     this.nationality,
     required this.location,
     required this.lat,
     required this.lng,
     required this.photoUrl,
+    required this.nationalIdImages,
+    required this.tourGuideLicense,
     required this.availability,
     required this.languages,
     required this.interests,
