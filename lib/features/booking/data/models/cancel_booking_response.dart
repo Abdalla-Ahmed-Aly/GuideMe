@@ -1,7 +1,9 @@
+import 'package:guide_me/core/shared/models/place_info_model.dart';
+
 class CancelBookingResponse {
   final String id;
   final String user;
-  final String place;
+  final PlaceInfoModel? place;
   final String bookingDate;
   final int persons;
   final double totalPrice;
@@ -21,7 +23,9 @@ class CancelBookingResponse {
     return CancelBookingResponse(
       id: json['_id'],
       user: json['user'],
-      place: json['place'],
+      place: json['place'] != null
+          ? PlaceInfoModel.fromJson(json['place'])
+          : null,
       bookingDate: json['bookingDate'],
       persons: json['persons'],
       totalPrice: (json['totalPrice'] as num).toDouble(),

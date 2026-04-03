@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/enums/tourist_booking_status.dart';
+import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart';
 import 'package:intl/intl.dart';
 
 class PendingTripCard extends StatelessWidget {
@@ -14,11 +16,17 @@ class PendingTripCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         if (booking.status == TouristBookingStatus.completed) {
           context.push(AppRoutes.tripDetailsScreen, extra: booking);
         } else {
-          context.push(AppRoutes.pendingApprovalScreen, extra: booking);
+          final result = await context.push(
+            AppRoutes.pendingApprovalScreen,
+            extra: booking,
+          );
+          if (result == true) {
+            context.read<TouristBookingCubit>().getBookings();
+          }
         }
       },
       child: Container(

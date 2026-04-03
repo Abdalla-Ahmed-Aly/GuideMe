@@ -36,20 +36,20 @@ class CancelBookingBottomSheet extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
-
+    
             Lottie.asset(
               AppLotties.cancelBubbles,
               height: 150.h,
             ),
-
+    
             Text(
               context.l10n.cancelBookingRequest,
               style: AppTextStyles.poppinsSemiBold26,
               textAlign: TextAlign.center,
             ),
-
+    
             const SizedBox(height: 12),
-
+    
             Padding(
               padding: EdgeInsets.only(left: 25.p),
               child: Text(
@@ -61,19 +61,19 @@ class CancelBookingBottomSheet extends StatelessWidget {
                 softWrap: true,
               ),
             ),
-
+    
             const SizedBox(height: 28),
-
+    
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.p),
               child: BlocConsumer<CancelBookingCubit, CancelBookingState>(
-                listener: (context, state) {
+                listener: (context, state) async {
                   if (state is CancelBookingSuccess) {
-                    context.pop();
-                    context.pop();
                     context.showSuccessSnakbar(
                       message: context.l10n.bookingCancelledSuccessfully,
                     );
+                    context.pop();
+                    context.pop(true);
                   } else if (state is CancelBookingFailure) {
                     final error = FailureUiMapper.map(
                       context: context,
@@ -100,7 +100,7 @@ class CancelBookingBottomSheet extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-
+    
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.p),
               child: SizedBox(
@@ -126,7 +126,7 @@ class CancelBookingBottomSheet extends StatelessWidget {
                 ),
               ),
             ),
-
+    
             const SizedBox(height: 44),
           ],
         ),
