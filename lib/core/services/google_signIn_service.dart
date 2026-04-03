@@ -22,6 +22,7 @@ class GoogleAuthService {
       print("Access Token موجود؟ ${googleAuth.accessToken != null}");
       print("ID Token موجود؟ ${googleAuth.idToken != null}");
       print("User Email: ${googleUser.email}");
+      print("🔑 Google ID Token: ${googleAuth.idToken?.substring(0, 50)}...");
 
       // لازم يكون فيه ID Token
       if (googleAuth.idToken == null) {
@@ -29,17 +30,8 @@ class GoogleAuthService {
         return null;
       }
 
-      // Create Firebase credential
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      final userCredential = await _auth.signInWithCredential(credential);
-
-      final firebaseToken = await userCredential.user?.getIdToken();
-
-      return firebaseToken;
+      // ✅ Return Google's ID Token directly (NOT Firebase token)
+      return googleAuth.idToken;
     } catch (e) {
       print("Google Auth Error: $e");
       return null;
