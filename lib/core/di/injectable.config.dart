@@ -50,6 +50,10 @@ import 'package:guide_me/core/shared/use_cases/get_cached_user_usecase.dart'
     as _i388;
 import 'package:guide_me/core/shared/use_cases/update_cached_user_usecase.dart'
     as _i157;
+import 'package:guide_me/core/socket/socket_event_bus.dart' as _i248;
+import 'package:guide_me/core/socket/socket_io_service.dart' as _i435;
+import 'package:guide_me/core/socket/socket_manager.dart' as _i890;
+import 'package:guide_me/core/socket/socket_service.dart' as _i408;
 import 'package:guide_me/features/auth/data/data_source/Auth_remote_data_source.dart'
     as _i1043;
 import 'package:guide_me/features/auth/data/repo/auth_repo_imple.dart' as _i80;
@@ -188,6 +192,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1.ConnectivityHelper>(),
       ),
     );
+    gh.lazySingleton<_i408.SocketService>(() => _i435.SocketIOService());
     gh.lazySingleton<_i250.GpsLocalDataSource>(
       () => _i923.GpsLocalDataSourceImpl(),
     );
@@ -215,6 +220,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i554.PlaceByCategoryCubit>(
       () => _i554.PlaceByCategoryCubit(gh<_i205.PlaceByCategoryUsecase>()),
+    );
+    gh.lazySingleton<_i248.SocketEventBus>(
+      () => _i248.SocketEventBus(gh<_i408.SocketService>()),
+    );
+    gh.lazySingleton<_i890.SocketManager>(
+      () => _i890.SocketManager(gh<_i408.SocketService>()),
     );
     gh.lazySingleton<_i692.HomeService>(
       () => _i692.HomeApiServiceImpl(gh<_i947.ApiService>()),
