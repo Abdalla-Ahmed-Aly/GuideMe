@@ -8,14 +8,14 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AnalysisRepo)
 class AnalysisRepoImple extends AnalysisRepo {
-  final AnalysisRemoteDataSource analysisRepoImple;
+  final AnalysisRemoteDataSource remoteDataSource;
 
-  AnalysisRepoImple(this.analysisRepoImple);
+  AnalysisRepoImple(this.remoteDataSource);
 
   @override
   Future<Either<Failure, AnalysisResponse>> getAnalysis() async {
     try {
-      final result = await analysisRepoImple.getAnalysis();
+      final result = await remoteDataSource.getAnalysis();
       return Right(result);
     } catch (e) {
       return left(ErrorHandler.handle(e));
