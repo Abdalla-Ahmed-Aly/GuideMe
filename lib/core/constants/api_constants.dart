@@ -34,4 +34,5 @@ abstract class ApiConstants {
   static const String bookPackageEndpoint = "$addBookingEndpoint/book";
   static const String userProfileEndpoint = "$api/home/profile";
   static const String bookAiPackageEndpoint = "$api/booking/book-ai";
+  static const String analysisEndpoint = "$api/guide/analysis/";
 }
