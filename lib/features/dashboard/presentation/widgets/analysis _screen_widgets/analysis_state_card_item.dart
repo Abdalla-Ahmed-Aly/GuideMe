@@ -4,12 +4,13 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/dashboard/data/models/Analysis_model/data_response_model.dart';
 
 class AnalysisStatCardItem extends StatelessWidget {
   const AnalysisStatCardItem({
-    super.key,
+    super.key, required this.data,
   });
-
+  final Data data; 
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -49,7 +50,7 @@ class AnalysisStatCardItem extends StatelessWidget {
                 const SizedBox(
                   height: 6,
                 ),
-                Text('50,565', style: AppTextStyles.poppinsSemiBold24),
+                Text('${data.totalEarnings}', style: AppTextStyles.poppinsSemiBold24),
                 const SizedBox(
                   height: 6,
                 ),
@@ -106,7 +107,7 @@ class AnalysisStatCardItem extends StatelessWidget {
                 const SizedBox(
                   width: 13,
                 ),
-                Text('125', style: AppTextStyles.poppinsMedium18),
+                Text('${data.completedTours}', style: AppTextStyles.poppinsMedium18),
                 const SizedBox(
                   height: 8,
                 ),

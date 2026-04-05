@@ -17,6 +17,7 @@ class AnalysisRemoteDataSourceImple extends AnalysisRemoteDataSource {
   Future<AnalysisResponse> getAnalysis() async {
     final response = await apiService.get(
       endpoint: ApiConstants.analysisEndpoint,
+      
     );
     return AnalysisResponse.fromJson(response.data);
     

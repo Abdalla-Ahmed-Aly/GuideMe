@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/Analysis_Cubit/analysis_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/analysis_screen.dart';
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart';
@@ -27,7 +29,10 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
       child: const GuideBookingScreen(),
     ),
     const ConversationsScreen(),
-    const AnalysisScreen(),
+    BlocProvider(
+      create: (context) => getIt<AnalysisCubit>()..getAnalysis(),
+      child: const AnalysisScreen(),
+    ),
   ];
   void changedscreen(int index) {
     context.read<GuideNavigationBarCubit>().changeIndex(index);

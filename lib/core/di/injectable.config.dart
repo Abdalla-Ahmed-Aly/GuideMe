@@ -124,6 +124,16 @@ import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
     as _i24;
+import 'package:guide_me/features/dashboard/data/data_source/analysis_remote_data_source.dart'
+    as _i389;
+import 'package:guide_me/features/dashboard/data/repo/analysis_repo_imple.dart'
+    as _i783;
+import 'package:guide_me/features/dashboard/domain/repo/analysis_repo.dart'
+    as _i539;
+import 'package:guide_me/features/dashboard/domain/use_case/get_analysis_use_case%20.dart'
+    as _i268;
+import 'package:guide_me/features/dashboard/presentation/manager/Analysis_Cubit/analysis_cubit.dart'
+    as _i538;
 import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
     as _i955;
 import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
@@ -193,12 +203,18 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.lazySingleton<_i408.SocketService>(() => _i435.SocketIOService());
+    gh.lazySingleton<_i389.AnalysisRemoteDataSource>(
+      () => _i389.AnalysisRemoteDataSourceImple(gh<_i947.ApiService>()),
+    );
     gh.lazySingleton<_i250.GpsLocalDataSource>(
       () => _i923.GpsLocalDataSourceImpl(),
     );
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
+    );
+    gh.lazySingleton<_i539.AnalysisRepo>(
+      () => _i783.AnalysisRepoImple(gh<_i389.AnalysisRemoteDataSource>()),
     );
     gh.lazySingleton<_i912.ProfileLocalDataSource>(
       () => _i912.ProfileLocalDataSourceImpl(),
@@ -242,6 +258,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
     );
+    gh.factory<_i268.GetAnalysisUseCase>(
+      () => _i268.GetAnalysisUseCase(gh<_i539.AnalysisRepo>()),
+    );
     gh.lazySingleton<_i407.ClearCachedUserUsecase>(
       () => _i407.ClearCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
     );
@@ -280,6 +299,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i593.ResetPasswordCubit>(
       () => _i593.ResetPasswordCubit(gh<_i865.ResetPasswordUseCase>()),
+    );
+    gh.factory<_i538.AnalysisCubit>(
+      () => _i538.AnalysisCubit(gh<_i268.GetAnalysisUseCase>()),
     );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
