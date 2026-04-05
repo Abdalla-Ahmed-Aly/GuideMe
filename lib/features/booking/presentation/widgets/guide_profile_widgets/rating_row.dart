@@ -6,8 +6,8 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 class RatingRow extends StatelessWidget {
   const RatingRow({
     super.key,
-    required this.rate,
-    required this.percent,
+    required this.rate, required this.percent,
+    
   });
   final int rate;
   final double percent;
@@ -47,3 +47,4 @@ class RatingRow extends StatelessWidget {
     );
   }
 }
+

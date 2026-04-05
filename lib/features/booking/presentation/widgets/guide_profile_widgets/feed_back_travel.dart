@@ -3,12 +3,15 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/rating_row.dart';
+import 'package:guide_me/features/dashboard/data/models/Analysis_model/data_response_model.dart';
+import 'package:guide_me/features/dashboard/data/models/Analysis_model/rating_distribution__response_model.dart';
 
 class FeedBackTravel extends StatelessWidget {
   const FeedBackTravel({
-    super.key,
+    super.key, required this.data, required this.ratingDistribution,
   });
-
+final Data data;
+final RatingDistribution ratingDistribution;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +27,7 @@ class FeedBackTravel extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  '4.8',
+                  data.averageRating.toString(),
                   style: AppTextStyles.poppinsRegular38,
                 ),
                 const SizedBox(
@@ -38,7 +41,7 @@ class FeedBackTravel extends StatelessWidget {
                 const SizedBox(
                   height: 3,
                 ),
-                Text('123 reviews', style: AppTextStyles.poppinsSemiBold14),
+                Text(data.totalReviews.toString(), style: AppTextStyles.poppinsSemiBold14),
                 const SizedBox(
                   height: 38,
                 ),
@@ -48,13 +51,16 @@ class FeedBackTravel extends StatelessWidget {
           Flexible(
             child: Padding(
               padding: EdgeInsets.only(right: 6.p),
-              child: const Column(
+              child:  Column(
                 children: [
-                  RatingRow(rate: 5, percent: 0.80),
-                  RatingRow(rate: 4, percent: 0.12),
-                  RatingRow(rate: 3, percent: 0.05),
-                  RatingRow(rate: 2, percent: 0.02),
-                  RatingRow(rate: 1, percent: 0.01),
+                  RatingRow(rate: ratingDistribution.five, percent: calculatePercent(
+    ratingDistribution.five,
+    data.totalReviews,
+  ),),
+                  RatingRow(rate: ratingDistribution.four, percent: calculatePercent(ratingDistribution.four, data.totalReviews)),
+                  RatingRow(rate: ratingDistribution.three, percent: calculatePercent(ratingDistribution.three, data.totalReviews),),
+                  RatingRow(rate: ratingDistribution.two, percent: calculatePercent(ratingDistribution.two, data.totalReviews),),
+                  RatingRow(rate: ratingDistribution.one, percent: calculatePercent(ratingDistribution.one, data.totalReviews),),
                 ],
               ),
             ),
@@ -63,4 +69,8 @@ class FeedBackTravel extends StatelessWidget {
       ),
     );
   }
+}
+double calculatePercent(int count, int total) {
+  if (total == 0) return 0;
+  return count / total;
 }
