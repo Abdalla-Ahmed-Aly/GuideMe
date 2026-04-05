@@ -24,7 +24,7 @@ class CompletedTripScreenBody extends StatelessWidget {
           const SizedBox(height: 16),
 
           if (booking.guider != null)
-            CompletedTripHeader(guider: booking.guider!),
+            CompletedTripHeader(booking: booking),
 
           const SizedBox(height: 22),
 

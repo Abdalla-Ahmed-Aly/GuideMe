@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/end_tour_dialog.dart';
 import 'package:intl/intl.dart';
 
-class LiveTripCard extends StatelessWidget {
-  const LiveTripCard({super.key, required this.booking});
+class GuideLiveTripCard extends StatelessWidget {
+  const GuideLiveTripCard({super.key, required this.booking});
   final BookingEntity booking;
 
   @override
@@ -81,7 +84,7 @@ class LiveTripCard extends StatelessWidget {
                 style: AppTextStyles.poppinsMedium18,
               ),
 
-              const SizedBox(height: 5),
+              const SizedBox(height: 6),
 
               Row(
                 children: [
@@ -96,7 +99,7 @@ class LiveTripCard extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 6),
+              const SizedBox(height: 8),
 
               BuildLiveTripImage(booking: booking),
 
@@ -110,42 +113,44 @@ class LiveTripCard extends StatelessWidget {
     );
   }
 
-  Container _buildChatWithGuideButton(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
-      decoration: BoxDecoration(
-        color: const Color(0xffFEF4E6),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(
+  Widget _buildChatWithGuideButton(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: AppButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const EndTourDialog();
+                },
+              );
+            },
+            text: context.l10n.endTour,
+            backgroundColor: AppColors.primary2,
+            height: 44,
+            radius: 220,
+          ),
+        ),
+        const SizedBox(width: 14),
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
+            color: Color(0xffFEF4E6),
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(
             Icons.chat_outlined,
             color: Color(0xffF2930D),
           ),
-          const SizedBox(width: 8),
-          Text(
-            context.l10n.chatWithGuide,
-            style: AppTextStyles.poppinsMedium16.copyWith(
-              color: const Color(0xffF2930D),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
 
 class BuildLiveTripImage extends StatelessWidget {
-  const BuildLiveTripImage({
-    super.key,
-    required this.booking,
-  });
-
+  const BuildLiveTripImage({super.key, required this.booking});
   final BookingEntity booking;
 
   @override

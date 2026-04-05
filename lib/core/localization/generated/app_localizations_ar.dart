@@ -1237,4 +1237,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get youAlreadyHaveATripOnThisDay => 'لديك رحلة بالفعل في هذا اليوم';
+
+  @override
+  String get endTourMessage => 'هل أنت متأكد من رغبتك في إنهاء الجولة؟';
+
+  @override
+  String get youveCompletedThisTour => 'لقد أكملت هذه الجولة!';
+
+  @override
+  String get startTour => 'بدء الجولة';
 }

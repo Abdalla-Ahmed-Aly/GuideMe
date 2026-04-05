@@ -5,9 +5,8 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/user_profile_tile.dart';
-import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_widgets/trips_list_view.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_bloc_builder.dart';
 import 'package:guide_me/features/guide_booking/presentation/widgets/guide_schedule_list.dart';
-
 import '../widgets/guide_booking_status_filter.dart';
 
 class GuideBookingScreen extends StatelessWidget {
@@ -58,9 +57,7 @@ class GuideBookingScreen extends StatelessWidget {
           const SizedBox(height: 8),
 
           const Expanded(
-            child: TripsListView(
-              bookings: [],
-            ),
+            child: GuideBookingBlocBuilder(),
           ),
         ],
       ),

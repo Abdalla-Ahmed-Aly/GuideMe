@@ -431,5 +431,8 @@
   "invalidOtp": "رمز التحقق غير صحيح",
   "placeAlreadyBooked": "هذا المكان محجوز بالفعل في هذا اليوم",
   "noPackagesFound": "لا توجد باقات",
-  "youAlreadyHaveATripOnThisDay": "لديك رحلة بالفعل في هذا اليوم"
+  "youAlreadyHaveATripOnThisDay": "لديك رحلة بالفعل في هذا اليوم",
+  "endTourMessage": "هل أنت متأكد من رغبتك في إنهاء الجولة؟",
+  "youveCompletedThisTour": "لقد أكملت هذه الجولة!",
+  "startTour": "بدء الجولة"
 }

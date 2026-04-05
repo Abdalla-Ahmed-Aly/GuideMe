@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/shared/entities/guider_entity.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
+import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 
 class CompletedTripHeader extends StatelessWidget {
   const CompletedTripHeader({
     super.key,
-    required this.guider,
+    required this.booking,
   });
 
-  final GuiderEntity guider;
+  final BookingEntity booking;
 
   @override
   Widget build(BuildContext context) {
+    final user = (context.read<UserCubit>().state as UserSuccess).user;
     return Row(
       children: [
         Expanded(
@@ -28,7 +31,9 @@ class CompletedTripHeader extends StatelessWidget {
               ),
               children: [
                 TextSpan(
-                  text: guider.name,
+                  text: user.id == booking.guider!.id
+                      ? booking.user.name
+                      : booking.guider!.name,
                   style: AppTextStyles.poppinsBold32.copyWith(
                     color: AppColors.primary2,
                   ),
@@ -37,29 +42,63 @@ class CompletedTripHeader extends StatelessWidget {
             ),
           ),
         ),
-
-        Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: const Color(0xffFFA537),
-              width: 2,
-              strokeAlign: BorderSide.strokeAlignOutside,
+        // Guider photo
+        if (user.id != booking.guider!.id)
+          Container(
+            height: 90,
+            width: 90,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: const Color(0xffFFA537),
+                width: 2,
+                strokeAlign: BorderSide.strokeAlignOutside,
+              ),
             ),
+            child:
+                booking.guider!.photo != null &&
+                    booking.guider!.photo!.url != null
+                ? CustomNetworkImage(
+                    imageUrl: booking.guider!.photo!.url!,
+                    height: 90,
+                    width: 90,
+                    fit: BoxFit.cover,
+                  )
+                : const Icon(
+                    Icons.person_outline,
+                    size: 44,
+                    color: AppColors.primary2,
+                  ),
           ),
-          child: guider.photo != null && guider.photo!.url != null
-              ? CustomNetworkImage(
-                  imageUrl: guider.photo!.url!,
-                  height: 90,
-                  width: 90,
-                  fit: BoxFit.cover,
-                )
-              : const Icon(
-                  Icons.person_outline,
-                  size: 30,
-                ),
-        ),
+
+        // Tourist photo
+        if (user.id == booking.guider!.id)
+          Container(
+            height: 90,
+            width: 90,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: const Color(0xffFFA537),
+                width: 2,
+                strokeAlign: BorderSide.strokeAlignOutside,
+              ),
+            ),
+            child: booking.user.photo != null && booking.user.photo!.url != null
+                ? CustomNetworkImage(
+                    imageUrl: booking.user.photo!.url!,
+                    height: 90,
+                    width: 90,
+                    fit: BoxFit.cover,
+                  )
+                : const Icon(
+                    Icons.person_outline,
+                    size: 44,
+                    color: AppColors.primary2,
+                  ),
+          ),
       ],
     );
   }

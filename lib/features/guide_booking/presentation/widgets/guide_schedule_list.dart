@@ -24,7 +24,7 @@ class _GuideScheduleListState extends State<GuideScheduleList> {
   @override
   void initState() {
     super.initState();
-    selectedDay = context.read<GuideBookingCubit>().state.selectedDate;
+    selectedDay = context.read<GuideBookingCubit>().state.filters.selectedDate;
     _generateDaysList();
   }
 

@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:guide_me/core/helpers/connectivity_helper.dart' as _i1;
 import 'package:guide_me/core/location_core/data/data_sources/local/gps_local_data_source.dart'
@@ -124,6 +125,22 @@ import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
     as _i24;
+import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source.dart'
+    as _i221;
+import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source_impl.dart'
+    as _i928;
+import 'package:guide_me/features/guide_booking/data/repos/guide_booking_repo_impl.dart'
+    as _i367;
+import 'package:guide_me/features/guide_booking/domain/repos/guide_booking_repo.dart'
+    as _i580;
+import 'package:guide_me/features/guide_booking/domain/use_cases/get_guide_booking_use_case.dart'
+    as _i479;
+import 'package:guide_me/features/guide_booking/domain/use_cases/guide_booking_filter_use_case.dart'
+    as _i384;
+import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart'
+    as _i193;
+import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart'
+    as _i758;
 import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
     as _i955;
 import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
@@ -179,6 +196,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
     gh.lazySingleton<_i664.GoogleAuthService>(() => _i664.GoogleAuthService());
     gh.lazySingleton<_i547.LocaleCubit>(() => _i547.LocaleCubit());
+    gh.lazySingleton<_i384.GuideBookingFilterUseCase>(
+      () => _i384.GuideBookingFilterUseCase(),
+    );
     gh.lazySingleton<_i367.GetHomeUsecase>(() => _i367.GetHomeUsecase());
     gh.lazySingleton<_i205.PlaceByCategoryUsecase>(
       () => _i205.PlaceByCategoryUsecase(),
@@ -200,6 +220,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
     );
+    gh.lazySingleton<_i758.GuideBookingStatusFilter>(
+      () => _i758.GuideBookingStatusFilter(key: gh<_i409.Key>()),
+    );
     gh.lazySingleton<_i912.ProfileLocalDataSource>(
       () => _i912.ProfileLocalDataSourceImpl(),
     );
@@ -214,6 +237,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i322.BookingRemoteDataSource>(
       () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
+    gh.lazySingleton<_i221.GuideBookingRemoteDataSource>(
+      () => _i928.GuideBookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
     gh.lazySingleton<_i243.ProfileRemoteDataSource>(
       () => _i243.ProfileRemoteDataSourceImpl(gh<_i947.ApiService>()),
@@ -239,6 +265,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i948.ProfileRepo>(
       () => _i165.ProfileRepoImpl(gh<_i243.ProfileRemoteDataSource>()),
     );
+    gh.lazySingleton<_i580.GuideBookingRepo>(
+      () =>
+          _i367.GuideBookingRepoImpl(gh<_i221.GuideBookingRemoteDataSource>()),
+    );
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
     );
@@ -250,6 +280,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i157.UpdateCachedUserUsecase>(
       () => _i157.UpdateCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
+    );
+    gh.lazySingleton<_i479.GetGuideBookingUseCase>(
+      () => _i479.GetGuideBookingUseCase(gh<_i580.GuideBookingRepo>()),
     );
     gh.lazySingleton<_i956.AuthRepo>(
       () => _i80.AuthRepoImple(
@@ -283,6 +316,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
+    );
+    gh.factory<_i193.GuideBookingCubit>(
+      () => _i193.GuideBookingCubit(
+        gh<_i479.GetGuideBookingUseCase>(),
+        gh<_i384.GuideBookingFilterUseCase>(),
+        gh<_i248.SocketEventBus>(),
+      ),
     );
     gh.lazySingleton<_i448.GetCurrentLocationUseCase>(
       () => _i448.GetCurrentLocationUseCase(gh<_i392.LocationRepo>()),

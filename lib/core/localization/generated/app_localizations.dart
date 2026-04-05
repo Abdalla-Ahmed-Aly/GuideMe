@@ -2497,6 +2497,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You already have a trip on this day'**
   String get youAlreadyHaveATripOnThisDay;
+
+  /// No description provided for @endTourMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to end the tour?'**
+  String get endTourMessage;
+
+  /// No description provided for @youveCompletedThisTour.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve completed this tour!'**
+  String get youveCompletedThisTour;
+
+  /// No description provided for @startTour.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Tour'**
+  String get startTour;
 }
 
 class _AppLocalizationsDelegate

@@ -1239,4 +1239,13 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get youAlreadyHaveATripOnThisDay =>
       'You already have a trip on this day';
+
+  @override
+  String get endTourMessage => 'Are you sure you want to end the tour?';
+
+  @override
+  String get youveCompletedThisTour => 'You\'ve completed this tour!';
+
+  @override
+  String get startTour => 'Start Tour';
 }

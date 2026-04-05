@@ -5,7 +5,9 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/guide_booking/domain/enums/guide_booking_status.dart';
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class GuideBookingStatusFilter extends StatelessWidget {
   const GuideBookingStatusFilter({super.key});
 
@@ -20,12 +22,12 @@ class GuideBookingStatusFilter extends StatelessWidget {
       ),
       child: BlocBuilder<GuideBookingCubit, GuideBookingState>(
         builder: (context, state) {
-          final selectedStatus = state.guideBookingStatus;
-          final selectedDate = state.selectedDate;
+          final selectedStatus = state.filters.guideBookingStatus;
+          final selectedDate = state.filters.selectedDate;
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: !isPastSelectedDate(selectedDate)
+            children: !isPastSelectedDate(selectedDate) || selectedDate == null
                 ? GuideBookingStatus.values.map(
                     (status) {
                       return Expanded(

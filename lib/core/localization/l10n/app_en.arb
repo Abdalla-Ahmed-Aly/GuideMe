@@ -430,5 +430,8 @@
   "invalidOtp": "Invalid OTP",
   "placeAlreadyBooked": "This place is already booked on this day",
   "noPackagesFound": "No packages found",
-  "youAlreadyHaveATripOnThisDay": "You already have a trip on this day"
+  "youAlreadyHaveATripOnThisDay": "You already have a trip on this day",
+  "endTourMessage": "Are you sure you want to end the tour?",
+  "youveCompletedThisTour": "You've completed this tour!",
+  "startTour": "Start Tour"
 }
