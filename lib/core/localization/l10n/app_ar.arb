@@ -434,5 +434,8 @@
   "youAlreadyHaveATripOnThisDay": "لديك رحلة بالفعل في هذا اليوم",
   "endTourMessage": "هل أنت متأكد من رغبتك في إنهاء الجولة؟",
   "youveCompletedThisTour": "لقد أكملت هذه الجولة!",
-  "startTour": "بدء الجولة"
+  "startTour": "بدء الجولة",
+  "youveStartedThisTour": "لقد بدأت هذه الجولة!",
+  "error": "خطأ",
+  "tourCanOnlyBeStartedOnTheBookingDay": "لا يمكن بدء الجولة إلا في يوم الحجز"
 }

@@ -36,4 +36,7 @@ abstract class ApiConstants {
   static const String bookAiPackageEndpoint = "$api/booking/book-ai";
   // Guide booking track
   static const String guideScheduleEndpoint = "$api/Guide_Dashboard/schedule";
+  static const String guideBooking = "$api/Guide_Dashboard/booking";
+  static const String startTour = "/start";
+  static const String endTour = "/end";
 }

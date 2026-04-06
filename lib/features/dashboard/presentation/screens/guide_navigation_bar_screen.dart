@@ -10,6 +10,7 @@ import 'package:guide_me/features/chat/presentation/screens/conversations_screen
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/analysis_screen.dart';
+import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_action_cubit/guide_booking_actions_cubit.dart';
 import 'package:guide_me/features/guide_booking/presentation/screens/guide_booking_screen.dart';
 
 class GuideNavigationBarScreen extends StatefulWidget {
@@ -25,7 +26,10 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
 
   final List<Widget> pages = [
     const DashboardScreen(),
-    const GuideBookingScreen(),
+    BlocProvider(
+      create: (context) => getIt<GuideBookingActionsCubit>(),
+      child: const GuideBookingScreen(),
+    ),
     const ConversationsScreen(),
     const AnalysisScreen(),
   ];

@@ -169,6 +169,9 @@ class ErrorHandler {
     if (msg.contains(ApiErrorMessages.youAlreadyHaveATripOnThisDay)) {
       return FailureCode.youAlreadyHaveATripOnThisDay;
     }
+    if (msg.contains(ApiErrorMessages.tourCanOnlyBeStartedOnTheBookingDay)) {
+      return FailureCode.tourCanOnlyBeStartedOnTheBookingDay;
+    }
     return fallback;
   }
 }

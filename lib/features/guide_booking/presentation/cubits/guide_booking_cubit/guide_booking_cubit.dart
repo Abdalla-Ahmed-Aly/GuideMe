@@ -37,6 +37,7 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
     safeEmit(GuideBookingLoading(filters: state.filters));
 
     _listenToNewBooking();
+    _listenToUpdateBooking();
 
     final result = await _bookingsUseCase.call(
       date: state.filters.selectedDate,
@@ -69,8 +70,40 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   void _listenToNewBooking() {
     _subscription?.cancel();
 
+    _subscription =
+        _socketEventBus.listenTo(SocketAppEvents.bookingAccepted.value)
+        .listen((data) {
+          final Map<String, dynamic> json = data is String
+              ? jsonDecode(data)
+              : data as Map<String, dynamic>;
+
+          final booking = BookingModel.fromJson(
+            json['booking'] as Map<String, dynamic>,
+          );
+
+          _addNewBooking(BookingMapper.toEntity(booking));
+        });
+  }
+
+  void _addNewBooking(BookingEntity booking) {
+    final updatedList = [booking, ...state.filters.guideBookings];
+    state.filters.guideBookings = updatedList;
+    final filtered = _guideBookingFilterUseCase.filter(
+      bookings: updatedList,
+      status: state.filters.guideBookingStatus,
+    );
+    safeEmit(
+      GuideBookingSuccess(
+        guideBookings: filtered,
+        filters: state.filters,
+      ),
+    );
+  }
+
+  void _listenToUpdateBooking() {
+    _subscription?.cancel();
+
     final events = [
-      SocketAppEvents.bookingAccepted.value,
       SocketAppEvents.bookingLive.value,
       SocketAppEvents.bookingCompleted.value,
     ];

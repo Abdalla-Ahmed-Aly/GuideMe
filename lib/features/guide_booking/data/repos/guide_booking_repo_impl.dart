@@ -26,4 +26,28 @@ class GuideBookingRepoImpl implements GuideBookingRepo {
       return left(ErrorHandler.handle(e));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> endTour({required String bookingId}) async {
+    try {
+      final response = await _guideBookingRemoteDataSource.endTour(
+        bookingId: bookingId,
+      );
+      return right(response);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> startTour({required String bookingId}) async {
+    try {
+      final response = await _guideBookingRemoteDataSource.startTour(
+        bookingId: bookingId,
+      );
+      return right(response);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
 }

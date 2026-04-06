@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/start_tour_button.dart';
 import 'package:intl/intl.dart';
 
 class GuideNextTripCard extends StatelessWidget {
@@ -76,13 +75,7 @@ class GuideNextTripCard extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: AppButton(
-                    onPressed: () {},
-                    text: context.l10n.startTour,
-                    height: 44,
-                    backgroundColor: AppColors.primary2,
-                    radius: 100,
-                  ),
+                  child: StartTourButton(booking: booking),
                 ),
 
                 const SizedBox(width: 12),
@@ -106,3 +99,4 @@ class GuideNextTripCard extends StatelessWidget {
     );
   }
 }
+

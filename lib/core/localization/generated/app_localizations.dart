@@ -2515,6 +2515,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start Tour'**
   String get startTour;
+
+  /// No description provided for @youveStartedThisTour.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve started this tour!'**
+  String get youveStartedThisTour;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @tourCanOnlyBeStartedOnTheBookingDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Tour can only be started on the booking day'**
+  String get tourCanOnlyBeStartedOnTheBookingDay;
 }
 
 class _AppLocalizationsDelegate

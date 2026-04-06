@@ -4,4 +4,6 @@ abstract class GuideBookingRemoteDataSource {
   Future<List<BookingModel>> getGuideBooking({
     required String? date,
   });
+  Future<void> startTour({required String bookingId});
+  Future<void> endTour({required String bookingId});
 }

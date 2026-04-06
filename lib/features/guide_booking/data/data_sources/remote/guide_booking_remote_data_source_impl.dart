@@ -29,4 +29,22 @@ class GuideBookingRemoteDataSourceImpl implements GuideBookingRemoteDataSource {
         .map((e) => BookingModel.fromJson(e as Map<String, dynamic>))
         .toList();
   }
+
+  @override
+  Future<void> endTour({required String bookingId}) async {
+    final response = await _apiService.patch(
+      endpoint:
+          "${ApiConstants.guideBooking}/$bookingId${ApiConstants.endTour}",
+    );
+    return response.data;
+  }
+
+  @override
+  Future<void> startTour({required String bookingId}) async {
+    final response = await _apiService.patch(
+      endpoint:
+          "${ApiConstants.guideBooking}/$bookingId${ApiConstants.startTour}",
+    );
+    return response.data;
+  }
 }

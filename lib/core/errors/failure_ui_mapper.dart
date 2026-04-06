@@ -154,6 +154,11 @@ class FailureUiMapper {
           message: context.l10n.youAlreadyHaveATripOnThisDay,
           image: AppImages.placeTest,
         );
+      case FailureCode.tourCanOnlyBeStartedOnTheBookingDay:
+        return ErrorModel(
+          message: context.l10n.tourCanOnlyBeStartedOnTheBookingDay,
+          image: AppImages.placeTest,
+        );
       case FailureCode.unknown:
         return ErrorModel(
           message: context.l10n.errorUnknown,

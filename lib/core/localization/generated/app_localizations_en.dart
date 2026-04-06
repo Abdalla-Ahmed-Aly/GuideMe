@@ -1248,4 +1248,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get startTour => 'Start Tour';
+
+  @override
+  String get youveStartedThisTour => 'You\'ve started this tour!';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get tourCanOnlyBeStartedOnTheBookingDay =>
+      'Tour can only be started on the booking day';
 }

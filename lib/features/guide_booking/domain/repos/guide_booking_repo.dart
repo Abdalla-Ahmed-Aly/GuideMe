@@ -6,4 +6,6 @@ abstract class GuideBookingRepo {
   Future<Either<Failure, List<BookingEntity>>> getGuideBooking({
     required String? date,
   });
+  Future<Either<Failure, void>> startTour({required String bookingId});
+  Future<Either<Failure, void>> endTour({required String bookingId});
 }

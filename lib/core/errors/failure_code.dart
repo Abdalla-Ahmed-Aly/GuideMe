@@ -24,5 +24,6 @@ enum FailureCode {
   invalidOtp,
   placeAlreadyBooked,
   youAlreadyHaveATripOnThisDay,
+  tourCanOnlyBeStartedOnTheBookingDay,
   unknown,
 }

@@ -1246,4 +1246,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get startTour => 'بدء الجولة';
+
+  @override
+  String get youveStartedThisTour => 'لقد بدأت هذه الجولة!';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get tourCanOnlyBeStartedOnTheBookingDay =>
+      'لا يمكن بدء الجولة إلا في يوم الحجز';
 }

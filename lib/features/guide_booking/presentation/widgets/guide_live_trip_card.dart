@@ -5,12 +5,10 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
-import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
-import 'package:guide_me/features/guide_booking/presentation/widgets/end_tour_dialog.dart';
+import 'package:guide_me/features/guide_booking/presentation/widgets/end_tour_button.dart';
 import 'package:intl/intl.dart';
 
 class GuideLiveTripCard extends StatelessWidget {
@@ -117,20 +115,7 @@ class GuideLiveTripCard extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: AppButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const EndTourDialog();
-                },
-              );
-            },
-            text: context.l10n.endTour,
-            backgroundColor: AppColors.primary2,
-            height: 44,
-            radius: 220,
-          ),
+          child: EndTourButton(booking: booking),
         ),
         const SizedBox(width: 14),
         Container(

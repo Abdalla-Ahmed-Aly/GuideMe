@@ -137,6 +137,8 @@ import 'package:guide_me/features/guide_booking/domain/use_cases/get_guide_booki
     as _i479;
 import 'package:guide_me/features/guide_booking/domain/use_cases/guide_booking_filter_use_case.dart'
     as _i384;
+import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_action_cubit/guide_booking_actions_cubit.dart'
+    as _i123;
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart'
     as _i193;
 import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart'
@@ -317,13 +319,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
     );
-    gh.factory<_i193.GuideBookingCubit>(
-      () => _i193.GuideBookingCubit(
-        gh<_i479.GetGuideBookingUseCase>(),
-        gh<_i384.GuideBookingFilterUseCase>(),
-        gh<_i248.SocketEventBus>(),
-      ),
-    );
     gh.lazySingleton<_i448.GetCurrentLocationUseCase>(
       () => _i448.GetCurrentLocationUseCase(gh<_i392.LocationRepo>()),
     );
@@ -345,6 +340,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i393.VerifyForgetPasswordUseCase>(
       () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),
+    );
+    gh.factory<_i123.GuideBookingActionsCubit>(
+      () => _i123.GuideBookingActionsCubit(gh<_i580.GuideBookingRepo>()),
     );
     gh.factory<_i786.PickLocationCubit>(
       () => _i786.PickLocationCubit(
@@ -403,6 +401,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i187.GetCategoriesUsecase>(
       () => _i187.GetCategoriesUsecase(gh<_i1045.HomeRepo>()),
+    );
+    gh.factory<_i193.GuideBookingCubit>(
+      () => _i193.GuideBookingCubit(
+        gh<_i479.GetGuideBookingUseCase>(),
+        gh<_i384.GuideBookingFilterUseCase>(),
+        gh<_i248.SocketEventBus>(),
+      ),
     );
     gh.factory<_i772.RegisterCubit>(
       () => _i772.RegisterCubit(gh<_i885.RegisterUseCase>()),

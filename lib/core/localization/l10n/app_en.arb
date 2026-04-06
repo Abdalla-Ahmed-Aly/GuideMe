@@ -433,5 +433,8 @@
   "youAlreadyHaveATripOnThisDay": "You already have a trip on this day",
   "endTourMessage": "Are you sure you want to end the tour?",
   "youveCompletedThisTour": "You've completed this tour!",
-  "startTour": "Start Tour"
+  "startTour": "Start Tour",
+  "youveStartedThisTour": "You've started this tour!",
+  "error": "Error",
+  "tourCanOnlyBeStartedOnTheBookingDay": "Tour can only be started on the booking day"
 }
