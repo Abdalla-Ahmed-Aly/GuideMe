@@ -4,6 +4,7 @@ import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/entities/review_entity.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/comment_item_list_view.dart';
 import 'package:guide_me/features/booking/presentation/widgets/guide_profile_widgets/feed_back_travel.dart';
@@ -11,7 +12,6 @@ import 'package:guide_me/features/booking/presentation/widgets/guide_profile_wid
 import 'package:guide_me/features/dashboard/presentation/manager/Analysis_Cubit/analysis_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/analysis%20_screen_widgets/analysis_state_card_section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/analysis_card_shimmer.dart';
-
 
 class AnalysisScreenSection extends StatelessWidget {
   const AnalysisScreenSection({super.key});
@@ -56,7 +56,7 @@ class AnalysisScreenSection extends StatelessWidget {
                 }
               },
               builder: (context, state) {
-                if (state is AnalysisCubitLoading) {  
+                if (state is AnalysisCubitLoading) {
                   return const AnalysisCardShimmer();
                 }
                 if (state is AnalysisCubitSuccess) {
@@ -74,10 +74,35 @@ class AnalysisScreenSection extends StatelessWidget {
           const SizedBox(
             height: 35,
           ),
-          const RecentWidget(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.p),
+            child: const RecentWidget(),
+          ),
 
-          const CommentItemListView(
-            reviews: [],
+          BlocBuilder<AnalysisCubit, AnalysisCubitState>(
+            builder: (context, state) {
+              if (state is AnalysisCubitSuccess) {
+                final List<ReviewEntity> reviewsList = (state.analysisResponse.data.reviews as List)
+    .map((e) => e as ReviewEntity)
+    .toList();
+
+                if (reviewsList.isEmpty) {
+                  return const SizedBox(
+                    height: 150,
+                    child: Center(
+                      child: Text(
+                        'No feedback yet',
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      ),
+                    ),
+                  );
+                }
+
+                return CommentItemListView(reviews:reviewsList );
+              }
+
+              return const SizedBox();
+            },
           ),
         ],
       ),
