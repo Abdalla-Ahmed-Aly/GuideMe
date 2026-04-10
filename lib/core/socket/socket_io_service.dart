@@ -37,13 +37,23 @@ class SocketIOService implements SocketService {
     _socket?.dispose();
     _socket = null;
   }
+@override
+Stream<dynamic> on(String event) {
+  final controller = StreamController<dynamic>.broadcast();
+  
+  _socket?.on(event, (data) {
+    if (!controller.isClosed) {
+      controller.add(data);
+    }
+  });
 
-  @override
-  Stream<dynamic> on(String event) {
-    final controller = StreamController<dynamic>.broadcast();
-    _socket?.on(event, (data) => controller.add(data));
-    return controller.stream;
-  }
+  controller.onCancel = () {
+    _socket?.off(event);
+    controller.close();
+  };
+
+  return controller.stream;
+}
 
   @override
   void emit(String event, [dynamic data]) {
