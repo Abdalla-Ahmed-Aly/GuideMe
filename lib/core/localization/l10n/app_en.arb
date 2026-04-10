@@ -436,5 +436,6 @@
   "startTour": "Start Tour",
   "youveStartedThisTour": "You've started this tour!",
   "error": "Error",
-  "tourCanOnlyBeStartedOnTheBookingDay": "Tour can only be started on the booking day"
+  "tourCanOnlyBeStartedOnTheBookingDay": "Tour can only be started on the booking day",
+  "unknownName": "Unknown Name"
 }

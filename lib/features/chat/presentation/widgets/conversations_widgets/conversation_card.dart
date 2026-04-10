@@ -3,19 +3,23 @@ import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/presentation/widgets/conversations_widgets/conversation_user_image_and_status.dart';
+import 'package:intl/intl.dart';
 
 class ConversationCard extends StatelessWidget {
-  const ConversationCard({super.key});
+  const ConversationCard({super.key, required this.conversation});
+  final ConversationEntity conversation;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.chatScreen);
+        context.push(AppRoutes.chatScreen, extra: conversation);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+        margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
           color: const Color(0xffFBF0E0),
           borderRadius: BorderRadius.circular(20),
@@ -24,11 +28,12 @@ class ConversationCard extends StatelessWidget {
           ),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ConversationUserImageAndStatus(),
+            ConversationUserImageAndStatus(
+              imageUrl: conversation.user.photoUrl,
+            ),
 
-            const SizedBox(width: 12),
+            const SizedBox(width: 14),
 
             Expanded(
               child: Column(
@@ -38,7 +43,7 @@ class ConversationCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'John Doe',
+                          conversation.user.name ?? context.l10n.unknownName,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.poppinsSemiBold20,
                         ),
@@ -47,53 +52,20 @@ class ConversationCard extends StatelessWidget {
                       const SizedBox(width: 8),
 
                       Text(
-                        '2m ago',
+                        DateFormat("jm").format(
+                          DateTime.parse(conversation.createdAt),
+                        ), // TODO: change it to 5m ago or 1 hour later
                         style: AppTextStyles.poppinsMedium14.copyWith(
                           color: const Color(0xffF2930D),
                         ),
                       ),
                     ],
                   ),
+                  const SizedBox(height: 2),
                   Text(
-                    'Hello, how are you? Hello, how are you? Hello, how are you?',
+                    conversation.lastMessage,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.poppinsRegular14,
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF2930D),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: const Color(0xffD7D7D7),
-                          ),
-                        ),
-                        child: Text(
-                          context.l10n.live,
-                          style: AppTextStyles.poppinsMedium14.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(width: 10),
-
-                      Text(
-                        "Giza Plateau Exploration",
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.poppinsRegular14.copyWith(
-                          color: const Color(0xffBA9F76),
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),

@@ -125,6 +125,24 @@ import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
     as _i24;
+import 'package:guide_me/features/chat/data/data_sources/remote/chat_remote_data_source.dart'
+    as _i273;
+import 'package:guide_me/features/chat/data/data_sources/remote/chat_remote_data_source_impl.dart'
+    as _i94;
+import 'package:guide_me/features/chat/data/repos/chat_repo_impl.dart' as _i214;
+import 'package:guide_me/features/chat/domain/repos/chat_repo.dart' as _i870;
+import 'package:guide_me/features/chat/domain/use_cases/get_all_chat_messages.dart'
+    as _i1053;
+import 'package:guide_me/features/chat/domain/use_cases/get_all_conversations_use_case.dart'
+    as _i106;
+import 'package:guide_me/features/chat/domain/use_cases/send_message_use_case.dart'
+    as _i75;
+import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart'
+    as _i788;
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart'
+    as _i452;
+import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart'
+    as _i218;
 import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source.dart'
     as _i221;
 import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source_impl.dart'
@@ -193,6 +211,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
+    gh.factory<_i218.TrackingDetailsCubit>(() => _i218.TrackingDetailsCubit());
     gh.factory<_i140.TouristNavBarCubit>(() => _i140.TouristNavBarCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
@@ -236,6 +255,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i137.PlaceByCityCubit>(
       () => _i137.PlaceByCityCubit(gh<_i985.PlaceByCityUsecase>()),
+    );
+    gh.lazySingleton<_i273.ChatRemoteDataSource>(
+      () => _i94.ChatRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
     gh.lazySingleton<_i322.BookingRemoteDataSource>(
       () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
@@ -316,6 +338,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i593.ResetPasswordCubit>(
       () => _i593.ResetPasswordCubit(gh<_i865.ResetPasswordUseCase>()),
     );
+    gh.lazySingleton<_i870.ChatRepo>(
+      () => _i214.ChatRepoImpl(gh<_i273.ChatRemoteDataSource>()),
+    );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
     );
@@ -340,6 +365,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i393.VerifyForgetPasswordUseCase>(
       () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),
+    );
+    gh.lazySingleton<_i1053.GetAllChatMessagesUseCase>(
+      () => _i1053.GetAllChatMessagesUseCase(gh<_i870.ChatRepo>()),
+    );
+    gh.lazySingleton<_i106.GetAllConversationsUseCase>(
+      () => _i106.GetAllConversationsUseCase(gh<_i870.ChatRepo>()),
+    );
+    gh.lazySingleton<_i75.SendMessageUseCase>(
+      () => _i75.SendMessageUseCase(gh<_i870.ChatRepo>()),
     );
     gh.factory<_i123.GuideBookingActionsCubit>(
       () => _i123.GuideBookingActionsCubit(gh<_i580.GuideBookingRepo>()),
@@ -409,6 +443,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i248.SocketEventBus>(),
       ),
     );
+    gh.factory<_i452.ConversationCubit>(
+      () => _i452.ConversationCubit(gh<_i106.GetAllConversationsUseCase>()),
+    );
     gh.factory<_i772.RegisterCubit>(
       () => _i772.RegisterCubit(gh<_i885.RegisterUseCase>()),
     );
@@ -416,6 +453,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i50.InterestsCubit(
         gh<_i187.GetCategoriesUsecase>(),
         gh<_i726.AddInterestsUseCase>(),
+      ),
+    );
+    gh.factory<_i788.ChatCubit>(
+      () => _i788.ChatCubit(
+        gh<_i1053.GetAllChatMessagesUseCase>(),
+        gh<_i75.SendMessageUseCase>(),
       ),
     );
     gh.factory<_i622.GuideDataCubit>(

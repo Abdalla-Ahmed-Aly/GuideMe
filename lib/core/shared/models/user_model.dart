@@ -112,19 +112,19 @@ class UserModel {
         ? List<String>.from(json['expertise'])
         : [],
 
-    guideCities: json['guideCities'] != null
+    guideCities: json['guideCities'] != null || json['guideCities'] is Map<String, dynamic>
         ? (json['guideCities'] as List)
               .map((e) => CityModel.fromJson(e))
               .toList()
         : [],
 
-    certificates: json['certificates'] != null
+    certificates: json['certificates'] != null || json['certificates'] is Map<String, dynamic>
         ? (json['certificates'] as List)
               .map((e) => CertificateModel.fromJson(e))
               .toList()
         : [],
 
-    reviews: json['reviews'] != null
+    reviews: json['reviews'] != null || json['reviews'] is Map<String, dynamic>
         ? (json['reviews'] as List).map((e) => ReviewModel.fromJson(e)).toList()
         : [],
 

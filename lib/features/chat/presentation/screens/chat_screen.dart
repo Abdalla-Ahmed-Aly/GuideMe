@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_input_section.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_trip_details_card.dart';
-import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/messages_list_view.dart';
+import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/messages_list_bloc_builder.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/quick_replies_section.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -55,13 +55,13 @@ class ChatScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          BlocBuilder<ChatCubit, ChatState>(
+          BlocBuilder<TrackingDetailsCubit, TrackingDetailsState>(
             builder: (context, state) {
               if (!state.showTrakingDetials) {
                 return InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
-                    context.read<ChatCubit>().showTrackingCard();
+                    context.read<TrackingDetailsCubit>().showTrackingCard();
                   },
                   child: Hero(
                     tag: "tracking_details",
@@ -100,9 +100,9 @@ class ChatScreen extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                const MessagesListView(),
+                const MessagesListBlocBuilder(),
 
-                BlocBuilder<ChatCubit, ChatState>(
+                BlocBuilder<TrackingDetailsCubit, TrackingDetailsState>(
                   builder: (context, state) {
                     return Positioned(
                       top: 16,

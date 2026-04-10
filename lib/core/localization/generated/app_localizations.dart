@@ -2533,6 +2533,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tour can only be started on the booking day'**
   String get tourCanOnlyBeStartedOnTheBookingDay;
+
+  /// No description provided for @unknownName.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Name'**
+  String get unknownName;
 }
 
 class _AppLocalizationsDelegate

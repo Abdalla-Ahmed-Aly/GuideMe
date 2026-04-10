@@ -1256,4 +1256,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get tourCanOnlyBeStartedOnTheBookingDay =>
       'لا يمكن بدء الجولة إلا في يوم الحجز';
+
+  @override
+  String get unknownName => 'اسم غير معروف';
 }

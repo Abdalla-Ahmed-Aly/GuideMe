@@ -1258,4 +1258,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get tourCanOnlyBeStartedOnTheBookingDay =>
       'Tour can only be started on the booking day';
+
+  @override
+  String get unknownName => 'Unknown Name';
 }
