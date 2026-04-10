@@ -30,7 +30,7 @@ class ConversationCard extends StatelessWidget {
         child: Row(
           children: [
             ConversationUserImageAndStatus(
-              imageUrl: conversation.user.photoUrl,
+              user: conversation.user,
             ),
 
             const SizedBox(width: 14),

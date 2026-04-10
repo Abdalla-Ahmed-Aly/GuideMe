@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 
 class ConversationUserImageAndStatus extends StatelessWidget {
   const ConversationUserImageAndStatus({
     super.key,
-    required this.imageUrl,
+    required this.user,
   });
-  final String? imageUrl;
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,9 @@ class ConversationUserImageAndStatus extends StatelessWidget {
               width: 2,
             ),
           ),
-          child: imageUrl != null
+          child: user.photoUrl != null
               ? CustomNetworkImage(
-                  imageUrl: imageUrl!,
+                  imageUrl: user.photoUrl!,
                   fit: BoxFit.cover,
                 )
               : const Icon(
@@ -36,22 +37,23 @@ class ConversationUserImageAndStatus extends StatelessWidget {
                   size: 28,
                 ),
         ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Container(
-            width: 16,
-            height: 16,
-            decoration: BoxDecoration(
-              color: const Color(0xffF2930D),
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.white,
-                width: 2,
+        if (user.isOnline ?? false)
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              width: 16,
+              height: 16,
+              decoration: BoxDecoration(
+                color: const Color(0xffF2930D),
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2,
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }

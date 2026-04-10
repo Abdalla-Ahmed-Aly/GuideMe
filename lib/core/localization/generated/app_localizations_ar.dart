@@ -1262,4 +1262,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noConversations => 'لا توجد محادثات';
+
+  @override
+  String get today => 'اليوم';
+
+  @override
+  String get yesterday => 'الأمس';
 }

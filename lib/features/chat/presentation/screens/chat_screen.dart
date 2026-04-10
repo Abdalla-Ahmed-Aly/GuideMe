@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_input_section.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_trip_details_card.dart';
@@ -14,6 +16,7 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final conversation = GoRouterState.of(context).extra as ConversationEntity;
     return Scaffold(
       backgroundColor: const Color(0xffFCFAF8),
       appBar: AppBar(
@@ -27,7 +30,7 @@ class ChatScreen extends StatelessWidget {
         title: Column(
           children: [
             Text(
-              "Omar Yasser",
+              conversation.user.name ?? context.l10n.unknownName,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.poppinsSemiBold20,
             ),
@@ -37,14 +40,18 @@ class ChatScreen extends StatelessWidget {
                 Container(
                   width: 8,
                   height: 8,
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
+                  decoration: BoxDecoration(
+                    color: conversation.user.isOnline ?? false
+                        ? Colors.green
+                        : Colors.grey,
                     shape: BoxShape.circle,
                   ),
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  "ONLINE",
+                  conversation.user.isOnline ?? false
+                      ? context.l10n.online
+                      : context.l10n.offline,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.poppinsSemiBold14.copyWith(
                     color: const Color(0xff9C7A49),

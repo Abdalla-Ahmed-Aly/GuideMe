@@ -1264,4 +1264,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noConversations => 'No conversations';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get yesterday => 'Yesterday';
 }

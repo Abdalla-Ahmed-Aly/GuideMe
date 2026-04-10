@@ -438,5 +438,7 @@
   "error": "Error",
   "tourCanOnlyBeStartedOnTheBookingDay": "Tour can only be started on the booking day",
   "unknownName": "Unknown Name",
-  "noConversations": "No conversations"
+  "noConversations": "No conversations",
+  "today": "Today",
+  "yesterday": "Yesterday"
 }

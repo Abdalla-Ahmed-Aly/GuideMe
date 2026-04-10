@@ -26,8 +26,7 @@ class MessagesListBlocBuilder extends StatelessWidget {
           return FailureMessageWidget(error: error.message);
         }
         if (state is ChatSuccess) {
-          final reversedMessages = state.messages.reversed.toList();
-          return MessagesListView(messages: reversedMessages);
+          return MessagesListView(messages: state.messages);
         }
         return const SizedBox();
       },
