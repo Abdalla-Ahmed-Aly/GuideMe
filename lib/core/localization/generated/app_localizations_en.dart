@@ -1261,4 +1261,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unknownName => 'Unknown Name';
+
+  @override
+  String get noConversations => 'No conversations';
 }

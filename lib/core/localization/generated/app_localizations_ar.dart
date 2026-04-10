@@ -1259,4 +1259,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unknownName => 'اسم غير معروف';
+
+  @override
+  String get noConversations => 'لا توجد محادثات';
 }

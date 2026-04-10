@@ -1,5 +1,10 @@
+import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
+import 'package:guide_me/core/socket/socket_app_events.dart';
+import 'package:guide_me/core/socket/socket_event_bus.dart';
+import 'package:guide_me/features/chat/data/mappers/conversation_mapper.dart';
+import 'package:guide_me/features/chat/data/models/conversation_model.dart';
 import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/domain/use_cases/get_all_conversations_use_case.dart';
 import 'package:injectable/injectable.dart';
@@ -8,9 +13,14 @@ part 'conversation_state.dart';
 
 @injectable
 class ConversationCubit extends Cubit<ConversationState> {
-  ConversationCubit(this._getAllConversationsUseCase)
+  ConversationCubit(this._getAllConversationsUseCase, this._socketEventBus)
     : super(ConversationInitial());
   final GetAllConversationsUseCase _getAllConversationsUseCase;
+  final SocketEventBus _socketEventBus;
+
+  List<ConversationEntity> conversations = [];
+  List<ConversationEntity> filteredConversations = [];
+  String _lastQuery = "";
 
   void safeEmit(ConversationState state) {
     if (!isClosed) emit(state);
@@ -18,10 +28,64 @@ class ConversationCubit extends Cubit<ConversationState> {
 
   Future<void> getAllConversations() async {
     safeEmit(ConversationLoading());
+
+    _listenToConversationUpdates();
+
     final result = await _getAllConversationsUseCase();
     result.fold(
       (failure) => safeEmit(ConversationFailure(failure)),
-      (conversations) => safeEmit(ConversationSuccess(conversations)),
+      (conversations) {
+        this.conversations = conversations;
+        filteredConversations = conversations;
+        safeEmit(ConversationSuccess(conversations));
+      },
     );
+  }
+
+  void _listenToConversationUpdates() {
+    _socketEventBus.listenTo(SocketAppEvents.conversationUpdated.value).listen(
+      (data) {
+        final Map<String, dynamic> json = data is String
+            ? jsonDecode(data)
+            : data as Map<String, dynamic>;
+
+        final conversation = ConversationModel.fromJson(json);
+        _updateConversation(ConversationMapper.toEntity(conversation));
+      },
+    );
+  }
+
+  void _updateConversation(ConversationEntity conversation) {
+    if (state is ConversationSuccess) {
+      final index = conversations.indexWhere(
+        (c) => c.conversationId == conversation.conversationId,
+      );
+      if (index != -1) {
+        conversations[index].lastMessage = conversation.lastMessage;
+        conversations[index].createdAt = conversation.createdAt;
+
+        final item = conversations.removeAt(index);
+        conversations.insert(0, item);
+      } else {
+        conversations.insert(0, conversation);
+      }
+
+      search(_lastQuery);
+    }
+  }
+
+  void search(String query) {
+    _lastQuery = query;
+    if (query.isEmpty) {
+      safeEmit(ConversationSuccess(List.from(conversations)));
+      return;
+    }
+    if (state is ConversationSuccess) {
+      filteredConversations = conversations.where((c) {
+        return c.user.name?.toLowerCase().contains(query.toLowerCase()) ??
+            false;
+      }).toList();
+      safeEmit(ConversationSuccess(List.from(filteredConversations)));
+    }
   }
 }

@@ -443,9 +443,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i248.SocketEventBus>(),
       ),
     );
-    gh.factory<_i452.ConversationCubit>(
-      () => _i452.ConversationCubit(gh<_i106.GetAllConversationsUseCase>()),
-    );
     gh.factory<_i772.RegisterCubit>(
       () => _i772.RegisterCubit(gh<_i885.RegisterUseCase>()),
     );
@@ -485,6 +482,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i940.LoginCubit>(
       () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
+    );
+    gh.factory<_i452.ConversationCubit>(
+      () => _i452.ConversationCubit(
+        gh<_i106.GetAllConversationsUseCase>(),
+        gh<_i248.SocketEventBus>(),
+      ),
     );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),

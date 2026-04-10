@@ -438,5 +438,6 @@
   "youveStartedThisTour": "لقد بدأت هذه الجولة!",
   "error": "خطأ",
   "tourCanOnlyBeStartedOnTheBookingDay": "لا يمكن بدء الجولة إلا في يوم الحجز",
-  "unknownName": "اسم غير معروف"
+  "unknownName": "اسم غير معروف",
+  "noConversations": "لا توجد محادثات"
 }

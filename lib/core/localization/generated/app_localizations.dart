@@ -2539,6 +2539,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unknown Name'**
   String get unknownName;
+
+  /// No description provided for @noConversations.
+  ///
+  /// In en, this message translates to:
+  /// **'No conversations'**
+  String get noConversations;
 }
 
 class _AppLocalizationsDelegate

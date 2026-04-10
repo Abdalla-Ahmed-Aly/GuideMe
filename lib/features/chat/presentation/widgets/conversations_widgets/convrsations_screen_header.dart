@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 
 class ConversationsSearchSection extends StatelessWidget {
   const ConversationsSearchSection({super.key});
@@ -15,6 +17,9 @@ class ConversationsSearchSection extends StatelessWidget {
         borderSide: BorderSide(color: Colors.black.withValues(alpha: .1)),
         borderRadius: BorderRadius.circular(20),
       ),
+      onChanged: (value) {
+        context.read<ConversationCubit>().search(value);
+      },
     );
   }
 }
