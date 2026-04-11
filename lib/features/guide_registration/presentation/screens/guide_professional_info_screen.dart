@@ -56,12 +56,7 @@ class _GuideProfessionalInfoScreenState extends State<GuideProfessionalInfoScree
         backgroundColor: const Color(0xffF8F7F5),
         appBar: AppBar(
           backgroundColor: const Color(0xffF8F7F5),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new),
-            onPressed: () {
-              context.pop();
-            },
-          ),
+          
           title: Text(
             context.l10n.onboarding,
             style: AppTextStyles.poppinsSemiBold20,
