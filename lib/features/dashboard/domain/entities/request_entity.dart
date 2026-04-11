@@ -1,0 +1,22 @@
+
+class RequestCardEntity {
+  final String userName;
+  final String userImage;
+  final String language;
+  final double price;
+  final String priceType;
+  final String placeTitle;
+  final DateTime date;
+  final num durationMinutes;
+
+  const RequestCardEntity({
+    required this.userName,
+    required this.userImage,
+    required this.language,
+    required this.price,
+    required this.priceType,
+    required this.placeTitle,
+    required this.date,
+    required this.durationMinutes,
+  });
+}
