@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/domain/entities/message_entity.dart';
 import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
@@ -46,7 +47,7 @@ class _MessagesListViewState extends State<MessagesListView> {
     String? lastLabel;
 
     for (final msg in messages) {
-      final label = _getDateLabel(msg.createdAt);
+      final label = _getDateLabel(msg.createdAt.toLocal());
       if (label != lastLabel) {
         items.add(label);
         lastLabel = label;
@@ -113,15 +114,15 @@ class _DateHeader extends StatelessWidget {
     return Center(
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 6),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         decoration: BoxDecoration(
-          color: Colors.grey.withValues(alpha: 0.2),
-          borderRadius: BorderRadius.circular(20),
+          color: AppColors.primary.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Text(
           label,
           style: AppTextStyles.poppinsMedium14.copyWith(
-            color: const Color(0xff9C7A49),
+            color: AppColors.primary,
           ),
         ),
       ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/domain/entities/message_entity.dart';
+import 'package:guide_me/features/chat/domain/enums/message_status.dart';
 import 'package:intl/intl.dart';
 
 class SenderMessageBubble extends StatelessWidget {
@@ -66,17 +68,15 @@ class SenderMessageBubble extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            DateFormat.jm().format(message.createdAt),
+                            DateFormat.jm().format(
+                              message.createdAt.toLocal(),
+                            ),
                             style: AppTextStyles.poppinsRegular14.copyWith(
                               color: Colors.white.withValues(alpha: 0.7),
                             ),
                           ),
-                          const SizedBox(width: 4),
-                          Icon(
-                            Icons.done_all_rounded,
-                            color: Colors.white.withValues(alpha: 0.7),
-                            size: 18,
-                          ),
+                          const SizedBox(width: 6),
+                          _buildStatusIcon(message.status),
                         ],
                       ),
                     ),
@@ -88,5 +88,35 @@ class SenderMessageBubble extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget _buildStatusIcon(MessageStatus status) {
+    switch (status) {
+      case MessageStatus.loading:
+        return Icon(
+          Icons.access_time_rounded,
+          color: Colors.white.withValues(alpha: 0.7),
+          size: 18,
+        );
+      case MessageStatus.sent:
+        return Icon(
+          Icons.done_all_rounded,
+          color: Colors.white.withValues(alpha: 0.7),
+          size: 18,
+        );
+      case MessageStatus.seen:
+        return const Icon(
+          Icons.done_all_rounded,
+          // color: Color(0xff4FC3F7),
+          color: AppColors.primary650,
+          size: 18,
+        );
+      case MessageStatus.error:
+        return const Icon(
+          Icons.error_outline_rounded,
+          color: Colors.redAccent,
+          size: 18,
+        );
+    }
   }
 }

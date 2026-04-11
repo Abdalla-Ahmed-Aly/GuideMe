@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
@@ -17,6 +18,8 @@ class ConversationCubit extends Cubit<ConversationState> {
     : super(ConversationInitial());
   final GetAllConversationsUseCase _getAllConversationsUseCase;
   final SocketEventBus _socketEventBus;
+
+  StreamSubscription? _conversationSubscription;
 
   List<ConversationEntity> conversations = [];
   List<ConversationEntity> filteredConversations = [];
@@ -43,16 +46,20 @@ class ConversationCubit extends Cubit<ConversationState> {
   }
 
   void _listenToConversationUpdates() {
-    _socketEventBus.listenTo(SocketAppEvents.conversationUpdated.value).listen(
-      (data) {
-        final Map<String, dynamic> json = data is String
-            ? jsonDecode(data)
-            : data as Map<String, dynamic>;
+    _conversationSubscription = _socketEventBus
+        .listenTo(SocketAppEvents.conversationUpdated.value)
+        .listen(
+          (data) {
+            final Map<String, dynamic> json = data is String
+                ? jsonDecode(data)
+                : data as Map<String, dynamic>;
 
-        final conversation = ConversationModel.fromJson(json);
-        _updateConversation(ConversationMapper.toEntity(conversation));
-      },
-    );
+            final conversation = ConversationModel.fromJson(
+              json['data']['conversation'],
+            );
+            _updateConversation(ConversationMapper.toEntity(conversation));
+          },
+        );
   }
 
   void _updateConversation(ConversationEntity conversation) {
@@ -87,5 +94,11 @@ class ConversationCubit extends Cubit<ConversationState> {
       }).toList();
       safeEmit(ConversationSuccess(List.from(filteredConversations)));
     }
+  }
+
+  @override
+  Future<void> close() async {
+    _conversationSubscription?.cancel();
+    return super.close();
   }
 }

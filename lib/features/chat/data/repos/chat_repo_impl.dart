@@ -33,9 +33,11 @@ class ChatRepoImpl implements ChatRepo {
     String conversationId,
   ) async {
     try {
-      final response = await _chatRemoteDataSource.getAllMessages(conversationId);
+      final response = await _chatRemoteDataSource.getAllMessages(
+        conversationId,
+      );
       return right(
-        response.map((e) => MessageMapper.mapToEntity(e)).toList(),
+        response.map((e) => MessageMapper.toEntity(e)).toList(),
       );
     } catch (e) {
       return left(ErrorHandler.handle(e));

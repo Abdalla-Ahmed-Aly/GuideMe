@@ -53,7 +53,7 @@ class ConversationCard extends StatelessWidget {
 
                       Text(
                         DateFormat("jm").format(
-                          DateTime.parse(conversation.createdAt),
+                          DateTime.parse(conversation.createdAt).toLocal(),
                         ), // TODO: change it to 5m ago or 1 hour later
                         style: AppTextStyles.poppinsMedium14.copyWith(
                           color: const Color(0xffF2930D),

@@ -452,12 +452,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i726.AddInterestsUseCase>(),
       ),
     );
-    gh.factory<_i788.ChatCubit>(
-      () => _i788.ChatCubit(
-        gh<_i1053.GetAllChatMessagesUseCase>(),
-        gh<_i75.SendMessageUseCase>(),
-      ),
-    );
     gh.factory<_i622.GuideDataCubit>(
       () => _i622.GuideDataCubit(gh<_i292.GetGuideDataUseCase>()),
     );
@@ -486,6 +480,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i452.ConversationCubit>(
       () => _i452.ConversationCubit(
         gh<_i106.GetAllConversationsUseCase>(),
+        gh<_i248.SocketEventBus>(),
+      ),
+    );
+    gh.factory<_i788.ChatCubit>(
+      () => _i788.ChatCubit(
+        gh<_i1053.GetAllChatMessagesUseCase>(),
+        gh<_i75.SendMessageUseCase>(),
         gh<_i248.SocketEventBus>(),
       ),
     );

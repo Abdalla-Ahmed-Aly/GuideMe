@@ -1,9 +1,10 @@
 import 'package:guide_me/core/shared/mapper/user_info_mapper.dart';
 import 'package:guide_me/features/chat/data/models/message_model.dart';
 import 'package:guide_me/features/chat/domain/entities/message_entity.dart';
+import 'package:guide_me/features/chat/domain/enums/message_status.dart';
 
 class MessageMapper {
-  static MessageEntity mapToEntity(MessageModel model) {
+  static MessageEntity toEntity(MessageModel model) {
     return MessageEntity(
       id: model.id,
       booking: model.booking,
@@ -16,6 +17,7 @@ class MessageMapper {
       createdAt: model.createdAt,
       updatedAt: model.updatedAt,
       isMine: model.isMine ?? true,
+      status: model.isSeen ? MessageStatus.seen : MessageStatus.sent,
     );
   }
 }

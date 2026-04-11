@@ -372,9 +372,10 @@ abstract class AppRouter {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) =>
-                    getIt<ChatCubit>()
-                      ..getAllChatMessages(conversation.conversationId),
+                create: (context) => getIt<ChatCubit>()
+                  ..getAllChatMessages(
+                    conversationId: conversation.conversationId,
+                  ),
               ),
               BlocProvider(
                 create: (context) => getIt<TrackingDetailsCubit>(),

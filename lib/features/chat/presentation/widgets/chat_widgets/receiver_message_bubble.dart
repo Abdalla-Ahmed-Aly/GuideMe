@@ -66,7 +66,9 @@ class ReceiverMessageBubble extends StatelessWidget {
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       child: Text(
-                        DateFormat.jm().format(message.createdAt),
+                        DateFormat.jm().format(
+                          message.createdAt.toLocal(),
+                        ),
                         style: AppTextStyles.poppinsRegular14.copyWith(
                           color: const Color(0xff9C7A49),
                         ),

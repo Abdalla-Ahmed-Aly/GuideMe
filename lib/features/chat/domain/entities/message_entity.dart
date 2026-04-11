@@ -1,4 +1,5 @@
 import 'package:guide_me/core/shared/entities/user_info_entity.dart';
+import 'package:guide_me/features/chat/domain/enums/message_status.dart';
 
 class MessageEntity {
   final String id;
@@ -12,6 +13,7 @@ class MessageEntity {
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool isMine;
+  final MessageStatus status;
 
   MessageEntity({
     required this.id,
@@ -25,5 +27,23 @@ class MessageEntity {
     required this.createdAt,
     required this.updatedAt,
     required this.isMine,
+    this.status = MessageStatus.sent,
   });
+
+  MessageEntity copyWith({MessageStatus? status}) {
+    return MessageEntity(
+      id: id,
+      booking: booking,
+      conversationId: conversationId,
+      sender: sender,
+      receiver: receiver,
+      message: message,
+      type: type,
+      isSeen: isSeen,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      isMine: isMine,
+      status: status ?? this.status,
+    );
+  }
 }

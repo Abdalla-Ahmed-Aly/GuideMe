@@ -60,6 +60,9 @@ class _ChatInputSectionState extends State<ChatInputSection> {
                   hintText: context.l10n.chat_type_message_hint,
                   hintColor: const Color(0xff9C7A49),
                   fillColor: const Color(0xffF3F4F6),
+                  // onChanged: (value) {
+                  //   context.read<ChatCubit>().sendTypingEvent();
+                  // },
                 ),
               ),
 
