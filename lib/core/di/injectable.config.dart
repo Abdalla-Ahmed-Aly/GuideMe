@@ -449,8 +449,8 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i480.DashboardSocketRepository>(),
       ),
     );
-    gh.factory<_i624.DashboardCubitCubit>(
-      () => _i624.DashboardCubitCubit(
+    gh.factory<_i624.DashboardCubit>(
+      () => _i624.DashboardCubit(
         gh<_i542.GetRequestsHistoryUseCase>(),
         gh<_i108.ListenToIncomingRequestsUseCase>(),
       ),

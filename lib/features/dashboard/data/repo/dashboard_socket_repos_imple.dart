@@ -33,6 +33,8 @@ class DashboardSocketRepositoryImpl extends DashboardSocketRepository {
 }).toList();
       return Right(entities);
     } catch (e) {
+      print("🔥 ERROR TYPE: ${e.runtimeType}");
+  print("🔥 ERROR: $e");
       return left(ErrorHandler.handle(e));
     }
   }

@@ -7,7 +7,7 @@ class BookingRequestModel {
   final PlaceModel place;
   final DateTime bookingDate;
   final int persons;
-  final double totalPrice;
+  final int totalPrice;
   final String status;
 
   BookingRequestModel({

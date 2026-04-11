@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -24,11 +25,10 @@ class DashboardSection extends StatelessWidget {
       listener: (context, state) {
         if (state is ToogleOnlineStatusError) {
           context.showErrorSnakbar(message: state.message);
-        }
-      else if (state is ToogleOnlineStatusChanged) {
+        } else if (state is ToogleOnlineStatusChanged) {
           if (state.isOnline) {
             context.read<DashboardCubit>().getRequestsHistory();
-          }else{
+          } else {
             context.read<DashboardCubit>().resetToInitial();
           }
         }
@@ -90,10 +90,13 @@ class ListviewRequiestItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DashboardCubit, DashboardCubitState>(
+    return BlocConsumer<DashboardCubit, DashboardCubitState>(
       builder: (context, state) {
         if (state is DashboardCubitInitial) {
-          return Center(
+          return Container(
+            width: double.infinity,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(vertical: 50),
             child: Text(
               "You are currently offline. Open status to receive requests.",
               textAlign: TextAlign.center,
@@ -112,7 +115,7 @@ class ListviewRequiestItem extends StatelessWidget {
             ),
           );
         }
-
+    
         if (state is DashboardCubitSuccess) {
           final requests = state.requestsHistory;
           if (requests.isEmpty) {
@@ -144,6 +147,14 @@ class ListviewRequiestItem extends StatelessWidget {
           );
         }
         return const SizedBox();
+      }, listener: (BuildContext context, DashboardCubitState state) { 
+        if (state is DashboardCubitFailure) {
+            final error = FailureUiMapper.map(
+                    context: context,
+                    failure: state.failure,
+                  );
+                  context.showErrorSnakbar(message: error.message);
+          }
       },
     );
   }

@@ -14,7 +14,7 @@ class UserInforamtionModel {
     return UserInforamtionModel(
       id: json['_id'],
       name: json['name'],
-      image: json['photo']['secure_url'],
+      image: json['photo']?['secure_url'] ?? '',
     );
   }
 }

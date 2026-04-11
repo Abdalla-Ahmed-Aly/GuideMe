@@ -3,7 +3,7 @@ class RequestCardEntity {
   final String userName;
   final String userImage;
   final String language;
-  final double price;
+  final int price;
   final String priceType;
   final String placeTitle;
   final DateTime date;
