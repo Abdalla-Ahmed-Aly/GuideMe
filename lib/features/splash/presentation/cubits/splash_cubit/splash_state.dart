@@ -10,3 +10,11 @@ final class SplashAuthenticated extends SplashState {
 }
 
 final class SplashUnAuthenticated extends SplashState {}
+
+final class SplashGuideOnboardingPending extends SplashState {}
+final class SplashGuideOnboardingApproved extends SplashState {}
+final class SplashGuideOnboardingRejected extends SplashState {
+  final String? reason;
+  SplashGuideOnboardingRejected(this.reason);
+}
+final class SplashGuideOnboardingNotSubmitted extends SplashState {}

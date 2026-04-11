@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/work_hours_cubit/work_hours_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 
 class GuideWorkingHours extends StatelessWidget {
   const GuideWorkingHours({super.key});
@@ -37,30 +38,50 @@ class GuideWorkingHours extends StatelessWidget {
           ),
           const SizedBox(height: 22),
 
-          BlocBuilder<WorkHoursCubit, WorkHoursState>(
+          BlocBuilder<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
             builder: (context, state) {
-              final cubit = context.read<WorkHoursCubit>();
+              final cubit = context.read<GuideRegistrationSharedCubit>();
+              String fromTime = "09:00";
+              String toTime = "17:00";
+              
+              if (state is GuideRegistrationFormData) {
+                fromTime = state.model.availability.from;
+                toTime = state.model.availability.to;
+              }
+
+              TimeOfDay _parse(String time) {
+                final parts = time.split(':');
+                if (parts.length != 2) return const TimeOfDay(hour: 9, minute: 0);
+                return TimeOfDay(hour: int.tryParse(parts[0]) ?? 9, minute: int.tryParse(parts[1]) ?? 0);
+              }
+
+              String _format(TimeOfDay time) {
+                final hh = time.hour.toString().padLeft(2, '0');
+                final mm = time.minute.toString().padLeft(2, '0');
+                return "$hh:$mm";
+              }
+
+              final fromTod = _parse(fromTime);
+              final toTod = _parse(toTime);
+
               return Row(
                 children: [
                   // From
                   _buildTimePicker(
                     label: context.l10n.from,
                     context: context,
-                    isCompleted: state.isFromValid,
+                    isCompleted: true,
                     onTap: () async {
                       final picked = await showTimePicker(
                         context: context,
-                        initialTime:
-                            state.from ?? const TimeOfDay(hour: 9, minute: 0),
+                        initialTime: fromTod,
                       );
 
                       if (picked != null) {
-                        cubit.updateFrom(picked);
+                        cubit.setAvailability(from: _format(picked));
                       }
                     },
-                    time: state.from == null
-                        ? context.l10n.selectTime
-                        : cubit.format(state.from!),
+                    time: fromTime,
                   ),
 
                   const SizedBox(width: 16),
@@ -69,21 +90,18 @@ class GuideWorkingHours extends StatelessWidget {
                   _buildTimePicker(
                     label: context.l10n.to,
                     context: context,
-                    isCompleted: state.isToValid,
+                    isCompleted: true,
                     onTap: () async {
                       final picked = await showTimePicker(
                         context: context,
-                        initialTime:
-                            state.to ?? const TimeOfDay(hour: 17, minute: 0),
+                        initialTime: toTod,
                       );
 
                       if (picked != null) {
-                        cubit.updateTo(picked);
+                        cubit.setAvailability(to: _format(picked));
                       }
                     },
-                    time: state.to == null
-                        ? context.l10n.selectTime
-                        : cubit.format(state.to!),
+                    time: toTime,
                   ),
                 ],
               );

@@ -9,104 +9,125 @@ import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/verification_issue_section.dart';
 import 'package:lottie/lottie.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/network/api_service.dart';
+import 'package:guide_me/features/guide_registration/data/repositories/guide_registration_repository.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/verification_status/verification_status_cubit.dart';
+
 class VerificationFailedScreen extends StatelessWidget {
-  const VerificationFailedScreen({super.key});
+  final String? reason;
+  const VerificationFailedScreen({super.key, this.reason});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffFCFAF8),
-      appBar: AppBar(
+    return BlocProvider(
+      create: (context) => VerificationStatusCubit(
+        GuideRegistrationRepository(getIt<ApiService>()),
+      )..checkStatus(),
+      child: Scaffold(
         backgroundColor: const Color(0xffFCFAF8),
-        title: Text(
-          context.l10n.onboarding,
-          style: AppTextStyles.poppinsSemiBold20,
+        appBar: AppBar(
+          backgroundColor: const Color(0xffFCFAF8),
+          title: Text(
+            context.l10n.onboarding,
+            style: AppTextStyles.poppinsSemiBold20,
+          ),
         ),
-      ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20.p),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: constraints.maxHeight,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      // Image
-                      Lottie.asset(
-                        AppLotties.cancelBubbles,
-                        height: 150.h,
-                      ),
-
-                      const SizedBox(height: 16),
-
-                      Text(
-                        context.l10n.actionRequired,
-                        style: AppTextStyles.poppinsSemiBold24,
-                      ),
-
-                      const SizedBox(height: 16),
-
-                      Text(
-                        context.l10n.verificationFailedMessage,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.poppinsLight18.copyWith(
-                          color: const Color(0xff9C7A49),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.p),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        // Image
+                        Lottie.asset(
+                          AppLotties.cancelBubbles,
+                          height: 150.h,
                         ),
-                      ),
 
-                      const SizedBox(height: 28),
+                        const SizedBox(height: 16),
 
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          context.l10n.issuesFound,
-                          style: AppTextStyles.poppinsSemiBold14.copyWith(
+                        Text(
+                          context.l10n.actionRequired,
+                          style: AppTextStyles.poppinsSemiBold24,
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        Text(
+                          context.l10n.verificationFailedMessage,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.poppinsLight18.copyWith(
                             color: const Color(0xff9C7A49),
                           ),
                         ),
-                      ),
 
-                      const SizedBox(height: 14),
+                        const SizedBox(height: 28),
 
-                      const VerificationIssueSection(),
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      const SizedBox(height: 16),
-
-                      Text(
-                        context.l10n.viewDocumentGuidelines,
-                        style: AppTextStyles.poppinsLight14.copyWith(
-                          color: const Color(0xff9C7A49),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            context.l10n.issuesFound,
+                            style: AppTextStyles.poppinsSemiBold14.copyWith(
+                              color: const Color(0xff9C7A49),
+                            ),
+                          ),
                         ),
-                      ),
 
-                      const SizedBox(height: 24),
+                        const SizedBox(height: 14),
 
-                      AppButton(
-                        onPressed: () {
-                          context.go(AppRoutes.guideProfessionalInfoScreen);
-                        },
-                        text: context.l10n.updateDocuments,
-                        radius: 15,
-                        height: 48.h,
-                      ),
+                        BlocBuilder<VerificationStatusCubit, VerificationStatusState>(
+                          builder: (context, state) {
+                            String? displayReason = reason;
+                            if (state is VerificationStatusRejected) {
+                              displayReason = state.reason ?? reason;
+                            }
+                            
+                            return VerificationIssueSection(reason: displayReason);
+                          },
+                        ),
+                      ],
+                    ),
 
-                      const SizedBox(height: 30),
-                    ],
-                  ),
-                ],
+                    Column(
+                      children: [
+                        const SizedBox(height: 16),
+
+                        Text(
+                          context.l10n.viewDocumentGuidelines,
+                          style: AppTextStyles.poppinsLight14.copyWith(
+                            color: const Color(0xff9C7A49),
+                          ),
+                        ),
+
+                        const SizedBox(height: 24),
+
+                        AppButton(
+                          onPressed: () {
+                            context.go(AppRoutes.guideProfessionalInfoScreen);
+                          },
+                          text: context.l10n.updateDocuments,
+                          radius: 15,
+                          height: 48.h,
+                        ),
+
+                        const SizedBox(height: 30),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

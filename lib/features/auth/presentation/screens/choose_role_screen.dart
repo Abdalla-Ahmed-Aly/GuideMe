@@ -7,73 +7,92 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/core/shared/enums/user_role.dart';
+import 'package:guide_me/core/services/hive_service.dart';
+import 'package:guide_me/features/auth/presentation/widgets/role_selection_widgets/role_selection_card.dart';
 
-class ChooseRoleScreen extends StatelessWidget {
+class ChooseRoleScreen extends StatefulWidget {
   const ChooseRoleScreen({super.key});
+
+  @override
+  State<ChooseRoleScreen> createState() => _ChooseRoleScreenState();
+}
+
+class _ChooseRoleScreenState extends State<ChooseRoleScreen> {
+  UserRole? selectedRole;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios, color: AppColors.primary),
+          onPressed: () => context.pop(),
+        ),
+      ),
       body: SingleChildScrollView(
-        physics: const ClampingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: size.height * 0.13),
-
+              const SizedBox(height: 20),
+              
               Text(
                 context.l10n.chooseYourRole,
-                style: AppTextStyles.poppinsBold38.copyWith(
+                style: AppTextStyles.poppinsBold32.copyWith(
                   color: AppColors.primary,
                 ),
               ),
-
-              SizedBox(height: size.height * 0.05),
-
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  AppImages.chooseRole,
+              
+              const SizedBox(height: 12),
+              
+              Text(
+                "Please select your role to provide you with the best experience",
+                style: AppTextStyles.poppinsRegular16.copyWith(
+                  color: AppColors.natural6,
                 ),
               ),
 
-              SizedBox(height: size.height * 0.05),
+              const SizedBox(height: 40),
 
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 60.p),
-                child: AppButton(
-                  onPressed: () {
-                    context.push(AppRoutes.selectInterestsScreen);
-                  },
-                  text: context.l10n.tourist,
-                  radius: 40,
-                  textStyle: AppTextStyles.interSemiBold24,
-                ),
+              RoleSelectionCard(
+                role: UserRole.tourist,
+                isSelected: selectedRole == UserRole.tourist,
+                title: context.l10n.tourist,
+                icon: Icons.person_pin_circle_outlined,
+                onTap: () {
+                  setState(() => selectedRole = UserRole.tourist);
+                  HiveService.saveUserRole(UserRole.tourist);
+                  // Immediate navigation
+                  Future.delayed(const Duration(milliseconds: 400), () {
+                    if (mounted) context.push(AppRoutes.selectInterestsScreen);
+                  });
+                },
               ),
 
-              // 25.verticalSpace,
-              const SizedBox(height: 25),
+              const SizedBox(height: 16),
 
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 60.p),
-                child: AppButton(
-                  onPressed: () {
-                    context.push(AppRoutes.guideProfessionalInfoScreen);
-                  },
-                  text: context.l10n.tourGuide,
-                  radius: 40,
-                  textStyle: AppTextStyles.interSemiBold24,
-                ),
+              RoleSelectionCard(
+                role: UserRole.guide,
+                isSelected: selectedRole == UserRole.guide,
+                title: context.l10n.tourGuide,
+                icon: Icons.explore_outlined,
+                onTap: () {
+                  setState(() => selectedRole = UserRole.guide);
+                  HiveService.saveUserRole(UserRole.guide);
+                  // Immediate navigation
+                  Future.delayed(const Duration(milliseconds: 400), () {
+                    if (mounted) context.push(AppRoutes.guideProfessionalInfoScreen);
+                  });
+                },
               ),
 
-              // To make the column take the full width and center the widgets
-              double.infinity.horizontalSpace,
+              const SizedBox(height: 32),
             ],
           ),
         ),

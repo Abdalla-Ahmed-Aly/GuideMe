@@ -13,4 +13,6 @@ abstract class MediaPickerService {
   Future<List<PickedFileModel?>> pickFiles({
     List<String>? allowedExtensions,
   });
+
+  Future<PickedFileModel?> persistFile(PickedFileModel pickedFile, {required String subDirectory});
 }

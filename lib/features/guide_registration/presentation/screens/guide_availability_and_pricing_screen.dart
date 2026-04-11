@@ -10,6 +10,9 @@ import 'package:guide_me/features/guide_registration/presentation/widgets/availa
 import 'package:guide_me/features/guide_registration/presentation/widgets/availability_and_pricing_widgets/pricing_section.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/availability_and_pricing_widgets/weekly_schedule_list.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 import '../widgets/availability_and_pricing_widgets/availability_and_pricing_header.dart';
 
 class GuideAvailabilityAndPricingScreen extends StatelessWidget {
@@ -106,12 +109,26 @@ class GuideAvailabilityAndPricingScreen extends StatelessWidget {
                 // save & continue button
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32),
-                  child: AppButton(
-                    text: context.l10n.saveAndContinue,
-                    radius: 24.r,
-                    height: 48.h,
-                    onPressed: () {
-                      context.go(AppRoutes.guideVerificationSuccessScreen);
+                  child: BlocConsumer<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
+                    listener: (context, state) {
+                      if (state is GuideRegistrationSuccess) {
+                        context.go(AppRoutes.guideVerificationScreen);
+                      } else if (state is GuideRegistrationError) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(state.message)),
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return AppButton(
+                        text: context.l10n.saveAndContinue,
+                        radius: 24.r,
+                        height: 48.h,
+                        isLoading: state is GuideRegistrationLoading,
+                        onPressed: () {
+                          context.read<GuideRegistrationSharedCubit>().submitOnboarding();
+                        },
+                      );
                     },
                   ),
                 ),

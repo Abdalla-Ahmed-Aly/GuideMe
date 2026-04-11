@@ -3,7 +3,8 @@ import 'package:guide_me/features/guide_registration/presentation/widgets/verifi
 import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/document_issues_list_view.dart';
 
 class VerificationIssueSection extends StatelessWidget {
-  const VerificationIssueSection({super.key});
+  final String? reason;
+  const VerificationIssueSection({super.key, this.reason});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,10 @@ class VerificationIssueSection extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Column(
+      child: Column(
         children: [
-          DocumentIssuesListView(),
-
-          AdminNoteCard(),
+          const DocumentIssuesListView(),
+          AdminNoteCard(reason: reason),
         ],
       ),
     );

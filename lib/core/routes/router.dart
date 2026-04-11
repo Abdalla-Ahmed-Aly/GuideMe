@@ -58,10 +58,7 @@ import 'package:guide_me/features/guide_booking/presentation/cubits/guide_bookin
 import 'package:guide_me/features/guide_profile/presentation/cubits/guide_profile_cubit/guide_profile_cubit.dart';
 import 'package:guide_me/features/guide_profile/presentation/screens/add_certification_screen.dart';
 import 'package:guide_me/features/guide_profile/presentation/screens/tour_guide_profile_screen.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/professional_info_cubit/professional_info_cubit.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/select_guide_cities_cubit/select_guide_cities_cubit.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/work_hours_cubit/work_hours_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_availability_and_pricing_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_expertise_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_professional_info_screen.dart';
@@ -310,35 +307,31 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.guideProfessionalInfoScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => ProfessionalInfoCubit(MediaPickerServiceImpl()),
+        builder: (context, state) => BlocProvider.value(
+          value: getIt<GuideRegistrationSharedCubit>()..initForm(),
           child: const GuideProfessionalInfoScreen(),
         ),
       ),
       GoRoute(
         path: AppRoutes.guideExpertiseScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => SpokenLanguagesCubit(),
+        builder: (context, state) => BlocProvider.value(
+          value: getIt<GuideRegistrationSharedCubit>(),
           child: const GuideExpertiseScreen(),
         ),
       ),
       GoRoute(
         path: AppRoutes.guideAvailabilityAndPricingScreen,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => SelectGuideCitiesCubit(),
-            ),
-            BlocProvider(
-              create: (context) => WorkHoursCubit(),
-            ),
-          ],
+        builder: (context, state) => BlocProvider.value(
+          value: getIt<GuideRegistrationSharedCubit>(),
           child: const GuideAvailabilityAndPricingScreen(),
         ),
       ),
       GoRoute(
         path: AppRoutes.guideVerificationScreen,
-        builder: (context, state) => const GuideVerificationScreen(),
+        builder: (context, state) => BlocProvider.value(
+          value: getIt<GuideRegistrationSharedCubit>(),
+          child: const GuideVerificationScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.verificationFailedScreen,

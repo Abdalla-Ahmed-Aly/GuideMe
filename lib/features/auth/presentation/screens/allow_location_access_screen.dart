@@ -10,6 +10,8 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart';
+import 'package:guide_me/core/services/hive_service.dart';
+import 'package:guide_me/core/shared/enums/user_role.dart';
 
 class AllowLocationAccessScreen extends StatelessWidget {
   const AllowLocationAccessScreen({super.key});
@@ -92,6 +94,7 @@ class AllowLocationAccessScreen extends StatelessWidget {
   }
 }
 
+
 class EnableLocationAccess extends StatelessWidget {
   const EnableLocationAccess({super.key});
 
@@ -100,7 +103,14 @@ class EnableLocationAccess extends StatelessWidget {
     return BlocConsumer<LocationAccessCubit, LocationAccessState>(
       listener: (context, state) {
         if (state is LocationAccessSuccess) {
-          context.go(AppRoutes.chooseRoleScreen);
+          final savedRole = HiveService.loadUserRole();
+          if (savedRole == UserRole.tourist) {
+            context.go(AppRoutes.selectInterestsScreen);
+          } else if (savedRole == UserRole.guide) {
+            context.go(AppRoutes.guideProfessionalInfoScreen);
+          } else {
+            context.go(AppRoutes.chooseRoleScreen);
+          }
         } else if (state is LocationAccessFailure) {
           final error = FailureUiMapper.map(
             context: context,

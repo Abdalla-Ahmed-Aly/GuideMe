@@ -34,6 +34,7 @@ class UserEntity {
   final String? currency;
   final bool? isOnline;
   final bool? isVerified;
+  final String? verificationStatus;
   final double? totalEarnings;
 
   const UserEntity({
@@ -64,6 +65,7 @@ class UserEntity {
     required this.currency,
     required this.isOnline,
     required this.isVerified,
+    required this.verificationStatus,
     required this.totalEarnings,
   });
 }

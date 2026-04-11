@@ -39,4 +39,10 @@ abstract class ApiConstants {
   static const String guideBooking = "$api/Guide_Dashboard/booking";
   static const String startTour = "/start";
   static const String endTour = "/end";
+
+
+
+  static const String onboarding = "$api/guide/onboarding";
+  static const String guideVerificationStatus = "$api/guide/onboarding/verification-status";
+
 }

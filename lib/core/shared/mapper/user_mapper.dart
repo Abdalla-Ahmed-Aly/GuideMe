@@ -52,6 +52,7 @@ class UserMapper {
       currency: model.currency,
       isOnline: model.isOnline,
       isVerified: model.isVerified,
+      verificationStatus: model.verificationStatus,
       totalEarnings: model.totalEarnings,
     );
   }
@@ -98,7 +99,7 @@ class UserMapper {
       isOnline: entity.isOnline,
       isVerified: entity.isVerified,
       totalEarnings: entity.totalEarnings,
-      verificationStatus: null,
+      verificationStatus: entity.verificationStatus,
       createdAt: null,
     );
   }

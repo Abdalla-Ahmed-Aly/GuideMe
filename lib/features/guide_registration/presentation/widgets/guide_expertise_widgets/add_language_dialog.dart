@@ -5,7 +5,8 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 
 class AddLanguageDialog extends StatefulWidget {
   const AddLanguageDialog({super.key});
@@ -18,7 +19,7 @@ class _AddLanguageDialogState extends State<AddLanguageDialog> {
   List<String> tempSelectedLanguages = [];
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<SpokenLanguagesCubit>();
+    final cubit = context.read<GuideRegistrationSharedCubit>();
     final availableLanguages = SpokenLanguagesConstants.languages;
     return AlertDialog(
       backgroundColor: Colors.white,
@@ -29,9 +30,8 @@ class _AddLanguageDialogState extends State<AddLanguageDialog> {
           ...availableLanguages.map(
             (language) {
               final tempSelected = tempSelectedLanguages.contains(language);
-              final cubitSelected = cubit.state.selectedLanguages.contains(
-                language,
-              );
+              final cubitSelected = cubit.state is GuideRegistrationFormData && 
+                      (cubit.state as GuideRegistrationFormData).model.languages.contains(language);
 
               final isSelected = tempSelected || cubitSelected;
 

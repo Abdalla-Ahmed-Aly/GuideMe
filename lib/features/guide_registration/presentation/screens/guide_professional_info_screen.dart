@@ -6,84 +6,122 @@ import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_professional_info_widgets/profile_photo_section.dart';
 import '../widgets/guide_professional_info_widgets/indentity_verification_section.dart';
 import '../widgets/setup_progress_header.dart';
 
-class GuideProfessionalInfoScreen extends StatelessWidget {
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+
+class GuideProfessionalInfoScreen extends StatefulWidget {
   const GuideProfessionalInfoScreen({super.key});
 
   @override
+  State<GuideProfessionalInfoScreen> createState() => _GuideProfessionalInfoScreenState();
+}
+
+class _GuideProfessionalInfoScreenState extends State<GuideProfessionalInfoScreen> {
+  late TextEditingController _yearsController;
+
+  @override
+  void initState() {
+    super.initState();
+    _yearsController = TextEditingController();
+    
+    // Initialize form with saved data
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<GuideRegistrationSharedCubit>().initForm();
+    });
+  }
+
+  @override
+  void dispose() {
+    _yearsController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffF8F7F5),
-      appBar: AppBar(
+    return BlocListener<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
+      listener: (context, state) {
+        if (state is GuideRegistrationFormData) {
+          final years = state.model.yearsOfExperience?.toString() ?? "";
+          if (_yearsController.text != years) {
+            _yearsController.text = years;
+          }
+        }
+      },
+      child: Scaffold(
         backgroundColor: const Color(0xffF8F7F5),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            context.pop();
-          },
+        appBar: AppBar(
+          backgroundColor: const Color(0xffF8F7F5),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new),
+            onPressed: () {
+              context.pop();
+            },
+          ),
+          title: Text(
+            context.l10n.onboarding,
+            style: AppTextStyles.poppinsSemiBold20,
+          ),
         ),
-        title: Text(
-          context.l10n.onboarding,
-          style: AppTextStyles.poppinsSemiBold20,
-        ),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 18.p),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 12),
-            // header
-            SetupProgressHeader(
-              currentStep: 1,
-              percentage: 25,
-              title: context.l10n.onboarding,
-            ),
-
-            const SizedBox(height: 26),
-
-            // Profile photo section
-            const Align(
-              alignment: Alignment.center,
-              child: ProfilePhotoSection(),
-            ),
-
-            const SizedBox(height: 26),
-
-            // verfication document section
-            const IndentityVerificationSection(),
-
-            const SizedBox(height: 34),
-
-            _buildProfessionalHistory(context),
-
-            const SizedBox(height: 18),
-
-            Text(
-              context.l10n.verificationNote,
-              style: TextStyle(
-                fontSize: 14.fs,
-                color: const Color(0xffA38354),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 18.p),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 12),
+              // header
+              SetupProgressHeader(
+                currentStep: 1,
+                percentage: 25,
+                title: context.l10n.onboarding,
               ),
-            ),
 
-            const SizedBox(height: 24),
+              const SizedBox(height: 26),
 
-            // continue button
-            AppButton(
-              text: context.l10n.continueText,
-              radius: 24.r,
-              height: 48.h,
-              onPressed: () {
-                context.push(AppRoutes.guideExpertiseScreen);
-              },
-            ),
+              // Profile photo section
+              const Align(
+                alignment: Alignment.center,
+                child: ProfilePhotoSection(),
+              ),
 
-            const SizedBox(height: 32),
-          ],
+              const SizedBox(height: 26),
+
+              // verfication document section
+              const IndentityVerificationSection(),
+
+              const SizedBox(height: 34),
+
+              _buildProfessionalHistory(context),
+
+              const SizedBox(height: 18),
+
+              Text(
+                context.l10n.verificationNote,
+                style: TextStyle(
+                  fontSize: 14.fs,
+                  color: const Color(0xffA38354),
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // continue button
+              AppButton(
+                text: context.l10n.continueText,
+                radius: 24.r,
+                height: 48.h,
+                onPressed: () {
+                  context.push(AppRoutes.guideExpertiseScreen);
+                },
+              ),
+
+              const SizedBox(height: 32),
+            ],
+          ),
         ),
       ),
     );
@@ -108,9 +146,14 @@ class GuideProfessionalInfoScreen extends StatelessWidget {
         const SizedBox(height: 14),
 
         CustomTextField(
+          controller: _yearsController,
           hintText: context.l10n.yearsOfExperienceHint,
           keyboardType: TextInputType.number,
           hintColor: const Color(0xffA38354),
+          onChanged: (val) {
+            final years = int.tryParse(val) ?? 0;
+            context.read<GuideRegistrationSharedCubit>().setProfessionalInfo(yearsOfExperience: years);
+          },
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
@@ -121,6 +164,4 @@ class GuideProfessionalInfoScreen extends StatelessWidget {
       ],
     );
   }
-
 }
-
