@@ -27,4 +27,15 @@ class UserInfoModel {
         ? PhotoModel.fromJson(json['photo'] as Map<String, dynamic>)
         : null,
   );
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+      'location': location,
+      'lat': lat,
+      'long': long,
+      'photo': photo?.toJson(),
+    };
+  }
 }

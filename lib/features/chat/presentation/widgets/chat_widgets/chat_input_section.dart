@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/chat/data/models/send_message_model.dart';
-import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_attachment_button.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/send_button.dart';
@@ -30,7 +30,7 @@ class _ChatInputSectionState extends State<ChatInputSection> {
 
   @override
   Widget build(BuildContext context) {
-    final conversation = GoRouterState.of(context).extra as ConversationEntity;
+    final args = GoRouterState.of(context).extra as ChatArgs;
     return Container(
       padding: EdgeInsets.only(
         left: 12.p,
@@ -60,9 +60,6 @@ class _ChatInputSectionState extends State<ChatInputSection> {
                   hintText: context.l10n.chat_type_message_hint,
                   hintColor: const Color(0xff9C7A49),
                   fillColor: const Color(0xffF3F4F6),
-                  // onChanged: (value) {
-                  //   context.read<ChatCubit>().sendTypingEvent();
-                  // },
                 ),
               ),
 
@@ -73,7 +70,7 @@ class _ChatInputSectionState extends State<ChatInputSection> {
                   if (_messageController.text.trim().isNotEmpty) {
                     context.read<ChatCubit>().sendMessage(
                       SendMessageModel(
-                        bookingId: conversation.bookingId,
+                        bookingId: args.bookingId,
                         message: _messageController.text.trim(),
                       ),
                     );

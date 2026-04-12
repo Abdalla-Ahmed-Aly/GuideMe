@@ -89,8 +89,7 @@ class ConversationCubit extends Cubit<ConversationState> {
     }
     if (state is ConversationSuccess) {
       filteredConversations = conversations.where((c) {
-        return c.user.name?.toLowerCase().contains(query.toLowerCase()) ??
-            false;
+        return c.user.name.toLowerCase().contains(query.toLowerCase());
       }).toList();
       safeEmit(ConversationSuccess(List.from(filteredConversations)));
     }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
-import 'package:guide_me/features/chat/presentation/widgets/conversations_widgets/conversation_user_image_and_status.dart';
+import 'package:guide_me/features/chat/presentation/widgets/conversations_widgets/conversation_user_image.dart';
 import 'package:intl/intl.dart';
 
 class ConversationCard extends StatelessWidget {
@@ -15,7 +15,12 @@ class ConversationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.chatScreen, extra: conversation);
+        final args = ChatArgs(
+          conversationId: conversation.conversationId,
+          bookingId: conversation.bookingId,
+          user: conversation.user,
+        );
+        context.push(AppRoutes.chatScreen, extra: args);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
@@ -29,7 +34,7 @@ class ConversationCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            ConversationUserImageAndStatus(
+            ConversationUserImage(
               user: conversation.user,
             ),
 
@@ -43,7 +48,7 @@ class ConversationCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          conversation.user.name ?? context.l10n.unknownName,
+                          conversation.user.name,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.poppinsSemiBold20,
                         ),

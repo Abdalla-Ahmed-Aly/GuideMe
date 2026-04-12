@@ -488,6 +488,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1053.GetAllChatMessagesUseCase>(),
         gh<_i75.SendMessageUseCase>(),
         gh<_i248.SocketEventBus>(),
+        gh<_i890.SocketManager>(),
       ),
     );
     gh.factory<_i928.BookPackageCubit>(

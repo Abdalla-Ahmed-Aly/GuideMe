@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/failure_message_widget.dart';
 import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
@@ -15,7 +16,11 @@ class ConversationsListBlocBuilder extends StatelessWidget {
     return BlocBuilder<ConversationCubit, ConversationState>(
       builder: (context, state) {
         if (state is ConversationLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primary2,
+            ),
+          );
         }
         if (state is ConversationFailure) {
           final error = FailureUiMapper.map(

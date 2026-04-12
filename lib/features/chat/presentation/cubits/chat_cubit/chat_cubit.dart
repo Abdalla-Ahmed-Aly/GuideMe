@@ -8,6 +8,8 @@ import 'package:guide_me/core/shared/entities/user_info_entity.dart';
 import 'package:guide_me/core/shared/mapper/photo_mapper.dart';
 import 'package:guide_me/core/socket/socket_app_events.dart';
 import 'package:guide_me/core/socket/socket_event_bus.dart';
+import 'package:guide_me/core/socket/socket_manager.dart';
+import 'package:guide_me/core/socket/socket_room.dart';
 import 'package:guide_me/features/chat/data/mappers/message_mapper.dart';
 import 'package:guide_me/features/chat/data/models/message_model.dart';
 import 'package:guide_me/features/chat/data/models/send_message_model.dart';
@@ -25,13 +27,16 @@ class ChatCubit extends Cubit<ChatState> {
     this._getAllChatMessagesUseCase,
     this._sendMessageUseCase,
     this._socketEventBus,
+    this._socketManager,
   ) : super(ChatInitial());
   final GetAllChatMessagesUseCase _getAllChatMessagesUseCase;
   final SendMessageUseCase _sendMessageUseCase;
   final SocketEventBus _socketEventBus;
+  final SocketManager _socketManager;
 
   StreamSubscription? _chatSubscription;
-  StreamSubscription? _typingSubscription;
+  StreamSubscription? _messageStatusSubscription;
+  String? _currentBookingId;
 
   Timer? _typingTimer;
   final List<MessageEntity> messages = [];
@@ -42,19 +47,28 @@ class ChatCubit extends Cubit<ChatState> {
 
   Future<void> getAllChatMessages({
     required String conversationId,
+    required String bookingId,
   }) async {
     safeEmit(ChatLoading());
-    // _joinChatRoom(conversationId);
+    _joinChatRoom(bookingId);
     _listenToNewMessages();
+    _listenToMessageStatus();
 
-    // _listenToTypingEvents();
     final result = await _getAllChatMessagesUseCase(conversationId);
     result.fold(
       (failure) => safeEmit(ChatFailure(failure)),
       (newMessages) {
         messages.addAll(newMessages);
         safeEmit(ChatSuccess(messages));
+        markMessagesAsSeen(conversationId);
       },
+    );
+  }
+
+  void markMessagesAsSeen(String conversationId) {
+    _socketEventBus.emit(
+      SocketAppEvents.messagesSeen.value,
+      {'conversationId': conversationId},
     );
   }
 
@@ -99,7 +113,14 @@ class ChatCubit extends Cubit<ChatState> {
         safeEmit(ChatSuccess(List.from(messages)));
       },
       (_) {
-        messages.removeWhere((m) => m.id == tempId);
+        final index = messages.indexWhere((m) => m.id == tempId);
+        if (index != -1) {
+          if (messages[index].status != MessageStatus.seen) {
+            messages[index] = messages[index].copyWith(
+              status: MessageStatus.sent,
+            );
+          }
+        }
         safeEmit(ChatSuccess(List.from(messages)));
       },
     );
@@ -117,6 +138,14 @@ class ChatCubit extends Cubit<ChatState> {
 
           final entity = MessageMapper.toEntity(message);
 
+          final wasSeen = messages.any(
+            (m) =>
+                m.id.startsWith('temp_') &&
+                m.message == entity.message &&
+                m.isMine == true &&
+                m.status == MessageStatus.seen,
+          );
+
           messages.removeWhere(
             (m) =>
                 m.id.startsWith('temp_') &&
@@ -124,47 +153,60 @@ class ChatCubit extends Cubit<ChatState> {
                 m.isMine == true,
           );
 
-          messages.add(entity);
+          late MessageEntity updatedEntity;
+          if (!entity.isMine) {
+            updatedEntity = entity.copyWith(status: MessageStatus.seen);
+            markMessagesAsSeen(entity.conversationId);
+          } else {
+            if (wasSeen || entity.isSeen) {
+              updatedEntity = entity.copyWith(status: MessageStatus.seen);
+            } else {
+              updatedEntity = entity;
+            }
+          }
+          messages.add(updatedEntity);
           safeEmit(ChatSuccess(List.from(messages)));
         });
   }
 
-  // void sendTypingEvent() {
-  //   _socketEventBus.emit(SocketAppEvents.userTyping.value);
-  // }
+  void _listenToMessageStatus() {
+    _messageStatusSubscription = _socketEventBus
+        .listenTo(SocketAppEvents.messagesSeen.value)
+        .listen((data) {
+          bool isUpdated = false;
+          for (var i = 0; i < messages.length; i++) {
+            if (messages[i].isMine &&
+                messages[i].status != MessageStatus.seen) {
+              messages[i] = messages[i].copyWith(status: MessageStatus.seen);
+              isUpdated = true;
+            }
+          }
+          if (isUpdated) {
+            safeEmit(ChatSuccess(List.from(messages)));
+          }
+        });
+  }
 
-  // void _listenToTypingEvents() {
-  //   _typingSubscription = _socketEventBus
-  //       .listenTo(SocketAppEvents.userTyping.value)
-  //       .listen((data) {
-  //         _typingTimer?.cancel(); // كنسل القديم
-  //         safeEmit(ChatSuccess(List.from(messages), isTyping: true));
-  //         _typingTimer = Timer(const Duration(seconds: 3), () {
-  //           safeEmit(ChatSuccess(List.from(messages), isTyping: false));
-  //         });
-  //       });
-  // }
+  void _joinChatRoom(String bookingId) {
+    if (_currentBookingId == bookingId) return;
+    _currentBookingId = bookingId;
+    _socketManager.joinRoom(SocketRooms.joinBooking(bookingId));
+  }
 
-  // void _joinChatRoom(String conversationId) {
-  //   if (_currentConversationId == conversationId) return;
-  //   _currentConversationId = conversationId;
-  //   _socketManager.joinRoom(SocketRooms.joinBooking(conversationId));
-  // }
-
-  // void _leaveChatRoom() {
-  //   if (_currentConversationId == null) return;
-  //   _socketManager.leaveRoom(
-  //     SocketRooms.joinBooking(_currentConversationId!),
-  //   );
-  //   _currentConversationId = null;
-  // }
+  void _leaveChatRoom() {
+    if (_currentBookingId == null) return;
+    _socketManager.leaveRoom(
+      SocketRooms.joinBooking(_currentBookingId!),
+    );
+    _currentBookingId = null;
+  }
 
   @override
   Future<void> close() async {
     _chatSubscription?.cancel();
-    _typingSubscription?.cancel();
+    _messageStatusSubscription?.cancel();
     _typingTimer?.cancel();
-    // _leaveChatRoom();
+    _leaveChatRoom();
     return super.close();
   }
 }

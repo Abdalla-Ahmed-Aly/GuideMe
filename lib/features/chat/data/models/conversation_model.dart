@@ -1,11 +1,11 @@
-import 'package:guide_me/core/shared/models/user_model.dart';
+import 'package:guide_me/core/shared/models/user_info_model.dart';
 
 class ConversationModel {
   final String? conversationId;
   final String? bookingId;
   final String? lastMessage;
   final String? createdAt;
-  final UserModel userModel;
+  final UserInfoModel userModel;
 
   ConversationModel({
     required this.conversationId,
@@ -21,7 +21,7 @@ class ConversationModel {
       bookingId: json['bookingId'],
       lastMessage: json['lastMessage'],
       createdAt: json['createdAt'],
-      userModel: UserModel.fromJson(json['user']),
+      userModel: UserInfoModel.fromJson(json['user']),
     );
   }
 

@@ -1,17 +1,20 @@
 import 'package:guide_me/core/shared/entities/user_info_entity.dart';
 
-class ConversationEntity {
+class ChatArgs {
   final String conversationId;
   final String bookingId;
-  String lastMessage;
-  String createdAt;
   final UserInfoEntity user;
 
-  ConversationEntity({
+  ChatArgs({
     required this.conversationId,
     required this.bookingId,
-    required this.lastMessage,
-    required this.createdAt,
     required this.user,
   });
+
+  static String generateConversationId({
+    required String touristId,
+    required String guideId,
+  }) {
+    return "${guideId}_$touristId";
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/shared/entities/guider_entity.dart';
 import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
 import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
@@ -47,7 +48,6 @@ import 'package:guide_me/features/booking/presentation/screens/booking_confirmat
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/suggested_packages_screen.dart';
-import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
@@ -368,13 +368,14 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.chatScreen,
         builder: (context, state) {
-          final conversation = state.extra as ConversationEntity;
+          final args = state.extra as ChatArgs;
           return MultiBlocProvider(
             providers: [
               BlocProvider(
                 create: (context) => getIt<ChatCubit>()
                   ..getAllChatMessages(
-                    conversationId: conversation.conversationId,
+                    conversationId: args.conversationId,
+                    bookingId: args.bookingId,
                   ),
               ),
               BlocProvider(
