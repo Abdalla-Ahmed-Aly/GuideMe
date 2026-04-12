@@ -10,7 +10,8 @@ import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_scree
 
 class RequestsItem extends StatelessWidget {
   const RequestsItem({
-    super.key, required this.requestModel,
+    super.key,
+    required this.requestModel,
   });
   final RequestCardEntity requestModel;
   @override
@@ -27,9 +28,7 @@ class RequestsItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              UserInfo(
-                requestModel.userImage
-              ),
+              UserInfo(requestModel.userImage),
               const SizedBox(
                 width: 11,
               ),
@@ -37,7 +36,10 @@ class RequestsItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(requestModel.userName, style: AppTextStyles.poppinsMedium18),
+                    Text(
+                      requestModel.userName,
+                      style: AppTextStyles.poppinsMedium18,
+                    ),
                     Row(
                       children: [
                         Image.asset(
@@ -83,14 +85,16 @@ class RequestsItem extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.p),
-            child:  TourDetailCard(
-              requestModel: requestModel, 
+            child: TourDetailCard(
+              requestModel: requestModel,
             ),
           ),
           const SizedBox(
             height: 14,
           ),
-           BookingActionButtons(bookingId:requestModel.bookingid ,),
+          BookingActionButtons(
+            bookingId: requestModel.bookingid,
+          ),
         ],
       ),
     );
