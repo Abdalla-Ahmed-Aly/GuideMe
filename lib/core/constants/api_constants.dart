@@ -15,7 +15,7 @@ abstract class ApiConstants {
   static const String verifyForgetPasswordEndPoint =
       '/api/auth/forgot-password/verify-otp';
   static const String loginWithGoogleEndPoint = '/api/auth/google-login';
-  static const String addNationalityEndPoint = '/api/home/nationality';
+  static const String addNationalityEndPoint = '$api/home/nationality';
 
   static const homeEndPoint = "$api/home/get-home-data";
   static const placeByCategory = "$api/home/by-category";

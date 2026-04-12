@@ -14,7 +14,11 @@ final class SplashUnAuthenticated extends SplashState {}
 final class SplashGuideOnboardingPending extends SplashState {}
 final class SplashGuideOnboardingApproved extends SplashState {}
 final class SplashGuideOnboardingRejected extends SplashState {
-  final String? reason;
-  SplashGuideOnboardingRejected(this.reason);
+  final String message;
+  SplashGuideOnboardingRejected(this.message);
 }
+
+class SplashNeedNationality extends SplashState {}
+
+class SplashNeedLocation extends SplashState {}
 final class SplashGuideOnboardingNotSubmitted extends SplashState {}

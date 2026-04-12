@@ -335,7 +335,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.verificationFailedScreen,
-        builder: (context, state) => const VerificationFailedScreen(),
+        builder: (context, state) {
+          final reason = state.extra as String?;
+          return VerificationFailedScreen(reason: reason);
+        },
       ),
       GoRoute(
         path: AppRoutes.guideVerificationSuccessScreen,

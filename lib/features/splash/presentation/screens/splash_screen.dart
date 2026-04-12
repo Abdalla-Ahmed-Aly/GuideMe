@@ -94,7 +94,15 @@ class _SplashScreenState extends State<SplashScreen>
             });
           } else if (state is SplashGuideOnboardingRejected) {
             Future.delayed(const Duration(seconds: 1), () {
-              context.go(AppRoutes.verificationFailedScreen, extra: state.reason);
+              context.go(AppRoutes.verificationFailedScreen, extra: state.message);
+            });
+          } else if (state is SplashNeedNationality) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.chooseNationalityScreen);
+            });
+          } else if (state is SplashNeedLocation) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.allowLocationAccessScreen);
             });
           } else if (state is SplashGuideOnboardingNotSubmitted) {
             Future.delayed(const Duration(seconds: 1), () {

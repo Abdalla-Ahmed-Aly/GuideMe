@@ -12,6 +12,8 @@ import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart';
 import 'package:guide_me/core/services/hive_service.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
+import 'package:guide_me/core/utils/hive_helper.dart';
+import 'package:guide_me/core/constants/hive_constants.dart';
 
 class AllowLocationAccessScreen extends StatelessWidget {
   const AllowLocationAccessScreen({super.key});
@@ -103,6 +105,13 @@ class EnableLocationAccess extends StatelessWidget {
     return BlocConsumer<LocationAccessCubit, LocationAccessState>(
       listener: (context, state) {
         if (state is LocationAccessSuccess) {
+          // Clear progress as we are now moving to onboarding/home
+          HiveHelper.put<String>(
+            boxName: HiveConstants.signupProgressBox,
+            key: HiveConstants.signupStepKey,
+            data: 'onboarding-started',
+          );
+          
           final savedRole = HiveService.loadUserRole();
           if (savedRole == UserRole.tourist) {
             context.go(AppRoutes.selectInterestsScreen);

@@ -1,4 +1,6 @@
+import 'package:guide_me/core/constants/hive_constants.dart' show HiveConstants;
 import 'package:guide_me/core/shared/models/picked_file_model.dart';
+import 'package:guide_me/core/utils/hive_helper.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import '../../features/guide_registration/data/models/availability_model.dart';
 import '../../features/guide_registration/data/models/guide_registration_model.dart';
@@ -52,12 +54,19 @@ class HiveService {
 
   // Save User Role
   static Future<void> saveUserRole(UserRole role) async {
-    await _box.put(userRoleKey, role);
+    await HiveHelper.put<UserRole>(
+      boxName: HiveConstants.userRoleBox,
+      key: HiveConstants.userRoleKey,
+      data: role,
+    );
   }
 
   // Load User Role
   static UserRole? loadUserRole() {
-    return _box.get(userRoleKey);
+    return HiveHelper.get<UserRole>(
+      boxName: HiveConstants.userRoleBox,
+      key: HiveConstants.userRoleKey,
+    );
   }
 
   // Save Onboarding Status (pending, approved, rejected)

@@ -9,6 +9,8 @@ import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/hive_service.dart';
+import 'package:guide_me/core/utils/hive_helper.dart';
+import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
@@ -126,6 +128,12 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                       if (state is RegisterCubitSuccessful) {
                         if (selectedRole != null) {
                           HiveService.saveUserRole(selectedRole!);
+                          // Save progress
+                          HiveHelper.put<String>(
+                            boxName: HiveConstants.signupProgressBox,
+                            key: HiveConstants.signupStepKey,
+                            data: 'need-nationality',
+                           );
                         }
                         context.push(AppRoutes.chooseNationalityScreen);
                       } else if (state is RegisterCubitFailure) {

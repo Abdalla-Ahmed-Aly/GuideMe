@@ -33,15 +33,26 @@ class SplashCubit extends Cubit<SplashState> {
         final response = await repository.getVerificationStatus();
         final data = response.data['data'];
         final status = data['status']; // "not-submitted", "pending", "approved", "rejected"
-
+        
         if (status == 'not-submitted') {
-          emit(SplashGuideOnboardingNotSubmitted());
+          final signupStep = HiveHelper.get<String>(
+            boxName: HiveConstants.signupProgressBox,
+            key: HiveConstants.signupStepKey,
+          );
+
+          if (signupStep == 'need-nationality') {
+            emit(SplashNeedNationality());
+          } else if (signupStep == 'need-location') {
+            emit(SplashNeedLocation());
+          } else {
+            emit(SplashGuideOnboardingNotSubmitted());
+          }
         } else if (status == 'pending') {
           emit(SplashGuideOnboardingPending());
         } else if (status == 'approve' || status == 'approved') {
           emit(SplashGuideOnboardingApproved());
         } else if (status == 'rejected') {
-          emit(SplashGuideOnboardingRejected(data['message']));
+          emit(SplashGuideOnboardingRejected(data['message'] ?? 'Rejected'));
         } else {
           emit(SplashAuthenticated(userRole: userRole));
         }

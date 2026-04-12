@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import '../../../../core/constants/api_constants.dart';
 import '../models/guide_registration_model.dart';
@@ -21,28 +22,23 @@ class GuideRegistrationRepository {
     formData.fields.add(MapEntry('hourlyRate', data.hourlyRate.toString()));
     formData.fields.add(MapEntry('currency', data.currency));
 
-    // Add lists as repeated keys with [] to ensure Multer/Joi recognition as array
+    // Arrays: Sending multiple entries with the same key
     for (var lang in data.languages) {
-      formData.fields.add(MapEntry('languages[]', lang));
+      formData.fields.add(MapEntry('languages', lang));
     }
     for (var exp in data.expertise) {
-      formData.fields.add(MapEntry('expertise[]', exp));
+      formData.fields.add(MapEntry('expertise', exp));
     }
     for (var city in data.guideCities) {
-      formData.fields.add(MapEntry('guideCities[]', city));
+      formData.fields.add(MapEntry('guideCities', city));
     }
 
-    // Add availability as flattened nested fields
-    final availabilityMap = data.availability.toJson();
-    availabilityMap.forEach((key, value) {
-      if (value is List) {
-        for (var v in value) {
-          formData.fields.add(MapEntry('availability[$key][]', v.toString()));
-        }
-      } else {
-        formData.fields.add(MapEntry('availability[$key]', value.toString()));
-      }
-    });
+    // Availability: Using the exact key required by the server with nested syntax
+    for (var day in data.availability.days) {
+      formData.fields.add(MapEntry('availability[days][]', day));
+    }
+    formData.fields.add(MapEntry('availability[from]', data.availability.from));
+    formData.fields.add(MapEntry('availability[to]', data.availability.to));
 
     if (data.profilePhoto != null && data.profilePhoto!.hasPath) {
       formData.files.add(MapEntry(
@@ -50,14 +46,14 @@ class GuideRegistrationRepository {
         await MultipartFile.fromFile(data.profilePhoto!.path!, filename: data.profilePhoto!.name),
       ));
     }
+
     if (data.guideLicense != null && data.guideLicense!.hasPath) {
       formData.files.add(MapEntry(
-        'guideLicense',
+        'guideLicense', 
         await MultipartFile.fromFile(data.guideLicense!.path!, filename: data.guideLicense!.name),
       ));
     }
 
-    // Handling specific ID keys from Postman
     if (data.nationalId.isNotEmpty) {
       if (data.nationalId[0] != null && data.nationalId[0]!.hasPath) {
         formData.files.add(MapEntry(
@@ -73,8 +69,7 @@ class GuideRegistrationRepository {
       }
     }
 
-    print("SENDING ONBOARDING RAW FORMDATA FIELDS: ${formData.fields}");
-
+    // Removed large debug print to prevent log buffer saturation
     return _apiService.post(
       endpoint: ApiConstants.onboarding,
       data: formData,
@@ -90,20 +85,23 @@ class GuideRegistrationRepository {
     final formData = FormData();
 
     changedFields.forEach((key, value) {
-      if (value is List) {
+      if (key == 'availability' && value is Map) {
+         // Consistent with createGuide
+         if (value.containsKey('days') && value['days'] is List) {
+           for (var d in value['days']) {
+             formData.fields.add(MapEntry('availability[days][]', d.toString()));
+           }
+         }
+         if (value.containsKey('from')) {
+           formData.fields.add(MapEntry('availability[from]', value['from'].toString()));
+         }
+         if (value.containsKey('to')) {
+           formData.fields.add(MapEntry('availability[to]', value['to'].toString()));
+         }
+      } else if (value is List) {
         for (var v in value) {
-          formData.fields.add(MapEntry('$key[]', v.toString()));
+          formData.fields.add(MapEntry(key, v.toString()));
         }
-      } else if (value is Map) {
-        value.forEach((subKey, subValue) {
-          if (subValue is List) {
-            for (var v in subValue) {
-              formData.fields.add(MapEntry('$key[$subKey][]', v.toString()));
-            }
-          } else {
-            formData.fields.add(MapEntry('$key[$subKey]', subValue.toString()));
-          }
-        });
       } else {
         formData.fields.add(MapEntry(key, value.toString()));
       }
@@ -137,8 +135,7 @@ class GuideRegistrationRepository {
       }
     }
 
-    print("UPDATING ONBOARDING RAW FORMDATA FIELDS: ${formData.fields}");
-
+    // Removed large debug print to prevent log buffer saturation
     return _apiService.patch(
       endpoint: ApiConstants.onboarding,
       data: formData,
