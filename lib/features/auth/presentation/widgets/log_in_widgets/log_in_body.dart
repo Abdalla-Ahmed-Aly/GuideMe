@@ -163,10 +163,25 @@ class _LogInBodyState extends State<LogInBody> {
               child: BlocConsumer<LoginCubit, LoginCubitState>(
                 listener: (context, state) {
                   if (state is LoginCubitSuccessful) {
-                    if (state.data.user.role == UserRole.tourist) {
+                    final user = state.data.user;
+                    if (user.role == UserRole.tourist) {
                       context.go(AppRoutes.touristNavigationBarScreen);
                     } else {
-                      context.go(AppRoutes.guideNavigationBarScreen);
+                      // Logic for Guides
+                      final status = user.verificationStatus;
+                      if (status == 'not-submitted') {
+                        context.go(AppRoutes.guideProfessionalInfoScreen);
+                      } else if (status == 'pending') {
+                        context.go(AppRoutes.guideVerificationScreen);
+                      } else if (status == 'approve' || status == 'approved') {
+                        context.go(AppRoutes.guideVerificationSuccessScreen);
+                      } else if (status == 'rejected') {
+                        // For login, we might want to pass the reason if it was in the metadata,
+                        // but for now redirecting to the failed screen is the priority.
+                        context.go(AppRoutes.verificationFailedScreen);
+                      } else {
+                        context.go(AppRoutes.guideNavigationBarScreen);
+                      }
                     }
                   } else if (state is LoginCubitFailure) {
                     final error = FailureUiMapper.map(
@@ -218,10 +233,22 @@ class _LogInBodyState extends State<LogInBody> {
                       BlocConsumer<LoginwithGoogleCubit, LoginwithGoogleState>(
                         listener: (context, state) {
                           if (state is LoginwithGoogleSuccess) {
-                            if (state.userModel.user.role == UserRole.tourist) {
+                            final user = state.userModel.user;
+                            if (user.role == UserRole.tourist) {
                               context.go(AppRoutes.touristNavigationBarScreen);
                             } else {
-                              context.go(AppRoutes.guideNavigationBarScreen);
+                              final status = user.verificationStatus;
+                              if (status == 'not-submitted') {
+                                context.go(AppRoutes.guideProfessionalInfoScreen);
+                              } else if (status == 'pending') {
+                                context.go(AppRoutes.guideVerificationScreen);
+                              } else if (status == 'approve' || status == 'approved') {
+                                context.go(AppRoutes.guideVerificationSuccessScreen);
+                              } else if (status == 'rejected') {
+                                context.go(AppRoutes.verificationFailedScreen);
+                              } else {
+                                context.go(AppRoutes.guideNavigationBarScreen);
+                              }
                             }
                           } else if (state is LoginwithGooglefailure) {
                             final error = FailureUiMapper.map(

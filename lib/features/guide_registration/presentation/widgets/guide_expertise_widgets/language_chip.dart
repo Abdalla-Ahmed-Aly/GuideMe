@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 
 class LanguageChip extends StatelessWidget {
   const LanguageChip({
@@ -12,9 +13,12 @@ class LanguageChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<SpokenLanguagesCubit, SpokenLanguagesState, bool>(
+    return BlocSelector<GuideRegistrationSharedCubit, GuideRegistrationSharedState, bool>(
       selector: (state) {
-        return state.selectedLanguages.contains(language);
+        if (state is GuideRegistrationFormData) {
+          return state.model.languages.contains(language);
+        }
+        return false;
       },
       builder: (context, isSelected) {
         return FilterChip(
@@ -38,7 +42,7 @@ class LanguageChip extends StatelessWidget {
             color: isSelected ? Colors.white : Colors.black,
           ),
           onSelected: (_) {
-            context.read<SpokenLanguagesCubit>().toggleLanguage(language);
+            context.read<GuideRegistrationSharedCubit>().toggleLanguage(language);
           },
         );
       },

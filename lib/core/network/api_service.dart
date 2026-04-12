@@ -45,7 +45,7 @@ class ApiService {
 
   Future<Response> post({
     required String endpoint,
-    Map<String, dynamic>? data,
+    dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     CancelToken? cancelToken,
@@ -68,7 +68,7 @@ class ApiService {
 
   Future<Response> put({
     required String endpoint,
-    Map<String, dynamic>? data,
+    dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     CancelToken? cancelToken,

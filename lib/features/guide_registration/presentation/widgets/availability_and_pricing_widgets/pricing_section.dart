@@ -6,6 +6,10 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 
 import 'currency_type_selection.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
+
 class PricingSection extends StatelessWidget {
   const PricingSection({super.key});
 
@@ -27,34 +31,44 @@ class PricingSection extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        _buildHourlyRateTextField(context),
+        BlocBuilder<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
+          builder: (context, state) {
+            String initialRate = "";
+            if (state is GuideRegistrationFormData && state.model.hourlyRate > 0) {
+              initialRate = state.model.hourlyRate.toString();
+            }
+            
+            return TextFormField(
+              initialValue: initialRate,
+              keyboardType: TextInputType.number,
+              style: AppTextStyles.poppinsSemiBold16,
+              onTapOutside: (_) => FocusScope.of(context).unfocus(),
+              onChanged: (val) {
+                final rate = double.tryParse(val) ?? 0.0;
+                context.read<GuideRegistrationSharedCubit>().setProfessionalInfo(hourlyRate: rate);
+              },
+              decoration: InputDecoration(
+                hintText: "25.00",
+                hintStyle: AppTextStyles.poppinsSemiBold16.copyWith(
+                  color: const Color(0xff969696),
+                ),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 12, right: 6),
+                  child: SvgPicture.asset(
+                    AppIcons.coin,
+                    width: 24,
+                    height: 24,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Colors.black),
+                ),
+              ),
+            );
+          },
+        ),
       ],
-    );
-  }
-
-  TextField _buildHourlyRateTextField(BuildContext context) {
-    return TextField(
-      keyboardType: TextInputType.number,
-      style: AppTextStyles.poppinsSemiBold16,
-      onTapOutside: (_) => FocusScope.of(context).unfocus(),
-      decoration: InputDecoration(
-        hintText: "25.00",
-        hintStyle: AppTextStyles.poppinsSemiBold16.copyWith(
-          color: const Color(0xff969696),
-        ),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 12, right: 6),
-          child: SvgPicture.asset(
-            AppIcons.coin,
-            width: 24,
-            height: 24,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.black),
-        ),
-      ),
     );
   }
 }

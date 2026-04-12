@@ -7,7 +7,8 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/professional_info_cubit/professional_info_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 
 class ProfilePhotoSection extends StatelessWidget {
   const ProfilePhotoSection({super.key});
@@ -44,31 +45,34 @@ class UploadPhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<ProfessionalInfoCubit>().pickProfilePhoto();
+        context.read<GuideRegistrationSharedCubit>().pickProfilePhoto();
       },
       child: Stack(
         children: [
-          BlocBuilder<ProfessionalInfoCubit, ProfessionalInfoState>(
+          BlocBuilder<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
             builder: (context, state) {
-              return Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 10,
+              if (state is GuideRegistrationFormData) {
+                return Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 10,
+                    ),
+                    image: state.model.profilePhoto != null
+                        ? DecorationImage(
+                            image: FileImage(File(state.model.profilePhoto!.path!)),
+                            fit: BoxFit.cover,
+                          )
+                        : const DecorationImage(
+                            image: AssetImage(AppImages.profileImageTest),
+                          ),
                   ),
-                  image: state.profilePhoto != null
-                      ? DecorationImage(
-                          image: FileImage(File(state.profilePhoto!.path!)),
-                          fit: BoxFit.cover,
-                        )
-                      : const DecorationImage(
-                          image: AssetImage(AppImages.profileImageTest),
-                        ),
-                ),
-              );
+                );
+              }
+              return const SizedBox.shrink();
             },
           ),
 

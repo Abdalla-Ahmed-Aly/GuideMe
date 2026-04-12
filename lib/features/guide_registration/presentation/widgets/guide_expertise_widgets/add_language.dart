@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/guide_registration/presentation/cubits/spoken_languages_cubit/spoken_languages_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_expertise_widgets/add_language_dialog.dart';
 
 class AddLanguage extends StatelessWidget {
@@ -36,7 +36,7 @@ class AddLanguage extends StatelessWidget {
       ),
       selected: false,
       onSelected: (_) async {
-        final cubit = context.read<SpokenLanguagesCubit>();
+        final cubit = context.read<GuideRegistrationSharedCubit>();
         final result = await showDialog<List<String>>(
           context: context,
           builder: (context) {
