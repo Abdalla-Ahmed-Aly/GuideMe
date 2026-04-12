@@ -3,13 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_details_request_item.dart';
+import 'package:intl/intl.dart';
 
 class BookingDetailsRequestSection extends StatelessWidget {
   const BookingDetailsRequestSection({
-    super.key,
+    super.key, required this.requestEntity,
   });
-
+final RequestCardEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,8 +21,8 @@ class BookingDetailsRequestSection extends StatelessWidget {
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.dateTIME,
-                value: 'Oct 24, 2026',
-                value1: '9:00 AM',
+                value: DateFormat('yyyy-MM-dd').format(requestEntity.date),
+                value1: DateFormat('kk:mm').format(requestEntity.date),
                 pathicon: SvgPicture.asset(AppIcons.date, width: 18.w),
               ),
             ),
@@ -30,7 +32,7 @@ class BookingDetailsRequestSection extends StatelessWidget {
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.duration,
-                value: '4 Hours',
+                value: '${requestEntity.durationMinutes} Minutes',
                 value1: 'Flexible end',
                 pathicon: SvgPicture.asset(AppIcons.time, width: 18.w),
               ),
@@ -45,8 +47,8 @@ class BookingDetailsRequestSection extends StatelessWidget {
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.groupsize,
-                value: '4 People',
-                value1: 'Privet Group',
+                value: requestEntity.groupSize.toString(),
+                value1: 'Private Group',
                 pathicon: SvgPicture.asset(AppIcons.people, width: 18.w),
               ),
             ),
@@ -56,7 +58,7 @@ class BookingDetailsRequestSection extends StatelessWidget {
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.experience,
-                value: 'Giza Pyramids',
+                value: requestEntity.placeTitle,
                 value1: 'History & Myths',
                 pathicon: SvgPicture.asset(AppIcons.location, width: 18.w),
               ),

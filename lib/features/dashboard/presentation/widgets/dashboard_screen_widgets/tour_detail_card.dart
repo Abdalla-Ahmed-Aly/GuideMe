@@ -4,12 +4,14 @@ import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
+import 'package:intl/intl.dart';
 
 class TourDetailCard extends StatelessWidget {
   const TourDetailCard({
-    super.key,
+    super.key, required this.requestModel,
   });
-
+  final RequestCardEntity requestModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +33,7 @@ class TourDetailCard extends StatelessWidget {
                 width: 8,
               ),
               Text(
-                'Giza Pyramids Private Tour',
+                requestModel.placeTitle,
                 style: AppTextStyles.poppinsMedium14,
               ),
             ],
@@ -46,7 +48,7 @@ class TourDetailCard extends StatelessWidget {
                 width: 8,
               ),
               Text(
-                'Oct 12, 06:00 PM . 3 Hours',
+                DateFormat('yyyy-MM-dd').format(requestModel.date),
                 style: AppTextStyles.poppinsRegular14.copyWith(
                   color: const Color(0xff936B24),
                 ),

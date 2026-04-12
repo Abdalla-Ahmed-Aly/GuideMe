@@ -4,11 +4,14 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/booking/presentation/widgets/trip_details_widgets/meeting_point_section.dart';
+import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_details_%20request_section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/earnings_summary_card.dart';
 
 class BookingRequestSection extends StatelessWidget {
-  const BookingRequestSection({super.key});
+  const BookingRequestSection({super.key, required this.requestEntity});
+  final RequestCardEntity requestEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +22,17 @@ class BookingRequestSection extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
 
-          const Center(child: ProfileTouirsts()),
+          Center(
+            child: ProfileTouirsts(
+              imageUrl: requestEntity.userImage,
+            ),
+          ),
 
           const SizedBox(height: 4),
 
           Center(
             child: Text(
-              'Ahmed Ali',
+              requestEntity.userName,
               style: AppTextStyles.poppinsRegular18.copyWith(
                 color: AppColors.black,
               ),
@@ -51,15 +58,20 @@ class BookingRequestSection extends StatelessWidget {
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.p),
-            child: const BookingDetailsRequestSection(),
+            child: BookingDetailsRequestSection(
+              requestEntity: requestEntity,
+            ),
           ),
 
           const SizedBox(height: 20),
 
-          // Padding(  // TODO:: add meeting point section
-          //   padding: EdgeInsets.symmetric(horizontal: 22.p),
-          //   child: const MeetingPointSection(),
-          // ),
+          if (requestEntity.locationEntity != null)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22.p),
+              child: MeetingPointSection(
+                location: requestEntity.locationEntity!,
+              ),
+            ),
 
           const SizedBox(height: 24),
 
@@ -80,7 +92,9 @@ class BookingRequestSection extends StatelessWidget {
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.p),
-            child: const EarningsSummaryCard(),
+            child: EarningsSummaryCard(
+              requestEntity: requestEntity,
+            ),
           ),
 
           const SizedBox(height: 16),
@@ -93,8 +107,9 @@ class BookingRequestSection extends StatelessWidget {
 class ProfileTouirsts extends StatelessWidget {
   const ProfileTouirsts({
     super.key,
+    required this.imageUrl,
   });
-
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -103,10 +118,13 @@ class ProfileTouirsts extends StatelessWidget {
         Container(
           width: 130,
           height: 130,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage(AppImages.profileImageTest),
+              image: imageUrl.isNotEmpty
+                  ? NetworkImage(imageUrl)
+                  : const AssetImage(AppImages.profileImageTest)
+                        as ImageProvider,
               fit: BoxFit.cover,
             ),
           ),

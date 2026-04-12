@@ -125,6 +125,40 @@ import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/
     as _i459;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
     as _i24;
+import 'package:guide_me/features/dashboard/data/data_source/analysis_remote_data_source.dart'
+    as _i389;
+import 'package:guide_me/features/dashboard/data/data_source/dashboard_remote_data_source.dart'
+    as _i209;
+import 'package:guide_me/features/dashboard/data/repo/analysis_repo_imple.dart'
+    as _i783;
+import 'package:guide_me/features/dashboard/data/repo/dashboard_socket_repos_imple.dart'
+    as _i1010;
+import 'package:guide_me/features/dashboard/data/repo/toggle_online_repository_impl.dart'
+    as _i781;
+import 'package:guide_me/features/dashboard/domain/repo/analysis_repo.dart'
+    as _i539;
+import 'package:guide_me/features/dashboard/domain/repo/dashboard_socket_repo.dart'
+    as _i480;
+import 'package:guide_me/features/dashboard/domain/repo/toggle_online_repository%20.dart'
+    as _i742;
+import 'package:guide_me/features/dashboard/domain/use_case/accept_booking_use_case.dart'
+    as _i120;
+import 'package:guide_me/features/dashboard/domain/use_case/decline_booking_use_case.dart'
+    as _i929;
+import 'package:guide_me/features/dashboard/domain/use_case/get_analysis_use_case%20.dart'
+    as _i268;
+import 'package:guide_me/features/dashboard/domain/use_case/get_requests_history_use_case.dart'
+    as _i542;
+import 'package:guide_me/features/dashboard/domain/use_case/listen_to_incoming_requests_use_case.dart'
+    as _i108;
+import 'package:guide_me/features/dashboard/presentation/manager/Analysis_Cubit/analysis_cubit.dart'
+    as _i538;
+import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart'
+    as _i218;
+import 'package:guide_me/features/dashboard/presentation/manager/Dashboard_Cubit/dashboard_cubit.dart'
+    as _i624;
+import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart'
+    as _i900;
 import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source.dart'
     as _i221;
 import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source_impl.dart'
@@ -215,21 +249,34 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.lazySingleton<_i408.SocketService>(() => _i435.SocketIOService());
+    gh.lazySingleton<_i389.AnalysisRemoteDataSource>(
+      () => _i389.AnalysisRemoteDataSourceImple(gh<_i947.ApiService>()),
+    );
     gh.lazySingleton<_i250.GpsLocalDataSource>(
       () => _i923.GpsLocalDataSourceImpl(),
     );
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
+    gh.lazySingleton<_i209.DashboardRemoteDataSource>(
+      () => _i209.DashboardRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
     gh.lazySingleton<_i226.MediaPickerService>(
       () => _i159.MediaPickerServiceImpl(),
     );
     gh.lazySingleton<_i758.GuideBookingStatusFilter>(
       () => _i758.GuideBookingStatusFilter(key: gh<_i409.Key>()),
     );
+    gh.lazySingleton<_i539.AnalysisRepo>(
+      () => _i783.AnalysisRepoImple(gh<_i389.AnalysisRemoteDataSource>()),
+    );
     gh.lazySingleton<_i912.ProfileLocalDataSource>(
       () => _i912.ProfileLocalDataSourceImpl(),
     );
     gh.lazySingleton<_i1043.AuthRemoteDataSource>(
       () => _i1043.AuthRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
+    gh.lazySingleton<_i742.ToggleOnlineRepository>(
+      () =>
+          _i781.ToggleOnlineRepositoryImpl(apiService: gh<_i947.ApiService>()),
     );
     gh.lazySingleton<_i602.LocationRemoteDataSource>(
       () => _i821.LocationRemoteDataSourceImpl(gh<_i947.ApiService>()),
@@ -267,12 +314,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i948.ProfileRepo>(
       () => _i165.ProfileRepoImpl(gh<_i243.ProfileRemoteDataSource>()),
     );
+    gh.factory<_i900.ToogleOnlineStatusCubit>(
+      () => _i900.ToogleOnlineStatusCubit(
+        gh<_i890.SocketManager>(),
+        gh<_i742.ToggleOnlineRepository>(),
+      ),
+    );
     gh.lazySingleton<_i580.GuideBookingRepo>(
       () =>
           _i367.GuideBookingRepoImpl(gh<_i221.GuideBookingRemoteDataSource>()),
     );
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
+    );
+    gh.factory<_i268.GetAnalysisUseCase>(
+      () => _i268.GetAnalysisUseCase(gh<_i539.AnalysisRepo>()),
     );
     gh.lazySingleton<_i407.ClearCachedUserUsecase>(
       () => _i407.ClearCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
@@ -316,6 +372,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i593.ResetPasswordCubit>(
       () => _i593.ResetPasswordCubit(gh<_i865.ResetPasswordUseCase>()),
     );
+    gh.factory<_i538.AnalysisCubit>(
+      () => _i538.AnalysisCubit(gh<_i268.GetAnalysisUseCase>()),
+    );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
     );
@@ -324,6 +383,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i179.GetLocationNameUseCase>(
       () => _i179.GetLocationNameUseCase(gh<_i392.LocationRepo>()),
+    );
+    gh.lazySingleton<_i480.DashboardSocketRepository>(
+      () => _i1010.DashboardSocketRepositoryImpl(
+        gh<_i209.DashboardRemoteDataSource>(),
+        gh<_i248.SocketEventBus>(),
+      ),
     );
     gh.factory<_i456.UserCubit>(
       () => _i456.UserCubit(
@@ -428,6 +493,28 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i776.SendForgetPasswordCubit(gh<_i814.SendForgetPasswordUseCase>()),
     );
+    gh.factory<_i120.AcceptBookingUseCase>(
+      () => _i120.AcceptBookingUseCase(gh<_i480.DashboardSocketRepository>()),
+    );
+    gh.factory<_i929.DeclineBookingUseCase>(
+      () => _i929.DeclineBookingUseCase(gh<_i480.DashboardSocketRepository>()),
+    );
+    gh.factory<_i542.GetRequestsHistoryUseCase>(
+      () => _i542.GetRequestsHistoryUseCase(
+        gh<_i480.DashboardSocketRepository>(),
+      ),
+    );
+    gh.factory<_i108.ListenToIncomingRequestsUseCase>(
+      () => _i108.ListenToIncomingRequestsUseCase(
+        gh<_i480.DashboardSocketRepository>(),
+      ),
+    );
+    gh.factory<_i624.DashboardCubit>(
+      () => _i624.DashboardCubit(
+        gh<_i542.GetRequestsHistoryUseCase>(),
+        gh<_i108.ListenToIncomingRequestsUseCase>(),
+      ),
+    );
     gh.lazySingleton<_i664.BookAiPackageUseCase>(
       () => _i664.BookAiPackageUseCase(gh<_i672.BookingRepo>()),
     );
@@ -445,6 +532,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),
+    );
+    gh.factory<_i218.AcceptBookingCubit>(
+      () => _i218.AcceptBookingCubit(
+        gh<_i120.AcceptBookingUseCase>(),
+        gh<_i929.DeclineBookingUseCase>(),
+      ),
     );
     gh.factory<_i865.BookAiPackageCubit>(
       () => _i865.BookAiPackageCubit(gh<_i664.BookAiPackageUseCase>()),

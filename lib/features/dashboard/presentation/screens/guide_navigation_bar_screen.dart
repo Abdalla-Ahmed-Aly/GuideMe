@@ -8,6 +8,8 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/Analysis_Cubit/analysis_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/analysis_screen.dart';
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_action_cubit/guide_booking_actions_cubit.dart';
@@ -25,13 +27,30 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   final PageController pageController = PageController();
 
   final List<Widget> pages = [
-    const DashboardScreen(),
+    MultiBlocProvider(
+      providers: [
+        // BlocProvider(
+        //   create: (context) => getIt<ToogleOnlineStatusCubit>(),
+          
+        // ),
+    //     BlocProvider(
+    //   create: (context) => getIt<DashboardCubit>(),
+    // ),
+    BlocProvider(
+      create: (context) => getIt<AcceptBookingCubit>(),
+    ),
+      ],
+      child: const DashboardScreen()
+      ),
     BlocProvider(
       create: (context) => getIt<GuideBookingActionsCubit>(),
       child: const GuideBookingScreen(),
     ),
     const ConversationsScreen(),
-    const AnalysisScreen(),
+    BlocProvider(
+      create: (context) => getIt<AnalysisCubit>()..getAnalysis(),
+      child: const AnalysisScreen(),
+    ),
   ];
   void changedscreen(int index) {
     context.read<GuideNavigationBarCubit>().changeIndex(index);

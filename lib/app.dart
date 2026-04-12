@@ -38,6 +38,7 @@ class GuideMe extends StatelessWidget {
       child: BlocBuilder<LocaleCubit, Locale>(
         builder: (context, locale) {
           return MaterialApp.router(
+          
             locale: locale,
             debugShowCheckedModeBanner: false,
             title: 'GuideMe',
