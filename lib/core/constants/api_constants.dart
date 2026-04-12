@@ -37,4 +37,5 @@ abstract class ApiConstants {
   static const String analysisEndpoint = "$api/guide/analysis/";
   static const String toggleOnlineStatusEndpoint = "$api/Guide_Dashboard/toggle-online";
   static const String getRequestsHistoryEndpoint = "$api/Guide_Dashboard/booking";
+  static const String acceptBookingEndpoint = "$api/Guide_Dashboard/booking";
 }

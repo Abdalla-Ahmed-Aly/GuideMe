@@ -1,14 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
 
 class BookingActionButtons extends StatelessWidget {
   const BookingActionButtons({
-    super.key,
+    super.key, required this.bookingId,
   });
-
+  final String bookingId;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,7 +26,9 @@ class BookingActionButtons extends StatelessWidget {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.read<AcceptBookingCubit>().declineBooking(bookingId);
+            },
             child: Center(
               child: Text(
                 context.l10n.decline,
@@ -51,7 +54,11 @@ class BookingActionButtons extends StatelessWidget {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              
+              context.read<AcceptBookingCubit>().acceptBooking(bookingId);
+              
+            },
             child: Center(
               child: Text(
                 context.l10n.accept,

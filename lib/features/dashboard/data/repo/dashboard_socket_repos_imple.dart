@@ -22,48 +22,61 @@ class DashboardSocketRepositoryImpl extends DashboardSocketRepository {
     try {
       final result = await remoteDataSource.getRequestsHistory();
       final entities = result.expand((request) {
-  if (request.type == "package") {
-    return request.bookings!
-        .map((b) => RequestCardMapper.toEntity(b));
-  } else {
-    return [
-      RequestCardMapper.toEntity(request.booking!)
-    ];
-  }
-}).toList();
+        if (request.type == "package") {
+          return request.bookings!.map((b) => RequestCardMapper.toEntity(b));
+        } else {
+          return [RequestCardMapper.toEntity(request.booking!)];
+        }
+      }).toList();
       return Right(entities);
     } catch (e) {
       print("🔥 ERROR TYPE: ${e.runtimeType}");
-  print("🔥 ERROR: $e");
+      print("🔥 ERROR: $e");
       return left(ErrorHandler.handle(e));
     }
   }
 
   @override
-Stream<Either<Failure, RequestCardEntity>> listenToIncomingRequests() {
-  return socketEventBus
-      .listenTo(SocketAppEvents.newBooking.name)
-      .cast<Map<String, dynamic>>()
-      .map((data) {
+  Stream<Either<Failure, RequestCardEntity>> listenToIncomingRequests() {
+    return socketEventBus
+        .listenTo(SocketAppEvents.newBooking.name)
+        .cast<Map<String, dynamic>>()
+        .map((data) {
+          try {
+            final model = RequestModel.fromJson(data);
+
+            final entity = RequestCardMapper.toEntity(
+              model.booking!,
+            ); // 👈 أهم سطر
+
+            return Right(entity);
+          } catch (e) {
+            return Left(ErrorHandler.handle(e));
+          }
+        });
+  }
+
+  @override
+  Future<Either<Failure, Unit>> acceptBooking(String bookingId) async {
     try {
-      final model = RequestModel.fromJson(data);
-
-      final entity =
-          RequestCardMapper.toEntity(model.booking!); // 👈 أهم سطر
-
-      return Right(entity);
+      await remoteDataSource.acceptBooking(bookingId);
+      return const Right(unit);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
     }
-  });
-}
-
-  @override
-  Future<Either<Failure, RequestCardEntity>> getRequestById(String bookingId) {
-    // TODO: implement getRequestById
-    throw UnimplementedError();
   }
   
+  @override
+  Future<Either<Failure, Unit>> declineBooking(String bookingId)async {
+    try {
+      await remoteDataSource.declineBooking(bookingId);
+      return const Right(unit);
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+    
+  }
+
   // @override
   // void closeConnection() {
   //   // TODO: implement closeConnection

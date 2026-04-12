@@ -90,7 +90,7 @@ class RequestsItem extends StatelessWidget {
           const SizedBox(
             height: 14,
           ),
-          const BookingActionButtons(),
+           BookingActionButtons(bookingId:requestModel.bookingid ,),
         ],
       ),
     );

@@ -140,6 +140,10 @@ import 'package:guide_me/features/dashboard/domain/repo/dashboard_socket_repo.da
     as _i480;
 import 'package:guide_me/features/dashboard/domain/repo/toggle_online_repository%20.dart'
     as _i742;
+import 'package:guide_me/features/dashboard/domain/use_case/accept_booking_use_case.dart'
+    as _i120;
+import 'package:guide_me/features/dashboard/domain/use_case/decline_booking_use_case.dart'
+    as _i929;
 import 'package:guide_me/features/dashboard/domain/use_case/get_analysis_use_case%20.dart'
     as _i268;
 import 'package:guide_me/features/dashboard/domain/use_case/get_requests_history_use_case.dart'
@@ -148,6 +152,8 @@ import 'package:guide_me/features/dashboard/domain/use_case/listen_to_incoming_r
     as _i108;
 import 'package:guide_me/features/dashboard/presentation/manager/Analysis_Cubit/analysis_cubit.dart'
     as _i538;
+import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart'
+    as _i218;
 import 'package:guide_me/features/dashboard/presentation/manager/Dashboard_Cubit/dashboard_cubit.dart'
     as _i624;
 import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart'
@@ -280,11 +286,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i948.ProfileRepo>(
       () => _i165.ProfileRepoImpl(gh<_i243.ProfileRemoteDataSource>()),
     );
+    gh.factory<_i900.ToogleOnlineStatusCubit>(
+      () => _i900.ToogleOnlineStatusCubit(
+        gh<_i890.SocketManager>(),
+        gh<_i742.ToggleOnlineRepository>(),
+      ),
+    );
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
-    );
-    gh.factory<_i900.ToogleOnlineStatusCubit>(
-      () => _i900.ToogleOnlineStatusCubit(gh<_i890.SocketManager>()),
     );
     gh.factory<_i268.GetAnalysisUseCase>(
       () => _i268.GetAnalysisUseCase(gh<_i539.AnalysisRepo>()),
@@ -439,6 +448,12 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i776.SendForgetPasswordCubit(gh<_i814.SendForgetPasswordUseCase>()),
     );
+    gh.factory<_i120.AcceptBookingUseCase>(
+      () => _i120.AcceptBookingUseCase(gh<_i480.DashboardSocketRepository>()),
+    );
+    gh.factory<_i929.DeclineBookingUseCase>(
+      () => _i929.DeclineBookingUseCase(gh<_i480.DashboardSocketRepository>()),
+    );
     gh.factory<_i542.GetRequestsHistoryUseCase>(
       () => _i542.GetRequestsHistoryUseCase(
         gh<_i480.DashboardSocketRepository>(),
@@ -472,6 +487,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),
+    );
+    gh.factory<_i218.AcceptBookingCubit>(
+      () => _i218.AcceptBookingCubit(
+        gh<_i120.AcceptBookingUseCase>(),
+        gh<_i929.DeclineBookingUseCase>(),
+      ),
     );
     gh.factory<_i865.BookAiPackageCubit>(
       () => _i865.BookAiPackageCubit(gh<_i664.BookAiPackageUseCase>()),

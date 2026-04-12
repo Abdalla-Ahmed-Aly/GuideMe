@@ -1,3 +1,4 @@
+import 'package:guide_me/core/shared/entities/location_entity.dart';
 
 class RequestCardEntity {
   final String userName;
@@ -10,6 +11,7 @@ class RequestCardEntity {
   final num durationMinutes;
   final int groupSize;
   final String bookingid;
+  final LocationEntity? locationEntity;
   const RequestCardEntity({
     required this.userName,
     required this.userImage,
@@ -19,6 +21,7 @@ class RequestCardEntity {
     required this.placeTitle,
     required this.date,
     required this.durationMinutes,
-    required this.groupSize, required this.bookingid,
+    required this.groupSize,
+    required this.bookingid, required this.locationEntity,
   });
 }

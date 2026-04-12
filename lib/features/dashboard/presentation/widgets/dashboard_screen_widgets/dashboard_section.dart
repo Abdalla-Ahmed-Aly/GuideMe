@@ -12,6 +12,7 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/user_profile_tile.dart';
 import 'package:guide_me/features/dashboard/presentation/manager/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/requests_Item.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/requests_item_shimmer.dart';
@@ -90,72 +91,90 @@ class ListviewRequiestItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DashboardCubit, DashboardCubitState>(
-      builder: (context, state) {
-        if (state is DashboardCubitInitial) {
-          return Container(
-            width: double.infinity,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 50),
-            child: Text(
-              "You are currently offline. Open status to receive requests.",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey[600], fontSize: 14),
-            ),
-          );
-        }
-        if (state is DashboardCubitLoading) {
-          return ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 3,
-            itemBuilder: (context, index) => const Padding(
-              padding: EdgeInsets.only(bottom: 12),
-              child: RequestsItemShimmer(),
-            ),
-          );
-        }
-    
-        if (state is DashboardCubitSuccess) {
-          final requests = state.requestsHistory;
-          if (requests.isEmpty) {
-            return Center(
+    return BlocListener<AcceptBookingCubit, AcceptBookingState>(
+      listener: (context, state) {
+        if (state is AcceptBookingSuccess) {
+      showAcceptSuccessDialog(context);
+    }
+    if (state is DeclineBookingSuccess) {
+    context.showSuccessSnakbar(message: "Booking declined successfully");
+    context.read<DashboardCubit>().getRequestsHistory();
+  }
+    if (state is AcceptBookingFailure) {
+      context.showErrorSnakbar(message: state.message);
+    }
+      },
+      child: BlocConsumer<DashboardCubit, DashboardCubitState>(
+        builder: (context, state) {
+          if (state is DashboardCubitInitial) {
+            return Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 50),
               child: Text(
-                "No requests available at the moment.",
+                "You are currently offline. Open status to receive requests.",
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey[600], fontSize: 14),
               ),
             );
           }
-          return ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.only(top: 15),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: GestureDetector(
-                  onTap: () {
-                    context.push(AppRoutes.bookingRequestScreen, extra: requests[index]);
-                  },
-                  child: RequestsItem(
-                    requestModel: requests[index],
-                  ),
+          if (state is DashboardCubitLoading) {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              itemBuilder: (context, index) => const Padding(
+                padding: EdgeInsets.only(bottom: 12),
+                child: RequestsItemShimmer(),
+              ),
+            );
+          }
+
+          if (state is DashboardCubitSuccess) {
+            final requests = state.requestsHistory;
+            if (requests.isEmpty) {
+              return Center(
+                child: Text(
+                  "No requests available at the moment.",
+                  style: TextStyle(color: Colors.grey[600], fontSize: 14),
                 ),
               );
-            },
-            itemCount: requests.length,
-          );
-        }
-        return const SizedBox();
-      }, listener: (BuildContext context, DashboardCubitState state) { 
-        if (state is DashboardCubitFailure) {
-            final error = FailureUiMapper.map(
-                    context: context,
-                    failure: state.failure,
-                  );
-                  context.showErrorSnakbar(message: error.message);
+            }
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.only(top: 15),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: GestureDetector(
+                    onTap: () {
+                      context.push(
+                        AppRoutes.bookingRequestScreen,
+                        extra: requests[index],
+                      );
+                    },
+                    child: RequestsItem(
+                      requestModel: requests[index],
+                    ),
+                  ),
+                );
+              },
+              itemCount: requests.length,
+            );
           }
-      },
+          return const SizedBox();
+        },
+        listener: (BuildContext context, DashboardCubitState state) {
+          if (state is DashboardCubitFailure) {
+            final error = FailureUiMapper.map(
+              context: context,
+              failure: state.failure,
+            );
+            context.showErrorSnakbar(message: error.message);
+          }
+        },
+      ),
     );
   }
 }
@@ -183,4 +202,42 @@ class UserInfo extends StatelessWidget {
       ),
     );
   }
+}
+
+void showAcceptSuccessDialog(BuildContext context) {
+  final dashboardCubit = context.read<DashboardCubit>();
+
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext dialogContext) { 
+      return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Icon(Icons.check_circle, color: Colors.green, size: 60),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("Accepted!", style: AppTextStyles.poppinsMedium18),
+            const SizedBox(height: 10),
+            const Text(
+              "The booking request has been accepted successfully.",
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        actions: [
+          Center(
+            child: TextButton(
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                
+                dashboardCubit.getRequestsHistory();
+              },
+              child: const Text("Done"),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }

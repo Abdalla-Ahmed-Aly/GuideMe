@@ -5,6 +5,6 @@ import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart'
 abstract class DashboardSocketRepository {
   Future<Either<Failure, List<RequestCardEntity>>> getRequestsGuide();
   Stream<Either<Failure, RequestCardEntity>> listenToIncomingRequests();
-  Future<Either<Failure, RequestCardEntity>> getRequestById(String bookingId);
-
+  Future<Either<Failure, Unit>> acceptBooking(String bookingId);
+  Future<Either<Failure, Unit>> declineBooking(String bookingId);
 }
