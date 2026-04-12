@@ -57,6 +57,12 @@ Stream<Either<Failure, RequestCardEntity>> listenToIncomingRequests() {
     }
   });
 }
+
+  @override
+  Future<Either<Failure, RequestCardEntity>> getRequestById(String bookingId) {
+    // TODO: implement getRequestById
+    throw UnimplementedError();
+  }
   
   // @override
   // void closeConnection() {

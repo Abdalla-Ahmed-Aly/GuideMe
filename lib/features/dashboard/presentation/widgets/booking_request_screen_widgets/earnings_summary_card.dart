@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 
 class EarningsSummaryCard extends StatelessWidget {
   const EarningsSummaryCard({
-    super.key,
+    super.key, required this.requestEntity,
   });
-
+  final RequestCardEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,7 @@ class EarningsSummaryCard extends StatelessWidget {
             ),
           ),
           Text(
-            r'$108.00',
+            '${requestEntity.price} ',
             style: AppTextStyles.poppinsSemiBold26.copyWith(
               color: AppColors.primary,
             ),

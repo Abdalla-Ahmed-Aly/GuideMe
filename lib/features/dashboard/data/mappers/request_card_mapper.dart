@@ -13,6 +13,8 @@ class RequestCardMapper {
       placeTitle: booking.place.title ?? "Unknown Place",
       date: booking.bookingDate,
       durationMinutes: booking.place.durationMinutes ?? 0,
+      groupSize: booking.persons ,
+      bookingid: booking.id,
     );
   }
 }

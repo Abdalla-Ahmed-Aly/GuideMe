@@ -135,7 +135,7 @@ class ListviewRequiestItem extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 12),
                 child: GestureDetector(
                   onTap: () {
-                    context.push(AppRoutes.bookingRequestScreen);
+                    context.push(AppRoutes.bookingRequestScreen, extra: requests[index]);
                   },
                   child: RequestsItem(
                     requestModel: requests[index],

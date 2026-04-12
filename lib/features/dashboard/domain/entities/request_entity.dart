@@ -8,7 +8,8 @@ class RequestCardEntity {
   final String placeTitle;
   final DateTime date;
   final num durationMinutes;
-
+  final int groupSize;
+  final String bookingid;
   const RequestCardEntity({
     required this.userName,
     required this.userImage,
@@ -18,5 +19,6 @@ class RequestCardEntity {
     required this.placeTitle,
     required this.date,
     required this.durationMinutes,
+    required this.groupSize, required this.bookingid,
   });
 }

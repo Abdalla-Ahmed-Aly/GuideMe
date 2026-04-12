@@ -28,7 +28,7 @@ class RequestsItem extends StatelessWidget {
           Row(
             children: [
               UserInfo(
-                 requestModel.userImage
+                requestModel.userImage
               ),
               const SizedBox(
                 width: 11,

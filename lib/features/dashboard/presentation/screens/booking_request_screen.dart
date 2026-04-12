@@ -5,11 +5,12 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_request_section.dart';
 
 class BookingRequestScreen extends StatelessWidget {
-  const BookingRequestScreen({super.key});
-
+  const BookingRequestScreen({super.key, required this.requestEntity});
+  final RequestCardEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class BookingRequestScreen extends StatelessWidget {
         ),
       ),
 
-      body: const BookingRequestSection(),
+      body:  BookingRequestSection(requestEntity: requestEntity,),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 19),
         decoration: const BoxDecoration(color: Colors.white),

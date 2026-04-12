@@ -50,6 +50,7 @@ import 'package:guide_me/features/booking/presentation/screens/suggested_package
 import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
+import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -294,7 +295,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookingRequestScreen,
-        builder: (context, state) => const BookingRequestScreen(),
+
+        builder: (context, state) {
+          final entity = state.extra as RequestCardEntity;
+          return BookingRequestScreen(requestEntity: entity);
+        } 
       ),
       GoRoute(
         path: AppRoutes.dashboardScreen,
