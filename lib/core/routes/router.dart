@@ -53,6 +53,8 @@ import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/manager/Dashboard_Cubit/dashboard_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/guide_navigation_bar_screen.dart';
@@ -295,6 +297,9 @@ abstract class AppRouter {
               create: (context) => GuideNavigationBarCubit(),
             ),
             BlocProvider(
+              create: (context) => getIt<ToogleOnlineStatusCubit>(),
+            ),
+            BlocProvider(
               create: (context) => getIt<DashboardCubit>(),
             ),
           ],
@@ -306,7 +311,10 @@ abstract class AppRouter {
 
         builder: (context, state) {
           final entity = state.extra as RequestCardEntity;
-          return BookingRequestScreen(requestEntity: entity);
+          return BlocProvider(
+            create: (context) => getIt<AcceptBookingCubit>(),
+            child: BookingRequestScreen(requestEntity: entity),
+          );
         },
       ),
       GoRoute(
