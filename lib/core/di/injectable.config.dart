@@ -159,6 +159,24 @@ import 'package:guide_me/features/dashboard/presentation/manager/Dashboard_Cubit
     as _i624;
 import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart'
     as _i900;
+import 'package:guide_me/features/chat/data/data_sources/remote/chat_remote_data_source.dart'
+    as _i273;
+import 'package:guide_me/features/chat/data/data_sources/remote/chat_remote_data_source_impl.dart'
+    as _i94;
+import 'package:guide_me/features/chat/data/repos/chat_repo_impl.dart' as _i214;
+import 'package:guide_me/features/chat/domain/repos/chat_repo.dart' as _i870;
+import 'package:guide_me/features/chat/domain/use_cases/get_all_chat_messages.dart'
+    as _i1053;
+import 'package:guide_me/features/chat/domain/use_cases/get_all_conversations_use_case.dart'
+    as _i106;
+import 'package:guide_me/features/chat/domain/use_cases/send_message_use_case.dart'
+    as _i75;
+import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart'
+    as _i788;
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart'
+    as _i452;
+import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart'
+    as _i218;
 import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source.dart'
     as _i221;
 import 'package:guide_me/features/guide_booking/data/data_sources/remote/guide_booking_remote_data_source_impl.dart'
@@ -231,6 +249,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
+    gh.factory<_i218.TrackingDetailsCubit>(() => _i218.TrackingDetailsCubit());
     gh.factory<_i140.TouristNavBarCubit>(() => _i140.TouristNavBarCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
@@ -290,6 +309,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i554.GuideRegistrationRepository>(
       () => _i554.GuideRegistrationRepository(gh<_i947.ApiService>()),
+    );
+    gh.lazySingleton<_i273.ChatRemoteDataSource>(
+      () => _i94.ChatRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
     gh.lazySingleton<_i322.BookingRemoteDataSource>(
       () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
@@ -388,6 +410,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i538.AnalysisCubit>(
       () => _i538.AnalysisCubit(gh<_i268.GetAnalysisUseCase>()),
     );
+    gh.lazySingleton<_i870.ChatRepo>(
+      () => _i214.ChatRepoImpl(gh<_i273.ChatRemoteDataSource>()),
+    );
     gh.lazySingleton<_i672.BookingRepo>(
       () => _i850.BookingRepoImpl(gh<_i322.BookingRemoteDataSource>()),
     );
@@ -418,6 +443,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i393.VerifyForgetPasswordUseCase>(
       () => _i393.VerifyForgetPasswordUseCase(gh<_i956.AuthRepo>()),
+    );
+    gh.lazySingleton<_i1053.GetAllChatMessagesUseCase>(
+      () => _i1053.GetAllChatMessagesUseCase(gh<_i870.ChatRepo>()),
+    );
+    gh.lazySingleton<_i106.GetAllConversationsUseCase>(
+      () => _i106.GetAllConversationsUseCase(gh<_i870.ChatRepo>()),
+    );
+    gh.lazySingleton<_i75.SendMessageUseCase>(
+      () => _i75.SendMessageUseCase(gh<_i870.ChatRepo>()),
     );
     gh.factory<_i123.GuideBookingActionsCubit>(
       () => _i123.GuideBookingActionsCubit(gh<_i580.GuideBookingRepo>()),
@@ -542,6 +576,20 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i940.LoginCubit>(
       () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
+    );
+    gh.lazySingleton<_i452.ConversationCubit>(
+      () => _i452.ConversationCubit(
+        gh<_i106.GetAllConversationsUseCase>(),
+        gh<_i248.SocketEventBus>(),
+      ),
+    );
+    gh.factory<_i788.ChatCubit>(
+      () => _i788.ChatCubit(
+        gh<_i1053.GetAllChatMessagesUseCase>(),
+        gh<_i75.SendMessageUseCase>(),
+        gh<_i248.SocketEventBus>(),
+        gh<_i890.SocketManager>(),
+      ),
     );
     gh.factory<_i928.BookPackageCubit>(
       () => _i928.BookPackageCubit(gh<_i280.BookPackageUseCase>()),

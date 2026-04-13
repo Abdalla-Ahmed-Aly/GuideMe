@@ -112,20 +112,25 @@ class UserModel {
         ? List<String>.from(json['expertise'])
         : [],
 
-    guideCities: json['guideCities'] != null
+    guideCities: json['guideCities'] != null && json['guideCities'] is List
         ? (json['guideCities'] as List)
+              .whereType<Map<String, dynamic>>()
               .map((e) => CityModel.fromJson(e))
               .toList()
         : [],
 
-    certificates: json['certificates'] != null
+    certificates: json['certificates'] != null && json['certificates'] is List
         ? (json['certificates'] as List)
+              .whereType<Map<String, dynamic>>()
               .map((e) => CertificateModel.fromJson(e))
               .toList()
         : [],
 
-    reviews: json['reviews'] != null
-        ? (json['reviews'] as List).map((e) => ReviewModel.fromJson(e)).toList()
+    reviews: json['reviews'] != null && json['reviews'] is List
+        ? (json['reviews'] as List)
+              .whereType<Map<String, dynamic>>()
+              .map((e) => ReviewModel.fromJson(e))
+              .toList()
         : [],
 
     completedTours: json['completedTours'],

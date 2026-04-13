@@ -38,6 +38,7 @@ class GuiderProfileSection extends StatelessWidget {
                 : const Icon(
                     Icons.person_outline,
                     size: 30,
+                    color: AppColors.primary2,
                   ),
           ),
 

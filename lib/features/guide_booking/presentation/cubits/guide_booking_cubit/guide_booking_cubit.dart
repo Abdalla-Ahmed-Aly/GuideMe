@@ -28,6 +28,7 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   final SocketEventBus _socketEventBus;
 
   StreamSubscription? _subscription;
+  StreamSubscription? _updateSubscription;
 
   void safeEmit(GuideBookingState state) {
     if (!isClosed) emit(state);
@@ -70,19 +71,16 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   void _listenToNewBooking() {
     _subscription?.cancel();
 
-    _subscription =
-        _socketEventBus.listenTo(SocketAppEvents.bookingAccepted.value)
-        .listen((data) {
-          final Map<String, dynamic> json = data is String
-              ? jsonDecode(data)
-              : data as Map<String, dynamic>;
+    _subscription = _socketEventBus.listenTo("bookingAccepted").listen((data) {
+      final Map<String, dynamic> json = data is String
+          ? jsonDecode(data)
+          : data as Map<String, dynamic>;
 
-          final booking = BookingModel.fromJson(
-            json['booking'] as Map<String, dynamic>,
-          );
-
-          _addNewBooking(BookingMapper.toEntity(booking));
-        });
+      final booking = BookingModel.fromJson(
+        json['booking'] as Map<String, dynamic>,
+      );
+      _addNewBooking(BookingMapper.toEntity(booking));
+    });
   }
 
   void _addNewBooking(BookingEntity booking) {
@@ -101,14 +99,14 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   }
 
   void _listenToUpdateBooking() {
-    _subscription?.cancel();
+    _updateSubscription?.cancel();
 
     final events = [
       SocketAppEvents.bookingLive.value,
       SocketAppEvents.bookingCompleted.value,
     ];
 
-    _subscription =
+    _updateSubscription =
         StreamGroup.merge(
           events.map((event) => _socketEventBus.listenTo(event)),
         ).listen((data) {
@@ -168,6 +166,7 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   @override
   Future<void> close() {
     _subscription?.cancel();
+    _updateSubscription?.cancel();
     return super.close();
   }
 }

@@ -2533,6 +2533,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tour can only be started on the booking day'**
   String get tourCanOnlyBeStartedOnTheBookingDay;
+
+  /// No description provided for @unknownName.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Name'**
+  String get unknownName;
+
+  /// No description provided for @noConversations.
+  ///
+  /// In en, this message translates to:
+  /// **'No conversations'**
+  String get noConversations;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// No description provided for @chat_i_am_at_the_entrance.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m at the entrance'**
+  String get chat_i_am_at_the_entrance;
+
+  /// No description provided for @chat_5_mins_away.
+  ///
+  /// In en, this message translates to:
+  /// **'5 mins away'**
+  String get chat_5_mins_away;
+
+  /// No description provided for @chat_found_you.
+  ///
+  /// In en, this message translates to:
+  /// **'Found you'**
+  String get chat_found_you;
+
+  /// No description provided for @chat_whats_your_name.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your name?'**
+  String get chat_whats_your_name;
+
+  /// No description provided for @chat_how_are_you.
+  ///
+  /// In en, this message translates to:
+  /// **'How are you?'**
+  String get chat_how_are_you;
+
+  /// No description provided for @newText.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get newText;
 }
 
 class _AppLocalizationsDelegate
