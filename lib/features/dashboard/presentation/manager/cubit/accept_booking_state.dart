@@ -7,9 +7,9 @@ final class AcceptBookingInitial extends AcceptBookingState {}
 
 final class AcceptBookingLoading extends AcceptBookingState {}
 final class AcceptBookingSuccess extends AcceptBookingState {
-  final String bookId;
+  final String bookingId;
 
-  AcceptBookingSuccess(this.bookId);
+  AcceptBookingSuccess(this.bookingId);
 }
 final class AcceptBookingFailure extends AcceptBookingState {
   final String message;

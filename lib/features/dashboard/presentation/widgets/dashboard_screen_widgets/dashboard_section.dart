@@ -94,11 +94,13 @@ class ListviewRequiestItem extends StatelessWidget {
     return BlocListener<AcceptBookingCubit, AcceptBookingState>(
       listener: (context, state) {
         if (state is AcceptBookingSuccess) {
+      context.read<DashboardCubit>().removeRequestLocally(state.bookingId);
       showAcceptSuccessDialog(context);
     }
     if (state is DeclineBookingSuccess) {
+      context.read<DashboardCubit>().removeRequestLocally(state.bookingId);
     context.showSuccessSnakbar(message: "Booking declined successfully");
-    context.read<DashboardCubit>().getRequestsHistory();
+    
   }
     if (state is AcceptBookingFailure) {
       context.showErrorSnakbar(message: state.message);
@@ -205,7 +207,7 @@ class UserInfo extends StatelessWidget {
 }
 
 void showAcceptSuccessDialog(BuildContext context) {
-  final dashboardCubit = context.read<DashboardCubit>();
+  
 
   showDialog(
     context: context,
@@ -231,7 +233,7 @@ void showAcceptSuccessDialog(BuildContext context) {
               onPressed: () {
                 Navigator.pop(dialogContext);
                 
-                dashboardCubit.getRequestsHistory();
+                
               },
               child: const Text("Done"),
             ),

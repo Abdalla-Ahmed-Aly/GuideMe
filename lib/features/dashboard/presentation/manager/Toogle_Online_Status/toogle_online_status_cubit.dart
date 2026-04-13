@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 part 'toogle_online_status_state.dart';
 
 @injectable
-@injectable
 class ToogleOnlineStatusCubit extends Cubit<ToogleOnlineStatusState> {
   final SocketManager _socketManager;
   final ToggleOnlineRepository _repository; 
@@ -21,7 +20,7 @@ class ToogleOnlineStatusCubit extends Cubit<ToogleOnlineStatusState> {
   bool isOnline = false;
 
   Future<void> toogleOnlineStatus(bool status, String token) async {
-    
+    safeEmit(ToogleOnlineStatusLoading());
 
     final result = await _repository.toggleOnline(status);
 
@@ -33,9 +32,9 @@ class ToogleOnlineStatusCubit extends Cubit<ToogleOnlineStatusState> {
       (successModel) {
         isOnline = status;
         if (isOnline) {
-          _socketManager.connect(token);
+          // _socketManager.connect(token);
         } else {
-          _socketManager.dispose();
+          // _socketManager.dispose();
         }
         safeEmit(ToogleOnlineStatusChanged(isOnline));
       },
