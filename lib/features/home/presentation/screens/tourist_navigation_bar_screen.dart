@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
+import 'package:guide_me/core/socket/socket_manager.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart';
@@ -41,9 +43,17 @@ class _TouristNavigationBarScreenState
   void initState() {
     super.initState();
     context.read<UserCubit>().loadUser();
+    _socketConnection();
     _pageController = PageController(
       initialPage: context.read<TouristNavBarCubit>().state.index,
     );
+  }
+
+  Future<void> _socketConnection() async {
+    final token = await getIt<TokenService>().getToken();
+    if (token != null) {
+      getIt<SocketManager>().connect(token);
+    }
   }
 
   @override

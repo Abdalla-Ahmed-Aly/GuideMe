@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/shared/entities/guider_entity.dart';
 import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart';
 import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
@@ -47,7 +48,9 @@ import 'package:guide_me/features/booking/presentation/screens/booking_confirmat
 import 'package:guide_me/features/booking/presentation/screens/filter_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/suggested_packages_screen.dart';
-import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
@@ -185,7 +188,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.touristNavigationBarScreen,
-        builder: (context, state) => const TouristNavigationBarScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              getIt<ConversationCubit>()..getAllConversations(),
+          child: const TouristNavigationBarScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.filterScreen,
@@ -304,6 +311,10 @@ abstract class AppRouter {
             BlocProvider(
               create: (context) => getIt<DashboardCubit>(),
             ),
+            BlocProvider(
+              create: (context) =>
+                  getIt<ConversationCubit>()..getAllConversations(),
+            ),
           ],
           child: const GuideNavigationBarScreen(),
         ),
@@ -370,10 +381,20 @@ abstract class AppRouter {
 
       GoRoute(
         path: AppRoutes.chatScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => ChatCubit(),
-          child: const ChatScreen(),
-        ),
+        builder: (context, state) {
+          final args = state.extra as ChatArgs;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<ChatCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<TrackingDetailsCubit>(),
+              ),
+            ],
+            child: ChatScreen(args: args),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.trackingScreen,

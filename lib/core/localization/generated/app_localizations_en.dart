@@ -1258,4 +1258,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get tourCanOnlyBeStartedOnTheBookingDay =>
       'Tour can only be started on the booking day';
+
+  @override
+  String get unknownName => 'Unknown Name';
+
+  @override
+  String get noConversations => 'No conversations';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String get chat_i_am_at_the_entrance => 'I\'m at the entrance';
+
+  @override
+  String get chat_5_mins_away => '5 mins away';
+
+  @override
+  String get chat_found_you => 'Found you';
+
+  @override
+  String get chat_whats_your_name => 'What\'s your name?';
+
+  @override
+  String get chat_how_are_you => 'How are you?';
+
+  @override
+  String get newText => 'New';
 }

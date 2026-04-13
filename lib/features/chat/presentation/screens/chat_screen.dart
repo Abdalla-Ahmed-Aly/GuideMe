@@ -1,16 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/chat/cubits/chat_cubit/chat_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
+
+import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_input_section.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_trip_details_card.dart';
-import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/messages_list_view.dart';
+import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/messages_list_bloc_builder.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/quick_replies_section.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key, required this.args});
+
+  final ChatArgs args;
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      getIt<ConversationCubit>().setActiveConversation(
+        widget.args.conversationId,
+      );
+      getIt<ConversationCubit>().markConversationAsSeen(
+        widget.args.conversationId,
+      );
+      context.read<ChatCubit>().getAllChatMessages(
+        conversationId: widget.args.conversationId,
+        bookingId: widget.args.bookingId,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    getIt<ConversationCubit>().clearActiveConversation();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,44 +60,19 @@ class ChatScreen extends StatelessWidget {
             context.pop();
           },
         ),
-        title: Column(
-          children: [
-            Text(
-              "Omar Yasser",
-              overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.poppinsSemiBold20,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 8,
-                  height: 8,
-                  decoration: const BoxDecoration(
-                    color: Colors.green,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  "ONLINE",
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.poppinsSemiBold14.copyWith(
-                    color: const Color(0xff9C7A49),
-                  ),
-                ),
-              ],
-            ),
-          ],
+        title: Text(
+          widget.args.user.name,
+          overflow: TextOverflow.ellipsis,
+          style: AppTextStyles.poppinsSemiBold20,
         ),
         actions: [
-          BlocBuilder<ChatCubit, ChatState>(
+          BlocBuilder<TrackingDetailsCubit, TrackingDetailsState>(
             builder: (context, state) {
               if (!state.showTrakingDetials) {
                 return InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {
-                    context.read<ChatCubit>().showTrackingCard();
+                    context.read<TrackingDetailsCubit>().showTrackingCard();
                   },
                   child: Hero(
                     tag: "tracking_details",
@@ -100,9 +111,9 @@ class ChatScreen extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                const MessagesListView(),
+                const MessagesListBlocBuilder(),
 
-                BlocBuilder<ChatCubit, ChatState>(
+                BlocBuilder<TrackingDetailsCubit, TrackingDetailsState>(
                   builder: (context, state) {
                     return Positioned(
                       top: 16,

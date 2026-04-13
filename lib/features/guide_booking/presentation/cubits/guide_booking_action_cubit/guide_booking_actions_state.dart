@@ -9,9 +9,14 @@ final class GuideBookingActionsLoading extends GuideBookingActionsState {
   GuideBookingActionsLoading({required this.bookingId});
 }
 
-final class GuideBookingActionsSuccess extends GuideBookingActionsState {
+final class GuideBookingStartSuccess extends GuideBookingActionsState {
   final String bookingId;
-  GuideBookingActionsSuccess(this.bookingId);
+  GuideBookingStartSuccess(this.bookingId);
+}
+
+final class GuideBookingEndSuccess extends GuideBookingActionsState {
+  final String bookingId;
+  GuideBookingEndSuccess(this.bookingId);
 }
 
 final class GuideBookingActionsFailure extends GuideBookingActionsState {

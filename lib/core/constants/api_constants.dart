@@ -44,6 +44,11 @@ abstract class ApiConstants {
   static const String startTour = "/start";
   static const String endTour = "/end";
 
+  // chat
+  static const String chatEndpoint = "$api/chat";
+  static const String getAllConversationsEndpoint = "$chatEndpoint/conversations/list";
+  static const String sendMessageEndpoint = "$chatEndpoint/send";
+
 
 
   static const String onboarding = "$api/guide/onboarding";

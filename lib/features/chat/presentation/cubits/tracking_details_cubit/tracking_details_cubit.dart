@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
+part 'tracking_details_state.dart';
 
-part 'chat_state.dart';
-
-class ChatCubit extends Cubit<ChatState> {
-  ChatCubit() : super(ChatState.initial());
+@injectable
+class TrackingDetailsCubit extends Cubit<TrackingDetailsState> {
+  TrackingDetailsCubit() : super(TrackingDetailsState.initial());
 
   void showTrackingCard() {
     emit(state.copyWith(

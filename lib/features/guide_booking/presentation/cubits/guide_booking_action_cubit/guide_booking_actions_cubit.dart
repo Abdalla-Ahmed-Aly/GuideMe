@@ -24,7 +24,7 @@ class GuideBookingActionsCubit extends Cubit<GuideBookingActionsState> {
         );
       },
       (success) {
-        safeEmit(GuideBookingActionsSuccess(bookingId));
+        safeEmit(GuideBookingStartSuccess(bookingId));
       },
     );
   }
@@ -39,7 +39,7 @@ class GuideBookingActionsCubit extends Cubit<GuideBookingActionsState> {
         );
       },
       (success) {
-        safeEmit(GuideBookingActionsSuccess(bookingId));
+        safeEmit(GuideBookingEndSuccess(bookingId));
       },
     );
   }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
@@ -103,7 +106,7 @@ class GuideLiveTripCard extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              _buildChatWithGuideButton(context),
+              _buildGuideLiveTripButtons(context),
             ],
           ),
         ),
@@ -111,22 +114,38 @@ class GuideLiveTripCard extends StatelessWidget {
     );
   }
 
-  Widget _buildChatWithGuideButton(BuildContext context) {
+  Widget _buildGuideLiveTripButtons(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: EndTourButton(booking: booking),
         ),
         const SizedBox(width: 14),
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: const BoxDecoration(
-            color: Color(0xffFEF4E6),
-            shape: BoxShape.circle,
-          ),
-          child: const Icon(
-            Icons.chat_outlined,
-            color: Color(0xffF2930D),
+
+        GestureDetector(
+          onTap: () {
+            final userCubit = context.read<UserCubit>();
+            final user = (userCubit.state as UserSuccess).user;
+            final args = ChatArgs(
+              conversationId: ChatArgs.generateConversationId(
+                guideId: user.id,
+                touristId: booking.user.id,
+              ),
+              bookingId: booking.id,
+              user: booking.user,
+            );
+            context.push(AppRoutes.chatScreen, extra: args);
+          },
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(
+              color: Color(0xffFEF4E6),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.chat_outlined,
+              color: Color(0xffF2930D),
+            ),
           ),
         ),
       ],

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/args/chat_args.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/guide_booking/presentation/widgets/start_tour_button.dart';
@@ -13,6 +16,7 @@ class GuideNextTripCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserCubit userCubit = context.read<UserCubit>();
     return GestureDetector(
       onTap: () {
         context.push(AppRoutes.tripDetailsScreen, extra: booking);
@@ -80,15 +84,30 @@ class GuideNextTripCard extends StatelessWidget {
 
                 const SizedBox(width: 12),
 
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
-                    color: Color(0xffFEF4E6),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.chat_outlined,
-                    color: Color(0xffF2930D),
+                GestureDetector(
+                  onTap: () {
+                    userCubit.loadUser();
+                    final user = (userCubit.state as UserSuccess).user;
+                    final args = ChatArgs(
+                      conversationId: ChatArgs.generateConversationId(
+                        guideId: user.id,
+                        touristId: booking.user.id,
+                      ),
+                      bookingId: booking.id,
+                      user: booking.user,
+                    );
+                    context.push(AppRoutes.chatScreen, extra: args);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                      color: Color(0xffFEF4E6),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.chat_outlined,
+                      color: Color(0xffF2930D),
+                    ),
                   ),
                 ),
               ],
@@ -99,4 +118,3 @@ class GuideNextTripCard extends StatelessWidget {
     );
   }
 }
-

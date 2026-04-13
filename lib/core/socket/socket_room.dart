@@ -1,7 +1,7 @@
 class SocketRoom {
   final String joinEvent;
   final String leaveEvent;
-  final Map<String, dynamic> payload;
+  final String payload;
 
   const SocketRoom({
     required this.joinEvent,
@@ -28,6 +28,6 @@ class SocketRooms {
   static SocketRoom joinBooking(String bookingId) => SocketRoom(
     joinEvent: 'joinBooking',
     leaveEvent: 'leaveBooking',
-    payload: {'bookingId': bookingId},
+    payload: bookingId,
   );
 }
