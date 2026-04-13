@@ -477,7 +477,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i940.LoginCubit>(
       () => _i940.LoginCubit(gh<_i93.LoginUseCase>()),
     );
-    gh.factory<_i452.ConversationCubit>(
+    gh.lazySingleton<_i452.ConversationCubit>(
       () => _i452.ConversationCubit(
         gh<_i106.GetAllConversationsUseCase>(),
         gh<_i248.SocketEventBus>(),

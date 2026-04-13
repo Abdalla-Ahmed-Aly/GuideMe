@@ -441,5 +441,11 @@
   "unknownName": "اسم غير معروف",
   "noConversations": "لا توجد محادثات",
   "today": "اليوم",
-  "yesterday": "الأمس"
+  "yesterday": "الأمس",
+  "chat_i_am_at_the_entrance": "أنا عند المدخل",
+  "chat_5_mins_away": "على بعد 5 دقائق",
+  "chat_found_you": "وجدتك",
+  "chat_whats_your_name": "ما اسمك؟",
+  "chat_how_are_you": "كيف حالك؟",
+  "newText": "جديد"
 }

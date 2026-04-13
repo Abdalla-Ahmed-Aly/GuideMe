@@ -42,4 +42,20 @@ class MessageModel {
       isMine: json['isMine'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'booking': booking,
+      'conversationId': conversationId,
+      'sender': sender.toJson(),
+      'receiver': receiver,
+      'message': message,
+      'type': type,
+      'isSeen': isSeen,
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
+      'isMine': isMine,
+    };
+  }
 }

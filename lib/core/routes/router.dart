@@ -372,17 +372,13 @@ abstract class AppRouter {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => getIt<ChatCubit>()
-                  ..getAllChatMessages(
-                    conversationId: args.conversationId,
-                    bookingId: args.bookingId,
-                  ),
+                create: (context) => getIt<ChatCubit>(),
               ),
               BlocProvider(
                 create: (context) => getIt<TrackingDetailsCubit>(),
               ),
             ],
-            child: const ChatScreen(),
+            child: ChatScreen(args: args),
           );
         },
       ),

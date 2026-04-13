@@ -12,7 +12,7 @@ import 'package:injectable/injectable.dart';
 
 part 'conversation_state.dart';
 
-@injectable
+@lazySingleton
 class ConversationCubit extends Cubit<ConversationState> {
   ConversationCubit(this._getAllConversationsUseCase, this._socketEventBus)
     : super(ConversationInitial());
@@ -24,6 +24,7 @@ class ConversationCubit extends Cubit<ConversationState> {
   List<ConversationEntity> conversations = [];
   List<ConversationEntity> filteredConversations = [];
   String _lastQuery = "";
+  String? _activeConversationId;
 
   void safeEmit(ConversationState state) {
     if (!isClosed) emit(state);
@@ -64,6 +65,13 @@ class ConversationCubit extends Cubit<ConversationState> {
 
   void _updateConversation(ConversationEntity conversation) {
     if (state is ConversationSuccess) {
+      // If the user is currently inside this conversation, the incoming
+      // message is already seen — override the API value.
+      final isActive = _activeConversationId == conversation.conversationId;
+      if (isActive && conversation.lastMessage != null) {
+        conversation.lastMessage!.isSeen = true;
+      }
+
       final index = conversations.indexWhere(
         (c) => c.conversationId == conversation.conversationId,
       );
@@ -81,6 +89,16 @@ class ConversationCubit extends Cubit<ConversationState> {
     }
   }
 
+  /// Call this when the user opens a chat screen.
+  void setActiveConversation(String conversationId) {
+    _activeConversationId = conversationId;
+  }
+
+  /// Call this when the user leaves a chat screen.
+  void clearActiveConversation() {
+    _activeConversationId = null;
+  }
+
   void search(String query) {
     _lastQuery = query;
     if (query.isEmpty) {
@@ -92,6 +110,18 @@ class ConversationCubit extends Cubit<ConversationState> {
         return c.user.name.toLowerCase().contains(query.toLowerCase());
       }).toList();
       safeEmit(ConversationSuccess(List.from(filteredConversations)));
+    }
+  }
+
+  void markConversationAsSeen(String conversationId) {
+    final index = conversations.indexWhere(
+      (c) => c.conversationId == conversationId,
+    );
+    if (index != -1) {
+      if (conversations[index].lastMessage?.isMine == false) {
+        conversations[index].lastMessage?.isSeen = true;
+      }
+      safeEmit(ConversationSuccess(List.from(conversations)));
     }
   }
 

@@ -1268,4 +1268,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get yesterday => 'الأمس';
+
+  @override
+  String get chat_i_am_at_the_entrance => 'أنا عند المدخل';
+
+  @override
+  String get chat_5_mins_away => 'على بعد 5 دقائق';
+
+  @override
+  String get chat_found_you => 'وجدتك';
+
+  @override
+  String get chat_whats_your_name => 'ما اسمك؟';
+
+  @override
+  String get chat_how_are_you => 'كيف حالك؟';
+
+  @override
+  String get newText => 'جديد';
 }

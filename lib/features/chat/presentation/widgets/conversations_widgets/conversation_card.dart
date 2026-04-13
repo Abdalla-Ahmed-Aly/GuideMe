@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
@@ -13,6 +14,9 @@ class ConversationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSeen =
+        conversation.lastMessage?.isSeen == true ||
+        conversation.lastMessage?.isMine == true;
     return GestureDetector(
       onTap: () {
         final args = ChatArgs(
@@ -26,7 +30,7 @@ class ConversationCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
-          color: const Color(0xffFBF0E0),
+          color: isSeen ? Colors.white : const Color(0xffFBF0E0),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: const Color(0xffF2930D).withValues(alpha: .47),
@@ -67,10 +71,40 @@ class ConversationCard extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 2),
-                  Text(
-                    conversation.lastMessage,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.poppinsRegular14,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          conversation.lastMessage?.message ?? "",
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.poppinsRegular14.copyWith(
+                            fontWeight: isSeen
+                                ? FontWeight.normal
+                                : FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      if (!isSeen) ...[
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xffF2930D),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            context.l10n.newText,
+                            style: AppTextStyles.poppinsMedium12.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                 ],
               ),

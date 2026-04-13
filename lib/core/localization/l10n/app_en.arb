@@ -440,5 +440,11 @@
   "unknownName": "Unknown Name",
   "noConversations": "No conversations",
   "today": "Today",
-  "yesterday": "Yesterday"
+  "yesterday": "Yesterday",
+  "chat_i_am_at_the_entrance": "I'm at the entrance",
+  "chat_5_mins_away": "5 mins away",
+  "chat_found_you": "Found you",
+  "chat_whats_your_name": "What's your name?",
+  "chat_how_are_you": "How are you?",
+  "newText": "New"
 }

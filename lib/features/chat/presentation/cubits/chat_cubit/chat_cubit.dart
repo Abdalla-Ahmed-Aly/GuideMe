@@ -60,15 +60,7 @@ class ChatCubit extends Cubit<ChatState> {
       (newMessages) {
         messages.addAll(newMessages);
         safeEmit(ChatSuccess(messages));
-        markMessagesAsSeen(conversationId);
       },
-    );
-  }
-
-  void markMessagesAsSeen(String conversationId) {
-    _socketEventBus.emit(
-      SocketAppEvents.messagesSeen.value,
-      {'conversationId': conversationId},
     );
   }
 
@@ -156,7 +148,6 @@ class ChatCubit extends Cubit<ChatState> {
           late MessageEntity updatedEntity;
           if (!entity.isMine) {
             updatedEntity = entity.copyWith(status: MessageStatus.seen);
-            markMessagesAsSeen(entity.conversationId);
           } else {
             if (wasSeen || entity.isSeen) {
               updatedEntity = entity.copyWith(status: MessageStatus.seen);

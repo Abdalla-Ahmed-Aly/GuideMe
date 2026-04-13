@@ -42,43 +42,39 @@ class _ChatInputSectionState extends State<ChatInputSection> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            children: [
-              const ChatAttachmentButton(),
+          const ChatAttachmentButton(),
 
-              const SizedBox(width: 8),
+          const SizedBox(width: 8),
 
-              Expanded(
-                child: CustomTextField(
-                  controller: _messageController,
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
+          Expanded(
+            child: CustomTextField(
+              controller: _messageController,
+              border: const OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+              ),
+              hintText: context.l10n.chat_type_message_hint,
+              hintColor: const Color(0xff9C7A49),
+              fillColor: const Color(0xffF3F4F6),
+            ),
+          ),
+
+          const SizedBox(width: 8),
+
+          SendButton(
+            onPressed: () {
+              if (_messageController.text.trim().isNotEmpty) {
+                context.read<ChatCubit>().sendMessage(
+                  SendMessageModel(
+                    bookingId: args.bookingId,
+                    message: _messageController.text.trim(),
                   ),
-                  hintText: context.l10n.chat_type_message_hint,
-                  hintColor: const Color(0xff9C7A49),
-                  fillColor: const Color(0xffF3F4F6),
-                ),
-              ),
-
-              const SizedBox(width: 8),
-
-              SendButton(
-                onPressed: () {
-                  if (_messageController.text.trim().isNotEmpty) {
-                    context.read<ChatCubit>().sendMessage(
-                      SendMessageModel(
-                        bookingId: args.bookingId,
-                        message: _messageController.text.trim(),
-                      ),
-                    );
-                    _messageController.clear();
-                  }
-                },
-              ),
-            ],
+                );
+                _messageController.clear();
+              }
+            },
           ),
         ],
       ),
