@@ -7,4 +7,6 @@ class HiveConstants {
   static const String userKey = 'userKey';
   static const String localeBox = 'localeBox';
   static const String localeKey = 'localeKey';
+  static const String signupProgressBox = 'signupProgressBox';
+  static const String signupStepKey = 'signupStepKey';
 }

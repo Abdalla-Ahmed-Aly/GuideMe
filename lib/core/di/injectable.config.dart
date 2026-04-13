@@ -177,6 +177,10 @@ import 'package:guide_me/features/guide_booking/presentation/cubits/guide_bookin
     as _i193;
 import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart'
     as _i758;
+import 'package:guide_me/features/guide_registration/data/repositories/guide_registration_repository.dart'
+    as _i554;
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart'
+    as _i698;
 import 'package:guide_me/features/home/data/repo_impl/home_repo_impl.dart'
     as _i955;
 import 'package:guide_me/features/home/data/sources/home_sources.dart' as _i692;
@@ -284,6 +288,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i137.PlaceByCityCubit>(
       () => _i137.PlaceByCityCubit(gh<_i985.PlaceByCityUsecase>()),
     );
+    gh.factory<_i554.GuideRegistrationRepository>(
+      () => _i554.GuideRegistrationRepository(gh<_i947.ApiService>()),
+    );
     gh.lazySingleton<_i322.BookingRemoteDataSource>(
       () => _i545.BookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
@@ -353,6 +360,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1045.HomeRepo>(
       () => _i955.HomeRepoImpl(gh<_i692.HomeService>()),
+    );
+    gh.lazySingleton<_i698.GuideRegistrationSharedCubit>(
+      () => _i698.GuideRegistrationSharedCubit(
+        gh<_i554.GuideRegistrationRepository>(),
+        gh<_i226.MediaPickerService>(),
+      ),
     );
     gh.factory<_i426.ResendPasswordUseCase>(
       () => _i426.ResendPasswordUseCase(gh<_i956.AuthRepo>()),

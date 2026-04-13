@@ -15,7 +15,7 @@ abstract class ApiConstants {
   static const String verifyForgetPasswordEndPoint =
       '/api/auth/forgot-password/verify-otp';
   static const String loginWithGoogleEndPoint = '/api/auth/google-login';
-  static const String addNationalityEndPoint = '/api/home/nationality';
+  static const String addNationalityEndPoint = '$api/home/nationality';
 
   static const homeEndPoint = "$api/home/get-home-data";
   static const placeByCategory = "$api/home/by-category";
@@ -43,4 +43,10 @@ abstract class ApiConstants {
   static const String guideBooking = "$api/Guide_Dashboard/booking";
   static const String startTour = "/start";
   static const String endTour = "/end";
+
+
+
+  static const String onboarding = "$api/guide/onboarding";
+  static const String guideVerificationStatus = "$api/guide/onboarding/verification-status";
+
 }

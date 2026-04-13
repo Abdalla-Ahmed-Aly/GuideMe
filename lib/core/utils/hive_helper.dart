@@ -2,6 +2,7 @@ import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/hive_registrar.g.dart';
 import 'package:hive_ce_flutter/hive_ce_flutter.dart';
+import 'package:guide_me/core/services/hive_service.dart';
 
 class HiveHelper {
   static Future<void> init() async {
@@ -13,6 +14,9 @@ class HiveHelper {
     await openBox<bool>(name: HiveConstants.avatarBox);
     await openBox<String>(name: HiveConstants.userBox);
     await openBox<String>(name: HiveConstants.localeBox);
+    await openBox<String>(name: HiveConstants.signupProgressBox);
+
+    await HiveService.init();
   }
 
   static Future<Box<T>> openBox<T>({required String name}) async {

@@ -6,6 +6,8 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/core/utils/hive_helper.dart';
+import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/features/auth/presentation/manager/select_nationality_cubit/select_nationality_cubit.dart';
 
 class ApplyingNationalitySection extends StatelessWidget {
@@ -18,6 +20,12 @@ class ApplyingNationalitySection extends StatelessWidget {
     return BlocConsumer<SelectNationalityCubit, SelectNationalityState>(
       listener: (context, state) {
         if (state is SelectNationalitySuccess) {
+           // Update progress
+          HiveHelper.put<String>(
+            boxName: HiveConstants.signupProgressBox,
+            key: HiveConstants.signupStepKey,
+            data: 'need-location',
+          );
           context.push(AppRoutes.allowLocationAccessScreen);
           context.read<SelectNationalityCubit>().resetState();
         }

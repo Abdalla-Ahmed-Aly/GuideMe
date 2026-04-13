@@ -72,27 +72,42 @@ class _SplashScreenState extends State<SplashScreen>
         listener: (context, state) {
           if (state is SplashAuthenticated) {
             if (state.userRole == UserRole.tourist) {
-              Future.delayed(
-                const Duration(seconds: 1),
-                () {
-                  GoRouter.of(context).go(AppRoutes.touristNavigationBarScreen);
-                },
-              );
+              Future.delayed(const Duration(seconds: 1), () {
+                context.go(AppRoutes.touristNavigationBarScreen);
+              });
             } else {
-              Future.delayed(
-                const Duration(seconds: 1),
-                () {
-                  GoRouter.of(context).go(AppRoutes.guideNavigationBarScreen);
-                },
-              );
+              Future.delayed(const Duration(seconds: 1), () {
+                context.go(AppRoutes.guideNavigationBarScreen);
+              });
             }
           } else if (state is SplashUnAuthenticated) {
-            Future.delayed(
-              const Duration(seconds: 1),
-              () {
-                GoRouter.of(context).go(AppRoutes.onBoardingScreen);
-              },
-            );
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.onBoardingScreen);
+            });
+          } else if (state is SplashGuideOnboardingPending) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.guideVerificationScreen);
+            });
+          } else if (state is SplashGuideOnboardingApproved) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.guideVerificationSuccessScreen);
+            });
+          } else if (state is SplashGuideOnboardingRejected) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.verificationFailedScreen, extra: state.message);
+            });
+          } else if (state is SplashNeedNationality) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.chooseNationalityScreen);
+            });
+          } else if (state is SplashNeedLocation) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.allowLocationAccessScreen);
+            });
+          } else if (state is SplashGuideOnboardingNotSubmitted) {
+            Future.delayed(const Duration(seconds: 1), () {
+              context.go(AppRoutes.guideProfessionalInfoScreen);
+            });
           }
         },
         child: Scaffold(

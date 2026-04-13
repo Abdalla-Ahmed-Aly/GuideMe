@@ -3,8 +3,10 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class AdminNoteCard extends StatelessWidget {
+  final String? reason;
   const AdminNoteCard({
     super.key,
+    this.reason,
   });
 
   @override
@@ -35,7 +37,7 @@ class AdminNoteCard extends StatelessWidget {
           const SizedBox(height: 16),
     
           Text(
-            context.l10n.adminNoteMessage,
+            reason ?? context.l10n.adminNoteMessage,
             style: AppTextStyles.poppinsLight14.copyWith(
               color: const Color(0xff9C7A49),
             ),
