@@ -8,10 +8,12 @@ import 'package:guide_me/features/dashboard/data/models/Analysis_model/rating_di
 
 class FeedBackTravel extends StatelessWidget {
   const FeedBackTravel({
-    super.key, required this.data, required this.ratingDistribution,
+    super.key,
+    required this.data,
+    required this.ratingDistribution,
   });
-final Data data;
-final RatingDistribution ratingDistribution;
+  final Data data;
+  final RatingDistribution ratingDistribution;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +43,10 @@ final RatingDistribution ratingDistribution;
                 const SizedBox(
                   height: 3,
                 ),
-                Text(data.totalReviews.toString(), style: AppTextStyles.poppinsSemiBold14),
+                Text(
+                  data.totalReviews.toString(),
+                  style: AppTextStyles.poppinsSemiBold14,
+                ),
                 const SizedBox(
                   height: 38,
                 ),
@@ -51,16 +56,43 @@ final RatingDistribution ratingDistribution;
           Flexible(
             child: Padding(
               padding: EdgeInsets.only(right: 6.p),
-              child:  Column(
+              child: Column(
                 children: [
-                  RatingRow(rate: ratingDistribution.five, percent: calculatePercent(
-    ratingDistribution.five,
-    data.totalReviews,
-  ),),
-                  RatingRow(rate: ratingDistribution.four, percent: calculatePercent(ratingDistribution.four, data.totalReviews)),
-                  RatingRow(rate: ratingDistribution.three, percent: calculatePercent(ratingDistribution.three, data.totalReviews),),
-                  RatingRow(rate: ratingDistribution.two, percent: calculatePercent(ratingDistribution.two, data.totalReviews),),
-                  RatingRow(rate: ratingDistribution.one, percent: calculatePercent(ratingDistribution.one, data.totalReviews),),
+                  RatingRow(
+                    rate: 5,
+                    percent: calculatePercent(
+                      ratingDistribution.five,
+                      data.totalReviews,
+                    ),
+                  ),
+                  RatingRow(
+                    rate: 4,
+                    percent: calculatePercent(
+                      ratingDistribution.four,
+                      data.totalReviews,
+                    ),
+                  ),
+                  RatingRow(
+                    rate: 3,
+                    percent: calculatePercent(
+                      ratingDistribution.three,
+                      data.totalReviews,
+                    ),
+                  ),
+                  RatingRow(
+                    rate: 2,
+                    percent: calculatePercent(
+                      ratingDistribution.two,
+                      data.totalReviews,
+                    ),
+                  ),
+                  RatingRow(
+                    rate: 1,
+                    percent: calculatePercent(
+                      ratingDistribution.one,
+                      data.totalReviews,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -70,6 +102,7 @@ final RatingDistribution ratingDistribution;
     );
   }
 }
+
 double calculatePercent(int count, int total) {
   if (total == 0) return 0;
   return count / total;
