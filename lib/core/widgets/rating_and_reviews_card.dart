@@ -17,7 +17,12 @@ class RatingAndReviewsCard extends StatelessWidget {
   final Map<String, num> reviews;
 
   int getRating(String key) {
-    return (((reviews[key]?.toInt() ?? 0) / numberOfReviews) * 100).round();
+    final total = numberOfReviews;
+    if (total <= 0) return 0;
+    final count = reviews[key]?.toDouble() ?? 0;
+    final percentage = (count / total) * 100;
+    if (percentage.isNaN || percentage.isInfinite) return 0;
+    return percentage.round();
   }
 
   @override

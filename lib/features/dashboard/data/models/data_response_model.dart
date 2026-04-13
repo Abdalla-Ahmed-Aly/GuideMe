@@ -1,13 +1,13 @@
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/rating_distribution__response_model.dart';
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/review_response_model.dart';
+
+import 'package:guide_me/core/shared/models/review_model.dart';
 
 class Data {
   int totalEarnings;
   int completedTours;
   double averageRating;
   int totalReviews;
-  RatingDistribution ratingDistribution;
-  List<Review> reviews;
+  Map<String, dynamic> ratingDistribution;
+  List<ReviewModel> reviews;
 
   Data({
     required this.totalEarnings,
@@ -24,9 +24,9 @@ class Data {
       completedTours: json['completedTours'],
       averageRating: (json['averageRating'] as num).toDouble(),
       totalReviews: json['totalReviews'],
-      ratingDistribution: RatingDistribution.fromJson(json['ratingDistribution']),
+      ratingDistribution: json['ratingDistribution'],
       reviews: (json['reviews'] as List)
-          .map((item) => Review.fromJson(item))
+          .map((item) => ReviewModel.fromJson(item))
           .toList(),
     );
   }

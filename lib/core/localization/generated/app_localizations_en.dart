@@ -517,7 +517,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get to => 'To';
 
   @override
-  String get newRequests => 'New Requests (2)';
+  String get newRequests => 'New Requests';
 
   @override
   String get decline => 'Decline';
@@ -1288,4 +1288,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newText => 'New';
+
+  @override
+  String get availability => 'Availability';
+
+  @override
+  String get yourAreCurrently => 'Your are currently ';
+
+  @override
+  String get onlineText => 'Online';
+
+  @override
+  String get offlineText => 'Offline';
+
+  @override
+  String get estimate => 'ESTIMATE';
+
+  @override
+  String get flexibleend => 'Flexible end';
+
+  @override
+  String get thePackageRequestHasBeenAcceptedSuccessfully =>
+      'The package request has been accepted successfully.';
 }

@@ -1,10 +1,10 @@
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/request_guide_model/booking_request_model.dart';
+import 'package:guide_me/features/booking/data/models/booking_model.dart';
 
 class RequestModel {
   final String type;
   final String? packageId;
-  final List<BookingRequestModel>? bookings;
-  final BookingRequestModel? booking;
+  final List<BookingModel>? bookings;
+  final BookingModel? booking;
 
   RequestModel({
     required this.type,
@@ -20,10 +20,10 @@ class RequestModel {
       bookings: json['bookings'] != null
           ? List.from(
               json['bookings'],
-            ).map((e) => BookingRequestModel.fromJson(e)).toList()
+            ).map((e) => BookingModel.fromJson(e)).toList()
           : null,
       booking: json['booking'] != null
-          ? BookingRequestModel.fromJson(json['booking'])
+          ? BookingModel.fromJson(json['booking'])
           : null,
     );
   }

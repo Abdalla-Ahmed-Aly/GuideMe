@@ -8,8 +8,8 @@ import 'package:guide_me/features/booking/presentation/widgets/tourist_booking_w
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart';
 import 'package:guide_me/features/guide_booking/presentation/widgets/guide_trip_list_view.dart';
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_action_cubit/guide_booking_actions_cubit.dart';
-import 'package:guide_me/features/guide_booking/presentation/widgets/error_dailog.dart';
-import 'package:guide_me/features/guide_booking/presentation/widgets/success_dialog.dart';
+import 'package:guide_me/core/widgets/error_dailog.dart';
+import 'package:guide_me/core/widgets/success_dialog.dart';
 
 class GuideBookingBlocBuilder extends StatelessWidget {
   const GuideBookingBlocBuilder({super.key});

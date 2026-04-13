@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 class ListenToIncomingRequestsUseCase {
   final DashboardSocketRepository repository;
   ListenToIncomingRequestsUseCase(this.repository);
-  Stream<Either<Failure, RequestCardEntity>> call() {
+  Stream<Either<Failure, RequestEntity>> call() {
     return repository.listenToIncomingRequests();
   }
   

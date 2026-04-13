@@ -4,8 +4,8 @@ import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/core/socket/socket_app_events.dart';
 import 'package:guide_me/core/socket/socket_event_bus.dart';
 import 'package:guide_me/features/dashboard/data/data_source/dashboard_remote_data_source.dart';
-import 'package:guide_me/features/dashboard/data/mappers/request_card_mapper.dart';
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/request_guide_model/request_model%20.dart';
+import 'package:guide_me/features/dashboard/data/mappers/request_mapper.dart';
+import 'package:guide_me/features/dashboard/data/models/request_model.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/domain/repo/dashboard_socket_repo.dart';
 import 'package:injectable/injectable.dart';
@@ -18,26 +18,18 @@ class DashboardSocketRepositoryImpl extends DashboardSocketRepository {
   DashboardSocketRepositoryImpl(this.remoteDataSource, this.socketEventBus);
 
   @override
-  Future<Either<Failure, List<RequestCardEntity>>> getRequestsGuide() async {
+  Future<Either<Failure, List<RequestEntity>>> getRequestsGuide() async {
     try {
       final result = await remoteDataSource.getRequestsHistory();
-      final entities = result.expand((request) {
-        if (request.type == "package") {
-          return request.bookings!.map((b) => RequestCardMapper.toEntity(b));
-        } else {
-          return [RequestCardMapper.toEntity(request.booking!)];
-        }
-      }).toList();
+      final entities = result.map((e) => RequestMapper.toEntity(e)).toList();
       return Right(entities);
     } catch (e) {
-      print("🔥 ERROR TYPE: ${e.runtimeType}");
-      print("🔥 ERROR: $e");
       return left(ErrorHandler.handle(e));
     }
   }
 
   @override
-  Stream<Either<Failure, RequestCardEntity>> listenToIncomingRequests() {
+  Stream<Either<Failure, RequestEntity>> listenToIncomingRequests() {
     return socketEventBus
         .listenTo(SocketAppEvents.newBooking.name)
         .cast<Map<String, dynamic>>()
@@ -45,9 +37,9 @@ class DashboardSocketRepositoryImpl extends DashboardSocketRepository {
           try {
             final model = RequestModel.fromJson(data);
 
-            final entity = RequestCardMapper.toEntity(
-              model.booking!,
-            ); // 👈 أهم سطر
+            final entity = RequestMapper.toEntity(
+              model,
+            );
 
             return Right(entity);
           } catch (e) {
@@ -65,20 +57,24 @@ class DashboardSocketRepositoryImpl extends DashboardSocketRepository {
       return Left(ErrorHandler.handle(e));
     }
   }
-  
+
   @override
-  Future<Either<Failure, Unit>> declineBooking(String bookingId)async {
+  Future<Either<Failure, Unit>> declineBooking(String bookingId) async {
     try {
       await remoteDataSource.declineBooking(bookingId);
       return const Right(unit);
     } catch (e) {
       return Left(ErrorHandler.handle(e));
     }
-    
   }
 
-  // @override
-  // void closeConnection() {
-  //   // TODO: implement closeConnection
-  // }
+  @override
+  Future<Either<Failure, void>> acceptPackageBooking(String packageId) async {
+    try {
+      await remoteDataSource.acceptPackageBooking(packageId);
+      return const Right(null);
+    } catch (e) {
+      return Left(ErrorHandler.handle(e));
+    }
+  }
 }

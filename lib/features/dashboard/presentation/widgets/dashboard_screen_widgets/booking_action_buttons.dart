@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/accept_and_decline_cubit/accept_booking_cubit.dart';
 
 class BookingActionButtons extends StatelessWidget {
   const BookingActionButtons({

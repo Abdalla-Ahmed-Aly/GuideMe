@@ -19,7 +19,7 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
   ) : super(DashboardCubitInitial());
 
   StreamSubscription? _streamSubscription;
-  List<RequestCardEntity> _requests = [];
+  List<RequestEntity> requests = [];
 
   void safeEmit(DashboardCubitState state) {
     if (!isClosed) emit(state);
@@ -43,8 +43,8 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
         // _requests = allCombined
         //     .where((req) => distinctIds.add(req.bookingid))
         //     .toList();
-          _requests = requestsHistory;
-        safeEmit(DashboardCubitSuccess(_requests));
+          requests = requestsHistory;
+        safeEmit(DashboardCubitSuccess(requests));
       },
     );
   }
@@ -60,9 +60,9 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
         
         },
         (newRequest) {
-          _requests = [newRequest, ..._requests];
+          requests = [newRequest, ...requests];
 
-          safeEmit(DashboardCubitSuccess(_requests));
+          safeEmit(DashboardCubitSuccess(requests));
         },
       );
     });
@@ -71,7 +71,7 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
   void resetToInitial() {
     _streamSubscription?.cancel();
     _streamSubscription = null;
-    _requests = [];
+    requests = [];
     safeEmit(DashboardCubitInitial());
   }
 
@@ -81,8 +81,8 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
     return super.close();
   }
   void removeRequestLocally(String bookingId) {
-  _requests.removeWhere((req) => req.bookingid == bookingId);
+  requests.removeWhere((req) => req.booking?.id == bookingId);
   
-  safeEmit(DashboardCubitSuccess(List.from(_requests)));
+  safeEmit(DashboardCubitSuccess(List.from(requests)));
 }
 }

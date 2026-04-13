@@ -11,7 +11,7 @@ class BookingDetailsRequestSection extends StatelessWidget {
   const BookingDetailsRequestSection({
     super.key, required this.requestEntity,
   });
-final RequestCardEntity requestEntity;
+final RequestEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,8 +21,8 @@ final RequestCardEntity requestEntity;
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.dateTIME,
-                value: DateFormat('yyyy-MM-dd').format(requestEntity.date),
-                value1: DateFormat('kk:mm').format(requestEntity.date),
+                value: DateFormat('yyyy-MM-dd').format(requestEntity.booking!.bookingDate),
+                value1: DateFormat('kk:mm').format(requestEntity.booking!.bookingDate),
                 pathicon: SvgPicture.asset(AppIcons.date, width: 18.w),
               ),
             ),
@@ -32,8 +32,8 @@ final RequestCardEntity requestEntity;
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.duration,
-                value: '${requestEntity.durationMinutes} Minutes',
-                value1: 'Flexible end',
+                value: '${requestEntity.booking!.place.durationMinutes} ${context.l10n.minutes}',
+                value1: context.l10n.flexibleend,
                 pathicon: SvgPicture.asset(AppIcons.time, width: 18.w),
               ),
             ),
@@ -47,8 +47,8 @@ final RequestCardEntity requestEntity;
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.groupsize,
-                value: requestEntity.groupSize.toString(),
-                value1: 'Private Group',
+                value: requestEntity.booking!.persons.toString(),
+                value1: context.l10n.privateGroup,
                 pathicon: SvgPicture.asset(AppIcons.people, width: 18.w),
               ),
             ),
@@ -58,7 +58,7 @@ final RequestCardEntity requestEntity;
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.experience,
-                value: requestEntity.placeTitle,
+                value: requestEntity.booking!.place.title,
                 value1: 'History & Myths',
                 pathicon: SvgPicture.asset(AppIcons.location, width: 18.w),
               ),

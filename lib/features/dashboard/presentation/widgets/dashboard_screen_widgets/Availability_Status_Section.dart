@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_Status/toogle_online_status_cubit.dart';
 
 class AvailabilityStatusSection extends StatefulWidget {
   const AvailabilityStatusSection({
@@ -28,7 +29,9 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
       ),
       child: BlocBuilder<ToogleOnlineStatusCubit, ToogleOnlineStatusState>(
         builder: (context, state) {
-          bool isOnline = context.read<ToogleOnlineStatusCubit>().isOnline;
+          final bool isOnline = context
+              .read<ToogleOnlineStatusCubit>()
+              .isOnline;
           return Row(
             children: [
               Expanded(
@@ -36,20 +39,22 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Availability',
+                      context.l10n.availability,
                       style: AppTextStyles.poppinsMedium18,
                     ),
                     Row(
                       children: [
                         Text(
-                          'Your are currently ',
+                          context.l10n.yourAreCurrently,
                           style: AppTextStyles.poppinsMedium18.copyWith(
                             color: const Color(0xffB59A64),
                           ),
                         ),
                         const SizedBox(width: 3),
                         Text(
-                          isOnline ? 'online' : 'offline',
+                          isOnline
+                              ? context.l10n.onlineText
+                              : context.l10n.offlineText,
                           style: AppTextStyles.poppinsMedium18.copyWith(
                             color: isOnline
                                 ? AppColors.primary
@@ -69,14 +74,13 @@ class _AvailabilityStatusSectionState extends State<AvailabilityStatusSection> {
                 trackOutlineColor: WidgetStateProperty.all(AppColors.primary),
                 value: isOnline,
                 onChanged: (value) async {
-                  final token =await getIt<TokenService>().getToken();
+                  final token = await getIt<TokenService>().getToken();
                   if (token != null) {
                     context.read<ToogleOnlineStatusCubit>().toogleOnlineStatus(
                       value,
                       token,
                     );
                   }
-                  
                 },
               ),
             ],

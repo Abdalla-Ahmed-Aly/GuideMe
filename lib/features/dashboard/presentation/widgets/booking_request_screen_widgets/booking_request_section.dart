@@ -1,5 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
@@ -11,7 +11,7 @@ import 'package:guide_me/features/dashboard/presentation/widgets/booking_request
 
 class BookingRequestSection extends StatelessWidget {
   const BookingRequestSection({super.key, required this.requestEntity});
-  final RequestCardEntity requestEntity;
+  final RequestEntity requestEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class BookingRequestSection extends StatelessWidget {
 
           Center(
             child: ProfileTouirsts(
-              imageUrl: requestEntity.userImage,
+              imageUrl: requestEntity.booking?.user.photo?.url,
             ),
           ),
 
@@ -32,7 +32,7 @@ class BookingRequestSection extends StatelessWidget {
 
           Center(
             child: Text(
-              requestEntity.userName,
+              requestEntity.booking?.user.name ?? context.l10n.unknownName,
               style: AppTextStyles.poppinsRegular18.copyWith(
                 color: AppColors.black,
               ),
@@ -65,11 +65,11 @@ class BookingRequestSection extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          if (requestEntity.locationEntity != null)
+          if (requestEntity.booking?.place.location != null)
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 22.p),
               child: MeetingPointSection(
-                location: requestEntity.locationEntity!,
+                location: requestEntity.booking!.place.location!,
               ),
             ),
 
@@ -107,50 +107,28 @@ class BookingRequestSection extends StatelessWidget {
 class ProfileTouirsts extends StatelessWidget {
   const ProfileTouirsts({
     super.key,
-    required this.imageUrl,
+    this.imageUrl,
   });
-  final String imageUrl;
+  final String? imageUrl;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          width: 130,
-          height: 130,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              image: imageUrl.isNotEmpty
-                  ? NetworkImage(imageUrl)
-                  : const AssetImage(AppImages.profileImageTest)
-                        as ImageProvider,
+    return Container(
+      width: 130,
+      height: 130,
+      clipBehavior: Clip.hardEdge,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+      ),
+      child: imageUrl != null && imageUrl!.isNotEmpty
+          ? CachedNetworkImage(
+              imageUrl: imageUrl!,
               fit: BoxFit.cover,
+            )
+          : const Icon(
+              Icons.person,
+              size: 100,
+              color: AppColors.primary2,
             ),
-          ),
-        ),
-
-        Positioned(
-          bottom: 1,
-          right: 8,
-          child: Container(
-            width: 42,
-            height: 46,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.25),
-                  blurRadius: 4,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Image.asset(AppImages.correcting),
-          ),
-        ),
-      ],
     );
   }
 }

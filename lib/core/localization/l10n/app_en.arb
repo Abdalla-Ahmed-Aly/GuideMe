@@ -172,7 +172,7 @@
   "workhours" : "Work hours for selected days",
   "from" : "From",
   "to"  : "To",
-  "newRequests" : "New Requests (2)",
+  "newRequests" : "New Requests",
   "decline" : "Decline",
   "accept" : "Accept",
   "professionalInformation" : "Professional Information",
@@ -446,5 +446,13 @@
   "chat_found_you": "Found you",
   "chat_whats_your_name": "What's your name?",
   "chat_how_are_you": "How are you?",
-  "newText": "New"
+  "newText": "New",
+  "availability": "Availability",
+  "yourAreCurrently": "Your are currently ",
+  "onlineText": "Online",
+  "offlineText": "Offline",
+  "estimate": "ESTIMATE",
+  "historyAndMyths": "History & Myths",
+  "flexibleend": "Flexible end",
+  "thePackageRequestHasBeenAcceptedSuccessfully": "The package request has been accepted successfully."
 }

@@ -8,12 +8,12 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
-import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/accept_and_decline_cubit/accept_booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_request_section.dart';
 
 class BookingRequestScreen extends StatelessWidget {
   const BookingRequestScreen({super.key, required this.requestEntity});
-  final RequestCardEntity requestEntity;
+  final RequestEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AcceptBookingCubit, AcceptBookingState>(
@@ -77,7 +77,7 @@ class BookingRequestScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     context.read<AcceptBookingCubit>().declineBooking(
-                      requestEntity.bookingid,
+                      requestEntity.booking!.id,
                     );
                   },
                   child: Text(
@@ -104,7 +104,7 @@ class BookingRequestScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     context.read<AcceptBookingCubit>().acceptBooking(
-                      requestEntity.bookingid,
+                      requestEntity.booking!.id,
                     );
                   },
                   child: Text(

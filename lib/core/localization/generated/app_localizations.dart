@@ -1103,7 +1103,7 @@ abstract class AppLocalizations {
   /// No description provided for @newRequests.
   ///
   /// In en, this message translates to:
-  /// **'New Requests (2)'**
+  /// **'New Requests'**
   String get newRequests;
 
   /// No description provided for @decline.
@@ -2593,6 +2593,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New'**
   String get newText;
+
+  /// No description provided for @availability.
+  ///
+  /// In en, this message translates to:
+  /// **'Availability'**
+  String get availability;
+
+  /// No description provided for @yourAreCurrently.
+  ///
+  /// In en, this message translates to:
+  /// **'Your are currently '**
+  String get yourAreCurrently;
+
+  /// No description provided for @onlineText.
+  ///
+  /// In en, this message translates to:
+  /// **'Online'**
+  String get onlineText;
+
+  /// No description provided for @offlineText.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get offlineText;
+
+  /// No description provided for @estimate.
+  ///
+  /// In en, this message translates to:
+  /// **'ESTIMATE'**
+  String get estimate;
+
+  /// No description provided for @flexibleend.
+  ///
+  /// In en, this message translates to:
+  /// **'Flexible end'**
+  String get flexibleend;
+
+  /// No description provided for @thePackageRequestHasBeenAcceptedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'The package request has been accepted successfully.'**
+  String get thePackageRequestHasBeenAcceptedSuccessfully;
 }
 
 class _AppLocalizationsDelegate

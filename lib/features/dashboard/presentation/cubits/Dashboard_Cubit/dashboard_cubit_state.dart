@@ -5,7 +5,7 @@ sealed class DashboardCubitState {}
 final class DashboardCubitInitial extends DashboardCubitState {}
 final class DashboardCubitLoading extends DashboardCubitState {}
 final class DashboardCubitSuccess extends DashboardCubitState {
-    final List<RequestCardEntity> requestsHistory;
+    final List<RequestEntity> requestsHistory;
     DashboardCubitSuccess(this.requestsHistory);
 }
 final class DashboardCubitFailure extends DashboardCubitState {

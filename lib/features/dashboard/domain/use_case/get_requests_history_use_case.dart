@@ -8,7 +8,7 @@ class GetRequestsHistoryUseCase {
   final DashboardSocketRepository repository;
 
   GetRequestsHistoryUseCase(this.repository);
-  Future<Either<Failure, List<RequestCardEntity>>> call() {
+  Future<Either<Failure, List<RequestEntity>>> call() {
     return repository.getRequestsGuide();
   }
 }

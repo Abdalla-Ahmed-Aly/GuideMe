@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/analysis_response_model.dart';
+import 'package:guide_me/features/dashboard/data/models/analysis_response_model.dart';
 import 'package:guide_me/features/dashboard/domain/use_case/get_analysis_use_case%20.dart';
 import 'package:injectable/injectable.dart';
 

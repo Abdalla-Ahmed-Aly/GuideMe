@@ -172,7 +172,7 @@
   "workhours" : "ساعات العمل في الأيام المختارة",
   "from" : " من",
   "to" : "الي",
-  "newRequests" : "طلب الجديد",
+  "newRequests" : "الطلبات الجديده",
   "decline" : "رفض",
   "accept" : "قبول",
   "professionalInformation" : "المعلومات المهنية",
@@ -447,5 +447,13 @@
   "chat_found_you": "وجدتك",
   "chat_whats_your_name": "ما اسمك؟",
   "chat_how_are_you": "كيف حالك؟",
-  "newText": "جديد"
+  "newText": "جديد",
+  "availability": "التوفر",
+  "yourAreCurrently": "أنت حاليًا ",
+  "onlineText": "متصل",
+  "offlineText": "غير متصل",
+  "estimate": "تقديري",
+  "historyAndMyths": "تاريخ وأساطير",
+  "flexibleend": "نهاية مرنة",
+  "thePackageRequestHasBeenAcceptedSuccessfully": "تم قبول طلب الحزمة بنجاح."
 }

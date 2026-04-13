@@ -1,5 +1,5 @@
 
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/data_response_model.dart';
+import 'package:guide_me/features/dashboard/data/models/data_response_model.dart';
 
 class AnalysisResponse {
   bool success;

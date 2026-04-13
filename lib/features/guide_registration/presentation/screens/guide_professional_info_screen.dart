@@ -10,7 +10,6 @@ import 'package:guide_me/features/guide_registration/presentation/cubits/guide_r
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_professional_info_widgets/profile_photo_section.dart';
 import '../widgets/guide_professional_info_widgets/indentity_verification_section.dart';
 import '../widgets/setup_progress_header.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
 
@@ -46,7 +45,7 @@ class _GuideProfessionalInfoScreenState extends State<GuideProfessionalInfoScree
     return BlocListener<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
       listener: (context, state) {
         if (state is GuideRegistrationFormData) {
-          final years = state.model.yearsOfExperience?.toString() ?? "";
+          final years = state.model.yearsOfExperience.toString();
           if (_yearsController.text != years) {
             _yearsController.text = years;
           }

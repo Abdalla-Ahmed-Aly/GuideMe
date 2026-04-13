@@ -6,9 +6,10 @@ import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart'
 
 class EarningsSummaryCard extends StatelessWidget {
   const EarningsSummaryCard({
-    super.key, required this.requestEntity,
+    super.key,
+    required this.requestEntity,
   });
-  final RequestCardEntity requestEntity;
+  final RequestEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +28,7 @@ class EarningsSummaryCard extends StatelessWidget {
             ),
           ),
           Text(
-            '${requestEntity.price} ',
+            '${requestEntity.booking?.place.price ?? 0}',
             style: AppTextStyles.poppinsSemiBold26.copyWith(
               color: AppColors.primary,
             ),

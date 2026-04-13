@@ -54,10 +54,10 @@ import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubi
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
-import 'package:guide_me/features/dashboard/presentation/cubit/guide_navigation_bar_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/manager/Dashboard_Cubit/dashboard_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/manager/Toogle_Online_Status/toogle_online_status_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/manager/cubit/accept_booking_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/guide_nav_bar_cubit/guide_navigation_bar_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_Status/toogle_online_status_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/accept_and_decline_cubit/accept_booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/guide_navigation_bar_screen.dart';
@@ -323,7 +323,7 @@ abstract class AppRouter {
         path: AppRoutes.bookingRequestScreen,
 
         builder: (context, state) {
-          final entity = state.extra as RequestCardEntity;
+          final entity = state.extra as RequestEntity;
           return BlocProvider(
             create: (context) => getIt<AcceptBookingCubit>(),
             child: BookingRequestScreen(requestEntity: entity),

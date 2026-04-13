@@ -27,7 +27,7 @@ class BookAiPackageData {
     );
   }
 
-  bool get dateIsValid => date != null && date!.isAfter(DateTime.now());
+  bool get dateIsValid => date != null;
 
   bool get locationIsValid => location != null && location!.isNotEmpty;
 

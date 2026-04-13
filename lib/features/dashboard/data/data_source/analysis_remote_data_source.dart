@@ -1,6 +1,6 @@
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/network/api_service.dart';
-import 'package:guide_me/features/dashboard/data/models/Analysis_model/analysis_response_model.dart';
+import 'package:guide_me/features/dashboard/data/models/analysis_response_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class AnalysisRemoteDataSource {

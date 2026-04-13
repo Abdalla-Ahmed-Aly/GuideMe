@@ -517,7 +517,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get to => 'الي';
 
   @override
-  String get newRequests => 'طلب الجديد';
+  String get newRequests => 'الطلبات الجديده';
 
   @override
   String get decline => 'رفض';
@@ -1286,4 +1286,26 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get newText => 'جديد';
+
+  @override
+  String get availability => 'التوفر';
+
+  @override
+  String get yourAreCurrently => 'أنت حاليًا ';
+
+  @override
+  String get onlineText => 'متصل';
+
+  @override
+  String get offlineText => 'غير متصل';
+
+  @override
+  String get estimate => 'تقديري';
+
+  @override
+  String get flexibleend => 'نهاية مرنة';
+
+  @override
+  String get thePackageRequestHasBeenAcceptedSuccessfully =>
+      'تم قبول طلب الحزمة بنجاح.';
 }

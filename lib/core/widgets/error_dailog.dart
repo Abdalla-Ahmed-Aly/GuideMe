@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class ErrorDialog extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ErrorDialogState extends State<ErrorDialog>
     _controller.forward();
 
     Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) Navigator.of(context).pop();
+      if (mounted && context.canPop()) context.pop();
     });
   }
 
