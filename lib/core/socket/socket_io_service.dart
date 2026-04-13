@@ -9,12 +9,21 @@ import 'socket_service.dart';
 class SocketIOService implements SocketService {
   IO.Socket? _socket;
 
+  // Cache one broadcast controller per event so repeated calls to on()
+  // don't register duplicate socket listeners.
+  final Map<String, StreamController<dynamic>> _controllers = {};
+
   @override
   bool get isConnected => _socket?.connected ?? false;
 
   @override
   void connect(String token) {
     _socket?.dispose();
+    // Clear cached controllers so listeners are re-registered on the new socket.
+    for (final c in _controllers.values) {
+      c.close();
+    }
+    _controllers.clear();
 
     _socket = IO.io(
       ApiConstants.baseUrl,
@@ -34,13 +43,21 @@ class SocketIOService implements SocketService {
 
   @override
   void disconnect() {
+    for (final c in _controllers.values) {
+      c.close();
+    }
+    _controllers.clear();
     _socket?.dispose();
     _socket = null;
   }
 
   @override
   Stream<dynamic> on(String event) {
+    if (_controllers.containsKey(event)) {
+      return _controllers[event]!.stream;
+    }
     final controller = StreamController<dynamic>.broadcast();
+    _controllers[event] = controller;
     _socket?.on(event, (data) => controller.add(data));
     return controller.stream;
   }
