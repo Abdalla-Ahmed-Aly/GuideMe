@@ -455,5 +455,7 @@
   "estimate": "تقديري",
   "historyAndMyths": "تاريخ وأساطير",
   "flexibleend": "نهاية مرنة",
-  "thePackageRequestHasBeenAcceptedSuccessfully": "تم قبول طلب الحزمة بنجاح."
+  "thePackageRequestHasBeenAcceptedSuccessfully": "تم قبول طلب الحزمة بنجاح.",
+  "noBio": "لا يوجد سيرة ذاتية",
+  "issued": "صدر في"
 }

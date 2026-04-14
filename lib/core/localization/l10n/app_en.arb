@@ -454,5 +454,7 @@
   "estimate": "ESTIMATE",
   "historyAndMyths": "History & Myths",
   "flexibleend": "Flexible end",
-  "thePackageRequestHasBeenAcceptedSuccessfully": "The package request has been accepted successfully."
+  "thePackageRequestHasBeenAcceptedSuccessfully": "The package request has been accepted successfully.",
+  "noBio": "No bio available",
+  "issued": "Issued"
 }

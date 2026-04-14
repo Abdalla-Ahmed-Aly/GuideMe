@@ -1310,4 +1310,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get thePackageRequestHasBeenAcceptedSuccessfully =>
       'The package request has been accepted successfully.';
+
+  @override
+  String get noBio => 'No bio available';
+
+  @override
+  String get issued => 'Issued';
 }

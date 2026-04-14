@@ -2635,6 +2635,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The package request has been accepted successfully.'**
   String get thePackageRequestHasBeenAcceptedSuccessfully;
+
+  /// No description provided for @noBio.
+  ///
+  /// In en, this message translates to:
+  /// **'No bio available'**
+  String get noBio;
+
+  /// No description provided for @issued.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued'**
+  String get issued;
 }
 
 class _AppLocalizationsDelegate

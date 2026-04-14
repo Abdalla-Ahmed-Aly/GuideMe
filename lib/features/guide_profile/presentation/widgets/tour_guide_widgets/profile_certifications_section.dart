@@ -4,12 +4,14 @@ import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import '../../cubits/guide_profile_cubit/guide_profile_cubit.dart';
 import 'profile_certification_card.dart';
 import 'profile_title_section.dart';
 
 class ProfileCertificationsSection extends StatelessWidget {
-  const ProfileCertificationsSection({super.key});
+  const ProfileCertificationsSection({super.key, required this.user});
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +39,8 @@ class ProfileCertificationsSection extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (context, index) => const SizedBox(height: 16),
-            itemCount: 2,
-            itemBuilder: (context, index) => const ProfileCertificationCard(),
+            itemCount: user.certificates.length,
+            itemBuilder: (context, index) => ProfileCertificationCard(certification: user.certificates[index]),
           ),
         ],
       ),

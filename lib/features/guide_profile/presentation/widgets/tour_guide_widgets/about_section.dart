@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class AboutSection extends StatelessWidget {
-  const AboutSection({super.key});
+  final UserEntity user;
+  const AboutSection({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.p, vertical: 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,12 +35,19 @@ class AboutSection extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          Text(
-            "Dedicated Egyptologist with over 12 years of experience guiding visitors through the majestic history of Ancient Egypt. Specialized in Giza Pyramids, Luxor temples, and the Egyptian Museum. My goal is to bring history to life through storytelling and deep academic insights.",
-            style: AppTextStyles.interRegular16.copyWith(
-              color: const Color(0xff475569),
-            ),
-          ),
+          user.bio == null || user.bio!.isEmpty
+              ? Text(
+                  context.l10n.noBio,
+                  style: AppTextStyles.interBold16.copyWith(
+                    color: const Color(0xff475569),
+                  ),
+                )
+              : Text(
+                  user.bio!,
+                  style: AppTextStyles.interRegular16.copyWith(
+                    color: const Color(0xff475569),
+                  ),
+                ),
         ],
       ),
     );

@@ -1308,4 +1308,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get thePackageRequestHasBeenAcceptedSuccessfully =>
       'تم قبول طلب الحزمة بنجاح.';
+
+  @override
+  String get noBio => 'لا يوجد سيرة ذاتية';
+
+  @override
+  String get issued => 'صدر في';
 }

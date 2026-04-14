@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/shared/entities/certificate_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 import '../../cubits/guide_profile_cubit/guide_profile_cubit.dart';
 
 class ProfileCertificationCard extends StatelessWidget {
-  const ProfileCertificationCard({super.key});
+  const ProfileCertificationCard({super.key, required this.certification});
+  final CertificateEntity certification;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class ProfileCertificationCard extends StatelessWidget {
 
                     Expanded(
                       child: Text(
-                        "Licensed Tour Guide",
+                        certification.name,
                         style: AppTextStyles.interBold16,
                       ),
                     ),
@@ -89,17 +92,36 @@ class ProfileCertificationCard extends StatelessWidget {
                 ),
 
                 Text(
-                  "Ministry of Tourism & Antiquities",
+                  certification.organization,
                   style: AppTextStyles.interRegular14.copyWith(
                     color: const Color(0xffB59A64),
                   ),
                 ),
 
-                Text(
-                  "Issued Jan 2012 • Valid until Dec 2026",
-                  style: AppTextStyles.interRegular12.copyWith(
-                    color: const Color(0xff94A3B8),
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      "${context.l10n.issued} ${certification.issueDate}",
+                      style: AppTextStyles.interRegular12.copyWith(
+                        color: const Color(0xff94A3B8),
+                      ),
+                    ),
+
+                    Text(
+                      " • ",
+                      style: AppTextStyles.interRegular12.copyWith(
+                        color: const Color(0xff94A3B8),
+                      ),
+                    ),
+
+                    if (certification.expirationDate != null)
+                      Text(
+                        "${context.l10n.validUntil} ${certification.expirationDate}",
+                        style: AppTextStyles.interRegular12.copyWith(
+                          color: const Color(0xff94A3B8),
+                        ),
+                      ),
+                  ],
                 ),
               ],
             ),

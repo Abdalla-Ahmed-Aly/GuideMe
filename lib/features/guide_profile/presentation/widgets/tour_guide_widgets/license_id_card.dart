@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class LicenseIdCard extends StatelessWidget {
-  const LicenseIdCard({super.key});
+  const LicenseIdCard({super.key, required this.user});
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class LicenseIdCard extends StatelessWidget {
             ),
             const SizedBox(height: 2),
             Text(
-              "#EGY-7742-GUIDE",
+              user.id,
               style: AppTextStyles.interMedium16,
             ),
           ],

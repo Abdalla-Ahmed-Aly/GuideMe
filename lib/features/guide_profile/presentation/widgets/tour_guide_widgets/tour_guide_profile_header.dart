@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:guide_me/core/app_assets/app_images.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 
 class TourGuideProfileHeader extends StatelessWidget {
-  const TourGuideProfileHeader({super.key});
+  final UserEntity user;
+  const TourGuideProfileHeader({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +22,23 @@ class TourGuideProfileHeader extends StatelessWidget {
             border: Border.all(
               color: const Color(0xffF2930D).withValues(alpha: 0.2),
               width: 6,
+              strokeAlign: BorderSide.strokeAlignOutside,
             ),
             shape: BoxShape.circle,
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(64.h),
-            child: Image.asset(
-              AppImages.profileImageTest,
-            ),
-          ),
+          child: user.photoUrl != null
+              ? Image.network(user.photoUrl!)
+              : const Icon(
+                  Icons.person_outline_outlined,
+                  size: 64,
+                  color: AppColors.primary2,
+                ),
         ),
 
         const SizedBox(height: 12),
 
         Text(
-          "Omar Yasser",
+          user.name ?? context.l10n.unknownName,
           style: AppTextStyles.interBold24,
         ),
 
@@ -52,44 +57,13 @@ class TourGuideProfileHeader extends StatelessWidget {
 
             const SizedBox(width: 8),
 
-            Text(
-              "Cairo, Egypt",
-              style: AppTextStyles.interRegular14.copyWith(
-                color: const Color(0xff64748B),
-              ),
-            ),
-
-            const SizedBox(width: 12),
-
-            Text(
-              "•",
-              style: AppTextStyles.interRegular14.copyWith(
-                color: const Color(0xff64748B),
-              ),
-            ),
-
-            const SizedBox(width: 12),
-
-            // Rating
-            const Icon(
-              Icons.star_border,
-              color: Color(0xffEAB308),
-              size: 20,
-            ),
-
-            const SizedBox(width: 8),
-
-            Text(
-              "4.5",
-              style: AppTextStyles.interBold14,
-            ),
-
-            const SizedBox(width: 8),
-
-            Text(
-              "(120 reviews)",
-              style: AppTextStyles.interRegular14.copyWith(
-                color: const Color(0xff94A3B8),
+            Expanded(
+              child: Text(
+                user.location ?? context.l10n.unknownLocation,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.interRegular14.copyWith(
+                  color: const Color(0xff64748B),
+                ),
               ),
             ),
           ],
