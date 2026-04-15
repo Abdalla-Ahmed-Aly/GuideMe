@@ -35,11 +35,11 @@ class GuideRegistrationModel extends HiveObject {
   factory GuideRegistrationModel.fromJson(Map<String, dynamic> json) =>
       GuideRegistrationModel(
         yearsOfExperience: json['yearsOfExperience'] ?? 0,
-        languages: List<String>.from(json['languages'] ?? []),
-        expertise: List<String>.from(json['expertise'] ?? []),
+        languages: (json['languages'] as List?)?.map((e) => e is Map ? (e['_id'] ?? e['id'] ?? e.toString()).toString() : e.toString()).toList() ?? [],
+        expertise: (json['expertise'] as List?)?.map((e) => e is Map ? (e['_id'] ?? e['id'] ?? e.toString()).toString() : e.toString()).toList() ?? [],
         hourlyRate: (json['hourlyRate'] ?? 0).toDouble(),
         currency: json['currency'] ?? 'USD',
-        guideCities: List<String>.from(json['guideCities'] ?? []),
+        guideCities: (json['guideCities'] as List?)?.map((e) => e is Map ? (e['_id'] ?? e['id'] ?? e.toString()).toString() : e.toString()).toList() ?? [],
         availability: AvailabilityModel.fromJson(json['availability'] ?? {}),
       );
 

@@ -14,8 +14,8 @@ class AvailabilityModel extends HiveObject {
 
   factory AvailabilityModel.fromJson(Map<String, dynamic> json) => AvailabilityModel(
         days: List<String>.from(json['days'] ?? []),
-        from: json['from'] ?? '',
-        to: json['to'] ?? '',
+        from: json['from']?.toString() ?? '',
+        to: json['to']?.toString() ?? '',
       );
 
   Map<String, dynamic> toJson() => {

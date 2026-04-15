@@ -15,8 +15,15 @@ import 'package:guide_me/features/guide_registration/presentation/cubits/guide_r
 import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 import '../widgets/availability_and_pricing_widgets/availability_and_pricing_header.dart';
 
-class GuideAvailabilityAndPricingScreen extends StatelessWidget {
+class GuideAvailabilityAndPricingScreen extends StatefulWidget {
   const GuideAvailabilityAndPricingScreen({super.key});
+
+  @override
+  State<GuideAvailabilityAndPricingScreen> createState() => _GuideAvailabilityAndPricingScreenState();
+}
+
+class _GuideAvailabilityAndPricingScreenState extends State<GuideAvailabilityAndPricingScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,104 +42,130 @@ class GuideAvailabilityAndPricingScreen extends StatelessWidget {
           style: AppTextStyles.poppinsSemiBold20,
         ),
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) => SingleChildScrollView(
-          clipBehavior: Clip.none,
-          padding: EdgeInsets.symmetric(horizontal: 18.p),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 12),
-                    // Header
-                    const AvailabilityAndPricingHeader(),
-
-                    const SizedBox(height: 32),
-
-                    Text(
-                      context.l10n.availabilityPricingTitle,
-                      style: AppTextStyles.poppinsMedium20,
-                    ),
-
-                    const SizedBox(height: 14),
-
-                    Text(
-                      context.l10n.availabilityPricingDescription,
-                      style: AppTextStyles.poppinsLight16,
-                    ),
-
-                    const SizedBox(height: 14),
-
-                    const PricingSection(),
-
-                    const SizedBox(height: 26),
-
-                    const CitiesSelectorSection(),
-
-                    const SizedBox(height: 26),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          context.l10n.weeklySchedule,
-                          style: AppTextStyles.poppinsMedium16,
-                        ),
-                        Text(
-                          context.l10n.selectDays,
-                          style: AppTextStyles.poppinsRegular14.copyWith(
-                            color: const Color(0xffF2920A),
+      body: Form(
+        key: _formKey,
+        child: LayoutBuilder(
+          builder: (context, constraints) => SingleChildScrollView(
+            clipBehavior: Clip.none,
+            padding: EdgeInsets.symmetric(horizontal: 18.p),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 12),
+                      // Header
+                      const AvailabilityAndPricingHeader(),
+        
+                      const SizedBox(height: 32),
+        
+                      Text(
+                        context.l10n.availabilityPricingTitle,
+                        style: AppTextStyles.poppinsMedium20,
+                      ),
+        
+                      const SizedBox(height: 14),
+        
+                      Text(
+                        context.l10n.availabilityPricingDescription,
+                        style: AppTextStyles.poppinsLight16,
+                      ),
+        
+                      const SizedBox(height: 14),
+        
+                      const PricingSection(),
+        
+                      const SizedBox(height: 26),
+        
+                      const CitiesSelectorSection(),
+        
+                      const SizedBox(height: 26),
+        
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            context.l10n.weeklySchedule,
+                            style: AppTextStyles.poppinsMedium16,
                           ),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 22),
-
-                    SizedBox(
-                      height: 50.h,
-                      child: const WeeklyScheduleList(),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    const GuideWorkingHours(),
-
-                    const SizedBox(height: 16),
-                  ],
-                ),
-
-                // save & continue button
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
-                  child: BlocConsumer<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
-                    listener: (context, state) {
-                      if (state is GuideRegistrationSuccess) {
-                        context.go(AppRoutes.guideVerificationScreen);
-                      } else if (state is GuideRegistrationError) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(state.message)),
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      return AppButton(
-                        text: context.l10n.saveAndContinue,
-                        radius: 24.r,
-                        height: 48.h,
-                        isLoading: state is GuideRegistrationLoading,
-                        onPressed: () {
-                          context.read<GuideRegistrationSharedCubit>().submitOnboarding();
-                        },
-                      );
-                    },
+                          Text(
+                            context.l10n.selectDays,
+                            style: AppTextStyles.poppinsRegular14.copyWith(
+                              color: const Color(0xffF2920A),
+                            ),
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 22),
+        
+                      SizedBox(
+                        height: 50.h,
+                        child: const WeeklyScheduleList(),
+                      ),
+        
+                      const SizedBox(height: 24),
+        
+                      const GuideWorkingHours(),
+        
+                      const SizedBox(height: 16),
+                    ],
                   ),
-                ),
-              ],
+        
+                  // save & continue button
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 32),
+                    child: BlocConsumer<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
+                      listener: (context, state) {
+                        if (state is GuideRegistrationSuccess) {
+                          context.go(AppRoutes.guideVerificationScreen);
+                        } else if (state is GuideRegistrationError) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.message)),
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        return AppButton(
+                          text: context.l10n.saveAndContinue,
+                          radius: 24.r,
+                          height: 48.h,
+                          isLoading: state is GuideRegistrationLoading,
+                          onPressed: () {
+                            if (state is GuideRegistrationFormData) {
+                              if (!_formKey.currentState!.validate()) {
+                                return;
+                              }
+                              if (state.model.guideCities.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("Please select at least one city"),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return;
+                              }
+                              if (state.model.availability.days.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text( "Please select at least one day for your schedule"),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return;
+                              }
+                              context.read<GuideRegistrationSharedCubit>().submitOnboarding();
+                            }
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

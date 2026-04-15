@@ -21,62 +21,59 @@ class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
   ) : super(GuideRegistrationInitial());
 
   void initForm() async {
-    final isEditMode = HiveService.loadEditMode();
+    final isEditModeStored = HiveService.loadEditMode();
     final savedData = HiveService.loadGuideData();
 
-    // Check if we need to force edit mode due to rejection
+    // Check server status first to be sure
     try {
       final statusResp = await _repository.getVerificationStatus();
       final status = statusResp.data['data']['status'];
-      if (status == 'rejected') {
-        // If rejected, we MUST use PATCH and should load server data
-        _loadFromServer();
+      
+      if (status == 'rejected' || isEditModeStored) {
+        // If rejected or flagged as edit, we MUST use PATCH
+        // If we have local data, show it first while loading fresh data from server
+        if (savedData != null) {
+          emit(GuideRegistrationFormData(
+            model: savedData,
+            mode: OnboardingMode.edit,
+            originalData: savedData,
+          ));
+        }
+        
+        await _loadFromServer();
         return;
       }
-    } catch (_) {}
+    } catch (e) {
+      // If network fails but we have the flag, trust the flag
+      if (isEditModeStored && savedData != null) {
+         emit(GuideRegistrationFormData(
+          model: savedData,
+          mode: OnboardingMode.edit,
+          originalData: savedData,
+        ));
+        return;
+      }
+    }
 
-    if (isEditMode && savedData != null) {
-      // Ensure fields only contain valid ObjectIds (24-char hex strings)
-      // and remove any legacy hardcoded strings like "Historical" or "Cairo"
-      final validatedExpertise = savedData.expertise
-          .where((e) => RegExp(r'^[0-9a-fA-F]{24}$').hasMatch(e))
-          .toList();
-      
-      final validatedCities = savedData.guideCities
-          .where((e) => RegExp(r'^[0-9a-fA-F]{24}$').hasMatch(e))
-          .toList();
-      
-      final validatedData = savedData.copyWith(
-        expertise: validatedExpertise,
-        guideCities: validatedCities,
-      );
-      
+    // Default flow for new guides or normal local resume
+    if (savedData != null) {
       emit(GuideRegistrationFormData(
-        model: validatedData,
-        mode: OnboardingMode.edit,
-        originalData: validatedData,
+        model: savedData,
+        mode: isEditModeStored ? OnboardingMode.edit : OnboardingMode.create,
+        originalData: isEditModeStored ? savedData : null,
       ));
     } else {
-      final initialData = savedData != null 
-        ? savedData.copyWith(
-            expertise: savedData.expertise
-                .where((e) => RegExp(r'^[0-9a-fA-F]{24}$').hasMatch(e))
-                .toList(),
-            guideCities: savedData.guideCities
-                .where((e) => RegExp(r'^[0-9a-fA-F]{24}$').hasMatch(e))
-                .toList(),
-          )
-        : GuideRegistrationModel.initial();
-
       emit(GuideRegistrationFormData(
-        model: initialData,
+        model: GuideRegistrationModel.initial(),
         mode: OnboardingMode.create,
       ));
     }
   }
 
   Future<void> _loadFromServer() async {
-    emit(GuideRegistrationLoading());
+    if (state is! GuideRegistrationFormData) {
+      emit(GuideRegistrationLoading());
+    }
     try {
       final response = await _repository.getOnboardingDetails();
       final data = response.data['data']['onboarding'];
@@ -226,14 +223,6 @@ class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
     }
   }
 
-  Future<void> pickProfilePhoto() async {
-    final pickedFile = await _mediaPickerService.pickImage();
-    if (pickedFile != null) {
-      final persistedFile = await _mediaPickerService.persistFile(pickedFile, subDirectory: 'profile_photos');
-      _updateModel((m) => m.copyWith(profilePhoto: persistedFile));
-    }
-  }
-
   Future<void> pickNationalId(int index) async {
     final file = await _mediaPickerService.pickFile(
       allowedExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
@@ -281,16 +270,8 @@ class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
     try {
       Response response;
       if (current.isEditMode) {
-        final changedFields = _getChangedFields(
-          current.originalData ?? GuideRegistrationModel.initial(),
-          current.model,
-        );
-
         response = await _repository.updateGuide(
-          changedFields: changedFields,
-          profilePhoto: current.model.profilePhoto,
-          nationalId: current.model.nationalId,
-          guideLicense: current.model.guideLicense,
+          data: current.model,
         );
       } else {
         try {
@@ -301,15 +282,8 @@ class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
           // If the entry already exists, try PATCH instead
           if (e is DioException && 
               (e.response?.statusCode == 400 || e.response?.statusCode == 409)) {
-            final changedFields = _getChangedFields(
-              GuideRegistrationModel.initial(),
-              current.model,
-            );
             response = await _repository.updateGuide(
-              changedFields: changedFields,
-              profilePhoto: current.model.profilePhoto,
-              nationalId: current.model.nationalId,
-              guideLicense: current.model.guideLicense,
+              data: current.model,
             );
           } else {
             rethrow;

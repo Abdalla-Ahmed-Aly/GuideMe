@@ -6,6 +6,7 @@ import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
+import 'package:guide_me/core/services/hive_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -90,7 +91,11 @@ class _SplashScreenState extends State<SplashScreen>
             });
           } else if (state is SplashGuideOnboardingApproved) {
             Future.delayed(const Duration(seconds: 1), () {
-              context.go(AppRoutes.guideVerificationSuccessScreen);
+              if (HiveService.hasSeenSuccess()) {
+                context.go(AppRoutes.guideNavigationBarScreen);
+              } else {
+                context.go(AppRoutes.guideVerificationSuccessScreen);
+              }
             });
           } else if (state is SplashGuideOnboardingRejected) {
             Future.delayed(const Duration(seconds: 1), () {

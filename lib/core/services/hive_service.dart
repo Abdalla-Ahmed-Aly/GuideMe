@@ -13,6 +13,7 @@ class HiveService {
   static const String onboardingStatusKey = 'onboarding_status';
   static const String isEditModeKey = 'is_edit_mode';
   static const String userRoleKey = 'user_role';
+  static const String hasSeenSuccessKey = 'has_seen_success';
 
   static Future<void> init() async {
     // Register Adapters
@@ -50,6 +51,7 @@ class HiveService {
     await _box.delete(onboardingStatusKey);
     await _box.delete(isEditModeKey);
     await _box.delete(userRoleKey);
+    await _box.delete(hasSeenSuccessKey);
   }
 
   // Save User Role
@@ -87,5 +89,15 @@ class HiveService {
   // Load Edit Mode Flag
   static bool loadEditMode() {
     return _box.get(isEditModeKey, defaultValue: false);
+  }
+
+  // Save Success Seen Flag
+  static Future<void> saveSuccessSeen(bool seen) async {
+    await _box.put(hasSeenSuccessKey, seen);
+  }
+
+  // Load Success Seen Flag
+  static bool hasSeenSuccess() {
+    return _box.get(hasSeenSuccessKey, defaultValue: false);
   }
 }

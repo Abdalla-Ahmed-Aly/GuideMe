@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import '../../../../core/constants/api_constants.dart';
 import '../models/guide_registration_model.dart';
 import '../../../../core/shared/models/picked_file_model.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/network/api_service.dart';
+
 
 @injectable
 class GuideRegistrationRepository {
@@ -21,31 +23,25 @@ class GuideRegistrationRepository {
     formData.fields.add(MapEntry('hourlyRate', data.hourlyRate.toString()));
     formData.fields.add(MapEntry('currency', data.currency));
 
-    // Arrays: Sending multiple entries with the same key
+    // Array fields with [] suffix to force Joi to see them as an Array
     for (var lang in data.languages) {
-      formData.fields.add(MapEntry('languages', lang));
+      formData.fields.add(MapEntry('languages[]', lang));
     }
     for (var exp in data.expertise) {
-      formData.fields.add(MapEntry('expertise', exp));
+      formData.fields.add(MapEntry('expertise[]', exp));
     }
     for (var city in data.guideCities) {
-      formData.fields.add(MapEntry('guideCities', city));
+      formData.fields.add(MapEntry('guideCities[]', city));
     }
 
-    // Availability: Using the exact key required by the server with nested syntax
+    // Availability: Object syntax (This format passed in the last attempt)
     for (var day in data.availability.days) {
       formData.fields.add(MapEntry('availability[days][]', day));
     }
     formData.fields.add(MapEntry('availability[from]', data.availability.from));
     formData.fields.add(MapEntry('availability[to]', data.availability.to));
 
-    if (data.profilePhoto != null && data.profilePhoto!.hasPath) {
-      formData.files.add(MapEntry(
-        'profilePhoto',
-        await MultipartFile.fromFile(data.profilePhoto!.path!, filename: data.profilePhoto!.name),
-      ));
-    }
-
+    // Files
     if (data.guideLicense != null && data.guideLicense!.hasPath) {
       formData.files.add(MapEntry(
         'guideLicense', 
@@ -68,7 +64,6 @@ class GuideRegistrationRepository {
       }
     }
 
-    // Removed large debug print to prevent log buffer saturation
     return _apiService.post(
       endpoint: ApiConstants.onboarding,
       data: formData,
@@ -76,65 +71,52 @@ class GuideRegistrationRepository {
   }
 
   Future<Response> updateGuide({
-    required Map<String, dynamic> changedFields,
-    PickedFileModel? profilePhoto,
-    List<PickedFileModel?> nationalId = const [],
-    PickedFileModel? guideLicense,
+    required GuideRegistrationModel data,
   }) async {
     final formData = FormData();
 
-    changedFields.forEach((key, value) {
-      if (key == 'availability' && value is Map) {
-         // Consistent with createGuide
-         if (value.containsKey('days') && value['days'] is List) {
-           for (var d in value['days']) {
-             formData.fields.add(MapEntry('availability[days][]', d.toString()));
-           }
-         }
-         if (value.containsKey('from')) {
-           formData.fields.add(MapEntry('availability[from]', value['from'].toString()));
-         }
-         if (value.containsKey('to')) {
-           formData.fields.add(MapEntry('availability[to]', value['to'].toString()));
-         }
-      } else if (value is List) {
-        for (var v in value) {
-          formData.fields.add(MapEntry(key, v.toString()));
-        }
-      } else {
-        formData.fields.add(MapEntry(key, value.toString()));
-      }
-    });
+    formData.fields.add(MapEntry('yearsOfExperience', data.yearsOfExperience.toString()));
+    formData.fields.add(MapEntry('hourlyRate', data.hourlyRate.toString()));
+    formData.fields.add(MapEntry('currency', data.currency));
 
-    if (profilePhoto != null && profilePhoto.hasPath) {
-      formData.files.add(MapEntry(
-        'profilePhoto',
-        await MultipartFile.fromFile(profilePhoto.path!, filename: profilePhoto.name),
-      ));
+    for (var lang in data.languages) {
+      formData.fields.add(MapEntry('languages[]', lang));
     }
-    if (guideLicense != null && guideLicense.hasPath) {
+    for (var exp in data.expertise) {
+      formData.fields.add(MapEntry('expertise[]', exp));
+    }
+    for (var city in data.guideCities) {
+      formData.fields.add(MapEntry('guideCities[]', city));
+    }
+
+    for (var day in data.availability.days) {
+      formData.fields.add(MapEntry('availability[days][]', day));
+    }
+    formData.fields.add(MapEntry('availability[from]', data.availability.from));
+    formData.fields.add(MapEntry('availability[to]', data.availability.to));
+
+    if (data.guideLicense != null && data.guideLicense!.hasPath) {
       formData.files.add(MapEntry(
         'guideLicense',
-        await MultipartFile.fromFile(guideLicense.path!, filename: guideLicense.name),
+        await MultipartFile.fromFile(data.guideLicense!.path!, filename: data.guideLicense!.name),
       ));
     }
 
-    if (nationalId.isNotEmpty) {
-      if (nationalId[0] != null && nationalId[0]!.hasPath) {
+    if (data.nationalId.isNotEmpty) {
+      if (data.nationalId[0] != null && data.nationalId[0]!.hasPath) {
         formData.files.add(MapEntry(
           'nationalIdFront',
-          await MultipartFile.fromFile(nationalId[0]!.path!, filename: nationalId[0]!.name),
+          await MultipartFile.fromFile(data.nationalId[0]!.path!, filename: data.nationalId[0]!.name),
         ));
       }
-      if (nationalId.length > 1 && nationalId[1] != null && nationalId[1]!.hasPath) {
+      if (data.nationalId.length > 1 && data.nationalId[1] != null && data.nationalId[1]!.hasPath) {
         formData.files.add(MapEntry(
           'nationalIdBack',
-          await MultipartFile.fromFile(nationalId[1]!.path!, filename: nationalId[1]!.name),
+          await MultipartFile.fromFile(data.nationalId[1]!.path!, filename: data.nationalId[1]!.name),
         ));
       }
     }
 
-    // Removed large debug print to prevent log buffer saturation
     return _apiService.patch(
       endpoint: ApiConstants.onboarding,
       data: formData,
