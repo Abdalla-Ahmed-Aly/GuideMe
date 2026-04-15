@@ -43,6 +43,16 @@ class PricingSection extends StatelessWidget {
               keyboardType: TextInputType.number,
               style: AppTextStyles.poppinsSemiBold16,
               onTapOutside: (_) => FocusScope.of(context).unfocus(),
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return "Hourly rate is required";
+                }
+                final rate = double.tryParse(val);
+                if (rate == null || rate <= 0) {
+                  return "Please enter a valid hourly rate";
+                }
+                return null;
+              },
               onChanged: (val) {
                 final rate = double.tryParse(val) ?? 0.0;
                 context.read<GuideRegistrationSharedCubit>().setProfessionalInfo(hourlyRate: rate);

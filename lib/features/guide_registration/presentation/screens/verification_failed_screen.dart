@@ -4,6 +4,7 @@ import 'package:guide_me/core/app_assets/app_lotties.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/services/hive_service.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/verification_failed_widgets/verification_issue_section.dart';
@@ -111,8 +112,12 @@ class VerificationFailedScreen extends StatelessWidget {
                         const SizedBox(height: 24),
 
                         AppButton(
-                          onPressed: () {
-                            context.go(AppRoutes.guideProfessionalInfoScreen);
+                          onPressed: () async {
+                            // Set edit mode to true because we are updating existing (rejected) data
+                            await HiveService.saveEditMode(true);
+                            if (context.mounted) {
+                              context.go(AppRoutes.guideProfessionalInfoScreen);
+                            }
                           },
                           text: context.l10n.updateDocuments,
                           radius: 15,

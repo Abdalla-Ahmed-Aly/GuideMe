@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/services/hive_service.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -104,6 +105,7 @@ class GuideVerificationSuccessScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 28.p),
                         child: AppButton(
                           onPressed: () {
+                            HiveService.saveSuccessSeen(true);
                             context.go(AppRoutes.guideNavigationBarScreen);
                           },
                           text: context.l10n.continueButton,

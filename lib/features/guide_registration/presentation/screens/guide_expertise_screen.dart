@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_cubit.dart';
+import 'package:guide_me/features/guide_registration/presentation/cubits/guide_registration_shared_cubit/guide_registration_shared_state.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_expertise_widgets/expertise_area_grid_view.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/guide_expertise_widgets/select_spoken_languages_section.dart';
 import 'package:guide_me/features/guide_registration/presentation/widgets/setup_progress_header.dart';
@@ -84,13 +87,37 @@ class GuideExpertiseScreen extends StatelessWidget {
                   // continue button
                   Padding(
                     padding: const EdgeInsets.only(bottom: 32),
-                    child: AppButton(
-                      text: context.l10n.continueText,
-                      radius: 24.r,
-                      height: 48.h,
-                      onPressed: () {
-                        context.push(
-                          AppRoutes.guideAvailabilityAndPricingScreen,
+                    child: BlocBuilder<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
+                      builder: (context, state) {
+                        return AppButton(
+                          text: context.l10n.continueText,
+                          radius: 24.r,
+                          height: 48.h,
+                          onPressed: () {
+                            if (state is GuideRegistrationFormData) {
+                              if (state.model.languages.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text( "Please select at least one language"),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return;
+                              }
+                              if (state.model.expertise.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text( "Please select at least one area of expertise"),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                                return;
+                              }
+                              context.push(
+                                AppRoutes.guideAvailabilityAndPricingScreen,
+                              );
+                            }
+                          },
                         );
                       },
                     ),
