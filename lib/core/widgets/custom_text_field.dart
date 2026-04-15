@@ -18,7 +18,8 @@ class CustomTextField extends StatelessWidget {
     this.fillColor,
     this.onTap,
     this.readOnly = false,
-    this.prefixIcon, this.maxLines,
+    this.prefixIcon,
+    this.maxLines,
   });
   final String? hintText;
   final bool obscureText;
@@ -47,7 +48,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       keyboardType: keyboardType,
-      maxLines: maxLines,
+      maxLines: maxLines ?? 1,
       onTapOutside: (_) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         labelStyle: AppTextStyles.interRegular16.copyWith(

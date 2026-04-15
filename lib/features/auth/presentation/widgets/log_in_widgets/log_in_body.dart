@@ -162,39 +162,36 @@ class _LogInBodyState extends State<LogInBody> {
               padding: EdgeInsets.symmetric(horizontal: 20.p),
               child: BlocConsumer<LoginCubit, LoginCubitState>(
                 listener: (context, state) {
-              if (state is LoginCubitSuccessful) {
-                final user = state.data.user;
-                if (user.role == UserRole.tourist) {
-                  context.go(AppRoutes.touristNavigationBarScreen);
-                } 
-                else if (user.role == UserRole.guide) {
-                  final status = user.verificationStatus;
-                  if (status == 'not-submitted') {
-                    context.go(AppRoutes.guideProfessionalInfoScreen);
-                  } else if (status == 'pending') {
-                    context.go(AppRoutes.guideVerificationScreen);
-                  } else if (status == 'approve' || status == 'approved') {
-                    context.go(AppRoutes.guideVerificationSuccessScreen);
-                  } else if (status == 'rejected') {
-                    context.go(AppRoutes.verificationFailedScreen);
-                  } else {
-                    context.go(AppRoutes.guideNavigationBarScreen);
+                  if (state is LoginCubitSuccessful) {
+                    final user = state.data.user;
+                    if (user.role == UserRole.tourist) {
+                      context.go(AppRoutes.touristNavigationBarScreen);
+                    } else if (user.role == UserRole.guide) {
+                      final status = user.verificationStatus;
+                      if (status == 'not-submitted') {
+                        context.go(AppRoutes.guideProfessionalInfoScreen);
+                      } else if (status == 'pending') {
+                        context.go(AppRoutes.guideVerificationScreen);
+                      } else if (status == 'approve' || status == 'approved') {
+                        context.go(AppRoutes.guideVerificationSuccessScreen);
+                      } else if (status == 'rejected') {
+                        context.go(AppRoutes.verificationFailedScreen);
+                      } else {
+                        context.go(AppRoutes.guideNavigationBarScreen);
+                      }
+                    } else {
+                      context.showErrorSnakbar(
+                        message: context.l10n.invalidEmailOrPassword,
+                      );
+                    }
+                  } else if (state is LoginCubitFailure) {
+                    final error = FailureUiMapper.map(
+                      context: context,
+                      failure: state.failure,
+                    );
+                    context.showErrorSnakbar(message: error.message);
                   }
-                } 
-                else {
-                  context.showErrorSnakbar(
-                    message: "Account type not recognized. Please contact support.",
-                  );
-                }
-              } 
-              else if (state is LoginCubitFailure) {
-                final error = FailureUiMapper.map(
-                  context: context,
-                  failure: state.failure,
-                );
-                context.showErrorSnakbar(message: error.message);
-              }
-            },
+                },
                 builder: (context, state) {
                   return Center(
                     child: AppButton(
