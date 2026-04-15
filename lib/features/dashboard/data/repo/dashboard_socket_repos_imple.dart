@@ -1,11 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:guide_me/core/errors/error_handler.dart';
 import 'package:guide_me/core/errors/failure.dart';
-import 'package:guide_me/core/socket/socket_app_events.dart';
 import 'package:guide_me/core/socket/socket_event_bus.dart';
 import 'package:guide_me/features/dashboard/data/data_source/dashboard_remote_data_source.dart';
 import 'package:guide_me/features/dashboard/data/mappers/request_mapper.dart';
-import 'package:guide_me/features/dashboard/data/models/request_model.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/domain/repo/dashboard_socket_repo.dart';
 import 'package:injectable/injectable.dart';
@@ -26,26 +24,6 @@ class DashboardSocketRepositoryImpl extends DashboardSocketRepository {
     } catch (e) {
       return left(ErrorHandler.handle(e));
     }
-  }
-
-  @override
-  Stream<Either<Failure, RequestEntity>> listenToIncomingRequests() {
-    return socketEventBus
-        .listenTo(SocketAppEvents.newBooking.name)
-        .cast<Map<String, dynamic>>()
-        .map((data) {
-          try {
-            final model = RequestModel.fromJson(data);
-
-            final entity = RequestMapper.toEntity(
-              model,
-            );
-
-            return Right(entity);
-          } catch (e) {
-            return Left(ErrorHandler.handle(e));
-          }
-        });
   }
 
   @override

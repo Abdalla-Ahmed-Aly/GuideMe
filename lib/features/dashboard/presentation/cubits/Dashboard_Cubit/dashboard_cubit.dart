@@ -1,21 +1,25 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/socket/socket_app_events.dart';
+import 'package:guide_me/core/socket/socket_event_bus.dart';
+import 'package:guide_me/features/dashboard/data/mappers/request_mapper.dart';
+import 'package:guide_me/features/dashboard/data/models/request_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/domain/use_case/get_requests_history_use_case.dart';
-import 'package:guide_me/features/dashboard/domain/use_case/listen_to_incoming_requests_use_case.dart';
 
 part 'dashboard_cubit_state.dart';
 
 @injectable
 class DashboardCubit extends Cubit<DashboardCubitState> {
   final GetRequestsHistoryUseCase getRequestsHistoryUseCase;
-  final ListenToIncomingRequestsUseCase listenToIncomingRequestsUseCase;
+  final SocketEventBus _socketEventBus;
 
   DashboardCubit(
     this.getRequestsHistoryUseCase,
-    this.listenToIncomingRequestsUseCase,
+    this._socketEventBus,
   ) : super(DashboardCubitInitial());
 
   StreamSubscription? _streamSubscription;
@@ -37,35 +41,35 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
         safeEmit(DashboardCubitFailure(failure));
       },
       (requestsHistory) {
-        // final allCombined = [..._requests, ...requestsHistory];
-
-        // final distinctIds = <String>{};
-        // _requests = allCombined
-        //     .where((req) => distinctIds.add(req.bookingid))
-        //     .toList();
-          requests = requestsHistory;
+        requests = requestsHistory;
         safeEmit(DashboardCubitSuccess(requests));
       },
     );
   }
 
   void _startListening() {
-    print("🔥 START LISTENING");
-    if (_streamSubscription != null) return;
+    _streamSubscription?.cancel();
 
-    _streamSubscription =
-        listenToIncomingRequestsUseCase().listen((either) {
-      either.fold(
-        (failure) {
-        
-        },
-        (newRequest) {
-          requests = [newRequest, ...requests];
+    _streamSubscription = _socketEventBus
+        .listenTo(SocketAppEvents.newBooking.value)
+        .listen((data) {
+          final Map<String, dynamic> json = data is String
+              ? jsonDecode(data)
+              : data as Map<String, dynamic>;
 
-          safeEmit(DashboardCubitSuccess(requests));
-        },
-      );
-    });
+          final requests = json['data']['requests'] as List<dynamic>;
+          final requestsModels = requests
+              .map((e) => RequestModel.fromJson(e))
+              .toList();
+
+          final requestsEntities = requestsModels
+              .map((e) => RequestMapper.toEntity(e))
+              .toList();
+
+          this.requests = requestsEntities;
+
+          safeEmit(DashboardCubitSuccess(requestsEntities));
+        });
   }
 
   void resetToInitial() {
@@ -80,9 +84,10 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
     _streamSubscription?.cancel();
     return super.close();
   }
+
   void removeRequestLocally(String bookingId) {
-  requests.removeWhere((req) => req.booking?.id == bookingId);
-  
-  safeEmit(DashboardCubitSuccess(List.from(requests)));
-}
+    requests.removeWhere((req) => req.booking?.id == bookingId);
+
+    safeEmit(DashboardCubitSuccess(List.from(requests)));
+  }
 }

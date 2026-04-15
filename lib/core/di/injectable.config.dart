@@ -631,12 +631,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i85.AcceptPackageUseCase>(
       () => _i85.AcceptPackageUseCase(gh<_i480.DashboardSocketRepository>()),
     );
-    gh.factory<_i605.DashboardCubit>(
-      () => _i605.DashboardCubit(
-        gh<_i542.GetRequestsHistoryUseCase>(),
-        gh<_i108.ListenToIncomingRequestsUseCase>(),
-      ),
-    );
     gh.lazySingleton<_i664.BookAiPackageUseCase>(
       () => _i664.BookAiPackageUseCase(gh<_i672.BookingRepo>()),
     );
@@ -680,6 +674,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i560.AcceptPackageCubit>(
       () => _i560.AcceptPackageCubit(gh<_i85.AcceptPackageUseCase>()),
+    );
+    gh.factory<_i605.DashboardCubit>(
+      () => _i605.DashboardCubit(
+        gh<_i542.GetRequestsHistoryUseCase>(),
+        gh<_i248.SocketEventBus>(),
+      ),
     );
     return this;
   }
