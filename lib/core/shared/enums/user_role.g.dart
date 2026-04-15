@@ -17,6 +17,8 @@ class UserRoleAdapter extends TypeAdapter<UserRole> {
         return UserRole.tourist;
       case 1:
         return UserRole.guide;
+      case 2:
+        return UserRole.admin;
       default:
         return UserRole.tourist;
     }
@@ -29,6 +31,8 @@ class UserRoleAdapter extends TypeAdapter<UserRole> {
         writer.writeByte(0);
       case UserRole.guide:
         writer.writeByte(1);
+      case UserRole.admin:
+        writer.writeByte(2);
     }
   }
 

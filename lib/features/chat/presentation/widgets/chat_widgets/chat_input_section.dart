@@ -7,7 +7,6 @@ import 'package:guide_me/core/shared/args/chat_args.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
 import 'package:guide_me/features/chat/data/models/send_message_model.dart';
 import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
-import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/chat_attachment_button.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/send_button.dart';
 
 class ChatInputSection extends StatefulWidget {
@@ -44,10 +43,6 @@ class _ChatInputSectionState extends State<ChatInputSection> {
       ),
       child: Row(
         children: [
-          const ChatAttachmentButton(),
-
-          const SizedBox(width: 8),
-
           Expanded(
             child: CustomTextField(
               controller: _messageController,

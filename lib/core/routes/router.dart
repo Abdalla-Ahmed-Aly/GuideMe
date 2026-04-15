@@ -49,9 +49,7 @@ import 'package:guide_me/features/booking/presentation/screens/guide_profile_scr
 import 'package:guide_me/features/booking/presentation/screens/suggested_packages_screen.dart';
 import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
-import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
-import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/guide_nav_bar_cubit/guide_navigation_bar_cubit.dart';
@@ -390,17 +388,10 @@ abstract class AppRouter {
               BlocProvider(
                 create: (context) => getIt<ChatCubit>(),
               ),
-              BlocProvider(
-                create: (context) => getIt<TrackingDetailsCubit>(),
-              ),
             ],
             child: ChatScreen(args: args),
           );
         },
-      ),
-      GoRoute(
-        path: AppRoutes.trackingScreen,
-        builder: (context, state) => const TrackingScreen(),
       ),
       GoRoute(
         path: AppRoutes.tourGuideProfileScreen,

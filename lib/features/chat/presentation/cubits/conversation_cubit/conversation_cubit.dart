@@ -9,7 +9,6 @@ import 'package:guide_me/features/chat/data/models/conversation_model.dart';
 import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/domain/use_cases/get_all_conversations_use_case.dart';
 import 'package:injectable/injectable.dart';
-
 part 'conversation_state.dart';
 
 @lazySingleton
@@ -65,24 +64,22 @@ class ConversationCubit extends Cubit<ConversationState> {
 
   void _updateConversation(ConversationEntity conversation) {
     if (state is ConversationSuccess) {
-      // If the user is currently inside this conversation, the incoming
-      // message is already seen — override the API value.
       final isActive = _activeConversationId == conversation.conversationId;
       if (isActive && conversation.lastMessage != null) {
         conversation.lastMessage!.isSeen = true;
       }
 
-      final index = conversations.indexWhere(
+      final index = filteredConversations.indexWhere(
         (c) => c.conversationId == conversation.conversationId,
       );
       if (index != -1) {
-        conversations[index].lastMessage = conversation.lastMessage;
-        conversations[index].createdAt = conversation.createdAt;
+        filteredConversations[index].lastMessage = conversation.lastMessage;
+        filteredConversations[index].createdAt = conversation.createdAt;
 
-        final item = conversations.removeAt(index);
-        conversations.insert(0, item);
+        final item = filteredConversations.removeAt(index);
+        filteredConversations.insert(0, item);
       } else {
-        conversations.insert(0, conversation);
+        filteredConversations.insert(0, conversation);
       }
 
       search(_lastQuery);

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/domain/entities/message_entity.dart';
-import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/receiver_message_bubble.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/sender_message_bubble.dart';
 import 'package:intl/intl.dart';
@@ -28,12 +26,8 @@ class _MessagesListViewState extends State<MessagesListView> {
   }
 
   void _scrollListener() {
-    final cubit = context.read<TrackingDetailsCubit>();
     if (_scrollController.offset <= 0) {
-      cubit.showTrackingCard();
-    } else {
-      cubit.hideTrackingCard();
-    }
+    } else {}
   }
 
   @override

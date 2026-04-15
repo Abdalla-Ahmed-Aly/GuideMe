@@ -141,8 +141,6 @@ import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit
     as _i788;
 import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart'
     as _i452;
-import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubit/tracking_details_cubit.dart'
-    as _i218;
 import 'package:guide_me/features/dashboard/data/data_source/analysis_remote_data_source.dart'
     as _i389;
 import 'package:guide_me/features/dashboard/data/data_source/dashboard_remote_data_source.dart'
@@ -281,7 +279,6 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i459.ReservationCubit>(() => _i459.ReservationCubit());
-    gh.factory<_i218.TrackingDetailsCubit>(() => _i218.TrackingDetailsCubit());
     gh.factory<_i140.TouristNavBarCubit>(() => _i140.TouristNavBarCubit());
     gh.lazySingleton<_i1.ConnectivityHelper>(() => _i1.ConnectivityHelper());
     gh.lazySingleton<_i516.DioService>(() => _i516.DioService());
