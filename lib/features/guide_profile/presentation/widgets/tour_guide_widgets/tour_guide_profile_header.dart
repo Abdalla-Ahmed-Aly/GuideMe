@@ -41,33 +41,6 @@ class TourGuideProfileHeader extends StatelessWidget {
           user.name ?? context.l10n.unknownName,
           style: AppTextStyles.interBold24,
         ),
-
-        const SizedBox(height: 4),
-
-        // Location and Rating
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Location
-            const Icon(
-              Icons.location_on_outlined,
-              color: Color(0xff64748B),
-              size: 20,
-            ),
-
-            const SizedBox(width: 8),
-
-            Expanded(
-              child: Text(
-                user.location ?? context.l10n.unknownLocation,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.interRegular14.copyWith(
-                  color: const Color(0xff64748B),
-                ),
-              ),
-            ),
-          ],
-        ),
       ],
     );
   }

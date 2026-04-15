@@ -107,6 +107,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Stack(

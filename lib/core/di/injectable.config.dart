@@ -199,6 +199,26 @@ import 'package:guide_me/features/guide_booking/presentation/cubits/guide_bookin
     as _i193;
 import 'package:guide_me/features/guide_booking/presentation/widgets/guide_booking_status_filter.dart'
     as _i758;
+import 'package:guide_me/features/guide_profile/data/data_sources/remote/guide_profile_remote_data_source.dart'
+    as _i1036;
+import 'package:guide_me/features/guide_profile/data/data_sources/remote/guide_profile_remote_data_source_impl.dart'
+    as _i688;
+import 'package:guide_me/features/guide_profile/data/repos/guide_profile_repo_impl.dart'
+    as _i904;
+import 'package:guide_me/features/guide_profile/domain/repos/guide_profile_repo.dart'
+    as _i543;
+import 'package:guide_me/features/guide_profile/domain/use_cases/add_certification_use_case.dart'
+    as _i898;
+import 'package:guide_me/features/guide_profile/domain/use_cases/delete_certificate_use_case.dart'
+    as _i123;
+import 'package:guide_me/features/guide_profile/domain/use_cases/update_bio_use_case.dart'
+    as _i412;
+import 'package:guide_me/features/guide_profile/domain/use_cases/update_languages_use_case.dart'
+    as _i296;
+import 'package:guide_me/features/guide_profile/presentation/cubits/add_certification_cubit/add_certification_cubit.dart'
+    as _i777;
+import 'package:guide_me/features/guide_profile/presentation/cubits/guide_profile_cubit/guide_profile_cubit.dart'
+    as _i248;
 import 'package:guide_me/features/guide_registration/data/repositories/guide_registration_repository.dart'
     as _i554;
 import 'package:guide_me/features/guide_registration/data/sources/guide_registration_data_source.dart'
@@ -349,6 +369,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i890.SocketManager>(
       () => _i890.SocketManager(gh<_i408.SocketService>()),
     );
+    gh.lazySingleton<_i1036.GuideProfileRemoteDataSource>(
+      () => _i688.GuideProfileRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
     gh.lazySingleton<_i692.HomeService>(
       () => _i692.HomeApiServiceImpl(gh<_i947.ApiService>()),
     );
@@ -365,8 +388,24 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i367.GuideBookingRepoImpl(gh<_i221.GuideBookingRemoteDataSource>()),
     );
+    gh.lazySingleton<_i543.GuideProfileRepo>(
+      () =>
+          _i904.GuideProfileRepoImpl(gh<_i1036.GuideProfileRemoteDataSource>()),
+    );
     gh.factory<_i306.SplashCubit>(
       () => _i306.SplashCubit(gh<_i625.TokenService>()),
+    );
+    gh.lazySingleton<_i898.AddCertificationUseCase>(
+      () => _i898.AddCertificationUseCase(gh<_i543.GuideProfileRepo>()),
+    );
+    gh.lazySingleton<_i123.DeleteCertificateUseCase>(
+      () => _i123.DeleteCertificateUseCase(gh<_i543.GuideProfileRepo>()),
+    );
+    gh.lazySingleton<_i412.UpdateBioUseCase>(
+      () => _i412.UpdateBioUseCase(gh<_i543.GuideProfileRepo>()),
+    );
+    gh.lazySingleton<_i296.UpdateLanguagesUseCase>(
+      () => _i296.UpdateLanguagesUseCase(gh<_i543.GuideProfileRepo>()),
     );
     gh.factory<_i268.GetAnalysisUseCase>(
       () => _i268.GetAnalysisUseCase(gh<_i539.AnalysisRepo>()),
@@ -397,6 +436,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1045.HomeRepo>(
       () => _i955.HomeRepoImpl(gh<_i692.HomeService>()),
+    );
+    gh.factory<_i248.GuideProfileCubit>(
+      () => _i248.GuideProfileCubit(
+        gh<_i412.UpdateBioUseCase>(),
+        gh<_i296.UpdateLanguagesUseCase>(),
+      ),
     );
     gh.lazySingleton<_i698.GuideRegistrationSharedCubit>(
       () => _i698.GuideRegistrationSharedCubit(
@@ -500,6 +545,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i792.GetHomeCubit>(
       () => _i792.GetHomeCubit(gh<_i1045.HomeRepo>()),
+    );
+    gh.factory<_i777.AddCertificationCubit>(
+      () => _i777.AddCertificationCubit(
+        gh<_i898.AddCertificationUseCase>(),
+        gh<_i226.MediaPickerService>(),
+        gh<_i123.DeleteCertificateUseCase>(),
+      ),
     );
     gh.factory<_i49.AddBookingCubit>(
       () => _i49.AddBookingCubit(gh<_i672.BookingRepo>()),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
+import 'package:guide_me/features/guide_profile/presentation/cubits/add_certification_cubit/add_certification_cubit.dart';
 import 'package:intl/intl.dart';
 import 'month_year_picker.dart';
 import 'upload_certification_file.dart';
@@ -37,6 +39,7 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AddCertificationCubit>();
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 16.p,
@@ -66,6 +69,9 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
           CustomTextField(
             hintText: context.l10n.certificationNameHint,
             controller: certificationNameCont,
+            onChanged: (value) {
+              cubit.certificationName = value;
+            },
           ),
 
           const SizedBox(height: 24),
@@ -91,6 +97,9 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
           CustomTextField(
             hintText: context.l10n.issuingOrganizationHint,
             controller: organizationCont,
+            onChanged: (value) {
+              cubit.certificationOrganization = value;
+            },
           ),
 
           const SizedBox(height: 24),
@@ -133,6 +142,9 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
                   issueDateCont = TextEditingController(
                     text: DateFormat("MM/yyyy").format(issueDate!),
                   );
+                  cubit.certificationIssueDate = DateFormat(
+                    "MM/yyyy",
+                  ).format(issueDate!);
                 });
               }
             },
@@ -167,8 +179,11 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
               if (expireDate != null) {
                 setState(() {
                   expireDateCont = TextEditingController(
-                    text: DateFormat("MM/yyyy").format(issueDate!),
+                    text: DateFormat("MM/yyyy").format(expireDate!),
                   );
+                  cubit.certificationExpiryDate = DateFormat(
+                    "MM/yyyy",
+                  ).format(expireDate!);
                 });
               }
             },

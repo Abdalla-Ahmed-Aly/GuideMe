@@ -15,6 +15,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.prefixIcon,
     this.backgroundColor,
+    this.loadWidth,
   });
 
   final void Function()? onPressed;
@@ -26,11 +27,12 @@ class AppButton extends StatelessWidget {
   final bool isLoading;
   final Widget? prefixIcon;
   final Color? backgroundColor;
+  final double? loadWidth;
 
   @override
   Widget build(BuildContext context) {
     final double normalWidth = width ?? context.screenWidth;
-    final double loadingWidth = 100;
+    final double loadingWidth = loadWidth ?? 100;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),

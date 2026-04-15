@@ -5,8 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/constants/spoken_languages_constants.dart';
+import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
 
@@ -15,7 +19,9 @@ import '../../cubits/guide_profile_cubit/guide_profile_cubit.dart';
 class AddLanguageBottomSheet extends StatefulWidget {
   const AddLanguageBottomSheet({
     super.key,
+    required this.user,
   });
+  final UserEntity user;
 
   @override
   State<AddLanguageBottomSheet> createState() => _AddLanguageBottomSheetState();
@@ -26,6 +32,7 @@ class _AddLanguageBottomSheetState extends State<AddLanguageBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<GuideProfileCubit>();
     return SafeArea(
       child: Container(
         height: context.screenHeight * 0.5,
@@ -76,11 +83,7 @@ class _AddLanguageBottomSheetState extends State<AddLanguageBottomSheet> {
               items: (filter, _) {
                 return SpokenLanguagesConstants.languages
                     .where(
-                      (element) => !context
-                          .read<GuideProfileCubit>()
-                          .state
-                          .languages
-                          .contains(element),
+                      (element) => !widget.user.languages.contains(element),
                     )
                     .toList();
               },
@@ -102,6 +105,7 @@ class _AddLanguageBottomSheetState extends State<AddLanguageBottomSheet> {
 
               popupProps: PopupProps.menu(
                 menuProps: MenuProps(
+                  backgroundColor: Colors.white,
                   margin: const EdgeInsets.only(top: 8, bottom: 32),
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -110,18 +114,43 @@ class _AddLanguageBottomSheetState extends State<AddLanguageBottomSheet> {
 
             const Spacer(),
 
-            AppButton(
-              onPressed: () {
-                if (selectedLanguage != null) {
-                  context.read<GuideProfileCubit>().addLanguage(
-                    selectedLanguage!,
+            BlocConsumer<GuideProfileCubit, GuideProfileState>(
+              listener: (context, state) {
+                if (state is GuideProfileSuccess && cubit.isAddingLanguage) {
+                  context.read<UserCubit>().updateUser(state.user);
+                  cubit.isAddingLanguage = false;
+                  context.showSuccessSnakbar(
+                    message: context.l10n.languageAddedSuccessfully,
                   );
+                  context.pop();
+                } else if (state is GuideProfileFailure) {
+                  final error = FailureUiMapper.map(
+                    context: context,
+                    failure: state.failure,
+                  );
+                  context.showErrorSnakbar(message: error.message);
                   context.pop();
                 }
               },
-              text: context.l10n.addLanguage,
-              height: 48,
-              radius: 24,
+              builder: (context, state) {
+                return Center(
+                  child: AppButton(
+                    isLoading: state is GuideProfileLoading,
+                    onPressed: () {
+                      if (selectedLanguage != null) {
+                        context.read<GuideProfileCubit>().addLanguage(
+                          language: selectedLanguage!,
+                          languages: widget.user.languages,
+                          userId: widget.user.id,
+                        );
+                      }
+                    },
+                    text: context.l10n.addLanguage,
+                    height: 48,
+                    radius: 24,
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 16),

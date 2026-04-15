@@ -2647,6 +2647,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Issued'**
   String get issued;
+
+  /// No description provided for @startTheConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the conversation'**
+  String get startTheConversation;
+
+  /// No description provided for @sendAMessageToGetThingsGoing.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a message to get things going'**
+  String get sendAMessageToGetThingsGoing;
+
+  /// No description provided for @packageRequestDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Request Details'**
+  String get packageRequestDetails;
+
+  /// No description provided for @packageItinerary.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Itinerary'**
+  String get packageItinerary;
+
+  /// No description provided for @placeDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Details'**
+  String get placeDetails;
+
+  /// No description provided for @noDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No description available'**
+  String get noDescription;
+
+  /// No description provided for @packageAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Package Accepted'**
+  String get packageAccepted;
+
+  /// No description provided for @packageAcceptedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The package request has been accepted successfully.'**
+  String get packageAcceptedMessage;
+
+  /// No description provided for @noCertificationsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No certifications yet'**
+  String get noCertificationsYet;
+
+  /// No description provided for @noLanguagesYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No languages yet'**
+  String get noLanguagesYet;
+
+  /// No description provided for @noLocationYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No location yet'**
+  String get noLocationYet;
+
+  /// No description provided for @writeAboutYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Write about you'**
+  String get writeAboutYou;
+
+  /// No description provided for @enterYourBio.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your bio'**
+  String get enterYourBio;
+
+  /// No description provided for @updateBio.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Bio'**
+  String get updateBio;
+
+  /// No description provided for @bioUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Bio updated successfully'**
+  String get bioUpdatedSuccessfully;
+
+  /// No description provided for @languageAddedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Language added successfully'**
+  String get languageAddedSuccessfully;
+
+  /// No description provided for @languagesUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages updated successfully'**
+  String get languagesUpdatedSuccessfully;
+
+  /// No description provided for @certificationAddedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Certification added successfully'**
+  String get certificationAddedSuccessfully;
+
+  /// No description provided for @pleaseFillAllFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill all fields'**
+  String get pleaseFillAllFields;
+
+  /// No description provided for @deleteCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Certificate'**
+  String get deleteCertificate;
+
+  /// No description provided for @areYouSureYouWantToDeleteThisCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this certificate?'**
+  String get areYouSureYouWantToDeleteThisCertificate;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @certificateDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate deleted successfully'**
+  String get certificateDeletedSuccessfully;
+
+  /// No description provided for @editBio.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Bio'**
+  String get editBio;
 }
 
 class _AppLocalizationsDelegate

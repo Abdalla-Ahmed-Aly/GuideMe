@@ -1314,4 +1314,77 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get issued => 'صدر في';
+
+  @override
+  String get startTheConversation => 'ابدأ المحادثة';
+
+  @override
+  String get sendAMessageToGetThingsGoing => 'أرسل رسالة لبدء المحادثة';
+
+  @override
+  String get packageRequestDetails => 'تفاصيل طلب الحزمة';
+
+  @override
+  String get packageItinerary => 'برنامج الرحلة';
+
+  @override
+  String get placeDetails => 'تفاصيل المكان';
+
+  @override
+  String get noDescription => 'لا يوجد وصف';
+
+  @override
+  String get packageAccepted => 'تم قبول الحزمة';
+
+  @override
+  String get packageAcceptedMessage => 'تم قبول طلب الحزمة بنجاح.';
+
+  @override
+  String get noCertificationsYet => 'لا توجد شهادات بعد';
+
+  @override
+  String get noLanguagesYet => 'لا توجد لغات بعد';
+
+  @override
+  String get noLocationYet => 'لا يوجد موقع بعد';
+
+  @override
+  String get writeAboutYou => 'اكتب عنك';
+
+  @override
+  String get enterYourBio => 'أدخل سيرتك الذاتية';
+
+  @override
+  String get updateBio => 'تحديث السيرة الذاتية';
+
+  @override
+  String get bioUpdatedSuccessfully => 'تم تحديث السيرة الذاتية بنجاح';
+
+  @override
+  String get languageAddedSuccessfully => 'تم إضافة اللغة بنجاح';
+
+  @override
+  String get languagesUpdatedSuccessfully => 'تم تحديث اللغات بنجاح';
+
+  @override
+  String get certificationAddedSuccessfully => 'تم إضافة الشهادة بنجاح';
+
+  @override
+  String get pleaseFillAllFields => 'يرجى ملء جميع الحقول';
+
+  @override
+  String get deleteCertificate => 'حذف الشهادة';
+
+  @override
+  String get areYouSureYouWantToDeleteThisCertificate =>
+      'هل أنت متأكد من رغبتك في حذف هذه الشهادة؟';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get certificateDeletedSuccessfully => 'تم حذف الشهادة بنجاح';
+
+  @override
+  String get editBio => 'تعديل السيرة الذاتية';
 }

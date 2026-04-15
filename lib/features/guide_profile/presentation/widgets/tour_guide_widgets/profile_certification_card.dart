@@ -4,19 +4,32 @@ import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/shared/entities/certificate_entity.dart';
+import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/guide_profile/presentation/cubits/add_certification_cubit/add_certification_cubit.dart';
+import 'package:guide_me/features/guide_profile/presentation/cubits/guide_profile_cubit/guide_profile_cubit.dart';
+import 'package:guide_me/features/guide_profile/presentation/widgets/tour_guide_widgets/delete_certificate_dialog.dart';
 
-import '../../cubits/guide_profile_cubit/guide_profile_cubit.dart';
-
-class ProfileCertificationCard extends StatelessWidget {
-  const ProfileCertificationCard({super.key, required this.certification});
+class ProfileCertificationCard extends StatefulWidget {
+  const ProfileCertificationCard({
+    super.key,
+    required this.certification,
+    required this.user,
+  });
   final CertificateEntity certification;
+  final UserEntity user;
 
   @override
+  State<ProfileCertificationCard> createState() =>
+      _ProfileCertificationCardState();
+}
+
+class _ProfileCertificationCardState extends State<ProfileCertificationCard> {
+  @override
   Widget build(BuildContext context) {
-    final cubit = context.watch<GuideProfileCubit>();
-    final inEditCertificationsMode = cubit.state.inEditCertificationsMode;
+    final deleteCertificateCubit = context.read<AddCertificationCubit>();
+    final cubit = context.read<GuideProfileCubit>();
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -48,51 +61,51 @@ class ProfileCertificationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  key: ValueKey(cubit.state.inEditCertificationsMode),
+                  key: ValueKey(cubit.certificationInEditMode),
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 24),
 
                     Expanded(
                       child: Text(
-                        certification.name,
+                        widget.certification.name.toString().trim(),
                         style: AppTextStyles.interBold16,
                       ),
                     ),
 
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          child: inEditCertificationsMode
-                              ? const Icon(
-                                  key: ValueKey("edit"),
-                                  Icons.edit_outlined,
-                                  color: AppColors.primary2,
-                                )
-                              : null,
-                        ),
-
-                        const SizedBox(width: 8),
-
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          child: inEditCertificationsMode
-                              ? const Icon(
-                                  key: ValueKey("edit"),
-                                  Icons.delete_outline_rounded,
-                                  color: AppColors.primary2,
-                                )
-                              : null,
-                        ),
-                      ],
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      child: cubit.certificationInEditMode
+                          ? GestureDetector(
+                              onTap: () {
+                                showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return BlocProvider.value(
+                                      value: deleteCertificateCubit,
+                                      child: DeleteCertificateDialog(
+                                        userId: widget.user.id,
+                                        certificationId:
+                                            widget.certification.id,
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: const Icon(
+                                key: ValueKey("delete"),
+                                Icons.delete_outline_rounded,
+                                color: Colors.red,
+                              ),
+                            )
+                          : null,
                     ),
                   ],
                 ),
 
                 Text(
-                  certification.organization,
+                  widget.certification.organization.toString().trim(),
                   style: AppTextStyles.interRegular14.copyWith(
                     color: const Color(0xffB59A64),
                   ),
@@ -101,7 +114,7 @@ class ProfileCertificationCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "${context.l10n.issued} ${certification.issueDate}",
+                      "${context.l10n.issued.toString().trim()} ${widget.certification.issueDate.toString().trim()}",
                       style: AppTextStyles.interRegular12.copyWith(
                         color: const Color(0xff94A3B8),
                       ),
@@ -114,9 +127,9 @@ class ProfileCertificationCard extends StatelessWidget {
                       ),
                     ),
 
-                    if (certification.expirationDate != null)
+                    if (widget.certification.expirationDate != null)
                       Text(
-                        "${context.l10n.validUntil} ${certification.expirationDate}",
+                        "${context.l10n.validUntil.toString().trim()} ${widget.certification.expirationDate.toString().trim()}",
                         style: AppTextStyles.interRegular12.copyWith(
                           color: const Color(0xff94A3B8),
                         ),

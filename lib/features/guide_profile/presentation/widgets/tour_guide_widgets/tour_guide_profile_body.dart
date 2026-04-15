@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/entities/user_entity.dart';
 import 'package:guide_me/features/guide_profile/presentation/widgets/tour_guide_widgets/about_section.dart';
+import 'package:guide_me/features/guide_profile/presentation/widgets/tour_guide_widgets/guide_location_section.dart';
 import 'package:guide_me/features/guide_profile/presentation/widgets/tour_guide_widgets/profile_certifications_section.dart';
 import 'package:guide_me/features/guide_profile/presentation/widgets/tour_guide_widgets/profile_languages_section.dart';
 import 'package:guide_me/features/guide_profile/presentation/widgets/tour_guide_widgets/professional_details_section.dart';
@@ -36,6 +37,14 @@ class TourGuideProfileBody extends StatelessWidget {
             thickness: 1,
           ),
 
+          GuideLocationSection(user: user),
+
+          const Divider(
+            color: Color(0xffF1F5F9),
+            height: 1,
+            thickness: 1,
+          ),
+
           ProfessionalDetailsSection(user: user),
 
           const Divider(
@@ -58,6 +67,7 @@ class TourGuideProfileBody extends StatelessWidget {
     );
   }
 }
+
 class CustomLine extends StatelessWidget {
   const CustomLine({
     super.key,

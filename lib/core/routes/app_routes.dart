@@ -55,5 +55,6 @@ abstract class AppRoutes {
       '/packageBookingSuccessScreen';
   static const String aiPackagePlacesScreen = '/aiPackagePlacesScreen';
   static const String bookAiPackageScreen = '/bookAiPackageScreen';
-
+  static const String packageRequestDetailsScreen =
+      '/packageRequestDetailsScreen';
 }

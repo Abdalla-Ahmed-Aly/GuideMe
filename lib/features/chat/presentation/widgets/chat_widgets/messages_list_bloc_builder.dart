@@ -5,6 +5,7 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/widgets/failure_message_widget.dart';
 import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
 import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/messages_list_view.dart';
+import 'package:guide_me/features/chat/presentation/widgets/chat_widgets/start_chatting_widget.dart';
 
 class MessagesListBlocBuilder extends StatelessWidget {
   const MessagesListBlocBuilder({super.key});
@@ -26,6 +27,9 @@ class MessagesListBlocBuilder extends StatelessWidget {
           return FailureMessageWidget(error: error.message);
         }
         if (state is ChatSuccess) {
+          if (state.messages.isEmpty) {
+            return const StartChattingWidget();
+          }
           return MessagesListView(messages: state.messages);
         }
         return const SizedBox();

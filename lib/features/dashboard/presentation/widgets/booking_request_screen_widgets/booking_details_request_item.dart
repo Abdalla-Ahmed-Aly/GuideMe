@@ -46,6 +46,7 @@ class BookingDetailsRequestItem extends StatelessWidget {
           ),
           Text(
             value,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.poppinsMedium16,
           ),
           Text(

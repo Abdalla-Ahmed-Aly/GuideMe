@@ -1316,4 +1316,81 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get issued => 'Issued';
+
+  @override
+  String get startTheConversation => 'Start the conversation';
+
+  @override
+  String get sendAMessageToGetThingsGoing =>
+      'Send a message to get things going';
+
+  @override
+  String get packageRequestDetails => 'Package Request Details';
+
+  @override
+  String get packageItinerary => 'Package Itinerary';
+
+  @override
+  String get placeDetails => 'Place Details';
+
+  @override
+  String get noDescription => 'No description available';
+
+  @override
+  String get packageAccepted => 'Package Accepted';
+
+  @override
+  String get packageAcceptedMessage =>
+      'The package request has been accepted successfully.';
+
+  @override
+  String get noCertificationsYet => 'No certifications yet';
+
+  @override
+  String get noLanguagesYet => 'No languages yet';
+
+  @override
+  String get noLocationYet => 'No location yet';
+
+  @override
+  String get writeAboutYou => 'Write about you';
+
+  @override
+  String get enterYourBio => 'Enter your bio';
+
+  @override
+  String get updateBio => 'Update Bio';
+
+  @override
+  String get bioUpdatedSuccessfully => 'Bio updated successfully';
+
+  @override
+  String get languageAddedSuccessfully => 'Language added successfully';
+
+  @override
+  String get languagesUpdatedSuccessfully => 'Languages updated successfully';
+
+  @override
+  String get certificationAddedSuccessfully =>
+      'Certification added successfully';
+
+  @override
+  String get pleaseFillAllFields => 'Please fill all fields';
+
+  @override
+  String get deleteCertificate => 'Delete Certificate';
+
+  @override
+  String get areYouSureYouWantToDeleteThisCertificate =>
+      'Are you sure you want to delete this certificate?';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get certificateDeletedSuccessfully =>
+      'Certificate deleted successfully';
+
+  @override
+  String get editBio => 'Edit Bio';
 }

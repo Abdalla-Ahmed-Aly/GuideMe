@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -8,6 +7,7 @@ import 'package:guide_me/features/booking/presentation/widgets/trip_details_widg
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/booking_details_%20request_section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/earnings_summary_card.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/tourist_profile_image.dart';
 
 class BookingRequestSection extends StatelessWidget {
   const BookingRequestSection({super.key, required this.requestEntity});
@@ -23,19 +23,17 @@ class BookingRequestSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           Center(
-            child: ProfileTouirsts(
+            child: TouristProfileImage(
               imageUrl: requestEntity.booking?.user.photo?.url,
             ),
           ),
 
-          const SizedBox(height: 4),
+          const SizedBox(height: 8),
 
           Center(
             child: Text(
               requestEntity.booking?.user.name ?? context.l10n.unknownName,
-              style: AppTextStyles.poppinsRegular18.copyWith(
-                color: AppColors.black,
-              ),
+              style: AppTextStyles.poppinsRegular18,
             ),
           ),
 
@@ -93,42 +91,13 @@ class BookingRequestSection extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.p),
             child: EarningsSummaryCard(
-              requestEntity: requestEntity,
+              totalAmount: requestEntity.booking?.place.price ?? 0,
             ),
           ),
 
           const SizedBox(height: 16),
         ],
       ),
-    );
-  }
-}
-
-class ProfileTouirsts extends StatelessWidget {
-  const ProfileTouirsts({
-    super.key,
-    this.imageUrl,
-  });
-  final String? imageUrl;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 130,
-      height: 130,
-      clipBehavior: Clip.hardEdge,
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-      ),
-      child: imageUrl != null && imageUrl!.isNotEmpty
-          ? CachedNetworkImage(
-              imageUrl: imageUrl!,
-              fit: BoxFit.cover,
-            )
-          : const Icon(
-              Icons.person,
-              size: 100,
-              color: AppColors.primary2,
-            ),
     );
   }
 }

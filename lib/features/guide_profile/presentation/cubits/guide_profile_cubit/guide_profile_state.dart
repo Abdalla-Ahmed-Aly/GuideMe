@@ -1,44 +1,22 @@
 part of 'guide_profile_cubit.dart';
 
-class GuideProfileState {
-  final bool inEditLangusgesMode;
-  final bool inEditCertificationsMode;
-  final List<String> languages;
-  final List<String> certifications;
-  PickedFileModel? certificationName;
+abstract class GuideProfileState {}
 
-  GuideProfileState({
-    required this.inEditLangusgesMode,
-    required this.inEditCertificationsMode,
-    required this.languages,
-    required this.certifications,
-    this.certificationName,
-  });
+class GuideProfileInitial extends GuideProfileState {}
 
-  factory GuideProfileState.initial() {
-    return GuideProfileState(
-      languages: SpokenLanguagesConstants.languages.sublist(0, 3),
-      certifications: [],
-      inEditLangusgesMode: false,
-      inEditCertificationsMode: false,
-      certificationName: null,
-    );
-  }
-
-  GuideProfileState copyWith({
-    bool? inEditLangusgesMode,
-    bool? inEditCertificationsMode,
-    List<String>? languages,
-    List<String>? certifications,
-    PickedFileModel? certificationName,
-  }) {
-    return GuideProfileState(
-      languages: languages ?? this.languages,
-      certifications: certifications ?? this.certifications,
-      inEditLangusgesMode: inEditLangusgesMode ?? this.inEditLangusgesMode,
-      inEditCertificationsMode:
-          inEditCertificationsMode ?? this.inEditCertificationsMode,
-      certificationName: certificationName ?? this.certificationName,
-    );
-  }
+class GuideProfileLoading extends GuideProfileState {
+  final String? language;
+  GuideProfileLoading({this.language});
 }
+
+class GuideProfileSuccess extends GuideProfileState {
+  final UserEntity user;
+  GuideProfileSuccess({required this.user});
+}
+
+class GuideProfileFailure extends GuideProfileState {
+  final Failure failure;
+  GuideProfileFailure({required this.failure});
+}
+
+

@@ -7,7 +7,6 @@ import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cu
 import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
 import 'package:guide_me/core/location_core/presentation/screens/view_location_screen.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
-import 'package:guide_me/core/services/media_picker_service/media_picker_service_impl.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/select_nationality_cubit/select_nationality_cubit.dart';
@@ -54,6 +53,7 @@ import 'package:guide_me/features/chat/presentation/cubits/tracking_details_cubi
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/tracking_screen.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/guide_nav_bar_cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_Status/toogle_online_status_cubit.dart';
@@ -61,7 +61,9 @@ import 'package:guide_me/features/dashboard/presentation/cubits/accept_and_decli
 import 'package:guide_me/features/dashboard/presentation/screens/booking_request_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/screens/guide_navigation_bar_screen.dart';
+import 'package:guide_me/features/dashboard/presentation/screens/package_request_details_screen.dart';
 import 'package:guide_me/features/guide_booking/presentation/cubits/guide_booking_cubit/guide_booking_cubit.dart';
+import 'package:guide_me/features/guide_profile/presentation/cubits/add_certification_cubit/add_certification_cubit.dart';
 import 'package:guide_me/features/guide_profile/presentation/cubits/guide_profile_cubit/guide_profile_cubit.dart';
 import 'package:guide_me/features/guide_profile/presentation/screens/add_certification_screen.dart';
 import 'package:guide_me/features/guide_profile/presentation/screens/tour_guide_profile_screen.dart';
@@ -402,15 +404,22 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.tourGuideProfileScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => GuideProfileCubit(MediaPickerServiceImpl()),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<GuideProfileCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<AddCertificationCubit>(),
+            ),
+          ],
           child: const TourGuideProfileScreen(),
         ),
       ),
       GoRoute(
         path: AppRoutes.addCertificationScreen,
         builder: (context, state) => BlocProvider(
-          create: (context) => GuideProfileCubit(MediaPickerServiceImpl()),
+          create: (context) => getIt<AddCertificationCubit>(),
           child: const AddCertificationScreen(),
         ),
       ),
@@ -462,6 +471,13 @@ abstract class AppRouter {
             child: const BookAiPackageScreen(),
           );
         },
+      ),
+      GoRoute(
+        path: AppRoutes.packageRequestDetailsScreen,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AcceptPackageCubit>(),
+          child: const PackageRequestDetailsScreen(),
+        ),
       ),
     ],
   );

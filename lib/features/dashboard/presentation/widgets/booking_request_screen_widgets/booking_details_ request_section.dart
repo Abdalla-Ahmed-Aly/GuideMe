@@ -9,9 +9,10 @@ import 'package:intl/intl.dart';
 
 class BookingDetailsRequestSection extends StatelessWidget {
   const BookingDetailsRequestSection({
-    super.key, required this.requestEntity,
+    super.key,
+    required this.requestEntity,
   });
-final RequestEntity requestEntity;
+  final RequestEntity requestEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,27 +22,30 @@ final RequestEntity requestEntity;
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.dateTIME,
-                value: DateFormat('yyyy-MM-dd').format(requestEntity.booking!.bookingDate),
-                value1: DateFormat('kk:mm').format(requestEntity.booking!.bookingDate),
+                value: DateFormat(
+                  'yyyy-MM-dd',
+                ).format(requestEntity.booking!.bookingDate),
+                value1: DateFormat(
+                  'kk:mm',
+                ).format(requestEntity.booking!.bookingDate),
                 pathicon: SvgPicture.asset(AppIcons.date, width: 18.w),
               ),
             ),
-            SizedBox(
-              width: 20.w,
-            ),
+
+            const SizedBox(width: 20),
+
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.duration,
-                value: '${requestEntity.booking!.place.durationMinutes} ${context.l10n.minutes}',
+                value:
+                    '${requestEntity.booking!.place.durationMinutes} ${context.l10n.minutes}',
                 value1: context.l10n.flexibleend,
                 pathicon: SvgPicture.asset(AppIcons.time, width: 18.w),
               ),
             ),
           ],
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20),
         Row(
           children: [
             Expanded(
@@ -52,9 +56,7 @@ final RequestEntity requestEntity;
                 pathicon: SvgPicture.asset(AppIcons.people, width: 18.w),
               ),
             ),
-            SizedBox(
-              width: 20.w,
-            ),
+            const SizedBox(width: 20),
             Expanded(
               child: BookingDetailsRequestItem(
                 title: context.l10n.experience,
