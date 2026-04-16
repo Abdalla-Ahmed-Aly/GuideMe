@@ -4,6 +4,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/profile/presentation/widgets/profile_widgets/fav_tile.dart';
 import 'package:guide_me/features/profile/presentation/widgets/profile_widgets/profile_image_section.dart';
 import 'package:guide_me/features/profile/presentation/widgets/profile_widgets/profile_info_item.dart';
 
@@ -66,14 +67,20 @@ class ProfileInfoSection extends StatelessWidget {
                   ),
                 ),
 
+                const SizedBox(height: 20),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32.p),
+                  child: const FavTile(),
+                ),
+
                 const SizedBox(height: 12),
               ],
             ),
           );
         }
-        return const SizedBox.shrink(); //TODO: Message here to update profile
+        return const SizedBox.shrink();
       },
     );
   }
 }
-

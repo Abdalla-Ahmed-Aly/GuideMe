@@ -2827,6 +2827,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dashboard'**
   String get dashboard;
+
+  /// No description provided for @favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// No description provided for @favoritesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No favorites yet'**
+  String get favoritesEmpty;
+
+  /// No description provided for @favoritesEmptyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Start adding places you like to see them here'**
+  String get favoritesEmptyDesc;
 }
 
 class _AppLocalizationsDelegate

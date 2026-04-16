@@ -10,4 +10,13 @@ class CategoryMapper {
       slug: categoryModel.slug,
     );
   }
+
+  static CategoryModel toModel(CategoryEntity entity) {
+    return CategoryModel(
+      id: entity.id,
+      name: entity.name,
+      image: entity.image,
+      slug: entity.slug,
+    );
+  }
 }

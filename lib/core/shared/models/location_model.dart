@@ -14,4 +14,10 @@ class LocationModel {
     lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
     lng: json['lng'] != null ? (json['lng'] as num).toDouble() : null,
   );
+
+  Map<String, dynamic> toJson() => {
+    "name": name,
+    "lat": lat,
+    "lng": lng,
+  };
 }

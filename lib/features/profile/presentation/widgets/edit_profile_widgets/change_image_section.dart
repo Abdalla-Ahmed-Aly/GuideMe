@@ -7,7 +7,7 @@ import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/shared/models/picked_file_model.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
-import 'package:guide_me/features/profile/presentation/cubits/cubit/update_profile_cubit.dart';
+import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 
 class ChangeImageSection extends StatelessWidget {
   const ChangeImageSection({super.key});

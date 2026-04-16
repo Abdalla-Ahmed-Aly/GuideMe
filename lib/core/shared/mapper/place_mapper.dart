@@ -34,4 +34,32 @@ class PlaceMapper {
       durationMinutes: placeModel.durationMinutes?.toInt() ?? 0,
     );
   }
+
+  static PlaceModel toModel(PlaceEntity entity) {
+    return PlaceModel(
+      id: entity.id,
+      title: entity.title,
+      description: entity.description,
+      category: entity.category != null
+          ? CategoryMapper.toModel(entity.category!)
+          : null,
+      price: entity.price,
+      images: entity.images,
+      location: entity.location != null
+          ? LocationMapper.toModel(entity.location!)
+          : null,
+      rating: entity.rating,
+      reviewsCount: entity.reviewsCount,
+      reviewsSummary: entity.reviewsSummary != null
+          ? Map.from(entity.reviewsSummary!).map((k, v) => MapEntry<String, num>(k, v))
+          : null,
+      city: entity.city != null ? CityMapper.toModel(entity.city!) : null,
+      minPersons: entity.minPersons,
+      maxPersons: entity.maxPersons,
+      isPopular: entity.isPopular,
+      isBest: entity.isBest,
+      isCheap: entity.isCheap,
+      durationMinutes: entity.durationMinutes,
+    );
+  }
 }

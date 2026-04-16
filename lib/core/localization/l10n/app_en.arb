@@ -486,5 +486,8 @@
   "bookingDeclinedMessage": "The booking request has been declined.",
   "youAreCurrentlyOfflineOpenStatusToReceiveRequests": "You are currently offline. Open status to receive requests.",
   "noRequestsAvailableAtTheMoment": "No requests available at the moment.",
-  "dashboard": "Dashboard"
+  "dashboard": "Dashboard",
+  "favorites": "Favorites",
+  "favoritesEmpty": "No favorites yet",
+  "favoritesEmptyDesc": "Start adding places you like to see them here"
 }

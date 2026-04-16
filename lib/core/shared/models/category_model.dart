@@ -17,4 +17,11 @@ class CategoryModel {
     image: json["image"],
     slug: json["slug"],
   );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "name": name,
+    "image": image,
+    "slug": slug,
+  };
 }

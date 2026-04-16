@@ -10,6 +10,7 @@ import 'package:guide_me/core/theme/app_theme.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
+import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart';
 
 class GuideMe extends StatelessWidget {
   const GuideMe({super.key});
@@ -33,6 +34,9 @@ class GuideMe extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<GetAiPackageCubit>()..getAiPackages(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<FavoritesCubit>()..getFavorites(),
         ),
       ],
       child: BlocBuilder<LocaleCubit, Locale>(

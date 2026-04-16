@@ -9,7 +9,7 @@ import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/profile/presentation/cubits/cubit/update_profile_cubit.dart';
+import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 
 class SaveChangesSection extends StatelessWidget {
   const SaveChangesSection({

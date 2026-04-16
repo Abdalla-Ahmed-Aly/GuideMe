@@ -9,4 +9,12 @@ class LocationMapper {
       lng: locationModel.lng,
     );
   }
+
+  static LocationModel toModel(LocationEntity entity) {
+    return LocationModel(
+      name: entity.name,
+      lat: entity.lat,
+      lng: entity.lng,
+    );
+  }
 }

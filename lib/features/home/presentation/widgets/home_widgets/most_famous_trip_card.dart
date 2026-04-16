@@ -26,7 +26,6 @@ class MostFamousTripCard extends StatefulWidget {
 
 class _MostFamousTripCardState extends State<MostFamousTripCard>
     with SingleTickerProviderStateMixin {
-  bool isFavorite = false;
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 
@@ -151,21 +150,6 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
                     child: _glassTag("AI MAGIC"),
                   ),
 
-                  // FAVORITE
-                  Positioned(
-                    top: 20,
-                    right: 20,
-                    child: GestureDetector(
-                      onTap: () => setState(() => isFavorite = !isFavorite),
-                      child: _glassCircle(
-                        icon: isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: isFavorite ? Colors.red : Colors.white,
-                      ),
-                    ),
-                  ),
-
                   // CONTENT
                   Positioned(
                     bottom: 0,
@@ -273,19 +257,6 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
             text,
             style: const TextStyle(color: Colors.white, fontSize: 12),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _glassCircle({required IconData icon, required Color color}) {
-    return ClipOval(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          color: Colors.white.withValues(alpha: 0.2),
-          child: Icon(icon, color: color, size: 18),
         ),
       ),
     );

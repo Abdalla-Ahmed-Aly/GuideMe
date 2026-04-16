@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
@@ -70,19 +72,52 @@ class PlaceListTile extends StatelessWidget {
                     children: [
                       const SizedBox(height: 6),
 
-                      // Title
-                      Text(
-                        place.title,
-                        style: AppTextStyles.interSemiBold14,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      // Title & Fav button
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              place.title,
+                              style: AppTextStyles.interSemiBold14,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+
+                          const SizedBox(width: 8),
+
+                          BlocBuilder<FavoritesCubit, FavoritesState>(
+                            builder: (context, state) {
+                              final isFav = context
+                                  .read<FavoritesCubit>()
+                                  .isFavorite(place.id);
+                              return GestureDetector(
+                                onTap: () {
+                                  context.read<FavoritesCubit>().toggleFavorite(
+                                    place,
+                                  );
+                                },
+                                child: AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 300),
+                                  child: Icon(
+                                    key: ValueKey(isFav),
+                                    isFav
+                                        ? Icons.favorite_rounded
+                                        : Icons.favorite_border_rounded,
+                                    color: isFav ? Colors.red : null,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
 
                       const SizedBox(height: 4),
 
                       // Location
                       Text(
-                        "${context.l10n.location}: ${place.city?.name}",
+                        "${context.l10n.location}: ${place.location?.name}",
                         style: AppTextStyles.interRegular8,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,

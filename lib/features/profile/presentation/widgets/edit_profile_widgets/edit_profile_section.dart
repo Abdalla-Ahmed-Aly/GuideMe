@@ -6,7 +6,7 @@ import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/app_validators.dart';
 import 'package:guide_me/core/widgets/custom_text_field.dart';
-import 'package:guide_me/features/profile/presentation/cubits/cubit/update_profile_cubit.dart';
+import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:guide_me/features/profile/presentation/widgets/edit_profile_widgets/change_image_section.dart';
 import 'package:guide_me/features/profile/presentation/widgets/edit_profile_widgets/save_changes_section.dart';
 import 'package:guide_me/features/profile/presentation/widgets/edit_profile_widgets/update_user_location_section.dart';

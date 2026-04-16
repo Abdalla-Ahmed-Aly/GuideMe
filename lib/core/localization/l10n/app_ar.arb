@@ -487,5 +487,8 @@
   "bookingDeclinedMessage": "تم رفض طلب الحجز بنجاح.",
   "youAreCurrentlyOfflineOpenStatusToReceiveRequests": "أنت حاليًا غير متصل. افتح الحالة لتلقي الطلبات.",
   "noRequestsAvailableAtTheMoment": "لا توجد طلبات متاحة في الوقت الحالي.",
-  "dashboard": "الرئيسية"
+  "dashboard": "الرئيسية",
+  "favorites": "المفضلة",
+  "favoritesEmpty": "لا توجد مفضلة حتى الآن",
+  "favoritesEmptyDesc": "ابدأ بإضافة الأماكن التي تعجبك لرؤيتها هنا"
 }

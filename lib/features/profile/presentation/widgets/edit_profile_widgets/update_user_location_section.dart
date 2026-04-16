@@ -6,7 +6,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/profile/presentation/cubits/cubit/update_profile_cubit.dart';
+import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:shimmer/shimmer.dart';
 
 class UpdateUserLocationSection extends StatelessWidget {

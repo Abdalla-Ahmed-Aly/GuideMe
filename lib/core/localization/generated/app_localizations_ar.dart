@@ -1407,4 +1407,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dashboard => 'الرئيسية';
+
+  @override
+  String get favorites => 'المفضلة';
+
+  @override
+  String get favoritesEmpty => 'لا توجد مفضلة حتى الآن';
+
+  @override
+  String get favoritesEmptyDesc => 'ابدأ بإضافة الأماكن التي تعجبك لرؤيتها هنا';
 }

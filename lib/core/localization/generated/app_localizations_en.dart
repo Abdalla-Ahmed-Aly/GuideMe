@@ -1414,4 +1414,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dashboard => 'Dashboard';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get favoritesEmpty => 'No favorites yet';
+
+  @override
+  String get favoritesEmptyDesc =>
+      'Start adding places you like to see them here';
 }

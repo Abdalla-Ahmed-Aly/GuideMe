@@ -56,4 +56,5 @@ abstract class AppRoutes {
   static const String bookAiPackageScreen = '/bookAiPackageScreen';
   static const String packageRequestDetailsScreen =
       '/packageRequestDetailsScreen';
+  static const String favoritesScreen = '/favoritesScreen';
 }

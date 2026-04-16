@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
@@ -7,17 +8,12 @@ import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/dynamic_rating_stars.dart';
+import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart';
 
-class PlaceCard extends StatefulWidget {
+class PlaceCard extends StatelessWidget {
   const PlaceCard({super.key, required this.place});
   final PlaceEntity place;
 
-  @override
-  State<PlaceCard> createState() => _PlaceCardState();
-}
-
-class _PlaceCardState extends State<PlaceCard> {
-  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -29,7 +25,7 @@ class _PlaceCardState extends State<PlaceCard> {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: () {
-        context.push(AppRoutes.placeDetailsScreen, extra: widget.place);
+        context.push(AppRoutes.placeDetailsScreen, extra: place);
       },
       child: Container(
         width: width,
@@ -44,11 +40,11 @@ class _PlaceCardState extends State<PlaceCard> {
               ),
               child: Stack(
                 children: [
-                  if (widget.place.images.isNotEmpty)
+                  if (place.images.isNotEmpty)
                     Hero(
-                      tag: widget.place.id,
+                      tag: place.id,
                       child: CustomNetworkImage(
-                        imageUrl: widget.place.images.first,
+                        imageUrl: place.images.first,
                         height: imageHeight,
                         width: width,
                         fit: BoxFit.cover,
@@ -60,31 +56,39 @@ class _PlaceCardState extends State<PlaceCard> {
                     alignment: Alignment.topRight,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            isFavorite = !isFavorite;
-                          });
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 9.5,
-                            vertical: 10.5,
-                          ),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                          ),
-                          child: isFavorite
-                              ? const Icon(
-                                  Icons.favorite_rounded,
-                                  color: Colors.red,
-                                )
-                              : const Icon(
-                                  Icons.favorite_border_rounded,
-                                  color: Colors.black,
+                      child: BlocBuilder<FavoritesCubit, FavoritesState>(
+                        builder: (context, state) {
+                          final isFav = context
+                              .read<FavoritesCubit>()
+                              .isFavorite(place.id);
+                          return InkWell(
+                            onTap: () {
+                              context.read<FavoritesCubit>().toggleFavorite(
+                                place,
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 9.5,
+                                vertical: 10.5,
+                              ),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 300),
+                                child: Icon(
+                                  key: ValueKey(isFav),
+                                  isFav
+                                      ? Icons.favorite_rounded
+                                      : Icons.favorite_border_rounded,
+                                  color: isFav ? Colors.red : null,
                                 ),
-                        ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -98,7 +102,7 @@ class _PlaceCardState extends State<PlaceCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
-                widget.place.title,
+                place.title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: AppTextStyles.poppinsSemiBold16,
@@ -112,11 +116,11 @@ class _PlaceCardState extends State<PlaceCard> {
               children: [
                 const SizedBox(width: 2),
                 // Rating
-                DynamicRatingStars(rating: widget.place.rating),
+                DynamicRatingStars(rating: place.rating),
                 const SizedBox(width: 4),
                 Expanded(
                   child: Text(
-                    '(${widget.place.reviewsCount} ${context.l10n.reviews})',
+                    '(${place.reviewsCount} ${context.l10n.reviews})',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.poppinsMedium14.copyWith(
@@ -132,7 +136,7 @@ class _PlaceCardState extends State<PlaceCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
-                '\$${widget.place.price}',
+                '\$${place.price}',
                 style: AppTextStyles.poppinsBold16.copyWith(
                   color: AppColors.primary,
                 ),

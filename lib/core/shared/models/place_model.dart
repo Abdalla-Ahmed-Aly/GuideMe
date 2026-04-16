@@ -68,4 +68,24 @@ class PlaceModel {
     isCheap: json["isCheap"],
     durationMinutes: json["durationMinutes"],
   );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "title": title,
+    "description": description,
+    "category": category?.toJson(),
+    "price": price,
+    "images": images,
+    "location": location?.toJson(),
+    "rating": rating,
+    "reviewsCount": reviewsCount,
+    "reviewsSummary": reviewsSummary,
+    "city": city?.toJson(),
+    "minPersons": minPersons,
+    "maxPersons": maxPersons,
+    "isPopular": isPopular,
+    "isBest": isBest,
+    "isCheap": isCheap,
+    "durationMinutes": durationMinutes,
+  };
 }
