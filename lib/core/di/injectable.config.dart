@@ -167,8 +167,6 @@ import 'package:guide_me/features/dashboard/domain/use_case/get_analysis_use_cas
     as _i268;
 import 'package:guide_me/features/dashboard/domain/use_case/get_requests_history_use_case.dart'
     as _i542;
-import 'package:guide_me/features/dashboard/domain/use_case/listen_to_incoming_requests_use_case.dart'
-    as _i108;
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_and_decline_cubit/accept_booking_cubit.dart'
     as _i938;
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart'
@@ -623,11 +621,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i480.DashboardSocketRepository>(),
       ),
     );
-    gh.factory<_i108.ListenToIncomingRequestsUseCase>(
-      () => _i108.ListenToIncomingRequestsUseCase(
-        gh<_i480.DashboardSocketRepository>(),
-      ),
-    );
     gh.lazySingleton<_i85.AcceptPackageUseCase>(
       () => _i85.AcceptPackageUseCase(gh<_i480.DashboardSocketRepository>()),
     );
@@ -672,8 +665,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i865.BookAiPackageCubit>(
       () => _i865.BookAiPackageCubit(gh<_i664.BookAiPackageUseCase>()),
     );
-    gh.factory<_i560.AcceptPackageCubit>(
-      () => _i560.AcceptPackageCubit(gh<_i85.AcceptPackageUseCase>()),
+    gh.factory<_i560.PackageActionsCubit>(
+      () => _i560.PackageActionsCubit(gh<_i85.AcceptPackageUseCase>()),
     );
     gh.factory<_i605.DashboardCubit>(
       () => _i605.DashboardCubit(

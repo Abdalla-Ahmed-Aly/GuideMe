@@ -1393,4 +1393,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editBio => 'Edit Bio';
+
+  @override
+  String get bookingAcceptedMessage =>
+      'The booking request has been accepted successfully.';
+
+  @override
+  String get bookingDeclined => 'Booking Declined';
+
+  @override
+  String get bookingDeclinedMessage => 'The booking request has been declined.';
+
+  @override
+  String get youAreCurrentlyOfflineOpenStatusToReceiveRequests =>
+      'You are currently offline. Open status to receive requests.';
+
+  @override
+  String get noRequestsAvailableAtTheMoment =>
+      'No requests available at the moment.';
+
+  @override
+  String get dashboard => 'Dashboard';
 }

@@ -1387,4 +1387,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get editBio => 'تعديل السيرة الذاتية';
+
+  @override
+  String get bookingAcceptedMessage => 'تم قبول طلب الحجز بنجاح.';
+
+  @override
+  String get bookingDeclined => 'تم رفض الحجز';
+
+  @override
+  String get bookingDeclinedMessage => 'تم رفض طلب الحجز بنجاح.';
+
+  @override
+  String get youAreCurrentlyOfflineOpenStatusToReceiveRequests =>
+      'أنت حاليًا غير متصل. افتح الحالة لتلقي الطلبات.';
+
+  @override
+  String get noRequestsAvailableAtTheMoment =>
+      'لا توجد طلبات متاحة في الوقت الحالي.';
+
+  @override
+  String get dashboard => 'الرئيسية';
 }

@@ -1,21 +1,21 @@
 part of 'accept_package_cubit.dart';
 
-sealed class AcceptPackageState {}
+sealed class PackageActionsState {}
 
-final class AcceptPackageInitial extends AcceptPackageState {}
+final class PackageActionsInitial extends PackageActionsState {}
 
-final class AcceptPackageLoading extends AcceptPackageState {
+final class PackageActionsLoading extends PackageActionsState {
   final String packageId;
-  AcceptPackageLoading({required this.packageId});
+  PackageActionsLoading({required this.packageId});
 }
 
-final class AcceptPackageSuccess extends AcceptPackageState {
+final class PackageActionsSuccess extends PackageActionsState {
   final String packageId;
-  AcceptPackageSuccess({required this.packageId});
+  PackageActionsSuccess({required this.packageId});
 }
 
-final class AcceptPackageFailure extends AcceptPackageState {
+final class PackageActionsFailure extends PackageActionsState {
   final Failure failure;
   final String packageId;
-  AcceptPackageFailure({required this.failure, required this.packageId});
+  PackageActionsFailure({required this.failure, required this.packageId});
 }

@@ -6,27 +6,28 @@ import 'package:injectable/injectable.dart';
 part 'accept_package_state.dart';
 
 @injectable
-class AcceptPackageCubit extends Cubit<AcceptPackageState> {
-  AcceptPackageCubit(this.acceptPackageUseCase) : super(AcceptPackageInitial());
+class PackageActionsCubit extends Cubit<PackageActionsState> {
+  PackageActionsCubit(this.acceptPackageUseCase)
+    : super(PackageActionsInitial());
 
   final AcceptPackageUseCase acceptPackageUseCase;
 
-  void safeEmit(AcceptPackageState state) {
+  void safeEmit(PackageActionsState state) {
     if (!isClosed) emit(state);
   }
 
   Future<void> acceptPackage(String packageId) async {
-    safeEmit(AcceptPackageLoading(packageId: packageId));
+    safeEmit(PackageActionsLoading(packageId: packageId));
     final result = await acceptPackageUseCase.call(packageId);
     result.fold(
       (failure) => safeEmit(
-        AcceptPackageFailure(failure: failure, packageId: packageId),
+        PackageActionsFailure(failure: failure, packageId: packageId),
       ),
-      (unit) => safeEmit(AcceptPackageSuccess(packageId: packageId)),
+      (unit) => safeEmit(PackageActionsSuccess(packageId: packageId)),
     );
   }
 
   void resetState() {
-    safeEmit(AcceptPackageInitial());
+    safeEmit(PackageActionsInitial());
   }
 }

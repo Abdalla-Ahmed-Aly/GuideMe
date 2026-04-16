@@ -466,7 +466,7 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.packageRequestDetailsScreen,
         builder: (context, state) => BlocProvider(
-          create: (context) => getIt<AcceptPackageCubit>(),
+          create: (context) => getIt<PackageActionsCubit>(),
           child: const PackageRequestDetailsScreen(),
         ),
       ),

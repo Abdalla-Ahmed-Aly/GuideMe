@@ -481,5 +481,11 @@
   "areYouSureYouWantToDeleteThisCertificate": "هل أنت متأكد من رغبتك في حذف هذه الشهادة؟",
   "delete": "حذف",
   "certificateDeletedSuccessfully": "تم حذف الشهادة بنجاح",
-  "editBio": "تعديل السيرة الذاتية"
+  "editBio": "تعديل السيرة الذاتية",
+  "bookingAcceptedMessage": "تم قبول طلب الحجز بنجاح.",
+  "bookingDeclined": "تم رفض الحجز",
+  "bookingDeclinedMessage": "تم رفض طلب الحجز بنجاح.",
+  "youAreCurrentlyOfflineOpenStatusToReceiveRequests": "أنت حاليًا غير متصل. افتح الحالة لتلقي الطلبات.",
+  "noRequestsAvailableAtTheMoment": "لا توجد طلبات متاحة في الوقت الحالي.",
+  "dashboard": "الرئيسية"
 }

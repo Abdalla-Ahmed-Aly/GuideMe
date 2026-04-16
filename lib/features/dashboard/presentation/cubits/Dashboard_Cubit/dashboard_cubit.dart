@@ -22,7 +22,8 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
     this._socketEventBus,
   ) : super(DashboardCubitInitial());
 
-  StreamSubscription? _streamSubscription;
+  StreamSubscription? _newBookingSubscription;
+  StreamSubscription? _bookingTakenSubscription;
   List<RequestEntity> requests = [];
 
   void safeEmit(DashboardCubitState state) {
@@ -32,7 +33,8 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
   Future<void> getRequestsHistory() async {
     safeEmit(DashboardCubitLoading());
 
-    _startListening();
+    _listeningToNewBooking();
+    _listenToBookingTaken();
 
     final result = await getRequestsHistoryUseCase();
 
@@ -47,47 +49,77 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
     );
   }
 
-  void _startListening() {
-    _streamSubscription?.cancel();
+  void _listeningToNewBooking() {
+    _newBookingSubscription?.cancel();
 
-    _streamSubscription = _socketEventBus
+    _newBookingSubscription = _socketEventBus
         .listenTo(SocketAppEvents.newBooking.value)
         .listen((data) {
           final Map<String, dynamic> json = data is String
               ? jsonDecode(data)
               : data as Map<String, dynamic>;
 
-          final requests = json['data']['requests'] as List<dynamic>;
-          final requestsModels = requests
-              .map((e) => RequestModel.fromJson(e))
-              .toList();
+          final requestModel = RequestModel.fromJson(json['data']);
 
-          final requestsEntities = requestsModels
-              .map((e) => RequestMapper.toEntity(e))
-              .toList();
-
-          this.requests = requestsEntities;
-
-          safeEmit(DashboardCubitSuccess(requestsEntities));
+          _updateNewRequests(RequestMapper.toEntity(requestModel));
         });
   }
 
+  void _updateNewRequests(RequestEntity requestEntity) {
+    requests.insert(0, requestEntity);
+    safeEmit(DashboardCubitSuccess(List.from(requests)));
+  }
+
+  void _listenToBookingTaken() {
+    _bookingTakenSubscription?.cancel();
+
+    _bookingTakenSubscription = _socketEventBus
+        .listenTo(SocketAppEvents.bookingTaken.value)
+        .listen(
+          (data) {
+            final Map<String, dynamic> json = data is String
+                ? jsonDecode(data)
+                : data as Map<String, dynamic>;
+
+            final String type = json['type'];
+            final String id = json['id'];
+
+            if (type == 'single') {
+              removeBookingFromList(id);
+            } else if (type == 'package') {
+              removePackageFromList(id);
+            }
+          },
+        );
+  }
+
+  void removeBookingFromList(String id) {
+    requests.removeWhere(
+      (r) => r.booking?.id == id,
+    );
+    safeEmit(DashboardCubitSuccess(List.from(requests)));
+  }
+
+  void removePackageFromList(String id) {
+    requests.removeWhere(
+      (r) => r.packageId == id,
+    );
+    safeEmit(DashboardCubitSuccess(List.from(requests)));
+  }
+
   void resetToInitial() {
-    _streamSubscription?.cancel();
-    _streamSubscription = null;
+    _newBookingSubscription?.cancel();
+    _newBookingSubscription = null;
+    _bookingTakenSubscription?.cancel();
+    _bookingTakenSubscription = null;
     requests = [];
     safeEmit(DashboardCubitInitial());
   }
 
   @override
   Future<void> close() {
-    _streamSubscription?.cancel();
+    _newBookingSubscription?.cancel();
+    _bookingTakenSubscription?.cancel();
     return super.close();
-  }
-
-  void removeRequestLocally(String bookingId) {
-    requests.removeWhere((req) => req.booking?.id == bookingId);
-
-    safeEmit(DashboardCubitSuccess(List.from(requests)));
   }
 }

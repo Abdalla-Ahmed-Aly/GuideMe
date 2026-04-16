@@ -29,9 +29,9 @@ class PackageRequestDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final package = GoRouterState.of(context).extra as RequestEntity;
-    return BlocListener<AcceptPackageCubit, AcceptPackageState>(
+    return BlocListener<PackageActionsCubit, PackageActionsState>(
       listener: (context, state) {
-        if (state is AcceptPackageSuccess) {
+        if (state is PackageActionsSuccess) {
           showDialog(
             context: context,
             builder: (context) {
@@ -44,8 +44,11 @@ class PackageRequestDetailsScreen extends StatelessWidget {
             context.pop();
           });
         }
-        if(state is AcceptPackageFailure){
-          final error = FailureUiMapper.map(context: context, failure: state.failure);
+        if (state is PackageActionsFailure) {
+          final error = FailureUiMapper.map(
+            context: context,
+            failure: state.failure,
+          );
           showDialog(
             context: context,
             builder: (context) {

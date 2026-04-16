@@ -7,6 +7,7 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
+import 'package:guide_me/core/socket/socket_manager.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
@@ -76,7 +77,8 @@ class LogoutSection extends StatelessWidget {
                       key: HiveConstants.userKey,
                     );
                     await getIt<TokenService>().deleteToken();
-                
+                    getIt<SocketManager>().dispose();
+
                     if (dialogContext.mounted) {
                       cubit.reset();
                       dialogContext.go(AppRoutes.signupAndLoginScreen);

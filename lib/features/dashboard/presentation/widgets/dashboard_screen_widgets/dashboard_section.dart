@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +11,7 @@ import 'package:guide_me/core/widgets/user_profile_tile.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_Status/toogle_online_status_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
-import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/request_items_list_view.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/request_consumer_states.dart';
 
 class DashboardSection extends StatelessWidget {
   const DashboardSection({super.key});
@@ -79,42 +78,13 @@ class DashboardSection extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 7,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 21.p, right: 15.p),
-              child: const RequestItemsListView(),
-            ),
+
+            const SizedBox(height: 6),
+
+            const RequestConsumerStates(),
           ],
         ),
       ),
-    );
-  }
-}
-
-class UserInfo extends StatelessWidget {
-  const UserInfo(
-    this.imageUrl, {
-    super.key,
-  });
-  final String? imageUrl;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: const Color(0xffFFA537)),
-      ),
-      child: (imageUrl != null && imageUrl!.isNotEmpty)
-          ? CachedNetworkImage(imageUrl: imageUrl!, fit: BoxFit.cover)
-          : const Icon(
-              Icons.person_outline_rounded,
-              color: AppColors.primary2,
-              size: 30,
-            ),
     );
   }
 }

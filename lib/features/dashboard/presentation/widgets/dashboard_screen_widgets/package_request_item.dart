@@ -10,7 +10,7 @@ import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:guide_me/core/widgets/package_images_preview.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/dashboard_section.dart';
+import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/user_info.dart';
 import 'package:intl/intl.dart';
 
 class PackageRequestItem extends StatefulWidget {
@@ -76,6 +76,7 @@ class _PackageRequestItemState extends State<PackageRequestItem> {
             Row(
               children: [
                 UserInfo(widget.request.bookings?[0].user.photo?.url),
+
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
@@ -190,14 +191,14 @@ class _PackageRequestItemState extends State<PackageRequestItem> {
 
             const SizedBox(height: 12),
 
-            BlocBuilder<AcceptPackageCubit, AcceptPackageState>(
+            BlocBuilder<PackageActionsCubit, PackageActionsState>(
               builder: (context, state) {
                 return AppButton(
                   isLoading:
-                      state is AcceptPackageLoading &&
+                      state is PackageActionsLoading &&
                       state.packageId == widget.request.packageId,
                   onPressed: () {
-                    context.read<AcceptPackageCubit>().acceptPackage(
+                    context.read<PackageActionsCubit>().acceptPackage(
                       widget.request.packageId!,
                     );
                   },
@@ -207,6 +208,7 @@ class _PackageRequestItemState extends State<PackageRequestItem> {
                   ),
                   height: 44,
                   radius: 12,
+                  backgroundColor: AppColors.primary2,
                 );
               },
             ),

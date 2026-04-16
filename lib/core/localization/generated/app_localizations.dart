@@ -2791,6 +2791,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit Bio'**
   String get editBio;
+
+  /// No description provided for @bookingAcceptedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The booking request has been accepted successfully.'**
+  String get bookingAcceptedMessage;
+
+  /// No description provided for @bookingDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Declined'**
+  String get bookingDeclined;
+
+  /// No description provided for @bookingDeclinedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The booking request has been declined.'**
+  String get bookingDeclinedMessage;
+
+  /// No description provided for @youAreCurrentlyOfflineOpenStatusToReceiveRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'You are currently offline. Open status to receive requests.'**
+  String get youAreCurrentlyOfflineOpenStatusToReceiveRequests;
+
+  /// No description provided for @noRequestsAvailableAtTheMoment.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests available at the moment.'**
+  String get noRequestsAvailableAtTheMoment;
+
+  /// No description provided for @dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
 }
 
 class _AppLocalizationsDelegate

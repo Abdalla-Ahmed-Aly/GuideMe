@@ -480,5 +480,11 @@
   "areYouSureYouWantToDeleteThisCertificate": "Are you sure you want to delete this certificate?",
   "delete": "Delete",
   "certificateDeletedSuccessfully": "Certificate deleted successfully",
-  "editBio": "Edit Bio"
+  "editBio": "Edit Bio",
+  "bookingAcceptedMessage": "The booking request has been accepted successfully.",
+  "bookingDeclined": "Booking Declined",
+  "bookingDeclinedMessage": "The booking request has been declined.",
+  "youAreCurrentlyOfflineOpenStatusToReceiveRequests": "You are currently offline. Open status to receive requests.",
+  "noRequestsAvailableAtTheMoment": "No requests available at the moment.",
+  "dashboard": "Dashboard"
 }

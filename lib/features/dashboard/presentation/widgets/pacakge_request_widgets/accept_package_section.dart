@@ -24,12 +24,12 @@ class AcceptPackageSection extends StatelessWidget {
           top: BorderSide(color: AppColors.primary2.withValues(alpha: 0.3)),
         ),
       ),
-      child: BlocBuilder<AcceptPackageCubit, AcceptPackageState>(
+      child: BlocBuilder<PackageActionsCubit, PackageActionsState>(
         builder: (context, state) {
           return AppButton(
-            isLoading: state is AcceptPackageLoading,
+            isLoading: state is PackageActionsLoading,
             onPressed: () {
-              context.read<AcceptPackageCubit>().acceptPackage(packageId);
+              context.read<PackageActionsCubit>().acceptPackage(packageId);
             },
             text: context.l10n.accept,
             backgroundColor: AppColors.primary2,

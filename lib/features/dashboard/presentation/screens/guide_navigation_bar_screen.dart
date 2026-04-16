@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/socket/socket_manager.dart';
@@ -34,7 +35,7 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
           create: (context) => getIt<AcceptBookingCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt<AcceptPackageCubit>(),
+          create: (context) => getIt<PackageActionsCubit>(),
         ),
       ],
       child: const DashboardScreen(),
@@ -102,22 +103,22 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
                   color: Colors.black,
                 ),
                 iconSize: 28,
-                items: const [
+                items: [
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: "Dashboard",
+                    icon: const Icon(Icons.dashboard_outlined),
+                    label: context.l10n.dashboard,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined),
-                    label: "Booking",
+                    icon: const Icon(Icons.event_available_outlined),
+                    label: context.l10n.booking,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.chat),
-                    label: "Chat",
+                    icon: const Icon(Icons.chat_outlined),
+                    label: context.l10n.chat,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.analytics),
-                    label: "Analysis",
+                    icon: const Icon(Icons.bar_chart_rounded),
+                    label: context.l10n.analysis,
                   ),
                 ],
               );
