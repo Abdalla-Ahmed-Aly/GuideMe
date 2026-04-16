@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
-import 'package:guide_me/features/home/presentation/widgets/explore_places_widgets/place_list_tile.dart';
+import 'package:guide_me/core/widgets/place_list_tile.dart';
 
 class FavPlacesListView extends StatelessWidget {
   const FavPlacesListView({

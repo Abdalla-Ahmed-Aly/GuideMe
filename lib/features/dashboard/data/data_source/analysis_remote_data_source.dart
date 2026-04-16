@@ -1,10 +1,10 @@
 import 'package:guide_me/core/constants/api_constants.dart';
 import 'package:guide_me/core/network/api_service.dart';
-import 'package:guide_me/features/dashboard/data/models/analysis_response_model.dart';
+import 'package:guide_me/features/dashboard/data/models/analysis_model.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class AnalysisRemoteDataSource {
-  Future<AnalysisResponse> getAnalysis();
+  Future<AnalysisModel> getAnalysis();
 }
 
 @LazySingleton(as: AnalysisRemoteDataSource)
@@ -14,13 +14,10 @@ class AnalysisRemoteDataSourceImple extends AnalysisRemoteDataSource {
   AnalysisRemoteDataSourceImple(this.apiService);
 
   @override
-  Future<AnalysisResponse> getAnalysis() async {
+  Future<AnalysisModel> getAnalysis() async {
     final response = await apiService.get(
       endpoint: ApiConstants.analysisEndpoint,
-      
     );
-    return AnalysisResponse.fromJson(response.data);
-    
-
+    return AnalysisModel.fromJson(response.data['data']);
   }
 }

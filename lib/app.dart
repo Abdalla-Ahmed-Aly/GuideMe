@@ -7,8 +7,6 @@ import 'package:guide_me/core/routes/router.dart';
 import 'package:guide_me/core/shared/cubits/locale_cubit/locale_cubit.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/theme/app_theme.dart';
-import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
-import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart';
 
@@ -28,12 +26,6 @@ class GuideMe extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<UserCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<GetHomeCubit>()..getHomeData(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<GetAiPackageCubit>()..getAiPackages(),
         ),
         BlocProvider(
           create: (context) => getIt<FavoritesCubit>()..getFavorites(),

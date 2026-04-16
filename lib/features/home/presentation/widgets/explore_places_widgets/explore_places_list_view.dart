@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
-import 'package:guide_me/features/home/presentation/widgets/explore_places_widgets/place_list_tile.dart';
+import 'package:guide_me/core/widgets/place_list_tile.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/features/home/presentation/cubits/get_place_by_category/place_by_category_cubit.dart';

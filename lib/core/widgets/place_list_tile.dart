@@ -117,7 +117,7 @@ class PlaceListTile extends StatelessWidget {
 
                       // Location
                       Text(
-                        "${context.l10n.location}: ${place.location?.name}",
+                        "${context.l10n.location}: ${place.city?.name}",
                         style: AppTextStyles.interRegular8,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,

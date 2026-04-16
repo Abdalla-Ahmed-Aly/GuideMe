@@ -7,9 +7,9 @@ final class AnalysisCubitInitial extends AnalysisCubitState {}
 final class AnalysisCubitLoading extends AnalysisCubitState {}
 
 final class AnalysisCubitSuccess extends AnalysisCubitState {
-  final AnalysisResponse analysisResponse;
+  final AnalysisEntity analysisEntity;
 
-  AnalysisCubitSuccess(this.analysisResponse);
+  AnalysisCubitSuccess(this.analysisEntity);
 }
 
 final class AnalysisCubitFailure extends AnalysisCubitState {

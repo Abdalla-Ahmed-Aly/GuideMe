@@ -73,6 +73,8 @@ import 'package:guide_me/features/guide_registration/presentation/screens/guide_
 import 'package:guide_me/features/guide_registration/presentation/screens/guide_verification_success_screen.dart';
 import 'package:guide_me/features/guide_registration/presentation/screens/verification_failed_screen.dart';
 import 'package:guide_me/features/home/domain/entity/package_entity.dart';
+import 'package:guide_me/features/home/presentation/cubits/get_ai_package/get_ai_package_cubit.dart';
+import 'package:guide_me/features/home/presentation/cubits/get_home_data/get_home_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/interests_cubit/interests_cubit.dart';
 import 'package:guide_me/features/home/presentation/screens/ai_package_places_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/explore_places_screen.dart';
@@ -89,7 +91,6 @@ import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart
 
 abstract class AppRouter {
   static final appRouter = GoRouter(
-    // initialLocation: AppRoutes.guideNavigationBarScreen,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,
@@ -189,9 +190,19 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.touristNavigationBarScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              getIt<ConversationCubit>()..getAllConversations(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) =>
+                  getIt<ConversationCubit>()..getAllConversations(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<GetHomeCubit>()..getHomeData(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<GetAiPackageCubit>()..getAiPackages(),
+            ),
+          ],
           child: const TouristNavigationBarScreen(),
         ),
       ),

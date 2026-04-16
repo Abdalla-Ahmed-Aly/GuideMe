@@ -1,7 +1,6 @@
-
 import 'package:guide_me/core/shared/models/review_model.dart';
 
-class Data {
+class AnalysisModel {
   int totalEarnings;
   int completedTours;
   double averageRating;
@@ -9,7 +8,7 @@ class Data {
   Map<String, dynamic> ratingDistribution;
   List<ReviewModel> reviews;
 
-  Data({
+  AnalysisModel({
     required this.totalEarnings,
     required this.completedTours,
     required this.averageRating,
@@ -18,8 +17,8 @@ class Data {
     required this.reviews,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) {
-    return Data(
+  factory AnalysisModel.fromJson(Map<String, dynamic> json) {
+    return AnalysisModel(
       totalEarnings: json['totalEarnings'],
       completedTours: json['completedTours'],
       averageRating: (json['averageRating'] as num).toDouble(),

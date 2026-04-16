@@ -4,13 +4,14 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
-import 'package:guide_me/features/dashboard/data/models/data_response_model.dart';
+import 'package:guide_me/features/dashboard/domain/entities/analysis_entity.dart';
 
 class AnalysisStatCardItem extends StatelessWidget {
   const AnalysisStatCardItem({
-    super.key, required this.data,
+    super.key,
+    required this.analysis,
   });
-  final Data data; 
+  final AnalysisEntity analysis;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -47,13 +48,16 @@ class AnalysisStatCardItem extends StatelessWidget {
                   'EGP',
                   style: AppTextStyles.poppinsSemiBold30,
                 ),
-                const SizedBox(
-                  height: 6,
+
+                const SizedBox(height: 6),
+
+                Text(
+                  '${analysis.totalEarnings}',
+                  style: AppTextStyles.poppinsSemiBold24,
                 ),
-                Text('${data.totalEarnings}', style: AppTextStyles.poppinsSemiBold24),
-                const SizedBox(
-                  height: 6,
-                ),
+
+                const SizedBox(height: 6),
+
                 Text(
                   '+25.2%',
                   style: AppTextStyles.poppinsMedium18.copyWith(
@@ -64,9 +68,9 @@ class AnalysisStatCardItem extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          width: 20,
-        ),
+
+        const SizedBox(width: 20),
+
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
@@ -86,9 +90,9 @@ class AnalysisStatCardItem extends StatelessWidget {
                         color: const Color(0xff986C2E),
                       ),
                     ),
-                    const SizedBox(
-                      width: 8,
-                    ),
+
+                    const SizedBox(width: 8),
+                    
                     Image.asset(
                       AppImages.item,
                       width: 20.w,
@@ -104,13 +108,16 @@ class AnalysisStatCardItem extends StatelessWidget {
                     color: const Color(0xff986C2E),
                   ),
                 ),
-                const SizedBox(
-                  width: 13,
+
+                const SizedBox(width: 13),
+
+                Text(
+                  '${analysis.completedTours}',
+                  style: AppTextStyles.poppinsMedium18,
                 ),
-                Text('${data.completedTours}', style: AppTextStyles.poppinsMedium18),
-                const SizedBox(
-                  height: 8,
-                ),
+
+                const SizedBox(height: 8),
+
                 Text(
                   '+15%',
                   style: AppTextStyles.poppinsMedium18.copyWith(
