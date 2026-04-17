@@ -97,7 +97,7 @@ class GuideExpertiseScreen extends StatelessWidget {
                             if (state is GuideRegistrationFormData) {
                               if (state.model.languages.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text( "Please select at least one language"),
                                     backgroundColor: Colors.red,
                                   ),
@@ -106,7 +106,7 @@ class GuideExpertiseScreen extends StatelessWidget {
                               }
                               if (state.model.expertise.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text( "Please select at least one area of expertise"),
                                     backgroundColor: Colors.red,
                                   ),

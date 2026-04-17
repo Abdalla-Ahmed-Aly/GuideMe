@@ -18,7 +18,8 @@ class ExpertiseAreaGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetCategoriesCubit(getIt<HomeRepo>())..getCategories(),
+      create: (context) =>
+          GetCategoriesCubit(getIt<HomeRepo>())..getCategories(),
       child: BlocBuilder<GetCategoriesCubit, GetCategoriesState>(
         builder: (context, state) {
           if (state is GetCategoriesLoading) {
@@ -27,8 +28,10 @@ class ExpertiseAreaGridView extends StatelessWidget {
             return Center(child: Text(state.message));
           } else if (state is GetCategoriesSuccess) {
             final categories = state.categories;
-            final strategy = GridViewFactory.getGridViewStrategy(context.screenWidth);
-            
+            final strategy = GridViewFactory.getGridViewStrategy(
+              context.screenWidth,
+            );
+
             return GridView.builder(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
@@ -96,13 +99,16 @@ class ExpertiseAreaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GuideRegistrationSharedCubit, GuideRegistrationSharedState>(
+    return BlocBuilder<
+      GuideRegistrationSharedCubit,
+      GuideRegistrationSharedState
+    >(
       builder: (context, state) {
         bool isSelected = false;
         if (state is GuideRegistrationFormData) {
           isSelected = state.model.expertise.contains(id);
         }
-        
+
         return GestureDetector(
           onTap: () {
             context.read<GuideRegistrationSharedCubit>().toggleExpertise(id);
@@ -114,14 +120,15 @@ class ExpertiseAreaCard extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: imageUrl.startsWith('http') 
-                        ? Image.network(
-                            imageUrl,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) => Container(color: Colors.grey),
-                          )
-                        : Container(color: Colors.grey),
+                      child: imageUrl.startsWith('http')
+                          ? Image.network(
+                              imageUrl,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Container(color: Colors.grey),
+                            )
+                          : Container(color: Colors.grey),
                     ),
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),

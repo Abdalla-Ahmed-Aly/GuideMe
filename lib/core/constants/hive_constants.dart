@@ -10,4 +10,6 @@ class HiveConstants {
   static const String signupProgressBox = 'signupProgressBox';
   static const String signupStepKey = 'signupStepKey';
   static const String favoritesBox = 'favoritesBox';
+  static const String onlineStatusBox = 'onlineStatusBox';
+  static const String onlineStatusKey = 'onlineStatusKey';
 }

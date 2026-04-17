@@ -8,6 +8,8 @@ import 'package:guide_me/core/socket/socket_manager.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_Status/toogle_online_status_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/guide_nav_bar_cubit/guide_navigation_bar_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Analysis_Cubit/analysis_cubit.dart';
@@ -59,6 +61,16 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
     super.initState();
     context.read<UserCubit>().loadUser();
     _socketConnection();
+
+    // Trigger initial dashboard requests check only once when the navigation shell is created
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        final isOnline = context.read<ToggleOnlineStatusCubit>().isOnline;
+        if (isOnline) {
+          context.read<DashboardCubit>().getRequestsHistory();
+        }
+      }
+    });
   }
 
   Future<void> _socketConnection() async {

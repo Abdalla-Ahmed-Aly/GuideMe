@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
+import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/error_dailog.dart';
 import 'package:guide_me/core/widgets/failure_message_widget.dart';
@@ -90,6 +92,7 @@ class RequestConsumerStates extends StatelessWidget {
                 height: context.screenHeight * .6,
                 width: double.infinity,
                 alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(horizontal: 32.p),
                 padding: const EdgeInsets.symmetric(vertical: 50),
                 child: Text(
                   context
@@ -104,10 +107,18 @@ class RequestConsumerStates extends StatelessWidget {
             } else if (state is DashboardCubitSuccess) {
               final requests = state.requestsHistory;
               if (requests.isEmpty) {
-                return Center(
+                return Container(
+                  height: context.screenHeight * .6,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 32.p),
+                  padding: const EdgeInsets.symmetric(vertical: 50),
                   child: Text(
                     context.l10n.noRequestsAvailableAtTheMoment,
-                    style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.interMedium18.copyWith(
+                      color: AppColors.natural4,
+                    ),
                   ),
                 );
               }

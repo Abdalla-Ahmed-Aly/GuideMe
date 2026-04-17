@@ -259,12 +259,10 @@ import 'package:guide_me/core/shared/data_sources/favorites_local_data_source.da
     as _i1001;
 import 'package:guide_me/features/profile/data/data_sources/profile_remote_data_source.dart'
     as _i243;
-import 'package:guide_me/core/shared/repos/favorites_repo_impl.dart'
-    as _i848;
+import 'package:guide_me/core/shared/repos/favorites_repo_impl.dart' as _i848;
 import 'package:guide_me/features/profile/data/repos/profile_repo_impl.dart'
     as _i165;
-import 'package:guide_me/core/shared/repos/favorites_repo.dart'
-    as _i1004;
+import 'package:guide_me/core/shared/repos/favorites_repo.dart' as _i1004;
 import 'package:guide_me/features/profile/domain/repos/profile_repo.dart'
     as _i948;
 import 'package:guide_me/features/profile/domain/use_cases/update_profile_use_case.dart'
@@ -440,8 +438,8 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i625.TokenService>(),
       ),
     );
-    gh.factory<_i916.ToogleOnlineStatusCubit>(
-      () => _i916.ToogleOnlineStatusCubit(gh<_i742.ToggleOnlineRepository>()),
+    gh.factory<_i916.ToggleOnlineStatusCubit>(
+      () => _i916.ToggleOnlineStatusCubit(gh<_i742.ToggleOnlineRepository>()),
     );
     gh.lazySingleton<_i838.UpdateProfileUseCase>(
       () => _i838.UpdateProfileUseCase(gh<_i948.ProfileRepo>()),

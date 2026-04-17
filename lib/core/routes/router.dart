@@ -318,7 +318,8 @@ abstract class AppRouter {
                   getIt<GuideBookingCubit>()..getGuideBookings(),
             ),
             BlocProvider(
-              create: (context) => getIt<ToogleOnlineStatusCubit>(),
+              create: (context) =>
+                  getIt<ToggleOnlineStatusCubit>()..loadInitialStatus(),
             ),
             BlocProvider(
               create: (context) => getIt<DashboardCubit>(),

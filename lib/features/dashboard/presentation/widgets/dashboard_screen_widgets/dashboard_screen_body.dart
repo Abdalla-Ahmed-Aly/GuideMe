@@ -13,12 +13,12 @@ import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_St
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/Availability_Status_Section.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/request_consumer_states.dart';
 
-class DashboardSection extends StatelessWidget {
-  const DashboardSection({super.key});
+class DashboardScreenBody extends StatelessWidget {
+  const DashboardScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ToogleOnlineStatusCubit, ToogleOnlineStatusState>(
+    return BlocListener<ToggleOnlineStatusCubit, ToogleOnlineStatusState>(
       listener: (context, state) {
         if (state is ToogleOnlineStatusError) {
           context.showErrorSnakbar(message: state.message);
@@ -37,6 +37,8 @@ class DashboardSection extends StatelessWidget {
             SizedBox(height: context.screenHeight * 0.05),
 
             Padding(
+    
+              
               padding: EdgeInsets.symmetric(horizontal: 22.p),
               child: UserProfileTile(
                 onTap: () {

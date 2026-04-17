@@ -16,6 +16,7 @@ class HiveHelper {
     await openBox<String>(name: HiveConstants.localeBox);
     await openBox<String>(name: HiveConstants.signupProgressBox);
     await openBox<Map>(name: HiveConstants.favoritesBox);
+    await openBox<bool>(name: HiveConstants.onlineStatusBox);
 
     await HiveService.init();
   }
