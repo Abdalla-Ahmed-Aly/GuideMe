@@ -46,6 +46,7 @@ class ConversationCubit extends Cubit<ConversationState> {
   }
 
   void _listenToConversationUpdates() {
+    _conversationSubscription?.cancel();
     _conversationSubscription = _socketEventBus
         .listenTo(SocketAppEvents.conversationUpdated.value)
         .listen(
@@ -60,6 +61,16 @@ class ConversationCubit extends Cubit<ConversationState> {
             _updateConversation(ConversationMapper.toEntity(conversation));
           },
         );
+  }
+
+  void reset() {
+    _conversationSubscription?.cancel();
+    _conversationSubscription = null;
+    conversations = [];
+    filteredConversations = [];
+    _lastQuery = "";
+    _activeConversationId = null;
+    safeEmit(ConversationInitial());
   }
 
   void _updateConversation(ConversationEntity conversation) {

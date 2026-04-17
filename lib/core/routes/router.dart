@@ -192,9 +192,8 @@ abstract class AppRouter {
         path: AppRoutes.touristNavigationBarScreen,
         builder: (context, state) => MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (context) =>
-                  getIt<ConversationCubit>()..getAllConversations(),
+            BlocProvider.value(
+              value: getIt<ConversationCubit>()..getAllConversations(),
             ),
             BlocProvider(
               create: (context) => getIt<GetHomeCubit>()..getHomeData(),
@@ -321,12 +320,11 @@ abstract class AppRouter {
               create: (context) =>
                   getIt<ToggleOnlineStatusCubit>()..loadInitialStatus(),
             ),
-            BlocProvider(
-              create: (context) => getIt<DashboardCubit>(),
+            BlocProvider.value(
+              value: getIt<DashboardCubit>(),
             ),
-            BlocProvider(
-              create: (context) =>
-                  getIt<ConversationCubit>()..getAllConversations(),
+            BlocProvider.value(
+              value: getIt<ConversationCubit>()..getAllConversations(),
             ),
           ],
           child: const GuideNavigationBarScreen(),

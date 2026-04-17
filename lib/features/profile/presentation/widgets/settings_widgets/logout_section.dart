@@ -11,6 +11,8 @@ import 'package:guide_me/core/socket/socket_manager.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 
 class LogoutSection extends StatelessWidget {
@@ -78,6 +80,8 @@ class LogoutSection extends StatelessWidget {
                     );
                     await getIt<TokenService>().deleteToken();
                     getIt<SocketManager>().dispose();
+                    getIt<DashboardCubit>().resetToInitial();
+                    getIt<ConversationCubit>().reset();
 
                     if (dialogContext.mounted) {
                       cubit.reset();
