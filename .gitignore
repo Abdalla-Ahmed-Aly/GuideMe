@@ -11,7 +11,11 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
-
+scripts/
+screenshotsGuide/
+screenshotsGuide.zip
+screenshotsTourist/
+screenshotsTourist.zip
 # IntelliJ related
 *.iml
 *.ipr
