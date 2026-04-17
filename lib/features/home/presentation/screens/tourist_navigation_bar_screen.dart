@@ -11,6 +11,7 @@ import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cu
 import 'package:guide_me/features/booking/presentation/screens/tourist_booking_screen.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 import 'package:guide_me/features/home/presentation/screens/home_screen.dart';
 import 'package:guide_me/features/home/presentation/widgets/welcome_avatar.dart';
 import 'package:guide_me/features/profile/presentation/screens/profile_screen.dart';
@@ -43,6 +44,7 @@ class _TouristNavigationBarScreenState
   void initState() {
     super.initState();
     context.read<UserCubit>().loadUser();
+    context.read<ConversationCubit>().getAllConversations();
     _socketConnection();
     _pageController = PageController(
       initialPage: context.read<TouristNavBarCubit>().state.index,

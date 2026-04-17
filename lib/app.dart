@@ -4,11 +4,12 @@ import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/localization/generated/app_localizations.dart';
 import 'package:guide_me/core/responsive/responsive_config.dart';
 import 'package:guide_me/core/routes/router.dart';
+import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:guide_me/core/shared/cubits/locale_cubit/locale_cubit.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/theme/app_theme.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
-import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart';
 
 class GuideMe extends StatelessWidget {
   const GuideMe({super.key});
@@ -29,6 +30,9 @@ class GuideMe extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<FavoritesCubit>()..getFavorites(),
+        ),
+        BlocProvider.value(
+          value: getIt<ConversationCubit>(),
         ),
       ],
       child: BlocBuilder<LocaleCubit, Locale>(

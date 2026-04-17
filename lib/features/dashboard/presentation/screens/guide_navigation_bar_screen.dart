@@ -7,6 +7,7 @@ import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/socket/socket_manager.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/conversations_screen.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/Toogle_Online_Status/toogle_online_status_cubit.dart';
@@ -60,6 +61,7 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   void initState() {
     super.initState();
     context.read<UserCubit>().loadUser();
+    context.read<ConversationCubit>().getAllConversations();
     _socketConnection();
 
     // Trigger initial dashboard requests check only once when the navigation shell is created

@@ -30,7 +30,7 @@ class ConversationCubit extends Cubit<ConversationState> {
   }
 
   Future<void> getAllConversations() async {
-    safeEmit(ConversationLoading());
+      safeEmit(ConversationLoading());
 
     _listenToConversationUpdates();
 
