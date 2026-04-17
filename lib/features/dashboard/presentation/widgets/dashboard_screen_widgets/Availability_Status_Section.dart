@@ -180,7 +180,7 @@ class __LoadingIconState extends State<_LoadingIcon>
   @override
   Widget build(BuildContext context) {
     // exact same footprint as Flutter's Switch widget
-    final ringSizes = [16.0, 24.0, 32.0];
+    final ringSizes = [12.0, 20.0, 28.0];
 
     return SizedBox(
       width: 60,
@@ -210,8 +210,8 @@ class __LoadingIconState extends State<_LoadingIcon>
                   ),
                 ),
               Container(
-                width: 16,
-                height: 16,
+                width: 12,
+                height: 12,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: _primary,

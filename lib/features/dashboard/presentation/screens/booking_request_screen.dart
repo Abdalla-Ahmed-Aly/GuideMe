@@ -33,7 +33,7 @@ class BookingRequestScreen extends StatelessWidget {
           top: 8,
           left: 16,
           right: 16,
-          bottom: MediaQuery.of(context).padding.bottom + 4,
+          bottom: MediaQuery.of(context).padding.bottom + 8,
         ),
         decoration: const BoxDecoration(color: Colors.white),
         child: BookingActionButtons(bookingId: requestEntity.booking!.id),

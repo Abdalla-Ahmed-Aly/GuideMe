@@ -334,11 +334,16 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.bookingRequestScreen,
-
         builder: (context, state) {
-          final entity = state.extra as RequestEntity;
-          return BlocProvider(
-            create: (context) => getIt<AcceptBookingCubit>(),
+          final extra = state.extra as Map<String, dynamic>;
+          final entity = extra['entity'] as RequestEntity;
+          final cubit = extra['cubit'] as AcceptBookingCubit;
+          final dashboardCubit = extra['dashboardCubit'] as DashboardCubit;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: cubit),
+              BlocProvider.value(value: dashboardCubit),
+            ],
             child: BookingRequestScreen(requestEntity: entity),
           );
         },
