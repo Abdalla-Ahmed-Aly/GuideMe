@@ -489,5 +489,7 @@
   "dashboard": "Dashboard",
   "favorites": "Favorites",
   "favoritesEmpty": "No favorites yet",
-  "favoritesEmptyDesc": "Start adding places you like to see them here"
+  "favoritesEmptyDesc": "Start adding places you like to see them here",
+  "alreadyAcceptedByAnotherGuide": "Already accepted by another guide",
+  "packageAlreadyTaken": "Package already taken"
 }

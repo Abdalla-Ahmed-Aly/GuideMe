@@ -159,6 +159,16 @@ class FailureUiMapper {
           message: context.l10n.tourCanOnlyBeStartedOnTheBookingDay,
           image: AppImages.placeTest,
         );
+      case FailureCode.alreadyAcceptedByAnotherGuide:
+        return ErrorModel(
+          message: context.l10n.alreadyAcceptedByAnotherGuide,
+          image: AppImages.placeTest,
+        );
+      case FailureCode.packageAlreadyTaken:
+        return ErrorModel(
+          message: context.l10n.packageAlreadyTaken,
+          image: AppImages.placeTest,
+        );
       case FailureCode.unknown:
         return ErrorModel(
           message: context.l10n.errorUnknown,

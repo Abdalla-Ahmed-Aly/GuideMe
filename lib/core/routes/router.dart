@@ -335,14 +335,13 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.bookingRequestScreen,
         builder: (context, state) {
-          final extra = state.extra as Map<String, dynamic>;
-          final entity = extra['entity'] as RequestEntity;
-          final cubit = extra['cubit'] as AcceptBookingCubit;
-          final dashboardCubit = extra['dashboardCubit'] as DashboardCubit;
+          final entity = state.extra as RequestEntity;
           return MultiBlocProvider(
             providers: [
-              BlocProvider.value(value: cubit),
-              BlocProvider.value(value: dashboardCubit),
+              BlocProvider.value(value: getIt<DashboardCubit>()),
+              BlocProvider(
+                create: (context) => getIt<AcceptBookingCubit>(),
+              ),
             ],
             child: BookingRequestScreen(requestEntity: entity),
           );
@@ -483,10 +482,18 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.packageRequestDetailsScreen,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<PackageActionsCubit>(),
-          child: const PackageRequestDetailsScreen(),
-        ),
+        builder: (context, state) {
+          final entity = state.extra as RequestEntity;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: getIt<DashboardCubit>()),
+              BlocProvider(
+                create: (context) => getIt<PackageActionsCubit>(),
+              ),
+            ],
+            child: PackageRequestDetailsScreen(requestEntity: entity),
+          );
+        },
       ),
       GoRoute(
         path: AppRoutes.favoritesScreen,

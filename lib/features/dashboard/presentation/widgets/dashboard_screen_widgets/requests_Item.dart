@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
-import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/cubits/accept_and_decline_cubit/accept_booking_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/booking_action_buttons.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/tour_detail_card.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/dashboard_screen_widgets/user_info.dart';
@@ -24,11 +21,7 @@ class RequestsItem extends StatelessWidget {
       onTap: () {
         context.push(
           AppRoutes.bookingRequestScreen,
-          extra: {
-            'entity': requestModel,
-            'cubit': context.read<AcceptBookingCubit>(),
-            'dashboardCubit': context.read<DashboardCubit>(),
-          },
+          extra: requestModel,
         );
       },
       child: Container(

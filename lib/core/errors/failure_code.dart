@@ -25,5 +25,7 @@ enum FailureCode {
   placeAlreadyBooked,
   youAlreadyHaveATripOnThisDay,
   tourCanOnlyBeStartedOnTheBookingDay,
+  alreadyAcceptedByAnotherGuide,
+  packageAlreadyTaken,
   unknown,
 }

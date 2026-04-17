@@ -2845,6 +2845,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start adding places you like to see them here'**
   String get favoritesEmptyDesc;
+
+  /// No description provided for @alreadyAcceptedByAnotherGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Already accepted by another guide'**
+  String get alreadyAcceptedByAnotherGuide;
+
+  /// No description provided for @packageAlreadyTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Package already taken'**
+  String get packageAlreadyTaken;
 }
 
 class _AppLocalizationsDelegate

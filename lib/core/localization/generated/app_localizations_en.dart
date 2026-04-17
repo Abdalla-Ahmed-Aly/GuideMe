@@ -1424,4 +1424,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get favoritesEmptyDesc =>
       'Start adding places you like to see them here';
+
+  @override
+  String get alreadyAcceptedByAnotherGuide =>
+      'Already accepted by another guide';
+
+  @override
+  String get packageAlreadyTaken => 'Package already taken';
 }

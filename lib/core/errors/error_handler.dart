@@ -172,6 +172,12 @@ class ErrorHandler {
     if (msg.contains(ApiErrorMessages.tourCanOnlyBeStartedOnTheBookingDay)) {
       return FailureCode.tourCanOnlyBeStartedOnTheBookingDay;
     }
+    if (msg.contains(ApiErrorMessages.alreadyAcceptedByAnotherGuide)) {
+      return FailureCode.alreadyAcceptedByAnotherGuide;
+    }
+    if (msg.contains(ApiErrorMessages.packageAlreadyTaken)) {
+      return FailureCode.packageAlreadyTaken;
+    }
     return fallback;
   }
 }

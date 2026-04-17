@@ -8,6 +8,7 @@ import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/widgets/error_dailog.dart';
 import 'package:guide_me/core/widgets/success_dialog.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
+import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/earnings_summary_card.dart';
 import 'package:guide_me/features/dashboard/presentation/widgets/booking_request_screen_widgets/tourist_profile_image.dart';
@@ -16,7 +17,8 @@ import 'package:guide_me/features/dashboard/presentation/widgets/pacakge_request
 import 'package:guide_me/features/dashboard/presentation/widgets/pacakge_request_widgets/professional_nfo_grid_view.dart';
 
 class PackageRequestDetailsScreen extends StatelessWidget {
-  const PackageRequestDetailsScreen({super.key});
+  const PackageRequestDetailsScreen({super.key, required this.requestEntity});
+  final RequestEntity requestEntity;
 
   double totalPrice(RequestEntity request) {
     double totalPrice = 0;
@@ -28,7 +30,7 @@ class PackageRequestDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final package = GoRouterState.of(context).extra as RequestEntity;
+    final package = requestEntity;
     return BlocListener<PackageActionsCubit, PackageActionsState>(
       listener: (context, state) {
         if (state is PackageActionsSuccess) {
@@ -41,6 +43,7 @@ class PackageRequestDetailsScreen extends StatelessWidget {
               );
             },
           ).then((value) {
+            context.read<DashboardCubit>().removePackageFromList(package.packageId!);
             context.pop();
           });
         }

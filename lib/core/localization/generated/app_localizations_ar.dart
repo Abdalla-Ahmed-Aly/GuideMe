@@ -1416,4 +1416,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get favoritesEmptyDesc => 'ابدأ بإضافة الأماكن التي تعجبك لرؤيتها هنا';
+
+  @override
+  String get alreadyAcceptedByAnotherGuide => 'تم القبول من قبل مرشد آخر';
+
+  @override
+  String get packageAlreadyTaken => 'تم أخذ الحزمة';
 }

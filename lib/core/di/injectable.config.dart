@@ -39,12 +39,18 @@ import 'package:guide_me/core/services/media_picker_service/media_picker_service
     as _i159;
 import 'package:guide_me/core/services/token/token_service.dart' as _i625;
 import 'package:guide_me/core/services/token/token_service_impl.dart' as _i574;
+import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart'
+    as _i2;
 import 'package:guide_me/core/shared/cubits/locale_cubit/locale_cubit.dart'
     as _i547;
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart'
     as _i456;
+import 'package:guide_me/core/shared/data_sources/favorites_local_data_source.dart'
+    as _i760;
 import 'package:guide_me/core/shared/data_sources/profile_local_data_source.dart'
     as _i912;
+import 'package:guide_me/core/shared/repos/favorites_repo.dart' as _i490;
+import 'package:guide_me/core/shared/repos/favorites_repo_impl.dart' as _i37;
 import 'package:guide_me/core/shared/use_cases/clear_cached_user_usecase.dart'
     as _i407;
 import 'package:guide_me/core/shared/use_cases/get_cached_user_usecase.dart'
@@ -255,20 +261,14 @@ import 'package:guide_me/features/home/presentation/cubits/interests_cubit/inter
     as _i50;
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart'
     as _i140;
-import 'package:guide_me/core/shared/data_sources/favorites_local_data_source.dart'
-    as _i1001;
 import 'package:guide_me/features/profile/data/data_sources/profile_remote_data_source.dart'
     as _i243;
-import 'package:guide_me/core/shared/repos/favorites_repo_impl.dart' as _i848;
 import 'package:guide_me/features/profile/data/repos/profile_repo_impl.dart'
     as _i165;
-import 'package:guide_me/core/shared/repos/favorites_repo.dart' as _i1004;
 import 'package:guide_me/features/profile/domain/repos/profile_repo.dart'
     as _i948;
 import 'package:guide_me/features/profile/domain/use_cases/update_profile_use_case.dart'
     as _i838;
-import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart'
-    as _i159;
 import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart'
     as _i385;
 import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
@@ -312,12 +312,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i923.GpsLocalDataSourceImpl(),
     );
     gh.lazySingleton<_i625.TokenService>(() => _i574.TokenServiceImpl());
-    gh.lazySingleton<_i1001.FavoritesLocalDataSource>(
-      () => _i1001.FavoritesLocalDataSourceImpl(),
-    );
-    gh.lazySingleton<_i1004.FavoritesRepo>(
-      () => _i848.FavoritesRepoImpl(gh<_i1001.FavoritesLocalDataSource>()),
-    );
     gh.lazySingleton<_i209.DashboardRemoteDataSource>(
       () => _i209.DashboardRemoteDataSourceImpl(gh<_i947.ApiService>()),
     );
@@ -330,6 +324,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i758.GuideBookingStatusFilter>(
       () => _i758.GuideBookingStatusFilter(key: gh<_i409.Key>()),
     );
+    gh.lazySingleton<_i760.FavoritesLocalDataSource>(
+      () => _i760.FavoritesLocalDataSourceImpl(),
+    );
     gh.lazySingleton<_i912.ProfileLocalDataSource>(
       () => _i912.ProfileLocalDataSourceImpl(),
     );
@@ -339,9 +336,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i742.ToggleOnlineRepository>(
       () =>
           _i781.ToggleOnlineRepositoryImpl(apiService: gh<_i947.ApiService>()),
-    );
-    gh.factory<_i159.FavoritesCubit>(
-      () => _i159.FavoritesCubit(gh<_i1004.FavoritesRepo>()),
     );
     gh.lazySingleton<_i602.LocationRemoteDataSource>(
       () => _i821.LocationRemoteDataSourceImpl(gh<_i947.ApiService>()),
@@ -363,6 +357,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i221.GuideBookingRemoteDataSource>(
       () => _i928.GuideBookingRemoteDataSourceImpl(gh<_i947.ApiService>()),
+    );
+    gh.lazySingleton<_i490.FavoritesRepo>(
+      () => _i37.FavoritesRepoImpl(gh<_i760.FavoritesLocalDataSource>()),
     );
     gh.lazySingleton<_i243.ProfileRemoteDataSource>(
       () => _i243.ProfileRemoteDataSourceImpl(gh<_i947.ApiService>()),
@@ -397,6 +394,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i580.GuideBookingRepo>(
       () =>
           _i367.GuideBookingRepoImpl(gh<_i221.GuideBookingRemoteDataSource>()),
+    );
+    gh.factory<_i2.FavoritesCubit>(
+      () => _i2.FavoritesCubit(gh<_i490.FavoritesRepo>()),
     );
     gh.lazySingleton<_i543.GuideProfileRepo>(
       () =>
@@ -683,7 +683,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i560.PackageActionsCubit>(
       () => _i560.PackageActionsCubit(gh<_i85.AcceptPackageUseCase>()),
     );
-    gh.factory<_i605.DashboardCubit>(
+    gh.lazySingleton<_i605.DashboardCubit>(
       () => _i605.DashboardCubit(
         gh<_i542.GetRequestsHistoryUseCase>(),
         gh<_i248.SocketEventBus>(),

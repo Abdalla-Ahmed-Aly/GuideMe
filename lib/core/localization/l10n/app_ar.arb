@@ -490,5 +490,7 @@
   "dashboard": "الرئيسية",
   "favorites": "المفضلة",
   "favoritesEmpty": "لا توجد مفضلة حتى الآن",
-  "favoritesEmptyDesc": "ابدأ بإضافة الأماكن التي تعجبك لرؤيتها هنا"
+  "favoritesEmptyDesc": "ابدأ بإضافة الأماكن التي تعجبك لرؤيتها هنا",
+  "alreadyAcceptedByAnotherGuide": "تم القبول من قبل مرشد آخر",
+  "packageAlreadyTaken": "تم أخذ الحزمة"
 }

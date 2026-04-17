@@ -12,7 +12,7 @@ import 'package:guide_me/features/dashboard/domain/use_case/get_requests_history
 
 part 'dashboard_cubit_state.dart';
 
-@injectable
+@lazySingleton
 class DashboardCubit extends Cubit<DashboardCubitState> {
   final GetRequestsHistoryUseCase getRequestsHistoryUseCase;
   final SocketEventBus _socketEventBus;
