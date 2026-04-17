@@ -71,7 +71,7 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   void _listenToNewBooking() {
     _subscription?.cancel();
 
-    _subscription = _socketEventBus.listenTo("bookingAccepted").listen((data) {
+    _subscription = _socketEventBus.listenTo(SocketAppEvents.bookingAccepted.value).listen((data) {
       final Map<String, dynamic> json = data is String
           ? jsonDecode(data)
           : data as Map<String, dynamic>;

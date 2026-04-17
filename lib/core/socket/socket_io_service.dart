@@ -8,6 +8,7 @@ import 'socket_service.dart';
 @LazySingleton(as: SocketService)
 class SocketIOService implements SocketService {
   IO.Socket? _socket;
+  final Map<String, List<Function(dynamic)>> _eventHandlers = {};
 
   @override
   bool get isConnected => _socket?.connected ?? false;
@@ -29,6 +30,13 @@ class SocketIOService implements SocketService {
           .build(),
     );
 
+    // Re-attach all existing handlers to the new socket instance
+    _eventHandlers.forEach((event, handlers) {
+      for (var handler in handlers) {
+        _socket!.on(event, handler);
+      }
+    });
+
     _socket!.connect();
   }
 
@@ -36,24 +44,30 @@ class SocketIOService implements SocketService {
   void disconnect() {
     _socket?.dispose();
     _socket = null;
+    _eventHandlers.clear();
   }
-@override
-Stream<dynamic> on(String event) {
-  final controller = StreamController<dynamic>.broadcast();
-  
-  _socket?.on(event, (data) {
-    if (!controller.isClosed) {
-      controller.add(data);
+
+  @override
+  Stream<dynamic> on(String event) {
+    final controller = StreamController<dynamic>.broadcast();
+
+    void handler(data) {
+      if (!controller.isClosed) {
+        controller.add(data);
+      }
     }
-  });
 
-  controller.onCancel = () {
-    _socket?.off(event);
-    controller.close();
-  };
+    _eventHandlers.putIfAbsent(event, () => []).add(handler);
+    _socket?.on(event, handler);
 
-  return controller.stream;
-}
+    controller.onCancel = () {
+      _eventHandlers[event]?.remove(handler);
+      _socket?.off(event, handler);
+      controller.close();
+    };
+
+    return controller.stream;
+  }
 
   @override
   void emit(String event, [dynamic data]) {
