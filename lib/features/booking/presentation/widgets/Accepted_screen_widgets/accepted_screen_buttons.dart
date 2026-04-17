@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -50,6 +52,7 @@ class AcceptedScreenButtons extends StatelessWidget {
                 photo: booking.guider?.photo,
               ),
             );
+            log(args.conversationId);
             context.push(AppRoutes.chatScreen, extra: args);
           },
         ),

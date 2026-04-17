@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -135,6 +137,7 @@ class LiveTripCard extends StatelessWidget {
             photo: booking.guider?.photo,
           ),
         );
+        log(args.conversationId);
         context.push(AppRoutes.chatScreen, extra: args);
       },
       child: Container(

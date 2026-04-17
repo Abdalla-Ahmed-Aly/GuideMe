@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -96,6 +98,7 @@ class GuideNextTripCard extends StatelessWidget {
                       bookingId: booking.id,
                       user: booking.user,
                     );
+                    log(args.conversationId);
                     context.push(AppRoutes.chatScreen, extra: args);
                   },
                   child: Container(
