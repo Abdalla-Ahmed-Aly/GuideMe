@@ -44,8 +44,10 @@ class _TouristNavigationBarScreenState
   void initState() {
     super.initState();
     context.read<UserCubit>().loadUser();
-    context.read<ConversationCubit>().getAllConversations();
-    _socketConnection();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _socketConnection();
+      context.read<ConversationCubit>().getAllConversations();
+    });
     _pageController = PageController(
       initialPage: context.read<TouristNavBarCubit>().state.index,
     );

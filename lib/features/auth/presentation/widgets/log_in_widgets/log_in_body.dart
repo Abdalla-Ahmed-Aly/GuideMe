@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
+import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
@@ -161,10 +162,11 @@ class _LogInBodyState extends State<LogInBody> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.p),
               child: BlocConsumer<LoginCubit, LoginCubitState>(
-                listener: (context, state) {
+                listener: (context, state) async {
                   if (state is LoginCubitSuccessful) {
                     final user = state.data.user;
                     if (user.role == UserRole.tourist) {
+                      await UserScope.initUserScope();
                       context.go(AppRoutes.touristNavigationBarScreen);
                     } else if (user.role == UserRole.guide) {
                       final status = user.verificationStatus;
@@ -177,6 +179,7 @@ class _LogInBodyState extends State<LogInBody> {
                       } else if (status == 'rejected') {
                         context.go(AppRoutes.verificationFailedScreen);
                       } else {
+                        await UserScope.initUserScope();
                         context.go(AppRoutes.guideNavigationBarScreen);
                       }
                     } else {
@@ -232,10 +235,11 @@ class _LogInBodyState extends State<LogInBody> {
                   padding: const EdgeInsets.symmetric(horizontal: 11),
                   child:
                       BlocConsumer<LoginwithGoogleCubit, LoginwithGoogleState>(
-                        listener: (context, state) {
+                        listener: (context, state) async {
                           if (state is LoginwithGoogleSuccess) {
                             final user = state.userModel.user;
                             if (user.role == UserRole.tourist) {
+                              await UserScope.initUserScope();
                               context.go(AppRoutes.touristNavigationBarScreen);
                             } else {
                               final status = user.verificationStatus;
@@ -253,6 +257,7 @@ class _LogInBodyState extends State<LogInBody> {
                               } else if (status == 'rejected') {
                                 context.go(AppRoutes.verificationFailedScreen);
                               } else {
+                                await UserScope.initUserScope();
                                 context.go(AppRoutes.guideNavigationBarScreen);
                               }
                             }

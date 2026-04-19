@@ -1,9 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
-import 'package:injectable/injectable.dart';
 import 'socket_service.dart';
 import 'socket_room.dart';
 
-@lazySingleton
 class SocketManager {
   final SocketService _service;
   final Set<SocketRoom> _activeRooms = {};
@@ -16,8 +16,16 @@ class SocketManager {
   }
 
   void _setupConnectionListeners() {
+    // onConnect fires for BOTH the initial connection and after every reconnect.
+    // We re-join all active rooms here so rooms are never lost.
     _service.onConnect(() {
-      debugPrint('✅ Socket Connected');
+      debugPrint(
+        '✅ Socket Connected — rejoining ${_activeRooms.length} active room(s)...',
+      );
+      log("Active Room: $_activeRooms & Service $_service");
+      for (final room in Set.from(_activeRooms)) {
+        _emitJoin(room);
+      }
     });
 
     _service.onDisconnect((reason) {
@@ -27,18 +35,17 @@ class SocketManager {
     _service.onError((error) {
       debugPrint('🔴 Socket Error: $error');
     });
-
-    _service.onReconnect(() {
-      debugPrint('🔄 Reconnected — rejoining ${_activeRooms.length} rooms...');
-      for (final room in Set.from(_activeRooms)) {
-        _emitJoin(room);
-      }
-    });
   }
 
   void joinRoom(SocketRoom room) {
     _activeRooms.add(room);
-    _emitJoin(room);
+    if (_service.isConnected) {
+      _emitJoin(room);
+    } else {
+      debugPrint(
+        '⏳ Socket not yet connected — room ${room.joinEvent}(${room.payload}) queued for join on connect.',
+      );
+    }
   }
 
   void leaveRoom(SocketRoom room) {

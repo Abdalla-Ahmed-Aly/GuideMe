@@ -1,7 +1,5 @@
-import 'package:injectable/injectable.dart';
 import 'socket_service.dart';
 
-@lazySingleton
 class SocketEventBus {
   final SocketService _service;
 

@@ -38,9 +38,9 @@ class HiveHelper {
     }
   }
 
-  static Future<void> clearBox({required String name}) async {
+  static Future<void> clearBox<T>({required String name}) async {
     if (Hive.isBoxOpen(name)) {
-      await Hive.box(name).clear();
+      await Hive.box<T>(name).clear();
     }
   }
 

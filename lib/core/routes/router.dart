@@ -48,6 +48,7 @@ import 'package:guide_me/features/booking/presentation/screens/filter_screen.dar
 import 'package:guide_me/features/booking/presentation/screens/guide_profile_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/suggested_packages_screen.dart';
 import 'package:guide_me/features/chat/presentation/cubits/chat_cubit/chat_cubit.dart';
+import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 import 'package:guide_me/features/chat/presentation/screens/chat_screen.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/presentation/cubits/accept_package_cubit/accept_package_cubit.dart';
@@ -197,6 +198,9 @@ abstract class AppRouter {
             BlocProvider(
               create: (context) => getIt<GetAiPackageCubit>()..getAiPackages(),
             ),
+            BlocProvider(
+              create: (context) => getIt<ConversationCubit>(),
+            ),
           ],
           child: const TouristNavigationBarScreen(),
         ),
@@ -316,8 +320,12 @@ abstract class AppRouter {
               create: (context) =>
                   getIt<ToggleOnlineStatusCubit>()..loadInitialStatus(),
             ),
-            BlocProvider.value(
-              value: getIt<DashboardCubit>(),
+            BlocProvider(
+              create: (context) => getIt<DashboardCubit>(),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  getIt<ConversationCubit>(),
             ),
           ],
           child: const GuideNavigationBarScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/services/hive_service.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -104,8 +105,11 @@ class GuideVerificationSuccessScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 28.p),
                         child: AppButton(
-                          onPressed: () {
-                            HiveService.saveSuccessSeen(true);
+                          onPressed: () async {
+                            await UserScope.initUserScope();
+                            HiveService.saveSuccessSeen(
+                              true,
+                            ); // TODO: Get User Data Here
                             context.go(AppRoutes.guideNavigationBarScreen);
                           },
                           text: context.l10n.continueButton,

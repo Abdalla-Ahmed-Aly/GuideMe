@@ -14,9 +14,9 @@ void main() async {
   await HiveHelper.init();
   await setupGetIt();
 
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.immersiveSticky,
-  );
+  // SystemChrome.setEnabledSystemUIMode(
+  //   SystemUiMode.immersiveSticky,
+  // );
   Bloc.observer = const AppBlocObserver();
 
   await SystemChrome.setPreferredOrientations([

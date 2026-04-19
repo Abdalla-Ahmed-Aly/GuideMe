@@ -1,20 +1,30 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:guide_me/core/constants/api_constants.dart';
-import 'package:injectable/injectable.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'socket_service.dart';
 
-@LazySingleton(as: SocketService)
 class SocketIOService implements SocketService {
   IO.Socket? _socket;
+
   final Map<String, List<Function(dynamic)>> _eventHandlers = {};
 
   @override
   bool get isConnected => _socket?.connected ?? false;
 
+  /// Binds all stored handlers onto the live socket.
+  void _rebindAllHandlers() {
+    _eventHandlers.forEach((event, handlers) {
+      for (final handler in handlers) {
+        _socket!.on(event, handler);
+      }
+    });
+  }
+
   @override
   void connect(String token) {
+    _socket?.disconnect();
     _socket?.dispose();
 
     _socket = IO.io(
@@ -30,22 +40,58 @@ class SocketIOService implements SocketService {
           .build(),
     );
 
-    // Re-attach all existing handlers to the new socket instance
-    _eventHandlers.forEach((event, handlers) {
-      for (var handler in handlers) {
-        _socket!.on(event, handler);
-      }
+    // _rebindAllHandlers();
+
+    _socket!.onConnect((_) {
+      debugPrint("✅ Socket Connected → Rebinding events...");
+      _rebindAllHandlers();
     });
 
+    _socket!.onAny((event, data) {
+      log("🔥 EVENT RECEIVED: $event → $data");
+    });
+
+    _socket!.onDisconnect((reason) {
+      debugPrint("❌ Disconnected: $reason");
+    });
+
+    _socket!.onError((error) {
+      debugPrint("🔴 Error: $error");
+    });
     _socket!.connect();
   }
 
-  @override
-  void disconnect() {
-    _socket?.dispose();
-    _socket = null;
-    _eventHandlers.clear();
+  void _registerListeners(String token) {
+    _socket!.on('conversationUpdated', (data) {
+      log(' token: $token');
+      log('conversationUpdated: $data');
+    });
+
+    _socket!.on('chatMessage', (data) {
+      log(' token: $token');
+      print('chatMessage: $data');
+    });
+
+    _socket!.on('newBooking', (data) {
+      print(' token: $token');
+      print('newBooking: $data');
+    });
   }
+
+  @override
+void disconnect() {
+  _socket?.off('connect');
+  _socket?.off('disconnect');
+  _socket?.off('error');
+  
+  _socket?.clearListeners(); 
+  
+  _socket?.disconnect();
+  _socket?.dispose();
+  _socket = null;
+  
+  _eventHandlers.clear(); 
+}
 
   @override
   Stream<dynamic> on(String event) {
@@ -57,13 +103,17 @@ class SocketIOService implements SocketService {
       }
     }
 
-    _eventHandlers.putIfAbsent(event, () => []).add(handler);
+    // Always store handler for rebinding after reconnect.
+    _eventHandlers.putIfAbsent(event, () => []);
+    _eventHandlers[event]!.add(handler);
+
+    // If socket already exists, bind immediately (handles late subscriptions).
     _socket?.on(event, handler);
 
     controller.onCancel = () {
       _eventHandlers[event]?.remove(handler);
       _socket?.off(event, handler);
-      controller.close();
+      if (!controller.isClosed) controller.close();
     };
 
     return controller.stream;

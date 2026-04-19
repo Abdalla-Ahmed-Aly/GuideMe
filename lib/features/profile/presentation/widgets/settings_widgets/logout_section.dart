@@ -3,16 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
-import 'package:guide_me/core/socket/socket_manager.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
 import 'package:guide_me/core/widgets/app_button.dart';
-import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
-import 'package:guide_me/features/dashboard/presentation/cubits/Dashboard_Cubit/dashboard_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 
 class LogoutSection extends StatelessWidget {
@@ -65,28 +63,7 @@ class LogoutSection extends StatelessWidget {
                   width: context.isArabic ? 140 : 110,
                   height: 38,
                   onPressed: () async {
-                    await HiveHelper.put<bool>(
-                      boxName: HiveConstants.avatarBox,
-                      key: HiveConstants.avatarKey,
-                      data: false,
-                    );
-                    await HiveHelper.delete<UserRole>(
-                      boxName: HiveConstants.userRoleBox,
-                      key: HiveConstants.userRoleKey,
-                    );
-                    await HiveHelper.delete<String>(
-                      boxName: HiveConstants.userBox,
-                      key: HiveConstants.userKey,
-                    );
-                    await getIt<TokenService>().deleteToken();
-                    getIt<SocketManager>().dispose();
-                    getIt<DashboardCubit>().resetToInitial();
-                    getIt<ConversationCubit>().reset();
-
-                    if (dialogContext.mounted) {
-                      cubit.reset();
-                      dialogContext.go(AppRoutes.signupAndLoginScreen);
-                    }
+                    await _logout(cubit, context);
                   },
                   text: context.l10n.logout,
                   backgroundColor: Colors.red,
@@ -100,5 +77,33 @@ class LogoutSection extends StatelessWidget {
         );
       },
     );
+  }
+
+  Future<void> _logout(TouristNavBarCubit cubit, BuildContext context) async {
+    if (context.mounted) {
+      await getIt<TokenService>().deleteToken();
+
+      await HiveHelper.put<bool>(
+        boxName: HiveConstants.avatarBox,
+        key: HiveConstants.avatarKey,
+        data: false,
+      );
+      await HiveHelper.delete<UserRole>(
+        boxName: HiveConstants.userRoleBox,
+        key: HiveConstants.userRoleKey,
+      );
+      await HiveHelper.delete<String>(
+        boxName: HiveConstants.userBox,
+        key: HiveConstants.userKey,
+      );
+
+      await HiveHelper.clearBox<Map>(
+        name: HiveConstants.favoritesBox,
+      );
+
+      context.go(AppRoutes.splashScreen);
+
+      await UserScope.disposeUserScope();
+    }
   }
 }

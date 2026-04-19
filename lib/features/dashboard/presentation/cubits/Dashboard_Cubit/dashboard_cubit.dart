@@ -5,14 +5,12 @@ import 'package:guide_me/core/socket/socket_app_events.dart';
 import 'package:guide_me/core/socket/socket_event_bus.dart';
 import 'package:guide_me/features/dashboard/data/mappers/request_mapper.dart';
 import 'package:guide_me/features/dashboard/data/models/request_model.dart';
-import 'package:injectable/injectable.dart';
 import 'package:guide_me/core/errors/failure.dart';
 import 'package:guide_me/features/dashboard/domain/entities/request_entity.dart';
 import 'package:guide_me/features/dashboard/domain/use_case/get_requests_history_use_case.dart';
 
 part 'dashboard_cubit_state.dart';
 
-@lazySingleton
 class DashboardCubit extends Cubit<DashboardCubitState> {
   final GetRequestsHistoryUseCase getRequestsHistoryUseCase;
   final SocketEventBus _socketEventBus;
@@ -20,7 +18,10 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
   DashboardCubit(
     this.getRequestsHistoryUseCase,
     this._socketEventBus,
-  ) : super(DashboardCubitInitial());
+  ) : super(DashboardCubitInitial()) {
+    _listeningToNewBooking();
+    _listenToBookingTaken();
+  }
 
   StreamSubscription? _newBookingSubscription;
   StreamSubscription? _bookingTakenSubscription;
@@ -32,9 +33,6 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
 
   Future<void> getRequestsHistory() async {
     safeEmit(DashboardCubitLoading());
-
-    _listeningToNewBooking();
-    _listenToBookingTaken();
 
     final result = await getRequestsHistoryUseCase();
 
@@ -120,6 +118,8 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
   Future<void> close() {
     _newBookingSubscription?.cancel();
     _bookingTakenSubscription?.cancel();
+    _newBookingSubscription = null;
+    _bookingTakenSubscription = null;
     return super.close();
   }
 }

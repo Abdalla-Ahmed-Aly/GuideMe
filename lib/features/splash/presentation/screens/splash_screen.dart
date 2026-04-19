@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/app_assets/app_images.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
@@ -73,11 +74,13 @@ class _SplashScreenState extends State<SplashScreen>
         listener: (context, state) {
           if (state is SplashAuthenticated) {
             if (state.userRole == UserRole.tourist) {
-              Future.delayed(const Duration(seconds: 1), () {
+              Future.delayed(const Duration(seconds: 1), () async {
+                await UserScope.initUserScope();
                 context.go(AppRoutes.touristNavigationBarScreen);
               });
             } else {
-              Future.delayed(const Duration(seconds: 1), () {
+              Future.delayed(const Duration(seconds: 1), () async {
+                await UserScope.initUserScope();
                 context.go(AppRoutes.guideNavigationBarScreen);
               });
             }
@@ -90,8 +93,9 @@ class _SplashScreenState extends State<SplashScreen>
               context.go(AppRoutes.guideVerificationScreen);
             });
           } else if (state is SplashGuideOnboardingApproved) {
-            Future.delayed(const Duration(seconds: 1), () {
+            Future.delayed(const Duration(seconds: 1), () async {
               if (HiveService.hasSeenSuccess()) {
+                await UserScope.initUserScope();
                 context.go(AppRoutes.guideNavigationBarScreen);
               } else {
                 context.go(AppRoutes.guideVerificationSuccessScreen);

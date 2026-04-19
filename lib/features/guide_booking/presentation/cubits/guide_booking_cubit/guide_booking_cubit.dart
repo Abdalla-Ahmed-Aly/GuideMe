@@ -12,17 +12,18 @@ import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/guide_booking/domain/enums/guide_booking_status.dart';
 import 'package:guide_me/features/guide_booking/domain/use_cases/get_guide_booking_use_case.dart';
 import 'package:guide_me/features/guide_booking/domain/use_cases/guide_booking_filter_use_case.dart';
-import 'package:injectable/injectable.dart';
 
 part 'guide_booking_state.dart';
 
-@injectable
 class GuideBookingCubit extends Cubit<GuideBookingState> {
   GuideBookingCubit(
     this._bookingsUseCase,
     this._guideBookingFilterUseCase,
     this._socketEventBus,
-  ) : super(GuideBookingInitial());
+  ) : super(GuideBookingInitial()) {
+    _listenToNewBooking();
+    _listenToUpdateBooking();
+  }
   final GetGuideBookingUseCase _bookingsUseCase;
   final GuideBookingFilterUseCase _guideBookingFilterUseCase;
   final SocketEventBus _socketEventBus;
@@ -36,9 +37,6 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
 
   Future<void> getGuideBookings() async {
     safeEmit(GuideBookingLoading(filters: state.filters));
-
-    _listenToNewBooking();
-    _listenToUpdateBooking();
 
     final result = await _bookingsUseCase.call(
       date: state.filters.selectedDate,
@@ -167,6 +165,8 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
   Future<void> close() {
     _subscription?.cancel();
     _updateSubscription?.cancel();
+    _subscription = null;
+    _updateSubscription = null;
     return super.close();
   }
 }

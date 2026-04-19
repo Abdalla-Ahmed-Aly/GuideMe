@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/errors/failure.dart';
@@ -17,11 +18,9 @@ import 'package:guide_me/features/chat/domain/entities/message_entity.dart';
 import 'package:guide_me/features/chat/domain/enums/message_status.dart';
 import 'package:guide_me/features/chat/domain/use_cases/get_all_chat_messages.dart';
 import 'package:guide_me/features/chat/domain/use_cases/send_message_use_case.dart';
-import 'package:injectable/injectable.dart';
 
 part 'chat_state.dart';
 
-@injectable
 class ChatCubit extends Cubit<ChatState> {
   ChatCubit(
     this._getAllChatMessagesUseCase,
@@ -38,7 +37,6 @@ class ChatCubit extends Cubit<ChatState> {
   StreamSubscription? _messageStatusSubscription;
   String? _currentBookingId;
 
-  Timer? _typingTimer;
   final List<MessageEntity> messages = [];
 
   void safeEmit(ChatState state) {
@@ -50,9 +48,14 @@ class ChatCubit extends Cubit<ChatState> {
     required String bookingId,
   }) async {
     safeEmit(ChatLoading());
-    _joinChatRoom(bookingId);
+    messages.clear(); // Clear stale messages from a previous session.
+
+    // Subscribe to socket events BEFORE joining the room so no events are
+    // missed between the join emit and the first server broadcast.
     _listenToNewMessages();
     _listenToMessageStatus();
+
+    _joinChatRoom(bookingId);
 
     final result = await _getAllChatMessagesUseCase(conversationId);
     result.fold(
@@ -119,14 +122,17 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   Future<void> _listenToNewMessages() async {
+    await _chatSubscription?.cancel(); // Cancel any previous subscription first.
     _chatSubscription = _socketEventBus
         .listenTo(SocketAppEvents.chatMessage.value)
         .listen((data) {
+          log("Chat Message: $data");
           final Map<String, dynamic> json = data is String
               ? jsonDecode(data)
               : data as Map<String, dynamic>;
 
           final message = MessageModel.fromJson(json['data']['messages'][0]);
+
 
           final entity = MessageMapper.toEntity(message);
 
@@ -161,6 +167,7 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   void _listenToMessageStatus() {
+    _messageStatusSubscription?.cancel(); // Cancel any previous subscription first.
     _messageStatusSubscription = _socketEventBus
         .listenTo(SocketAppEvents.messagesSeen.value)
         .listen((data) {
@@ -196,7 +203,8 @@ class ChatCubit extends Cubit<ChatState> {
   Future<void> close() async {
     _chatSubscription?.cancel();
     _messageStatusSubscription?.cancel();
-    _typingTimer?.cancel();
+    _chatSubscription = null;
+    _messageStatusSubscription = null;
     _leaveChatRoom();
     return super.close();
   }

@@ -8,13 +8,13 @@ import 'package:guide_me/features/chat/data/mappers/conversation_mapper.dart';
 import 'package:guide_me/features/chat/data/models/conversation_model.dart';
 import 'package:guide_me/features/chat/domain/entities/conversation_entity.dart';
 import 'package:guide_me/features/chat/domain/use_cases/get_all_conversations_use_case.dart';
-import 'package:injectable/injectable.dart';
 part 'conversation_state.dart';
 
-@lazySingleton
 class ConversationCubit extends Cubit<ConversationState> {
   ConversationCubit(this._getAllConversationsUseCase, this._socketEventBus)
-    : super(ConversationInitial());
+    : super(ConversationInitial()) {
+    _listenToConversationUpdates();
+  }
   final GetAllConversationsUseCase _getAllConversationsUseCase;
   final SocketEventBus _socketEventBus;
 
@@ -30,9 +30,7 @@ class ConversationCubit extends Cubit<ConversationState> {
   }
 
   Future<void> getAllConversations() async {
-      safeEmit(ConversationLoading());
-
-    _listenToConversationUpdates();
+    safeEmit(ConversationLoading());
 
     final result = await _getAllConversationsUseCase();
     result.fold(
@@ -136,6 +134,7 @@ class ConversationCubit extends Cubit<ConversationState> {
   @override
   Future<void> close() async {
     _conversationSubscription?.cancel();
+    _conversationSubscription = null;
     return super.close();
   }
 }

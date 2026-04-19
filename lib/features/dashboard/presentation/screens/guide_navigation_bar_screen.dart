@@ -61,11 +61,9 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   void initState() {
     super.initState();
     context.read<UserCubit>().loadUser();
-    context.read<ConversationCubit>().getAllConversations();
-    _socketConnection();
-
-    // Trigger initial dashboard requests check only once when the navigation shell is created
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _socketConnection();
+      context.read<ConversationCubit>().getAllConversations();
       if (mounted) {
         final isOnline = context.read<ToggleOnlineStatusCubit>().isOnline;
         if (isOnline) {

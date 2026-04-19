@@ -8,7 +8,6 @@ import 'package:guide_me/core/shared/cubits/favorites_cubit/favorites_cubit.dart
 import 'package:guide_me/core/shared/cubits/locale_cubit/locale_cubit.dart';
 import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/theme/app_theme.dart';
-import 'package:guide_me/features/chat/presentation/cubits/conversation_cubit/conversation_cubit.dart';
 import 'package:guide_me/features/home/presentation/cubits/nav_bar_cubit/tourist_nav_bar_cubit.dart';
 
 class GuideMe extends StatelessWidget {
@@ -31,14 +30,10 @@ class GuideMe extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<FavoritesCubit>()..getFavorites(),
         ),
-        BlocProvider.value(
-          value: getIt<ConversationCubit>(),
-        ),
       ],
       child: BlocBuilder<LocaleCubit, Locale>(
         builder: (context, locale) {
           return MaterialApp.router(
-          
             locale: locale,
             debugShowCheckedModeBanner: false,
             title: 'GuideMe',
