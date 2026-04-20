@@ -28,7 +28,8 @@ class GuideNavigationBarScreen extends StatefulWidget {
       _GuideNavigationBarScreenState();
 }
 
-class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
+class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen>
+    with WidgetsBindingObserver {
   final PageController pageController = PageController();
 
   final List<Widget> pages = [
@@ -60,6 +61,7 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     context.read<UserCubit>().loadUser();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _socketConnection();
@@ -81,7 +83,16 @@ class _GuideNavigationBarScreenState extends State<GuideNavigationBarScreen> {
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        !getIt<SocketManager>().isConnected) {
+      _socketConnection();
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     pageController.dispose();
     super.dispose();
   }

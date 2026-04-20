@@ -30,7 +30,11 @@ class MessageEntity {
     this.status = MessageStatus.sent,
   });
 
-  MessageEntity copyWith({MessageStatus? status}) {
+  MessageEntity copyWith({
+    MessageStatus? status,
+    bool? isMine,
+    bool? isSeen,
+  }) {
     return MessageEntity(
       id: id,
       booking: booking,
@@ -39,10 +43,10 @@ class MessageEntity {
       receiver: receiver,
       message: message,
       type: type,
-      isSeen: isSeen,
+      isSeen: isSeen ?? this.isSeen,
       createdAt: createdAt,
       updatedAt: updatedAt,
-      isMine: isMine,
+      isMine: isMine ?? this.isMine,
       status: status ?? this.status,
     );
   }

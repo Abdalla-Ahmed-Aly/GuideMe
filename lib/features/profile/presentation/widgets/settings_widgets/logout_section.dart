@@ -7,6 +7,7 @@ import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:guide_me/core/shared/enums/user_role.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
@@ -101,9 +102,12 @@ class LogoutSection extends StatelessWidget {
         name: HiveConstants.favoritesBox,
       );
 
-      context.go(AppRoutes.splashScreen);
-
+      await context.read<UserCubit>().clearUser();
       await UserScope.disposeUserScope();
+
+      if (context.mounted) {
+        context.go(AppRoutes.splashScreen);
+      }
     }
   }
 }

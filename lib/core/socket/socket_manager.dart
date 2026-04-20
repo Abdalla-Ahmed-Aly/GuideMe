@@ -7,12 +7,25 @@ import 'socket_room.dart';
 class SocketManager {
   final SocketService _service;
   final Set<SocketRoom> _activeRooms = {};
+  bool _connectionListenersAttached = false;
+  String? _connectedToken;
 
   SocketManager(this._service);
 
+  bool get isConnected => _service.isConnected;
+
   void connect(String token) {
+    if (_service.isConnected && _connectedToken == token) {
+      return;
+    }
+
+    if (!_connectionListenersAttached) {
+      _setupConnectionListeners();
+      _connectionListenersAttached = true;
+    }
+
+    _connectedToken = token;
     _service.connect(token);
-    _setupConnectionListeners();
   }
 
   void _setupConnectionListeners() {
@@ -61,6 +74,8 @@ class SocketManager {
 
   void dispose() {
     _activeRooms.clear();
+    _connectedToken = null;
+    _connectionListenersAttached = false;
     _service.disconnect();
     debugPrint('🔌 Socket disposed');
   }

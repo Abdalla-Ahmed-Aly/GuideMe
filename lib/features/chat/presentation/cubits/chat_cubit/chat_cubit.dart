@@ -43,6 +43,23 @@ class ChatCubit extends Cubit<ChatState> {
     if (!isClosed) emit(state);
   }
 
+  String? get _currentUserId =>
+      getIt<ProfileLocalDataSource>().getCachedUser()?.id;
+
+  MessageEntity _normalizeOwnership(MessageEntity entity) {
+    final currentUserId = _currentUserId;
+    if (currentUserId == null || entity.sender.id.isEmpty) {
+      return entity;
+    }
+
+    final isMine = entity.sender.id == currentUserId;
+    if (entity.isMine == isMine) {
+      return entity;
+    }
+
+    return entity.copyWith(isMine: isMine);
+  }
+
   Future<void> getAllChatMessages({
     required String conversationId,
     required String bookingId,
@@ -61,7 +78,7 @@ class ChatCubit extends Cubit<ChatState> {
     result.fold(
       (failure) => safeEmit(ChatFailure(failure)),
       (newMessages) {
-        messages.addAll(newMessages);
+        messages.addAll(newMessages.map(_normalizeOwnership));
         safeEmit(ChatSuccess(messages));
       },
     );
@@ -122,7 +139,8 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   Future<void> _listenToNewMessages() async {
-    await _chatSubscription?.cancel(); // Cancel any previous subscription first.
+    await _chatSubscription
+        ?.cancel(); // Cancel any previous subscription first.
     _chatSubscription = _socketEventBus
         .listenTo(SocketAppEvents.chatMessage.value)
         .listen((data) {
@@ -133,23 +151,39 @@ class ChatCubit extends Cubit<ChatState> {
 
           final message = MessageModel.fromJson(json['data']['messages'][0]);
 
+          final entity = _normalizeOwnership(MessageMapper.toEntity(message));
 
-          final entity = MessageMapper.toEntity(message);
+          if (_currentBookingId != null &&
+              entity.booking != _currentBookingId) {
+            return;
+          }
 
-          final wasSeen = messages.any(
+          final existingIndex = messages.indexWhere((m) => m.id == entity.id);
+          if (existingIndex != -1) {
+            messages[existingIndex] = entity.copyWith(
+              status:
+                  messages[existingIndex].status == MessageStatus.seen ||
+                      entity.isSeen
+                  ? MessageStatus.seen
+                  : messages[existingIndex].status,
+            );
+            safeEmit(ChatSuccess(List.from(messages)));
+            return;
+          }
+
+          final wasSeenIndex = messages.indexWhere(
             (m) =>
                 m.id.startsWith('temp_') &&
-                m.message == entity.message &&
-                m.isMine == true &&
-                m.status == MessageStatus.seen,
-          );
-
-          messages.removeWhere(
-            (m) =>
-                m.id.startsWith('temp_') &&
+                m.booking == entity.booking &&
                 m.message == entity.message &&
                 m.isMine == true,
           );
+
+          bool wasSeen = false;
+          if (wasSeenIndex != -1) {
+            wasSeen = messages[wasSeenIndex].status == MessageStatus.seen;
+            messages.removeAt(wasSeenIndex);
+          }
 
           late MessageEntity updatedEntity;
           if (!entity.isMine) {
@@ -167,13 +201,24 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   void _listenToMessageStatus() {
-    _messageStatusSubscription?.cancel(); // Cancel any previous subscription first.
+    _messageStatusSubscription
+        ?.cancel(); // Cancel any previous subscription first.
     _messageStatusSubscription = _socketEventBus
         .listenTo(SocketAppEvents.messagesSeen.value)
         .listen((data) {
+          final Map<String, dynamic> json = data is String
+              ? jsonDecode(data)
+              : data as Map<String, dynamic>;
+
+          final bookingId = json['bookingId']?.toString();
+          if (bookingId == null || bookingId != _currentBookingId) {
+            return;
+          }
+
           bool isUpdated = false;
           for (var i = 0; i < messages.length; i++) {
             if (messages[i].isMine &&
+                messages[i].booking == bookingId &&
                 messages[i].status != MessageStatus.seen) {
               messages[i] = messages[i].copyWith(status: MessageStatus.seen);
               isUpdated = true;

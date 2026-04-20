@@ -24,8 +24,8 @@ class TouristNavigationBarScreen extends StatefulWidget {
       _TouristNavigationBarScreenState();
 }
 
-class _TouristNavigationBarScreenState
-    extends State<TouristNavigationBarScreen> {
+class _TouristNavigationBarScreenState extends State<TouristNavigationBarScreen>
+    with WidgetsBindingObserver {
   late PageController _pageController;
 
   final List<Widget> pages = [
@@ -43,6 +43,7 @@ class _TouristNavigationBarScreenState
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     context.read<UserCubit>().loadUser();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _socketConnection();
@@ -61,7 +62,16 @@ class _TouristNavigationBarScreenState
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        !getIt<SocketManager>().isConnected) {
+      _socketConnection();
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _pageController.dispose();
     super.dispose();
   }

@@ -68,7 +68,7 @@ class UserScope {
     // Disconnect the socket first to stop incoming events,
     // then pop the scope which disposes all lazySingleton services.
     try {
-      getIt<SocketService>().disconnect();
+      getIt<SocketManager>().dispose();
       log("Socket Disconnected Successfully");
     } catch (_) {
       log("Socket Disconnected error");
