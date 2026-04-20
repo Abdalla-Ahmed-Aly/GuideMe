@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/errors/failure_ui_mapper.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/extentions/snake_bar_extentions.dart';
@@ -14,7 +15,7 @@ class ApplyingSelectedInterests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<InterestsCubit, InterestsState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is AddInterestsFailure) {
           final error = FailureUiMapper.map(
             context: context,
@@ -22,6 +23,7 @@ class ApplyingSelectedInterests extends StatelessWidget {
           );
           context.showErrorSnakbar(message: error.message);
         } else if (state is AddInterestsSuccess) {
+          await UserScope.initUserScope();
           context.go(AppRoutes.touristNavigationBarScreen);
         }
       },
