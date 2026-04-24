@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<UserModel> updateProfile(UpdateProfileRequestModel requestModel);
+  Future<void> logout();
 }
 
 @LazySingleton(as: ProfileRemoteDataSource)
@@ -22,5 +23,10 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       data: await requestModel.toFormData(),
     );
     return UserModel.fromJson(response.data["data"]["user"]);
+  }
+
+  @override
+  Future<void> logout() async {
+    await _apiService.post(endpoint: ApiConstants.logoutEndPoint);
   }
 }

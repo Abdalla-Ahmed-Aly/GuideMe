@@ -7,4 +7,5 @@ abstract class ProfileRepo {
   Future<Either<Failure, UserEntity>> updateProfile(
     UpdateProfileRequestModel requestModel,
   );
+  Future<Either<Failure, void>> logout();
 }

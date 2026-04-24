@@ -6,6 +6,7 @@ abstract class ApiConstants {
 
   static const String loginEndPoint = '/api/auth/login';
   static const String registerEndPoint = '/api/auth/register';
+  static const String logoutEndPoint = '/api/auth/logout';
   static const String resendPasswordEndPoint =
       '/api/auth/forgot-password/resend-otp';
   static const String resetPasswordEndPoint =

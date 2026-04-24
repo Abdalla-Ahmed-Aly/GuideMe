@@ -258,6 +258,8 @@ import 'package:guide_me/features/profile/domain/repos/profile_repo.dart'
     as _i948;
 import 'package:guide_me/features/profile/domain/use_cases/update_profile_use_case.dart'
     as _i838;
+import 'package:guide_me/features/profile/presentation/cubits/logout_cubit/logout_cubit.dart'
+    as _i1073;
 import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart'
     as _i385;
 import 'package:guide_me/features/splash/presentation/cubits/splash_cubit/splash_cubit.dart'
@@ -376,9 +378,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i250.GpsLocalDataSource>(),
       ),
     );
-    gh.lazySingleton<_i948.ProfileRepo>(
-      () => _i165.ProfileRepoImpl(gh<_i243.ProfileRemoteDataSource>()),
-    );
     gh.lazySingleton<_i580.GuideBookingRepo>(
       () =>
           _i367.GuideBookingRepoImpl(gh<_i221.GuideBookingRemoteDataSource>()),
@@ -431,6 +430,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i157.UpdateCachedUserUsecase>(
       () => _i157.UpdateCachedUserUsecase(gh<_i912.ProfileLocalDataSource>()),
     );
+    gh.lazySingleton<_i948.ProfileRepo>(
+      () => _i165.ProfileRepoImpl(
+        gh<_i912.ProfileLocalDataSource>(),
+        gh<_i243.ProfileRemoteDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i479.GetGuideBookingUseCase>(
       () => _i479.GetGuideBookingUseCase(gh<_i580.GuideBookingRepo>()),
     );
@@ -442,6 +447,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i916.ToggleOnlineStatusCubit>(
       () => _i916.ToggleOnlineStatusCubit(gh<_i742.ToggleOnlineRepository>()),
+    );
+    gh.factory<_i1073.LogoutCubit>(
+      () => _i1073.LogoutCubit(gh<_i948.ProfileRepo>()),
     );
     gh.lazySingleton<_i838.UpdateProfileUseCase>(
       () => _i838.UpdateProfileUseCase(gh<_i948.ProfileRepo>()),

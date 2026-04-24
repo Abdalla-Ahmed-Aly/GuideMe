@@ -81,6 +81,7 @@ import 'package:guide_me/features/home/presentation/screens/explore_places_scree
 import 'package:guide_me/features/home/presentation/screens/tourist_navigation_bar_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/place_details_screen.dart';
 import 'package:guide_me/features/home/presentation/screens/select_Interests_screen.dart';
+import 'package:guide_me/features/profile/presentation/cubits/logout_cubit/logout_cubit.dart';
 import 'package:guide_me/features/profile/presentation/cubits/update_profile_cubit/update_profile_cubit.dart';
 import 'package:guide_me/features/profile/presentation/screens/add_payment_method_screen.dart';
 import 'package:guide_me/features/profile/presentation/screens/edit_profile_screen.dart';
@@ -274,7 +275,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.settingsScreen,
-        builder: (context, state) => const SettingsScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<LogoutCubit>(),
+          child: const SettingsScreen(),
+        ),
       ),
       GoRoute(
         path: AppRoutes.editProfileScreen,
@@ -324,8 +328,7 @@ abstract class AppRouter {
               create: (context) => getIt<DashboardCubit>(),
             ),
             BlocProvider(
-              create: (context) =>
-                  getIt<ConversationCubit>(),
+              create: (context) => getIt<ConversationCubit>(),
             ),
           ],
           child: const GuideNavigationBarScreen(),
