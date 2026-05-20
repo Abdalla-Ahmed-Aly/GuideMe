@@ -1422,4 +1422,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get packageAlreadyTaken => 'تم أخذ الحزمة';
+
+  @override
+  String get submit => 'إرسال';
+
+  @override
+  String get yourFeedback => 'رأيك';
+
+  @override
+  String get seeTripDetails => 'رؤية تفاصيل الرحلة';
+
+  @override
+  String get feedback => 'رأيك';
+
+  @override
+  String get howWasYourExperience => 'كيف كانت تجربتك؟';
+
+  @override
+  String get feedbackSubmittedSuccessfully => 'تم إرسال رأيك بنجاح';
+
+  @override
+  String get thankYouForYourFeedback => 'شكرًا لك على رأيك!';
+
+  @override
+  String get thankYou => 'شكرًا لك!';
+
+  @override
+  String get feedbackRequired => 'يرجى إدخال رأيك';
 }

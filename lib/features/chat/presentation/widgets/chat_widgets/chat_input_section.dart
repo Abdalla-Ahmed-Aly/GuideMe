@@ -34,7 +34,7 @@ class _ChatInputSectionState extends State<ChatInputSection> {
       padding: EdgeInsets.only(
         left: 12.p,
         right: 12.p,
-        bottom: 40,
+        bottom: MediaQuery.of(context).viewPadding.bottom + 8,
         top: 8,
       ),
       decoration: BoxDecoration(

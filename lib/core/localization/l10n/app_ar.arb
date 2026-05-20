@@ -492,5 +492,14 @@
   "favoritesEmpty": "لا توجد مفضلة حتى الآن",
   "favoritesEmptyDesc": "ابدأ بإضافة الأماكن التي تعجبك لرؤيتها هنا",
   "alreadyAcceptedByAnotherGuide": "تم القبول من قبل مرشد آخر",
-  "packageAlreadyTaken": "تم أخذ الحزمة"
+  "packageAlreadyTaken": "تم أخذ الحزمة",
+  "submit": "إرسال",
+  "yourFeedback": "رأيك",
+  "seeTripDetails": "رؤية تفاصيل الرحلة",
+  "feedback": "رأيك",
+  "howWasYourExperience": "كيف كانت تجربتك؟",
+  "feedbackSubmittedSuccessfully": "تم إرسال رأيك بنجاح",
+  "thankYouForYourFeedback": "شكرًا لك على رأيك!",
+  "thankYou": "شكرًا لك!",
+  "feedbackRequired": "يرجى إدخال رأيك"
 }

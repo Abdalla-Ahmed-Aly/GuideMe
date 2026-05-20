@@ -13,6 +13,8 @@ import 'package:guide_me/features/booking/data/models/book_ai_package_request.da
 import 'package:guide_me/features/booking/data/models/book_package_response_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
+import 'package:guide_me/features/booking/data/models/review_status_response.dart';
+import 'package:guide_me/features/booking/data/models/review_trip_request.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_package_entity.dart';
 import 'package:guide_me/features/booking/domain/repos/booking_repo.dart';
@@ -129,6 +131,32 @@ class BookingRepoImpl implements BookingRepo {
     try {
       final response = await _remoteDataSource.bookAiPackage(bookAi: bookAi);
       return right(response);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ReviewStatusResponse>> checkReviewStatus({
+    required String bookingId,
+  }) async {
+    try {
+      final response = await _remoteDataSource.checkReviewStatus(
+        bookingId: bookingId,
+      );
+      return right(response);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> reviewTrip({
+    required ReviewTripRequest request,
+  }) async {
+    try {
+      await _remoteDataSource.reviewTrip(request: request);
+      return right(null);
     } catch (e) {
       return left(ErrorHandler.handle(e));
     }

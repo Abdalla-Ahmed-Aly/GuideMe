@@ -34,6 +34,7 @@ import 'package:guide_me/features/booking/presentation/cubits/cancel_booking_cub
 import 'package:guide_me/features/booking/presentation/cubits/filter_cubit/filter_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/guide_data_cubit.dart';
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart';
+import 'package:guide_me/features/booking/presentation/cubits/review_cubit/review_cubit.dart';
 import 'package:guide_me/features/booking/presentation/screens/accepted_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_ai_package_screen.dart';
 import 'package:guide_me/features/booking/presentation/screens/book_package_screen.dart';
@@ -395,7 +396,10 @@ abstract class AppRouter {
 
       GoRoute(
         path: AppRoutes.tripDetailsScreen,
-        builder: (context, state) => const TripDetailsScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<ReviewCubit>(),
+          child: const TripDetailsScreen(),
+        ),
       ),
 
       GoRoute(

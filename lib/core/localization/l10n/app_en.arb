@@ -491,5 +491,14 @@
   "favoritesEmpty": "No favorites yet",
   "favoritesEmptyDesc": "Start adding places you like to see them here",
   "alreadyAcceptedByAnotherGuide": "Already accepted by another guide",
-  "packageAlreadyTaken": "Package already taken"
+  "packageAlreadyTaken": "Package already taken",
+  "submit": "Submit",
+  "yourFeedback": "Your Feedback",
+  "seeTripDetails": "See Trip Details",
+  "feedback": "Feedback",
+  "howWasYourExperience": "How was your experience?",
+  "feedbackSubmittedSuccessfully": "Feedback submitted successfully",
+  "thankYouForYourFeedback": "Thank you for your feedback!",
+  "thankYou": "Thank You!",
+  "feedbackRequired": "Please enter your feedback"
 }

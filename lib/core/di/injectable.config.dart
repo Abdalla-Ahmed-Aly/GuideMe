@@ -126,6 +126,8 @@ import 'package:guide_me/features/booking/presentation/cubits/guide_data_cubit/g
     as _i622;
 import 'package:guide_me/features/booking/presentation/cubits/reservation_cubit/reservation_cubit.dart'
     as _i459;
+import 'package:guide_me/features/booking/presentation/cubits/review_cubit/review_cubit.dart'
+    as _i566;
 import 'package:guide_me/features/booking/presentation/cubits/tourist_booking_cubit/tourist_booking_cubit.dart'
     as _i24;
 import 'package:guide_me/features/chat/data/data_sources/remote/chat_remote_data_source.dart'
@@ -581,6 +583,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i655.FilterCubit>(
       () => _i655.FilterCubit(gh<_i672.BookingRepo>()),
+    );
+    gh.factory<_i566.ReviewCubit>(
+      () => _i566.ReviewCubit(gh<_i672.BookingRepo>()),
     );
     gh.lazySingleton<_i12.GetBookingsUseCase>(
       () => _i12.GetBookingsUseCase(gh<_i672.BookingRepo>()),

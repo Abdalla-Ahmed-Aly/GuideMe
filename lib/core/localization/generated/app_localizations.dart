@@ -2857,6 +2857,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Package already taken'**
   String get packageAlreadyTaken;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @yourFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Feedback'**
+  String get yourFeedback;
+
+  /// No description provided for @seeTripDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'See Trip Details'**
+  String get seeTripDetails;
+
+  /// No description provided for @feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedback;
+
+  /// No description provided for @howWasYourExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'How was your experience?'**
+  String get howWasYourExperience;
+
+  /// No description provided for @feedbackSubmittedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback submitted successfully'**
+  String get feedbackSubmittedSuccessfully;
+
+  /// No description provided for @thankYouForYourFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for your feedback!'**
+  String get thankYouForYourFeedback;
+
+  /// No description provided for @thankYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank You!'**
+  String get thankYou;
+
+  /// No description provided for @feedbackRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your feedback'**
+  String get feedbackRequired;
 }
 
 class _AppLocalizationsDelegate

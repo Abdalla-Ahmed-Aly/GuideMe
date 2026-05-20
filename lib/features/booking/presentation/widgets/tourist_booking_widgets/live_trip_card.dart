@@ -95,7 +95,9 @@ class LiveTripCard extends StatelessWidget {
                   SvgPicture.asset(AppIcons.user),
                   const SizedBox(width: 5),
                   Text(
-                    "${booking.user.name} & (${context.l10n.personsCount(booking.persons - 1)})",
+                    booking.persons > 1
+                        ? "${booking.user.name} & (${context.l10n.personsCount(booking.persons - 1)})"
+                        : booking.user.name,
                     style: AppTextStyles.poppinsRegular14.copyWith(
                       color: const Color(0xffB59A64),
                     ),

@@ -11,6 +11,8 @@ import 'package:guide_me/features/booking/data/models/booking_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_package_request_model.dart';
 import 'package:guide_me/features/booking/data/models/booking_packge_model.dart';
 import 'package:guide_me/features/booking/data/models/cancel_booking_response.dart';
+import 'package:guide_me/features/booking/data/models/review_status_response.dart';
+import 'package:guide_me/features/booking/data/models/review_trip_request.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: BookingRemoteDataSource)
@@ -118,5 +120,24 @@ class BookingRemoteDataSourceImpl implements BookingRemoteDataSource {
       data: bookAi.toJson(),
     );
     return BookPackageResponseModel.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<ReviewStatusResponse> checkReviewStatus({
+    required String bookingId,
+  }) async {
+    final response = await _apiService.get(
+      endpoint:
+          "${ApiConstants.addBookingEndpoint}/$bookingId${ApiConstants.reviewStatusEndpoint}",
+    );
+    return ReviewStatusResponse.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<void> reviewTrip({required ReviewTripRequest request}) async {
+    final reponse = await _apiService.post(
+      endpoint: ApiConstants.reviewTripEndpoint,
+      data: request.toJson(),
+    );
   }
 }

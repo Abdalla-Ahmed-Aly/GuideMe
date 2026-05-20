@@ -1431,4 +1431,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get packageAlreadyTaken => 'Package already taken';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get yourFeedback => 'Your Feedback';
+
+  @override
+  String get seeTripDetails => 'See Trip Details';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get howWasYourExperience => 'How was your experience?';
+
+  @override
+  String get feedbackSubmittedSuccessfully => 'Feedback submitted successfully';
+
+  @override
+  String get thankYouForYourFeedback => 'Thank you for your feedback!';
+
+  @override
+  String get thankYou => 'Thank You!';
+
+  @override
+  String get feedbackRequired => 'Please enter your feedback';
 }
