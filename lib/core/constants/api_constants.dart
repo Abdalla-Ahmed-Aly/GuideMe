@@ -2,10 +2,10 @@ abstract class ApiConstants {
   // base
   static const String baseUrl = "https://guideme-pjss.onrender.com";
   static const String otpBaseUrl = "https://guide-me-back-end.vercel.app";
+  static const String registerEndPoint = '/api/auth/register';
   static const api = '/api';
 
   static const String loginEndPoint = '/api/auth/login';
-  static const String registerEndPoint = '/api/auth/register';
   static const String logoutEndPoint = '/api/auth/logout';
   static const String resendPasswordEndPoint =
       '/api/auth/forgot-password/resend-otp';
@@ -18,7 +18,6 @@ abstract class ApiConstants {
   static const String loginWithGoogleEndPoint = '/api/auth/google-login';
   static const String addNationalityEndPoint = '$api/home/nationality';
 
-  static const homeEndPoint = "$api/home/get-home-data";
   static const placeByCategory = "$api/home/by-category";
   static const placeByCity = "$api/home/by-city";
   static const aiPackages = "$api/home/ai-packages-suggestions";
@@ -26,6 +25,7 @@ abstract class ApiConstants {
   static const addInterests = '$api/home/interests';
   static const locationEndPoint = '$api/profile/location';
   static const profile = '$api/profile';
+  static const homeEndPoint = "$api/home/get-home-data";
 
   static const String addBookingEndpoint = "$api/booking";
   static const String myScheduleEndpoint = "$addBookingEndpoint/my-schedule";
