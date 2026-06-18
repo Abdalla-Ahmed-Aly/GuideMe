@@ -11,7 +11,7 @@ class RecentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         color: const Color(0xffF2930D),
         borderRadius: BorderRadius.circular(30),
@@ -19,7 +19,7 @@ class RecentWidget extends StatelessWidget {
       child: Center(
         child: Text(
           context.l10n.recent,
-          style: AppTextStyles.poppinsRegular14.copyWith(
+          style: AppTextStyles.poppinsRegular16.copyWith(
             color: AppColors.white,
           ),
         ),

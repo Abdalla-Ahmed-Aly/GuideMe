@@ -16,12 +16,16 @@ class TourGuideProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 12),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.p),
-            child:  TourGuideProfileHeader(user: user), 
+            child: Align(
+              alignment: Alignment.center,
+              child: TourGuideProfileHeader(user: user),
+            ),
           ),
 
           const SizedBox(height: 20),

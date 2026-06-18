@@ -15,7 +15,9 @@ class ReviewTouristModel {
       ReviewTouristModel(
         id: json['_id'],
         name: json['name'],
-        photo: PhotoModel.fromJson(json['photo']),
+        photo: json['photo'] != null
+            ? PhotoModel.fromJson(json['photo'])
+            : null,
       );
 
   Map<String, dynamic> toJson() => {

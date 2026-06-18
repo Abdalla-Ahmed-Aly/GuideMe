@@ -114,7 +114,7 @@ class RatingAndReviewsCard extends StatelessWidget {
 
         // Percentage text
         SizedBox(
-          width: 32.w,
+          width: 36.w,
           child: Text(
             "$percentage%",
             textAlign: TextAlign.right,

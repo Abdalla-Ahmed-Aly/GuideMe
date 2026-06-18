@@ -55,6 +55,15 @@ class _ReviewedProfile extends StatelessWidget {
 
   final ReviewEntity review;
 
+  String _getInitials(String name) {
+    if (name.trim().isEmpty) return "?";
+    final parts = name.trim().split(RegExp(r'\s+'));
+    if (parts.length == 1) {
+      return parts[0][0].toUpperCase();
+    }
+    return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -76,8 +85,14 @@ class _ReviewedProfile extends StatelessWidget {
                   imageUrl: review.touristPhoto!,
                   fit: BoxFit.cover,
                 )
-              : const Center(
-                  child: Icon(Icons.person_outline),
+              : Container(
+                  decoration: const BoxDecoration(shape: BoxShape.circle),
+                  child: Center(
+                    child: Text(
+                      _getInitials(review.touristName),
+                      style: AppTextStyles.poppinsSemiBold20,
+                    ),
+                  ),
                 ),
         ),
 
