@@ -8,4 +8,5 @@ abstract class LocationRepo {
     required double lat,
     required double lng,
   });
+  Future<Either<Failure, List<MapLocationEntity>>> searchLocation(String query);
 }

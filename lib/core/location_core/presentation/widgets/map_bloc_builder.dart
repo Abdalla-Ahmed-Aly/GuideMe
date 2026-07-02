@@ -42,7 +42,7 @@ class _MapBlocBuilderState extends State<MapBlocBuilder> {
           mapController: _mapController,
           options: MapOptions(
             initialCenter: const LatLng(29.9792345, 31.134202),
-            initialZoom: 12,
+            initialZoom: 11,
             onTap: (_, point) {
               context.read<PickLocationCubit>().pickLocation(
                 lat: point.latitude,
@@ -69,7 +69,7 @@ class _MapBlocBuilderState extends State<MapBlocBuilder> {
                     child: const Icon(
                       Icons.location_pin,
                       color: AppColors.primary2,
-                      size: 38,
+                      size: 50,
                     ),
                   ),
               ],

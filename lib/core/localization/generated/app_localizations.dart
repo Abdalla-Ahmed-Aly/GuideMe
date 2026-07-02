@@ -2911,6 +2911,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter your feedback'**
   String get feedbackRequired;
+
+  /// No description provided for @openInGoogleMaps.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in Google Maps'**
+  String get openInGoogleMaps;
 }
 
 class _AppLocalizationsDelegate

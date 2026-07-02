@@ -28,6 +28,8 @@ import 'package:guide_me/core/location_core/domain/use_cases/get_current_locatio
     as _i448;
 import 'package:guide_me/core/location_core/domain/use_cases/get_location_name_use_case.dart'
     as _i179;
+import 'package:guide_me/core/location_core/domain/use_cases/search_location_use_case.dart'
+    as _i510;
 import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cubit/pick_location_cubit.dart'
     as _i786;
 import 'package:guide_me/core/network/api_service.dart' as _i947;
@@ -509,6 +511,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i179.GetLocationNameUseCase>(
       () => _i179.GetLocationNameUseCase(gh<_i392.LocationRepo>()),
     );
+    gh.lazySingleton<_i510.SearchLocationUseCase>(
+      () => _i510.SearchLocationUseCase(gh<_i392.LocationRepo>()),
+    );
     gh.factory<_i456.UserCubit>(
       () => _i456.UserCubit(
         gh<_i388.GetCachedUserUsecase>(),
@@ -542,12 +547,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i123.GuideBookingActionsCubit>(
       () => _i123.GuideBookingActionsCubit(gh<_i580.GuideBookingRepo>()),
-    );
-    gh.factory<_i786.PickLocationCubit>(
-      () => _i786.PickLocationCubit(
-        gh<_i448.GetCurrentLocationUseCase>(),
-        gh<_i179.GetLocationNameUseCase>(),
-      ),
     );
     gh.factory<_i545.LocationAccessCubit>(
       () => _i545.LocationAccessCubit(
@@ -641,6 +640,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i968.ResendForgetPasswordCubit>(
       () => _i968.ResendForgetPasswordCubit(gh<_i426.ResendPasswordUseCase>()),
+    );
+    gh.factory<_i786.PickLocationCubit>(
+      () => _i786.PickLocationCubit(
+        gh<_i448.GetCurrentLocationUseCase>(),
+        gh<_i179.GetLocationNameUseCase>(),
+        gh<_i510.SearchLocationUseCase>(),
+      ),
     );
     gh.lazySingleton<_i280.BookPackageUseCase>(
       () => _i280.BookPackageUseCase(gh<_i672.BookingRepo>()),

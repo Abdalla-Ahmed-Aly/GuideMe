@@ -1449,4 +1449,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feedbackRequired => 'يرجى إدخال رأيك';
+
+  @override
+  String get openInGoogleMaps => 'فتح في خرائط جوجل';
 }

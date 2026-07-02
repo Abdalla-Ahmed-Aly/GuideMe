@@ -500,5 +500,6 @@
   "feedbackSubmittedSuccessfully": "Feedback submitted successfully",
   "thankYouForYourFeedback": "Thank you for your feedback!",
   "thankYou": "Thank You!",
-  "feedbackRequired": "Please enter your feedback"
+  "feedbackRequired": "Please enter your feedback",
+  "openInGoogleMaps": "Open in Google Maps"
 }

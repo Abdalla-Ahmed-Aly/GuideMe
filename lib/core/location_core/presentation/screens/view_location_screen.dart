@@ -6,7 +6,9 @@ import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/shared/entities/location_entity.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/widgets/app_button.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewLocationScreen extends StatelessWidget {
   const ViewLocationScreen({super.key});
@@ -63,31 +65,52 @@ class ViewLocationScreen extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Row(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  // icon
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary2.withValues(alpha: .1),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Icon(
-                      Icons.location_on,
-                      color: AppColors.primary2,
-                    ),
+                  Row(
+                    children: [
+                      // icon
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary2.withValues(alpha: .1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          Icons.location_on,
+                          color: AppColors.primary2,
+                        ),
+                      ),
+
+                      const SizedBox(width: 16),
+
+                      // text
+                      Expanded(
+                        child: Text(
+                          location.name ?? "Unknown",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.poppinsSemiBold16,
+                        ),
+                      ),
+                    ],
                   ),
-
-                  const SizedBox(width: 16),
-
-                  // text
-                  Expanded(
-                    child: Text(
-                      location.name ?? "Uknown",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.poppinsSemiBold16,
-                    ),
+                  const SizedBox(height: 16),
+                  AppButton(
+                    onPressed: () async {
+                      if (location.lat != null && location.lng != null) {
+                        final url = Uri.parse(
+                          'https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}',
+                        );
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url, mode: LaunchMode.externalApplication);
+                        }
+                      }
+                    },
+                    text: context.l10n.openInGoogleMaps,
+                    height: 46,
+                    radius: 16,
                   ),
                 ],
               ),

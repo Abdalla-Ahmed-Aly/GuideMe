@@ -1458,4 +1458,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get feedbackRequired => 'Please enter your feedback';
+
+  @override
+  String get openInGoogleMaps => 'Open in Google Maps';
 }

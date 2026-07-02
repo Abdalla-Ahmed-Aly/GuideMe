@@ -50,4 +50,14 @@ class LocationRepoImpl implements LocationRepo {
       return left(ErrorHandler.handle(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MapLocationEntity>>> searchLocation(String query) async {
+    try {
+      final results = await _locationRemoteDataSource.searchLocation(query);
+      return right(results);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
 }

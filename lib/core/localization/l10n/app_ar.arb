@@ -501,5 +501,6 @@
   "feedbackSubmittedSuccessfully": "تم إرسال رأيك بنجاح",
   "thankYouForYourFeedback": "شكرًا لك على رأيك!",
   "thankYou": "شكرًا لك!",
-  "feedbackRequired": "يرجى إدخال رأيك"
+  "feedbackRequired": "يرجى إدخال رأيك",
+  "openInGoogleMaps": "فتح في خرائط جوجل"
 }

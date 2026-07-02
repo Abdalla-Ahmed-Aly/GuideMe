@@ -55,6 +55,7 @@ dependencies:
   hive_ce_flutter: ^2.3.4
   socket_io_client: ^3.1.4
   async: ^2.13.1
+  url_launcher: ^6.3.2
   
 
 dev_dependencies:
