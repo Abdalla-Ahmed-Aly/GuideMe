@@ -582,6 +582,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nationalId => 'National ID';
 
   @override
+  String get nationalIdFrontSide => 'National ID (Front Side)';
+
+  @override
+  String get nationalIdBackSide => 'National ID (Back Side)';
+
+  @override
   String get nationalIdHint => 'Front and back required (JPEG, PNG, PDF)';
 
   @override
@@ -1461,4 +1467,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get openInGoogleMaps => 'Open in Google Maps';
+
+  @override
+  String get tours => 'Tours';
 }

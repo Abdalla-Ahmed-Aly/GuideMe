@@ -261,6 +261,27 @@ class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
     }
   }
 
+  void removeGuideLicense() {
+    if (state is GuideRegistrationFormData) {
+      final current = (state as GuideRegistrationFormData);
+      emit(current.copyWith(
+        model: GuideRegistrationModel(
+          yearsOfExperience: current.model.yearsOfExperience,
+          languages: current.model.languages,
+          expertise: current.model.expertise,
+          hourlyRate: current.model.hourlyRate,
+          currency: current.model.currency,
+          guideCities: current.model.guideCities,
+          availability: current.model.availability,
+          profilePhoto: current.model.profilePhoto,
+          nationalId: current.model.nationalId,
+          guideLicense: null,
+        ),
+      ));
+      HiveService.saveGuideData((state as GuideRegistrationFormData).model);
+    }
+  }
+
   Future<void> submitOnboarding() async {
     if (state is! GuideRegistrationFormData) return;
     final current = state as GuideRegistrationFormData;

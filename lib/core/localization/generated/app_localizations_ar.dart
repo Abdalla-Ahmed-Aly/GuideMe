@@ -582,6 +582,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nationalId => 'الرقم القومي';
 
   @override
+  String get nationalIdFrontSide => 'بطاقة الرقم القومي (الوجه الأمامي)';
+
+  @override
+  String get nationalIdBackSide => 'بطاقة الرقم القومي (الوجه الخلفي)';
+
+  @override
   String get nationalIdHint => 'مطلوب صورة الوجهين (JPEG, PNG, PDF)';
 
   @override
@@ -1452,4 +1458,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get openInGoogleMaps => 'فتح في خرائط جوجل';
+
+  @override
+  String get tours => 'الرحلات';
 }

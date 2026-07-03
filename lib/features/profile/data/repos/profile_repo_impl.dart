@@ -29,6 +29,18 @@ class ProfileRepoImpl implements ProfileRepo {
       return left(ErrorHandler.handle(e));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> fetchProfile() async {
+    try {
+      final data = await _profileRemoteDataSource.getProfile();
+      final user = UserMapper.toEntity(data);
+      await _profileLocalDataSource.cacheUser(data);
+      return right(user);
+    } catch (e) {
+      return left(ErrorHandler.handle(e));
+    }
+  }
   
   @override
   Future<Either<Failure, void>> logout() async {

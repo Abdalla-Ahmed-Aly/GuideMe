@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/di/user_scope.dart';
 import 'package:guide_me/core/services/hive_service.dart';
+import 'package:guide_me/core/shared/cubits/user_cubit/user_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -70,7 +72,7 @@ class GuideVerificationSuccessScreen extends StatelessWidget {
                               child: InfoStatusCard(
                                 icon: Icons.calendar_today,
                                 title: context.l10n.memberSince,
-                                subtitle: "OCT 2026",
+                                subtitle: "JUL 2026",
                               ),
                             ),
 
@@ -104,17 +106,27 @@ class GuideVerificationSuccessScreen extends StatelessWidget {
 
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 28.p),
-                        child: AppButton(
-                          onPressed: () async {
-                            await UserScope.initUserScope();
-                            HiveService.saveSuccessSeen(
-                              true,
-                            ); // TODO: Get User Data Here
-                            context.go(AppRoutes.guideNavigationBarScreen);
+                        child: BlocConsumer<UserCubit, UserState>(
+                          listener: (context, state) async {
+                            if (state is UserSuccess) {
+                              await UserScope.initUserScope();
+                              HiveService.saveSuccessSeen(true);
+                              context.go(AppRoutes.guideNavigationBarScreen);
+                            }
                           },
-                          text: context.l10n.continueButton,
-                          radius: 15,
-                          height: 48.h,
+                          builder: (context, state) {
+                            return AppButton(
+                              isLoading: state is UserLoading,
+                              onPressed: () async {
+                                await context
+                                    .read<UserCubit>()
+                                    .fetchRemoteUser();
+                              },
+                              text: context.l10n.continueButton,
+                              radius: 15,
+                              height: 48.h,
+                            );
+                          },
                         ),
                       ),
 

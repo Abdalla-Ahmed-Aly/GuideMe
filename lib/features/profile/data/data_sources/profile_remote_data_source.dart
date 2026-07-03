@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<UserModel> updateProfile(UpdateProfileRequestModel requestModel);
+  Future<UserModel> getProfile();
   Future<void> logout();
 }
 
@@ -23,6 +24,14 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       data: await requestModel.toFormData(),
     );
     return UserModel.fromJson(response.data["data"]["user"]);
+  }
+
+  @override
+  Future<UserModel> getProfile() async {
+    final response = await _apiService.get(
+      endpoint: ApiConstants.profile,
+    );
+    return UserModel.fromJson(response.data["data"]["data"]);
   }
 
   @override

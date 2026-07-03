@@ -194,6 +194,8 @@
   "uploadProfessionalHeadshot": "قم برفع صورة احترافية",
   "identityVerification": "التحقق من الهوية",
   "nationalId": "بطاقة الرقم القومي",
+  "nationalIdFrontSide": "بطاقة الرقم القومي (الوجه الأمامي)",
+  "nationalIdBackSide": "بطاقة الرقم القومي (الوجه الخلفي)",
   "nationalIdHint": "مطلوب صورة الوجهين (JPEG, PNG, PDF)",
   "tourGuideLicense": "رخصة الإرشاد السياحي",
   "tourGuideLicenseHint": "رخصة صادرة من وزارة السياحة",
@@ -502,5 +504,6 @@
   "thankYouForYourFeedback": "شكرًا لك على رأيك!",
   "thankYou": "شكرًا لك!",
   "feedbackRequired": "يرجى إدخال رأيك",
-  "openInGoogleMaps": "فتح في خرائط جوجل"
+  "openInGoogleMaps": "فتح في خرائط جوجل",
+  "tours": "الرحلات"
 }

@@ -1226,6 +1226,18 @@ abstract class AppLocalizations {
   /// **'National ID'**
   String get nationalId;
 
+  /// No description provided for @nationalIdFrontSide.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID (Front Side)'**
+  String get nationalIdFrontSide;
+
+  /// No description provided for @nationalIdBackSide.
+  ///
+  /// In en, this message translates to:
+  /// **'National ID (Back Side)'**
+  String get nationalIdBackSide;
+
   /// No description provided for @nationalIdHint.
   ///
   /// In en, this message translates to:
@@ -2917,6 +2929,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open in Google Maps'**
   String get openInGoogleMaps;
+
+  /// No description provided for @tours.
+  ///
+  /// In en, this message translates to:
+  /// **'Tours'**
+  String get tours;
 }
 
 class _AppLocalizationsDelegate

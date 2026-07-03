@@ -7,6 +7,8 @@ class AnalysisMapper {
     return AnalysisEntity(
       totalEarnings: data.totalEarnings,
       completedTours: data.completedTours,
+      earningsGrowth: data.earningsGrowth,
+      toursGrowth: data.toursGrowth,
       averageRating: data.averageRating,
       totalReviews: data.totalReviews,
       ratingDistribution: data.ratingDistribution,

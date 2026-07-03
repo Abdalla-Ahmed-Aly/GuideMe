@@ -3,6 +3,8 @@ import 'package:guide_me/core/shared/models/review_model.dart';
 class AnalysisModel {
   int totalEarnings;
   int completedTours;
+  double earningsGrowth;
+  double toursGrowth;
   double averageRating;
   int totalReviews;
   Map<String, dynamic> ratingDistribution;
@@ -11,6 +13,8 @@ class AnalysisModel {
   AnalysisModel({
     required this.totalEarnings,
     required this.completedTours,
+    required this.earningsGrowth,
+    required this.toursGrowth,
     required this.averageRating,
     required this.totalReviews,
     required this.ratingDistribution,
@@ -21,6 +25,8 @@ class AnalysisModel {
     return AnalysisModel(
       totalEarnings: json['totalEarnings'],
       completedTours: json['completedTours'],
+      earningsGrowth: (json['earningsGrowth'] as num).toDouble(),
+      toursGrowth: (json['toursGrowth'] as num).toDouble(),
       averageRating: (json['averageRating'] as num).toDouble(),
       totalReviews: json['totalReviews'],
       ratingDistribution: json['ratingDistribution'],

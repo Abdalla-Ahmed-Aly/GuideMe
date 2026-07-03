@@ -16,119 +16,107 @@ class AnalysisStatCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 16),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              border: Border.all(color: const Color(0xffFFE5BA)),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      context.l10n.totalEarnings,
-                      style: AppTextStyles.poppinsSemiBold14.copyWith(
-                        color: const Color(0xff40C057),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 6,
-                    ),
-                    Image.asset(
-                      AppImages.money1,
-                      width: 20.w,
-                    ),
-                  ],
-                ),
-                Text(
-                  'EGP',
-                  style: AppTextStyles.poppinsSemiBold30,
-                ),
-
-                const SizedBox(height: 6),
-
-                Text(
-                  '${analysis.totalEarnings}',
-                  style: AppTextStyles.poppinsSemiBold24,
-                ),
-
-                const SizedBox(height: 6),
-
-                Text(
-                  '+25.2%',
-                  style: AppTextStyles.poppinsMedium18.copyWith(
-                    color: const Color(0xff40C057),
-                  ),
-                ),
-              ],
-            ),
+        _StatCardItem(
+          title: context.l10n.totalEarnings,
+          titleColor: const Color(0xff40C057),
+          subtitleTextStyle: AppTextStyles.poppinsBold16.copyWith(
+            color: AppColors.black,
           ),
+          iconPath: AppImages.money1,
+          subtitle: context.l10n.egp,
+          value: '${analysis.totalEarnings}',
+          growth: analysis.earningsGrowth,
         ),
 
         const SizedBox(width: 20),
 
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              border: Border.all(color: const Color(0xffFFE5BA)),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        _StatCardItem(
+          title: context.l10n.completed,
+          titleColor: const Color(0xff986C2E),
+          subtitleTextStyle: AppTextStyles.poppinsMedium16.copyWith(
+            color: const Color(0xff986C2E),
+          ),
+          iconPath: AppImages.item,
+          subtitle: context.l10n.tours,
+          value: '${analysis.completedTours}',
+          growth: analysis.toursGrowth,
+        ),
+      ],
+    );
+  }
+}
+
+class _StatCardItem extends StatelessWidget {
+  const _StatCardItem({
+    required this.title,
+    required this.titleColor,
+    required this.iconPath,
+    required this.subtitle,
+    required this.subtitleTextStyle,
+    required this.value,
+    required this.growth,
+  });
+
+  final String title;
+  final Color titleColor;
+  final String iconPath;
+  final String subtitle;
+  final TextStyle subtitleTextStyle;
+  final String value;
+  final double growth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          border: Border.all(color: const Color(0xffFFE5BA)),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      context.l10n.completed,
-                      style: AppTextStyles.poppinsMedium16.copyWith(
-                        color: const Color(0xff986C2E),
-                      ),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: AppTextStyles.poppinsSemiBold14.copyWith(
+                      color: titleColor,
                     ),
-
-                    const SizedBox(width: 8),
-                    
-                    Image.asset(
-                      AppImages.item,
-                      width: 20.w,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  'Tours',
-                  style: AppTextStyles.poppinsMedium16.copyWith(
-                    color: const Color(0xff986C2E),
                   ),
                 ),
-
-                const SizedBox(width: 13),
-
-                Text(
-                  '${analysis.completedTours}',
-                  style: AppTextStyles.poppinsMedium18,
-                ),
-
-                const SizedBox(height: 8),
-
-                Text(
-                  '+15%',
-                  style: AppTextStyles.poppinsMedium18.copyWith(
-                    color: const Color(0xff40C057),
-                  ),
+                const SizedBox(width: 8),
+                Image.asset(
+                  iconPath,
+                  width: 20.w,
                 ),
               ],
             ),
-          ),
+            const SizedBox(height: 4),
+            Text(subtitle, style: subtitleTextStyle),
+            const SizedBox(height: 8),
+            Text(
+              value,
+              style: AppTextStyles.poppinsSemiBold24,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              growth > 0 ? '+$growth%' : '$growth%',
+              style: AppTextStyles.poppinsMedium18.copyWith(
+                color: growth > 0
+                    ? const Color(0xff40C057)
+                    : growth == 0
+                    ? AppColors.primary2
+                    : const Color(0xffC04040),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

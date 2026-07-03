@@ -194,6 +194,8 @@
   "uploadProfessionalHeadshot": "Upload professional headshot",
   "identityVerification": "Identity Verification",
   "nationalId": "National ID",
+  "nationalIdFrontSide": "National ID (Front Side)",
+  "nationalIdBackSide": "National ID (Back Side)",
   "nationalIdHint": "Front and back required (JPEG, PNG, PDF)",
   "tourGuideLicense": "Tour Guide License",
   "tourGuideLicenseHint": "Ministry of Tourism issued License",
@@ -501,5 +503,6 @@
   "thankYouForYourFeedback": "Thank you for your feedback!",
   "thankYou": "Thank You!",
   "feedbackRequired": "Please enter your feedback",
-  "openInGoogleMaps": "Open in Google Maps"
+  "openInGoogleMaps": "Open in Google Maps",
+  "tours": "Tours"
 }

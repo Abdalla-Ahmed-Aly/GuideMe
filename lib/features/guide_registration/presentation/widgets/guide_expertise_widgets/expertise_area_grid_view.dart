@@ -134,6 +134,7 @@ class ExpertiseAreaCard extends StatelessWidget {
                       duration: const Duration(milliseconds: 300),
                       child: isSelected
                           ? Container(
+                              key: ValueKey(id),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 color: Colors.black.withValues(alpha: 0.5),
@@ -146,7 +147,9 @@ class ExpertiseAreaCard extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : const SizedBox.shrink(),
+                          : const SizedBox.shrink(
+                              key: ValueKey("empty"),
+                            ),
                     ),
                   ],
                 ),

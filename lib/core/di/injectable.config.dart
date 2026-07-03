@@ -55,6 +55,8 @@ import 'package:guide_me/core/shared/repos/favorites_repo.dart' as _i490;
 import 'package:guide_me/core/shared/repos/favorites_repo_impl.dart' as _i37;
 import 'package:guide_me/core/shared/use_cases/clear_cached_user_usecase.dart'
     as _i407;
+import 'package:guide_me/core/shared/use_cases/fetch_remote_user_usecase.dart'
+    as _i319;
 import 'package:guide_me/core/shared/use_cases/get_cached_user_usecase.dart'
     as _i388;
 import 'package:guide_me/core/shared/use_cases/update_cached_user_usecase.dart'
@@ -514,13 +516,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i510.SearchLocationUseCase>(
       () => _i510.SearchLocationUseCase(gh<_i392.LocationRepo>()),
     );
-    gh.factory<_i456.UserCubit>(
-      () => _i456.UserCubit(
-        gh<_i388.GetCachedUserUsecase>(),
-        gh<_i407.ClearCachedUserUsecase>(),
-        gh<_i157.UpdateCachedUserUsecase>(),
-      ),
-    );
     gh.factory<_i93.LoginUseCase>(
       () => _i93.LoginUseCase(gh<_i956.AuthRepo>()),
     );
@@ -592,6 +587,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i292.GetGuideDataUseCase>(
       () => _i292.GetGuideDataUseCase(gh<_i672.BookingRepo>()),
     );
+    gh.lazySingleton<_i319.FetchRemoteUserUsecase>(
+      () => _i319.FetchRemoteUserUsecase(gh<_i948.ProfileRepo>()),
+    );
     gh.factory<_i180.LoginWithGoogleUseCase>(
       () => _i180.LoginWithGoogleUseCase(
         gh<_i956.AuthRepo>(),
@@ -634,6 +632,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i776.SendForgetPasswordCubit>(
       () =>
           _i776.SendForgetPasswordCubit(gh<_i814.SendForgetPasswordUseCase>()),
+    );
+    gh.factory<_i456.UserCubit>(
+      () => _i456.UserCubit(
+        gh<_i388.GetCachedUserUsecase>(),
+        gh<_i407.ClearCachedUserUsecase>(),
+        gh<_i157.UpdateCachedUserUsecase>(),
+        gh<_i319.FetchRemoteUserUsecase>(),
+      ),
     );
     gh.lazySingleton<_i664.BookAiPackageUseCase>(
       () => _i664.BookAiPackageUseCase(gh<_i672.BookingRepo>()),
