@@ -12,7 +12,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(keystorePropertiesFile.inputStream())
 }
 android {
-    namespace = "com.guide_me.app"
+    namespace = "com.example.guide_me"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 signingConfigs {
@@ -33,7 +33,7 @@ signingConfigs {
     }
 
     defaultConfig {
-        applicationId = "com.guide_me.app" 
+        applicationId = "com.example.guide_me" 
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

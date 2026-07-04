@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:339882358219:android:80320cf0c55ab51f7f724e",
         "android_client_info": {
-          "package_name": "com.guide_me.app"
+          "package_name": "com.example.guide_me"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "339882358219-r2hp95m04gvja2ukrv0l7ui0mg37c6ok.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.guide_me.app",
+            "package_name": "com.example.guide_me",
             "certificate_hash": "c12b8fc64d38453c1196d77fdebbae26428e4a96"
           }
         },

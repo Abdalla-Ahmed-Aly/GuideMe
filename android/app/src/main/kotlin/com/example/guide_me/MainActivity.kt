@@ -1,4 +1,4 @@
-package com.guide_me.app
+package com.example.guide_me
 
 import io.flutter.embedding.android.FlutterActivity
 
