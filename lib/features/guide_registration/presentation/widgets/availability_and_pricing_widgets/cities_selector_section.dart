@@ -162,7 +162,7 @@ class CitiesSelectorSection extends StatelessWidget {
                   searchFieldProps: TextFieldProps(
                     style: AppTextStyles.poppinsMedium16,
                     decoration: InputDecoration(
-                      hintText: "Search city...",
+                      hintText: context.l10n.searchForACity,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -196,7 +196,7 @@ class CitiesSelectorSection extends StatelessWidget {
 
                 dropdownBuilder: (context, data) {
                   return Text(
-                    "Select more cities...",
+                    context.l10n.selectMoreCities,
                     style: AppTextStyles.poppinsMedium16,
                   );
                 },

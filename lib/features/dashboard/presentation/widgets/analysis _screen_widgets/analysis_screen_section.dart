@@ -65,12 +65,15 @@ class AnalysisScreenBody extends StatelessWidget {
               builder: (context, state) {
                 if (state is AnalysisCubitSuccess) {
                   if (analysis.reviews.isEmpty) {
-                    return const SizedBox(
+                    return SizedBox(
                       height: 150,
                       child: Center(
                         child: Text(
-                          'No feedback yet',
-                          style: TextStyle(color: Colors.grey, fontSize: 16),
+                          context.l10n.noFeedbackYet,
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     );

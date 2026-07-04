@@ -178,6 +178,7 @@ class ErrorHandler {
     if (msg.contains(ApiErrorMessages.packageAlreadyTaken)) {
       return FailureCode.packageAlreadyTaken;
     }
+
     return fallback;
   }
 }

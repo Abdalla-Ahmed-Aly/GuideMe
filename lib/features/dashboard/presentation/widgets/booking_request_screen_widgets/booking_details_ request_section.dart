@@ -61,7 +61,7 @@ class BookingDetailsRequestSection extends StatelessWidget {
               child: BookingDetailsRequestItem(
                 title: context.l10n.experience,
                 value: requestEntity.booking!.place.title,
-                value1: 'History & Myths',
+                value1: context.l10n.historyAndMyths,
                 pathicon: SvgPicture.asset(AppIcons.location, width: 18.w),
               ),
             ),

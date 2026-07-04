@@ -740,7 +740,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verificationSuccessMessage =>
-      'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUID ME.';
+      'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUIDE ME.';
 
   @override
   String get accountStatus => 'Account Status';
@@ -1470,4 +1470,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tours => 'Tours';
+
+  @override
+  String get set => 'Set';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get month => 'Month';
+
+  @override
+  String get searchForACity => 'Search for a city';
+
+  @override
+  String get checkingStatus => 'Checking status...';
+
+  @override
+  String get noFeedbackYet => 'No feedback yet';
+
+  @override
+  String get noCertifications => 'No certifications';
+
+  @override
+  String get noReviews => 'No reviews';
 }

@@ -31,13 +31,17 @@ class AnalysisStatCardItem extends StatelessWidget {
         const SizedBox(width: 20),
 
         _StatCardItem(
-          title: context.l10n.completed,
+          title: context.isEnglish
+              ? context.l10n.completed
+              : context.l10n.tours,
           titleColor: const Color(0xff986C2E),
           subtitleTextStyle: AppTextStyles.poppinsMedium16.copyWith(
             color: const Color(0xff986C2E),
           ),
           iconPath: AppImages.item,
-          subtitle: context.l10n.tours,
+          subtitle: context.isEnglish
+              ? context.l10n.tours
+              : context.l10n.completed,
           value: '${analysis.completedTours}',
           growth: analysis.toursGrowth,
         ),

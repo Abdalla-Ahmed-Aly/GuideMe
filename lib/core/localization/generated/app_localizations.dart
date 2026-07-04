@@ -1523,7 +1523,7 @@ abstract class AppLocalizations {
   /// No description provided for @verificationSuccessMessage.
   ///
   /// In en, this message translates to:
-  /// **'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUID ME.'**
+  /// **'Your guide account has been successfully verified. You\'re now ready to accept bookings and start your journey with GUIDE ME.'**
   String get verificationSuccessMessage;
 
   /// No description provided for @accountStatus.
@@ -2935,6 +2935,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tours'**
   String get tours;
+
+  /// No description provided for @set.
+  ///
+  /// In en, this message translates to:
+  /// **'Set'**
+  String get set;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// No description provided for @searchForACity.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a city'**
+  String get searchForACity;
+
+  /// No description provided for @checkingStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking status...'**
+  String get checkingStatus;
+
+  /// No description provided for @noFeedbackYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No feedback yet'**
+  String get noFeedbackYet;
+
+  /// No description provided for @noCertifications.
+  ///
+  /// In en, this message translates to:
+  /// **'No certifications'**
+  String get noCertifications;
+
+  /// No description provided for @noReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews'**
+  String get noReviews;
 }
 
 class _AppLocalizationsDelegate

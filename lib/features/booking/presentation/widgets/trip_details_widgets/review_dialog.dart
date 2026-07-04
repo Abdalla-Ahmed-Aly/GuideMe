@@ -24,7 +24,12 @@ class ReviewDialog extends StatefulWidget {
       barrierDismissible: true,
       builder: (dialogContext) => BlocProvider.value(
         value: cubit,
-        child: ReviewDialog(booking: booking),
+        child: MediaQuery.removeViewInsets(
+          context: context,
+          removeBottom: true,
+          removeTop: true,
+          child: ReviewDialog(booking: booking),
+        ),
       ),
     );
   }
@@ -179,6 +184,9 @@ class _ReviewDialogState extends State<ReviewDialog> {
                         controller: _commentController,
                         maxLines: 4,
                         enabled: !isLoading,
+                        onTapOutside: (_) {
+                          FocusScope.of(context).unfocus();
+                        },
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return context.l10n.feedbackRequired;

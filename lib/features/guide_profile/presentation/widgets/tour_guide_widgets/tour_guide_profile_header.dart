@@ -27,7 +27,10 @@ class TourGuideProfileHeader extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: user.photoUrl != null
-              ? Image.network(user.photoUrl!)
+              ? Image.network(
+                  user.photoUrl!,
+                  fit: BoxFit.cover,
+                )
               : const Icon(
                   Icons.person_outline_outlined,
                   size: 64,

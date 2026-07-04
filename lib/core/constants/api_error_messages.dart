@@ -6,9 +6,13 @@ abstract class ApiErrorMessages {
   static const String userNotFound = 'user not found';
   static const String otpExpired = 'otp expired';
   static const String invalidOtp = 'invalid otp';
-  static const String placeAlreadyBooked = 'this place is already booked on this day';
-  static const String youAlreadyHaveATripOnThisDay = 'you already have a trip on this day';
-  static const String tourCanOnlyBeStartedOnTheBookingDay = 'tour can only be started on the booking day';
-  static const String alreadyAcceptedByAnotherGuide = 'already accepted by another guide';
+  static const String placeAlreadyBooked =
+      'this place is already booked on this day';
+  static const String youAlreadyHaveATripOnThisDay =
+      'you already have a trip on this day';
+  static const String tourCanOnlyBeStartedOnTheBookingDay =
+      'tour can only be started on the booking day';
+  static const String alreadyAcceptedByAnotherGuide =
+      'already accepted by another guide';
   static const String packageAlreadyTaken = 'package already taken';
 }

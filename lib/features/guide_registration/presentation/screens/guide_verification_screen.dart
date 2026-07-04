@@ -89,7 +89,7 @@ class GuideVerificationScreen extends StatelessWidget {
                         const Icon(Icons.sync, color: Colors.blue),
                         const SizedBox(width: 8),
                         Text(
-                          "Checking status...",
+                          context.l10n.checkingStatus,
                           style: AppTextStyles.poppinsRegular14.copyWith(color: Colors.blue),
                         ),
                       ],

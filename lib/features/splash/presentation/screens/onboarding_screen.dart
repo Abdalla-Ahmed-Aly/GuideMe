@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
 import 'package:guide_me/features/splash/presentation/widgets/onboarding_widgets/arrow_button.dart';
@@ -63,14 +64,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           // Page Indicators
           Positioned(
             bottom: 125.h,
-            left: 40.w,
+            left: context.isArabic ? null : 40.w,
+            right: context.isArabic ? 40.w : null,
             child: PageIndicators(currentPage: currentPage),
           ),
 
           // Next Button
           Positioned(
             bottom: 105.h,
-            right: 40.w,
+            right: context.isArabic ? null : 40.w,
+            left: context.isArabic ? 40.w : null,
             child: ArrowButton(
               onTap: () {
                 currentPage++;

@@ -85,7 +85,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       endpoint: ApiConstants.resetPasswordEndPoint,
       data: request.toJson(),
     );
-    print("Received response: ${response.data}");
+
     return ResetPasswordResponseModel.fromJson(response.data);
   }
 

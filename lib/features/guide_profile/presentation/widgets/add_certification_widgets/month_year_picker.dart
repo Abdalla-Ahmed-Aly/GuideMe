@@ -30,6 +30,8 @@ class _MonthYearPickerState extends State<MonthYearPicker> {
       ),
       actionsPadding: const EdgeInsets.all(16),
       content: LinearDatePicker(
+        yearLabel: context.l10n.year,
+        monthLabel: context.l10n.month,
         initialDate: selectedDate,
         showDay: false,
         columnWidth: 100,
@@ -39,15 +41,25 @@ class _MonthYearPickerState extends State<MonthYearPicker> {
           color: Colors.white,
         ),
         unselectedRowStyle: AppTextStyles.interRegular16,
-        monthDecoration: const BoxDecoration(
+        monthDecoration: BoxDecoration(
           borderRadius: BorderRadius.horizontal(
-            left: Radius.circular(16),
+            left: context.isEnglish
+                ? const Radius.circular(16)
+                : const Radius.circular(0),
+            right: context.isEnglish
+                ? const Radius.circular(0)
+                : const Radius.circular(16),
           ),
           color: AppColors.primary2,
         ),
-        yearDecoration: const BoxDecoration(
+        yearDecoration: BoxDecoration(
           borderRadius: BorderRadius.horizontal(
-            right: Radius.circular(16),
+            left: context.isArabic
+                ? const Radius.circular(16)
+                : const Radius.circular(0),
+            right: context.isArabic
+                ? const Radius.circular(0)
+                : const Radius.circular(16),
           ),
           color: AppColors.primary2,
         ),
@@ -77,7 +89,7 @@ class _MonthYearPickerState extends State<MonthYearPicker> {
             context.pop(selectedDate);
           },
           child: Text(
-            "Set",
+            context.l10n.set,
             style: AppTextStyles.interBold16.copyWith(
               color: AppColors.black,
             ),

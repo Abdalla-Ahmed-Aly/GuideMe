@@ -36,7 +36,7 @@ class CurrencyTypeSelection extends StatelessWidget {
   }
 
   Widget _buildCurrencyButton(BuildContext context, CurrencyType currencyType, String selectedCurrency) {
-    bool isSelected = selectedCurrency == currencyType.name;
+    final bool isSelected = selectedCurrency == currencyType.name;
     return GestureDetector(
       onTap: () {
         context.read<GuideRegistrationSharedCubit>().setProfessionalInfo(currency: currencyType.name);

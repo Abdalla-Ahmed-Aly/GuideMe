@@ -57,7 +57,8 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                     top: context.isPortrait
                         ? size.height * 0.05
                         : size.width * 0.03,
-                    left: 32.p,
+                    left: context.isArabic ? null : 32.p,
+                    right: context.isArabic ? 32.p : null,
                     child: const ArrowBackButton(),
                   ),
 
@@ -103,7 +104,7 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
                                 ),
                               ),
                             ),
-                      
+
                             const Expanded(
                               child: BookingDetailsDraggable(),
                             ),

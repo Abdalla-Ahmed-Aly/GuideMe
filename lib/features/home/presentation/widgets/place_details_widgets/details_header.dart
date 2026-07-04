@@ -20,12 +20,14 @@ class DetailsHeader extends StatelessWidget {
         // Arrow Back Button
         Positioned(
           top: context.isPortrait ? size.height * 0.05 : size.width * 0.03,
-          left: 32.p,
+          left: context.isArabic ? null : 32.p,
+          right: context.isArabic ? 32.p : null,
           child: const ArrowBackButton(),
         ),
 
         Positioned(
-          left: 32.p,
+          left: context.isArabic ? null : 32.p,
+          right: context.isArabic ? 32.p : null,
           bottom: 28,
           child: _PlaceFavButton(place: place),
         ),

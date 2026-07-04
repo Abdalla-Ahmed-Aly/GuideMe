@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/images_indicator.dart';
 import 'package:guide_me/features/booking/presentation/args/book_place_args.dart';
@@ -53,7 +54,8 @@ class _BookingImagesSectionState extends State<BookingImagesSection> {
 
         Positioned(
           bottom: 46,
-          right: 20,
+          right: context.isArabic ? null : 20,
+          left: context.isArabic ? 20 : null,
           child: ImagesIndicator(
             images: place.images,
             currentIndex: _currentIndex,

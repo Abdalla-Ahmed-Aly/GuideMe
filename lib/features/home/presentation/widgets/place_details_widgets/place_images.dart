@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/extentions/context_extentions.dart';
+import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/core/widgets/custom_network_image.dart';
 import 'package:guide_me/core/widgets/images_indicator.dart';
@@ -59,7 +61,8 @@ class _PlaceImagesState extends State<PlaceImages> {
 
         Positioned(
           bottom: 28,
-          right: 20,
+          right: context.isEnglish ? 20.p : null,
+          left: context.isArabic ? 20.p : null,
           child: ImagesIndicator(
             images: widget.place.images,
             currentIndex: _currentIndex,

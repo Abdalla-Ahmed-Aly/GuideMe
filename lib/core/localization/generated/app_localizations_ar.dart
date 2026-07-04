@@ -668,7 +668,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get whereDoYouGuide => 'أين تقوم بالإرشاد؟';
 
   @override
-  String get selectMoreCities => 'اختر مدن إضافية...';
+  String get selectMoreCities => 'اختر المزيد من المدن';
 
   @override
   String get selectDays => 'اختر الأيام';
@@ -741,7 +741,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verificationSuccessMessage =>
-      'تم التحقق من حسابك كمرشد سياحي بنجاح. يمكنك الآن استقبال الحجوزات وبدء رحلتك مع GUID ME.';
+      'تم التحقق من حسابك كمرشد سياحي بنجاح. يمكنك الآن استقبال الحجوزات وبدء رحلتك مع GUIDE ME.';
 
   @override
   String get accountStatus => 'حالة الحساب';
@@ -1461,4 +1461,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tours => 'الرحلات';
+
+  @override
+  String get set => 'تعيين';
+
+  @override
+  String get year => 'السنة';
+
+  @override
+  String get month => 'الشهر';
+
+  @override
+  String get searchForACity => 'بحث عن مدينة';
+
+  @override
+  String get checkingStatus => 'جاري التحقق من الحالة...';
+
+  @override
+  String get noFeedbackYet => 'لا توجد آراء حتى الآن';
+
+  @override
+  String get noCertifications => 'لا توجد شهادات';
+
+  @override
+  String get noReviews => 'لا توجد آراء';
 }

@@ -258,7 +258,7 @@
   "updateDocuments": "تحديث المستندات",
   "verifiedBadge": "شارة موثقة",
   "congratulations": "تهانينا!",
-  "verificationSuccessMessage": "تم التحقق من حسابك كمرشد سياحي بنجاح. يمكنك الآن استقبال الحجوزات وبدء رحلتك مع GUID ME.",
+  "verificationSuccessMessage": "تم التحقق من حسابك كمرشد سياحي بنجاح. يمكنك الآن استقبال الحجوزات وبدء رحلتك مع GUIDE ME.",
   "accountStatus": "حالة الحساب",
   "statusLabel": "الحالة:",
   "statusActive": "نشط",
@@ -505,5 +505,15 @@
   "thankYou": "شكرًا لك!",
   "feedbackRequired": "يرجى إدخال رأيك",
   "openInGoogleMaps": "فتح في خرائط جوجل",
-  "tours": "الرحلات"
+  "tours": "الرحلات",
+  "set": "تعيين",
+  "year": "السنة",
+  "month": "الشهر",
+  "searchForACity": "بحث عن مدينة",
+  "selectMoreCities": "اختر المزيد من المدن",
+  "checkingStatus": "جاري التحقق من الحالة...",
+  "noFeedbackYet": "لا توجد آراء حتى الآن",
+  "noCertifications": "لا توجد شهادات",
+  "noReviews": "لا توجد آراء"
+  
 }
