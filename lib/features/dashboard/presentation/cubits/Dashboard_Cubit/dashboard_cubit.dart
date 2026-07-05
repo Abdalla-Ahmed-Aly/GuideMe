@@ -34,6 +34,9 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
   Future<void> getRequestsHistory() async {
     safeEmit(DashboardCubitLoading());
 
+    _listeningToNewBooking();
+    _listenToBookingTaken();
+
     final result = await getRequestsHistoryUseCase();
 
     result.fold(
