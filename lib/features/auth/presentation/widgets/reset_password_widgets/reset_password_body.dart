@@ -31,6 +31,14 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
   bool isConfirmPasswordHidden = true;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final TextEditingController confirmpasswordcontroll = TextEditingController();
+
+  @override
+  void dispose() {
+    passwordController.dispose();
+    confirmpasswordcontroll.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -178,7 +186,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
                     child: AppButton(
                       isLoading: state is ResetPasswordLoading,
                       onPressed: () {
-                        if (formkey.currentState!.validate()) {
+                        if (formkey.currentState?.validate() ?? false) {
                           context.read<ResetPasswordCubit>().resetPassword(
                             email: widget.email,
                             newPassword: passwordController.text,

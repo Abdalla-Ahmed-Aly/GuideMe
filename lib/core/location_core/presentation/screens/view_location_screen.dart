@@ -15,14 +15,16 @@ class ViewLocationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final location = GoRouterState.of(context).extra as LocationEntity;
+    final extra = GoRouterState.of(context).extra;
+    if (extra is! LocationEntity) return const SizedBox.shrink();
+    final location = extra;
     return Scaffold(
       body: Stack(
         children: [
           // Map
           FlutterMap(
             options: MapOptions(
-              initialCenter: LatLng(location.lat!, location.lng!),
+              initialCenter: LatLng(location.lat ?? 0.0, location.lng ?? 0.0),
               initialZoom: 12,
             ),
             children: [
@@ -34,7 +36,7 @@ class ViewLocationScreen extends StatelessWidget {
               MarkerLayer(
                 markers: [
                   Marker(
-                    point: LatLng(location.lat!, location.lng!),
+                    point: LatLng(location.lat ?? 0.0, location.lng ?? 0.0),
                     child: const Icon(
                       Icons.location_pin,
                       color: AppColors.primary2,

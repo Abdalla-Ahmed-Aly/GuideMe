@@ -50,7 +50,7 @@ class _TripDetailsScreenState extends State<TripDetailsScreen> {
             Icons.arrow_back_ios_new_rounded,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
         title: Text(

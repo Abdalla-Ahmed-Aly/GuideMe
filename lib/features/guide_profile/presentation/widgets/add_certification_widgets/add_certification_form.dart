@@ -30,11 +30,11 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
 
   @override
   void dispose() {
-    super.dispose();
     certificationNameCont.dispose();
     organizationCont.dispose();
     issueDateCont.dispose();
     expireDateCont.dispose();
+    super.dispose();
   }
 
   @override
@@ -139,9 +139,7 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
               );
               if (issueDate != null) {
                 setState(() {
-                  issueDateCont = TextEditingController(
-                    text: DateFormat("MM/yyyy").format(issueDate!),
-                  );
+                  issueDateCont.text = DateFormat("MM/yyyy").format(issueDate!);
                   cubit.certificationIssueDate = DateFormat(
                     "MM/yyyy",
                   ).format(issueDate!);
@@ -178,9 +176,7 @@ class _AddCertificationFormState extends State<AddCertificationForm> {
               );
               if (expireDate != null) {
                 setState(() {
-                  expireDateCont = TextEditingController(
-                    text: DateFormat("MM/yyyy").format(expireDate!),
-                  );
+                  expireDateCont.text = DateFormat("MM/yyyy").format(expireDate!);
                   cubit.certificationExpiryDate = DateFormat(
                     "MM/yyyy",
                   ).format(expireDate!);

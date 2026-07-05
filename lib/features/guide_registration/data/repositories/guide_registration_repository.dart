@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import '../../../../core/constants/api_constants.dart';
 import '../models/guide_registration_model.dart';
-import '../../../../core/shared/models/picked_file_model.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/network/api_service.dart';
 

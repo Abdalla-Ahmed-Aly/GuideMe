@@ -41,8 +41,8 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
         safeEmit(DashboardCubitFailure(failure));
       },
       (requestsHistory) {
-        requests = requestsHistory;
-        safeEmit(DashboardCubitSuccess(requests));
+        requests = [...requestsHistory];
+        safeEmit(DashboardCubitSuccess(List.from(requests)));
       },
     );
   }
@@ -53,8 +53,9 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
     _newBookingSubscription = _socketEventBus
         .listenTo(SocketAppEvents.newBooking.value)
         .listen((data) {
+          if (data is! Map<String, dynamic> && data is! String) return;
           final Map<String, dynamic> json = data is String
-              ? jsonDecode(data)
+              ? jsonDecode(data) as Map<String, dynamic>
               : data as Map<String, dynamic>;
 
           final requestModel = RequestModel.fromJson(json['data']);
@@ -75,8 +76,9 @@ class DashboardCubit extends Cubit<DashboardCubitState> {
         .listenTo(SocketAppEvents.bookingTaken.value)
         .listen(
           (data) {
+            if (data is! Map<String, dynamic> && data is! String) return;
             final Map<String, dynamic> json = data is String
-                ? jsonDecode(data)
+                ? jsonDecode(data) as Map<String, dynamic>
                 : data as Map<String, dynamic>;
 
             final String type = json['type'];

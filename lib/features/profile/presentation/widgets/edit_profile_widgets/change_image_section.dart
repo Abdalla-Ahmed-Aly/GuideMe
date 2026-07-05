@@ -14,7 +14,9 @@ class ChangeImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = (context.read<UserCubit>().state as UserSuccess).user;
+    final userState = context.read<UserCubit>().state;
+    if (userState is! UserSuccess) return const SizedBox.shrink();
+    final user = userState.user;
 
     return GestureDetector(
       onTap: () async {

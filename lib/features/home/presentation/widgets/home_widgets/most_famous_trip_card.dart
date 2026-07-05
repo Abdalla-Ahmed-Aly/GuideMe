@@ -75,7 +75,10 @@ class _MostFamousTripCardState extends State<MostFamousTripCard>
     final double relativePos = (widget.index * itemWidth) - widget.scrollOffset;
     final double parallaxOffset = (relativePos / size.width) * 80;
 
-    final images = widget.package.places.map((e) => e.images.first).toList();
+    final images = widget.package.places
+        .where((e) => e.images.isNotEmpty)
+        .map((e) => e.images.first)
+        .toList();
 
     return GestureDetector(
       onTap: () {

@@ -46,6 +46,7 @@ class AddCertificationCubit extends Cubit<AddCertificationState> {
   Future<void> addCertification({
     required String userId,
   }) async {
+    if (!validateCertificationForm()) return;
     safeEmit(AddCertificationLoading());
     final certification = AddCertificationModel(
       name: certificationName!,

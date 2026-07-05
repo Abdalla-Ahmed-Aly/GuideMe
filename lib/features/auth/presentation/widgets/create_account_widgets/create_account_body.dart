@@ -161,9 +161,11 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                               role: selectedRole!,
                             );
                           }
-                          setState(() {
-                            autovalidateMode = AutovalidateMode.always;
-                          });
+                          if (mounted) {
+                            setState(() {
+                              autovalidateMode = AutovalidateMode.always;
+                            });
+                          }
                         },
                         text: context.l10n.createAccount,
                       );

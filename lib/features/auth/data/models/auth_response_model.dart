@@ -15,10 +15,12 @@ class AuthResponseModel {
 
   factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
     return AuthResponseModel(
-      success: json['success'],
-      message: json['message'],
-      token: json['token'],
-      data: UserModel.fromJson(json['data']['user']),
+      success: json['success'] as bool? ?? false,
+      message: json['message'] as String? ?? '',
+      token: json['token'] as String? ?? '',
+      data: UserModel.fromJson(
+        (json['data'] as Map<String, dynamic>?)?['user'] ?? {},
+      ),
     );
   }
 }

@@ -32,7 +32,7 @@ class SignupAndLoginCustomButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            text!,
+            text ?? '',
             style: textStyle,
           ),
         ),

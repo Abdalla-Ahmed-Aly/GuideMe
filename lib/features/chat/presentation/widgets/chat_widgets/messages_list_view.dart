@@ -22,12 +22,6 @@ class _MessagesListViewState extends State<MessagesListView> {
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_scrollListener);
-  }
-
-  void _scrollListener() {
-    if (_scrollController.offset <= 0) {
-    } else {}
   }
 
   @override

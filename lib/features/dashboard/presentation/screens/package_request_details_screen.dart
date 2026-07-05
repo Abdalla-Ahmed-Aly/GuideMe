@@ -22,6 +22,7 @@ class PackageRequestDetailsScreen extends StatelessWidget {
 
   double totalPrice(RequestEntity request) {
     double totalPrice = 0;
+    if (request.bookings == null) return 0;
     for (var booking in request.bookings!) {
       totalPrice += booking.totalPrice.toDouble();
     }
@@ -43,8 +44,10 @@ class PackageRequestDetailsScreen extends StatelessWidget {
               );
             },
           ).then((value) {
-            context.read<DashboardCubit>().removePackageFromList(package.packageId!);
-            context.pop();
+            if (context.mounted) {
+              context.read<DashboardCubit>().removePackageFromList(package.packageId ?? '');
+              context.pop();
+            }
           });
         }
         if (state is PackageActionsFailure) {
@@ -61,7 +64,7 @@ class PackageRequestDetailsScreen extends StatelessWidget {
               );
             },
           ).then((value) {
-            context.pop();
+            if (context.mounted) context.pop();
           });
         }
       },
@@ -154,7 +157,7 @@ class PackageRequestDetailsScreen extends StatelessWidget {
               ),
             ),
 
-            AcceptPackageSection(packageId: package.packageId!),
+            AcceptPackageSection(packageId: package.packageId ?? ''),
           ],
         ),
       ),

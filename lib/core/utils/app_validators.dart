@@ -16,7 +16,7 @@ class AppValidators {
       return 'Email is required';
     }
 
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$');
 
     if (!emailRegex.hasMatch(value.trim())) {
       return 'Enter a valid email address';
@@ -36,7 +36,7 @@ class AppValidators {
     final hasUpper = value.contains(RegExp(r'[A-Z]'));
     final hasLower = value.contains(RegExp(r'[a-z]'));
     final hasDigit = value.contains(RegExp(r'[0-9]'));
-    final hasSpecial = value.contains(RegExp(r'[!@#\$%\^&\*\(\)_\+\-=\?]'));
+    final hasSpecial = value.contains(RegExp(r'[^a-zA-Z0-9]'));
 
     // Build message dynamically based on what's missing
     final List<String> errors = [];
@@ -64,7 +64,7 @@ class AppValidators {
     return null;
   }
 
-  // Phone number (example for Egypt)
+  // Phone number (Egypt only — 11 digits starting with 01)
   static String? phone(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Phone number is required';
@@ -73,7 +73,7 @@ class AppValidators {
     final phoneRegex = RegExp(r'^01[0-9]{9}$');
 
     if (!phoneRegex.hasMatch(value.trim())) {
-      return 'Enter a valid Egyptian phone number (11 digits)';
+      return 'Enter a valid Egyptian phone number (11 digits starting with 01)';
     }
 
     return null;

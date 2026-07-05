@@ -89,7 +89,9 @@ class GuideNextTripCard extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     userCubit.loadUser();
-                    final user = (userCubit.state as UserSuccess).user;
+                    final userState = userCubit.state;
+                    if (userState is! UserSuccess) return;
+                    final user = userState.user;
                     final args = ChatArgs(
                       conversationId: ChatArgs.generateConversationId(
                         guideId: user.id,

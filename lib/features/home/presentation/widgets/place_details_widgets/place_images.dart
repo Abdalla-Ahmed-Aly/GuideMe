@@ -31,6 +31,15 @@ class _PlaceImagesState extends State<PlaceImages> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.place.images.isEmpty) {
+      return Container(
+        color: Colors.grey.shade200,
+        child: const Center(
+          child: Icon(Icons.image_outlined, size: 64, color: Colors.grey),
+        ),
+      );
+    }
+
     return Stack(
       children: [
         // Images

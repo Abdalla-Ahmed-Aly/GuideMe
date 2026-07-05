@@ -12,7 +12,6 @@ class RegisterUseCase {
   Future<Either<Failure, AuthResponseEntity>> call(
     RegisterRequestModel param,
   ) async {
-    print("UseCase call() called with: ${param.toJson()}"); 
     return await _authRepo.register(param);
   }
 }

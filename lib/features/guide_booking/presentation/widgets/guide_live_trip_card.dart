@@ -129,7 +129,9 @@ class GuideLiveTripCard extends StatelessWidget {
         GestureDetector(
           onTap: () {
             final userCubit = context.read<UserCubit>();
-            final user = (userCubit.state as UserSuccess).user;
+            final userState = userCubit.state;
+            if (userState is! UserSuccess) return;
+            final user = userState.user;
             final args = ChatArgs(
               conversationId: ChatArgs.generateConversationId(
                 guideId: user.id,
@@ -180,7 +182,7 @@ class BuildLiveTripImage extends StatelessWidget {
         children: [
           // image
           CustomNetworkImage(
-            imageUrl: booking.place.images.first,
+            imageUrl: booking.place.images.isNotEmpty ? booking.place.images.first : '',
             fit: BoxFit.cover,
             width: double.infinity,
           ),

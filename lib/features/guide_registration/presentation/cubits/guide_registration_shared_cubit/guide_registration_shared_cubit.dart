@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:guide_me/core/shared/models/picked_file_model.dart';
@@ -10,7 +9,7 @@ import 'guide_registration_shared_state.dart';
 import 'package:injectable/injectable.dart';
 
 
-@lazySingleton
+@injectable
 class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
   final GuideRegistrationRepository _repository;
   final MediaPickerService _mediaPickerService;
@@ -327,31 +326,5 @@ class GuideRegistrationSharedCubit extends Cubit<GuideRegistrationSharedState> {
       }
       emit(current); 
     }
-  }
-
-  Map<String, dynamic> _getChangedFields(GuideRegistrationModel old, GuideRegistrationModel current) {
-    final map = <String, dynamic>{};
-    if (old.yearsOfExperience != current.yearsOfExperience) {
-      map['yearsOfExperience'] = current.yearsOfExperience;
-    }
-    if (!const ListEquality().equals(old.languages, current.languages)) {
-      map['languages'] = current.languages;
-    }
-    if (!const ListEquality().equals(old.expertise, current.expertise)) {
-      map['expertise'] = current.expertise;
-    }
-    if (old.hourlyRate != current.hourlyRate) {
-      map['hourlyRate'] = current.hourlyRate;
-    }
-    if (old.currency != current.currency) {
-      map['currency'] = current.currency;
-    }
-    if (!const ListEquality().equals(old.guideCities, current.guideCities)) {
-      map['guideCities'] = current.guideCities;
-    }
-    if (old.availability != current.availability) {
-      map['availability'] = current.availability.toJson();
-    }
-    return map;
   }
 }

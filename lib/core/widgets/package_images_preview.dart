@@ -10,6 +10,8 @@ class PackageImagesPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     final imgs = images;
 
+    if (imgs.isEmpty) return const SizedBox.shrink();
+
     if (imgs.length == 1) {
       return _buildImage(imgs[0]);
     }

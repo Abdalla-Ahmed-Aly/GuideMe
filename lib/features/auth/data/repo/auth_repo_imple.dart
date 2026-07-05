@@ -121,7 +121,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.sendForgetPassword(request);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -133,7 +133,7 @@ class AuthRepoImple extends AuthRepo {
       final result = await authRemoteDataSource.verifyForgetPassword(request);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -176,7 +176,7 @@ class AuthRepoImple extends AuthRepo {
       );
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 
@@ -199,7 +199,7 @@ class AuthRepoImple extends AuthRepo {
 
       return Right(UserMapper.toEntity(result));
     } catch (e) {
-      return Left(ErrorHandler.handle(e.toString()));
+      return Left(ErrorHandler.handle(e));
     }
   }
 }

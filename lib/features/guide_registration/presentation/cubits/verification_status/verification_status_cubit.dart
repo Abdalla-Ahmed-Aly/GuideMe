@@ -21,17 +21,17 @@ class VerificationStatusError extends VerificationStatusState {
 @injectable
 class VerificationStatusCubit extends Cubit<VerificationStatusState> {
   final GuideRegistrationRepository _repository;
-  Timer? _timer;
+  static Timer? _existingTimer;
 
   VerificationStatusCubit(this._repository) : super(VerificationStatusInitial());
 
   void checkStatus() async {
     emit(VerificationStatusLoading());
-    _fetchStatus();
+    _existingTimer?.cancel();
+    await _fetchStatus();
     
     // Start polling every 10 seconds while pending
-    _timer?.cancel();
-    _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+    _existingTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
       if (state is VerificationStatusPending || state is VerificationStatusInitial) {
         _fetchStatus();
       } else {
@@ -48,11 +48,11 @@ class VerificationStatusCubit extends Cubit<VerificationStatusState> {
 
       if (status == 'approved') {
         emit(VerificationStatusApproved());
-        _timer?.cancel();
+        _existingTimer?.cancel();
       } else if (status == 'rejected') {
         final reason = data['message'];
         emit(VerificationStatusRejected(reason));
-        _timer?.cancel();
+        _existingTimer?.cancel();
       } else {
         emit(VerificationStatusPending());
       }
@@ -66,7 +66,7 @@ class VerificationStatusCubit extends Cubit<VerificationStatusState> {
 
   @override
   Future<void> close() {
-    _timer?.cancel();
+    _existingTimer?.cancel();
     return super.close();
   }
 }

@@ -18,7 +18,6 @@ class LoginWithGoogleUseCase {
       return const Left(
         AppFailure(
           failureCode: FailureCode.cancelled,
-          message: "User cancelled Google Sign In",
         ),
       );
     }

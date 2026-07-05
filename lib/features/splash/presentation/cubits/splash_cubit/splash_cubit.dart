@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
@@ -56,7 +57,8 @@ class SplashCubit extends Cubit<SplashState> {
         } else {
           emit(SplashAuthenticated(userRole: userRole));
         }
-      } catch (_) {
+      } catch (e) {
+        log('SplashCubit.checkAuth error: $e');
         emit(SplashAuthenticated(userRole: userRole));
       }
     } else {

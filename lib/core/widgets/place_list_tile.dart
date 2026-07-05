@@ -127,7 +127,7 @@ class PlaceListTile extends StatelessWidget {
 
                       // Description
                       Text(
-                        place.description!,
+                        place.description ?? '',
                         style: AppTextStyles.interRegular8.copyWith(
                           color: AppColors.natural4,
                         ),

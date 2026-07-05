@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_file_store/dio_cache_interceptor_file_store.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -11,7 +12,9 @@ import 'interceptor.dart';
 class DioService {
   late final Dio dio;
 
-  DioService() {
+  DioService();
+
+  Future<void> init() async {
     dio = Dio(
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
@@ -22,8 +25,8 @@ class DioService {
       ),
     );
 
-    dio.interceptors.addAll(
-      [
+    if (kDebugMode) {
+      dio.interceptors.addAll([
         AuthorizationInterceptor(),
         LoggerInterceptor(),
         LogInterceptor(
@@ -34,20 +37,25 @@ class DioService {
           responseBody: true,
           responseHeader: true,
         ),
-      ],
-    );
+      ]);
+    } else {
+      dio.interceptors.addAll([
+        AuthorizationInterceptor(),
+        LoggerInterceptor(),
+      ]);
+    }
 
-    _addCacheInterceptor();
+    await _addCacheInterceptor();
   }
 
   Future<void> _addCacheInterceptor() async {
     try {
       final cacheOptions = await _getCacheOptions();
-      // Add cache interceptor at the beginning of the list
       dio.interceptors.insert(0, DioCacheInterceptor(options: cacheOptions));
     } catch (e) {
-      // Log error if cache fails to initialize
-      print('DioService: Failed to initialize cache interceptor: $e');
+      if (kDebugMode) {
+        debugPrint('DioService: Failed to initialize cache interceptor: $e');
+      }
     }
   }
 

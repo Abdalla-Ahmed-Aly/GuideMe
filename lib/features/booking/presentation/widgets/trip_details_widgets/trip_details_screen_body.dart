@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/shared/entities/location_entity.dart';
 import 'package:guide_me/features/booking/domain/entities/booking_entity.dart';
 import 'package:guide_me/features/booking/presentation/widgets/trip_details_widgets/total_price_section.dart';
 import 'package:guide_me/features/booking/presentation/widgets/trip_details_widgets/trip_details_grid_view_section.dart';
@@ -30,7 +31,7 @@ class CompletedTripScreenBody extends StatelessWidget {
 
           TripDetailsGridViewSection(booking: booking),
 
-          MeetingPointSection(location: booking.place.location!),
+          MeetingPointSection(location: booking.place.location ?? const LocationEntity(name: null, lat: null, lng: null)),
 
           const SizedBox(height: 20),
 

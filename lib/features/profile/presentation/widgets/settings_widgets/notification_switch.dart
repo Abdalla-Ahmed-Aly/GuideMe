@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:guide_me/core/constants/hive_constants.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/styles/app_colors.dart';
 import 'package:guide_me/core/styles/app_text_styles.dart';
+import 'package:guide_me/core/utils/hive_helper.dart';
 
 class NotificationSwitch extends StatefulWidget {
   const NotificationSwitch({super.key});
@@ -12,6 +14,16 @@ class NotificationSwitch extends StatefulWidget {
 
 class _NotificationSwitchState extends State<NotificationSwitch> {
   bool allowNotifications = true;
+
+  @override
+  void initState() {
+    super.initState();
+    allowNotifications = HiveHelper.get<bool>(
+          boxName: HiveConstants.notificationBox,
+          key: HiveConstants.notificationKey,
+        ) ??
+        true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +42,11 @@ class _NotificationSwitchState extends State<NotificationSwitch> {
             setState(() {
               allowNotifications = value;
             });
+            HiveHelper.put<bool>(
+              boxName: HiveConstants.notificationBox,
+              key: HiveConstants.notificationKey,
+              data: value,
+            );
           },
           activeThumbColor: AppColors.white,
           activeTrackColor: AppColors.primary,

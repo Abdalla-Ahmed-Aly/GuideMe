@@ -24,9 +24,11 @@ class _TimeSendCodeState extends State<TimeSendCode> {
       if (totalSeconds == 0) {
         t.cancel();
       } else {
-        setState(() {
-          totalSeconds--;
-        });
+        if (mounted) {
+          setState(() {
+            totalSeconds--;
+          });
+        }
       }
     });
   }
@@ -69,10 +71,12 @@ class _TimeSendCodeState extends State<TimeSendCode> {
               )
             : GestureDetector(
                 onTap: () {
-                  setState(() {
-                    totalSeconds = 20;
-                    startTimer();
-                  });
+                  if (mounted) {
+                    setState(() {
+                      totalSeconds = 20;
+                      startTimer();
+                    });
+                  }
                   widget.onResend();
                 },
                 child: Text(

@@ -67,11 +67,6 @@ class ChatCubit extends Cubit<ChatState> {
     safeEmit(ChatLoading());
     messages.clear(); // Clear stale messages from a previous session.
 
-    // Subscribe to socket events BEFORE joining the room so no events are
-    // missed between the join emit and the first server broadcast.
-    _listenToNewMessages();
-    _listenToMessageStatus();
-
     _joinChatRoom(bookingId);
 
     final result = await _getAllChatMessagesUseCase(conversationId);
@@ -79,7 +74,9 @@ class ChatCubit extends Cubit<ChatState> {
       (failure) => safeEmit(ChatFailure(failure)),
       (newMessages) {
         messages.addAll(newMessages.map(_normalizeOwnership));
-        safeEmit(ChatSuccess(messages));
+        _listenToNewMessages();
+        _listenToMessageStatus();
+        safeEmit(ChatSuccess(List.from(messages)));
       },
     );
   }
@@ -145,8 +142,9 @@ class ChatCubit extends Cubit<ChatState> {
         .listenTo(SocketAppEvents.chatMessage.value)
         .listen((data) {
           log("Chat Message: $data");
+          if (data is! Map<String, dynamic> && data is! String) return;
           final Map<String, dynamic> json = data is String
-              ? jsonDecode(data)
+              ? jsonDecode(data) as Map<String, dynamic>
               : data as Map<String, dynamic>;
 
           final message = MessageModel.fromJson(json['data']['messages'][0]);

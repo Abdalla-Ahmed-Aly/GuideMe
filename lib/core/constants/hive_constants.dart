@@ -12,4 +12,6 @@ class HiveConstants {
   static const String favoritesBox = 'favoritesBox';
   static const String onlineStatusBox = 'onlineStatusBox';
   static const String onlineStatusKey = 'onlineStatusKey';
+  static const String notificationBox = 'notificationBox';
+  static const String notificationKey = 'notificationKey';
 }

@@ -40,12 +40,12 @@ abstract class GuideBookingState {
 }
 
 class GuideBookingInitial extends GuideBookingState {
-  GuideBookingInitial() : super(filters: GuideBookingFilters.initial());
+  GuideBookingInitial({GuideBookingFilters? filters})
+      : super(filters: filters ?? GuideBookingFilters.initial());
 
   @override
-  @override
   GuideBookingState copyWith({GuideBookingFilters? filters}) {
-    return GuideBookingInitial();
+    return GuideBookingInitial(filters: filters);
   }
 }
 

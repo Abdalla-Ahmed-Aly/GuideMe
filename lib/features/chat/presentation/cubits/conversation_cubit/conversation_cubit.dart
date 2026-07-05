@@ -49,8 +49,9 @@ class ConversationCubit extends Cubit<ConversationState> {
         .listenTo(SocketAppEvents.conversationUpdated.value)
         .listen(
           (data) {
+            if (data is! Map<String, dynamic> && data is! String) return;
             final Map<String, dynamic> json = data is String
-                ? jsonDecode(data)
+                ? jsonDecode(data) as Map<String, dynamic>
                 : data as Map<String, dynamic>;
 
             final conversation = ConversationModel.fromJson(
@@ -72,27 +73,28 @@ class ConversationCubit extends Cubit<ConversationState> {
   }
 
   void _updateConversation(ConversationEntity conversation) {
-    if (state is ConversationSuccess) {
-      final isActive = _activeConversationId == conversation.conversationId;
-      if (isActive && conversation.lastMessage != null) {
-        conversation.lastMessage!.isSeen = true;
-      }
+    if (state is! ConversationSuccess && state is! ConversationInitial) return;
 
-      final index = filteredConversations.indexWhere(
-        (c) => c.conversationId == conversation.conversationId,
+    final isActive = _activeConversationId == conversation.conversationId;
+    final lastMessage = isActive && conversation.lastMessage != null
+        ? conversation.lastMessage!.copyWith(isSeen: true)
+        : conversation.lastMessage;
+
+    final index = conversations.indexWhere(
+      (c) => c.conversationId == conversation.conversationId,
+    );
+    if (index != -1) {
+      conversations[index] = conversations[index].copyWith(
+        lastMessage: lastMessage,
+        createdAt: conversation.createdAt,
       );
-      if (index != -1) {
-        filteredConversations[index].lastMessage = conversation.lastMessage;
-        filteredConversations[index].createdAt = conversation.createdAt;
-
-        final item = filteredConversations.removeAt(index);
-        filteredConversations.insert(0, item);
-      } else {
-        filteredConversations.insert(0, conversation);
-      }
-
-      search(_lastQuery);
+      final item = conversations.removeAt(index);
+      conversations.insert(0, item);
+    } else {
+      conversations.insert(0, conversation.copyWith(lastMessage: lastMessage));
     }
+
+    search(_lastQuery);
   }
 
   /// Call this when the user opens a chat screen.
@@ -125,7 +127,8 @@ class ConversationCubit extends Cubit<ConversationState> {
     );
     if (index != -1) {
       if (conversations[index].lastMessage?.isMine == false) {
-        conversations[index].lastMessage?.isSeen = true;
+        final updatedMsg = conversations[index].lastMessage!.copyWith(isSeen: true);
+        conversations[index] = conversations[index].copyWith(lastMessage: updatedMsg);
       }
       safeEmit(ConversationSuccess(List.from(conversations)));
     }

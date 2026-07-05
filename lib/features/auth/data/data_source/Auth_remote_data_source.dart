@@ -119,7 +119,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       headers: {"Authorization": "Bearer $token"},
       data: {"token": token},
     );
-    print("JSON: ${response.data}");
     return AuthResponseModel.fromJson(response.data);
   }
 

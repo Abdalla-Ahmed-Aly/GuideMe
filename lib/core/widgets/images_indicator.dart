@@ -18,6 +18,8 @@ class ImagesIndicator extends StatelessWidget {
 
     final int total = images.length;
 
+    if (total == 0) return [];
+
     int start;
     int end;
 
@@ -106,10 +108,6 @@ class ImagesIndicator extends StatelessWidget {
           ),
           child: CircleAvatar(
             radius: 20.h,
-            backgroundImage: NetworkImage(images[imageIndex]),
-            onBackgroundImageError: (exception, stackTrace) {
-              // Handle image loading error, e.g., show a placeholder
-            },
             child: ClipOval(
               child: CustomNetworkImage(
                 imageUrl: images[imageIndex],

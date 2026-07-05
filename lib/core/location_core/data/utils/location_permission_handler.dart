@@ -18,6 +18,9 @@ class LocationPermissionHandler {
 
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.deniedForever) {
+        throw LocationPermissionDeniedForeverException();
+      }
       if (permission == LocationPermission.denied) {
         throw LocationPermissionDeniedException();
       }
@@ -25,6 +28,12 @@ class LocationPermissionHandler {
   }
 
   static Future<bool> requestPermission() async {
+    final serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      await Geolocator.openLocationSettings();
+      return false;
+    }
+
     LocationPermission permission = await Geolocator.checkPermission();
 
     if (permission == LocationPermission.deniedForever) {

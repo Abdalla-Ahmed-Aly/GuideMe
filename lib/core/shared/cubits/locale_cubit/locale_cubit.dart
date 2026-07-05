@@ -6,14 +6,27 @@ import 'package:guide_me/core/utils/hive_helper.dart';
 
 @lazySingleton
 class LocaleCubit extends Cubit<Locale> {
-  LocaleCubit() : super(_getInitialLocale());
+  LocaleCubit() : super(const Locale('en')) {
+    _loadSavedLocale();
+  }
 
-  static Locale _getInitialLocale() {
+  Future<void> _loadSavedLocale() async {
     final saved = HiveHelper.get<String>(
       boxName: HiveConstants.localeBox,
       key: HiveConstants.localeKey,
     );
-    return Locale(saved ?? 'en');
+    if (saved != null && saved != state.languageCode) {
+      emit(Locale(saved));
+    }
+  }
+
+  Future<void> setLanguage(String languageCode) async {
+    await HiveHelper.put<String>(
+      boxName: HiveConstants.localeBox,
+      key: HiveConstants.localeKey,
+      data: languageCode,
+    );
+    emit(Locale(languageCode));
   }
 
   Future<void> toggle() async {

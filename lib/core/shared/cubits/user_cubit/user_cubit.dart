@@ -41,9 +41,12 @@ class UserCubit extends Cubit<UserState> {
   Future<void> fetchRemoteUser() async {
     safeEmit(UserLoading());
     final result = await _fetchRemoteUserUsecase.call();
-    result.fold(
-      (failure) => safeEmit(UserFailure(failure)),
-      (user) => safeEmit(UserSuccess(user)),
+    await result.fold(
+      (failure) async => safeEmit(UserFailure(failure)),
+      (user) async {
+        await _updateCachedUserUsecase.call(user);
+        safeEmit(UserSuccess(user));
+      },
     );
   }
 

@@ -27,7 +27,7 @@ class FavoritesLocalDataSourceImpl implements FavoritesLocalDataSource {
   List<PlaceModel> getFavorites() {
     final maps = HiveHelper.getAll<Map>(name: HiveConstants.favoritesBox);
     return maps.map((map) {
-      final jsonString = jsonEncode(map);
+      final jsonString = jsonEncode(Map<String, dynamic>.from(map));
       return PlaceModel.fromJson(
         jsonDecode(jsonString) as Map<String, dynamic>,
       );

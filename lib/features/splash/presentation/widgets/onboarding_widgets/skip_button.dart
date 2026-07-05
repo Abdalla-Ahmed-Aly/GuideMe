@@ -10,7 +10,7 @@ class SkipButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.signupAndLoginScreen);
+        context.go(AppRoutes.signupAndLoginScreen);
       },
       child: Text(
         context.l10n.skip,

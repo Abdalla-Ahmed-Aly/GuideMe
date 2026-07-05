@@ -25,6 +25,14 @@ class TouristProfileImage extends StatelessWidget {
           ? CachedNetworkImage(
               imageUrl: imageUrl!,
               fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+              errorWidget: (context, url, error) => const Icon(
+                Icons.person_outline_rounded,
+                size: 80,
+                color: AppColors.primary2,
+              ),
             )
           : const Icon(
               Icons.person_outline_rounded,

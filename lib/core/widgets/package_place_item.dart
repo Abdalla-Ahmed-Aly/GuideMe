@@ -40,7 +40,7 @@ class PackagePlaceItem extends StatelessWidget {
               child: Hero(
                 tag: place.id,
                 child: CustomNetworkImage(
-                  imageUrl: place.images.first,
+                  imageUrl: place.images.isNotEmpty ? place.images.first : '',
                   height: context.screenHeight * 0.12,
                   width: context.screenHeight * 0.12,
                   fit: BoxFit.cover,

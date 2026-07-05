@@ -37,8 +37,9 @@ class LocationAccessCubit extends Cubit<LocationAccessState> {
     if (result.isLeft()) {
       result.fold(
         (failure) => safeEmit(LocationAccessFailure(failure)),
-        (_) => const AppFailure(failureCode: FailureCode.unknown),
+        (_) {},
       );
+      return;
     }
 
     final location = result.getOrElse(

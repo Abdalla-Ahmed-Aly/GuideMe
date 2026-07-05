@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:guide_me/core/app_assets/app_icons.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
@@ -185,7 +186,7 @@ class CitiesSelectorSection extends StatelessWidget {
                           onPressed: () {
                             final ids = items.map((e) => e.id ?? '').where((id) => id.isNotEmpty).toList();
                             cubit.addCities(ids);
-                            Navigator.pop(context);
+                            context.pop();
                           },
                           text: context.l10n.add,
                         ),

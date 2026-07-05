@@ -33,12 +33,17 @@ class SelectNationalityCubit extends Cubit<SelectNationalityState> {
               .where((n) => n.name.toLowerCase().contains(query.toLowerCase()))
               .toList();
 
+    final currentSelected = state.data.selectedNationality;
+    final isSelectedInFiltered = currentSelected != null &&
+        filtered.any((n) => n.name == currentSelected.name);
+
     emit(
       state.copyWith(
         state.data.copyWith(
           search: query,
           filteredNationalities: filtered,
-          selectedNationality: null,
+          selectedNationality:
+              isSelectedInFiltered ? currentSelected : null,
         ),
       ),
     );
@@ -46,6 +51,7 @@ class SelectNationalityCubit extends Cubit<SelectNationalityState> {
 
   void addNationality() async {
     safeEmit(SelectNationalityLoading(state.data));
+    if (state.data.selectedNationality == null) return;
     final result = await authRepo.addNationality(
       nationality: state.data.selectedNationality!.name,
     );

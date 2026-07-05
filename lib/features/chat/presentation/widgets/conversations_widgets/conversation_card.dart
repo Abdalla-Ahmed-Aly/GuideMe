@@ -12,6 +12,16 @@ class ConversationCard extends StatelessWidget {
   const ConversationCard({super.key, required this.conversation});
   final ConversationEntity conversation;
 
+  String _formatTime(String createdAt) {
+    try {
+      return DateFormat("jm").format(
+        DateTime.parse(createdAt).toLocal(),
+      );
+    } catch (_) {
+      return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isSeen =
@@ -61,9 +71,7 @@ class ConversationCard extends StatelessWidget {
                       const SizedBox(width: 8),
 
                       Text(
-                        DateFormat("jm").format(
-                          DateTime.parse(conversation.createdAt).toLocal(),
-                        ), // TODO: change it to 5m ago or 1 hour later
+                        _formatTime(conversation.createdAt),
                         style: AppTextStyles.poppinsMedium14.copyWith(
                           color: const Color(0xffF2930D),
                         ),

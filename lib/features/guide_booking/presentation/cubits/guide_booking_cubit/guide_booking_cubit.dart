@@ -51,15 +51,15 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
         );
       },
       (bookings) {
-        state.filters.guideBookings = bookings;
+        final newFilters = state.filters.copyWith(guideBookings: bookings);
         final filteredBookings = _guideBookingFilterUseCase.filter(
           bookings: bookings,
-          status: state.filters.guideBookingStatus,
+          status: newFilters.guideBookingStatus,
         );
         safeEmit(
           GuideBookingSuccess(
             guideBookings: filteredBookings,
-            filters: state.filters,
+            filters: newFilters,
           ),
         );
       },
@@ -83,15 +83,15 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
 
   void _addNewBooking(BookingEntity booking) {
     final updatedList = [booking, ...state.filters.guideBookings];
-    state.filters.guideBookings = updatedList;
+    final newFilters = state.filters.copyWith(guideBookings: updatedList);
     final filtered = _guideBookingFilterUseCase.filter(
       bookings: updatedList,
-      status: state.filters.guideBookingStatus,
+      status: newFilters.guideBookingStatus,
     );
     safeEmit(
       GuideBookingSuccess(
         guideBookings: filtered,
-        filters: state.filters,
+        filters: newFilters,
       ),
     );
   }
@@ -125,17 +125,17 @@ class GuideBookingCubit extends Cubit<GuideBookingState> {
         .map((b) => b.id == updated.id ? updated : b)
         .toList();
 
-    state.filters.guideBookings = updatedList;
+    final newFilters = state.filters.copyWith(guideBookings: updatedList);
 
     final filtered = _guideBookingFilterUseCase.filter(
       bookings: updatedList,
-      status: state.filters.guideBookingStatus,
+      status: newFilters.guideBookingStatus,
     );
 
     safeEmit(
       GuideBookingSuccess(
         guideBookings: filtered,
-        filters: state.filters,
+        filters: newFilters,
       ),
     );
   }

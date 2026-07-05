@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/di/injectable.dart';
@@ -7,6 +8,7 @@ import 'package:guide_me/core/location_core/presentation/cubits/pick_location_cu
 import 'package:guide_me/core/location_core/presentation/screens/pick_location_screen.dart';
 import 'package:guide_me/core/location_core/presentation/screens/view_location_screen.dart';
 import 'package:guide_me/core/routes/app_routes.dart';
+import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:guide_me/core/shared/entities/place_entity.dart';
 import 'package:guide_me/features/auth/presentation/manager/location_access_cubit/location_access_cubit.dart';
 import 'package:guide_me/features/auth/presentation/manager/select_nationality_cubit/select_nationality_cubit.dart';
@@ -92,7 +94,43 @@ import 'package:guide_me/features/splash/presentation/screens/onboarding_screen.
 import 'package:guide_me/features/splash/presentation/screens/splash_screen.dart';
 
 abstract class AppRouter {
+  static final List<String> _publicRoutes = [
+    AppRoutes.splashScreen,
+    AppRoutes.onBoardingScreen,
+    AppRoutes.signupAndLoginScreen,
+    AppRoutes.createAccountScreen,
+    AppRoutes.logInScreen,
+    AppRoutes.forgetPasswordScreen,
+    AppRoutes.checkemailscreen,
+    AppRoutes.resetPasswordScreen,
+    AppRoutes.successPasswordScreen,
+    AppRoutes.chooseNationalityScreen,
+    AppRoutes.allowLocationAccessScreen,
+    AppRoutes.chooseRoleScreen,
+  ];
+
+  static Future<String?> _authRedirect(
+    BuildContext context,
+    GoRouterState state,
+  ) async {
+    final isPublic = _publicRoutes.contains(state.matchedLocation);
+    if (isPublic) return null;
+
+    final token = await getIt<TokenService>().getToken();
+    if (token == null || token.isEmpty) {
+      return AppRoutes.signupAndLoginScreen;
+    }
+    return null;
+  }
+
   static final appRouter = GoRouter(
+    errorBuilder: (context, state) => Scaffold(
+      appBar: AppBar(title: const Text('Error')),
+      body: Center(
+        child: Text('Page not found: ${state.uri}'),
+      ),
+    ),
+    redirect: _authRedirect,
     routes: [
       GoRoute(
         path: AppRoutes.signupAndLoginScreen,

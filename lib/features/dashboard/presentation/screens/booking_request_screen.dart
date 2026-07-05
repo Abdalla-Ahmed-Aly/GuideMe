@@ -32,7 +32,7 @@ class BookingRequestScreen extends StatelessWidget {
               message: context.l10n.bookingAcceptedMessage,
             ),
           ).then((value) {
-            context.pop();
+            if (context.mounted) context.pop();
           });
         } else if (state is DeclineBookingSuccess) {
           context.read<DashboardCubit>().removeBookingFromList(
@@ -45,7 +45,7 @@ class BookingRequestScreen extends StatelessWidget {
               message: context.l10n.bookingDeclinedMessage,
             ),
           ).then((value) {
-            context.pop();
+            if (context.mounted) context.pop();
           });
         } else if (state is AcceptBookingFailure) {
           if (state.failure.failureCode ==
@@ -87,7 +87,7 @@ class BookingRequestScreen extends StatelessWidget {
             bottom: MediaQuery.of(context).padding.bottom + 8,
           ),
           decoration: const BoxDecoration(color: Colors.white),
-          child: BookingActionButtons(bookingId: requestEntity.booking!.id),
+          child: BookingActionButtons(bookingId: requestEntity.booking?.id ?? ''),
         ),
       ),
     );

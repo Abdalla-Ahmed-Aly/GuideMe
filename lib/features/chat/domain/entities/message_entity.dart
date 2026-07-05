@@ -9,7 +9,7 @@ class MessageEntity {
   final String receiver;
   final String message;
   final String type;
-  bool isSeen;
+  final bool isSeen;
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool isMine;

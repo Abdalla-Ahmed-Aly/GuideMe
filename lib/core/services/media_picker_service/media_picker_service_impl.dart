@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
@@ -36,8 +38,13 @@ class MediaPickerServiceImpl implements MediaPickerService {
         size: pickedFile.size,
         bytes: pickedFile.bytes,
       );
-    } catch (_) {
-      return pickedFile; // Return original if fails
+    } catch (e) {
+      if (e is PlatformException) {
+        debugPrint('PlatformException: code=${e.code}, message=${e.message}');
+      } else {
+        debugPrint('Error: $e');
+      }
+      return pickedFile;
     }
   }
 
@@ -56,7 +63,12 @@ class MediaPickerServiceImpl implements MediaPickerService {
         path: image.path,
         size: await file.length(),
       );
-    } catch (_) {
+    } catch (e) {
+      if (e is PlatformException) {
+        debugPrint('PlatformException: code=${e.code}, message=${e.message}');
+      } else {
+        debugPrint('Error: $e');
+      }
       return null;
     }
   }
@@ -83,7 +95,12 @@ class MediaPickerServiceImpl implements MediaPickerService {
         size: file.size,
         bytes: file.bytes,
       );
-    } catch (_) {
+    } catch (e) {
+      if (e is PlatformException) {
+        debugPrint('PlatformException: code=${e.code}, message=${e.message}');
+      } else {
+        debugPrint('Error: $e');
+      }
       return null;
     }
   }
@@ -111,7 +128,12 @@ class MediaPickerServiceImpl implements MediaPickerService {
           bytes: file.bytes,
         );
       }).toList();
-    } catch (_) {
+    } catch (e) {
+      if (e is PlatformException) {
+        debugPrint('PlatformException: code=${e.code}, message=${e.message}');
+      } else {
+        debugPrint('Error: $e');
+      }
       return [];
     }
   }

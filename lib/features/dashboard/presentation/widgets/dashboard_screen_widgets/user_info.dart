@@ -18,7 +18,18 @@ class UserInfo extends StatelessWidget {
         border: Border.all(color: const Color(0xffFFA537)),
       ),
       child: (imageUrl != null && imageUrl!.isNotEmpty)
-          ? CachedNetworkImage(imageUrl: imageUrl!, fit: BoxFit.cover)
+          ? CachedNetworkImage(
+              imageUrl: imageUrl!,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+              errorWidget: (context, url, error) => const Icon(
+                Icons.person_outline_rounded,
+                color: AppColors.primary2,
+                size: 30,
+              ),
+            )
           : const Icon(
               Icons.person_outline_rounded,
               color: AppColors.primary2,

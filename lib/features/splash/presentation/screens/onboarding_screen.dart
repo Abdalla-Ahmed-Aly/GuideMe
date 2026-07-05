@@ -76,10 +76,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             left: context.isArabic ? 40.w : null,
             child: ArrowButton(
               onTap: () {
-                currentPage++;
-                if (currentPage < 3) {
+                final nextPage = (_pageController.page?.toInt() ?? 0) + 1;
+                if (nextPage < 3) {
                   _pageController.animateToPage(
-                    currentPage,
+                    nextPage,
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.ease,
                   );

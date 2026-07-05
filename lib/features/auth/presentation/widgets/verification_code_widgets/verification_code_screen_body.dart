@@ -104,9 +104,11 @@ class _VerificationCodeScreenBodyState
                 VerificationCodeInput(
                   controller: otpController,
                   onCompleted: (value) {
-                    setState(() {
-                      otp = value;
-                    });
+                    if (mounted) {
+                      setState(() {
+                        otp = value;
+                      });
+                    }
                   },
                 ),
               ],
@@ -172,10 +174,12 @@ class _VerificationCodeScreenBodyState
             >(
               listener: (context, state) {
                 if (state is ResendForgetPasswordCubitSuccess) {
-                  setState(() {
-                    otp = "";
-                    otpController.clear();
-                  });
+                  if (mounted) {
+                    setState(() {
+                      otp = "";
+                      otpController.clear();
+                    });
+                  }
                   context.showSuccessSnakbar(
                     message: context.l10n.otpSentAgain,
                   );

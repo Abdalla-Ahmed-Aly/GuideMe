@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guide_me/app.dart';
 import 'package:guide_me/core/di/injectable.dart';
+import 'package:guide_me/core/network/dio_service.dart';
 import 'package:guide_me/core/utils/app_bloc_observer.dart';
 import 'package:guide_me/core/utils/hive_helper.dart';
 
@@ -13,6 +14,8 @@ void main() async {
   await Firebase.initializeApp();
   await HiveHelper.init();
   await setupGetIt();
+
+  await getIt<DioService>().init();
 
   // SystemChrome.setEnabledSystemUIMode(
   //   SystemUiMode.immersiveSticky,

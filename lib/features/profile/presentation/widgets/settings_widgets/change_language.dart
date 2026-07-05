@@ -15,7 +15,7 @@ class ChangeLanguage extends StatelessWidget {
       groupValue: context.watch<LocaleCubit>().state.languageCode,
       onChanged: (value) {
         if (value != null) {
-          context.read<LocaleCubit>().toggle();
+          context.read<LocaleCubit>().setLanguage(value);
         }
       },
       child: Row(

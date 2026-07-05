@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,21 +20,26 @@ class GoogleAuthService {
 
       final googleAuth = await googleUser.authentication;
 
-      print("Access Token موجود؟ ${googleAuth.accessToken != null}");
-      print("ID Token موجود؟ ${googleAuth.idToken != null}");
-      print("User Email: ${googleUser.email}");
-      print("🔑 Google ID Token: ${googleAuth.idToken?.substring(0, 50)}...");
+      if (kDebugMode) {
+        debugPrint("Access Token موجود؟ ${googleAuth.accessToken != null}");
+        debugPrint("ID Token موجود؟ ${googleAuth.idToken != null}");
+        debugPrint("User Email: ${googleUser.email}");
+        debugPrint("🔑 Google ID Token: ${googleAuth.idToken?.substring(0, 50)}...");
+      }
 
-      // لازم يكون فيه ID Token
       if (googleAuth.idToken == null) {
-        print("❌ ID Token is null → check Firebase/Web Client ID");
+        if (kDebugMode) {
+          debugPrint("❌ ID Token is null → check Firebase/Web Client ID");
+        }
         return null;
       }
 
       // ✅ Return Google's ID Token directly (NOT Firebase token)
       return googleAuth.idToken;
     } catch (e) {
-      print("Google Auth Error: $e");
+      if (kDebugMode) {
+        debugPrint("Google Auth Error: $e");
+      }
       return null;
     }
   }
@@ -41,6 +47,7 @@ class GoogleAuthService {
   // Optional: Sign out
   Future<void> signOut() async {
     await _googleSignIn.signOut();
+    await _googleSignIn.disconnect();
     await _auth.signOut();
   }
 }

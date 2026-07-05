@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:guide_me/core/constants/spoken_languages_constants.dart';
 import 'package:guide_me/core/extentions/context_extentions.dart';
 import 'package:guide_me/core/responsive/reponsive_extention.dart';
@@ -74,7 +75,7 @@ class _AddLanguageDialogState extends State<AddLanguageDialog> {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
           child: Text(
             context.l10n.cancel,
@@ -88,7 +89,7 @@ class _AddLanguageDialogState extends State<AddLanguageDialog> {
           height: 34,
           radius: 20,
           onPressed: () {
-            Navigator.pop(context, tempSelectedLanguages);
+            context.pop(tempSelectedLanguages);
           },
           text: context.l10n.add,
         ),

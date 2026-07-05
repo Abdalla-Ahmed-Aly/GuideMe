@@ -17,6 +17,7 @@ class HiveHelper {
     await openBox<String>(name: HiveConstants.signupProgressBox);
     await openBox<Map>(name: HiveConstants.favoritesBox);
     await openBox<bool>(name: HiveConstants.onlineStatusBox);
+    await openBox<bool>(name: HiveConstants.notificationBox);
 
     await HiveService.init();
   }
@@ -29,6 +30,9 @@ class HiveHelper {
   }
 
   static Box<T> box<T>(String name) {
+    if (!Hive.isBoxOpen(name)) {
+      throw StateError('Hive box "$name" is not open. Ensure Hive is initialized before accessing boxes.');
+    }
     return Hive.box<T>(name);
   }
 
@@ -45,6 +49,9 @@ class HiveHelper {
   }
 
   static Future<void> deleteBox({required String name}) async {
+    if (Hive.isBoxOpen(name)) {
+      await Hive.box(name).close();
+    }
     await Hive.deleteBoxFromDisk(name);
   }
 

@@ -23,13 +23,16 @@ class SaveChangesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final updateProfileCubit = context.read<UpdateProfileCubit>();
-    final user = (context.read<UserCubit>().state as UserSuccess).user;
+            final userState = context.read<UserCubit>().state;
+            if (userState is! UserSuccess) return const SizedBox.shrink();
+            final user = userState.user;
     return AnimatedBuilder(
       animation: Listenable.merge([nameController, phoneController]),
       builder: (context, child) {
         return BlocConsumer<UpdateProfileCubit, UpdateProfileState>(
           listener: (context, state) {
             if (state.isSuccess) {
+              if (state.user == null) return;
               context.read<UserCubit>().updateUser(state.user!);
               phoneController.text = state.user!.phone ?? '';
               nameController.text = state.user!.name ?? '';
@@ -44,7 +47,9 @@ class SaveChangesSection extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            final user = (context.read<UserCubit>().state as UserSuccess).user;
+    final userState = context.read<UserCubit>().state;
+    if (userState is! UserSuccess) return const SizedBox.shrink();
+    final user = userState.user;
             final bool isDataChanges = updateProfileCubit.isDataChanges(
               name: nameController.text,
               phone: phoneController.text,

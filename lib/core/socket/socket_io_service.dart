@@ -12,7 +12,7 @@ class SocketIOService implements SocketService {
   final List<void Function(String event, dynamic data)> _anyHandlers = [];
   final List<VoidCallback> _connectHandlers = [];
   final List<void Function(String reason)> _disconnectHandlers = [];
-  final List<VoidCallback> _reconnectHandlers = [];
+
   final List<void Function(dynamic error)> _errorHandlers = [];
 
   @override
@@ -49,12 +49,6 @@ class SocketIOService implements SocketService {
       }
     });
 
-    _socket!.on('reconnect', (_) {
-      for (final handler in _reconnectHandlers) {
-        handler();
-      }
-    });
-
     _socket!.onError((error) {
       debugPrint("🔴 Error: $error");
       for (final handler in _errorHandlers) {
@@ -88,11 +82,6 @@ class SocketIOService implements SocketService {
 
   @override
   void disconnect() {
-    _socket?.off('connect');
-    _socket?.off('disconnect');
-    _socket?.off('error');
-    _socket?.off('reconnect');
-
     _socket?.clearListeners();
 
     _socket?.disconnect();
@@ -103,7 +92,6 @@ class SocketIOService implements SocketService {
     _anyHandlers.clear();
     _connectHandlers.clear();
     _disconnectHandlers.clear();
-    _reconnectHandlers.clear();
     _errorHandlers.clear();
   }
 
@@ -151,11 +139,6 @@ class SocketIOService implements SocketService {
   @override
   void onDisconnect(void Function(String reason) callback) {
     _disconnectHandlers.add(callback);
-  }
-
-  @override
-  void onReconnect(VoidCallback callback) {
-    _reconnectHandlers.add(callback);
   }
 
   @override

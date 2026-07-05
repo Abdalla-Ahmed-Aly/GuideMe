@@ -109,7 +109,7 @@ class _LogInBodyState extends State<LogInBody> {
               padding: EdgeInsets.symmetric(horizontal: 38.p),
               child: CustomTextField(
                 controller: passwordcontroll,
-                // validator: AppValidators.password,
+                validator: AppValidators.password,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: isHiddenPassword,
                 hintText: context.l10n.password,
@@ -175,6 +175,7 @@ class _LogInBodyState extends State<LogInBody> {
                       } else if (status == 'pending') {
                         context.go(AppRoutes.guideVerificationScreen);
                       } else if (status == 'approve' || status == 'approved') {
+                        await UserScope.initUserScope();
                         context.go(AppRoutes.guideVerificationSuccessScreen);
                       } else if (status == 'rejected') {
                         context.go(AppRoutes.verificationFailedScreen);
@@ -200,7 +201,7 @@ class _LogInBodyState extends State<LogInBody> {
                     child: AppButton(
                       isLoading: state is LoginCubitLoading,
                       onPressed: () {
-                        if (formkey.currentState!.validate()) {
+                        if (formkey.currentState?.validate() ?? false) {
                           context.read<LoginCubit>().login(
                             email: emailcontroll.text,
                             password: passwordcontroll.text,
@@ -251,6 +252,7 @@ class _LogInBodyState extends State<LogInBody> {
                                 context.go(AppRoutes.guideVerificationScreen);
                               } else if (status == 'approve' ||
                                   status == 'approved') {
+                                await UserScope.initUserScope();
                                 context.go(
                                   AppRoutes.guideVerificationSuccessScreen,
                                 );

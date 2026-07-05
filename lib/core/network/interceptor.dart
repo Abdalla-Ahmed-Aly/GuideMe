@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:guide_me/core/di/injectable.dart';
 import 'package:guide_me/core/services/token/token_service.dart';
 import 'package:logger/logger.dart';
@@ -16,14 +15,16 @@ class LoggerInterceptor extends Interceptor {
     final options = err.requestOptions;
     final requestPath = '${options.baseUrl}${options.path}';
     logger.e('${options.method} request ==> $requestPath'); //Error log
-    logger.d(
-      'Error type: ${err.type} \n '
-      'Error message: ${err.message} \n'
-      'STATUS CODE: ${err.response?.statusCode} \n'
-      'RESPONSE DATA: ${err.response?.data}'
-      'Error type: ${err.error} \n '
-      'Error message: ${err.message}',
-    ); //Debug log
+    if (kDebugMode) {
+      logger.d(
+        'Error type: ${err.type} \n '
+        'Error message: ${err.message} \n'
+        'STATUS CODE: ${err.response?.statusCode} \n'
+        'RESPONSE DATA: ${err.response?.data}'
+        'Error type: ${err.error} \n '
+        'Error message: ${err.message}',
+      );
+    }
     handler.next(err); //Continue with the Error
   }
 
@@ -36,12 +37,14 @@ class LoggerInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    logger.d(
-      'STATUSCODE: ${response.statusCode} \n '
-      'STATUSMESSAGE: ${response.statusMessage} \n'
-      'HEADERS: ${response.headers} \n'
-      'Data: ${response.data}',
-    ); // Debug log
+    if (kDebugMode) {
+      logger.d(
+        'STATUSCODE: ${response.statusCode} \n '
+        'STATUSMESSAGE: ${response.statusMessage} \n'
+        'HEADERS: ${response.headers} \n'
+        'Data: ${response.data}',
+      );
+    }
     handler.next(response); // continue with the Response
   }
 }
@@ -54,7 +57,6 @@ class AuthorizationInterceptor extends Interceptor {
   ) async {
     try {
       final token = await getIt<TokenService>().getToken();
-      log(token.toString());
 
       if (token != null && token.isNotEmpty) {
         options.headers['Authorization'] = "Bearer $token";

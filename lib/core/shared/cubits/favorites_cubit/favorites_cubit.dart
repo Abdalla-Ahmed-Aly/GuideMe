@@ -10,6 +10,7 @@ part 'favorites_state.dart';
 @injectable
 class FavoritesCubit extends Cubit<FavoritesState> {
   final FavoritesRepo _favoritesRepo;
+  bool _isToggling = false;
 
   FavoritesCubit(this._favoritesRepo) : super(FavoritesInitial());
 
@@ -28,12 +29,18 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   }
 
   Future<void> toggleFavorite(PlaceEntity place) async {
-    if (_favoritesRepo.isFavorite(place.id)) {
-      await _favoritesRepo.removeFavorite(place.id);
-    } else {
-      await _favoritesRepo.saveFavorite(place);
+    if (_isToggling) return;
+    _isToggling = true;
+    try {
+      if (_favoritesRepo.isFavorite(place.id)) {
+        await _favoritesRepo.removeFavorite(place.id);
+      } else {
+        await _favoritesRepo.saveFavorite(place);
+      }
+      getFavorites();
+    } finally {
+      _isToggling = false;
     }
-    getFavorites();
   }
 
   bool isFavorite(String id) => _favoritesRepo.isFavorite(id);

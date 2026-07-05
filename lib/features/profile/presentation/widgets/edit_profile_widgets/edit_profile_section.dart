@@ -26,7 +26,9 @@ class _EditProfileSectionState extends State<EditProfileSection> {
   @override
   void initState() {
     super.initState();
-    final user = (context.read<UserCubit>().state as UserSuccess).user;
+    final userState = context.read<UserCubit>().state;
+    if (userState is! UserSuccess) return;
+    final user = userState.user;
     context.read<UpdateProfileCubit>().init(user);
     nameController = TextEditingController(text: user.name);
     phoneController = TextEditingController(text: user.phone);

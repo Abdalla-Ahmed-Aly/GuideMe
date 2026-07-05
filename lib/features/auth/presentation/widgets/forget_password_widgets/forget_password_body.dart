@@ -29,6 +29,12 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
   final TextEditingController emailcontroller = TextEditingController();
 
   @override
+  void dispose() {
+    emailcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return Form(
@@ -132,7 +138,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
                         child: AppButton(
                           isLoading: state is SendForgetPasswordLoading,
                           onPressed: () {
-                            if (formkey.currentState!.validate()) {
+                            if (formkey.currentState?.validate() ?? false) {
                               context
                                   .read<SendForgetPasswordCubit>()
                                   .sendForgetPassword(

@@ -33,7 +33,12 @@ class HiveService {
     await Hive.openBox(guideRegistrationBox);
   }
 
-  static Box get _box => Hive.box(guideRegistrationBox);
+  static Box get _box {
+    if (!Hive.isBoxOpen(guideRegistrationBox)) {
+      throw StateError('Hive box "$guideRegistrationBox" is not open. Call HiveService.init() first.');
+    }
+    return Hive.box(guideRegistrationBox);
+  }
 
   // Save Guide Data
   static Future<void> saveGuideData(GuideRegistrationModel data) async {

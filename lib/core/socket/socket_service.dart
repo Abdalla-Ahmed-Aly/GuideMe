@@ -9,6 +9,5 @@ abstract class SocketService {
   void onAny(void Function(String event, dynamic data) handler);
   void onConnect(VoidCallback callback);
   void onDisconnect(void Function(String reason) callback);
-  void onReconnect(VoidCallback callback);
   void onError(void Function(dynamic error) callback);
 }
